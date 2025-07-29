@@ -1,0 +1,58 @@
+{
+  "Calculators": {
+    "fracoes": {
+      "title": "Calculadora de Fracciones",
+      "description": "Realiza operaciones con fracciones (suma, resta, multiplicación, división).",
+      "calculateButton": "Calcular",
+      "clearButton": "Limpiar",
+      "simplifyButton": "Simplificar"
+    },
+    "currency-converter": {
+        "title": "Conversor de Divisas",
+        "description": "Convierte valores entre diferentes divisas.",
+        "amountLabel": "Cantidad",
+        "amountPlaceholder": "Ingrese la cantidad",
+        "fromLabel": "De",
+        "toLabel": "A",
+        "selectPlaceholder": "Seleccionar",
+        "convertButton": "Convertir",
+        "convertingButton": "Convirtiendo...",
+        "errorFetchingCurrencies": "Error al obtener la lista de divisas.",
+        "errorInvalidInput": "Por favor, ingrese una cantidad válida y seleccione las divisas.",
+        "errorDuringConversion": "Error durante la conversión. Por favor, inténtelo de nuevo.",
+        "loadingRates": "Cargando tasas..."
+    },
+    "mmc": {
+      "title": "Calculadora de MCM (Mínimo Común Múltiplo)",
+      "description": "Calcula el Mínimo Común Múltiplo de dos o más números.",
+      "numbersLabel": "Números (separados por coma)",
+      "numbersPlaceholder": "ej: 12, 18, 20",
+      "calculateButton": "Calcular MCM",
+      "resultLabel": "Mínimo Común Múltiplo (MCM):",
+      "errorInvalidInput": "Por favor, ingrese al menos dos números positivos válidos."
+    }
+  },
+  "Layout": {
+    "greeting": "Hola",
+    "siteName": "mycalconline.com",
+    "categories": {
+      "mathematics": "Matemáticas",
+      "geometry": "Geometría",
+      "statistics": "Estadística",
+      "finance": "Finanzas",
+      "health": "Salud",
+      "calendar": "Calendario",
+      "converters": "Conversores",
+      "others": "Otros"
+    },
+    "footerCopyright": "© {year} mycalconline.com - Todos los derechos reservados."
+  },
+  "HomePage": {
+    "title": "Calculadoras en Línea",
+    "description": "Encuentra la calculadora perfecta para tus necesidades.",
+    "searchPlaceholder": "Buscar calculadora...",
+    "useCalculatorButton": "Usar Calculadora",
+    "noResultsFound": "No se encontraron calculadoras para "{searchTerm}".",
+    "noCalculatorsAvailable": "No hay calculadoras disponibles en este momento."
+  }
+}

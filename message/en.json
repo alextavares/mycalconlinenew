@@ -1,0 +1,58 @@
+{
+  "Calculators": {
+    "fracoes": {
+      "title": "Fraction Calculator",
+      "description": "Perform fraction operations (add, subtract, multiply, divide).",
+      "calculateButton": "Calculate",
+      "clearButton": "Clear",
+      "simplifyButton": "Simplify"
+    },
+    "currency-converter": {
+        "title": "Currency Converter",
+        "description": "Convert values between different currencies.",
+        "amountLabel": "Amount",
+        "amountPlaceholder": "Enter amount",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "selectPlaceholder": "Select",
+        "convertButton": "Convert",
+        "convertingButton": "Converting...",
+        "errorFetchingCurrencies": "Error fetching currency list.",
+        "errorInvalidInput": "Please enter a valid amount and select currencies.",
+        "errorDuringConversion": "Error during conversion. Please try again.",
+        "loadingRates": "Loading rates..."
+    },
+    "mmc": {
+      "title": "LCM Calculator (Least Common Multiple)",
+      "description": "Calculate the Least Common Multiple of two or more numbers.",
+      "numbersLabel": "Numbers (comma-separated)",
+      "numbersPlaceholder": "e.g., 12, 18, 20",
+      "calculateButton": "Calculate LCM",
+      "resultLabel": "Least Common Multiple (LCM):",
+      "errorInvalidInput": "Please enter at least two valid positive numbers."
+    }
+  },
+  "Layout": {
+    "greeting": "Hello",
+    "siteName": "mycalconline.com",
+    "categories": {
+      "mathematics": "Mathematics",
+      "geometry": "Geometry",
+      "statistics": "Statistics",
+      "finance": "Finance",
+      "health": "Health",
+      "calendar": "Calendar",
+      "converters": "Converters",
+      "others": "Others"
+    },
+    "footerCopyright": "© {year} mycalconline.com - All rights reserved."
+  },
+  "HomePage": {
+    "title": "Online Calculators",
+    "description": "Find the perfect calculator for your needs.",
+    "searchPlaceholder": "Search calculator...",
+    "useCalculatorButton": "Use Calculator",
+    "noResultsFound": "No calculators found for "{searchTerm}".",
+    "noCalculatorsAvailable": "No calculators available at the moment."
+  }
+}

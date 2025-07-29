@@ -1,0 +1,84 @@
+
+> nextn@0.1.0 dev
+> next dev -p 3000
+
+   ▲ Next.js 15.2.3
+   - Local:        http://localhost:3000
+   - Network:      http://10.88.0.3:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 6.9s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 3.7s (176 modules)
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 21.8s (1201 modules)
+ ✓ Compiled in 2.4s (481 modules)
+Error: Route "/[locale]" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (src/app/[locale]/layout.tsx:70:12)
+  68 | export default async function LocaleLayout({
+  69 |   children,
+> 70 |   params: { locale }
+     |            ^
+  71 | }: {
+  72 |   children: React.ReactNode;
+  73 |   params: { locale: string };
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+[LocaleLayout] Successfully loaded 37 message keys for locale: pt-BR
+[i18n] Locale not provided or invalid (undefined), using default: pt-BR
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+ GET /pt-BR 200 in 27399ms
+ ⚠ Blocked cross-origin request from 3000-idx-studio-1744995388567.cluster-duylic2g3fbzerqpzxxbw6helm.cloudworkstations.dev. To allow this, configure "allowedDevOrigins" in next.config
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+Error: Route "/[locale]" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (src/app/[locale]/layout.tsx:70:12)
+  68 | export default async function LocaleLayout({
+  69 |   children,
+> 70 |   params: { locale }
+     |            ^
+  71 | }: {
+  72 |   children: React.ReactNode;
+  73 |   params: { locale: string };
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+[LocaleLayout] Successfully loaded 37 message keys for locale: pt-BR
+[i18n] Locale not provided or invalid (undefined), using default: pt-BR
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+ GET /pt-BR 200 in 1080ms
+Error: Route "/[locale]" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (src/app/[locale]/layout.tsx:70:12)
+  68 | export default async function LocaleLayout({
+  69 |   children,
+> 70 |   params: { locale }
+     |            ^
+  71 | }: {
+  72 |   children: React.ReactNode;
+  73 |   params: { locale: string };
+[i18n] Loading messages for locale: en
+[i18n] Successfully loaded messages for en
+[LocaleLayout] Successfully loaded 23 message keys for locale: en
+[i18n] Locale not provided or invalid (undefined), using default: pt-BR
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+ GET /en 200 in 819ms
+ ○ Compiling /[locale]/calculator/area-circulo ...
+ ✓ Compiled /[locale]/calculator/area-circulo in 5.8s (1201 modules)
+Error: Route "/[locale]/calculator/area-circulo" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (src/app/[locale]/layout.tsx:70:12)
+  68 | export default async function LocaleLayout({
+  69 |   children,
+> 70 |   params: { locale }
+     |            ^
+  71 | }: {
+  72 |   children: React.ReactNode;
+  73 |   params: { locale: string };
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+[LocaleLayout] Successfully loaded 37 message keys for locale: pt-BR
+[i18n] Locale not provided or invalid (undefined), using default: pt-BR
+[i18n] Loading messages for locale: pt-BR
+[i18n] Successfully loaded messages for pt-BR
+ GET /pt-BR/calculator/area-circulo 200 in 9129ms

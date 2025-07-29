@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-07-29T18:22:32.244Z",
+  "tests": [
+    {
+      "name": "Calculadora Básica",
+      "url": "/calculator",
+      "status": "passed",
+      "steps": 6
+    },
+    {
+      "name": "Calculadora de Círculo",
+      "url": "/circle-calculator",
+      "status": "passed",
+      "steps": 4
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  }
+}

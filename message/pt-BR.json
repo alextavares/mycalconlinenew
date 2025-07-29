@@ -1,0 +1,78 @@
+{
+  "Calculators": {
+    "fracoes": {
+      "title": "Calculadora de Frações",
+      "description": "Realize operações com frações (soma, subtração, multiplicação, divisão).",
+      "numerator": "Numerador",
+      "denominator": "Denominador",
+      "add": "Adicionar",
+      "subtract": "Subtrair",
+      "multiply": "Multiplicar",
+      "divide": "Dividir",
+      "simplify": "Simplificar",
+      "result": "Resultado"
+    },
+    "currency-converter": {
+      "title": "Conversor de Moedas",
+      "description": "Converta valores entre diferentes moedas.",
+      "pageTitlePattern": "Conversor de {fromCurrency} para {toCurrency} - mycalconline.com",
+      "amountLabel": "Valor",
+      "amountPlaceholder": "Digite o valor",
+      "fromLabel": "De",
+      "toLabel": "Para",
+      "selectPlaceholder": "Selecionar",
+      "convertButton": "Converter",
+      "convertingButton": "Convertendo...",
+      "errorFetchingCurrencies": "Erro ao buscar lista de moedas.",
+      "errorInvalidInput": "Por favor, insira um valor válido e selecione as moedas.",
+      "errorDuringConversion": "Erro durante a conversão. Tente novamente.",
+      "loadingRates": "Carregando taxas...",
+      "lastUpdatePrefix": "Última atualização:"
+    },
+    "media-ponderada": {
+      "title": "Média Ponderada",
+      "description": "Calcule médias com pesos diferentes.",
+      "valueLabel": "Valor",
+      "valuePlaceholder": "Digite o valor",
+      "weightLabel": "Peso",
+      "weightPlaceholder": "Digite o peso",
+      "addPairButton": "Adicionar Par",
+      "calculateButton": "Calcular",
+      "resultLabel": "Resultado"
+    },
+    "mmc": {
+      "title": "Calculadora de Mínimo Múltiplo Comum (MMC)",
+      "description": "Calcule o menor múltiplo comum entre dois ou mais números inteiros.",
+      "numbersLabel": "Números para cálculo",
+      "numbersPlaceholder": "Digite os números separados por vírgula (ex: 2, 3, 4)",
+      "calculateButton": "Calcular"
+    },
+    "word-counter": {
+      "title": "Contador de Palavras",
+      "description": "Conte palavras, caracteres e linhas em um texto."
+    }
+  },
+  "Layout": {
+    "greeting": "Olá",
+    "siteName": "mycalconline.com",
+    "categories": {
+      "mathematics": "Matemática",
+      "geometry": "Geometria",
+      "statistics": "Estatística",
+      "finance": "Finanças",
+      "health": "Saúde",
+      "calendar": "Calendário",
+      "converters": "Conversores",
+      "others": "Outros"
+    },
+    "footerCopyright": "© {year} mycalconline.com - Todos os direitos reservados."
+  },
+  "HomePage": {
+    "title": "Calculadoras Online",
+    "description": "Encontre a calculadora perfeita para suas necessidades.",
+    "searchPlaceholder": "Pesquisar calculadora...",
+    "useCalculatorButton": "Usar Calculadora",
+    "noResultsFound": "Nenhuma calculadora encontrada para \"{searchTerm}\".",
+    "noCalculatorsAvailable": "Nenhuma calculadora disponível no momento."
+  }
+}
