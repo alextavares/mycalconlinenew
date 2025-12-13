@@ -1,8 +1,7 @@
 import withNextIntl from 'next-intl/plugin';
-import type { NextConfig } from 'next';
 
 // Define the base Next.js configuration
-const nextConfig: NextConfig = {
+const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },

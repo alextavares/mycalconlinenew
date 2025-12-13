@@ -59,7 +59,19 @@ const CalculadoraHorasTrabalhadas = () => {
         const { start, end, break: breakTime } = newTimeEntries[index];
         newTimeEntries[index].total = calculateTotalTime(start, end, breakTime);
         setTimeEntries(newTimeEntries);
-        calculateWeeklyTotal();
+        // Recalculate from the latest entries to avoid stale closure issues
+        let totalMinutes = 0;
+        newTimeEntries.forEach(entry => {
+            if (entry.total) {
+                const [hoursStr, minutesStr] = entry.total.split(':');
+                const h = Number(hoursStr) || 0;
+                const m = Number(minutesStr) || 0;
+                totalMinutes += h * 60 + m;
+            }
+        });
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        setWeeklyTotalTime({ hours, minutes });
     };
 
     const calculateWeeklyTotal = () => {

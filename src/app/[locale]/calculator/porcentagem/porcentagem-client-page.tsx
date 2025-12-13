@@ -130,82 +130,185 @@ export default function PorcentagemClientPage() {
   }, [locale])
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-4">
-      <div>
-        <Card className="w-full max-w-md mx-auto my-8"> {/* Added my-8 for margin */}
-        <CardHeader>
-          <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>{t('description')}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
-            <Label htmlFor="percentValue" className="sm:text-right">{t('labelPercentValue')}</Label>
-            <div className="flex items-center col-span-2 space-x-2">
-              <Input
-                id="percentValue"
-                type="text"
-                inputMode="decimal"
-                placeholder={t('placeholderPercentValue')}
-                value={percentValue}
-                onChange={(e) => setPercentValue(e.target.value)}
-                className="w-full"
-              />
-               <span className="font-semibold">%</span>
+    <div className="w-full flex justify-center p-4">
+      <div className="w-full max-w-3xl">
+        <Card className="w-full my-8">
+          <CardHeader>
+            {/* H1 semântico forte para SEO */}
+            <CardTitle asChild>
+              <h1 className="text-2xl md:text-3xl font-bold">
+                {t('title')}
+              </h1>
+            </CardTitle>
+            <CardDescription className="text-base md:text-lg">
+              {t('description')}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {/* Linha: Quanto é X% de Y */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
+              <Label htmlFor="percentValue" className="sm:text-right">
+                {t('labelPercentValue')}
+              </Label>
+              <div className="flex items-center col-span-2 space-x-2">
+                <Input
+                  id="percentValue"
+                  type="text"
+                  inputMode="decimal"
+                  placeholder={t('placeholderPercentValue')}
+                  value={percentValue}
+                  onChange={(e) => setPercentValue(e.target.value)}
+                  className="w-full"
+                  aria-label={t('labelPercentValue')}
+                />
+                <span className="font-semibold">%</span>
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
-             <Label htmlFor="baseValue" className="sm:text-right">{t('labelBaseValue')}</Label>
-             <Input
+
+            {/* Campo: valor base */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-2">
+              <Label htmlFor="baseValue" className="sm:text-right">
+                {t('labelBaseValue')}
+              </Label>
+              <Input
                 id="baseValue"
-                type="text" 
+                type="text"
                 inputMode="decimal"
                 placeholder={t('placeholderBaseValue')}
                 value={baseValue}
                 onChange={(e) => setBaseValue(e.target.value)}
                 className="col-span-2"
-             />
-          </div>
-          {error && (
-            <div className={`text-sm px-3 py-2 rounded-lg border ${
-              error.startsWith('⚠️') 
-                ? 'text-orange-700 bg-orange-50 border-orange-200' 
-                : 'text-red-700 bg-red-50 border-red-200'
-            }`}>
-              {error}
+                aria-label={t('labelBaseValue')}
+              />
             </div>
-          )}
-          {result !== null && (
-            <div className="pt-4 text-center bg-green-50 p-4 rounded-lg border border-green-200">
-              <h3 className="text-lg font-semibold text-green-800 mb-2">{t('labelResult')}</h3>
-              <p className="text-2xl font-bold text-green-700">{formatResult(result)}</p>
-              
-              {/* Show calculation formula for transparency */}
-              <div className="mt-3 text-xs text-gray-600 font-mono bg-white p-2 rounded border">
-                {percentValue}% de {baseValue} = ({percentValue} ÷ 100) × {baseValue} = {formatResult(result)}
+
+            {/* Mensagens de erro */}
+            {error && (
+              <div
+                className={`text-sm px-3 py-2 rounded-lg border ${
+                  error.startsWith('⚠️')
+                    ? 'text-orange-700 bg-orange-50 border-orange-200'
+                    : 'text-red-700 bg-red-50 border-red-200'
+                }`}
+                role="alert"
+              >
+                {error}
               </div>
-              
-              {/* Additional info for extreme values */}
-              {Math.abs(result) > 1e6 && (
-                <p className="text-xs text-orange-600 mt-2">
-                  📈 Resultado muito grande - verifique os valores inseridos
+            )}
+
+            {/* Resultado */}
+            {result !== null && (
+              <div className="pt-4 text-center bg-green-50 p-4 rounded-lg border border-green-200">
+                <h2 className="text-lg font-semibold text-green-800 mb-2">
+                  {t('labelResult')}
+                </h2>
+                <p className="text-2xl font-bold text-green-700">
+                  {formatResult(result)}
                 </p>
-              )}
-              {Math.abs(result) < 0.01 && result !== 0 && (
-                <p className="text-xs text-blue-600 mt-2">
-                  🔍 Resultado próximo de zero - considere usar valores maiores
-                </p>
-              )}
+
+                {/* Fórmula exibida para transparência */}
+                <div className="mt-3 text-xs text-gray-600 font-mono bg-white p-2 rounded border">
+                  {percentValue}% de {baseValue} = ({percentValue} ÷ 100) × {baseValue} ={' '}
+                  {formatResult(result)}
+                </div>
+
+                {/* Mensagens adicionais para extremos */}
+                {Math.abs(result) > 1e6 && (
+                  <p className="text-xs text-orange-600 mt-2">
+                    📈 Resultado muito grande - verifique os valores inseridos.
+                  </p>
+                )}
+                {Math.abs(result) < 0.01 && result !== 0 && (
+                  <p className="text-xs text-blue-600 mt-2">
+                    🔍 Resultado muito pequeno - confira se a porcentagem está correta.
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* CTA principal */}
+            <div className="flex justify-end pt-2">
+              <Button
+                onClick={calculatePercentage}
+                className="w-full sm:w-auto"
+              >
+                {t('buttonCalculate')}
+              </Button>
             </div>
-          )}
-        </CardContent>
-        <CardFooter className="flex justify-end">
-          <Button onClick={calculatePercentage}>{t('buttonCalculate')}</Button>
-        </CardFooter>
-      </Card>
-      <div className="w-full max-w-md mx-auto mt-6 mb-8 p-4 bg-slate-50 rounded-lg shadow-sm border border-slate-200"> {/* Adjusted margin and style */}
-        <h2 className="text-xl font-semibold mb-3 text-slate-700">{t('descriptionTitle')}</h2>
-        <p className="text-sm text-slate-600" dangerouslySetInnerHTML={{ __html: t.raw('descriptionDetail') }}></p>
-      </div>
+          </CardContent>
+        </Card>
+
+        {/* Seção explicativa principal */}
+        <section
+          aria-labelledby="percentage-description"
+          className="w-full mt-2 mb-4 p-4 bg-slate-50 rounded-lg shadow-sm border border-slate-200"
+        >
+          <h2
+            id="percentage-description"
+            className="text-xl font-semibold mb-3 text-slate-700"
+          >
+            {t('descriptionTitle')}
+          </h2>
+          <p
+            className="text-sm text-slate-600 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t.raw('descriptionDetail') }}
+          />
+        </section>
+
+        {/* Seção: Como usar */}
+        <section
+          aria-labelledby="percentage-howto"
+          className="w-full mb-4 p-4 bg-white rounded-lg border border-slate-200"
+        >
+          <h2
+            id="percentage-howto"
+            className="text-lg font-semibold mb-2 text-slate-800"
+          >
+            {t('howToUseTitle')}
+          </h2>
+          <p className="text-sm text-slate-700 leading-relaxed">
+            {t('howToUseDetail')}
+          </p>
+        </section>
+
+        {/* Seção FAQ */}
+        <section
+          aria-labelledby="percentage-faq"
+          className="w-full mb-8 p-4 bg-white rounded-lg border border-slate-200"
+        >
+          <h2
+            id="percentage-faq"
+            className="text-lg font-semibold mb-3 text-slate-800"
+          >
+            {t('faqTitle')}
+          </h2>
+          <div className="space-y-3">
+            <div>
+              <h3 className="font-semibold text-sm text-slate-900">
+                {t('faqQ1')}
+              </h3>
+              <p className="text-sm text-slate-700">
+                {t('faqA1')}
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm text-slate-900">
+                {t('faqQ2')}
+              </h3>
+              <p className="text-sm text-slate-700">
+                {t('faqA2')}
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm text-slate-900">
+                {t('faqQ3')}
+              </h3>
+              <p className="text-sm text-slate-700">
+                {t('faqA3')}
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )

@@ -9,7 +9,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "mcp:server": "node mcp-playwright/dist/index.js",
+    "mcp:test:word-counter": "node scripts/mcp-word-counter-test.js",
+    "mcp:test:porcentagem": "node scripts/mcp-porcentagem-test.js",
+    "mcp:test:media-ponderada": "node scripts/mcp-media-ponderada-test.js"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.0.4",
@@ -44,7 +48,7 @@
     "firebase": "^11.3.0",
     "genkit": "^1.0.4",
     "lucide-react": "^0.475.0",
-    "next": "^14.2.0",
+    "next": "14.2.35",
     "next-intl": "^4.0.2",
     "patch-package": "^8.0.0",
     "puppeteer": "^24.15.0",
@@ -60,11 +64,13 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.21",
     "genkit-cli": "^1.0.4",
+    "playwright": "^1.54.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

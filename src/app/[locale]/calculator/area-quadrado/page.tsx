@@ -9,10 +9,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { CalculatorWrapper } from '@/components/layout/calculator-wrapper'
 
 export default function AreaQuadradoCalculator() {
-  const locale = useLocale();
   const t = useTranslations('AreaQuadradoCalculator');
   
-  // Destructure translations for clarity
   const translations = {
     title: t('title'),
     description: t('description'),
@@ -42,8 +40,8 @@ export default function AreaQuadradoCalculator() {
   }
 
   return (
-    <CalculatorWrapper title="Calculadora de Área do Quadrado">
-      <div className="flex justify-center items-center min-h-screen p-4">
+    <CalculatorWrapper title={translations.title}>
+      <div className="flex justify-center items-center p-4">
       <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle className="text-purple-600">{translations.title}</CardTitle>
@@ -51,7 +49,7 @@ export default function AreaQuadradoCalculator() {
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex justify-center items-center">
-            <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <rect x="25" y="25" width="100" height="100" stroke="currentColor" strokeWidth="2"/>
               <text x="70" y="20" fontSize="16" fill="currentColor" className="font-sans">a</text>
               <text x="70" y="145" fontSize="16" fill="currentColor" className="font-sans">a</text>
@@ -70,18 +68,22 @@ export default function AreaQuadradoCalculator() {
                 onChange={(e) => setSide(e.target.value)}
                 min="0"
                 step="any"
+                inputMode="decimal"
                 className="mt-1"
+                aria-invalid={!!error}
+                aria-describedby={error ? 'side-error' : undefined}
               />
             </div>
-            <Button 
-              onClick={calculateArea} 
+            <Button
+              onClick={calculateArea}
               className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              type="button"
             >
               {translations.calculateButton}
             </Button>
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            {error && <p id="side-error" className="text-red-500 text-sm mt-2" role="alert">{error}</p>}
             {area !== null && (
-              <div className="mt-4 p-4 bg-yellow-100 border border-yellow-300 rounded-md text-center">
+              <div className="mt-4 p-4 bg-yellow-100 border border-yellow-300 rounded-md text-center" aria-live="polite" role="status">
                 <p className="text-sm font-medium text-gray-800">{translations.resultText}</p>
                 <p className="text-2xl font-bold text-black">{area.toFixed(2)}</p>
               </div>

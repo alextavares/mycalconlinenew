@@ -49,12 +49,13 @@ const CalculatorPage = () => {
     const precision = decimalPrecision;
 
     if (principal < 0 || monthlyDeposit < 0 || numberOfYears < 0 || annualInterestRate < 0 || precision < 0) {
-      alert("Por favor, insira valores não negativos.");
+      // Inline validation instead of alert
+      setResult(null);
       return;
     }
 
     if (numberOfYears === 0) {
-      alert("O número de anos deve ser maior que zero.");
+      setResult(null);
       return;
     }
 
@@ -105,7 +106,7 @@ const CalculatorPage = () => {
     const finalResult: CompoundInterestResult = {
       futureValue: Math.round(totalValue * 100) / 100,
       interestEarned: Math.round(interestEarned * 100) / 100,
-      roi: Math.round(((totalValue - principal) / principal * 100) * 100) / 100,
+      roi: principal > 0 ? Math.round((((totalValue - principal) / principal) * 100) * 100) / 100 : 0,
       table: tableData,
     };
 
@@ -113,11 +114,19 @@ const CalculatorPage = () => {
   };
 
   return (
-    <div className="flex p-6 space-x-6">
-      <Card className="w-1/2">
+    <div className="w-full flex flex-col lg:flex-row p-4 lg:p-6 gap-6">
+      {/* Bloco da calculadora */}
+      <Card className="w-full lg:w-1/2">
         <CardHeader>
-          <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>{t('description')}</CardDescription>
+          {/* H1 semântico forte para SEO */}
+          <CardTitle>
+            <h1 className="text-2xl md:text-3xl font-bold">
+              {t('title')}
+            </h1>
+          </CardTitle>
+          <CardDescription className="text-base md:text-lg">
+            {t('description')}
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
@@ -158,9 +167,9 @@ const CalculatorPage = () => {
           </div>
           <div className="space-y-2">
           <Label htmlFor="capitalizationFrequency">{t('capitalizationFrequencyLabel')}</Label>
-          <Select onValueChange={(value) => setCapitalizationFrequency(parseInt(value))}>
+          <Select value={String(capitalizationFrequency)} onValueChange={(value) => setCapitalizationFrequency(parseInt(value))}>
               <SelectTrigger id="capitalizationFrequency">
-                  <SelectValue placeholder="Select" />
+                  <SelectValue placeholder={t('selectPlaceholder')} />
               </SelectTrigger>
               <SelectContent>
                   <SelectItem value="1">{t('annualOption')}</SelectItem>
@@ -180,51 +189,64 @@ const CalculatorPage = () => {
             />
           </div>
           <div className="space-y-2">
-            <Button onClick={calculateCompoundInterest} className="w-full">
+            <Button
+              onClick={() => {
+                calculateCompoundInterest();
+                // Garante que, após calcular, o usuário veja o resultado no topo
+                try {
+                  const resultCard = document.getElementById('compound-result-card');
+                  if (resultCard) {
+                    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                } catch {
+                  // fail-safe silencioso em ambientes sem window/document
+                }
+              }}
+              className="w-full"
+            >
               {t('calculateButton')}
             </Button>
-            {result && (
-              <div className="flex items-center justify-center">
-                <input 
-                  type="checkbox" 
-                  id="showTable" 
-                  checked={showDetailedTable}
-                  onChange={(e) => setShowDetailedTable(e.target.checked)}
-                  className="mr-2"
-                />
-                <label htmlFor="showTable" className="text-sm text-gray-600">
-                  Mostrar tabela detalhada
-                </label>
-              </div>
-            )}
           </div>
         </CardContent>
       </Card>
+
+      {/* Bloco de resultados */}
       {result && (
-        <Card className="w-1/2">
+        <Card id="compound-result-card" className="w-full lg:w-1/2">
           <CardHeader>
-            <CardTitle>{t('resultTitle')}</CardTitle>
+            <CardTitle className="text-xl font-semibold">
+              {t('resultTitle')}
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <div className="bg-green-50 p-4 rounded-lg">
-                <p className="text-lg">
-                  <strong>{t('futureValueLabel')}</strong> 
-                  <span className="text-green-600 font-bold">R$ {result.futureValue.toLocaleString('pt-BR')}</span>
-                </p>
-                <p>
-                  <strong>{t('interestEarnedLabel')}</strong> 
-                  <span className="text-blue-600">R$ {result.interestEarned.toLocaleString('pt-BR')}</span>
-                </p>
-                <p>
-                  <strong>{t('roiLabel')}</strong> 
-                  <span className="text-purple-600">{result.roi}%</span>
-                </p>
-              </div>
+            {/* Resumo principal */}
+            <div className="bg-green-50 p-4 rounded-lg" aria-live="polite" role="status">
+              <p className="text-base md:text-lg mb-1">
+                <strong>{t('futureValueLabel')}</strong>
+                <span className="text-green-600 font-bold">
+                  {result.futureValue.toLocaleString()}
+                </span>
+              </p>
+              <p className="mb-1">
+                <strong>{t('interestEarnedLabel')}</strong>
+                <span className="text-blue-600">
+                  {result.interestEarned.toLocaleString()}
+                </span>
+              </p>
+              <p>
+                <strong>{t('roiLabel')}</strong>
+                <span className="text-purple-600">
+                  {result.roi}%
+                </span>
+              </p>
             </div>
+
+            {/* Tabela detalhada opcional */}
             {showDetailedTable && result.table.length > 0 && (
-              <div className="mt-4">
-                <h4 className="font-semibold mb-2">Evolução Detalhada</h4>
+              <div className="mt-2">
+                <h4 className="font-semibold mb-2">
+                  {t('periodTableHeader')} / {t('contributionTableHeader')} / {t('futureValueTableHeader')}
+                </h4>
                 <div className="max-h-96 overflow-y-auto border rounded">
                   <Table>
                     <TableHeader className="sticky top-0 bg-white">
@@ -238,8 +260,12 @@ const CalculatorPage = () => {
                       {result.table.map((item) => (
                         <TableRow key={item.period}>
                           <TableCell>{item.period}</TableCell>
-                          <TableCell>R$ {item.contribution.toLocaleString('pt-BR')}</TableCell>
-                          <TableCell>R$ {item.futureValue.toLocaleString('pt-BR')}</TableCell>
+                          <TableCell>
+                            {item.contribution.toLocaleString('pt-BR')}
+                          </TableCell>
+                          <TableCell>
+                            {item.futureValue.toLocaleString('pt-BR')}
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -247,11 +273,25 @@ const CalculatorPage = () => {
                 </div>
                 {result.table.length === 0 && (
                   <p className="text-sm text-gray-500 mt-2">
-                    Tabela detalhada não disponível para períodos muito longos (performance)
+                    Tabela detalhada não disponível para períodos muito longos (otimização de performance).
                   </p>
                 )}
               </div>
             )}
+
+            {/* Toggle para tabela */}
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="showTable"
+                checked={showDetailedTable}
+                onChange={(e) => setShowDetailedTable(e.target.checked)}
+                className="w-4 h-4"
+              />
+              <label htmlFor="showTable" className="text-sm text-gray-700">
+                Mostrar tabela detalhada de evolução
+              </label>
+            </div>
           </CardContent>
         </Card>
       )}
