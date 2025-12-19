@@ -179,35 +179,48 @@ export default async function LocaleLayout({
           </div>
 
           <main className="flex-1 flex flex-col w-full max-w-full">
-            {/* Updated Header Styling */}
-            <header className="flex justify-between items-center p-4 bg-white text-gray-800 border-b border-gray-200 sticky top-0 z-10 w-full">
-              <div className="flex items-center">
-                 {/* Sidebar Trigger - update icon color if needed */}
-                 <SidebarTrigger className="md:hidden mr-2 text-gray-600 hover:text-gray-900" />
-                 {/* Site Title - Link color updated */}
-                 <Link href={`/${finalLocale}`} className="text-lg font-semibold mr-4 text-gray-900 hover:text-purple-700">
-                   mycalconline.com
-                 </Link>
-                 {/* Dashboard Link */}
-                 <Link href={`/${finalLocale}/dashboard`} className="text-sm font-medium text-gray-700 hover:text-purple-700 mr-4">
-                   Dashboard
-                 </Link>
-                 {/* HeaderNav - Styling adjusted within the component */}
-                 <HeaderNav
+            {/* Clean Header - Omni Calculator Style */}
+            <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+              <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-16">
+                  {/* Left: Logo & Mobile Trigger */}
+                  <div className="flex items-center gap-3">
+                    <SidebarTrigger className="md:hidden text-gray-600 hover:text-primary" />
+                    <Link
+                      href={`/${finalLocale}`}
+                      className="flex items-center gap-2 text-xl font-bold text-primary hover:opacity-80 transition-opacity"
+                    >
+                      <span className="text-2xl">🧮</span>
+                      <span className="hidden sm:inline">MyCalcOnline</span>
+                    </Link>
+                  </div>
+
+                  {/* Center: Navigation */}
+                  <HeaderNav
                     navigationData={structuredNavigationData}
                     categoryOrder={categoryOrder}
                     currentLocale={finalLocale}
                   />
+
+                  {/* Right: Actions */}
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/${finalLocale}/dashboard`}
+                      className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+                    >
+                      Dashboard
+                    </Link>
+                    <LanguageSwitcher />
+                  </div>
+                </div>
               </div>
-              {/* Language Switcher - Styling may need adjustment inside its component */}
-              <LanguageSwitcher />
             </header>
-            {/* Main Content Area - background might need adjustment based on overall theme */}
-            <div className="flex-grow p-4 md:p-8 bg-gray-50 w-full overflow-x-hidden"> {/* Added width and overflow control */}
-              <div className="w-full max-w-full">
-                {children}
-              </div>
+
+            {/* Main Content Area */}
+            <div className="flex-grow bg-background w-full overflow-x-hidden">
+              {children}
             </div>
+
             <Footer />
           </main>
         </div>

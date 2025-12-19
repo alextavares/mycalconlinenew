@@ -5,56 +5,24 @@ import { useLocale } from 'next-intl';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button'; // Import Button
-import { ClickFeedbackButton } from '@/components/ui/click-feedback-button';
 import {
-  ArrowRight,
-  Percent,
+  Search,
   Calculator,
   TrendingUp,
   HeartPulse,
   CalendarDays,
-  Divide,
   Ruler,
-  Sigma,
   ArrowLeftRight,
-  Hash,
-  MousePointerClick,
-  Binary,
-  Clock,
-  Car,
-  Text,
-  CalendarPlus,
-  CalendarMinus,
-  Scale,
-  Square,
-  Circle,
-  Pyramid,
-  Globe,
-  Parentheses, // Placeholder for Fractions
-  SquareFunction, // Placeholder for Square Area types
-  Users, // Placeholder for Age
-  Fuel, // Placeholder for Gasoline
-  ScanText, // Placeholder for Word Counter
-  BookType, // Placeholder for Roman Numerals
-  Baseline, // Placeholder for Mean/Median/Mode, StdDev, Variance
-  DollarSign // Added for Currency Converter
+  BarChart3,
+  MoreHorizontal,
+  ChevronRight,
 } from 'lucide-react';
 
-// Define the types for calculator data
-interface CalculatorInfo {
-  slug: string;
-  title: string;
-  description: string;
-  link: string;
-  categoryKey: string;
-}
-
-// --- Data Generation Constants ---
+// Calculator slugs and categories data
 const calculatorSlugs = [
   "adicionar-subtrair-dias", "area-cilindro", "area-circulo", "area-cubo",
   "area-esfera", "area-quadrado", "area-quadrado-imagem", "area-quadrado-nova",
-  "binario", "click-counter", "como-calcular-horas-extras", "currency-converter", // Added currency-converter
+  "binario", "click-counter", "como-calcular-horas-extras", "currency-converter",
   "desvio-padrao", "dias-entre-datas", "fracoes", "gasto-gasolina",
   "gerador-escala-notas", "gordura-corporal", "hexadecimal", "hora-minuto",
   "horas-trabalhadas", "idade", "juros-compostos", "juros-simples",
@@ -76,171 +44,106 @@ const categoryMap: { [key: string]: string } = {
   'relacao-pf': 'health',
   'adicionar-subtrair-dias': 'calendar', 'dias-entre-datas': 'calendar',
   'hora-minuto': 'calendar', 'horas-trabalhadas': 'calendar', 'idade': 'calendar',
-  'como-calcular-horas-extras': 'calendar', // Keep in calendar for now
+  'como-calcular-horas-extras': 'calendar',
   'binario': 'converters', 'hexadecimal': 'converters', 'romano-decimal': 'converters',
-  'currency-converter': 'converters', // Added currency-converter to converters category
+  'currency-converter': 'converters',
   'click-counter': 'others', 'gasto-gasolina': 'others',
   'gerador-escala-notas': 'others', 'word-counter': 'others',
 };
 
 const categoryOrder = [
-  'mathematics', 'geometry', 'statistics', 'finance',
-  'health', 'calendar', 'converters', 'others'
+  'mathematics', 'finance', 'health', 'statistics',
+  'geometry', 'calendar', 'converters', 'others'
 ];
 
-// Map calculator slugs to icons
-const iconMap: { [key: string]: React.ElementType } = {
-  'media-ponderada': Scale,
-  'porcentagem': Percent,
-  'regra-de-3': Calculator, // Or possibly Scale3d
-  'mmc': Hash,
-  'fracoes': Parentheses, // Placeholder
-  'binario': Binary,
-  'hexadecimal': Hash, // Could use a different one, maybe Binary again?
-  'area-cilindro': Pyramid, // Placeholder
-  'area-circulo': Circle,
-  'area-cubo': Square, // Placeholder for cube
-  'area-esfera': Globe,
-  'area-quadrado': SquareFunction,
-  'area-quadrado-imagem': SquareFunction,
-  'area-quadrado-nova': SquareFunction,
-  'taxa-metabolica-basal': HeartPulse,
-  'gordura-corporal': HeartPulse, // Or Scale
-  'relacao-pf': HeartPulse,
-  'dias-entre-datas': CalendarDays,
-  'idade': Users,
-  'adicionar-subtrair-dias': CalendarPlus,
-  'hora-minuto': Clock,
-  'horas-trabalhadas': Clock, // Or CalendarClock
-  'gerador-escala-notas': Ruler,
-  'gasto-gasolina': Fuel,
-  'word-counter': ScanText,
-  'romano-decimal': BookType,
-  'click-counter': MousePointerClick,
-  'como-calcular-horas-extras': Clock, // Relates to hours
-  'desvio-padrao': Baseline, // Placeholder
-  'juros-compostos': TrendingUp,
-  'juros-simples': TrendingUp,
-  'media-mediana-moda': Baseline, // Placeholder
-  'variancia-estatistica': Baseline, // Placeholder
-  'currency-converter': DollarSign, // Added icon for currency converter
-  'default': Calculator // Default icon if none specific
+// Category icons mapping
+const categoryIcons: { [key: string]: React.ElementType } = {
+  mathematics: Calculator,
+  finance: TrendingUp,
+  health: HeartPulse,
+  statistics: BarChart3,
+  geometry: Ruler,
+  calendar: CalendarDays,
+  converters: ArrowLeftRight,
+  others: MoreHorizontal,
 };
 
-// --- End Data Generation Constants ---
+// Category colors (matching Omni Calculator style)
+const categoryColors: { [key: string]: { bg: string; text: string; border: string } } = {
+  mathematics: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200' },
+  finance: { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-200' },
+  health: { bg: 'bg-rose-50', text: 'text-rose-600', border: 'border-rose-200' },
+  statistics: { bg: 'bg-violet-50', text: 'text-violet-600', border: 'border-violet-200' },
+  geometry: { bg: 'bg-amber-50', text: 'text-amber-600', border: 'border-amber-200' },
+  calendar: { bg: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-200' },
+  converters: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200' },
+  others: { bg: 'bg-gray-50', text: 'text-gray-600', border: 'border-gray-200' },
+};
 
-// Component for rendering each calculator item with title, description, icon, and button
-const CalculatorItem = ({ title, description, link, categoryKey, slug, buttonText }: {
+// Category card component
+const CategoryCard = ({
+  categoryKey,
+  count,
+  locale
+}: {
+  categoryKey: string;
+  count: number;
+  locale: string;
+}) => {
+  const tl = useTranslations('Layout');
+  const Icon = categoryIcons[categoryKey] || Calculator;
+  const colors = categoryColors[categoryKey] || categoryColors.others;
+
+  return (
+    <Link
+      href={`/${locale}#${categoryKey}`}
+      className={`group flex items-center gap-4 p-5 rounded-xl border ${colors.border} ${colors.bg} hover:shadow-md transition-all duration-200`}
+    >
+      <div className={`flex items-center justify-center w-12 h-12 rounded-lg ${colors.bg} ${colors.text}`}>
+        <Icon className="w-6 h-6" />
+      </div>
+      <div className="flex-1">
+        <h3 className="font-semibold text-gray-900">{tl(`categories.${categoryKey}`)}</h3>
+        <p className="text-sm text-gray-500">{count} calculators</p>
+      </div>
+      <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
+    </Link>
+  );
+};
+
+// Calculator list item component (cleaner design)
+const CalculatorListItem = ({
+  title,
+  description,
+  link,
+  categoryKey,
+}: {
   title: string;
   description: string;
   link: string;
   categoryKey: string;
-  slug: string;
-  buttonText: string;
 }) => {
-  let borderClass = 'border-l-red-500'; // Default red from example
-  let iconColorClass = 'text-red-500';
-  let iconBgClass = 'bg-red-500/10'; // Use opacity for background
-  let buttonBgClass = 'bg-red-500 hover:bg-red-600';
-
-  switch (categoryKey) {
-    case 'mathematics':
-      // Uses red/orange from example for specific math calculators
-      if (slug === 'mmc') {
-        borderClass = 'border-l-blue-500';
-        iconColorClass = 'text-blue-500';
-        iconBgClass = 'bg-blue-500/10';
-        buttonBgClass = 'bg-blue-500 hover:bg-blue-600';
-      } else if (slug === 'porcentagem') {
-        borderClass = 'border-l-green-500';
-        iconColorClass = 'text-green-500';
-        iconBgClass = 'bg-green-500/10';
-        buttonBgClass = 'bg-green-500 hover:bg-green-600';
-      } else if (slug === 'regra-de-3') {
-        borderClass = 'border-l-purple-500';
-        iconColorClass = 'text-purple-500';
-        iconBgClass = 'bg-purple-500/10';
-        buttonBgClass = 'bg-purple-500 hover:bg-purple-600';
-      } else if (slug === 'media-ponderada') {
-        borderClass = 'border-l-yellow-500';
-        iconColorClass = 'text-yellow-500';
-        iconBgClass = 'bg-yellow-500/10';
-        buttonBgClass = 'bg-yellow-500 hover:bg-yellow-600';
-      } else { // Default for other math (like fractions)
-        borderClass = 'border-l-red-500';
-        iconColorClass = 'text-red-500';
-        iconBgClass = 'bg-red-500/10';
-        buttonBgClass = 'bg-red-500 hover:bg-red-600';
-      }
-      break;
-    case 'geometry':
-      borderClass = 'border-l-indigo-500'; // Choose a color for geometry
-      iconColorClass = 'text-indigo-500';
-      iconBgClass = 'bg-indigo-500/10';
-      buttonBgClass = 'bg-indigo-500 hover:bg-indigo-600';
-      break;
-    case 'statistics':
-      borderClass = 'border-l-pink-500'; // Choose a color for statistics
-      iconColorClass = 'text-pink-500';
-      iconBgClass = 'bg-pink-500/10';
-      buttonBgClass = 'bg-pink-500 hover:bg-pink-600';
-      break;
-    case 'finance':
-      borderClass = 'border-l-teal-500'; // Choose a color for finance
-      iconColorClass = 'text-teal-500';
-      iconBgClass = 'bg-teal-500/10';
-      buttonBgClass = 'bg-teal-500 hover:bg-teal-600';
-      break;
-    case 'health':
-      borderClass = 'border-l-green-500'; // Use green similar to percentage
-      iconColorClass = 'text-green-500';
-      iconBgClass = 'bg-green-500/10';
-      buttonBgClass = 'bg-green-500 hover:bg-green-600';
-      break;
-    case 'calendar':
-      borderClass = 'border-l-blue-500'; // Use blue similar to MMC
-      iconColorClass = 'text-blue-500';
-      iconBgClass = 'bg-blue-500/10';
-      buttonBgClass = 'bg-blue-500 hover:bg-blue-600';
-      break;
-    case 'converters':
-      borderClass = 'border-l-purple-500'; // Use purple similar to rule-of-three
-      iconColorClass = 'text-purple-500';
-      iconBgClass = 'bg-purple-500/10';
-      buttonBgClass = 'bg-purple-500 hover:bg-purple-600';
-      break;
-    case 'others':
-      borderClass = 'border-l-gray-500'; // Default gray for others
-      iconColorClass = 'text-gray-500';
-      iconBgClass = 'bg-gray-500/10';
-      buttonBgClass = 'bg-gray-500 hover:bg-gray-600';
-      break;
-    default:
-      // Keep default red
-      break;
-  }
-
-  const IconComponent = iconMap[slug] || iconMap['default'];
+  const colors = categoryColors[categoryKey] || categoryColors.others;
 
   return (
-    <div className={`calculator-card flex flex-col bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out border-l-4 ${borderClass} group hover:-translate-y-1 cursor-pointer`}>
-      <div className="flex items-center mb-4 calculator-header">
-        <div className={`flex items-center justify-center w-14 h-14 rounded-full mr-4 ${iconBgClass} calculator-icon transition-transform duration-300 group-hover:scale-110`}>
-          <IconComponent className={`w-7 h-7 ${iconColorClass} transition-transform duration-300 group-hover:rotate-12`} />
+    <Link
+      href={link}
+      className="group block p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          <h3 className="font-medium text-gray-900 group-hover:text-primary transition-colors truncate">
+            {title}
+          </h3>
+          <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+            {description}
+          </p>
         </div>
-        <h2 className="text-lg font-semibold text-gray-800 calculator-title">{title}</h2>
+        <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-primary flex-shrink-0 mt-1 transition-colors" />
       </div>
-      <p className="text-sm text-gray-600 mb-6 flex-grow calculator-description">{description}</p>
-      <ClickFeedbackButton
-        href={link}
-        variant="default"
-        className={`w-full justify-center text-white font-medium py-2.5 px-4 rounded-lg text-xs uppercase tracking-wider mt-auto transition-colors duration-200 ease-in-out ${buttonBgClass} calculator-button`}
-      >
-        {buttonText}
-      </ClickFeedbackButton>
-    </div>
+    </Link>
   );
-}
+};
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -249,120 +152,164 @@ export default function HomePage() {
   const locale = useLocale();
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Build calculator data
   const allCalculators = useMemo(() => {
-    return calculatorSlugs
-      .map(slug => {
-        const categoryKey = categoryMap[slug] || 'others';
-        const titleKey = `${slug}.title`;
-        const descriptionKey = `${slug}.description`;
+    return calculatorSlugs.map(slug => {
+      const categoryKey = categoryMap[slug] || 'others';
+      let title = slug.replace(/-/g, ' ');
+      let description = '';
 
-        // Try fetching translation, fallback to formatted slug
-        let title = slug.replace(/-/g, ' ');
-        try {
-          const translatedTitle = tc.raw(titleKey);
-          if (typeof translatedTitle === 'string' && translatedTitle !== titleKey) {
-            title = translatedTitle;
-          }
-        } catch (e) {
-          // console.warn(`Missing translation for title: Calculators.${titleKey}`);
-        }
+      try {
+        const translatedTitle = tc.raw(`${slug}.title`);
+        if (typeof translatedTitle === 'string') title = translatedTitle;
+      } catch {}
 
-        // Try fetching translation, fallback to placeholder
-        let description = 'Calculator description missing.';
-        try {
-          const translatedDescription = tc.raw(descriptionKey);
-          if (typeof translatedDescription === 'string' && translatedDescription !== descriptionKey) {
-            description = translatedDescription;
-          }
-        } catch (e) {
-          // console.warn(`Missing translation for description: Calculators.${descriptionKey}`);
-        }
+      try {
+        const translatedDesc = tc.raw(`${slug}.description`);
+        if (typeof translatedDesc === 'string') description = translatedDesc;
+      } catch {}
 
-        return {
-          slug,
-          title,
-          description,
-          link: `/${locale}/calculator/${slug}`,
-          categoryKey,
-        };
-      })
-      .sort((a, b) => {
-        return a.title.localeCompare(b.title, locale, { sensitivity: 'base' });
-      });
+      return { slug, title, description, link: `/${locale}/calculator/${slug}`, categoryKey };
+    }).sort((a, b) => a.title.localeCompare(b.title, locale, { sensitivity: 'base' }));
   }, [locale, tc]);
 
-
+  // Filter calculators
   const filteredCalculators = useMemo(() => {
-      if (!searchTerm) return allCalculators;
-      const lowerSearchTerm = searchTerm.toLowerCase();
-      return allCalculators.filter(calc =>
-          calc.title.toLowerCase().includes(lowerSearchTerm) ||
-          calc.description.toLowerCase().includes(lowerSearchTerm)
-      );
+    if (!searchTerm) return allCalculators;
+    const lower = searchTerm.toLowerCase();
+    return allCalculators.filter(calc =>
+      calc.title.toLowerCase().includes(lower) ||
+      calc.description.toLowerCase().includes(lower)
+    );
   }, [searchTerm, allCalculators]);
 
+  // Group by category
   const calculatorsByCategory = useMemo(() => {
-      const grouped: { [key: string]: CalculatorInfo[] } = {};
-      filteredCalculators.forEach(calc => {
-          if (!grouped[calc.categoryKey]) {
-              grouped[calc.categoryKey] = [];
-          }
-          grouped[calc.categoryKey].push(calc);
-      });
-      return grouped;
+    const grouped: { [key: string]: typeof allCalculators } = {};
+    filteredCalculators.forEach(calc => {
+      if (!grouped[calc.categoryKey]) grouped[calc.categoryKey] = [];
+      grouped[calc.categoryKey].push(calc);
+    });
+    return grouped;
   }, [filteredCalculators]);
 
-  const categoriesToDisplay = categoryOrder.filter(categoryKey => calculatorsByCategory[categoryKey]?.length > 0);
+  // Count calculators per category (for category cards)
+  const categoryCounts = useMemo(() => {
+    const counts: { [key: string]: number } = {};
+    allCalculators.forEach(calc => {
+      counts[calc.categoryKey] = (counts[calc.categoryKey] || 0) + 1;
+    });
+    return counts;
+  }, [allCalculators]);
+
+  const totalCalculators = allCalculators.length;
+  const categoriesToDisplay = categoryOrder.filter(cat => calculatorsByCategory[cat]?.length > 0);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl md:text-3xl font-bold mb-2 text-center text-gray-800">{t('title')}</h1>
-      <p className="text-center text-gray-600 mb-6 text-sm md:text-base">{t('description')}</p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-background to-white py-12 md:py-16">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            {t('title')}
+          </h1>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            {t('description')}
+          </p>
 
-      <div className="mb-8 max-w-lg mx-auto">
-        <Input
-          type="text"
-          placeholder={t('searchPlaceholder')}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
+          {/* Search Bar - Prominent */}
+          <div className="relative max-w-xl mx-auto">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Input
+              type="text"
+              placeholder={t('searchPlaceholder')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-12 pr-4 py-4 text-lg rounded-xl border-2 border-gray-200 focus:border-primary shadow-sm focus:shadow-md transition-all"
+            />
+          </div>
 
-      {categoriesToDisplay.length > 0 ? (
-        categoriesToDisplay.map(categoryKey => (
-          <div key={categoryKey} className="mb-10">
-            {/* Adjusted category title styling */}
-            <h2 className="text-2xl font-semibold mb-5 text-gray-700 border-b-2 border-gray-300 pb-2">{tl(`categories.${categoryKey}`)}</h2>
-            {/* Grid using Tailwind classes */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {calculatorsByCategory[categoryKey].map((calc) => (
-                <CalculatorItem
-                  key={calc.slug}
-                  slug={calc.slug}
-                  title={calc.title}
-                  description={calc.description}
-                  link={calc.link}
-                  categoryKey={calc.categoryKey}
-                  buttonText={t('useCalculatorButton')} // Pass translated button text
+          {/* Stats */}
+          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-500">
+            <span className="flex items-center gap-2">
+              <Calculator className="w-4 h-4" />
+              <strong className="text-gray-900">{totalCalculators}</strong> calculators
+            </span>
+            <span className="flex items-center gap-2">
+              <BarChart3 className="w-4 h-4" />
+              <strong className="text-gray-900">{categoryOrder.length}</strong> categories
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Grid - Only show when not searching */}
+      {!searchTerm && (
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">Browse by Category</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {categoryOrder.map(categoryKey => (
+                <CategoryCard
+                  key={categoryKey}
+                  categoryKey={categoryKey}
+                  count={categoryCounts[categoryKey] || 0}
+                  locale={locale}
                 />
               ))}
             </div>
           </div>
-        ))
-      ) : (
-        searchTerm && (
-          <p className="text-center text-gray-500 col-span-full">
-            {t('noResultsFound', { searchTerm: searchTerm })}
-          </p>
-        )
+        </section>
       )}
 
-      {!searchTerm && filteredCalculators.length === 0 && (
-        <p className="text-center text-gray-500 col-span-full">
-          {t('noCalculatorsAvailable')}
-        </p>
-      )}
+      {/* Calculators List */}
+      <section className="py-8 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {categoriesToDisplay.length > 0 ? (
+            categoriesToDisplay.map(categoryKey => {
+              const Icon = categoryIcons[categoryKey] || Calculator;
+              const colors = categoryColors[categoryKey] || categoryColors.others;
+
+              return (
+                <div key={categoryKey} id={categoryKey} className="mb-10 scroll-mt-20">
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${colors.bg} ${colors.text}`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-semibold text-gray-900">
+                        {tl(`categories.${categoryKey}`)}
+                      </h2>
+                      <p className="text-sm text-gray-500">
+                        {calculatorsByCategory[categoryKey]?.length || 0} calculators
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Calculator Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {calculatorsByCategory[categoryKey]?.map(calc => (
+                      <CalculatorListItem
+                        key={calc.slug}
+                        title={calc.title}
+                        description={calc.description}
+                        link={calc.link}
+                        categoryKey={calc.categoryKey}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })
+          ) : searchTerm ? (
+            <div className="text-center py-12">
+              <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-500">{t('noResultsFound', { searchTerm })}</p>
+            </div>
+          ) : null}
+        </div>
+      </section>
     </div>
   );
 }

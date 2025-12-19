@@ -1,147 +1,165 @@
-'use client';
-import React, { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import MediaMedianaModaClientPage from './media-mediana-moda-client-page';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-interface StatisticsResult {
-  mean: number | null;
-  median: number | null;
-  mode: number[] | null;
+type Props = {
+  params: { locale: string }
 }
 
-const calculateUnGroupedStatistics = (data: number[]): StatisticsResult => {
-    if (data.length === 0) {
-        return { mean: null, median: null, mode: null };
-    }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'MeanMedianModeCalculator' });
+  const siteUrl = 'https://mycalconline.com';
 
-    const mean = data.reduce((sum, value) => sum + value, 0) / data.length;
+  return {
+    title: t('metadataTitle'),
+    description: t('metadataDescription'),
+    keywords: t('metadataKeywords'),
+    alternates: {
+      canonical: `${siteUrl}/${params.locale}/calculator/media-mediana-moda`,
+      languages: {
+        'en': `${siteUrl}/en/calculator/media-mediana-moda`,
+        'es': `${siteUrl}/es/calculator/media-mediana-moda`,
+        'pt-BR': `${siteUrl}/pt-BR/calculator/media-mediana-moda`,
+        'x-default': `${siteUrl}/es/calculator/media-mediana-moda`,
+      },
+    },
+    openGraph: {
+      title: t('metadataTitle'),
+      description: t('metadataDescription'),
+      url: `${siteUrl}/${params.locale}/calculator/media-mediana-moda`,
+      siteName: 'MyCalcOnline',
+      locale: params.locale,
+      type: 'website',
+    },
+  };
+}
 
-    const sortedData = [...data].sort((a, b) => a - b);
-    const mid = Math.floor(sortedData.length / 2);
-    const median = sortedData.length % 2 === 0 ? (sortedData[mid - 1] + sortedData[mid]) / 2 : sortedData[mid];
+export default async function MediaMedianaModaPage({ params }: Props) {
+  const t = await getTranslations({ locale: params.locale, namespace: 'MeanMedianModeCalculator' });
 
-    const frequencyMap: { [key: number]: number } = {};
-    sortedData.forEach(num => {
-        frequencyMap[num] = (frequencyMap[num] || 0) + 1;
-    });
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: t('metadataTitle'),
+    description: t('metadataDescription'),
+    url: `https://mycalconline.com/${params.locale}/calculator/media-mediana-moda`,
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: params.locale === 'es' ? 'MXN' : params.locale === 'pt-BR' ? 'BRL' : 'USD',
+    },
+  };
 
-    let maxFrequency = 0;
-    let modes: number[] = [];
-    for (const num in frequencyMap) {
-        if (frequencyMap[num] > maxFrequency) {
-            maxFrequency = frequencyMap[num];
-            modes = [Number(num)];
-        } else if (frequencyMap[num] === maxFrequency) {
-            modes.push(Number(num));
-        }
-    }
-    if(Object.values(frequencyMap).every(value => value === 1)) return {mean, median, mode: null}
-
-    return { mean, median, mode: modes };
-};
-
-const StatisticsCalculator: React.FC = () => {
-  const t = useTranslations('MeanMedianModeCalculator');
-  const locale = useLocale();
-  const [selectedDataType, setSelectedDataType] = useState<string>(t('ungroupedOption'));
-  const [dataInput, setDataInput] = useState<string>('');
-  const [statistics, setStatistics] = useState<StatisticsResult>({ mean: null, median: null, mode: null });
-
-  const calculateStatistics = () => {
-    if(selectedDataType === t('ungroupedOption')){
-      const data = dataInput.split(';')
-        .map((item) => item.trim())
-        .filter(item => item.length > 0)
-        .map(Number)
-        .filter(num => !isNaN(num));
-        
-      if (data.length === 0) {
-        alert(t('alertMessage'));
-        return;
-      }
-      
-      const result = calculateUnGroupedStatistics(data);
-      setStatistics(result);
-    } else {
-      alert(t('notImplemented'));
-    }
-  }
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: t('faqQ1'),
+        acceptedAnswer: { '@type': 'Answer', text: t('faqA1') },
+      },
+      {
+        '@type': 'Question',
+        name: t('faqQ2'),
+        acceptedAnswer: { '@type': 'Answer', text: t('faqA2') },
+      },
+      {
+        '@type': 'Question',
+        name: t('faqQ3'),
+        acceptedAnswer: { '@type': 'Answer', text: t('faqA3') },
+      },
+    ],
+  };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">{t('title')}</h1>
-      <p className="mb-4">{t('description')}</p>
-      
-      <div className="flex gap-4">
-        <div className="">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('calculateButton')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid w-full items-center gap-4">
-                <Label htmlFor="data-type">{t('dataTypeLabel')}</Label>
-                <Select onValueChange={setSelectedDataType}>
-                  <SelectTrigger id="data-type">
-                    <SelectValue placeholder={t('ungroupedOption')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={t('ungroupedOption')}>{t('ungroupedOption')}</SelectItem>
-                    <SelectItem value={t('groupedOption')}>{t('groupedOption')}</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                <Label htmlFor="data-input">{t('dataInputLabel')}</Label>
-                <Textarea
-                  className="resize-none"
-                  id="data-input"
-                  placeholder={t('dataInputPlaceholder')}
-                  value={dataInput}
-                  onChange={(e) => setDataInput(e.target.value)}
-                />
-              </div>
-              
-              <Button onClick={calculateStatistics} className="w-full mt-4">
-                {t('calculateButton')}
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-        
-        <div className="w-1/2">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('resultsTitle')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="flex justify-between">
-                <p>{t('meanLabel')}</p>
-                <p>{statistics.mean !== null ? statistics.mean.toLocaleString(locale) : t('noData')}</p>
-              </div>
-              <div className="flex justify-between">
-                <p>{t('medianLabel')}</p>
-                <p>{statistics.median !== null ? statistics.median.toLocaleString(locale) : t('noData')}</p>
-              </div>
-              <div className="flex justify-between">
-                <p>{t('modeLabel')}</p>
-                <p>{statistics.mode !== null ? statistics.mode.map(String).join(', ') : t('noData')}</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+    <div className="container mx-auto py-8 px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      {/* Breadcrumb */}
+      <nav className="text-sm text-muted-foreground mb-4" aria-label="Breadcrumb">
+        <ol className="flex items-center space-x-2">
+          <li><a href={`/${params.locale}`} className="hover:underline">Home</a></li>
+          <li>/</li>
+          <li className="text-foreground font-medium">{t('breadcrumbTitle')}</li>
+        </ol>
+      </nav>
+
+      {/* H1 for SEO */}
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-2">{t('h1Title')}</h1>
+      <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">{t('h1Subtitle')}</p>
+
+      {/* Calculator */}
+      <MediaMedianaModaClientPage />
+
+      {/* SEO Content */}
+      <div className="max-w-3xl mx-auto mt-12 space-y-8">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('howToUseTitle')}</h2>
+          <p className="text-muted-foreground">{t('howToUseDetail')}</p>
+        </section>
+
+        {/* Definitions */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('definitionsTitle')}</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+              <h3 className="font-semibold text-blue-700 mb-2">{t('meanDefinitionTitle')}</h3>
+              <p className="text-sm text-muted-foreground">{t('meanDefinition')}</p>
+              <p className="mt-2 font-mono text-sm bg-white p-2 rounded">{t('meanFormula')}</p>
+            </div>
+            <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+              <h3 className="font-semibold text-purple-700 mb-2">{t('medianDefinitionTitle')}</h3>
+              <p className="text-sm text-muted-foreground">{t('medianDefinition')}</p>
+            </div>
+            <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+              <h3 className="font-semibold text-green-700 mb-2">{t('modeDefinitionTitle')}</h3>
+              <p className="text-sm text-muted-foreground">{t('modeDefinition')}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Examples */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('exampleTitle')}</h2>
+          <div className="bg-muted/50 rounded-lg p-4">
+            <p className="font-mono mb-2">{t('exampleData')}</p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <li>{t('exampleMean')}</li>
+              <li>{t('exampleMedian')}</li>
+              <li>{t('exampleMode')}</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            <details className="border rounded-lg p-4 cursor-pointer">
+              <summary className="font-medium">{t('faqQ1')}</summary>
+              <p className="mt-2 text-muted-foreground">{t('faqA1')}</p>
+            </details>
+            <details className="border rounded-lg p-4 cursor-pointer">
+              <summary className="font-medium">{t('faqQ2')}</summary>
+              <p className="mt-2 text-muted-foreground">{t('faqA2')}</p>
+            </details>
+            <details className="border rounded-lg p-4 cursor-pointer">
+              <summary className="font-medium">{t('faqQ3')}</summary>
+              <p className="mt-2 text-muted-foreground">{t('faqA3')}</p>
+            </details>
+          </div>
+        </section>
       </div>
     </div>
   );
-};
-
-export default StatisticsCalculator;
+}

@@ -15,79 +15,75 @@ html, body {
 
 @layer base {
   :root {
-    --background: 161 57% 96%;
-    --foreground: 217 34% 21%;
-    --card: 161 57% 96%;
-    --card-foreground: 217 34% 21%;
-    --popover: 161 57% 96%;
-    --popover-foreground: 217 34% 21%;
-    --primary: 155 78% 43%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 159 42% 89%;
-    --secondary-foreground: 162 33% 24%;
-    --muted: 166 47% 90%;
-    --muted-foreground: 163 33% 39%;
-    /* Updated accent colors for light mode */
-    --accent: 180 100% 25%; /* Teal */
-    --accent-foreground: 0 0% 100%; /* White */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 166 47% 83%;
-    --input: 166 47% 83%;
-    --ring: 155 78% 43%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    /* Omni Calculator Blue Theme */
+    --background: 225 50% 98%; /* #F7F9FF - Light blue ice */
+    --foreground: 220 13% 15%; /* #212427 - Dark gray text */
+    --card: 0 0% 100%; /* #FFFFFF - White cards */
+    --card-foreground: 220 13% 15%; /* #212427 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 15%;
+    --primary: 224 97% 61%; /* #3B68FC - Vibrant blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 225 33% 95%; /* #F0F2F8 - Light blue gray */
+    --secondary-foreground: 220 13% 15%;
+    --muted: 220 14% 96%; /* #F4F5F7 - Muted gray */
+    --muted-foreground: 215 14% 34%; /* #4B5259 - Secondary text */
+    --accent: 300 97% 39%; /* #BE05C1 - Purple accent */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 350 89% 60%; /* #FF4059 - Red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%; /* #DFE2EB - Light gray border */
+    --input: 220 13% 91%;
+    --ring: 224 97% 61%; /* Primary blue */
+    --chart-1: 224 97% 61%;
+    --chart-2: 300 97% 39%;
+    --chart-3: 350 89% 60%;
+    --chart-4: 45 93% 47%;
+    --chart-5: 173 58% 39%;
     --radius: 0.5rem;
-    --sidebar-background: 161 57% 96%;
-    --sidebar-foreground: 217 34% 21%;
-    --sidebar-primary: 155 78% 43%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 13% 15%;
+    --sidebar-primary: 224 97% 61%;
     --sidebar-primary-foreground: 0 0% 100%;
-    /* Updated sidebar accent for light mode */
-    --sidebar-accent: 180 100% 25%; /* Teal */
-    --sidebar-accent-foreground: 0 0% 100%; /* White */
-    --sidebar-border: 166 47% 83%;
-    --sidebar-ring: 155 78% 43%;
-    --teal: 180 100% 25%;
+    --sidebar-accent: 300 97% 39%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 224 97% 61%;
   }
   .dark {
-    --background: 161 57% 14%;
-    --foreground: 162 40% 78%;
-    --card: 161 57% 14%;
-    --card-foreground: 162 40% 78%;
-    --popover: 161 57% 14%;
-    --popover-foreground: 162 40% 78%;
-    --primary: 155 78% 66%;
+    /* Dark mode - Omni style */
+    --background: 222 47% 11%; /* Dark blue */
+    --foreground: 210 40% 98%; /* Light text */
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 15%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 224 97% 67%; /* Lighter blue */
     --primary-foreground: 0 0% 0%;
-    --secondary: 159 42% 27%;
-    --secondary-foreground: 162 33% 76%;
-    --muted: 166 47% 21%;
-    --muted-foreground: 163 33% 61%;
-    /* Updated accent colors for dark mode */
-    --accent: 180 70% 40%; /* Lighter Teal */
-    --accent-foreground: 0 0% 100%; /* White */
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 300 80% 60%; /* Lighter purple */
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 166 47% 21%;
-    --input: 166 47% 21%;
-    --ring: 155 78% 66%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 161 57% 14%;
-    --sidebar-foreground: 162 40% 78%;
-    --sidebar-primary: 155 78% 66%;
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 224 97% 67%;
+    --chart-1: 224 97% 67%;
+    --chart-2: 300 80% 60%;
+    --chart-3: 350 89% 50%;
+    --chart-4: 45 93% 60%;
+    --chart-5: 173 58% 50%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 224 97% 67%;
     --sidebar-primary-foreground: 0 0% 0%;
-    /* Updated sidebar accent for dark mode */
-    --sidebar-accent: 180 70% 40%; /* Lighter Teal */
-    --sidebar-accent-foreground: 0 0% 100%; /* White */
-    --sidebar-border: 166 47% 21%;
-    --sidebar-ring: 155 78% 66%;
-    --teal: 180 100% 25%;
+    --sidebar-accent: 300 80% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 217 33% 25%;
+    --sidebar-ring: 224 97% 67%;
   }
 }
 

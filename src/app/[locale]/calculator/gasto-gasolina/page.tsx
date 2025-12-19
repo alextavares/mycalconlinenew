@@ -1,124 +1,125 @@
-'use client';
+import GastoGasolinaClientPage from './gasto-gasolina-client-page';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-import React, { useState } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CardFooter } from '@/components/ui/card';
-import { useTranslations } from 'next-intl';
+type Props = {
+  params: { locale: string }
+}
 
-export default function GastoGasolinaCalculator() {
-  const t = useTranslations('Calculators.gasto-gasolina.calculator');
-  const [distance, setDistance] = useState<string>('');
-  const [efficiency, setEfficiency] = useState<string>('');
-  const [price, setPrice] = useState<string>('');
-  const [totalCost, setTotalCost] = useState<number>(0);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'GasCalculator' });
+  const siteUrl = 'https://mycalconline.com';
 
-  const calculateCost = () => {
-    const distanceNum = parseFloat(distance);
-    const efficiencyNum = parseFloat(efficiency);
-    const priceNum = parseFloat(price);
+  return {
+    title: t('metadataTitle'),
+    description: t('metadataDescription'),
+    keywords: t('metadataKeywords'),
+    alternates: {
+      canonical: `${siteUrl}/${params.locale}/calculator/gasto-gasolina`,
+      languages: {
+        'en': `${siteUrl}/en/calculator/gasto-gasolina`,
+        'es': `${siteUrl}/es/calculator/gasto-gasolina`,
+        'pt-BR': `${siteUrl}/pt-BR/calculator/gasto-gasolina`,
+        'x-default': `${siteUrl}/es/calculator/gasto-gasolina`,
+      },
+    },
+    openGraph: {
+      title: t('metadataTitle'),
+      description: t('metadataDescription'),
+      url: `${siteUrl}/${params.locale}/calculator/gasto-gasolina`,
+      siteName: 'MyCalcOnline',
+      locale: params.locale,
+      type: 'website',
+    },
+  };
+}
 
-    if (isNaN(distanceNum) || isNaN(efficiencyNum) || isNaN(priceNum)) {
-      setTotalCost(0);
-      return;
-    }
+export default async function GastoGasolinaPage({ params }: Props) {
+  const t = await getTranslations({ locale: params.locale, namespace: 'GasCalculator' });
 
-    const cost = (distanceNum / efficiencyNum) * priceNum;
-    setTotalCost(cost);
+  // JSON-LD Schema
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: t('metadataTitle'),
+    description: t('metadataDescription'),
+    url: `https://mycalconline.com/${params.locale}/calculator/gasto-gasolina`,
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: params.locale === 'es' ? 'MXN' : params.locale === 'pt-BR' ? 'BRL' : 'USD',
+    },
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>{t('title')}</CardTitle>
-          <CardDescription>
-            {t('description')}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid gap-2">
-            <Label htmlFor="distance">{t('distanceLabel')}</Label>
-            <div className="flex items-center">
-              <Input
-                id="distance"
-                type="number"
-                placeholder="0.0"
-                value={distance}
-                onChange={(e) => setDistance(e.target.value)}
-                className="text-right"
-              />
-              <Select>
-                <SelectTrigger className="w-[100px]">
-                  <SelectValue placeholder={t('distanceUnit')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="kms">{t('distanceUnit')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+    <div className="container mx-auto py-8 px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* Breadcrumb */}
+      <nav className="text-sm text-muted-foreground mb-4" aria-label="Breadcrumb">
+        <ol className="flex items-center space-x-2">
+          <li><a href={`/${params.locale}`} className="hover:underline">Home</a></li>
+          <li>/</li>
+          <li className="text-foreground font-medium">{t('breadcrumbTitle')}</li>
+        </ol>
+      </nav>
+
+      {/* H1 for SEO */}
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-2">{t('h1Title')}</h1>
+      <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">{t('h1Subtitle')}</p>
+
+      {/* Calculator */}
+      <GastoGasolinaClientPage />
+
+      {/* SEO Content */}
+      <div className="max-w-3xl mx-auto mt-12 space-y-8">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('howToUseTitle')}</h2>
+          <p className="text-muted-foreground">{t('howToUseDetail')}</p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('formulaTitle')}</h2>
+          <div className="bg-muted/50 rounded-lg p-4">
+            <p className="font-mono text-center text-lg">{t('formulaText')}</p>
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="efficiency">{t('efficiencyLabel')}</Label>
-            <div className="flex items-center">
-              <Input
-                id="efficiency"
-                type="number"
-                placeholder="0.0"
-                value={efficiency}
-                onChange={(e) => setEfficiency(e.target.value)}
-                className="text-right"
-              />
-              <Select>
-                <SelectTrigger className="w-[100px]">
-                  <SelectValue placeholder={t('efficiencyUnit')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="km/l">{t('efficiencyUnit')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <p className="text-sm text-muted-foreground mt-2">{t('formulaExplanation')}</p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('tipsTitle')}</h2>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+            <li>{t('tip1')}</li>
+            <li>{t('tip2')}</li>
+            <li>{t('tip3')}</li>
+            <li>{t('tip4')}</li>
+          </ul>
+        </section>
+
+        {/* FAQ */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            <details className="border rounded-lg p-4 cursor-pointer">
+              <summary className="font-medium">{t('faqQ1')}</summary>
+              <p className="mt-2 text-muted-foreground">{t('faqA1')}</p>
+            </details>
+            <details className="border rounded-lg p-4 cursor-pointer">
+              <summary className="font-medium">{t('faqQ2')}</summary>
+              <p className="mt-2 text-muted-foreground">{t('faqA2')}</p>
+            </details>
+            <details className="border rounded-lg p-4 cursor-pointer">
+              <summary className="font-medium">{t('faqQ3')}</summary>
+              <p className="mt-2 text-muted-foreground">{t('faqA3')}</p>
+            </details>
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="price">{t('priceLabel')}</Label>
-            <div className="flex items-center">
-              <Input
-                id="price"
-                type="number"
-                placeholder="0.0"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="text-right"
-              />
-              <Select>
-                <SelectTrigger className="w-[100px]">
-                  <SelectValue placeholder={t('priceUnit')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="litro">{t('priceUnit')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-          <Button onClick={calculateCost} className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-            {t('calculateButton')}
-          </Button>
-        </CardContent>
-        <CardFooter>
-          <div className="w-full p-4 rounded-md bg-amber-50">
-            {t('resultText')} {totalCost.toFixed(2)}
-          </div>
-        </CardFooter>
-      </Card>
+        </section>
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Calculator, TrendingUp, HeartPulse, BarChart3, Ruler, CalendarDays, ArrowLeftRight, MoreHorizontal } from 'lucide-react';
 
 interface NavItem {
   slug: string;
@@ -26,19 +26,31 @@ interface HeaderNavProps {
   currentLocale: string;
 }
 
+// Category icons
+const categoryIcons: { [key: string]: React.ElementType } = {
+  mathematics: Calculator,
+  finance: TrendingUp,
+  health: HeartPulse,
+  statistics: BarChart3,
+  geometry: Ruler,
+  calendar: CalendarDays,
+  converters: ArrowLeftRight,
+  others: MoreHorizontal,
+};
+
 export default function HeaderNav({ navigationData, categoryOrder, currentLocale }: HeaderNavProps) {
   const tl = useTranslations('Layout');
   const tCalcs = useTranslations('Calculators');
 
   if (!navigationData || !categoryOrder || categoryOrder.length === 0) {
-    console.warn('[HeaderNav] Missing navigation data or category order.');
     return null;
   }
 
   return (
-    <nav className="hidden md:flex items-center space-x-1 overflow-x-auto max-w-full">
+    <nav className="hidden lg:flex items-center gap-1">
       {categoryOrder.map((categoryKey) => {
         const itemsInCategory = navigationData[categoryKey];
+        const Icon = categoryIcons[categoryKey] || Calculator;
 
         if (!itemsInCategory || itemsInCategory.length === 0) {
           return null;
@@ -47,23 +59,32 @@ export default function HeaderNav({ navigationData, categoryOrder, currentLocale
         return (
           <DropdownMenu key={categoryKey}>
             <DropdownMenuTrigger asChild>
-              {/* Explicitly set dark text color for light header */}
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 px-3 py-2 font-medium whitespace-nowrap"
+                className="text-gray-600 hover:text-primary hover:bg-primary/5 px-3 py-2 font-medium text-sm"
               >
+                <Icon className="w-4 h-4 mr-1.5" />
                 {tl(`categories.${categoryKey}`)}
-                <ChevronDown className="ml-1 h-4 w-4 text-gray-500" />
+                <ChevronDown className="ml-1 h-3 w-3 opacity-50" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white text-gray-900 border border-gray-200 shadow-md max-h-[70vh] overflow-y-auto" align="start">
-              {itemsInCategory.map((item) => (
-                <DropdownMenuItem key={item.slug} asChild>
-                  <Link href={`/${currentLocale}/calculator/${item.slug}`} className="cursor-pointer px-3 py-1.5 text-sm hover:bg-gray-100 focus:bg-gray-100 w-full">
-                    {tCalcs(`${item.slug}.title`)}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
+            <DropdownMenuContent
+              className="bg-white border border-gray-200 shadow-lg rounded-lg max-h-[70vh] overflow-y-auto min-w-[220px]"
+              align="start"
+              sideOffset={8}
+            >
+              <div className="py-1">
+                {itemsInCategory.map((item) => (
+                  <DropdownMenuItem key={item.slug} asChild>
+                    <Link
+                      href={`/${currentLocale}/calculator/${item.slug}`}
+                      className="flex items-center px-3 py-2 text-sm text-gray-700 hover:text-primary hover:bg-primary/5 cursor-pointer transition-colors"
+                    >
+                      {tCalcs(`${item.slug}.title`)}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
         );
