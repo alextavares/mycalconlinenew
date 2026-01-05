@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { calculators } from '@/config/calculators'; // Import config,
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +10,64 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Calculator, TrendingUp, HeartPulse, BarChart3, Ruler, CalendarDays, ArrowLeftRight, MoreHorizontal } from 'lucide-react';
+import {
+  ChevronDown, Calculator, TrendingUp, HeartPulse, BarChart3, Ruler, CalendarDays, ArrowLeftRight, MoreHorizontal,
+  Hammer,
+  Dna,
+  Sprout,
+  GraduationCap,
+  Type,
+  Trophy,
+  Zap,
+  Monitor,
+  Megaphone,
+  Scan,
+  Crop,
+  Palette,
+  Scaling,
+  Frame,
+  FileJson,
+  Code2,
+  List,
+  Fingerprint,
+  RefreshCw,
+  BrickWall,
+  PaintBucket,
+  Grid3X3,
+  ScrollText,
+  Droplets,
+  Trash2,
+  TreeDeciduous,
+  Recycle,
+  CloudRain,
+  AudioWaveform,
+  Radar,
+  Eye,
+  Aperture,
+  Volume2,
+  Coins, // Comma fix
+  FlaskConical,
+  Landmark,
+  PiggyBank,
+  Percent,
+  LineChart,
+  Dumbbell,
+  Scale,
+  Activity,
+  PersonStanding,
+  Battery,
+  Lightbulb,
+  Cpu,
+  Plug,
+  Cable,
+  Sigma,
+  Target,
+  Users,
+  UserPlus,
+  UserMinus,
+  Smile,
+  BadgeDollarSign
+} from 'lucide-react';
 
 interface NavItem {
   slug: string;
@@ -29,12 +87,28 @@ interface HeaderNavProps {
 // Category icons
 const categoryIcons: { [key: string]: React.ElementType } = {
   mathematics: Calculator,
+  math: Calculator,
   finance: TrendingUp,
   health: HeartPulse,
+  fitness: HeartPulse,
   statistics: BarChart3,
   geometry: Ruler,
   calendar: CalendarDays,
   converters: ArrowLeftRight,
+  conversion: ArrowLeftRight,
+  construction: Hammer,
+  biology: Dna,
+  chemistry: FlaskConical,
+  ecology: Sprout,
+  education: GraduationCap,
+  text: Type,
+  sports: Trophy,
+  electronics: Zap,
+  web: Monitor,
+  marketing: Megaphone,
+  physics: MoreHorizontal,
+  everyday: MoreHorizontal,
+  other: MoreHorizontal,
   others: MoreHorizontal,
 };
 
@@ -80,7 +154,7 @@ export default function HeaderNav({ navigationData, categoryOrder, currentLocale
                       href={`/${currentLocale}/calculator/${item.slug}`}
                       className="flex items-center px-3 py-2 text-sm text-gray-700 hover:text-primary hover:bg-primary/5 cursor-pointer transition-colors"
                     >
-                      {tCalcs(`${item.slug}.title`)}
+                      {calculators[item.slug]?.title || tCalcs(`${item.slug}.title`)}
                     </Link>
                   </DropdownMenuItem>
                 ))}

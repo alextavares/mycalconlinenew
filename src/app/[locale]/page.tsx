@@ -17,66 +17,59 @@ import {
   MoreHorizontal,
   ChevronRight,
 } from 'lucide-react';
+import { calculators } from '@/config/calculators';
 
-// Calculator slugs and categories data
-const calculatorSlugs = [
-  "adicionar-subtrair-dias", "area-cilindro", "area-circulo", "area-cubo",
-  "area-esfera", "area-quadrado", "area-quadrado-imagem", "area-quadrado-nova",
-  "binario", "click-counter", "como-calcular-horas-extras", "currency-converter",
-  "desvio-padrao", "dias-entre-datas", "fracoes", "gasto-gasolina",
-  "gerador-escala-notas", "gordura-corporal", "hexadecimal", "hora-minuto",
-  "horas-trabalhadas", "idade", "juros-compostos", "juros-simples",
-  "media-mediana-moda", "media-ponderada", "mmc", "porcentagem", "regra-de-3",
-  "relacao-pf", "romano-decimal", "taxa-metabolica-basal",
-  "variancia-estatistica", "word-counter"
-];
+// Derive slugs dynamically from the single source of truth
+const calculatorSlugs = Object.keys(calculators);
 
-const categoryMap: { [key: string]: string } = {
-  'fracoes': 'mathematics', 'mmc': 'mathematics', 'porcentagem': 'mathematics',
-  'regra-de-3': 'mathematics', 'media-ponderada': 'mathematics',
-  'area-cilindro': 'geometry', 'area-circulo': 'geometry', 'area-cubo': 'geometry',
-  'area-esfera': 'geometry', 'area-quadrado': 'geometry',
-  'area-quadrado-imagem': 'geometry', 'area-quadrado-nova': 'geometry',
-  'desvio-padrao': 'statistics', 'media-mediana-moda': 'statistics',
-  'variancia-estatistica': 'statistics',
-  'juros-compostos': 'finance', 'juros-simples': 'finance',
-  'gordura-corporal': 'health', 'taxa-metabolica-basal': 'health',
-  'relacao-pf': 'health',
-  'adicionar-subtrair-dias': 'calendar', 'dias-entre-datas': 'calendar',
-  'hora-minuto': 'calendar', 'horas-trabalhadas': 'calendar', 'idade': 'calendar',
-  'como-calcular-horas-extras': 'calendar',
-  'binario': 'converters', 'hexadecimal': 'converters', 'romano-decimal': 'converters',
-  'currency-converter': 'converters',
-  'click-counter': 'others', 'gasto-gasolina': 'others',
-  'gerador-escala-notas': 'others', 'word-counter': 'others',
-};
+// Category mapping is now derived directly from the calculator object in `allCalculators` logic below.
+// We remove the hardcoded map.
 
 const categoryOrder = [
-  'mathematics', 'finance', 'health', 'statistics',
-  'geometry', 'calendar', 'converters', 'others'
+  'mathematics', 'math', 'finance', 'health', 'fitness', 'physics', 'statistics',
+  'geometry', 'calendar', 'conversion', 'everyday', 'other', 'others'
 ];
 
 // Category icons mapping
 const categoryIcons: { [key: string]: React.ElementType } = {
   mathematics: Calculator,
+  math: Calculator,
   finance: TrendingUp,
   health: HeartPulse,
+  fitness: HeartPulse,
   statistics: BarChart3,
   geometry: Ruler,
   calendar: CalendarDays,
   converters: ArrowLeftRight,
+  conversion: ArrowLeftRight,
+  physics: MoreHorizontal,
+  chemistry: MoreHorizontal,
+  construction: MoreHorizontal,
+  food: MoreHorizontal,
+  everyday: MoreHorizontal,
+  sports: MoreHorizontal,
+  ecology: MoreHorizontal,
+  biology: HeartPulse,
+  education: Calculator,
+  other: MoreHorizontal,
   others: MoreHorizontal,
 };
 
 // Category colors (matching Omni Calculator style)
 const categoryColors: { [key: string]: { bg: string; text: string; border: string } } = {
   mathematics: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200' },
+  math: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200' },
   finance: { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-200' },
   health: { bg: 'bg-rose-50', text: 'text-rose-600', border: 'border-rose-200' },
+  fitness: { bg: 'bg-orange-50', text: 'text-orange-600', border: 'border-orange-200' },
   statistics: { bg: 'bg-violet-50', text: 'text-violet-600', border: 'border-violet-200' },
   geometry: { bg: 'bg-amber-50', text: 'text-amber-600', border: 'border-amber-200' },
   calendar: { bg: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-200' },
   converters: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200' },
+  conversion: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200' },
+  physics: { bg: 'bg-indigo-50', text: 'text-indigo-600', border: 'border-indigo-200' },
+  everyday: { bg: 'bg-teal-50', text: 'text-teal-600', border: 'border-teal-200' },
+  other: { bg: 'bg-gray-50', text: 'text-gray-600', border: 'border-gray-200' },
   others: { bg: 'bg-gray-50', text: 'text-gray-600', border: 'border-gray-200' },
 };
 
@@ -152,25 +145,33 @@ export default function HomePage() {
   const locale = useLocale();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Build calculator data
+  // Build calculator data from config
   const allCalculators = useMemo(() => {
     return calculatorSlugs.map(slug => {
-      const categoryKey = categoryMap[slug] || 'others';
-      let title = slug.replace(/-/g, ' ');
-      let description = '';
+      const config = calculators[slug];
+      if (!config) return null;
 
+      // Use config title/desc as fallback, try to translate if needed
+      let title = config.title;
+      let description = config.description;
+
+      // Try translations but fallback to English config
       try {
         const translatedTitle = tc.raw(`${slug}.title`);
-        if (typeof translatedTitle === 'string') title = translatedTitle;
-      } catch {}
+        if (translatedTitle && typeof translatedTitle === 'string' && translatedTitle !== slug && translatedTitle.length > 0) title = translatedTitle;
 
-      try {
         const translatedDesc = tc.raw(`${slug}.description`);
-        if (typeof translatedDesc === 'string') description = translatedDesc;
-      } catch {}
+        if (translatedDesc && typeof translatedDesc === 'string' && translatedDesc.length > 0) description = translatedDesc;
+      } catch { }
 
-      return { slug, title, description, link: `/${locale}/calculator/${slug}`, categoryKey };
-    }).sort((a, b) => a.title.localeCompare(b.title, locale, { sensitivity: 'base' }));
+      return {
+        slug,
+        title,
+        description,
+        link: `/${locale}/calculator/${slug}`,
+        categoryKey: config.category
+      };
+    }).filter(c => c !== null).sort((a, b) => a!.title.localeCompare(b!.title, locale, { sensitivity: 'base' }));
   }, [locale, tc]);
 
   // Filter calculators

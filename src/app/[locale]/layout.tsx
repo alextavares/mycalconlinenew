@@ -9,49 +9,19 @@ import LanguageSwitcher from '@/components/language-switcher';
 import { SidebarProvider, Sidebar, SidebarTrigger } from '@/components/ui/sidebar';
 import Footer from '@/components/layout/footer';
 import HeaderNav from '@/components/layout/HeaderNav';
+import { GlobalSearch } from '@/components/layout/GlobalSearch';
 
 const inter = Inter({ subsets: ["latin"] });
 
 // Re-use data logic from HomePage to avoid duplication
-const calculatorSlugs = [
-  "adicionar-subtrair-dias", "area-cilindro", "area-circulo", "area-cubo",
-  "area-esfera", "area-quadrado", "area-quadrado-imagem", "area-quadrado-nova",
-  "binario", "click-counter", "como-calcular-horas-extras", "desvio-padrao",
-  "dias-entre-datas", "fracoes", "gasto-gasolina", "gerador-escala-notas",
-  "gordura-corporal", "hexadecimal", "hora-minuto", "horas-trabalhadas", "idade",
-  "juros-compostos", "juros-simples", "media-mediana-moda", "media-ponderada", "mmc",
-  "porcentagem", "regra-de-3", "relacao-pf", "romano-decimal",
-  "taxa-metabolica-basal", "variancia-estatistica", "word-counter"
-];
+import { calculators } from '@/config/calculators';
+const calculatorSlugs = Object.keys(calculators);
+// No categoryMap needed, we derive it from the calculator config itself
 
-const categoryMap: { [key: string]: string } = {
-  'fracoes': 'mathematics', 'mmc': 'mathematics', 'porcentagem': 'mathematics',
-  'regra-de-3': 'mathematics', 'media-ponderada': 'mathematics',
-  'area-cilindro': 'geometry', 'area-circulo': 'geometry', 'area-cubo': 'geometry',
-  'area-esfera': 'geometry', 'area-quadrado': 'geometry',
-  'area-quadrado-imagem': 'geometry', 'area-quadrado-nova': 'geometry',
-  'desvio-padrao': 'statistics', 'media-mediana-moda': 'statistics',
-  'variancia-estatistica': 'statistics',
-  'juros-compostos': 'finance', 'juros-simples': 'finance',
-  'gordura-corporal': 'health', 'taxa-metabolica-basal': 'health',
-  'relacao-pf': 'health',
-  'adicionar-subtrair-dias': 'calendar', 'dias-entre-datas': 'calendar',
-  'hora-minuto': 'calendar', 'horas-trabalhadas': 'calendar', 'idade': 'calendar',
-  'como-calcular-horas-extras': 'calendar',
-  'binario': 'converters', 'hexadecimal': 'converters', 'romano-decimal': 'converters',
-  'click-counter': 'others', 'gasto-gasolina': 'others',
-  'gerador-escala-notas': 'others', 'word-counter': 'others',
-};
 
 const categoryOrder = [
-  'finance',
-  'health',
-  'mathematics',
-  'statistics',
-  'geometry',
-  'calendar',
-  'converters',
-  'others',
+  'mathematics', 'math', 'finance', 'health', 'fitness', 'physics', 'statistics',
+  'geometry', 'calendar', 'construction', 'biology', 'chemistry', 'ecology', 'education', 'text', 'sports', 'electronics', 'web', 'marketing', 'conversion', 'converters', 'everyday', 'other', 'others'
 ];
 
 // Interface for individual calculator items within a category
@@ -73,19 +43,19 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
 
-  const validLocale = locales.includes(locale as any) ? locale as 'en'|'pt-BR' : defaultLocale;
+  const validLocale = locales.includes(locale as any) ? locale as 'en' | 'pt-BR' : defaultLocale;
   if (locale !== validLocale) {
     console.warn(`Invalid locale "${locale}", using ${validLocale} instead`);
   }
 
   let messages;
   try {
-    messages = await getMessages({locale: validLocale});
+    messages = await getMessages({ locale: validLocale });
     console.log(`[LocaleLayout] Successfully loaded ${Object.keys(messages).length} message keys for locale: ${validLocale}`);
   } catch (error) {
     console.error(`Failed to load messages for locale ${validLocale}:`, error);
     try {
-      messages = await getMessages({locale: defaultLocale});
+      messages = await getMessages({ locale: defaultLocale });
       console.warn(`Fell back to default locale messages (${defaultLocale})`);
     } catch (fallbackError) {
       console.error('Failed to load default locale messages:', fallbackError);
@@ -102,11 +72,20 @@ export default async function LocaleLayout({
   });
 
   calculatorSlugs.forEach(slug => {
-    const categoryKey = categoryMap[slug] || 'others';
-    if (structuredNavigationData[categoryKey]) {
-      structuredNavigationData[categoryKey].push({ slug, categoryKey });
-    } else {
-       console.warn(`Category key "${categoryKey}" for slug "${slug}" not found in categoryOrder.`);
+    const config = calculators[slug];
+    if (config) {
+      const categoryKey = config.category || 'others';
+      // Only add if category is in our order list (or maybe add logic to auto-add?)
+      // For now, map to 'others' if not found in order, OR just push it.
+      // But HeaderNav relies on keys in navigationData.
+      if (structuredNavigationData[categoryKey]) {
+        structuredNavigationData[categoryKey].push({ slug, categoryKey });
+      } else {
+        // Init if missing (e.g. for new dynamic categories not in fixed list??)
+        // Better to rely on categoryOrder driving the UI
+        if (!structuredNavigationData['others']) structuredNavigationData['others'] = [];
+        structuredNavigationData['others'].push({ slug, categoryKey });
+      }
     }
   });
 
@@ -122,13 +101,13 @@ export default async function LocaleLayout({
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-EY57J6B0Z3"></script>
         <script dangerouslySetInnerHTML={{
-            __html: `
+          __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-EY57J6B0Z3');
             `
-          }} />
+        }} />
       </Head>
       <SidebarProvider>
         <div className={`flex min-h-screen w-full overflow-x-hidden ${inter.className}`}>
@@ -150,11 +129,11 @@ export default async function LocaleLayout({
                 <div className="space-y-4 overflow-y-auto max-h-[70vh]">
                   {categoryOrder.map((categoryKey) => {
                     const itemsInCategory = structuredNavigationData[categoryKey];
-                    
+
                     if (!itemsInCategory || itemsInCategory.length === 0) {
                       return null;
                     }
-                    
+
                     return (
                       <div key={categoryKey} className="space-y-2">
                         <h3 className="text-sm font-medium text-gray-700">{categoryKey}</h3>
@@ -204,6 +183,7 @@ export default async function LocaleLayout({
 
                   {/* Right: Actions */}
                   <div className="flex items-center gap-2">
+                    <GlobalSearch />
                     <Link
                       href={`/${finalLocale}/dashboard`}
                       className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors"

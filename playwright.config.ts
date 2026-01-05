@@ -10,7 +10,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [["list"], ["html", { outputFolder: "playwright-report", open: "never" }]],
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://localhost:3000",
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://127.0.0.1:3005",
     headless: process.env.HEADED ? false : true,
     actionTimeout: 10_000,
     navigationTimeout: 20_000,
@@ -28,9 +28,9 @@ export default defineConfig({
   webServer: process.env.PLAYWRIGHT_NO_SERVER
     ? undefined
     : {
-        command: "pnpm dev",
-        url: "http://localhost:3000",
-        reuseExistingServer: !process.env.CI,
-        timeout: 120_000,
-      },
+      command: "npx next dev -p 3005",
+      url: "http://127.0.0.1:3005",
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
 });

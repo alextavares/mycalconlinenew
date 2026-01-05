@@ -1123,3 +1123,25 @@ Description: Free online fraction calculator with step-by-step solutions. Add, s
 *Plano criado em: Dezembro 2025*
 *Última atualização: Dezembro 2025 - Sistema de controle Claude/Gemini*
 *Versão: 2.0*
+
+---
+
+## 🏗️ Technical Strategy v2: Scalability for 3800+ Calculators
+
+To ensure we can reach 4000 calculators without becoming unmaintainable, we are adopting a **Hybrid Architecture**:
+
+### 1. Tier 1: Flagship Calculators (Custom)
+- **Examples:** BMI, Mortgage, Loan, Tax.
+- **Method:** Continue using dedicated folders (`calculator/bmi/page.tsx`).
+- **Why:** Need complex UI, graphs, specialized logic.
+
+### 2. Tier 2: The "Calculator Engine" (Standardized)
+- **Examples:** Conversions (Length, Weight), Simple Geometry, Basic Math.
+- **Method:** Use `src/app/[locale]/calculator/[id]/page.tsx` as a powerful engine.
+- **Data Source:** `src/config/calculators/*.ts` (Typed definitions).
+- **Why:** Allows defining a calculator in 15 lines of JSON instead of 2 React files.
+
+### Action Plan:
+1. **Upgrade [id] Page:** Make the generic page match the visual quality of the custom pages (SEO sections, proper UI).
+2. **Define Schema:** Create a strict TypeScript schema for calculator configurations.
+3. **Migration:** Start adding new "simple" calculators purely as configurations, not folders.

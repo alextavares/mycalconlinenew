@@ -1,4 +1,4 @@
-// File: /home/user/studio/src/app/[locale]/page.tsx
+// File: C:\codigos\sitemycalc\src\app\[locale]\page.tsx
 import * as entry from '../../../../src/app/[locale]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

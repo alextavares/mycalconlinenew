@@ -1,47 +1,18 @@
-import {MetadataRoute} from 'next';
-import {Locale} from 'next-intl';
-import {routing} from '@/i18n/routing';
+import { MetadataRoute } from 'next';
+import { Locale } from 'next-intl';
+import { routing } from '@/i18n/routing';
 import { getPathname } from '@/i18n/navigation';
+import { calculators } from '@/config/calculators';
 
 const host = 'https://mycalconline.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Dynamic Calculator Paths
+  const calculatorPaths = Object.keys(calculators).map(slug => `/calculator/${slug}`);
+
   const staticPaths = [
     '/',
-    '/calculator/adicionar-subtrair-dias',
-    '/calculator/area-cilindro',
-    '/calculator/area-circulo',
-    '/calculator/area-cubo',
-    '/calculator/area-esfera',
-    '/calculator/area-quadrado',
-    '/calculator/area-quadrado-imagem',
-    '/calculator/area-quadrado-nova',
-    '/calculator/binario',
-    '/calculator/click-counter',
-    '/calculator/como-calcular-horas-extras',
-    '/calculator/currency-converter',
-    '/calculator/desvio-padrao',
-    '/calculator/dias-entre-datas',
-    '/calculator/fracoes',
-    '/calculator/gasto-gasolina',
-    '/calculator/gerador-escala-notas',
-    '/calculator/gordura-corporal',
-    '/calculator/hexadecimal',
-    '/calculator/hora-minuto',
-    '/calculator/horas-trabalhadas',
-    '/calculator/idade',
-    '/calculator/juros-compostos',
-    '/calculator/juros-simples',
-    '/calculator/media-mediana-moda',
-    '/calculator/media-ponderada',
-    '/calculator/mmc',
-    '/calculator/porcentagem',
-    '/calculator/regra-de-3',
-    '/calculator/relacao-pf',
-    '/calculator/romano-decimal',
-    '/calculator/taxa-metabolica-basal',
-    '/calculator/variancia-estatistica',
-    '/calculator/word-counter'
+    ...calculatorPaths
   ];
 
   const sitemapEntries = staticPaths.flatMap(getEntries);
@@ -63,6 +34,6 @@ function getEntries(href: Href) {
 }
 
 function getUrl(href: Href, locale: Locale) {
-  const pathname = getPathname({locale, href});
+  const pathname = getPathname({ locale, href });
   return host + pathname;
 }
