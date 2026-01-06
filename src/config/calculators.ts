@@ -457,9 +457,9 @@ export const calculators: Record<string, CalculatorConfig> = {
         category: 'math',
         icon: 'BarChart3',
         meta: {
-            title: 'Average Calculator (Mean, Median, Mode) | MyCalcOnline',
-            description: 'Calculate the average (mean), median, mode, and range of a set of numbers. Enter your data set and get instant statistics.',
-            keywords: ['average calculator', 'mean calculator', 'median mode calculator', 'statistics calculator'],
+            title: 'Average Calculator - Find Mean, Median, Mode & Range Instantly',
+            description: 'Determine the arithmetic mean, median, mode, and range for any data set. Learn how to calculate averages manually, understand outliers, and see step-by-step examples.',
+            keywords: ['average calculator', 'arithmetic mean', 'calculate median', 'find mode', 'range calculator', 'statistics tool', 'data analysis', 'mean median mode'],
         },
         inputs: [
             {
@@ -529,45 +529,76 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-        <h3>Measures of Central Tendency</h3>
-        <p>In statistics, a "central tendency" is a central or typical value for a probability distribution. This calculator finds the:</p>
-        <ul class="list-disc pl-5 space-y-1 text-gray-600">
-            <li><strong>Mean (Average):</strong> The sum of all numbers divided by the count. Best for symmetric distributions.</li>
-            <li><strong>Median:</strong> The middle number when sorted. Best for skewed distributions (e.g., salaries, home prices).</li>
-            <li><strong>Mode:</strong> The most frequently occurring number. Useful for categorical data (e.g., "most popular shoe size").</li>
-            <li><strong>Range:</strong> The difference between the highest and lowest values. Shows how spread out the data is.</li>
-        </ul>
-      `,
+            <h3>What is an Average? (The Foundation of Statistics)</h3>
+            <p>In mathematics and everyday life, an <strong>average</strong> provides a single value that represents the "middle" or "typical" point of a collection of numbers. While most people use the term to mean the <em>Arithmetic Mean</em>, statistics actually utilizes several measures of central tendency to describe data more accurately depending on the context.</p>
+            <p class="mt-2 text-gray-700 font-medium">This calculator identifies the four pillars of basic statistics:</p>
+            <ul class="list-disc pl-5 space-y-2 mt-2 text-gray-600">
+                <li><strong>Mean (Average):</strong> The sum of all values divided by the total number of items. It's the most widely used measure for stable datasets.</li>
+                <li><strong>Median:</strong> The middle score in a sorted list. It "slices" your data in half, which is vital for understanding things like salaries or housing prices where extreme values exist.</li>
+                <li><strong>Mode:</strong> The most frequent value in your set. Useful for identifying the most "popular" item in a list.</li>
+                <li><strong>Range:</strong> The distance between the highest and lowest values ($Max - Min$), showing how spread out or "concentrated" your data is.</li>
+            </ul>
+            `,
             howTo: `
-        <h3>Calculating Manually</h3>
-        <div class="space-y-4 my-4">
-            <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-gray-700">Data Set: {2, 5, 9, 3, 5, 4, 7}</p>
-                <p class="text-sm text-gray-600 mt-1">Sorted: {2, 3, 4, 5, 5, 7, 9}</p>
+            <h3>How to Use the Average Calculator Efficiently</h3>
+            <p>Our tool is designed to be <strong>dynamic and frictionless</strong>. You don't need to press a "Calculate" button; it works as you type.</p>
+            <ol class="list-decimal pl-5 space-y-3 text-gray-600 mb-6 mt-2">
+                <li><strong>Input Your Dataset:</strong> Simply enter your numbers into the box. You can separate them however you like: with <strong>commas, spaces, or even line breaks</strong>.</li>
+                <li><strong>Dynamic Growth:</strong> Need to average 50 numbers? No problem. The calculator automatically creates new entry slots as you fill them.</li>
+                <li><strong>Real-Time Analysis:</strong> Watch the Mean, Median, and Mode update instantly with every keypress. This allows you to see how adding a new "outlier" changes the entire result.</li>
+                <li><strong>Clear to Restart:</strong> Use the "Clear" button to wipe the dataset and start a fresh calculation in one click.</li>
+            </ol>
+            
+            <h3>How to Calculate an Average Manually</h3>
+            <p class="mb-2">If you're doing this for school or a quick check, the formula is straightforward:</p>
+            <div class="latex-formula bg-blue-50 p-4 text-center rounded-lg border border-blue-100 my-4">
+                <p class="text-blue-900 font-mono text-lg">Average = (Sum of all values) ÷ (Total number of values)</p>
             </div>
-            <div class="grid gap-2 text-sm">
-                <p><strong>Mean:</strong> (35 ÷ 7) = 5</p>
-                <p><strong>Median:</strong> The 4th number is 5.</p>
-                <p><strong>Mode:</strong> 5 appears twice.</p>
-                <p><strong>Range:</strong> 9 - 2 = 7.</p>
+            
+            <p class="mb-2 font-semibold">Example Walkthrough:</p>
+            <p class="text-sm text-gray-600 mb-4">Let's find the average of scores: <strong>85, 90, 70, and 95</strong>.</p>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm space-y-2">
+                <p><strong>1. Sum them up:</strong> $85 + 90 + 70 + 95 = 340$</p>
+                <p><strong>2. Count the entries:</strong> There are 4 scores.</p>
+                <p><strong>3. Divide:</strong> $340 ÷ 4 = 85$</p>
+                <p class="text-indigo-700 font-medium">Result: The average score is 85.</p>
             </div>
-        </div>
-        <h4 class="font-semibold mt-4">Mean vs. Median: Real World Example 🏠</h4>
-        <p class="text-sm text-gray-600">Consider neighborhood house prices: $100k, $100k, $100k, and <strong>$2 Million</strong>.</p>
-        <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600 mt-2">
-            <li><strong>Mean:</strong> $575k (Misleading! Most houses aren't half a million).</li>
-            <li><strong>Median:</strong> $100k (Representative. Ignore the outlier).</li>
-        </ul>
-        <p class="text-xs text-gray-500 mt-2"><em>Tip:</em> Always look at Median for income or real estate!</p>
-      `,
+            
+            <h3 class="mt-8 mb-4">Behind the Scenes: Why Averages Can Be Misleading ⚠️</h3>
+            <p>A common trap in data analysis is relying <em>only</em> on the Mean. Because the mean is calculated by summing everything, a single massive number (an <strong>outlier</strong>) can pull the average far away from reality.</p>
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div class="p-4 bg-red-50 rounded border border-red-100 italic text-sm">
+                    <strong>The Danger:</strong> If 4 people earn $30k and 1 person earns $1 Million, the "average" income is over $200k. None of them actually earn that!
+                </div>
+                <div class="p-4 bg-green-50 rounded border border-green-100 italic text-sm">
+                    <strong>The Solution:</strong> This is why our calculator also shows the <strong>Median</strong>. In the example above, the Median would be $30k—a much more accurate reflection of the group.
+                </div>
+            </div>
+
+            <h3 class="mt-8 mb-4">Similar Concepts: Weighted Averages & GPA</h3>
+            <p>Sometimes, not every number is "equal." In college, a 4-credit class affects your grade more than a 1-credit class. This is called a <strong>Weighted Average</strong>.</p>
+            <p class="text-gray-600 mt-2">While this calculator treats every value equally (Arithmetic Mean), you can use our dedicated <strong>GPA Calculator</strong> (coming soon) to handle credits and weights specifically.</p>
+            `,
             faq: [
                 {
-                    question: "Can there be more than one Mode?",
-                    answer: "Yes! If two numbers appear with equal maximum frequency, the set is 'bimodal'. If more than two, it's 'multimodal'."
+                    question: "What are the 4 main types of averages?",
+                    answer: "The four primary measures are the <strong>Mean</strong> (sum divided by count), <strong>Median</strong> (the middle point), <strong>Mode</strong> (the most frequent value), and <strong>Range</strong> (the spread between high and low)."
                 },
                 {
-                    question: "What if there is an even number of items for Median?",
-                    answer: "If the list has an even number of items (e.g., 4 items), the median is the average of the two middle numbers."
+                    question: "Why do we calculate the average?",
+                    answer: "Averages help us summarize huge amounts of data into a single understandable number. It allows for quick comparisons between different groups or time periods without analyzing every raw data point."
+                },
+                {
+                    question: "How do I calculate an average in Excel?",
+                    answer: "Simply use the formula <code>=AVERAGE(Range)</code>. For example, <code>=AVERAGE(A1:A20)</code>. However, our online calculator is often faster for quick sets as it doesn't require opening software or setting up cells."
+                },
+                {
+                    question: "Is the Mean always better than the Median?",
+                    answer: "No. The Mean is better for symmetric data (like height or weights of a single age group). The Median is <strong>superior</strong> for skewed data (like wealth distribution or sports stats) where a few pros or billionaires would 'break' the regular average."
+                },
+                {
+                    question: "Can I take the average of several averages?",
+                    answer: "Only if the original groups were the <strong>exact same size</strong>. If you average an average of 10 people with an average of 100 people, the result will be wrong. Always sum the original raw totals and divide by the new total count to stay accurate."
                 }
             ]
         }
