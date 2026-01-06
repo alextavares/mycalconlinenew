@@ -2291,13 +2291,13 @@ export const calculators: Record<string, CalculatorConfig> = {
     'simple-interest': {
         id: 'simple-interest',
         title: 'Simple Interest Calculator',
-        description: 'Calculate simple interest accumulation over time.',
+        description: 'Calculate simple interest (non-compounding) on loans or investments.',
         category: 'finance',
         icon: 'TrendingUp',
         meta: {
-            title: 'Simple Interest Calculator',
-            description: 'Calculate simple interest (A = P(1 + rt)).',
-            keywords: ['simple interest', 'interest calculator', 'financial calculator'],
+            title: 'Simple Interest Calculator | Principal, Rate & Time',
+            description: 'Calculate simple interest with the formula A = P(1 + rt). Ideal for short-term loans and friend lending.',
+            keywords: ['simple interest', 'interest calculator', 'loan calculator', 'friend loan', 'finance basics'],
         },
         inputs: [
             {
@@ -2305,6 +2305,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 label: 'Principal (P)',
                 type: 'number',
                 placeholder: 'e.g. 1000',
+                unit: '$',
             },
             {
                 id: 'rate',
@@ -2348,25 +2349,33 @@ export const calculators: Record<string, CalculatorConfig> = {
         content: {
             whatIs: `
             <h3>What is Simple Interest?</h3>
-            <p>Simple interest is money you can earn on initially invested funds, or money you pay on a loan. It's calculated only on the principal amount, meaning the interest amount remains constant for each period.</p>
+            <p>Simple interest is the money you earn (or pay) <strong>only on the principal amount</strong>. Unlike compound interest, the interest doesn't earn its own interest.</p>
+            <p>It's commonly used for short-term loans, informal lending between friends/family, and some types of bonds.</p>
             `,
             howTo: `
             <h3>The Formula</h3>
-            <div class="bg-indigo-900 text-white p-6 rounded-xl my-4 text-center">
-                <p class="text-3xl font-mono mb-2 tracking-widest">A = P(1 + rt)</p>
-                <p class="text-sm opacity-80">Total = Principal × (1 + rate × time)</p>
+            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 text-center my-4">
+                <code class="text-2xl font-mono text-indigo-900">I = P × r × t</code>
+                <p class="text-sm text-indigo-700 mt-2">Interest = Principal × Rate × Time</p>
+                <p class="text-xs text-indigo-500 mt-1">(Total Amount = Principal + Interest)</p>
             </div>
-            <h3>When is it used?</h3>
-            <ul class="list-disc pl-5 space-y-2 text-gray-600">
-                <li>Short-term loans (e.g., auto loans).</li>
-                <li>Some bonds (coupon payments).</li>
-                <li>Private lending agreements.</li>
+            <h4 class="font-semibold mt-4">Example: The "Friend Loan" 🤝</h4>
+            <p class="text-sm text-gray-600">You lend a friend <strong>$1,000</strong> for <strong>2 years</strong> at <strong>5%</strong> simple interest.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600 mt-2">
+                <li>Year 1 Interest: $1,000 × 0.05 = $50</li>
+                <li>Year 2 Interest: $1,000 × 0.05 = $50</li>
+                <li><strong>Total Interest:</strong> $100</li>
+                <li><strong>Total Repayment:</strong> $1,100</li>
             </ul>
             `,
             faq: [
                 {
-                    question: "How is it different from Compound Interest?",
-                    answer: "Simple interest is linear; you earn the same amount every year. Compound interest is exponential; you earn interest on your interest, so your money grows faster over time."
+                    question: "Simple vs. Compound Interest: What's better?",
+                    answer: "If you are **investing**, Compound Interest is better (your money grows faster). If you are **borrowing**, Simple Interest is better (you pay less over time)."
+                },
+                {
+                    question: "Does the time always have to be in years?",
+                    answer: "The formula assumes 't' in years and 'r' as an annual rate. If your time is in months, divide it by 12 (e.g., 6 months = 0.5 years)."
                 }
             ]
         }
