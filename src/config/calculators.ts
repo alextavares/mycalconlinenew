@@ -4,58 +4,83 @@ export const calculators: Record<string, CalculatorConfig> = {
     'meters-to-feet': {
         id: 'meters-to-feet',
         title: 'Meters to Feet Converter',
-        description: 'Instantly convert meters to feet with this simple online tool.',
+        description: 'Convert meters to feet and inches. Perfect for height, room dimensions, or travel.',
         category: 'conversion',
         icon: 'Ruler',
         meta: {
-            title: 'Meters to Feet Converter (m to ft) | MyCalcOnline',
-            description: 'Convert meters to feet easily. Enter the length in meters and get the equivalent in feet instantly.',
-            keywords: ['meters to feet', 'm to ft', 'length converter', 'metric to imperial'],
+            title: 'Meters to Feet Converter (m to ft) | Height & Length',
+            description: 'Convert meters to feet and inches. Includes a quick reference table for common heights (1.7m, 1.8m, etc).',
+            keywords: ['meters to feet', 'm to ft', 'height converter', 'metric to imperial', 'length converter'],
         },
         inputs: [
             {
                 id: 'meters',
                 label: 'Meters (m)',
                 type: 'number',
-                placeholder: 'e.g., 10',
+                placeholder: 'e.g., 1.75',
                 unit: 'm',
             },
         ],
         outputs: [
             {
-                label: 'Feet (ft)',
+                label: 'Feet (decimal)',
                 unit: 'ft',
                 calculate: (inputs) => {
                     const meters = inputs['meters'];
                     if (typeof meters !== 'number') return 0;
-                    return (meters * 3.28084).toFixed(4);
+                    return parseFloat((meters * 3.28084).toFixed(4));
+                },
+            },
+            {
+                label: 'Feet + Inches',
+                unit: '',
+                calculate: (inputs) => {
+                    const meters = inputs['meters'];
+                    if (typeof meters !== 'number' || meters <= 0) return 'N/A';
+                    const totalInches = meters * 39.3701;
+                    const feet = Math.floor(totalInches / 12);
+                    const inches = Math.round(totalInches % 12);
+                    return `${feet}' ${inches}"`;
                 },
             },
         ],
         content: {
             whatIs: `
-        <h3>What is a Meter?</h3>
-        <p>The meter (symbol: m) is the base unit of length in the International System of Units (SI). It is defined by the distance light travels in a vacuum in 1/299,792,458 of a second.</p>
-        <h3>What is a Foot?</h3>
-        <p>The foot (symbol: ft) is a unit of length in the imperial and US customary systems of measurement. It is historically based on the human foot.</p>
-      `,
+            <h3>Why Convert Meters to Feet?</h3>
+            <p>While the metric system is used globally, the USA and UK often use feet and inches for human height and room dimensions.</p>
+            <p>Knowing your height in both systems is useful for travel, sports, and international communication.</p>
+            `,
             howTo: `
-        <h3>Conversion Formula</h3>
-        <p>To convert meters to feet, multiply the length in meters by the conversion factor 3.28084.</p>
-        <div class="bg-blue-50 p-4 rounded-lg my-4 text-center border border-blue-100">
-            <code class="text-xl font-bold text-blue-900">1 meter ≈ 3.28 feet</code>
-        </div>
-        <p><strong>Example:</strong> Convert 5 meters to feet.</p>
-        <p class="ml-4">5 m × 3.28084 = 16.4042 ft</p>
-      `,
+            <h3>Quick Reference Table</h3>
+            <div class="overflow-hidden rounded-lg border border-gray-200 mt-4">
+                <table class="min-w-full text-sm text-center">
+                    <thead class="bg-gray-50 text-gray-700 font-semibold">
+                        <tr>
+                            <th class="py-2 px-4">Meters</th>
+                            <th class="py-2 px-4">Feet (decimal)</th>
+                            <th class="py-2 px-4">Feet + Inches</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr><td class="py-2 font-medium">1.50 m</td><td>4.92 ft</td><td class="text-blue-600">4' 11"</td></tr>
+                        <tr><td class="py-2 font-medium">1.60 m</td><td>5.25 ft</td><td class="text-blue-600">5' 3"</td></tr>
+                        <tr><td class="py-2 font-medium">1.70 m</td><td>5.58 ft</td><td class="text-blue-600">5' 7"</td></tr>
+                        <tr><td class="py-2 font-medium">1.75 m</td><td>5.74 ft</td><td class="text-blue-600">5' 9"</td></tr>
+                        <tr><td class="py-2 font-medium">1.80 m</td><td>5.91 ft</td><td class="text-blue-600">5' 11"</td></tr>
+                        <tr><td class="py-2 font-medium">1.85 m</td><td>6.07 ft</td><td class="text-blue-600">6' 1"</td></tr>
+                        <tr><td class="py-2 font-medium">1.90 m</td><td>6.23 ft</td><td class="text-blue-600">6' 3"</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            `,
             faq: [
                 {
                     question: 'How many feet are in 1 meter?',
-                    answer: 'There are approximately 3.28084 feet in 1 meter.',
+                    answer: 'There are approximately 3.28084 feet in 1 meter. For a quick estimate, multiply meters by 3.3.',
                 },
                 {
-                    question: 'Is a meter longer than a yard?',
-                    answer: 'Yes, a meter is slightly longer than a yard. 1 meter is about 1.09 yards.',
+                    question: 'Why does my result show feet AND inches?',
+                    answer: "In the US/UK, height is usually expressed as '5 feet 9 inches' rather than '5.75 feet'. We show both formats for convenience."
                 }
             ],
         },
@@ -1578,13 +1603,13 @@ export const calculators: Record<string, CalculatorConfig> = {
     'age': {
         id: 'age',
         title: 'Age Calculator',
-        description: 'Calculate your age in years, months, and days.',
+        description: 'Calculate your exact age in years, months, days, and countdown to next birthday.',
         category: 'everyday',
         icon: 'Calendar',
         meta: {
-            title: 'Age Calculator | How old am I?',
-            description: 'Calculate exact age from date of birth. Find out how many days passed since your birthday.',
-            keywords: ['age calculator', 'how old am i', 'calculate age', 'birthday calculator'],
+            title: 'Age Calculator | Years, Months, Days & Birthday Countdown',
+            description: 'Find your exact age and countdown to your next birthday. Perfect for legal documents, school admissions, or milestone planning.',
+            keywords: ['age calculator', 'how old am i', 'birthday countdown', 'calculate age', 'age in days'],
         },
         inputs: [
             {
@@ -1597,7 +1622,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 id: 'targetDate',
                 label: 'Target Date (Optional)',
                 type: 'date',
-                defaultValue: new Date().toISOString().split('T')[0], // Today by default
+                defaultValue: new Date().toISOString().split('T')[0],
                 placeholder: 'YYYY-MM-DD',
             },
         ],
@@ -1608,15 +1633,27 @@ export const calculators: Record<string, CalculatorConfig> = {
                 calculate: (inputs) => {
                     const dob = new Date(inputs['birthDate']);
                     const target = inputs['targetDate'] ? new Date(inputs['targetDate']) : new Date();
-
                     if (isNaN(dob.getTime())) return 0;
 
                     let age = target.getFullYear() - dob.getFullYear();
                     const m = target.getMonth() - dob.getMonth();
-                    if (m < 0 || (m === 0 && target.getDate() < dob.getDate())) {
-                        age--;
-                    }
+                    if (m < 0 || (m === 0 && target.getDate() < dob.getDate())) age--;
                     return age >= 0 ? age : 0;
+                },
+            },
+            {
+                label: 'Total Months',
+                unit: 'months',
+                calculate: (inputs) => {
+                    const dob = new Date(inputs['birthDate']);
+                    const target = inputs['targetDate'] ? new Date(inputs['targetDate']) : new Date();
+                    if (isNaN(dob.getTime())) return 0;
+
+                    const years = target.getFullYear() - dob.getFullYear();
+                    const months = target.getMonth() - dob.getMonth();
+                    let total = years * 12 + months;
+                    if (target.getDate() < dob.getDate()) total--;
+                    return total >= 0 ? total : 0;
                 },
             },
             {
@@ -1631,24 +1668,47 @@ export const calculators: Record<string, CalculatorConfig> = {
                     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
                     return diffDays >= 0 ? diffDays : 0;
                 },
+            },
+            {
+                label: 'Days Until Next Birthday',
+                unit: 'days',
+                calculate: (inputs) => {
+                    const dob = new Date(inputs['birthDate']);
+                    const target = inputs['targetDate'] ? new Date(inputs['targetDate']) : new Date();
+                    if (isNaN(dob.getTime())) return 'N/A';
+
+                    const thisYearBD = new Date(target.getFullYear(), dob.getMonth(), dob.getDate());
+                    if (thisYearBD < target) {
+                        thisYearBD.setFullYear(thisYearBD.getFullYear() + 1);
+                    }
+                    const diff = Math.ceil((thisYearBD.getTime() - target.getTime()) / (1000 * 60 * 60 * 24));
+                    return diff === 0 ? '🎂 TODAY!' : diff;
+                },
             }
         ],
         content: {
             whatIs: `
-            <h3>Why use an Age Calculator?</h3>
-            <p>While calculating your age in years is simple, figuring out the exact number of months and days since your birth can be tricky due to varying month lengths and leap years.</p>
-            <p>This tool gives you your precise chronological age, which is useful for legal applications, school admissions, or just for fun to know how many days you've been alive!</p>
+            <h3>Why Calculate Your Exact Age?</h3>
+            <p>Your "age" isn't just a single number. For legal documents, visa applications, school cutoffs, and milestone planning, knowing your exact age in <strong>years, months, and days</strong> matters.</p>
+            <p>Plus, who doesn't want to know exactly how many days until their next birthday? 🎂</p>
             `,
             howTo: `
-            <h3>Did you know?</h3>
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
-                <div class="p-5 bg-yellow-50 rounded-lg border border-yellow-100">
-                    <h5 class="font-bold text-yellow-900 mb-2">🎂 Next Birthday</h5>
-                    <p class="text-sm text-yellow-800">Knowing your precise age helps plan for milestones. If you are 29 years, 11 months, and 28 days old, the big 3-0 is just around the corner!</p>
+            <h3>Age Milestones</h3>
+            <div class="grid md:grid-cols-3 gap-4 mt-4">
+                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center">
+                    <span class="text-3xl">🎂</span>
+                    <p class="font-bold text-yellow-900 mt-2">10,000 Days</p>
+                    <p class="text-xs text-yellow-700">≈ 27 years old</p>
                 </div>
-                <div class="p-5 bg-indigo-50 rounded-lg border border-indigo-100">
-                    <h5 class="font-bold text-indigo-900 mb-2">📅 Total Days</h5>
-                    <p class="text-sm text-indigo-800">Sometimes you need your age purely in days (e.g., "10,000 days old"). This calculator provides that specific metric instantly.</p>
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 text-center">
+                    <span class="text-3xl">🍷</span>
+                    <p class="font-bold text-blue-900 mt-2">1 Billion Seconds</p>
+                    <p class="text-xs text-blue-700">≈ 31.7 years old</p>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-lg border border-purple-100 text-center">
+                    <span class="text-3xl">🌟</span>
+                    <p class="font-bold text-purple-900 mt-2">20,000 Days</p>
+                    <p class="text-xs text-purple-700">≈ 54.7 years old</p>
                 </div>
             </div>
             `,
@@ -1658,8 +1718,8 @@ export const calculators: Record<string, CalculatorConfig> = {
                     answer: "Yes! Our algorithm correctly accounts for leap years (years with 366 days) to ensure the day count is perfectly accurate."
                 },
                 {
-                    question: "Can I verify someone else's age?",
-                    answer: "Absolutely. Just enter their Date of Birth, and the calculator will tell you their exact age as of today (or any other target date you select)."
+                    question: "What is 'Days Until Next Birthday'?",
+                    answer: "This countdown tells you exactly how many days remain until your next birthday. If the target date IS your birthday, it will show '🎂 TODAY!'."
                 }
             ]
         }
@@ -1751,13 +1811,13 @@ export const calculators: Record<string, CalculatorConfig> = {
     'circle': {
         id: 'circle',
         title: 'Circle Calculator',
-        description: 'Calculate Area, Circumference, and Diameter of a circle.',
+        description: 'Calculate Area, Circumference, Diameter and more from any known value.',
         category: 'math',
         icon: 'Circle',
         meta: {
-            title: 'Circle Calculator | Area, Circumference, Radius',
-            description: 'Calculate circle area, circumference, diameter and radius instantly.',
-            keywords: ['circle calculator', 'circle area', 'circumference calculator', 'radius to diameter'],
+            title: 'Circle Calculator | Area, Circumference & Radius',
+            description: 'Instantly calculate circle area, circumference, diameter. Includes visual formulas and real-world examples (pizza slices!).',
+            keywords: ['circle calculator', 'circle area', 'circumference calculator', 'radius to diameter', 'pi calculator'],
         },
         inputs: [
             {
@@ -1765,6 +1825,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 label: 'Radius (r)',
                 type: 'number',
                 placeholder: 'e.g. 10',
+                unit: 'units',
             }
         ],
         outputs: [
@@ -1774,7 +1835,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 calculate: (inputs) => {
                     const r = Number(inputs['radius']);
                     if (!r) return 0;
-                    return parseFloat((Math.PI * r * r).toFixed(2));
+                    return parseFloat((Math.PI * r * r).toFixed(4));
                 },
             },
             {
@@ -1783,7 +1844,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 calculate: (inputs) => {
                     const r = Number(inputs['radius']);
                     if (!r) return 0;
-                    return parseFloat((2 * Math.PI * r).toFixed(2));
+                    return parseFloat((2 * Math.PI * r).toFixed(4));
                 },
             },
             {
@@ -1798,30 +1859,41 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-            <h3>Understanding the Circle</h3>
-            <p>A circle is a shape consisting of all points in a plane that are at a given distance from a given point, the center. The distance between any point of the circle and the center is called the radius.</p>
+            <h3>What is a Circle?</h3>
+            <p>A circle is a 2D shape where every point on its edge is exactly the same distance from the center. This distance is called the <strong>radius (r)</strong>.</p>
+            <p>The <strong>diameter (d)</strong> is the distance across the circle through the center (d = 2r). The <strong>circumference (C)</strong> is the total length around the circle.</p>
             `,
             howTo: `
-            <h3>Key Formulas</h3>
+            <h3>The Magic of Pi (π)</h3>
+            <p>All circle calculations involve π (pi), the ratio of a circle's circumference to its diameter. Pi is approximately <strong>3.14159</strong>.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
                 <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
                     <h5 class="font-bold text-blue-900 mb-2">Area (A)</h5>
                     <code class="text-lg font-mono text-blue-700">A = πr²</code>
+                    <p class="text-xs text-blue-600 mt-2">How much pizza is inside one slice!</p>
                 </div>
                 <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center">
                     <h5 class="font-bold text-indigo-900 mb-2">Circumference (C)</h5>
                     <code class="text-lg font-mono text-indigo-700">C = 2πr</code>
+                    <p class="text-xs text-indigo-600 mt-2">The length of the pizza crust.</p>
                 </div>
                 <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center">
                     <h5 class="font-bold text-purple-900 mb-2">Diameter (d)</h5>
                     <code class="text-lg font-mono text-purple-700">d = 2r</code>
+                    <p class="text-xs text-purple-600 mt-2">The width of the box you need.</p>
                 </div>
             </div>
+            <h4 class="font-semibold mt-4">Example: The 12" Pizza</h4>
+            <p class="text-sm text-gray-600">A 12-inch pizza has a diameter of 12 inches (r = 6 inches). Its area is π × 6² ≈ <strong>113 sq in</strong>. A 16-inch pizza has π × 8² ≈ <strong>201 sq in</strong> — almost double!</p>
             `,
             faq: [
                 {
                     question: "What is Pi (π)?",
-                    answer: "Pi is a mathematical constant representing the ratio of a circle's circumference to its diameter. It's approximately equal to 3.14159."
+                    answer: "Pi is a mathematical constant (≈ 3.14159) that represents the ratio of a circle's circumference to its diameter. It's the same for every circle, no matter how big or small."
+                },
+                {
+                    question: "Why does a slightly larger pizza have SO much more area?",
+                    answer: "Because area grows with the <strong>square</strong> of the radius. Doubling the radius quadruples the area. A 16-inch pizza is 78% bigger than a 12-inch, not just 33%!"
                 }
             ]
         }
@@ -1829,13 +1901,13 @@ export const calculators: Record<string, CalculatorConfig> = {
     'square': {
         id: 'square',
         title: 'Square Calculator',
-        description: 'Calculate Area, Perimeter, and Diagonal of a square.',
+        description: 'Calculate Area, Perimeter, and Diagonal of a square from its side length.',
         category: 'math',
         icon: 'Square',
         meta: {
-            title: 'Square Calculator | Area & Perimeter',
-            description: 'Compute the area, perimeter, and diagonal of a square from its side length.',
-            keywords: ['square calculator', 'area of square', 'perimeter of square'],
+            title: 'Square Calculator | Area, Perimeter & Diagonal',
+            description: 'Calculate the area, perimeter, and diagonal of any square. Includes formulas and a flooring/tiling example.',
+            keywords: ['square calculator', 'area of square', 'perimeter of square', 'diagonal of square', 'square footage'],
         },
         inputs: [
             {
@@ -1843,20 +1915,21 @@ export const calculators: Record<string, CalculatorConfig> = {
                 label: 'Side Length (a)',
                 type: 'number',
                 placeholder: 'e.g. 5',
+                unit: 'units',
             }
         ],
         outputs: [
             {
-                label: 'Area',
+                label: 'Area (A)',
                 unit: 'sq units',
                 calculate: (inputs) => {
                     const a = Number(inputs['side']);
                     if (!a) return 0;
-                    return a * a;
+                    return parseFloat((a * a).toFixed(4));
                 },
             },
             {
-                label: 'Perimeter',
+                label: 'Perimeter (P)',
                 unit: 'units',
                 calculate: (inputs) => {
                     const a = Number(inputs['side']);
@@ -1865,41 +1938,48 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Diagonal',
+                label: 'Diagonal (d)',
                 unit: 'units',
                 calculate: (inputs) => {
                     const a = Number(inputs['side']);
                     if (!a) return 0;
-                    return parseFloat((a * Math.sqrt(2)).toFixed(2));
+                    return parseFloat((a * Math.sqrt(2)).toFixed(4));
                 },
             }
         ],
         content: {
             whatIs: `
-            <h3>The Perfect Quadrilateral</h3>
-            <p>A square is a regular quadrilateral, which means it has four equal sides and four equal angles (90-degree angles). It can also be defined as a rectangle in which two adjacent sides have equal length.</p>
+            <h3>What is a Square?</h3>
+            <p>A square is a special rectangle where all four sides are equal. It has four right angles (90°) and equal diagonals that bisect each other at 90°.</p>
+            <p>Squares are everywhere: floor tiles, window panes, chess boards, and even your phone's app icons are often square.</p>
             `,
             howTo: `
-            <h3>Formulas</h3>
-            <div class="space-y-3 my-4">
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <span class="font-medium text-gray-700">Area</span>
-                    <code class="font-mono bg-white px-2 py-1 rounded border border-gray-200">A = a²</code>
+            <h3>Key Formulas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                    <h5 class="font-bold text-blue-900 mb-2">Area</h5>
+                    <code class="text-lg font-mono text-blue-700">A = a²</code>
                 </div>
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <span class="font-medium text-gray-700">Perimeter</span>
-                    <code class="font-mono bg-white px-2 py-1 rounded border border-gray-200">P = 4a</code>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center">
+                    <h5 class="font-bold text-indigo-900 mb-2">Perimeter</h5>
+                    <code class="text-lg font-mono text-indigo-700">P = 4a</code>
                 </div>
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <span class="font-medium text-gray-700">Diagonal</span>
-                    <code class="font-mono bg-white px-2 py-1 rounded border border-gray-200">d = a√2</code>
+                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center">
+                    <h5 class="font-bold text-purple-900 mb-2">Diagonal</h5>
+                    <code class="text-lg font-mono text-purple-700">d = a√2</code>
                 </div>
             </div>
+            <h4 class="font-semibold mt-4">Example: Tiling a 10x10 Floor</h4>
+            <p class="text-sm text-gray-600">A 10-foot x 10-foot room has an area of 10² = <strong>100 sq ft</strong>. If each tile covers 2 sq ft, you'll need 50 tiles (+ ~10% for waste).</p>
             `,
             faq: [
                 {
                     question: "Is a square a rectangle?",
-                    answer: "Yes! A square meets all the requirements of a rectangle (opposite sides equal and parallel, right angles), but adds the condition that all four sides are equal."
+                    answer: "Yes! A square is a special type of rectangle where all four sides are equal. Every square is a rectangle, but not every rectangle is a square."
+                },
+                {
+                    question: "Why is the diagonal formula a√2?",
+                    answer: "It comes from the Pythagorean theorem. If the side is 'a', the diagonal is the hypotenuse of a right triangle with legs of length 'a'. So d = √(a² + a²) = a√2."
                 }
             ]
         }
