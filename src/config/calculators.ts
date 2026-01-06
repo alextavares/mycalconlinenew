@@ -1987,41 +1987,43 @@ export const calculators: Record<string, CalculatorConfig> = {
     'rectangle': {
         id: 'rectangle',
         title: 'Rectangle Calculator',
-        description: 'Calculate Area, Perimeter, and Diagonal of a rectangle.',
+        description: 'Calculate Area, Perimeter, and Diagonal of any rectangle.',
         category: 'math',
         icon: 'RectangleHorizontal',
         meta: {
-            title: 'Rectangle Calculator | Area & Perimeter',
-            description: 'Calculate the area, perimeter and diagonal of a rectangle.',
-            keywords: ['rectangle calculator', 'area of rectangle', 'perimeter of rectangle'],
+            title: 'Rectangle Calculator | Area, Perimeter & Diagonal',
+            description: 'Calculate rectangle area, perimeter, and diagonal. Includes a TV screen size example.',
+            keywords: ['rectangle calculator', 'area of rectangle', 'perimeter of rectangle', 'diagonal calculator', 'screen size'],
         },
         inputs: [
             {
                 id: 'length',
                 label: 'Length (l)',
                 type: 'number',
-                placeholder: 'e.g. 10',
+                placeholder: 'e.g. 16',
+                unit: 'units',
             },
             {
                 id: 'width',
                 label: 'Width (w)',
                 type: 'number',
-                placeholder: 'e.g. 5',
+                placeholder: 'e.g. 9',
+                unit: 'units',
             }
         ],
         outputs: [
             {
-                label: 'Area',
+                label: 'Area (A)',
                 unit: 'sq units',
                 calculate: (inputs) => {
                     const l = Number(inputs['length']);
                     const w = Number(inputs['width']);
                     if (!l || !w) return 0;
-                    return l * w;
+                    return parseFloat((l * w).toFixed(4));
                 },
             },
             {
-                label: 'Perimeter',
+                label: 'Perimeter (P)',
                 unit: 'units',
                 calculate: (inputs) => {
                     const l = Number(inputs['length']);
@@ -2031,40 +2033,48 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Diagonal',
+                label: 'Diagonal (d)',
                 unit: 'units',
                 calculate: (inputs) => {
                     const l = Number(inputs['length']);
                     const w = Number(inputs['width']);
                     if (!l || !w) return 0;
-                    return parseFloat(Math.sqrt(l * l + w * w).toFixed(2));
+                    return parseFloat(Math.sqrt(l * l + w * w).toFixed(4));
                 },
             }
         ],
         content: {
             whatIs: `
-            <h3>Understanding Rectangles</h3>
-            <p>A rectangle is a quadrilateral with four right angles. It can also be defined as an equiangular quadrilateral, since equiangular means that all of its angles are equal (360°/4 = 90°).</p>
+            <h3>What is a Rectangle?</h3>
+            <p>A rectangle is a 4-sided shape with <strong>opposite sides equal</strong> and <strong>4 right angles (90°)</strong>. It's one of the most common shapes in everyday life: screens, doors, tables, books.</p>
             `,
             howTo: `
-            <h3>Essential Calculations</h3>
-            <div class="space-y-4 my-4">
-                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    <h5 class="font-bold text-gray-900 mb-2">Finding the Area</h5>
-                    <p class="text-sm text-gray-600 mb-2">Multiply length by width.</p>
-                    <code class="block font-mono bg-white p-2 rounded border border-gray-200 text-sm">A = length × width</code>
+            <h3>Key Formulas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                    <h5 class="font-bold text-blue-900 mb-2">Area</h5>
+                    <code class="text-lg font-mono text-blue-700">A = l × w</code>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    <h5 class="font-bold text-gray-900 mb-2">Finding the Perimeter</h5>
-                    <p class="text-sm text-gray-600 mb-2">Add length and width, then multiply by 2.</p>
-                    <code class="block font-mono bg-white p-2 rounded border border-gray-200 text-sm">P = 2 × (length + width)</code>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center">
+                    <h5 class="font-bold text-indigo-900 mb-2">Perimeter</h5>
+                    <code class="text-lg font-mono text-indigo-700">P = 2(l + w)</code>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center">
+                    <h5 class="font-bold text-purple-900 mb-2">Diagonal</h5>
+                    <code class="text-lg font-mono text-purple-700">d = √(l² + w²)</code>
                 </div>
             </div>
+            <h4 class="font-semibold mt-4">Example: TV Screen Sizes 📺</h4>
+            <p class="text-sm text-gray-600">A "55-inch TV" refers to the <strong>diagonal</strong>, not width! A 16:9 TV with 55" diagonal has dimensions ~48" × 27". The diagonal formula (Pythagorean theorem) connects all three measurements.</p>
             `,
             faq: [
                 {
-                    question: "Is a square a rectangle?",
-                    answer: "Yes, a square is a special type of rectangle where all four sides are of equal length."
+                    question: "Why are TV screens measured by diagonal?",
+                    answer: "Measuring the diagonal gives a single number that represents screen size regardless of aspect ratio. A 55\" 16:9 TV and a 55\" 4:3 TV have the same diagonal but different width/height."
+                },
+                {
+                    question: "What's the aspect ratio formula?",
+                    answer: "Aspect ratio = length ÷ width. Common ratios: 16:9 (widescreen), 4:3 (old TV), 21:9 (ultrawide monitors)."
                 }
             ]
         }
@@ -2072,13 +2082,13 @@ export const calculators: Record<string, CalculatorConfig> = {
     'triangle': {
         id: 'triangle',
         title: 'Triangle Calculator',
-        description: 'Calculate Area and Perimeter of a triangle.',
+        description: 'Calculate the area of any triangle using base × height or explore other types.',
         category: 'math',
         icon: 'Triangle',
         meta: {
-            title: 'Triangle Calculator | Area & Perimeter',
-            description: 'Calculate the area and perimeter of a triangle given its dimensions.',
-            keywords: ['triangle calculator', 'area of triangle', 'herons formula'],
+            title: 'Triangle Calculator | Area & Types',
+            description: 'Calculate triangle area using base and height. Includes roof and land measurement examples.',
+            keywords: ['triangle calculator', 'area of triangle', 'herons formula', 'roof area', 'land measurement'],
         },
         inputs: [
             {
@@ -2086,43 +2096,51 @@ export const calculators: Record<string, CalculatorConfig> = {
                 label: 'Base (b)',
                 type: 'number',
                 placeholder: 'e.g. 10',
+                unit: 'units',
             },
             {
                 id: 'height',
                 label: 'Height (h)',
                 type: 'number',
-                placeholder: 'e.g. 5',
+                placeholder: 'e.g. 8',
+                unit: 'units',
             }
         ],
         outputs: [
             {
-                label: 'Area',
+                label: 'Area (A)',
                 unit: 'sq units',
                 calculate: (inputs) => {
                     const b = Number(inputs['base']);
                     const h = Number(inputs['height']);
                     if (!b || !h) return 0;
-                    return (b * h) / 2;
+                    return parseFloat(((b * h) / 2).toFixed(4));
                 },
             }
         ],
         content: {
             whatIs: `
-            <h3>The Basic Triangle</h3>
-            <p>A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry. The sum of the internal angles of a triangle in Euclidean space is always 180 degrees.</p>
+            <h3>What is a Triangle?</h3>
+            <p>A triangle is the simplest polygon: 3 sides, 3 angles. The sum of internal angles is always <strong>180°</strong>. Triangles appear everywhere: roofs, pizza slices, yield signs, and land surveys.</p>
             `,
             howTo: `
-            <h3>Area Formula</h3>
+            <h3>The Golden Formula</h3>
             <div class="bg-yellow-50 p-6 rounded-xl border border-yellow-100 text-center my-4">
                 <p class="text-xs text-yellow-800 uppercase tracking-widest font-bold mb-2">Standard Formula</p>
                 <code class="text-2xl font-mono text-yellow-900">Area = ½ × base × height</code>
-                <p class="text-sm text-yellow-700 mt-2">Simply multiply the base by the height, and divide the result by 2.</p>
+                <p class="text-sm text-yellow-700 mt-2">Multiply the base by the perpendicular height, then divide by 2.</p>
             </div>
+            <h4 class="font-semibold mt-4">Example: Estimating Roof Area 🏠</h4>
+            <p class="text-sm text-gray-600">A gable roof section with base 12m and height 4m has area = ½ × 12 × 4 = <strong>24 m²</strong>. Multiply by 2 for both sides = 48 m² of shingles needed.</p>
             `,
             faq: [
                 {
                     question: "What if I don't know the height?",
-                    answer: "If you only know the lengths of all three sides, you can use Heron's Formula (available in our Advanced Math section) to find the area."
+                    answer: "If you know all 3 sides (a, b, c), use Heron's Formula: Calculate s = (a+b+c)/2, then Area = √[s(s-a)(s-b)(s-c)]."
+                },
+                {
+                    question: "What are the triangle types?",
+                    answer: "By sides: Equilateral (all equal), Isosceles (2 equal), Scalene (all different). By angles: Acute (all < 90°), Right (one = 90°), Obtuse (one > 90°)."
                 }
             ]
         }
