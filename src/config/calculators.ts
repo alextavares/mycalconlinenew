@@ -740,13 +740,13 @@ export const calculators: Record<string, CalculatorConfig> = {
     'discount': {
         id: 'discount',
         title: 'Discount Calculator',
-        description: 'Calculate final price, savings, best deals, and tax. Supports percentage and fixed amount off.',
+        description: 'Calculate sale price, total savings, and final price including sales tax. Supports percentage off and fixed amount coupons.',
         category: 'finance',
         icon: 'Tag',
         meta: {
-            title: 'Discount Calculator | Sale Price, Savings & Tax',
-            description: 'The best Discount Calculator to find the sale price, amount saved, and final tax. Supports percentage off, fixed amount off, and advanced tax options.',
-            keywords: ['discount calculator', 'percent off calculator', 'sale price calculator', 'discount tax calculator', 'how to calculate discount'],
+            title: 'Discount Calculator - Calculate Sale Price & Savings Instantly',
+            description: 'The most comprehensive Discount Calculator. Find the final price after sales tax, percentage off, or fixed coupons. Includes double discount logic and manual formulas.',
+            keywords: ['discount calculator', 'sale price calculator', 'percent off calculator', 'savings calculator', 'calculate discount with tax', 'sequential discounts'],
         },
         inputs: [
             {
@@ -811,7 +811,6 @@ export const calculators: Record<string, CalculatorConfig> = {
                     const discountedPrice = Math.max(0, price - discountAmount);
                     let finalPrice = discountedPrice;
 
-                    // Tax is usually applied to the discounted price
                     if (hasTax && !isNaN(taxRate)) {
                         finalPrice += discountedPrice * (taxRate / 100);
                     }
@@ -864,49 +863,63 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                        < h3 > How to Calculate Discount ? </h3>
-                                                                                            < p > A discount is a reduction applied to the original price of a product or service.The most common type is "Percent Off" (e.g., 20 % off), but fixed amount discounts($10 off) are also popular.</p>
-                                                                                                < p > Our calculator performs three main steps: </p>
-                                                                                                    < ol class="list-decimal pl-5 space-y-1 text-gray-600 mt-2" >
-                                                                                                        <li>Determines the < strong > Discount Amount < /strong> (Savings).</li >
-                                                                                                            <li>Subtracts savings from the Original Price to get the < strong > Discounted Price < /strong>.</li >
-                                                                                                                <li>If tax is enabled, it adds the tax percentage to the Discounted Price to find the < strong > Final Price < /strong>.</li >
-                                                                                                                    </ol>
-                                                                                                                        `,
+            <h3>Mastering the Sale: Why Use a Discount Calculator?</h3>
+            <p>During a sale, prices can be confusing. Is "30% off" better than "$20 off"? What happens if there's tax on top? A <strong>Discount Calculator</strong> removes the guesswork, allowing you to see the exact final price you'll pay at the register.</p>
+            <p class="mt-2 text-gray-600">This tool is essential for:</p>
+            <ul class="list-disc pl-5 space-y-2 mt-2 text-gray-600 font-medium">
+                <li><strong>Shopping Smart:</strong> Instantly compare deals between different stores.</li>
+                <li><strong>Budgeting:</strong> Know the *real* price including sales tax before you reach the checkout.</li>
+                <li><strong>Negotiating:</strong> Calculate the dollar value of a percentage discount during professional services or bulk buys.</li>
+            </ul>
+            `,
             howTo: `
-                                                                                                                    < h3 > Discount Formulas </h3>
-                                                                                                                        < div class="space-y-4 my-4" >
-                                                                                                                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100" >
-                                                                                                                                <h4 class="font-bold text-gray-800 mb-2" > 1. Percentage Discount </h4>
-                                                                                                                                    < p class="font-mono text-sm text-blue-600" > Savings = Original_Price × (Discount % / 100)</p >
-                                                                                                                                        <p class= "font-mono text-sm text-blue-700 mt-1" > Final_Price = Original_Price - Savings </p>
-                                                                                                                                            </div>
-                                                                                                                                            < div class="bg-gray-50 p-4 rounded-lg border border-gray-100" >
-                                                                                                                                                <h4 class="font-bold text-gray-800 mb-2" > 2. Fixed Amount </h4>
-                                                                                                                                                    < p class="font-mono text-sm text-blue-600" > Final_Price = Original_Price - Discount_Amount </p>
-                                                                                                                                                        </div>
-                                                                                                                                                        </div>
-                                                                                                                                                        < h3 > Example Calculation </h3>
-                                                                                                                                                            < p > You want to buy a pair of shoes for <strong>$80 < /strong> with a <strong>20% discount</strong > and < strong > 8 % sales tax < /strong>.</p >
-                                                                                                                                                                <ul class= "list-disc pl-5 mt-2 space-y-1 text-gray-600" >
-                                                                                                                                                                <li><strong>Step 1(Savings): </strong> $80 × 0.20 = <span class="text-green-600 font-bold">$16 saved</span >.</li>
-                                                                                                                                                                    < li > <strong>Step 2(Price after Coupon): </strong> $80 - $16 = $64.</li >
-                                                                                                                                                                        <li><strong>Step 3(Tax): </strong> $64 × 0.08 = $5.12 tax.</li >
-                                                                                                                                                                            <li><strong>Final To Pay: </strong> $64 + $5.12 = <span class="text-blue-700 font-bold">$69.12</span >.</li>
-                                                                                                                                                                                </ul>
-                                                                                                                                                                                    `,
+            <h3>How to Calculate a Discount Manually</h3>
+            <p>The math behind a discount depends on whether you have a percentage or a fixed amount.</p>
+            
+            <h4 class="font-bold mt-4 mb-2 text-gray-800">1. The Percentage Formula (%)</h4>
+            <div class="latex-formula bg-indigo-50 p-4 text-center rounded-lg border border-indigo-100 my-4">
+                <p class="text-indigo-900 font-mono">Savings = Original Price × (Discount % ÷ 100)</p>
+                <p class="text-indigo-900 font-mono mt-1">Final Price = Original Price - Savings</p>
+            </div>
+            
+            <h4 class="font-bold mt-6 mb-2 text-gray-800">2. The "Stacked" or Sequential Discount Logic ⚠️</h4>
+            <p>Be careful with "double discounts"! Retailers often advertise "20% off plus an extra 10% off". This is <strong>not</strong> a 30% discount. You must apply them one after the other:</p>
+            <div class="bg-amber-50 p-4 rounded-lg border border-amber-100 text-sm italic mt-2">
+                <strong>Example:</strong> $100 item. <br>
+                1. 20% off $100 = $80. <br>
+                2. 10% off <strong>$80</strong> = $72. <br>
+                Total saving is $28 (28%), not $30 (30%).
+            </div>
+            
+            <h3 class="mt-8 mb-4">Real-World Case: The Holiday Shopping Trip 🛒</h3>
+            <p>Imagine you found a coat for <strong>$120</strong>. The store offers <strong>25% off</strong>, and your local sales tax is <strong>7.5%</strong>.</p>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mt-2 space-y-2 text-sm">
+                <p><strong>Step 1 (Savings):</strong> $120 × 0.25 = <span class="text-green-600 font-bold">$30.00 saved</span>.</p>
+                <p><strong>Step 2 (Sale Price):</strong> $120 - $30 = $90.00.</p>
+                <p><strong>Step 3 (Tax):</strong> $90 × 0.075 = $6.75 tax.</p>
+                <p class="text-blue-700 font-bold text-base">Step 4 (Total): $90 + $6.75 = $96.75 Final Price.</p>
+            </div>
+            `,
             faq: [
                 {
-                    question: 'How do I calculate a 20% discount?',
-                    answer: 'To calculate a 20% discount, multiply the original price by 0.20 (or divide by 5). Then subtract this amount from the original price.'
+                    question: "How do I calculate 20% off 50 dollars?",
+                    answer: "Multiply 50 by 0.20 to get $10 (your savings). Subtract $10 from $50 to get <strong>$40</strong> as the final price."
                 },
                 {
-                    question: 'Is tax calculated before or after the discount?',
-                    answer: 'In most retail scenarios (US, UK, Europe), sales tax (VAT) is calculated on the <strong>discounted price</strong> (after the coupon is applied), which saves you money on taxes! Our calculator follows this standard.'
+                    question: "Is tax calculated before or after the discount?",
+                    answer: "In most countries and US states, sales tax is calculated on the <strong>post-discount price</strong>. This means you also save money on tax!"
                 },
                 {
-                    question: 'What is a "Double Discount"?',
-                    answer: 'A double discount happens when you apply two coupons, like "20% off" plus an "extra 10% off". Note that 20% + 10% is NOT 30%. You take 20% off first, then take 10% off the new lower price. This usually results in slightly less savings than adding the percentages directly.'
+                    question: "How do I calculate a discount in Excel?",
+                    answer: "If the price is in cell A1 and the discount (e.g., 0.20 for 20%) is in cell B1, use the formula: <code>=A1*(1-B1)</code>."
+                },
+                {
+                    question: "What is 15% off 100 dollars?",
+                    answer: "Since 100 is the base, the percentage is equal to the dollar amount. 15% off $100 is exactly $85."
+                },
+                {
+                    question: "Does this calculator handle VAT?",
+                    answer: "Yes! Simply enter your VAT rate in the 'Tax Rate' field. The logic for VAT and Sales Tax is identical in this context."
                 }
             ]
         }
