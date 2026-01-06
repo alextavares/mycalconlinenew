@@ -2148,20 +2148,21 @@ export const calculators: Record<string, CalculatorConfig> = {
     'salary': {
         id: 'salary',
         title: 'Salary Converter',
-        description: 'Convert salary between Hourly, Daily, Weekly, Bi-weekly, Monthly, and Yearly.',
+        description: 'Convert income between Hourly, Daily, Weekly, Bi-weekly, Monthly, and Yearly.',
         category: 'finance',
         icon: 'DollarSign',
         meta: {
-            title: 'Salary Converter | Hourly to Yearly Calculator',
-            description: 'Convert your salary to hourly, monthly, or yearly rates.',
-            keywords: ['salary converter', 'hourly to yearly', 'paycheck calculator', 'wage converter'],
+            title: 'Salary Converter | Hourly to Yearly Paycheck Calculator',
+            description: 'Convert hourly wage to yearly salary and vice versa. Understand your gross income with the 2080-hour rule.',
+            keywords: ['salary converter', 'hourly to yearly', 'paycheck calculator', 'wage converter', 'gross income'],
         },
         inputs: [
             {
                 id: 'amount',
                 label: 'Amount',
                 type: 'number',
-                placeholder: 'e.g. 5000',
+                placeholder: 'e.g. 25',
+                unit: '$',
             },
             {
                 id: 'period',
@@ -2174,21 +2175,23 @@ export const calculators: Record<string, CalculatorConfig> = {
                     { value: 'month', label: 'Month' },
                     { value: 'year', label: 'Year' },
                 ],
-                defaultValue: 'year'
+                defaultValue: 'hour'
             },
             {
                 id: 'hoursPerWeek',
                 label: 'Hours/Week',
                 type: 'number',
                 placeholder: '40',
-                defaultValue: '40'
+                defaultValue: '40',
+                unit: 'hrs',
             },
             {
                 id: 'weeksPerYear',
                 label: 'Weeks/Year',
                 type: 'number',
                 placeholder: '52',
-                defaultValue: '52'
+                defaultValue: '52',
+                unit: 'wks',
             }
         ],
         outputs: [
@@ -2255,29 +2258,32 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-            <h3>Hourly to Yearly Salary</h3>
-            <p>This tool converts your income between different pay periods: Hourly, Daily, Weekly, Bi-weekly, Monthly, and Yearly. It helps you understand the bigger picture of your earnings.</p>
-            <p>It's based on the standard work year, which typically consists of 2,080 working hours (52 weeks × 40 hours).</p>
+            <h3>Hourly vs. Yearly: The Big Picture</h3>
+            <p>Ever wondered what $25/hour looks like as an annual salary? Or how much a $60k salary breaks down to per week? This calculator does all the math for you.</p>
+            <p>It's an essential tool for job offers, salary negotiations, and budget planning.</p>
             `,
             howTo: `
-            <h3>Standard Conversion Logic</h3>
-            <ul class="list-disc pl-5 space-y-2 text-gray-600 mt-2">
-                <li><strong>Work Week:</strong> Default is 40 hours.</li>
-                <li><strong>Work Year:</strong> Default is 52 weeks.</li>
-                <li><strong>Monthly Calculation:</strong> Yearly Salary divided by 12.</li>
-            </ul>
-            <div class="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-sm text-yellow-800">
-                <strong>Note:</strong> This calculator computes <em>Gross Income</em> (before taxes and deductions). Your actual take-home pay will be lower.
+            <h3>The 2080-Hour Rule</h3>
+            <div class="bg-green-50 p-6 rounded-xl border border-green-100 text-center my-4">
+                <p class="text-xs text-green-800 uppercase tracking-widest font-bold mb-2">Standard Year</p>
+                <code class="text-2xl font-mono text-green-900">40 hours/wk × 52 weeks = 2,080 hours</code>
+                <p class="text-sm text-green-700 mt-2"><strong>Quick Trick:</strong> To estimate yearly salary, double your hourly rate and add three zeros. (e.g., $25/hr → $50 → $50,000).</p>
             </div>
+            <h4 class="font-semibold mt-4">Common Pay Periods</h4>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                <li><strong>Bi-weekly:</strong> Paid every 2 weeks (26 checks/year).</li>
+                <li><strong>Semi-monthly:</strong> Paid twice a month (24 checks/year).</li>
+                <li><strong>Monthly:</strong> Paid once a month (12 checks/year).</li>
+            </ul>
             `,
             faq: [
                 {
-                    question: "Does this include taxes?",
-                    answer: "No, this calculator shows your Gross Pay. Taxes depend on your specific location, filing status, and other deductions."
+                    question: "Is this Gross or Net income?",
+                    answer: "This calculator shows **Gross Income** (before taxes). Your 'take-home' pay will be lower after federal/state taxes, insurance, and 401(k) contributions."
                 },
                 {
-                    question: "Why is the monthly amount different than I expected?",
-                    answer: "Some months have 4 weeks, others have 5. To be consistent, we calculate the Yearly total first (Weekly × 52) and then divide by 12."
+                    question: "Why is Bi-weekly different from Semi-monthly?",
+                    answer: "Bi-weekly means every 2 weeks (e.g., every other Friday), resulting in 26 paychecks. Semi-monthly means twice a month (e.g., 15th and 30th), resulting in 24 paychecks. Bi-weekly paychecks are slightly smaller but you get 2 'extra' checks a year."
                 }
             ]
         }
