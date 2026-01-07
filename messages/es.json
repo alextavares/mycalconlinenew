@@ -701,7 +701,39 @@
     },
     "work": {
       "title": "Calculadora de Trabajo",
-      "description": "Calcula trabajo realizado por una fuerza usando W = Fd cos(θ)."
+      "description": "Calcula Trabajo, Fuerza o Distancia usando la fórmula W = F × d × cos(θ).",
+      "whatIs": "<h3>¿Qué es el Trabajo?</h3><p>En física, el <strong>Trabajo</strong> es la medida de la energía transferida que ocurre cuando un objeto se mueve una distancia por una fuerza externa al menos parcialmente en la dirección del desplazamiento.</p><p><strong>Diferencia clave:</strong> Sostener un objeto pesado requiere esfuerzo (trabajo biológico), pero en física es <strong>CERO trabajo</strong> porque la distancia (d) es cero.</p>",
+      "howTo": "<h3>Fórmula de Trabajo</h3><div class=\"bg-blue-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">W = F × d × cos(θ)</p><p class=\"text-sm opacity-80 mt-2\">Trabajo (J) = Fuerza (N) × Distancia (m) × cos(ángulo)</p></div><h3 class=\"mt-4\">Casos Especiales</h3><ul class=\"list-disc pl-5 space-y-2 text-gray-700\"><li><strong>θ = 0°</strong>: Trabalho Máximo ($W = F \\times d$). Empujar una caja hacia adelante.</li><li><strong>θ = 90°</strong>: Cero Trabajo ($cos(90) = 0$). Llevar una bolsa caminando horizontalmente.</li><li><strong>θ = 180°</strong>: Trabalho Negativo. Fricción actuando opuestamente al movimiento.</li></ul>",
+      "faq": [
+        {
+          "question": "¿Qué es un Julio?",
+          "answer": "Un Julio (J) es la unidad estándar de trabajo o energía. Equivale al trabajo realizado por una fuerza de un Newton a lo largo de un metro."
+        },
+        {
+          "question": "¿Por qué caminar con una bolsa es trabajo cero?",
+          "answer": "La gravedad tira hacia ABAJO, pero te mueves hacia ADELANTE. El ángulo entre la Fuerza y el Desplazamiento es 90°. Como cos(90°) = 0, el trabajo realizado es matemáticamente cero."
+        }
+      ]
+    },
+    "power": {
+      "title": "Calculadora de Potencia",
+      "description": "Calcula Potencia (P), Trabajo (W) o Tiempo (t) en transferencias de energía.",
+      "whatIs": "<h3>¿Qué es la Potencia?</h3><p>La <strong>Potencia</strong> es la rapidez con la que se realiza un trabajo o se transfiere energía. Mide qué tan \"rápido\" puedes realizar un trabajo.</p><p>Por ejemplo, subir escaleras caminando o corriendo requiere el mismo <strong>Trabajo</strong> (fuerza contra gravedad), pero correr requiere más <strong>Potencia</strong> porque lo haces en menos tiempo.</p>",
+      "howTo": "<h3>Fórmula de Potencia</h3><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4 mb-6\"><div class=\"p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center\"><strong class=\"block text-yellow-900 mb-2\">Para Potencia (P)</strong><code class=\"text-xl font-bold text-yellow-800\">P = W / t</code></div><div class=\"p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center\"><strong class=\"block text-yellow-900 mb-2\">Para Trabajo (W)</strong><code class=\"text-xl font-bold text-yellow-800\">W = P × t</code></div><div class=\"p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center\"><strong class=\"block text-yellow-900 mb-2\">Para Tiempo (t)</strong><code class=\"text-xl font-bold text-yellow-800\">t = W / P</code></div></div><p class=\"text-sm text-gray-500\">Donde <strong>P</strong> es Potencia en Vatios, <strong>W</strong> es Trabajo en Julios y <strong>t</strong> es tiempo en segundos.</p>",
+      "faq": [
+        {
+          "question": "¿Qué es un Vatio (W)?",
+          "answer": "El Vatio (W) es la unidad SI de potencia. Un Vatio equivale a un Julio de trabajo realizado por segundo (1 W = 1 J/s)."
+        },
+        {
+          "question": "¿Vatios vs Caballos de Fuerza (HP)?",
+          "answer": "El Caballo de Fuerza (hp) es una unidad antigua usada en motores. 1 caballo de fuerza mecánico equivale aproximadamente a <strong>745.7 Vatios</strong>."
+        },
+        {
+          "question": "¿Qué es un Kilovatio-hora (kWh)?",
+          "answer": "Un kWh es una unidad de <strong>Energía</strong> (o Trabajo), no de Potencia. Representa el uso de 1,000 Vatios durante 1 hora. Es común en facturas de electricidad."
+        }
+      ]
     },
     "age": {
       "title": "Calculadora de Edad",

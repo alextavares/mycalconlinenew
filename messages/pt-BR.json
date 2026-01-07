@@ -718,7 +718,39 @@
     },
     "work": {
       "title": "Calculadora de Trabalho",
-      "description": "Calcule trabalho realizado por uma força usando W = Fd cos(θ)."
+      "description": "Calcule Trabalho, Força ou Distância usando a fórmula W = F × d × cos(θ).",
+      "whatIs": "<h3>O que é Trabalho na Física?</h3><p>Na física, <strong>Trabalho</strong> é a medida da energia transferida quando um objeto é movido ao longo de uma distância por uma força externa aplicada pelo menos parcialmente na direção do deslocamento.</p><p><strong>Diferença crucial:</strong> Segurar um objeto pesado parado exige esforço biológico, mas na física você realiza <strong>ZERO trabalho</strong> porque a distância (d) é zero.</p>",
+      "howTo": "<h3>A Fórmula do Trabalho</h3><div class=\"bg-blue-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">W = F × d × cos(θ)</p><p class=\"text-sm opacity-80 mt-2\">Trabalho (J) = Força (N) × Distância (m) × cos(ângulo)</p></div><h3 class=\"mt-4\">Casos Especiais</h3><ul class=\"list-disc pl-5 space-y-2 text-gray-700\"><li><strong>θ = 0°</strong>: Trabalho Máximo ($W = F \\times d$). Empurrar uma caixa para frente.</li><li><strong>θ = 90°</strong>: Trabalho Zero ($cos(90) = 0$). Carregar sacola caminhando horizontalmente (Força para cima, movimento para frente).</li><li><strong>θ = 180°</strong>: Trabalho Negativo. Fricção atuando contra o movimento.</li></ul>",
+      "faq": [
+        {
+          "question": "O que é um Joule?",
+          "answer": "Um Joule (J) é a unidade padrão de trabalho ou energia. Equivale ao trabalho realizado por uma força de um Newton atuando ao longo de um metro."
+        },
+        {
+          "question": "Por que andar com uma sacola é trabalho zero?",
+          "answer": "A gravidade puxa para BAIXO, mas você move para FRENTE. O ângulo entre a Força e o Deslocamento é 90°. Como cos(90°) = 0, o trabalho realizado contra a gravidade é matemáticamente zero."
+        }
+      ]
+    },
+    "power": {
+      "title": "Calculadora de Potência",
+      "description": "Calcule Potência (P), Trabalho (W) ou Tempo (t) em transferências de energia.",
+      "whatIs": "<h3>O que é Potência?</h3><p>A <strong>Potência</strong> é a taxa na qual o trabalho é realizado ou a energia é transferida. Ela mede o quão \"rápido\" você consegue realizar um trabalho.</p><p>Por exemplo, subir escadas andando ou correndo requer o mesmo <strong>Trabalho</strong> (força contra gravidade), mas correr exige mais <strong>Potência</strong> porque você faz isso em menos tempo.</p>",
+      "howTo": "<h3>A Fórmula da Potência</h3><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4 mb-6\"><div class=\"p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center\"><strong class=\"block text-yellow-900 mb-2\">Para Potência (P)</strong><code class=\"text-xl font-bold text-yellow-800\">P = W / t</code></div><div class=\"p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center\"><strong class=\"block text-yellow-900 mb-2\">Para Trabalho (W)</strong><code class=\"text-xl font-bold text-yellow-800\">W = P × t</code></div><div class=\"p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center\"><strong class=\"block text-yellow-900 mb-2\">Para Tempo (t)</strong><code class=\"text-xl font-bold text-yellow-800\">t = W / P</code></div></div><p class=\"text-sm text-gray-500\">Onde <strong>P</strong> é Potência em Watts, <strong>W</strong> é Trabalho em Joules e <strong>t</strong> é tempo em segundos.</p>",
+      "faq": [
+        {
+          "question": "O que é um Watt (W)?",
+          "answer": "O Watt (W) é a unidade SI de potência. Um Watt equivale a um Joule de trabalho realizado por segundo (1 W = 1 J/s)."
+        },
+        {
+          "question": "Watts vs Cavalos de Força (cv/hp)?",
+          "answer": "O Cavalo de Força (hp) é uma unidade antiga usada em motores. 1 hp (mecânico) equivale a aproximadamente <strong>745.7 Watts</strong>."
+        },
+        {
+          "question": "O que é um Quilowatt-hora (kWh)?",
+          "answer": "Um kWh é uma unidade de <strong>Energia</strong> (ou Trabalho), não de Potência. Representa o uso de 1.000 Watts durante 1 hora. É comum em contas de luz."
+        }
+      ]
     },
     "age": {
       "title": "Calculadora de Idade",
