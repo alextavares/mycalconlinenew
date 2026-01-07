@@ -83,6 +83,8 @@
       "health": "Saúde",
       "calendar": "Calendário",
       "converters": "Conversores",
+      "conversion": "Conversão",
+      "everyday": "Dia a Dia",
       "physics": "Física",
       "others": "Outros"
     },
@@ -102,50 +104,50 @@
     "popularLCM": "Calculadora de MMC"
   },
   "MMCCalculator": {
-  "title": "Calculadora de MMC Online (Mínimo Múltiplo Comum)",
-  "description": "Calcule o Mínimo Múltiplo Comum (MMC) de 2, 3 ou mais números inteiros positivos com explicação passo a passo e fatoração em primos.",
-  "inputLabel": "Números para calcular o MMC",
-  "inputPlaceholder": "Digite números separados por espaço ou vírgula (ex: 6 8 12)",
-  "calculateButton": "Calcular MMC Online",
-  "resultLabel": "O Mínimo Múltiplo Comum (MMC) de",
-  "resultLabelFor": "é:",
-  "errorInvalidInput": "Entrada inválida. Insira apenas números inteiros positivos separados por espaço ou vírgula.",
-  "errorNotEnoughNumbers": "Insira pelo menos dois números inteiros positivos para calcular o MMC.",
-  "errorNonPositive": "MMC é definido apenas para inteiros positivos. Use números maiores que zero.",
-  "errorOverflow": "O cálculo resultou em um número muito grande para ser representado com precisão.",
-  "howToUseTitle": "Como usar a calculadora de MMC online",
-  "howToUseDetail": "Digite dois ou mais números inteiros positivos separados por espaço ou vírgula (por exemplo: 6 8 12). Em seguida, clique em \"Calcular MMC Online\" para ver o resultado e a decomposição em fatores primos.",
-  "whatIsMMCTitle": "O que é MMC (Mínimo Múltiplo Comum)?",
-  "whatIsMMCDetail": "O MMC (Mínimo Múltiplo Comum) de dois ou mais números inteiros é o menor número inteiro positivo que é múltiplo de todos eles ao mesmo tempo. Exemplo: o MMC de 6 e 8 é 24, pois 24 é o menor número que aparece na tabuada do 6 e do 8. O MMC é muito usado em frações, problemas de tempo, ciclos, calendários e situações em que precisamos alinhar múltiplos.",
-  "faqTitle": "Perguntas frequentes sobre MMC online",
-  "faqQ1": "Como calcular o MMC de 2, 3 ou mais números?",
-  "faqA1": "Para calcular o MMC, você pode usar a decomposição em fatores primos ou o método prático de ir dividindo os números por primos sucessivos (2, 3, 5, 7...). A calculadora faz esse processo automaticamente para qualquer quantidade de números inteiros positivos.",
-  "faqQ2": "Qual a diferença entre MMC e MDC (Máximo Divisor Comum)?",
-  "faqA2": "O MMC é o menor múltiplo comum entre os números, enquanto o MDC é o maior número que divide todos eles sem deixar resto. Eles são usados em contextos diferentes, como frações, simplificações e problemas de divisão.",
-  "faqQ3": "Posso usar esta calculadora de MMC para exercícios escolares?",
-  "faqA3": "Sim. A ferramenta foi pensada para estudantes, professores e concurseiros, mostrando o resultado de forma rápida e com explicação que ajuda no aprendizado.",
-  "metadataTitle": "Calculadora de MMC Online Grátis - Mínimo Múltiplo Comum | MyCalcOnline",
-  "metadataDescription": "Calcule o MMC (Mínimo Múltiplo Comum) de 2, 3 ou mais números online grátis. Calculadora de MMC com fatoração em primos, passo a passo e resultados instantâneos.",
-  "metadataKeywords": "calculadora de mmc, calculadora mmc, minimo multiplo comum, mmc online, calcular mmc, calculador de mmc, mínimo múltiplo comum calculadora",
-  "breadcrumbTitle": "Calculadora de MMC",
-  "commonExamplesTitle": "Exemplos comuns de MMC",
-  "methodsTitle": "Métodos para calcular o MMC",
-  "methodsDetail": "Existem vários métodos para calcular o Mínimo Múltiplo Comum: 1) Método de fatoração em primos: decompor cada número em fatores primos e tomar cada fator com seu maior expoente. 2) Método de divisão sucessiva: dividir os números por primos até que todos sejam 1. 3) Usando a fórmula MMC(a,b) = (a × b) / MDC(a,b). Nossa calculadora utiliza algoritmos otimizados para te dar o resultado instantaneamente.",
-  "useCasesTitle": "Para que serve o MMC?",
-  "useCase1": "Somar e subtrair frações com denominadores diferentes",
-  "useCase2": "Resolver problemas de ciclos e eventos repetitivos",
-  "useCase3": "Calcular datas de coincidência em calendários",
-  "useCase4": "Problemas de matemática e física com períodos diferentes",
-  "relatedTitle": "Calculadoras relacionadas",
-  "relatedFractions": "Calculadora de Frações",
-  "relatedPercentage": "Calculadora de Porcentagem",
-  "relatedRuleOfThree": "Calculadora de Regra de 3",
-  "lcmFound": "MMC encontrado",
-  "lcmExplanation": "O MMC é o menor número múltiplo de todos os valores informados.",
-  "primeFactorization": "Decomposição em fatores primos",
-  "exampleHint": "Exemplo rápido: 6 8 12 24 — o MMC será calculado considerando todos esses valores.",
-  "errorTitle": "Erro"
-},
+    "title": "Calculadora de MMC Online (Mínimo Múltiplo Comum)",
+    "description": "Calcule o Mínimo Múltiplo Comum (MMC) de 2, 3 ou mais números inteiros positivos com explicação passo a passo e fatoração em primos.",
+    "inputLabel": "Números para calcular o MMC",
+    "inputPlaceholder": "Digite números separados por espaço ou vírgula (ex: 6 8 12)",
+    "calculateButton": "Calcular MMC Online",
+    "resultLabel": "O Mínimo Múltiplo Comum (MMC) de",
+    "resultLabelFor": "é:",
+    "errorInvalidInput": "Entrada inválida. Insira apenas números inteiros positivos separados por espaço ou vírgula.",
+    "errorNotEnoughNumbers": "Insira pelo menos dois números inteiros positivos para calcular o MMC.",
+    "errorNonPositive": "MMC é definido apenas para inteiros positivos. Use números maiores que zero.",
+    "errorOverflow": "O cálculo resultou em um número muito grande para ser representado com precisão.",
+    "howToUseTitle": "Como usar a calculadora de MMC online",
+    "howToUseDetail": "Digite dois ou mais números inteiros positivos separados por espaço ou vírgula (por exemplo: 6 8 12). Em seguida, clique em \"Calcular MMC Online\" para ver o resultado e a decomposição em fatores primos.",
+    "whatIsMMCTitle": "O que é MMC (Mínimo Múltiplo Comum)?",
+    "whatIsMMCDetail": "O MMC (Mínimo Múltiplo Comum) de dois ou mais números inteiros é o menor número inteiro positivo que é múltiplo de todos eles ao mesmo tempo. Exemplo: o MMC de 6 e 8 é 24, pois 24 é o menor número que aparece na tabuada do 6 e do 8. O MMC é muito usado em frações, problemas de tempo, ciclos, calendários e situações em que precisamos alinhar múltiplos.",
+    "faqTitle": "Perguntas frequentes sobre MMC online",
+    "faqQ1": "Como calcular o MMC de 2, 3 ou mais números?",
+    "faqA1": "Para calcular o MMC, você pode usar a decomposição em fatores primos ou o método prático de ir dividindo os números por primos sucessivos (2, 3, 5, 7...). A calculadora faz esse processo automaticamente para qualquer quantidade de números inteiros positivos.",
+    "faqQ2": "Qual a diferença entre MMC e MDC (Máximo Divisor Comum)?",
+    "faqA2": "O MMC é o menor múltiplo comum entre os números, enquanto o MDC é o maior número que divide todos eles sem deixar resto. Eles são usados em contextos diferentes, como frações, simplificações e problemas de divisão.",
+    "faqQ3": "Posso usar esta calculadora de MMC para exercícios escolares?",
+    "faqA3": "Sim. A ferramenta foi pensada para estudantes, professores e concurseiros, mostrando o resultado de forma rápida e com explicação que ajuda no aprendizado.",
+    "metadataTitle": "Calculadora de MMC Online Grátis - Mínimo Múltiplo Comum | MyCalcOnline",
+    "metadataDescription": "Calcule o MMC (Mínimo Múltiplo Comum) de 2, 3 ou mais números online grátis. Calculadora de MMC com fatoração em primos, passo a passo e resultados instantâneos.",
+    "metadataKeywords": "calculadora de mmc, calculadora mmc, minimo multiplo comum, mmc online, calcular mmc, calculador de mmc, mínimo múltiplo comum calculadora",
+    "breadcrumbTitle": "Calculadora de MMC",
+    "commonExamplesTitle": "Exemplos comuns de MMC",
+    "methodsTitle": "Métodos para calcular o MMC",
+    "methodsDetail": "Existem vários métodos para calcular o Mínimo Múltiplo Comum: 1) Método de fatoração em primos: decompor cada número em fatores primos e tomar cada fator com seu maior expoente. 2) Método de divisão sucessiva: dividir os números por primos até que todos sejam 1. 3) Usando a fórmula MMC(a,b) = (a × b) / MDC(a,b). Nossa calculadora utiliza algoritmos otimizados para te dar o resultado instantaneamente.",
+    "useCasesTitle": "Para que serve o MMC?",
+    "useCase1": "Somar e subtrair frações com denominadores diferentes",
+    "useCase2": "Resolver problemas de ciclos e eventos repetitivos",
+    "useCase3": "Calcular datas de coincidência em calendários",
+    "useCase4": "Problemas de matemática e física com períodos diferentes",
+    "relatedTitle": "Calculadoras relacionadas",
+    "relatedFractions": "Calculadora de Frações",
+    "relatedPercentage": "Calculadora de Porcentagem",
+    "relatedRuleOfThree": "Calculadora de Regra de 3",
+    "lcmFound": "MMC encontrado",
+    "lcmExplanation": "O MMC é o menor número múltiplo de todos os valores informados.",
+    "primeFactorization": "Decomposição em fatores primos",
+    "exampleHint": "Exemplo rápido: 6 8 12 24 — o MMC será calculado considerando todos esses valores.",
+    "errorTitle": "Erro"
+  },
   "WeightedAverageCalculator": {
     "title": "Calculadora de Média Ponderada Online",
     "description": "Insira os valores e seus respectivos pesos para calcular a média ponderada. Ideal para notas escolares, finanças e estatística.",
@@ -229,31 +231,31 @@
     "unsimplifiedLabel": "Não simplificado"
   },
   "PercentageCalculator": {
-  "title": "Calculadora de Porcentagem Online (X% de Y, descontos e aumentos)",
-  "description": "Calcule rapidamente quanto é X% de Y, descontos, aumentos e variações percentuais com uma calculadora de porcentagem simples e precisa.",
-  "labelPercentValue": "Quanto é",
-  "placeholderPercentValue": "Digite a porcentagem (ex: 10, 15, 27.5)",
-  "labelBaseValue": "de",
-  "placeholderBaseValue": "Digite o valor base (ex: 100, 259.90)",
-  "errorInvalidInput": "Por favor, preencha os campos com valores numéricos válidos para porcentagem e valor base.",
-  "labelResult": "Resultado:",
-  "buttonCalculate": "Calcular porcentagem",
-  "descriptionTitle": "Entendendo cálculos de porcentagem na prática",
-  "descriptionDetail": "Esta calculadora de porcentagem online ajuda você a resolver rapidamente situações do dia a dia, como descontos, aumentos e proporções. Para saber quanto é X% de Y, basta informar a porcentagem desejada (por exemplo, 15 para 15%) e o valor base. O resultado mostra exatamente o valor correspondente. Fórmula: <strong>Resultado = (Porcentagem ÷ 100) × Valor base</strong>. Use também para entender reajustes, promoções, taxas e comparações.",
-  "howToUseTitle": "Como usar a Calculadora de Porcentagem Online",
-  "howToUseDetail": "1. No campo de porcentagem, digite o valor percentual sem o símbolo % (por exemplo, 10 para 10%). 2. No campo de valor base, informe o número sobre o qual a porcentagem será aplicada. 3. Clique em \"Calcular porcentagem\" para ver o resultado numérico e a fórmula usada. 4. Use diferentes combinações para testar descontos, acréscimos, comissões e muito mais.",
-  "faqTitle": "Perguntas frequentes sobre porcentagem",
-  "faqQ1": "Como calcular quanto é X% de Y?",
-  "faqA1": "Para calcular X% de Y, use a fórmula: (X ÷ 100) × Y. Exemplo: 15% de 200 = (15 ÷ 100) × 200 = 30. A calculadora aplica exatamente essa fórmula para você.",
-  "faqQ2": "Como calcular desconto em porcentagem?",
-  "faqA2": "Para calcular um desconto, primeiro encontre o valor da porcentagem de desconto (por exemplo, 20% de 150). Depois, subtraia esse valor do preço original: 150 - 30 = 120. A mesma lógica vale para qualquer promoção.",
-  "faqQ3": "Como calcular aumento percentual (reajuste)?",
-  "faqA3": "Para calcular um aumento, encontre o valor percentual do reajuste e some ao valor original. Exemplo: aumento de 8% sobre 1.000 = 80; novo valor = 1.080. Essa lógica é usada para salários, mensalidades, tarifas e muito mais.",
-  "metadataTitle": "Calculadora de Porcentagem Online (X% de Y, Descontos e Aumentos) | MyCalcOnline",
-  "metadataDescription": "Use a calculadora de porcentagem online para descobrir quanto é X% de Y, calcular descontos, aumentos e variações percentuais com rapidez e precisão."
-},
+    "title": "Calculadora de Porcentagem Online (X% de Y, descontos e aumentos)",
+    "description": "Calcule rapidamente quanto é X% de Y, descontos, aumentos e variações percentuais com uma calculadora de porcentagem simples e precisa.",
+    "labelPercentValue": "Quanto é",
+    "placeholderPercentValue": "Digite a porcentagem (ex: 10, 15, 27.5)",
+    "labelBaseValue": "de",
+    "placeholderBaseValue": "Digite o valor base (ex: 100, 259.90)",
+    "errorInvalidInput": "Por favor, preencha os campos com valores numéricos válidos para porcentagem e valor base.",
+    "labelResult": "Resultado:",
+    "buttonCalculate": "Calcular porcentagem",
+    "descriptionTitle": "Entendendo cálculos de porcentagem na prática",
+    "descriptionDetail": "Esta calculadora de porcentagem online ajuda você a resolver rapidamente situações do dia a dia, como descontos, aumentos e proporções. Para saber quanto é X% de Y, basta informar a porcentagem desejada (por exemplo, 15 para 15%) e o valor base. O resultado mostra exatamente o valor correspondente. Fórmula: <strong>Resultado = (Porcentagem ÷ 100) × Valor base</strong>. Use também para entender reajustes, promoções, taxas e comparações.",
+    "howToUseTitle": "Como usar a Calculadora de Porcentagem Online",
+    "howToUseDetail": "1. No campo de porcentagem, digite o valor percentual sem o símbolo % (por exemplo, 10 para 10%). 2. No campo de valor base, informe o número sobre o qual a porcentagem será aplicada. 3. Clique em \"Calcular porcentagem\" para ver o resultado numérico e a fórmula usada. 4. Use diferentes combinações para testar descontos, acréscimos, comissões e muito mais.",
+    "faqTitle": "Perguntas frequentes sobre porcentagem",
+    "faqQ1": "Como calcular quanto é X% de Y?",
+    "faqA1": "Para calcular X% de Y, use a fórmula: (X ÷ 100) × Y. Exemplo: 15% de 200 = (15 ÷ 100) × 200 = 30. A calculadora aplica exatamente essa fórmula para você.",
+    "faqQ2": "Como calcular desconto em porcentagem?",
+    "faqA2": "Para calcular um desconto, primeiro encontre o valor da porcentagem de desconto (por exemplo, 20% de 150). Depois, subtraia esse valor do preço original: 150 - 30 = 120. A mesma lógica vale para qualquer promoção.",
+    "faqQ3": "Como calcular aumento percentual (reajuste)?",
+    "faqA3": "Para calcular um aumento, encontre o valor percentual do reajuste e some ao valor original. Exemplo: aumento de 8% sobre 1.000 = 80; novo valor = 1.080. Essa lógica é usada para salários, mensalidades, tarifas e muito mais.",
+    "metadataTitle": "Calculadora de Porcentagem Online (X% de Y, Descontos e Aumentos) | MyCalcOnline",
+    "metadataDescription": "Use a calculadora de porcentagem online para descobrir quanto é X% de Y, calcular descontos, aumentos e variações percentuais com rapidez e precisão."
+  },
   "Calculators": {
-    "currency-converter": { 
+    "currency-converter": {
       "title": "Conversor de Moedas",
       "description": "Converta valores entre diferentes moedas com taxas atualizadas."
     },
@@ -295,19 +297,25 @@
       "calculateButton": "Calcular",
       "resultLabel": "Resultado"
     },
-    "porcentagem": { "title": "Calculadora de Porcentagem", "description": "Encontre porcentagens de valores." },
+    "porcentagem": {
+      "title": "Calculadora de Porcentagem",
+      "description": "Encontre porcentagens de valores."
+    },
     "regra-de-3": {
-        "title": "Regra de Três",
-        "description": "Resolva proporções diretas e inversas."
+      "title": "Regra de Três",
+      "description": "Resolva proporções diretas e inversas."
     },
     "mmc": {
-    "title": "Mínimo Múltiplo Comum (MMC)",
-    "description": "Encontre o MMC de dois ou mais números.",
-    "numbersLabel": "Números",
-    "numbersPlaceholder": "Digite os números separados por vírgula",
-    "calculateButton": "Calcular"
-  },
-    "fracoes": { "title": "Calculadora de Frações", "description": "Some, subtraia, multiplique e divida frações." },
+      "title": "Mínimo Múltiplo Comum (MMC)",
+      "description": "Encontre o MMC de dois ou mais números.",
+      "numbersLabel": "Números",
+      "numbersPlaceholder": "Digite os números separados por vírgula",
+      "calculateButton": "Calcular"
+    },
+    "fracoes": {
+      "title": "Calculadora de Frações",
+      "description": "Some, subtraia, multiplique e divida frações."
+    },
     "binario": {
       "title": "Calculadora de Números Binários",
       "description": "Converta e calcule na base 2."
@@ -316,24 +324,54 @@
       "title": "Calculadora de Números Hexadecimais",
       "description": "Converta e calcule na base 16."
     },
-    "area-cilindro": { "title": "Área do Cilindro", "description": "Calcule a área da superfície de um cilindro." },
-    "area-circulo": { "title": "Área do Círculo", "description": "Encontre a área a partir do raio." },
-    "area-cubo": { "title": "Área do Cubo", "description": "Calcule a área da superficie de um cubo." },
-    "area-esfera": { "title": "Área da Esfera", "description": "Calcule a área da superfície de uma esfera." },
-    "taxa-metabolica-basal": { "title": "Taxa Metabólica Basal (TMB)", "description": "Estime suas calorias em repouso." },
-    "gordura-corporal": { "title": "Percentual de Gordura Corporal", "description": "Calcule sua gordura corporal estimada." },
-    "relacao-pf": { "title": "Calculadora da Relação P/F", "description": "Avalie a função pulmonar (PaO2/FiO2)." },
+    "area-cilindro": {
+      "title": "Área do Cilindro",
+      "description": "Calcule a área da superfície de um cilindro."
+    },
+    "area-circulo": {
+      "title": "Área do Círculo",
+      "description": "Encontre a área a partir do raio."
+    },
+    "area-cubo": {
+      "title": "Área do Cubo",
+      "description": "Calcule a área da superficie de um cubo."
+    },
+    "area-esfera": {
+      "title": "Área da Esfera",
+      "description": "Calcule a área da superfície de uma esfera."
+    },
+    "taxa-metabolica-basal": {
+      "title": "Taxa Metabólica Basal (TMB)",
+      "description": "Estime suas calorias em repouso."
+    },
+    "gordura-corporal": {
+      "title": "Percentual de Gordura Corporal",
+      "description": "Calcule sua gordura corporal estimada."
+    },
+    "relacao-pf": {
+      "title": "Calculadora da Relação P/F",
+      "description": "Avalie a função pulmonar (PaO2/FiO2)."
+    },
     "dias-entre-datas": {
       "title": "Dias Entre Datas",
       "description": "Descubra quantos dias existem entre duas datas."
     },
-    "idade": { "title": "Idade Cronológica", "description": "Calcule a idade exata de alguém." },
-    "adicionar-subtrair-dias": { "title": "Adicionar/Remover Dias a uma Data", "description": "Encontre a data futura ou passada." },
+    "idade": {
+      "title": "Idade Cronológica",
+      "description": "Calcule a idade exata de alguém."
+    },
+    "adicionar-subtrair-dias": {
+      "title": "Adicionar/Remover Dias a uma Data",
+      "description": "Encontre a data futura ou passada."
+    },
     "hora-minuto": {
       "title": "Calculadora de Horas e Minutos",
       "description": "Some ou subtraia tempos."
     },
-    "horas-trabalhadas": { "title": "Calculadora de Horas Trabalhadas", "description": "Calcule o total de horas e horas extras." },
+    "horas-trabalhadas": {
+      "title": "Calculadora de Horas Trabalhadas",
+      "description": "Calcule o total de horas e horas extras."
+    },
     "gasto-gasolina": {
       "title": "Gastos com Gasolina para Viagens",
       "description": "Estime o custo de combustível da viagem."
@@ -342,32 +380,142 @@
       "title": "Contador de Palavras e Caracteres",
       "description": "Conte palavras, caracteres e linhas em um texto."
     },
-    "romano-decimal": { "title": "Conversor de Números Romanos", "description": "Converta entre números romanos e decimais." },
-    "click-counter": { "title": "Contador de Cliques (Teste CPS)", "description": "Meça sua velocidade de cliques por segundo." },
-    "como-calcular-horas-extras": { "title": "Como Calcular Horas Extras", "description": "Entenda o cálculo do pagamento de horas extras." },
-    "desvio-padrao": { "title": "Desvio Padrão", "description": "Calcule o desvio padrão amostral ou populacional." },
-    "juros-compostos": { "title": "Juros Compostos", "description": "Calcule o crescimento de investimentos." },
-    "juros-simples": { "title": "Juros Simples", "description": "Calcule juros sobre o valor principal." },
-    "media-mediana-moda": { "title": "Média, Mediana e Moda", "description": "Encontre medidas centrais de um conjunto de dados." },
-    "variancia-estatistica": { "title": "Variância Estatística", "description": "Calcule a variância amostral ou populacional." },
-    "area-quadrado": { "title": "Área do Quadrado (Simples)", "description": "Versão simples para cálculo de área." },
-    "gerador-escala-notas": { "title": "Gerador de Escala de Notas", "description": "Crie uma escala de notas escolares." },
-    "average": { "title": "Calculadora de Média", "description": "Calcule média simples, ponderada e outros tipos de média." },
-    "bmi": { "title": "Calculadora de IMC", "description": "Calcule seu Índice de Massa Corporal e estado de saúde." },
-    "calorie": { "title": "Calculadora de Calorias", "description": "Estime necessidades calóricas diárias com base no nível de atividade." },
-    "circle": { "title": "Calculadora de Círculo", "description": "Calcule área, circunferência, diâmetro e raio de um círculo." },
-    "discount": { "title": "Calculadora de Desconto", "description": "Calcule preços de promoção e economias com descontos." },
-    "gpa-calculator": { "title": "Calculadora de Média Escolar", "description": "Calcule sua média de notas semestral ou acumulada." },
-    "inflation": { "title": "Calculadora de Inflação", "description": "Calcule como a inflação afeta o valor do dinheiro ao longo do tempo." },
-    "loan": { "title": "Calculadora de Empréstimo", "description": "Calcule parcelas mensais e juros totais para empréstimos." },
-    "mortgage": { "title": "Calculadora de Financiamento", "description": "Estime parcelas mensais e amortização para seu financiamento imobiliário." },
-    "pythagorean": { "title": "Calculadora do Teorema de Pitágoras", "description": "Calcule a hipotenusa ou catetos de um triângulo retângulo usando a² + b² = c²." },
-    "random-number": { "title": "Gerador de Números Aleatórios", "description": "Gere números aleatórios, dados e listas de números únicos." },
-    "roi": { "title": "Calculadora de ROI", "description": "Calcule o Retorno sobre Investimento para seus investimentos." },
-    "salary": { "title": "Calculadora de Salário", "description": "Converta entre salário por hora, semanal, mensal e anual." },
-    "speed-distance-time": { "title": "Calculadora Velocidade, Distância, Tempo", "description": "Calcule velocidade, distância ou tempo usando a fórmula do movimento." },
-    "tip": { "title": "Calculadora de Gorjeta", "description": "Calcule gorjetas e divida contas entre amigos." },
-    "triangle": { "title": "Calculadora de Triângulo", "description": "Calcule área, perímetro, lados e ângulos usando LLL, LAL ou ALA." },
+    "romano-decimal": {
+      "title": "Conversor de Números Romanos",
+      "description": "Converta entre números romanos e decimais."
+    },
+    "click-counter": {
+      "title": "Contador de Cliques (Teste CPS)",
+      "description": "Meça sua velocidade de cliques por segundo."
+    },
+    "como-calcular-horas-extras": {
+      "title": "Como Calcular Horas Extras",
+      "description": "Entenda o cálculo do pagamento de horas extras."
+    },
+    "desvio-padrao": {
+      "title": "Desvio Padrão",
+      "description": "Calcule o desvio padrão amostral ou populacional."
+    },
+    "juros-compostos": {
+      "title": "Juros Compostos",
+      "description": "Calcule o crescimento de investimentos."
+    },
+    "juros-simples": {
+      "title": "Juros Simples",
+      "description": "Calcule juros sobre o valor principal."
+    },
+    "media-mediana-moda": {
+      "title": "Média, Mediana e Moda",
+      "description": "Encontre medidas centrais de um conjunto de dados."
+    },
+    "variancia-estatistica": {
+      "title": "Variância Estatística",
+      "description": "Calcule a variância amostral ou populacional."
+    },
+    "area-quadrado": {
+      "title": "Área do Quadrado (Simples)",
+      "description": "Versão simples para cálculo de área."
+    },
+    "gerador-escala-notas": {
+      "title": "Gerador de Escala de Notas",
+      "description": "Crie uma escala de notas escolares."
+    },
+    "average": {
+      "title": "Calculadora de Média",
+      "description": "Calcule média simples, ponderada e outros tipos de média."
+    },
+    "bmi": {
+      "title": "Calculadora de IMC",
+      "description": "Índice de Massa Corporal.",
+      "whatIs": "<h3>O que é IMC?</h3><p>Uma medida internacional usada para calcular se uma pessoa está no peso ideal.</p>",
+      "howTo": "<h3>Cálculo</h3><p>IMC = Peso / (Altura × Altura)</p><p>Resultados:<br>< 18,5: Baixo peso<br>18,5-24,9: Normal<br>25-29,9: Sobrepeso<br>30+: Obesidade</p>",
+      "faq": [
+        {
+          "question": "O IMC vê músculo?",
+          "answer": "Não. Para atletas, o IMC pode ser impreciso pois não diferencia massa magra de gordura."
+        }
+      ]
+    },
+    "calorie": {
+      "title": "Calculadora de Calorias",
+      "description": "Estime necessidades calóricas diárias com base no nível de atividade."
+    },
+    "circle": {
+      "title": "Calculadora de Círculo",
+      "description": "Calcule área, circunferência, diâmetro e raio.",
+      "whatIs": "<h3>Geometria do Círculo</h3><p>O círculo é formado por todos os pontos a uma mesma distância (raio) do centro.</p>",
+      "howTo": "<h3>Fórmulas</h3><p>Área = π·r²<br>Circunferência = 2·π·r<br>Diâmetro = 2·r</p>",
+      "faq": [
+        {
+          "question": "Quanto vale Pi?",
+          "answer": "Pi (π) vale aproximadamente 3,14159. É a razão entre a circunferência e o diâmetro."
+        }
+      ]
+    },
+    "discount": {
+      "title": "Calculadora de Desconto",
+      "description": "Calcule preços de promoção e economias com descontos."
+    },
+    "gpa-calculator": {
+      "title": "Calculadora de Média Escolar",
+      "description": "Calcule sua média de notas semestral ou acumulada."
+    },
+    "inflation": {
+      "title": "Calculadora de Inflação",
+      "description": "Calcule como a inflação afeta o valor do dinheiro ao longo do tempo."
+    },
+    "loan": {
+      "title": "Calculadora de Empréstimo",
+      "description": "Calcule parcelas mensais e juros totais para empréstimos."
+    },
+    "mortgage": {
+      "title": "Calculadora de Financiamento",
+      "description": "Estime parcelas mensais e amortização para seu financiamento imobiliário."
+    },
+    "pythagorean": {
+      "title": "Teorema de Pitágoras",
+      "description": "Calcule a hipotenusa ou catetos.",
+      "whatIs": "<h3>O Teorema</h3><p>Em um triângulo retângulo: o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.</p>",
+      "howTo": "<h3>Fórmula</h3><p>c² = a² + b²</p>",
+      "faq": [
+        {
+          "question": "Quem foi Pitágoras?",
+          "answer": "Filósofo e matemático grego que provou esta relação geométrica fundamental."
+        }
+      ]
+    },
+    "random-number": {
+      "title": "Gerador de Números Aleatórios",
+      "description": "Gere números aleatórios, dados e listas de números únicos."
+    },
+    "roi": {
+      "title": "Calculadora de ROI",
+      "description": "Calcule o Retorno sobre Investimento para seus investimentos."
+    },
+    "salary": {
+      "title": "Calculadora de Salário",
+      "description": "Converta entre salário por hora, semanal, mensal e anual."
+    },
+    "speed-distance-time": {
+      "title": "Calculadora Velocidade, Distância, Tempo",
+      "description": "Calcule velocidade, distância ou tempo usando a fórmula do movimento."
+    },
+    "tip": {
+      "title": "Calculadora de Gorjeta",
+      "description": "Calcule gorjetas e divida contas entre amigos."
+    },
+    "triangle": {
+      "title": "Calculadora de Triângulo",
+      "description": "Calcule área, perímetro e ângulos.",
+      "whatIs": "<h3>O Triângulo</h3><p>Polígono de três lados. A soma dos ângulos internos é sempre 180 graus.</p>",
+      "howTo": "<h3>Área</h3><p>Área = (base × altura) / 2. Para lados conhecidos, use a Fórmula de Heron.</p>",
+      "faq": [
+        {
+          "question": "O que é hipotenusa?",
+          "answer": "É o lado oposto ao ângulo reto (90°) em um triângulo retângulo."
+        }
+      ]
+    },
     "body-fat": {
       "title": "Calculadora de Gordura Corporal",
       "description": "Calcule percentual de gordura corporal usando método US Navy ou estimativa por IMC."
@@ -438,11 +586,35 @@
     },
     "force": {
       "title": "Calculadora de Força",
-      "description": "Calcule força, massa ou aceleração usando fórmula F = ma."
+      "description": "Calcule Força, Massa ou Aceleração usando a Segunda Lei de Newton (F=ma).",
+      "whatIs": "<h3>Segunda Lei de Newton</h3><p>A <strong>Força</strong> é uma interação que, se não for contestada, mudará o movimento de um objeto. A Segunda Lei de Newton afirma que a força que atua sobre um objeto é igual à massa desse objeto multiplicada pela sua aceleração.</p>",
+      "howTo": "<h3>O Triângulo Mágico (F-m-a)</h3><p>Use este triângulo para lembrar as fórmulas. Cubra a letra que deseja encontrar:</p><div class=\"flex justify-center my-6\"><div class=\"relative w-32 h-28 bg-indigo-50 rounded-lg flex flex-col items-center justify-center border-2 border-indigo-200\"><span class=\"font-bold text-2xl text-indigo-900 border-b-2 border-indigo-200 w-full text-center pb-1\">F</span><div class=\"flex w-full justify-around pt-1\"><span class=\"font-bold text-2xl text-indigo-900 border-r-2 border-indigo-200 w-1/2 text-center\">m</span><span class=\"font-bold text-2xl text-indigo-900 w-1/2 text-center\">a</span></div></div></div><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4 mb-4\"><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Calcular Força (F):</strong><code class=\"text-indigo-600\">F = m × a</code></div><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Calcular Massa (m):</strong><code class=\"text-indigo-600\">m = F / a</code></div><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Calcular Aceleração (a):</strong><code class=\"text-indigo-600\">a = F / m</code></div></div>",
+      "faq": [
+        {
+          "question": "O que é 1 Newton?",
+          "answer": "Um Newton (1 N) é definido como a força necessária para acelerar uma massa de 1 quilograma a uma taxa de 1 metro por segundo ao quadrado (1 kg⋅m/s²)."
+        },
+        {
+          "question": "A massa muda com a localização?",
+          "answer": "Não, a <strong>massa</strong> é a quantidade de matéria num objeto e permanece constante em todos os lugares. O <strong>peso</strong>, no entanto, depende da gravidade (Peso = massa × gravidade) e muda se você for para a Lua ou Marte."
+        },
+        {
+          "question": "O que acontece se a força resultante for zero?",
+          "answer": "Se a força resultante for zero, o objeto permanecerá em repouso ou continuará se movendo a uma velocidade constante (aceleração zero). Esta é a Primeira Lei de Newton."
+        }
+      ]
     },
     "speed": {
       "title": "Calculadora de Velocidade",
-      "description": "Calcule velocidade, distância ou tempo usando fórmula v = d/t."
+      "description": "Calcule velocidade, distância ou tempo usando a fórmula v = d/t.",
+      "whatIs": "<h3>O que é Velocidade?</h3><p>A velocidade mede quão rápido um objeto se move em uma direção. É uma grandeza vetorial (tem módulo e direção).</p><p>A fórmula básica é: <strong>Velocidade = Distância ÷ Tempo</strong>.</p>",
+      "howTo": "<h3>Como Calcular</h3><p>Use o triângulo da velocidade:</p><ul class=\"list-disc pl-5\"><li><strong>v</strong> = d / t</li><li><strong>d</strong> = v × t</li><li><strong>t</strong> = d / v</li></ul>",
+      "faq": [
+        {
+          "question": "Velocidade média vs instantânea?",
+          "answer": "A média considera o percurso total. A instantânea é a velocidade em um momento exato (como no velocímetro)."
+        }
+      ]
     },
     "energy": {
       "title": "Calculadora de Energia",
@@ -547,6 +719,66 @@
     "work": {
       "title": "Calculadora de Trabalho",
       "description": "Calcule trabalho realizado por uma força usando W = Fd cos(θ)."
+    },
+    "age": {
+      "title": "Calculadora de Idade",
+      "description": "Descubra sua idade exata em anos, meses e dias.",
+      "whatIs": "<h3>Idade Cronológica</h3><p>É o tempo total de vida desde o nascimento. Usada para documentos e aniversários.</p>",
+      "howTo": "<h3>Como usar</h3><p>Insira sua data de nascimento. O sistema calcula dias exatos e próximo aniversário.</p>",
+      "faq": [
+        {
+          "question": "Ano bissexto conta?",
+          "answer": "Sim, nossa calculadora considera os dias extras dos anos bissextos (29 de fev)."
+        }
+      ]
+    },
+    "percentage": {
+      "title": "Calculadora de Porcentagem",
+      "description": "Cálculos de X% de Y, descontos e aumentos.",
+      "whatIs": "<h3>Porcentagem</h3><p>Uma medida de razão com base 100.</p>",
+      "howTo": "<h3>Exemplos</h3><p>10% de 50 = 5<br>Aumento de 20% em 100 = 120</p>",
+      "faq": [
+        {
+          "question": "Fórmula de desconto?",
+          "answer": "Valor Final = Valor Inicial × (1 - Taxa/100)"
+        }
+      ]
+    },
+    "fraction": {
+      "title": "Calculadora de Frações",
+      "description": "Soma, subtração, multiplicação e divisão.",
+      "whatIs": "<h3>Frações</h3><p>Representam partes de um inteiro. Ex: 1/2 é a metade.</p>",
+      "howTo": "<h3>Operações</h3><p>Soma: Mantenha o denominador se igual, ou faça o MMC.<br>Multiplicação: Multiplique direto.</p>",
+      "faq": [
+        {
+          "question": "Como simplificar?",
+          "answer": "Divida topo e base pelo mesmo número até não dar mais."
+        }
+      ]
+    },
+    "cylinder": {
+      "title": "Calculadora de Cilindro",
+      "description": "Volume e área de superfície.",
+      "whatIs": "<h3>O Cilindro</h3><p>Sólido com bases circulares paralelas.</p>",
+      "howTo": "<h3>Fórmulas</h3><p>Volume = πr²h<br>Área Total = 2πr(r+h)</p>",
+      "faq": [
+        {
+          "question": "O que é r e h?",
+          "answer": "r é o raio da base, h é a altura do cilindro."
+        }
+      ]
+    },
+    "cone": {
+      "title": "Calculadora de Cone",
+      "description": "Volume, área e geratriz.",
+      "whatIs": "<h3>O Cone</h3><p>Sólido de base circular que afunila até um vértice.</p>",
+      "howTo": "<h3>Fórmulas</h3><p>Volume = (πr²h)/3<br>Área = πr(r+g)</p>",
+      "faq": [
+        {
+          "question": "Como achar a altura?",
+          "answer": "Se tiver a geratriz (g) e raio (r), use Pitágoras: h² = g² - r²."
+        }
+      ]
     }
   },
   "word-counter": {
@@ -702,41 +934,41 @@
     "metadataDescription": "Calcule o desvio padrão amostral e populacional de forma fácil. Insira seus dados e obtenha o resultado estatístico preciso online."
   },
   "CompoundInterestCalculator": {
-  "title": "Calculadora de Juros Compostos Online",
-  "description": "Simule o crescimento de investimentos com juros compostos, aportes mensais, diferentes taxas e frequências de capitalização.",
-  "initialInvestmentLabel": "Investimento inicial",
-  "monthlyContributionLabel": "Aporte mensal",
-  "yearsLabel": "Tempo em anos",
-  "interestRateLabel": "Taxa de juros anual (%)",
-  "capitalizationFrequencyLabel": "Frequência de capitalização",
-  "selectPlaceholder": "Selecione a frequência",
-  "annualOption": "Anual",
-  "semiannualOption": "Semestral",
-  "quarterlyOption": "Trimestral",
-  "monthlyOption": "Mensal",
-  "decimalPrecisionLabel": "Casas decimais do resultado",
-  "calculateButton": "Calcular juros compostos",
-  "resultTitle": "Resultado da simulação",
-  "futureValueLabel": "Valor futuro estimado: ",
-  "interestEarnedLabel": "Total em juros ganhos: ",
-  "roiLabel": "Retorno sobre o investimento (ROI): ",
-  "periodTableHeader": "Período",
-  "contributionTableHeader": "Aporte por período",
-  "futureValueTableHeader": "Valor acumulado",
-  "metadataTitle": "Calculadora de Juros Compostos Online | Simule Investimentos | MyCalcOnline",
-  "metadataDescription": "Calcule juros compostos com aportes mensais, diferentes taxas e frequências de capitalização. Veja valor futuro, juros totais e tabela detalhada da evolução do investimento.",
-  "howToUseTitle": "Como usar a calculadora de juros compostos",
-  "howToUseDetail": "1. Informe o investimento inicial (pode ser zero). 2. Adicione um aporte mensal se desejar contribuir todo mês. 3. Defina o prazo em anos e a taxa de juros anual. 4. Escolha a frequência de capitalização (mensal, anual etc.). 5. Clique em \"Calcular juros compostos\" para ver o valor futuro, juros totais e, opcionalmente, uma tabela com a evolução.",
-  "whatIsCompoundInterestTitle": "O que são juros compostos?",
-  "whatIsCompoundInterestDetail": "Juros compostos são calculados sobre o valor inicial somado aos juros acumulados ao longo do tempo. Isso gera o \"efeito bola de neve\": quanto mais tempo e regularidade nos aportes, maior o crescimento. A fórmula básica é: M = P × (1 + i)^n, onde M é o montante, P é o principal, i é a taxa por período e n é o número de períodos.",
-  "faqTitle": "Perguntas frequentes sobre juros compostos",
-  "faqQ1": "Qual a diferença entre juros simples e juros compostos?",
-  "faqA1": "Nos juros simples, os juros são calculados sempre sobre o valor inicial. Nos juros compostos, os juros são calculados sobre o valor atualizado (principal + juros acumulados), o que acelera o crescimento ao longo do tempo.",
-  "faqQ2": "Para que serve a frequência de capitalização?",
-  "faqA2": "A frequência define quantas vezes ao ano os juros são aplicados (mensal, anual, etc.). Quanto maior a frequência (mantida a mesma taxa nominal), maior tende a ser o valor final, pois os juros são incorporados com mais frequência.",
-  "faqQ3": "Posso usar esta calculadora para investimentos reais?",
-  "faqA3": "Sim, ela é útil para simular cenários em CDBs, fundos, Tesouro, ações com reaplicação de dividendos e outros produtos. Porém, resultados são estimativas, não garantias; sempre verifique taxas reais, impostos e riscos."
-},
+    "title": "Calculadora de Juros Compostos Online",
+    "description": "Simule o crescimento de investimentos com juros compostos, aportes mensais, diferentes taxas e frequências de capitalização.",
+    "initialInvestmentLabel": "Investimento inicial",
+    "monthlyContributionLabel": "Aporte mensal",
+    "yearsLabel": "Tempo em anos",
+    "interestRateLabel": "Taxa de juros anual (%)",
+    "capitalizationFrequencyLabel": "Frequência de capitalização",
+    "selectPlaceholder": "Selecione a frequência",
+    "annualOption": "Anual",
+    "semiannualOption": "Semestral",
+    "quarterlyOption": "Trimestral",
+    "monthlyOption": "Mensal",
+    "decimalPrecisionLabel": "Casas decimais do resultado",
+    "calculateButton": "Calcular juros compostos",
+    "resultTitle": "Resultado da simulação",
+    "futureValueLabel": "Valor futuro estimado: ",
+    "interestEarnedLabel": "Total em juros ganhos: ",
+    "roiLabel": "Retorno sobre o investimento (ROI): ",
+    "periodTableHeader": "Período",
+    "contributionTableHeader": "Aporte por período",
+    "futureValueTableHeader": "Valor acumulado",
+    "metadataTitle": "Calculadora de Juros Compostos Online | Simule Investimentos | MyCalcOnline",
+    "metadataDescription": "Calcule juros compostos com aportes mensais, diferentes taxas e frequências de capitalização. Veja valor futuro, juros totais e tabela detalhada da evolução do investimento.",
+    "howToUseTitle": "Como usar a calculadora de juros compostos",
+    "howToUseDetail": "1. Informe o investimento inicial (pode ser zero). 2. Adicione um aporte mensal se desejar contribuir todo mês. 3. Defina o prazo em anos e a taxa de juros anual. 4. Escolha a frequência de capitalização (mensal, anual etc.). 5. Clique em \"Calcular juros compostos\" para ver o valor futuro, juros totais e, opcionalmente, uma tabela com a evolução.",
+    "whatIsCompoundInterestTitle": "O que são juros compostos?",
+    "whatIsCompoundInterestDetail": "Juros compostos são calculados sobre o valor inicial somado aos juros acumulados ao longo do tempo. Isso gera o \"efeito bola de neve\": quanto mais tempo e regularidade nos aportes, maior o crescimento. A fórmula básica é: M = P × (1 + i)^n, onde M é o montante, P é o principal, i é a taxa por período e n é o número de períodos.",
+    "faqTitle": "Perguntas frequentes sobre juros compostos",
+    "faqQ1": "Qual a diferença entre juros simples e juros compostos?",
+    "faqA1": "Nos juros simples, os juros são calculados sempre sobre o valor inicial. Nos juros compostos, os juros são calculados sobre o valor atualizado (principal + juros acumulados), o que acelera o crescimento ao longo do tempo.",
+    "faqQ2": "Para que serve a frequência de capitalização?",
+    "faqA2": "A frequência define quantas vezes ao ano os juros são aplicados (mensal, anual, etc.). Quanto maior a frequência (mantida a mesma taxa nominal), maior tende a ser o valor final, pois os juros são incorporados com mais frequência.",
+    "faqQ3": "Posso usar esta calculadora para investimentos reais?",
+    "faqA3": "Sim, ela é útil para simular cenários em CDBs, fundos, Tesouro, ações com reaplicação de dividendos e outros produtos. Porém, resultados são estimativas, não garantias; sempre verifique taxas reais, impostos e riscos."
+  },
   "SimpleInterestCalculator": {
     "title": "Juros Simples",
     "description": "Calcule juros sobre o valor principal.",
@@ -3150,6 +3382,220 @@
     "statisticsDesc": "Veja seu histórico de cálculos",
     "settings": "Configurações",
     "settingsDesc": "Personalize sua experiência",
-    "comingSoon": "Em Breve"
+    "comingSoon": "Em breve"
+  },
+  "Calculators": {
+    "age": {
+      "title": "Calculadora de Idade",
+      "description": "Calcule sua idade exata em anos, meses e dias."
+    },
+    "meters-to-feet": {
+      "title": "Conversor Metros para Pés",
+      "description": "Converta metros para pés e polegadas."
+    },
+    "weight": {
+      "title": "Conversor de Peso",
+      "description": "Converta entre unidades de peso (kg, lbs, etc)."
+    },
+    "temperature": {
+      "title": "Conversor de Temperatura",
+      "description": "Converta Celsius, Fahrenheit e Kelvin."
+    },
+    "length": {
+      "title": "Conversor de Comprimento",
+      "description": "Converta unidades de distância e comprimento."
+    },
+    "average": {
+      "title": "Calculadora de Média",
+      "description": "Calcule Média, Mediana e Moda."
+    },
+    "gcd": {
+      "title": "Calculadora de MDC",
+      "description": "Máximo Divisor Comum."
+    },
+    "lcm": {
+      "title": "Calculadora de MMC",
+      "description": "Mínimo Múltiplo Comum."
+    },
+    "rule-of-three": {
+      "title": "Regra de Três",
+      "description": "Resolva problemas de proporção simples."
+    },
+    "prime-factorization": {
+      "title": "Fatoração Prima",
+      "description": "Decomponha números em fatores primos."
+    },
+    "discount": {
+      "title": "Calculadora de Desconto",
+      "description": "Calcule preço de venda e economia."
+    },
+    "percentage": {
+      "title": "Calculadora de Porcentagem",
+      "description": "Calcule porcentagens, aumentos e descontos."
+    },
+    "bmi": {
+      "title": "Calculadora de IMC",
+      "description": "Índice de Massa Corporal."
+    },
+    "roi": {
+      "title": "Calculadora de ROI",
+      "description": "Retorno sobre Investimento."
+    },
+    "calorie": {
+      "title": "Calculadora de Calorias",
+      "description": "Necessidade calórica diária."
+    },
+    "combination-calculator": {
+      "title": "Calculadora de Combinação",
+      "description": "Cálculo de combinações (nCr)."
+    },
+    "exponent-calculator": {
+      "title": "Calculadora de Expoente",
+      "description": "Calcule potências e expoentes."
+    },
+    "factorial-calculator": {
+      "title": "Calculadora de Fatorial",
+      "description": "Calcule o fatorial (n!) de um número."
+    },
+    "fibonacci-generator": {
+      "title": "Gerador de Fibonacci",
+      "description": "Gere a sequência de Fibonacci."
+    },
+    "fibonacci-calculator": {
+      "title": "Calculadora de Fibonacci",
+      "description": "Encontre números de Fibonacci."
+    },
+    "gcd-lcm-calculator": {
+      "title": "Calculadora de MDC e MMC",
+      "description": "Calcule MDC e MMC simultaneamente."
+    },
+    "lcm-calculator": {
+      "title": "Calculadora de MMC",
+      "description": "Mínimo Múltiplo Comum."
+    },
+    "gcd-calculator": {
+      "title": "Calculadora de MDC",
+      "description": "Máximo Divisor Comum."
+    },
+    "logarithm-calculator": {
+      "title": "Calculadora de Logaritmo",
+      "description": "Calcule logaritmos base 10, 2 ou e."
+    },
+    "logarithm-solver": {
+      "title": "Solucionador de Logaritmo",
+      "description": "Resolva equações logarítmicas."
+    },
+    "modulo-calculator": {
+      "title": "Calculadora de Módulo",
+      "description": "Calcule o resto da divisão."
+    },
+    "permutation-calculator": {
+      "title": "Calculadora de Permutação",
+      "description": "Calcule permutações (nPr)."
+    },
+    "prime-factorization-calculator": {
+      "title": "Fatoração Prima",
+      "description": "Calculadora de decomposição em primos."
+    },
+    "prime-checker": {
+      "title": "Verificador de Números Primos",
+      "description": "Verifique se um número é primo."
+    },
+    "probability-calculator": {
+      "title": "Calculadora de Probabilidade",
+      "description": "Calcule probabilidade de eventos."
+    },
+    "pythagorean-theorem-calculator": {
+      "title": "Teorema de Pitágoras",
+      "description": "Calcule os lados de um triângulo retângulo."
+    },
+    "quadratic-formula-calculator": {
+      "title": "Fórmula de Bhaskara",
+      "description": "Resolva equações do segundo grau."
+    },
+    "sigmoid-function-calculator": {
+      "title": "Função Sigmoide",
+      "description": "Calcule a função de ativação sigmoide."
+    },
+    "fraction-calculator": {
+      "title": "Calculadora de Frações",
+      "description": "Some, subtraia, multiplique e divida frações."
+    },
+    "simple-interest-calculator": {
+      "title": "Calculadora de Juros Simples",
+      "description": "Calcule juros simples."
+    },
+    "compound-interest-calculator": {
+      "title": "Calculadora de Juros Compostos",
+      "description": "Calcule juros compostos."
+    },
+    "scientific-notation-calculator": {
+      "title": "Notação Científica",
+      "description": "Converta para/de notação científica."
+    },
+    "date-difference-calculator": {
+      "title": "Diferença entre Datas",
+      "description": "Calcule dias entre datas."
+    },
+    "date-difference": {
+      "title": "Diferença entre Datas",
+      "description": "Calcule dias entre datas."
+    },
+    "add-subtract-days-calculator": {
+      "title": "Somar/Subtrair Dias",
+      "description": "Adicione ou subtraia dias de uma data."
+    },
+    "speed": {
+      "title": "Calculadora de Velocidade",
+      "description": "Calcule Vel., Distância e Tempo."
+    },
+    "circle": {
+      "title": "Calculadora de Círculo",
+      "description": "Area, Circunferência e Raio."
+    },
+    "triangle": {
+      "title": "Calculadora de Triângulo",
+      "description": "Area e Perímetro (Heron)."
+    },
+    "square": {
+      "title": "Calculadora de Quadrado",
+      "description": "Area, Perímetro e Diagonal."
+    },
+    "rectangle": {
+      "title": "Calculadora de Retângulo",
+      "description": "Area, Perímetro e Diagonal."
+    },
+    "pythagorean": {
+      "title": "Teorema de Pitágoras",
+      "description": "Calcule a hipotenusa ou catetos (a² + b² = c²)."
+    },
+    "percentage": {
+      "title": "Calculadora de Porcentagem",
+      "description": "Calcule %, diferença percentual e frações de 100."
+    },
+    "bmi": {
+      "title": "Calculadora de IMC",
+      "description": "Calcule o Índice de Massa Corporal e veja sua faixa de peso."
+    },
+    "fraction": {
+      "title": "Calculadora de Frações",
+      "description": "Some, subtraia, multiplique e divida frações."
+    },
+    "cylinder": {
+      "title": "Volume do Cilindro",
+      "description": "Calcule o volume de um cilindro."
+    },
+    "cone": {
+      "title": "Volume do Cone",
+      "description": "Calcule o volume de um cone."
+    },
+    "age": {
+      "title": "Calculadora de Idade",
+      "description": "Descubra sua idade exata em anos, meses e dias."
+    },
+    "gas-calculator": {
+      "title": "Calculadora de Combustível",
+      "description": "Custo de combustível."
+    }
   }
 }

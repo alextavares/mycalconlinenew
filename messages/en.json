@@ -68,6 +68,7 @@
       "health": "Health",
       "calendar": "Calendar",
       "converters": "Converters",
+      "conversion": "Conversion",
       "physics": "Physics",
       "math": "Math",
       "fitness": "Fitness",
@@ -3883,5 +3884,195 @@
     "settings": "Settings",
     "settingsDesc": "Customize your experience",
     "comingSoon": "Coming Soon"
+  },
+  "Calculators": {
+    "age": {
+      "title": "Age Calculator",
+      "description": "Calculate exact age."
+    },
+    "meters-to-feet": {
+      "title": "Meters to Feet Converter",
+      "description": "Convert meters to feet and inches."
+    },
+    "weight": {
+      "title": "Weight Converter",
+      "description": "Convert between weight units."
+    },
+    "temperature": {
+      "title": "Temperature Converter",
+      "description": "Convert Celsius, Fahrenheit, Kelvin."
+    },
+    "length": {
+      "title": "Length Converter",
+      "description": "Convert length units."
+    },
+    "average": {
+      "title": "Average Calculator",
+      "description": "Calculate Mean, Median, Mode."
+    },
+    "gcd": {
+      "title": "GCD Calculator",
+      "description": "Greatest Common Divisor."
+    },
+    "lcm": {
+      "title": "LCM Calculator",
+      "description": "Least Common Multiple."
+    },
+    "rule-of-three": {
+      "title": "Rule of Three Calculator",
+      "description": "Solve simple proportions."
+    },
+    "prime-factorization": {
+      "title": "Prime Factorization",
+      "description": "Find prime factors of a number."
+    },
+    "discount": {
+      "title": "Discount Calculator",
+      "description": "Calculate sale price and savings."
+    },
+    "percentage": {
+      "title": "Percentage Calculator",
+      "description": "Calculate percentages."
+    },
+    "bmi": {
+      "title": "BMI Calculator",
+      "description": "Body Mass Index calculation."
+    },
+    "roi": {
+      "title": "ROI Calculator",
+      "description": "Return on Investment."
+    },
+    "calorie": {
+      "title": "Calorie Calculator",
+      "description": "Daily caloric needs."
+    },
+    "combination-calculator": {
+      "title": "Combination Calculator",
+      "description": "Calculate nCr combinations."
+    },
+    "exponent-calculator": {
+      "title": "Exponent Calculator",
+      "description": "Calculate exponents and powers."
+    },
+    "factorial-calculator": {
+      "title": "Factorial Calculator",
+      "description": "Calculate factorials."
+    },
+    "fibonacci-generator": {
+      "title": "Fibonacci Generator",
+      "description": "Generate Fibonacci sequence."
+    },
+    "fibonacci-calculator": {
+      "title": "Fibonacci Calculator",
+      "description": "Calculate Fibonacci numbers."
+    },
+    "gcd-lcm-calculator": {
+      "title": "GCD & LCM Calculator",
+      "description": "Calculate Greatest Common Divisor and Least Common Multiple."
+    },
+    "lcm-calculator": {
+      "title": "LCM Calculator",
+      "description": "Least Common Multiple calculator."
+    },
+    "gcd-calculator": {
+      "title": "GCD Calculator",
+      "description": "Greatest Common Divisor calculator."
+    },
+    "logarithm-calculator": {
+      "title": "Logarithm Calculator",
+      "description": "Calculate logs."
+    },
+    "logarithm-solver": {
+      "title": "Logarithm Solver",
+      "description": "Solve logarithmic equations."
+    },
+    "modulo-calculator": {
+      "title": "Modulo Calculator",
+      "description": "Calculate division remainder."
+    },
+    "permutation-calculator": {
+      "title": "Permutation Calculator",
+      "description": "Calculate nPr permutations."
+    },
+    "prime-factorization-calculator": {
+      "title": "Prime Factorization",
+      "description": "Prime factors calculator."
+    },
+    "prime-checker": {
+      "title": "Prime Number Checker",
+      "description": "Check if a number is prime."
+    },
+    "probability-calculator": {
+      "title": "Probability Calculator",
+      "description": "Calculate probability."
+    },
+    "pythagorean-theorem-calculator": {
+      "title": "Pythagorean Theorem",
+      "description": "Right triangle calculator."
+    },
+    "quadratic-formula-calculator": {
+      "title": "Quadratic Formula",
+      "description": "Solve quadratic equations."
+    },
+    "sigmoid-function-calculator": {
+      "title": "Sigmoid Function",
+      "description": "Calculate sigmoid function."
+    },
+    "fraction-calculator": {
+      "title": "Fraction Calculator",
+      "description": "Fraction arithmetic."
+    },
+    "simple-interest-calculator": {
+      "title": "Simple Interest Calculator",
+      "description": "Calculate simple interest."
+    },
+    "compound-interest-calculator": {
+      "title": "Compound Interest Calculator",
+      "description": "Calculate compound interest."
+    },
+    "scientific-notation-calculator": {
+      "title": "Scientific Notation",
+      "description": "Convert to/from scientific notation."
+    },
+    "date-difference-calculator": {
+      "title": "Date Difference Calculator",
+      "description": "Calculate days between dates."
+    },
+    "add-subtract-days-calculator": {
+      "title": "Add/Subtract Days",
+      "description": "Add or subtract days from a date."
+    },
+    "gas-calculator": {
+      "title": "Gas Calculator",
+      "description": "Fuel cost calculator."
+    },
+    "speed": {
+      "title": "Speed Calculator",
+      "description": "Calculate Speed, Distance & Time."
+    },
+    "circle": {
+      "title": "Circle Calculator",
+      "description": "Area, Circumference & Radius."
+    },
+    "triangle": {
+      "title": "Triangle Calculator",
+      "description": "Area & Perimeter (Heron's Formula)."
+    },
+    "pythagorean": {
+      "title": "Pythagorean Theorem Calculator",
+      "description": "Calculate Hypotenuse or Legs (a² + b² = c²)."
+    },
+    "fraction": {
+      "title": "Fraction Calculator",
+      "description": "Add, subtract, multiply and divide fractions."
+    },
+    "cylinder": {
+      "title": "Cylinder Volume",
+      "description": "Calculate the volume of a cylinder."
+    },
+    "cone": {
+      "title": "Cone Volume",
+      "description": "Calculate the volume of a cone."
+    }
   }
 }

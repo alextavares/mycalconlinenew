@@ -9,6 +9,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // pageExtensions: ['js', 'jsx', 'ts', 'tsx'], // Usually not needed with App Router unless customizing
+  output: 'standalone',
 };
 
 // Wrap the config with the next-intl plugin

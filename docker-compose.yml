@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  sitemycalc:
+    container_name: sitemycalc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sitemycalc:latest
+    restart: always
+    ports:
+      - "3022:3000"
+    environment:
+      - NODE_ENV=production
+    # If you need to persist anything (unlikely for a calculator site), add volumes here

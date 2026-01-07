@@ -158,10 +158,29 @@ export default function HomePage() {
       // Try translations but fallback to English config
       try {
         const translatedTitle = tc.raw(`${slug}.title`);
-        if (translatedTitle && typeof translatedTitle === 'string' && translatedTitle !== slug && translatedTitle.length > 0) title = translatedTitle;
+        // STRICTER CHECK: Reject if it looks like a key (has dots, no spaces) or contains 'Calculators.'
+        const isSuspiciousKey = (text: string) => {
+          return text.includes('Calculators.') ||
+            text.endsWith('.title') ||
+            text.endsWith('.description') ||
+            (!text.includes(' ') && text.includes('.'));
+        };
+
+        if (translatedTitle &&
+          typeof translatedTitle === 'string' &&
+          translatedTitle !== slug &&
+          !isSuspiciousKey(translatedTitle) &&
+          translatedTitle.length > 0) {
+          title = translatedTitle;
+        }
 
         const translatedDesc = tc.raw(`${slug}.description`);
-        if (translatedDesc && typeof translatedDesc === 'string' && translatedDesc.length > 0) description = translatedDesc;
+        if (translatedDesc &&
+          typeof translatedDesc === 'string' &&
+          !isSuspiciousKey(translatedDesc) &&
+          translatedDesc.length > 0) {
+          description = translatedDesc;
+        }
       } catch { }
 
       return {

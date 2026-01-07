@@ -87,50 +87,50 @@
     "changeLanguage": "Cambiar idioma"
   },
   "MMCCalculator": {
-  "title": "Calculadora de MCM en línea (Mínimo Común Múltiplo)",
-  "description": "Calcula el Mínimo Común Múltiplo (MCM) de 2, 3 o más números enteros positivos con explicación paso a paso y factorización en primos.",
-  "inputLabel": "Números para calcular el MCM",
-  "inputPlaceholder": "Ingresa números separados por espacio o coma (ej: 6 8 12)",
-  "calculateButton": "Calcular MCM en línea",
-  "resultLabel": "El Mínimo Común Múltiplo (MCM) de",
-  "resultLabelFor": "es:",
-  "errorInvalidInput": "Entrada no válida. Ingresa solo números enteros positivos separados por espacios o comas.",
-  "errorNotEnoughNumbers": "Ingresa al menos dos números enteros positivos para calcular el MCM.",
-  "errorNonPositive": "El MCM se define solo para enteros positivos. Usa números mayores que cero.",
-  "errorOverflow": "El cálculo resultó en un número demasiado grande para representarse con precisión.",
-  "howToUseTitle": "Cómo usar la calculadora de MCM en línea",
-  "howToUseDetail": "Escribe dos o más números enteros positivos separados por espacios o comas (por ejemplo: 6 8 12) y haz clic en \"Calcular MCM en línea\" para ver el resultado y la descomposición en factores primos.",
-  "whatIsMMCTitle": "¿Qué es el MCM (Mínimo Común Múltiplo)?",
-  "whatIsMMCDetail": "El MCM (Mínimo Común Múltiplo) de dos o más números enteros es el menor número entero positivo que es múltiplo de todos ellos al mismo tiempo. Por ejemplo, el MCM de 6 y 8 es 24, porque 24 es el menor número que aparece en las tablas de ambos. El MCM se utiliza con frecuencia en fracciones, calendarios, ciclos repetitivos y problemas donde se deben alinear múltiplos.",
-  "faqTitle": "Preguntas frecuentes sobre el MCM en línea",
-  "faqQ1": "¿Cómo calcular el MCM de 2, 3 o más números?",
-  "faqA1": "Puedes calcular el MCM usando la factorización en primos o dividiendo sucesivamente los números por primos (2, 3, 5, 7...). Esta calculadora automatiza el proceso y soporta varios enteros positivos a la vez.",
-  "faqQ2": "¿Cuál es la diferencia entre MCM y MCD (Máximo Común Divisor)?",
-  "faqA2": "El MCM es el menor múltiplo común entre los números, mientras que el MCD es el número más grande que divide a todos sin dejar residuo. Se usan en contextos distintos, como fracciones, simplificaciones y problemas de divisibilidad.",
-  "faqQ3": "¿Puedo usar esta calculadora de MCM para tareas escolares?",
-  "faqA3": "Sí. Esta herramienta está pensada para estudiantes y profesores, ofreciendo resultados rápidos y explicaciones claras que ayudan a entender cómo se obtiene el MCM.",
-  "metadataTitle": "Calculadora de MCM Online - Mínimo Común Múltiplo Gratis | MyCalcOnline",
-  "metadataDescription": "Calcula el MCM (Mínimo Común Múltiplo) de 2, 3 o más números online gratis. Calculadora de MCM con factorización en primos, explicación paso a paso y resultados instantáneos.",
-  "metadataKeywords": "calculadora de mcm, calculadora mcm, minimo comun multiplo, mcm online, calcular mcm, calculador de mcm, mínimo común múltiplo calculadora",
-  "breadcrumbTitle": "Calculadora de MCM",
-  "commonExamplesTitle": "Ejemplos comunes de MCM",
-  "methodsTitle": "Métodos para calcular el MCM",
-  "methodsDetail": "Existen varios métodos para calcular el Mínimo Común Múltiplo: 1) Método de factorización en primos: descomponer cada número en factores primos y tomar cada factor con su mayor exponente. 2) Método de división sucesiva: dividir los números por primos hasta que todos sean 1. 3) Usando la fórmula MCM(a,b) = (a × b) / MCD(a,b). Nuestra calculadora utiliza algoritmos optimizados para darte el resultado instantáneamente.",
-  "useCasesTitle": "¿Para qué se usa el MCM?",
-  "useCase1": "Sumar y restar fracciones con diferentes denominadores",
-  "useCase2": "Resolver problemas de ciclos y eventos repetitivos",
-  "useCase3": "Calcular fechas de coincidencia en calendarios",
-  "useCase4": "Problemas de matemáticas y física con períodos diferentes",
-  "relatedTitle": "Calculadoras relacionadas",
-  "relatedFractions": "Calculadora de Fracciones",
-  "relatedPercentage": "Calculadora de Porcentaje",
-  "relatedRuleOfThree": "Calculadora de Regla de Tres",
-  "lcmFound": "MCM encontrado",
-  "lcmExplanation": "El MCM es el menor número múltiplo de todos los valores ingresados.",
-  "primeFactorization": "Descomposición en factores primos",
-  "exampleHint": "Ejemplo rápido: 6 8 12 24 — el MCM se calculará para todos estos valores.",
-  "errorTitle": "Error"
-},
+    "title": "Calculadora de MCM en línea (Mínimo Común Múltiplo)",
+    "description": "Calcula el Mínimo Común Múltiplo (MCM) de 2, 3 o más números enteros positivos con explicación paso a paso y factorización en primos.",
+    "inputLabel": "Números para calcular el MCM",
+    "inputPlaceholder": "Ingresa números separados por espacio o coma (ej: 6 8 12)",
+    "calculateButton": "Calcular MCM en línea",
+    "resultLabel": "El Mínimo Común Múltiplo (MCM) de",
+    "resultLabelFor": "es:",
+    "errorInvalidInput": "Entrada no válida. Ingresa solo números enteros positivos separados por espacios o comas.",
+    "errorNotEnoughNumbers": "Ingresa al menos dos números enteros positivos para calcular el MCM.",
+    "errorNonPositive": "El MCM se define solo para enteros positivos. Usa números mayores que cero.",
+    "errorOverflow": "El cálculo resultó en un número demasiado grande para representarse con precisión.",
+    "howToUseTitle": "Cómo usar la calculadora de MCM en línea",
+    "howToUseDetail": "Escribe dos o más números enteros positivos separados por espacios o comas (por ejemplo: 6 8 12) y haz clic en \"Calcular MCM en línea\" para ver el resultado y la descomposición en factores primos.",
+    "whatIsMMCTitle": "¿Qué es el MCM (Mínimo Común Múltiplo)?",
+    "whatIsMMCDetail": "El MCM (Mínimo Común Múltiplo) de dos o más números enteros es el menor número entero positivo que es múltiplo de todos ellos al mismo tiempo. Por ejemplo, el MCM de 6 y 8 es 24, porque 24 es el menor número que aparece en las tablas de ambos. El MCM se utiliza con frecuencia en fracciones, calendarios, ciclos repetitivos y problemas donde se deben alinear múltiplos.",
+    "faqTitle": "Preguntas frecuentes sobre el MCM en línea",
+    "faqQ1": "¿Cómo calcular el MCM de 2, 3 o más números?",
+    "faqA1": "Puedes calcular el MCM usando la factorización en primos o dividiendo sucesivamente los números por primos (2, 3, 5, 7...). Esta calculadora automatiza el proceso y soporta varios enteros positivos a la vez.",
+    "faqQ2": "¿Cuál es la diferencia entre MCM y MCD (Máximo Común Divisor)?",
+    "faqA2": "El MCM es el menor múltiplo común entre los números, mientras que el MCD es el número más grande que divide a todos sin dejar residuo. Se usan en contextos distintos, como fracciones, simplificaciones y problemas de divisibilidad.",
+    "faqQ3": "¿Puedo usar esta calculadora de MCM para tareas escolares?",
+    "faqA3": "Sí. Esta herramienta está pensada para estudiantes y profesores, ofreciendo resultados rápidos y explicaciones claras que ayudan a entender cómo se obtiene el MCM.",
+    "metadataTitle": "Calculadora de MCM Online - Mínimo Común Múltiplo Gratis | MyCalcOnline",
+    "metadataDescription": "Calcula el MCM (Mínimo Común Múltiplo) de 2, 3 o más números online gratis. Calculadora de MCM con factorización en primos, explicación paso a paso y resultados instantáneos.",
+    "metadataKeywords": "calculadora de mcm, calculadora mcm, minimo comun multiplo, mcm online, calcular mcm, calculador de mcm, mínimo común múltiplo calculadora",
+    "breadcrumbTitle": "Calculadora de MCM",
+    "commonExamplesTitle": "Ejemplos comunes de MCM",
+    "methodsTitle": "Métodos para calcular el MCM",
+    "methodsDetail": "Existen varios métodos para calcular el Mínimo Común Múltiplo: 1) Método de factorización en primos: descomponer cada número en factores primos y tomar cada factor con su mayor exponente. 2) Método de división sucesiva: dividir los números por primos hasta que todos sean 1. 3) Usando la fórmula MCM(a,b) = (a × b) / MCD(a,b). Nuestra calculadora utiliza algoritmos optimizados para darte el resultado instantáneamente.",
+    "useCasesTitle": "¿Para qué se usa el MCM?",
+    "useCase1": "Sumar y restar fracciones con diferentes denominadores",
+    "useCase2": "Resolver problemas de ciclos y eventos repetitivos",
+    "useCase3": "Calcular fechas de coincidencia en calendarios",
+    "useCase4": "Problemas de matemáticas y física con períodos diferentes",
+    "relatedTitle": "Calculadoras relacionadas",
+    "relatedFractions": "Calculadora de Fracciones",
+    "relatedPercentage": "Calculadora de Porcentaje",
+    "relatedRuleOfThree": "Calculadora de Regla de Tres",
+    "lcmFound": "MCM encontrado",
+    "lcmExplanation": "El MCM es el menor número múltiplo de todos los valores ingresados.",
+    "primeFactorization": "Descomposición en factores primos",
+    "exampleHint": "Ejemplo rápido: 6 8 12 24 — el MCM se calculará para todos estos valores.",
+    "errorTitle": "Error"
+  },
   "WeightedAverageCalculator": {
     "title": "Calculadora de Promedio Ponderado Online",
     "description": "Ingresa los valores y sus respectivos pesos para calcular el promedio ponderado. Ideal para calificaciones, finanzas y estadística.",
@@ -223,29 +223,29 @@
     "errorInvalidInput": "Por favor, ingresa un valor válido mayor que cero."
   },
   "PercentageCalculator": {
-  "title": "Calculadora de Porcentaje en línea (X% de Y, descuentos y aumentos)",
-  "description": "Calcula rápidamente X% de Y, descuentos, aumentos y variaciones porcentuales con una calculadora de porcentaje sencilla y precisa.",
-  "labelPercentValue": "Cuánto es",
-  "placeholderPercentValue": "Ingresa el porcentaje (ej: 10, 15, 27.5)",
-  "labelBaseValue": "de",
-  "placeholderBaseValue": "Ingresa el valor base (ej: 100, 259.90)",
-  "errorInvalidInput": "Por favor, ingresa valores numéricos válidos tanto para el porcentaje como para el valor base.",
-  "labelResult": "Resultado:",
-  "buttonCalculate": "Calcular porcentaje",
-  "descriptionTitle": "Entendiendo los cálculos de porcentaje en la práctica",
-  "descriptionDetail": "Esta calculadora de porcentaje en línea te ayuda a resolver situaciones cotidianas como descuentos, aumentos y proporciones. Para saber cuánto es X% de Y, simplemente ingresa el porcentaje deseado (por ejemplo, 15 para 15%) y el valor base. El resultado muestra el valor correspondiente. Fórmula: <strong>Resultado = (Porcentaje ÷ 100) × Valor base</strong>. Úsala para compras, promociones, comisiones, intereses, ajustes y comparaciones.",
-  "howToUseTitle": "Cómo usar la calculadora de porcentaje en línea",
-  "howToUseDetail": "1. En el campo de porcentaje, escribe el valor sin el símbolo % (por ejemplo, 10 para 10%). 2. En el campo de valor base, ingresa el número sobre el cual se aplicará el porcentaje. 3. Haz clic en \"Calcular porcentaje\" para ver el resultado numérico y la fórmula utilizada. 4. Prueba diferentes combinaciones para calcular descuentos, recargos, comisiones y más.",
-  "faqTitle": "Preguntas frecuentes sobre porcentajes",
-  "faqQ1": "¿Cómo calcular cuánto es X% de Y?",
-  "faqA1": "Usa la fórmula: (X ÷ 100) × Y. Ejemplo: 15% de 200 = (15 ÷ 100) × 200 = 30. La calculadora aplica exactamente esta fórmula por ti.",
-  "faqQ2": "¿Cómo calcular un descuento en porcentaje?",
-  "faqA2": "Primero calcula el valor del descuento (por ejemplo, 20% de 150). Luego, réstalo del precio original: 150 - 30 = 120. La misma lógica se aplica a cualquier promoción.",
-  "faqQ3": "¿Cómo calcular un aumento porcentual (ajuste)?",
-  "faqA3": "Calcula el valor porcentual del aumento y súmalo al valor original. Ejemplo: aumento del 8% sobre 1.000 = 80; nuevo valor = 1.080. Es común en ajustes de salarios, tarifas y suscripciones.",
-  "metadataTitle": "Calculadora de Porcentaje en línea (X% de Y, Descuentos y Aumentos) | MyCalcOnline",
-  "metadataDescription": "Usa la calculadora de porcentaje en línea para saber cuánto es X% de Y, calcular descuentos, aumentos y variaciones porcentuales de forma rápida y precisa."
-},
+    "title": "Calculadora de Porcentaje en línea (X% de Y, descuentos y aumentos)",
+    "description": "Calcula rápidamente X% de Y, descuentos, aumentos y variaciones porcentuales con una calculadora de porcentaje sencilla y precisa.",
+    "labelPercentValue": "Cuánto es",
+    "placeholderPercentValue": "Ingresa el porcentaje (ej: 10, 15, 27.5)",
+    "labelBaseValue": "de",
+    "placeholderBaseValue": "Ingresa el valor base (ej: 100, 259.90)",
+    "errorInvalidInput": "Por favor, ingresa valores numéricos válidos tanto para el porcentaje como para el valor base.",
+    "labelResult": "Resultado:",
+    "buttonCalculate": "Calcular porcentaje",
+    "descriptionTitle": "Entendiendo los cálculos de porcentaje en la práctica",
+    "descriptionDetail": "Esta calculadora de porcentaje en línea te ayuda a resolver situaciones cotidianas como descuentos, aumentos y proporciones. Para saber cuánto es X% de Y, simplemente ingresa el porcentaje deseado (por ejemplo, 15 para 15%) y el valor base. El resultado muestra el valor correspondiente. Fórmula: <strong>Resultado = (Porcentaje ÷ 100) × Valor base</strong>. Úsala para compras, promociones, comisiones, intereses, ajustes y comparaciones.",
+    "howToUseTitle": "Cómo usar la calculadora de porcentaje en línea",
+    "howToUseDetail": "1. En el campo de porcentaje, escribe el valor sin el símbolo % (por ejemplo, 10 para 10%). 2. En el campo de valor base, ingresa el número sobre el cual se aplicará el porcentaje. 3. Haz clic en \"Calcular porcentaje\" para ver el resultado numérico y la fórmula utilizada. 4. Prueba diferentes combinaciones para calcular descuentos, recargos, comisiones y más.",
+    "faqTitle": "Preguntas frecuentes sobre porcentajes",
+    "faqQ1": "¿Cómo calcular cuánto es X% de Y?",
+    "faqA1": "Usa la fórmula: (X ÷ 100) × Y. Ejemplo: 15% de 200 = (15 ÷ 100) × 200 = 30. La calculadora aplica exactamente esta fórmula por ti.",
+    "faqQ2": "¿Cómo calcular un descuento en porcentaje?",
+    "faqA2": "Primero calcula el valor del descuento (por ejemplo, 20% de 150). Luego, réstalo del precio original: 150 - 30 = 120. La misma lógica se aplica a cualquier promoción.",
+    "faqQ3": "¿Cómo calcular un aumento porcentual (ajuste)?",
+    "faqA3": "Calcula el valor porcentual del aumento y súmalo al valor original. Ejemplo: aumento del 8% sobre 1.000 = 80; nuevo valor = 1.080. Es común en ajustes de salarios, tarifas y suscripciones.",
+    "metadataTitle": "Calculadora de Porcentaje en línea (X% de Y, Descuentos y Aumentos) | MyCalcOnline",
+    "metadataDescription": "Usa la calculadora de porcentaje en línea para saber cuánto es X% de Y, calcular descuentos, aumentos y variaciones porcentuales de forma rápida y precisa."
+  },
   "Calculators": {
     "currency-converter": {
       "title": "Conversor de Divisas",
@@ -279,68 +279,226 @@
       "title": "Media Ponderada",
       "description": "Calcula promedios con diferentes pesos."
     },
-    "porcentagem": { "title": "Calcular Porcentaje", "description": "Encuentra porcentajes de valores." },
-    "regra-de-3": { "title": "Regla de Tres", "description": "Resuelve proporciones directas e inversas." },
+    "porcentagem": {
+      "title": "Calcular Porcentaje",
+      "description": "Encuentra porcentajes de valores."
+    },
+    "regra-de-3": {
+      "title": "Regla de Tres",
+      "description": "Resuelve proporciones directas e inversas."
+    },
     "mmc": {
       "title": "Calculadora de MCM (Mínimo Común Múltiplo)",
       "description": "Calcula el Mínimo Común Múltiplo de dos o más números."
     },
-    "fracoes": { "title": "Calculadora de Fracciones", "description": "Suma, resta, multiplica y divide fracciones." },
+    "fracoes": {
+      "title": "Calculadora de Fracciones",
+      "description": "Suma, resta, multiplica y divide fracciones."
+    },
     "binario": {
       "title": "Calculadora de Números Binarios",
       "description": "Convierte y calcula en base 2."
     },
-    "hexadecimal": { "title": "Calculadora de Números Hexadecimales", "description": "Convierte y calcula en base 16." },
-    "area-cilindro": { "title": "Área del Cilindro", "description": "Calcula el área de la superficie de un cilindro." },
-    "area-circulo": { "title": "Área del Círculo", "description": "Encuentra el área a partir del radio." },
-    "area-cubo": { "title": "Área del Cubo", "description": "Calcula el área de la superficie de un cubo." },
-    "area-esfera": { "title": "Área de la Esfera", "description": "Calcula el área de la superficie de una esfera." },
-    "taxa-metabolica-basal": { "title": "Tasa Metabólica Basal (TMB)", "description": "Estima tus calorías en reposo." },
-    "gordura-corporal": { "title": "Porcentaje de Grasa Corporal", "description": "Calcula tu grasa corporal estimada." },
-    "relacao-pf": { "title": "Calculadora Relación P/F", "description": "Evalúa la función pulmonar (PaO2/FiO2)." },
+    "hexadecimal": {
+      "title": "Calculadora de Números Hexadecimales",
+      "description": "Convierte y calcula en base 16."
+    },
+    "area-cilindro": {
+      "title": "Área del Cilindro",
+      "description": "Calcula el área de la superficie de un cilindro."
+    },
+    "area-circulo": {
+      "title": "Área del Círculo",
+      "description": "Encuentra el área a partir del radio."
+    },
+    "area-cubo": {
+      "title": "Área del Cubo",
+      "description": "Calcula el área de la superficie de un cubo."
+    },
+    "area-esfera": {
+      "title": "Área de la Esfera",
+      "description": "Calcula el área de la superficie de una esfera."
+    },
+    "taxa-metabolica-basal": {
+      "title": "Tasa Metabólica Basal (TMB)",
+      "description": "Estima tus calorías en reposo."
+    },
+    "gordura-corporal": {
+      "title": "Porcentaje de Grasa Corporal",
+      "description": "Calcula tu grasa corporal estimada."
+    },
+    "relacao-pf": {
+      "title": "Calculadora Relación P/F",
+      "description": "Evalúa la función pulmonar (PaO2/FiO2)."
+    },
     "dias-entre-datas": {
-        "title": "Contador de Días Entre Fechas",
-        "description": "Descubre cuántos días hay entre dos fechas."
+      "title": "Contador de Días Entre Fechas",
+      "description": "Descubre cuántos días hay entre dos fechas."
     },
-    "idade": { "title": "Edad Cronológica", "description": "Calcula la edad exacta de alguien." },
-    "adicionar-subtrair-dias": { "title": "Agregar/Quitar Días a una Fecha", "description": "Encuentra la fecha futura o pasada." },
+    "idade": {
+      "title": "Edad Cronológica",
+      "description": "Calcula la edad exacta de alguien."
+    },
+    "adicionar-subtrair-dias": {
+      "title": "Agregar/Quitar Días a una Fecha",
+      "description": "Encuentra la fecha futura o pasada."
+    },
     "hora-minuto": {
-        "title": "Calculadora de Horas y Minutos",
-        "description": "Suma o resta tiempos."
+      "title": "Calculadora de Horas y Minutos",
+      "description": "Suma o resta tiempos."
     },
-    "horas-trabalhadas": { "title": "Calculadora de Horas Trabajadas", "description": "Calcula el total de horas y horas extras." },
-    "gerador-escala-notas": { "title": "Generador de Escala de Notas", "description": "Crea una escala de calificaciones escolares personalizada con base en las puntuaciones y nivel de exigencia." },
+    "horas-trabalhadas": {
+      "title": "Calculadora de Horas Trabajadas",
+      "description": "Calcula el total de horas y horas extras."
+    },
+    "gerador-escala-notas": {
+      "title": "Generador de Escala de Notas",
+      "description": "Crea una escala de calificaciones escolares personalizada con base en las puntuaciones y nivel de exigencia."
+    },
     "gasto-gasolina": {
       "title": "Gastos de Gasolina en Viajes",
       "description": "Estima el costo de combustible del viaje."
     },
-    "word-counter": { "title": "Contador de Palabras y Caracteres", "description": "Cuenta palabras y caracteres en un texto." },
-    "romano-decimal": { "title": "Conversor de Números Romanos", "description": "Convierte entre números romanos y decimales." },
-    "click-counter": { "title": "Contador de Clics (Prueba CPS)", "description": "Mide tu velocidad de clics por segundo." },
-    "como-calcular-horas-extras": { "title": "Cómo Calcular Horas Extras", "description": "Entiende el cálculo del valor de las horas extras." },
-    "desvio-padrao": { "title": "Desviación Estándar", "description": "Calcula la desviación estándar muestral o poblacional." },
-    "juros-compostos": { "title": "Interés Compuesto", "description": "Calcula el crecimiento de inversiones." },
-    "juros-simples": { "title": "Interés Simple", "description": "Calcula interés sobre el capital inicial." },
-    "media-mediana-moda": { "title": "Media, Mediana y Moda", "description": "Encuentra las medidas centrales de un conjunto de datos." },
-    "variancia-estatistica": { "title": "Varianza Estadística", "description": "Calcula la varianza muestral o poblacional." },
-    "area-quadrado": { "title": "Área del Cuadrado (Simple)", "description": "Versión simple para cálculo de área." },
-    "currency-converter": { "title": "Conversor de Divisas", "description": "Convierte entre diferentes monedas." },
-    "average": { "title": "Calculadora de Promedio", "description": "Calcula promedio simple, ponderado y otros tipos de promedio." },
-    "bmi": { "title": "Calculadora de IMC", "description": "Calcula tu Índice de Masa Corporal y estado de salud." },
-    "calorie": { "title": "Calculadora de Calorías", "description": "Estima necesidades calóricas diarias según el nivel de actividad." },
-    "circle": { "title": "Calculadora de Círculo", "description": "Calcula área, circunferencia, diámetro y radio de un círculo." },
-    "discount": { "title": "Calculadora de Descuento", "description": "Calcula precios de oferta y ahorros con descuentos." },
-    "gpa-calculator": { "title": "Calculadora de Promedio Escolar", "description": "Calcula tu promedio de notas semestral o acumulado." },
-    "inflation": { "title": "Calculadora de Inflación", "description": "Calcula cómo la inflación afecta el valor del dinero con el tiempo." },
-    "loan": { "title": "Calculadora de Préstamo", "description": "Calcula cuotas mensuales e intereses totales para préstamos." },
-    "mortgage": { "title": "Calculadora de Hipoteca", "description": "Estima cuotas mensuales y amortización para tu préstamo hipotecario." },
-    "pythagorean": { "title": "Calculadora del Teorema de Pitágoras", "description": "Calcula la hipotenusa o catetos de un triángulo rectángulo usando a² + b² = c²." },
-    "random-number": { "title": "Generador de Números Aleatorios", "description": "Genera números aleatorios, dados y listas de números únicos." },
-    "roi": { "title": "Calculadora de ROI", "description": "Calcula el Retorno sobre Inversión para tus inversiones." },
-    "salary": { "title": "Calculadora de Salario", "description": "Convierte entre salario por hora, semanal, mensual y anual." },
-    "speed-distance-time": { "title": "Calculadora Velocidad, Distancia, Tiempo", "description": "Calcula velocidad, distancia o tiempo usando la fórmula del movimiento." },
-    "tip": { "title": "Calculadora de Propina", "description": "Calcula propinas y divide cuentas entre amigos." },
-    "triangle": { "title": "Calculadora de Triángulo", "description": "Calcula área, perímetro, lados y ángulos usando LLL, LAL o ALA." },
+    "word-counter": {
+      "title": "Contador de Palabras y Caracteres",
+      "description": "Cuenta palabras y caracteres en un texto."
+    },
+    "romano-decimal": {
+      "title": "Conversor de Números Romanos",
+      "description": "Convierte entre números romanos y decimales."
+    },
+    "click-counter": {
+      "title": "Contador de Clics (Prueba CPS)",
+      "description": "Mide tu velocidad de clics por segundo."
+    },
+    "como-calcular-horas-extras": {
+      "title": "Cómo Calcular Horas Extras",
+      "description": "Entiende el cálculo del valor de las horas extras."
+    },
+    "desvio-padrao": {
+      "title": "Desviación Estándar",
+      "description": "Calcula la desviación estándar muestral o poblacional."
+    },
+    "juros-compostos": {
+      "title": "Interés Compuesto",
+      "description": "Calcula el crecimiento de inversiones."
+    },
+    "juros-simples": {
+      "title": "Interés Simple",
+      "description": "Calcula interés sobre el capital inicial."
+    },
+    "media-mediana-moda": {
+      "title": "Media, Mediana y Moda",
+      "description": "Encuentra las medidas centrales de un conjunto de datos."
+    },
+    "variancia-estatistica": {
+      "title": "Varianza Estadística",
+      "description": "Calcula la varianza muestral o poblacional."
+    },
+    "area-quadrado": {
+      "title": "Área del Cuadrado (Simple)",
+      "description": "Versión simple para cálculo de área."
+    },
+    "currency-converter": {
+      "title": "Conversor de Divisas",
+      "description": "Convierte entre diferentes monedas."
+    },
+    "average": {
+      "title": "Calculadora de Promedio",
+      "description": "Calcula promedio simple, ponderado y otros tipos de promedio."
+    },
+    "bmi": {
+      "title": "Calculadora de IMC",
+      "description": "Índice de Masa Corporal.",
+      "whatIs": "<h3>¿Qué es el IMC?</h3><p>Una medida utilizada para evaluar si una persona tiene un peso saludable para su altura.</p>",
+      "howTo": "<h3>Interpretación</h3><p>18.5-24.9: Peso normal<br>25-29.9: Sobrepeso<br>30+: Obesidad</p>",
+      "faq": [
+        {
+          "question": "¿Es válido para niños?",
+          "answer": "El cálculo es el mismo, pero la interpretación varía según la edad y sexo (percentiles)."
+        }
+      ]
+    },
+    "calorie": {
+      "title": "Calculadora de Calorías",
+      "description": "Estima necesidades calóricas diarias según el nivel de actividad."
+    },
+    "circle": {
+      "title": "Calculadora de Círculo",
+      "description": "Calcula área, circunferencia, diámetro y radio.",
+      "whatIs": "<h3>El Círculo</h3><p>Una figura plana delimitada por una circunferencia, donde todos los puntos equidistan del centro.</p>",
+      "howTo": "<h3>Fórmulas Principales</h3><p>Área = π·r²<br>Circunferencia = 2·π·r<br>Diámetro = 2·r</p>",
+      "faq": [
+        {
+          "question": "¿Qué es Pi?",
+          "answer": "Pi (π) es la constante 3.14159... relación entre circunferencia y diámetro."
+        }
+      ]
+    },
+    "discount": {
+      "title": "Calculadora de Descuento",
+      "description": "Calcula precios de oferta y ahorros con descuentos."
+    },
+    "gpa-calculator": {
+      "title": "Calculadora de Promedio Escolar",
+      "description": "Calcula tu promedio de notas semestral o acumulado."
+    },
+    "inflation": {
+      "title": "Calculadora de Inflación",
+      "description": "Calcula cómo la inflación afecta el valor del dinero con el tiempo."
+    },
+    "loan": {
+      "title": "Calculadora de Préstamo",
+      "description": "Calcula cuotas mensuales e intereses totales para préstamos."
+    },
+    "mortgage": {
+      "title": "Calculadora de Hipoteca",
+      "description": "Estima cuotas mensuales y amortización para tu préstamo hipotecario."
+    },
+    "pythagorean": {
+      "title": "Teorema de Pitágoras",
+      "description": "Calcula la hipotenusa o catetos.",
+      "whatIs": "<h3>El Teorema</h3><p>En todo triángulo rectángulo, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos.</p>",
+      "howTo": "<h3>Fórmula</h3><p>c² = a² + b²<br>Donde <strong>c</strong> es el lado más largo (hipotenusa).</p>",
+      "faq": [
+        {
+          "question": "¿Cuándo se usa?",
+          "answer": "Solo en triángulos rectángulos (con un ángulo de 90°)."
+        }
+      ]
+    },
+    "random-number": {
+      "title": "Generador de Números Aleatorios",
+      "description": "Genera números aleatorios, dados y listas de números únicos."
+    },
+    "roi": {
+      "title": "Calculadora de ROI",
+      "description": "Calcula el Retorno sobre Inversión para tus inversiones."
+    },
+    "salary": {
+      "title": "Calculadora de Salario",
+      "description": "Convierte entre salario por hora, semanal, mensual y anual."
+    },
+    "speed-distance-time": {
+      "title": "Calculadora Velocidad, Distancia, Tiempo",
+      "description": "Calcula velocidad, distancia o tiempo usando la fórmula del movimiento."
+    },
+    "tip": {
+      "title": "Calculadora de Propina",
+      "description": "Calcula propinas y divide cuentas entre amigos."
+    },
+    "triangle": {
+      "title": "Calculadora de Triángulo",
+      "description": "Calcula área, perímetro y ángulos.",
+      "whatIs": "<h3>Geometría del Triángulo</h3><p>Polígono de tres lados. La suma de los ángulos internos es siempre 180°.</p>",
+      "howTo": "<h3>Cálculo de Área</h3><p>Área = (base × altura) / 2. Si conoces los tres lados, usa la fórmula de Herón.</p>",
+      "faq": [
+        {
+          "question": "¿Tipos de triángulos?",
+          "answer": "Equilátero (3 lados iguales), Isósceles (2 lados iguales), Escaleno (lados diferentes)."
+        }
+      ]
+    },
     "body-fat": {
       "title": "Calculadora de Grasa Corporal",
       "description": "Calcula porcentaje de grasa corporal usando método US Navy o estimación por IMC."
@@ -411,11 +569,35 @@
     },
     "force": {
       "title": "Calculadora de Fuerza",
-      "description": "Calcula fuerza, masa o aceleración usando fórmula F = ma."
+      "description": "Calcula Fuerza, Masa o Aceleración usando la Segunda Ley de Newton (F=ma).",
+      "whatIs": "<h3>Segunda Ley de Newton</h3><p>La <strong>Fuerza</strong> es una interacción que, si no es contrarrestada, cambiará el movimiento de un objeto. La Segunda Ley de Newton establece que la fuerza que actúa sobre un objeto es igual a la masa de ese objeto multiplicada por su aceleración.</p>",
+      "howTo": "<h3>El Triángulo Mágico (F-m-a)</h3><p>Usa este triángulo para recordar las fórmulas. Cubre la letra que quieres encontrar:</p><div class=\"flex justify-center my-6\"><div class=\"relative w-32 h-28 bg-indigo-50 rounded-lg flex flex-col items-center justify-center border-2 border-indigo-200\"><span class=\"font-bold text-2xl text-indigo-900 border-b-2 border-indigo-200 w-full text-center pb-1\">F</span><div class=\"flex w-full justify-around pt-1\"><span class=\"font-bold text-2xl text-indigo-900 border-r-2 border-indigo-200 w-1/2 text-center\">m</span><span class=\"font-bold text-2xl text-indigo-900 w-1/2 text-center\">a</span></div></div></div><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4 mb-4\"><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Calcular Fuerza (F):</strong><code class=\"text-indigo-600\">F = m × a</code></div><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Calcular Masa (m):</strong><code class=\"text-indigo-600\">m = F / a</code></div><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Calcular Aceleración (a):</strong><code class=\"text-indigo-600\">a = F / m</code></div></div>",
+      "faq": [
+        {
+          "question": "¿A qué equivale 1 Newton?",
+          "answer": "Un Newton (1 N) se define como la fuerza necesaria para acelerar una masa de 1 kilogramo a una tasa de 1 metro por segundo al cuadrado (1 kg⋅m/s²)."
+        },
+        {
+          "question": "¿La masa cambia con la ubicación?",
+          "answer": "No, la <strong>masa</strong> es la cantidad de materia en un objeto y permanece constante en todas partes. El <strong>peso</strong>, sin embargo, depende de la gravedad (Peso = masa × gravedad) y cambia si vas a la Luna o Marte."
+        },
+        {
+          "question": "¿Qué pasa si la fuerza neta es cero?",
+          "answer": "Si la fuerza neta es cero, el objeto permanecerá en reposo o continuará moviéndose a velocidad constante (aceleración cero). Esta es la Primera Ley de Newton."
+        }
+      ]
     },
     "speed": {
       "title": "Calculadora de Velocidad",
-      "description": "Calcula velocidad, distancia o tiempo usando fórmula v = d/t."
+      "description": "Calcula velocidad, distancia o tiempo usando la fórmula v = d/t.",
+      "whatIs": "<h3>¿Qué es la Velocidad?</h3><p>La velocidad es una medida de qué tan rápido se mueve un objeto en una dirección específica.</p><p>En física, usamos la fórmula: <strong>Velocidad = Distancia ÷ Tiempo</strong>.</p>",
+      "howTo": "<h3>Cómo usar</h3><p>Ingresa dos valores cualquiera para calcular el tercero:</p><ul class=\"list-disc pl-5\"><li><strong>Velocidad (v)</strong> = d / t</li><li><strong>Distancia (d)</strong> = v × t</li><li><strong>Tiempo (t)</strong> = d / v</li></ul>",
+      "faq": [
+        {
+          "question": "¿Diferencia con la rapidez?",
+          "answer": "La rapidez es escalar (solo magnitud), la velocidad es vectorial (magnitud y dirección)."
+        }
+      ]
     },
     "energy": {
       "title": "Calculadora de Energía",
@@ -520,6 +702,66 @@
     "work": {
       "title": "Calculadora de Trabajo",
       "description": "Calcula trabajo realizado por una fuerza usando W = Fd cos(θ)."
+    },
+    "age": {
+      "title": "Calculadora de Edad",
+      "description": "Calcula tu edad exacta en años, meses y días.",
+      "whatIs": "<h3>Edad Cronológica</h3><p>Tiempo transcurrido desde el nacimiento. Se usa para fines legales y civiles.</p>",
+      "howTo": "<h3>Instrucciones</h3><p>Ingresa tu fecha de nacimiento y la fecha de referencia (hoy por defecto).</p>",
+      "faq": [
+        {
+          "question": "¿Cuenta años bisiestos?",
+          "answer": "Sí, el cálculo es exacto e incluye los días extra de los años bisiestos."
+        }
+      ]
+    },
+    "percentage": {
+      "title": "Calculadora de Porcentaje",
+      "description": "Cálculos de X% de Y, descuentos y aumentos.",
+      "whatIs": "<h3>Porcentajes</h3><p>Una forma de expresar un número como una fracción de 100.</p>",
+      "howTo": "<h3>Fórmulas</h3><p>X% de Y = (X/100) * Y<br>Descuento = Precio * (1 - %/100)</p>",
+      "faq": [
+        {
+          "question": "¿Cómo sacar el porcentaje?",
+          "answer": "Multiplica el valor por el porcentaje y divide por 100."
+        }
+      ]
+    },
+    "fraction": {
+      "title": "Calculadora de Fracciones",
+      "description": "Suma, resta, multiplicación y división de fracciones.",
+      "whatIs": "<h3>Las Fracciones</h3><p>Representan una parte de un todo, con un numerador (arriba) y denominador (abajo).</p>",
+      "howTo": "<h3>Operaciones</h3><p>Suma: Requiere denominador común.<br>Multiplicación: Directa (num*num, den*den).</p>",
+      "faq": [
+        {
+          "question": "¿Cómo simplificar?",
+          "answer": "Divide numerador y denominador por su Máximo Común Divisor (MCD)."
+        }
+      ]
+    },
+    "cylinder": {
+      "title": "Calculadora de Cilindro",
+      "description": "Volumen y área de superficie.",
+      "whatIs": "<h3>El Cilindro</h3><p>Cuerpo geométrico formado por un rectángulo que gira alrededor de uno de sus lados.</p>",
+      "howTo": "<h3>Fórmulas</h3><p>Volumen = πr²h<br>Área Total = 2πr(h+r)</p>",
+      "faq": [
+        {
+          "question": "¿Unidades?",
+          "answer": "El volumen es cúbico (m³), el área es cuadrada (m²)."
+        }
+      ]
+    },
+    "cone": {
+      "title": "Calculadora de Cono",
+      "description": "Volumen, área y generatriz.",
+      "whatIs": "<h3>El Cono</h3><p>Sólido de revolución generado por un triángulo rectángulo al girar sobre un cateto.</p>",
+      "howTo": "<h3>Fórmulas</h3><p>Volumen = (πr²h)/3<br>Área = πr(r+g)</p>",
+      "faq": [
+        {
+          "question": "¿Qué es la generatriz?",
+          "answer": "Es la hipotenusa del triángulo rectángulo que genera el cono."
+        }
+      ]
     }
   },
   "word-counter": {
@@ -733,41 +975,41 @@
     "waitingResult": "Calculando..."
   },
   "CompoundInterestCalculator": {
-  "title": "Calculadora de Interés Compuesto en línea",
-  "description": "Simula el crecimiento de tus inversiones con interés compuesto, aportes mensuales, diferentes tasas y frecuencias de capitalización.",
-  "initialInvestmentLabel": "Inversión inicial",
-  "monthlyContributionLabel": "Aporte mensual",
-  "yearsLabel": "Tiempo en años",
-  "interestRateLabel": "Tasa de interés anual (%)",
-  "capitalizationFrequencyLabel": "Frecuencia de capitalización",
-  "selectPlaceholder": "Selecciona la frecuencia",
-  "annualOption": "Anual",
-  "semiannualOption": "Semestral",
-  "quarterlyOption": "Trimestral",
-  "monthlyOption": "Mensual",
-  "decimalPrecisionLabel": "Número de decimales en el resultado",
-  "calculateButton": "Calcular interés compuesto",
-  "resultTitle": "Resultado de la simulación",
-  "futureValueLabel": "Valor futuro estimado: ",
-  "interestEarnedLabel": "Intereses totales generados: ",
-  "roiLabel": "Retorno sobre la inversión (ROI): ",
-  "periodTableHeader": "Período",
-  "contributionTableHeader": "Aporte por período",
-  "futureValueTableHeader": "Valor acumulado",
-  "metadataTitle": "Calculadora de Interés Compuesto en línea | Simulador de Inversiones | MyCalcOnline",
-  "metadataDescription": "Calcula interés compuesto con aportes mensuales y distintas frecuencias de capitalización. Consulta el valor futuro, los intereses totales y una tabla detallada de evolución.",
-  "howToUseTitle": "Cómo usar la calculadora de interés compuesto",
-  "howToUseDetail": "1. Ingresa tu inversión inicial (puede ser cero). 2. Agrega un aporte mensual si piensas invertir regularmente. 3. Define el plazo en años y la tasa de interés anual. 4. Elige la frecuencia de capitalización (mensual, anual, etc.). 5. Haz clic en \"Calcular interés compuesto\" para ver el valor futuro, los intereses totales y, opcionalmente, una tabla detallada.",
-  "whatIsCompoundInterestTitle": "¿Qué es el interés compuesto?",
-  "whatIsCompoundInterestDetail": "El interés compuesto se calcula sobre el capital inicial más los intereses acumulados en períodos anteriores. Esto genera un crecimiento exponencial con el tiempo. La fórmula básica es: M = P × (1 + i)^n, donde M es el monto, P el capital inicial, i la tasa por período y n el número de períodos.",
-  "faqTitle": "Preguntas frecuentes sobre interés compuesto",
-  "faqQ1": "¿Cuál es la diferencia entre interés simple y compuesto?",
-  "faqA1": "En el interés simple, los intereses se calculan siempre sobre el capital inicial. En el interés compuesto, se calculan sobre el capital actualizado (capital + intereses acumulados), lo que acelera el crecimiento con el tiempo.",
-  "faqQ2": "¿Por qué es importante la frecuencia de capitalización?",
-  "faqA2": "La frecuencia indica cuántas veces al año se aplican los intereses (mensual, anual, etc.). Manteniendo la misma tasa anual nominal, una capitalización más frecuente suele generar un monto final mayor.",
-  "faqQ3": "¿Puedo usar esta calculadora para inversiones reales?",
-  "faqA3": "Sí, es útil para simular escenarios en ahorro, bonos, fondos y otros productos. Los resultados son estimaciones; ten en cuenta comisiones, impuestos y riesgos reales antes de invertir."
-},
+    "title": "Calculadora de Interés Compuesto en línea",
+    "description": "Simula el crecimiento de tus inversiones con interés compuesto, aportes mensuales, diferentes tasas y frecuencias de capitalización.",
+    "initialInvestmentLabel": "Inversión inicial",
+    "monthlyContributionLabel": "Aporte mensual",
+    "yearsLabel": "Tiempo en años",
+    "interestRateLabel": "Tasa de interés anual (%)",
+    "capitalizationFrequencyLabel": "Frecuencia de capitalización",
+    "selectPlaceholder": "Selecciona la frecuencia",
+    "annualOption": "Anual",
+    "semiannualOption": "Semestral",
+    "quarterlyOption": "Trimestral",
+    "monthlyOption": "Mensual",
+    "decimalPrecisionLabel": "Número de decimales en el resultado",
+    "calculateButton": "Calcular interés compuesto",
+    "resultTitle": "Resultado de la simulación",
+    "futureValueLabel": "Valor futuro estimado: ",
+    "interestEarnedLabel": "Intereses totales generados: ",
+    "roiLabel": "Retorno sobre la inversión (ROI): ",
+    "periodTableHeader": "Período",
+    "contributionTableHeader": "Aporte por período",
+    "futureValueTableHeader": "Valor acumulado",
+    "metadataTitle": "Calculadora de Interés Compuesto en línea | Simulador de Inversiones | MyCalcOnline",
+    "metadataDescription": "Calcula interés compuesto con aportes mensuales y distintas frecuencias de capitalización. Consulta el valor futuro, los intereses totales y una tabla detallada de evolución.",
+    "howToUseTitle": "Cómo usar la calculadora de interés compuesto",
+    "howToUseDetail": "1. Ingresa tu inversión inicial (puede ser cero). 2. Agrega un aporte mensual si piensas invertir regularmente. 3. Define el plazo en años y la tasa de interés anual. 4. Elige la frecuencia de capitalización (mensual, anual, etc.). 5. Haz clic en \"Calcular interés compuesto\" para ver el valor futuro, los intereses totales y, opcionalmente, una tabla detallada.",
+    "whatIsCompoundInterestTitle": "¿Qué es el interés compuesto?",
+    "whatIsCompoundInterestDetail": "El interés compuesto se calcula sobre el capital inicial más los intereses acumulados en períodos anteriores. Esto genera un crecimiento exponencial con el tiempo. La fórmula básica es: M = P × (1 + i)^n, donde M es el monto, P el capital inicial, i la tasa por período y n el número de períodos.",
+    "faqTitle": "Preguntas frecuentes sobre interés compuesto",
+    "faqQ1": "¿Cuál es la diferencia entre interés simple y compuesto?",
+    "faqA1": "En el interés simple, los intereses se calculan siempre sobre el capital inicial. En el interés compuesto, se calculan sobre el capital actualizado (capital + intereses acumulados), lo que acelera el crecimiento con el tiempo.",
+    "faqQ2": "¿Por qué es importante la frecuencia de capitalización?",
+    "faqA2": "La frecuencia indica cuántas veces al año se aplican los intereses (mensual, anual, etc.). Manteniendo la misma tasa anual nominal, una capitalización más frecuente suele generar un monto final mayor.",
+    "faqQ3": "¿Puedo usar esta calculadora para inversiones reales?",
+    "faqA3": "Sí, es útil para simular escenarios en ahorro, bonos, fondos y otros productos. Los resultados son estimaciones; ten en cuenta comisiones, impuestos y riesgos reales antes de invertir."
+  },
   "ClickCounterCalculator": {
     "title": "Contador de Clics & Clics por Segundo (Test CPS)",
     "description": "Contador de clics y Test de Clics por Segundo (Test CPS) en una sola herramienta. Descubre cuántos clics haces y mide tu velocidad de clic de forma rápida y amigable.",
@@ -2943,5 +3185,47 @@
     "settings": "Configuración",
     "settingsDesc": "Personaliza tu experiencia",
     "comingSoon": "Próximamente"
+  },
+  "Calculators": {
+    "speed": {
+      "title": "Calculadora de Velocidad",
+      "description": "Calcula Velocidad, Distancia y Tiempo."
+    },
+    "circle": {
+      "title": "Calculadora de Círculo",
+      "description": "Área, Circunferencia y Radio."
+    },
+    "triangle": {
+      "title": "Calculadora de Triángulo",
+      "description": "Área y Perímetro (Fórmula de Herón)."
+    },
+    "pythagorean": {
+      "title": "Teorema de Pitágoras",
+      "description": "Calcula la hipotenusa o catetos (a² + b² = c²)."
+    },
+    "percentage": {
+      "title": "Calculadora de Porcentajes",
+      "description": "Calcula %, diferencia porcentual y fracciones de 100."
+    },
+    "bmi": {
+      "title": "Calculadora de IMC",
+      "description": "Calcula tu Índice de Masa Corporal y rango de peso."
+    },
+    "fraction": {
+      "title": "Calculadora de Fracciones",
+      "description": "Suma, resta, multiplica y divide fracciones."
+    },
+    "cylinder": {
+      "title": "Volumen del Cilindro",
+      "description": "Calcula el volumen de un cilindro."
+    },
+    "cone": {
+      "title": "Volumen del Cono",
+      "description": "Calcula el volumen de un cono."
+    },
+    "age": {
+      "title": "Calculadora de Edad",
+      "description": "Descubre tu edad exacta en años, meses y días."
+    }
   }
 }

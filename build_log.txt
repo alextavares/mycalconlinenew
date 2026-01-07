@@ -1,0 +1,214 @@
+
+> nextn@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.35
+  - Environments: .env
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/config/calculators.ts
+Error: 
+  x The left-hand side of an assignment expression must be a variable or a property access.
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:1181:1]
+ 1181 |                         </table>
+ 1182 |                     </div>
+ 1183 |                 `,
+ 1184 | ,->             howTo: `
+ 1185 | |                   <h3>Como Calcular o IMC Manualmente</h3>
+ 1186 | |                   <p>O c├ílculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a f├│rmula muda ligeiramente:</p>
+ 1187 | |                   
+ 1188 | |                   <div class="grid md:grid-cols-2 gap-4 my-6">
+ 1189 | |                       question: "Is BMI accurate for everyone?",
+ 1190 | |                       answer: "No. BMI is a population-level screening tool. It can be inaccurate for people with high muscle mass (athletes), the elderly (who may have lost muscle), and children. Different ethnic groups may also have different health risk thresholds at the same BMI level."
+ 1191 | |                   },
+ 1192 | |                   {
+ 1193 | |                       question: "What is my 'Healthy Weight' range?",
+ 1194 | |                       answer: "A 'Healthy' weight is typically considered any weight that results in a BMI between 18.5 and 24.9. Our calculator automatically generates this range for your specific height so you know exactly what your target weight should be."
+ 1195 | |                   },
+ 1196 | |                   {
+ 1197 | |                       question: "Does BMI apply to children and teens?",
+ 1198 | |                       answer: "The formula is the same, but the interpretation is different. For children (< 20 years old), BMI is calculated based on age and sex percentiles. This calculator is designed for adults (20+). Consult a pediatrician for child BMI interpretation."
+ 1199 | |                   },
+ 1200 | |                   {
+ 1201 | |                       question: "How to calculate BMI in Excel?",
+ 1202 | `->                     answer: "In Excel, if weight is in cell A1 and height (meters) in B1, use the formula: `= A1 / (B1 ^ 2)`. If using inches/lbs, use: `=(A1 / (B1 ^ 2)) * 703`."
+ 1203 |                     },
+ 1204 |                     {
+ 1204 |                         question: "Why do different ethnicities have different BMI rules?",
+      `----
+
+  x Invalid assignment target
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:1181:1]
+ 1181 |                         </table>
+ 1182 |                     </div>
+ 1183 |                 `,
+ 1184 | ,->             howTo: `
+ 1185 | |                   <h3>Como Calcular o IMC Manualmente</h3>
+ 1186 | |                   <p>O c├ílculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a f├│rmula muda ligeiramente:</p>
+ 1187 | |                   
+ 1188 | |                   <div class="grid md:grid-cols-2 gap-4 my-6">
+ 1189 | |                       question: "Is BMI accurate for everyone?",
+ 1190 | |                       answer: "No. BMI is a population-level screening tool. It can be inaccurate for people with high muscle mass (athletes), the elderly (who may have lost muscle), and children. Different ethnic groups may also have different health risk thresholds at the same BMI level."
+ 1191 | |                   },
+ 1192 | |                   {
+ 1193 | |                       question: "What is my 'Healthy Weight' range?",
+ 1194 | |                       answer: "A 'Healthy' weight is typically considered any weight that results in a BMI between 18.5 and 24.9. Our calculator automatically generates this range for your specific height so you know exactly what your target weight should be."
+ 1195 | |                   },
+ 1196 | |                   {
+ 1197 | |                       question: "Does BMI apply to children and teens?",
+ 1198 | |                       answer: "The formula is the same, but the interpretation is different. For children (< 20 years old), BMI is calculated based on age and sex percentiles. This calculator is designed for adults (20+). Consult a pediatrician for child BMI interpretation."
+ 1199 | |                   },
+ 1200 | |                   {
+ 1201 | |                       question: "How to calculate BMI in Excel?",
+ 1202 | `->                     answer: "In Excel, if weight is in cell A1 and height (meters) in B1, use the formula: `= A1 / (B1 ^ 2)`. If using inches/lbs, use: `=(A1 / (B1 ^ 2)) * 703`."
+ 1203 |                     },
+ 1204 |                     {
+ 1204 |                         question: "Why do different ethnicities have different BMI rules?",
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/config/calculators.ts
+./src/app/[locale]/page.tsx
+
+./src/config/calculators.ts
+Error: 
+  x The left-hand side of an assignment expression must be a variable or a property access.
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:1181:1]
+ 1181 |                         </table>
+ 1182 |                     </div>
+ 1183 |                 `,
+ 1184 | ,->             howTo: `
+ 1185 | |                   <h3>Como Calcular o IMC Manualmente</h3>
+ 1186 | |                   <p>O c├ílculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a f├│rmula muda ligeiramente:</p>
+ 1187 | |                   
+ 1188 | |                   <div class="grid md:grid-cols-2 gap-4 my-6">
+ 1189 | |                       question: "Is BMI accurate for everyone?",
+ 1190 | |                       answer: "No. BMI is a population-level screening tool. It can be inaccurate for people with high muscle mass (athletes), the elderly (who may have lost muscle), and children. Different ethnic groups may also have different health risk thresholds at the same BMI level."
+ 1191 | |                   },
+ 1192 | |                   {
+ 1193 | |                       question: "What is my 'Healthy Weight' range?",
+ 1194 | |                       answer: "A 'Healthy' weight is typically considered any weight that results in a BMI between 18.5 and 24.9. Our calculator automatically generates this range for your specific height so you know exactly what your target weight should be."
+ 1195 | |                   },
+ 1196 | |                   {
+ 1197 | |                       question: "Does BMI apply to children and teens?",
+ 1198 | |                       answer: "The formula is the same, but the interpretation is different. For children (< 20 years old), BMI is calculated based on age and sex percentiles. This calculator is designed for adults (20+). Consult a pediatrician for child BMI interpretation."
+ 1199 | |                   },
+ 1200 | |                   {
+ 1201 | |                       question: "How to calculate BMI in Excel?",
+ 1202 | `->                     answer: "In Excel, if weight is in cell A1 and height (meters) in B1, use the formula: `= A1 / (B1 ^ 2)`. If using inches/lbs, use: `=(A1 / (B1 ^ 2)) * 703`."
+ 1203 |                     },
+ 1204 |                     {
+ 1204 |                         question: "Why do different ethnicities have different BMI rules?",
+      `----
+
+  x Invalid assignment target
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:1181:1]
+ 1181 |                         </table>
+ 1182 |                     </div>
+ 1183 |                 `,
+ 1184 | ,->             howTo: `
+ 1185 | |                   <h3>Como Calcular o IMC Manualmente</h3>
+ 1186 | |                   <p>O c├ílculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a f├│rmula muda ligeiramente:</p>
+ 1187 | |                   
+ 1188 | |                   <div class="grid md:grid-cols-2 gap-4 my-6">
+ 1189 | |                       question: "Is BMI accurate for everyone?",
+ 1190 | |                       answer: "No. BMI is a population-level screening tool. It can be inaccurate for people with high muscle mass (athletes), the elderly (who may have lost muscle), and children. Different ethnic groups may also have different health risk thresholds at the same BMI level."
+ 1191 | |                   },
+ 1192 | |                   {
+ 1193 | |                       question: "What is my 'Healthy Weight' range?",
+ 1194 | |                       answer: "A 'Healthy' weight is typically considered any weight that results in a BMI between 18.5 and 24.9. Our calculator automatically generates this range for your specific height so you know exactly what your target weight should be."
+ 1195 | |                   },
+ 1196 | |                   {
+ 1197 | |                       question: "Does BMI apply to children and teens?",
+ 1198 | |                       answer: "The formula is the same, but the interpretation is different. For children (< 20 years old), BMI is calculated based on age and sex percentiles. This calculator is designed for adults (20+). Consult a pediatrician for child BMI interpretation."
+ 1199 | |                   },
+ 1200 | |                   {
+ 1201 | |                       question: "How to calculate BMI in Excel?",
+ 1202 | `->                     answer: "In Excel, if weight is in cell A1 and height (meters) in B1, use the formula: `= A1 / (B1 ^ 2)`. If using inches/lbs, use: `=(A1 / (B1 ^ 2)) * 703`."
+ 1203 |                     },
+ 1204 |                     {
+ 1204 |                         question: "Why do different ethnicities have different BMI rules?",
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/config/calculators.ts
+./src/app/sitemap.ts
+./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2Fsitemap.xml%2Froute&filePath=C%3A%5Ccodigos%5Csitemycalc%5Csrc%5Capp%5Csitemap.ts&isDynamic=1!?__next_metadata_route__
+
+./src/config/calculators.ts
+Error: 
+  x The left-hand side of an assignment expression must be a variable or a property access.
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:1181:1]
+ 1181 |                         </table>
+ 1182 |                     </div>
+ 1183 |                 `,
+ 1184 | ,->             howTo: `
+ 1185 | |                   <h3>Como Calcular o IMC Manualmente</h3>
+ 1186 | |                   <p>O c├ílculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a f├│rmula muda ligeiramente:</p>
+ 1187 | |                   
+ 1188 | |                   <div class="grid md:grid-cols-2 gap-4 my-6">
+ 1189 | |                       question: "Is BMI accurate for everyone?",
+ 1190 | |                       answer: "No. BMI is a population-level screening tool. It can be inaccurate for people with high muscle mass (athletes), the elderly (who may have lost muscle), and children. Different ethnic groups may also have different health risk thresholds at the same BMI level."
+ 1191 | |                   },
+ 1192 | |                   {
+ 1193 | |                       question: "What is my 'Healthy Weight' range?",
+ 1194 | |                       answer: "A 'Healthy' weight is typically considered any weight that results in a BMI between 18.5 and 24.9. Our calculator automatically generates this range for your specific height so you know exactly what your target weight should be."
+ 1195 | |                   },
+ 1196 | |                   {
+ 1197 | |                       question: "Does BMI apply to children and teens?",
+ 1198 | |                       answer: "The formula is the same, but the interpretation is different. For children (< 20 years old), BMI is calculated based on age and sex percentiles. This calculator is designed for adults (20+). Consult a pediatrician for child BMI interpretation."
+ 1199 | |                   },
+ 1200 | |                   {
+ 1201 | |                       question: "How to calculate BMI in Excel?",
+ 1202 | `->                     answer: "In Excel, if weight is in cell A1 and height (meters) in B1, use the formula: `= A1 / (B1 ^ 2)`. If using inches/lbs, use: `=(A1 / (B1 ^ 2)) * 703`."
+ 1203 |                     },
+ 1204 |                     {
+ 1204 |                         question: "Why do different ethnicities have different BMI rules?",
+      `----
+
+  x Invalid assignment target
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:1181:1]
+ 1181 |                         </table>
+ 1182 |                     </div>
+ 1183 |                 `,
+ 1184 | ,->             howTo: `
+ 1185 | |                   <h3>Como Calcular o IMC Manualmente</h3>
+ 1186 | |                   <p>O c├ílculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a f├│rmula muda ligeiramente:</p>
+ 1187 | |                   
+ 1188 | |                   <div class="grid md:grid-cols-2 gap-4 my-6">
+ 1189 | |                       question: "Is BMI accurate for everyone?",
+ 1190 | |                       answer: "No. BMI is a population-level screening tool. It can be inaccurate for people with high muscle mass (athletes), the elderly (who may have lost muscle), and children. Different ethnic groups may also have different health risk thresholds at the same BMI level."
+ 1191 | |                   },
+ 1192 | |                   {
+ 1193 | |                       question: "What is my 'Healthy Weight' range?",
+ 1194 | |                       answer: "A 'Healthy' weight is typically considered any weight that results in a BMI between 18.5 and 24.9. Our calculator automatically generates this range for your specific height so you know exactly what your target weight should be."
+ 1195 | |                   },
+ 1196 | |                   {
+ 1197 | |                       question: "Does BMI apply to children and teens?",
+ 1198 | |                       answer: "The formula is the same, but the interpretation is different. For children (< 20 years old), BMI is calculated based on age and sex percentiles. This calculator is designed for adults (20+). Consult a pediatrician for child BMI interpretation."
+ 1199 | |                   },
+ 1200 | |                   {
+ 1201 | |                       question: "How to calculate BMI in Excel?",
+ 1202 | `->                     answer: "In Excel, if weight is in cell A1 and height (meters) in B1, use the formula: `= A1 / (B1 ^ 2)`. If using inches/lbs, use: `=(A1 / (B1 ^ 2)) * 703`."
+ 1203 |                     },
+ 1204 |                     {
+ 1204 |                         question: "Why do different ethnicities have different BMI rules?",
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/config/calculators.ts
+./src/app/[locale]/layout.tsx
+
+
+> Build failed because of webpack errors

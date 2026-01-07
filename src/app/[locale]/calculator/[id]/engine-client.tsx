@@ -5,7 +5,7 @@ import * as LucideIcons from 'lucide-react';
 import { useCounter } from '@/hooks/use-counter';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp, Copy, Check, RotateCcw } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { calculators } from '@/config/calculators';
 
 interface CalculatorConfig {
@@ -15,15 +15,15 @@ interface CalculatorConfig {
 }
 
 function ResultValue({ value }: { value: string | number }) {
-    const numValue = typeof value === 'string' ? parseFloat(value) : value;
-    const isNumber = !isNaN(numValue) && typeof numValue === 'number';
+    const isNumber = typeof value === 'number' || (typeof value === 'string' && value.trim() !== '' && !isNaN(Number(value)));
+    const numValue = isNumber ? Number(value) : 0;
 
     // Only animate if it's a valid number and not too long/Scientific notation that might break UI
     const animatedValue = useCounter(isNumber ? numValue : 0, 1000);
 
     if (!isNumber) return <span>{value}</span>;
 
-    return <span>{isNumber ? Number(animatedValue.toFixed(4)).toString() : value}</span>;
+    return <span>{Number(animatedValue.toFixed(4)).toString()}</span>;
 }
 
 interface Props {
@@ -35,6 +35,7 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
     const [copied, setCopied] = useState(false);
     const [shared, setShared] = useState(false);
     const locale = useLocale();
+    const t = useTranslations('Calculators');
 
     // ... (keep existing check) ...
 
@@ -48,6 +49,26 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
             </div>
         );
     }
+
+    // Resolve localized content (Fallback to config if translation missing)
+    // Note: t.has() checks if key exists. t.raw() returns the value (string or object/array)
+    // We assume 'whatIs' and 'howTo' are HTML strings in JSON if present.
+    // We assume 'faq' is Array<{question, answer}> in JSON if present.
+    const localizedContent = useMemo(() => {
+        const hasWhatIs = t.has(`${calculatorId}.whatIs`);
+        const hasHowTo = t.has(`${calculatorId}.howTo`);
+        const hasFaq = t.has(`${calculatorId}.faq`);
+
+        return {
+            whatIs: hasWhatIs ? t.raw(`${calculatorId}.whatIs`) : calculator.content?.whatIs,
+            howTo: hasHowTo ? t.raw(`${calculatorId}.howTo`) : calculator.content?.howTo,
+            faq: hasFaq ? t.raw(`${calculatorId}.faq`) : calculator.content?.faq
+        };
+    }, [calculatorId, t, calculator.content]);
+
+    // Format localized FAQ if needed (ensure it matches expected shape)
+    // If JSON returns generic object, standard casting might be needed, but .raw() usually suffices for simple arrays.
+
 
     // Get the icon component
     const IconComponent = calculator.icon ? (LucideIcons as any)[calculator.icon] : LucideIcons.Calculator;
@@ -105,8 +126,8 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
 
     const handleShare = async () => {
         const shareData = {
-            title: calculator.title,
-            text: calculator.description,
+            title: t.has(`${calculatorId}.title`) ? t(`${calculatorId}.title`) : calculator.title,
+            text: t.has(`${calculatorId}.description`) ? t(`${calculatorId}.description`) : calculator.description,
             url: window.location.href,
         };
         if (typeof navigator !== 'undefined' && navigator.share) {
@@ -119,6 +140,15 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
             setTimeout(() => setShared(false), 2000);
         }
     };
+
+    // Localized Title/Desc/Category for display
+    const displayTitle = t.has(`${calculatorId}.title`) ? t(`${calculatorId}.title`) : calculator.title;
+    const displayDesc = t.has(`${calculatorId}.description`) ? t(`${calculatorId}.description`) : calculator.description;
+    // Category translation? Assuming standard keys or fallback
+    // const displayCategory = t.has(`categories.${calculator.category}`) ... ?
+    // But categories are usually in 'Layout.categories' or similar. 
+    // Let's stick to calculator prop or if we want to localize category we need another t provider or key.
+    // For now, keeping category as is or simple capitalization.
 
     return (
         <div className="space-y-8 max-w-4xl mx-auto">
@@ -139,7 +169,7 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
                     <li aria-current="page">
                         <div className="flex items-center">
                             <LucideIcons.ChevronRight className="w-3 h-3 text-gray-400 mx-1" />
-                            <span className="text-blue-600 font-medium">{calculator.title}</span>
+                            <span className="text-blue-600 font-medium">{displayTitle}</span>
                         </div>
                     </li>
                 </ol>
@@ -162,8 +192,8 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
                         {calculator.category}
                     </span>
                 </div>
-                <h1 className="text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">{calculator.title}</h1>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{calculator.description}</p>
+                <h1 className="text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">{displayTitle}</h1>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{displayDesc}</p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 items-start">
@@ -331,7 +361,7 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
             {/* Content Sections */}
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden divide-y divide-gray-100">
                 {/* What Is */}
-                {calculator.content?.whatIs && (
+                {localizedContent.whatIs && (
                     <div className="bg-white">
                         <button
                             onClick={() => toggleSection('whatIs')}
@@ -346,13 +376,13 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
                             {expandedSections.whatIs ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
                         </button>
                         {expandedSections.whatIs && (
-                            <div className="px-6 md:px-8 pb-8 pt-2 prose prose-lg prose-blue max-w-none text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-1 duration-300" dangerouslySetInnerHTML={{ __html: calculator.content.whatIs }} />
+                            <div className="px-6 md:px-8 pb-8 pt-2 prose prose-lg prose-blue max-w-none text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-1 duration-300" dangerouslySetInnerHTML={{ __html: localizedContent.whatIs }} />
                         )}
                     </div>
                 )}
 
                 {/* How To */}
-                {calculator.content?.howTo && (
+                {localizedContent.howTo && (
                     <div className="bg-white">
                         <button
                             onClick={() => toggleSection('howTo')}
@@ -367,13 +397,13 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
                             {expandedSections.howTo ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
                         </button>
                         {expandedSections.howTo && (
-                            <div className="px-6 md:px-8 pb-8 pt-2 prose prose-lg prose-blue max-w-none text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-1 duration-300" dangerouslySetInnerHTML={{ __html: calculator.content.howTo }} />
+                            <div className="px-6 md:px-8 pb-8 pt-2 prose prose-lg prose-blue max-w-none text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-1 duration-300" dangerouslySetInnerHTML={{ __html: localizedContent.howTo }} />
                         )}
                     </div>
                 )}
 
                 {/* FAQ */}
-                {calculator.content?.faq && calculator.content.faq.length > 0 && (
+                {localizedContent.faq && (localizedContent.faq as any[]).length > 0 && (
                     <div className="bg-white">
                         <button
                             onClick={() => toggleSection('faq')}
@@ -389,7 +419,7 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
                         </button>
                         {expandedSections.faq && (
                             <div className="px-6 md:px-8 pb-8 pt-2 space-y-6 animate-in fade-in slide-in-from-top-1 duration-300">
-                                {calculator.content.faq.map((item, idx) => (
+                                {(localizedContent.faq as any[]).map((item, idx) => (
                                     <div key={idx} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                                         <h3 className="font-bold text-gray-900 mb-3 flex items-start gap-2">
                                             <span className="text-blue-500">Q:</span> {item.question}

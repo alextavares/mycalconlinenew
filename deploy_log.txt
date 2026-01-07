@@ -1,0 +1,675 @@
+[2026-01-06T19:17:29.652Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[2026-01-06T19:17:29.652Z] > authorizing via signed-in user (alexandretmoraes110@gmail.com)
+[2026-01-06T19:17:29.653Z] [iam] checking project calculadora-rpida-pt for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[2026-01-06T19:17:29.654Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:29.654Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:29.655Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions [none]
+[2026-01-06T19:17:29.655Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions x-goog-quota-user=projects/calculadora-rpida-pt
+[2026-01-06T19:17:29.655Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[2026-01-06T19:17:30.627Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions 200
+[2026-01-06T19:17:30.627Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[2026-01-06T19:17:30.628Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:30.628Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:30.628Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/calculadora-rpida-pt [none]
+[2026-01-06T19:17:31.081Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/calculadora-rpida-pt 200
+[2026-01-06T19:17:31.081Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/calculadora-rpida-pt {"projectId":"calculadora-rpida-pt","projectNumber":"968852529196","displayName":"Calculadora Rpida PT","name":"projects/calculadora-rpida-pt","resources":{"hostingSite":"calculadora-rpida-pt"},"state":"ACTIVE","etag":"1_05481e22-246c-4d7d-b6be-c43995592a2c"}
+[2026-01-06T19:17:33.700Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:33.701Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:33.701Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites pageToken=&pageSize=10
+[2026-01-06T19:17:34.825Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites 200
+[2026-01-06T19:17:34.825Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites {"sites":[{"name":"projects/calculadora-rpida-pt/sites/calculadora-rpida-pt","defaultUrl":"https://calculadora-rpida-pt.web.app","type":"DEFAULT_SITE"}]}
+[2026-01-06T19:17:34.826Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:34.826Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:34.826Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites 
+[2026-01-06T19:17:35.127Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites 200
+[2026-01-06T19:17:35.127Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites {"sites":[{"name":"projects/calculadora-rpida-pt/sites/calculadora-rpida-pt","defaultUrl":"https://calculadora-rpida-pt.web.app","type":"DEFAULT_SITE"}]}
+[2026-01-06T19:17:35.128Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:35.128Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:35.128Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/calculadora-rpida-pt/webApps/-/config [none]
+[2026-01-06T19:17:36.125Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/calculadora-rpida-pt/webApps/-/config 200
+[2026-01-06T19:17:36.125Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/calculadora-rpida-pt/webApps/-/config {"projectId":"calculadora-rpida-pt","appId":"1:968852529196:web:2e8a6e0aad32c08c2e3189","storageBucket":"calculadora-rpida-pt.firebasestorage.app","apiKey":"AIzaSyC3OxyhVyO5GWw574Ln0rxK63SVUapFaPw","authDomain":"calculadora-rpida-pt.firebaseapp.com","messagingSenderId":"968852529196","measurementId":"G-JLZCGM0NSK","projectNumber":"968852529196","version":"2"}
+No Firebase app associated with site calculadora-rpida-pt, injecting project default config.
+  You can link a Web app to a Hosting site here https://console.firebase.google.com/project/calculadora-rpida-pt/settings/general/web
+
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[2026-01-06T19:17:42.001Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:42.001Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:17:42.001Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites/calculadora-rpida-pt [none]
+[2026-01-06T19:17:42.980Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites/calculadora-rpida-pt 200
+[2026-01-06T19:17:42.980Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites/calculadora-rpida-pt {"name":"projects/calculadora-rpida-pt/sites/calculadora-rpida-pt","defaultUrl":"https://calculadora-rpida-pt.web.app","type":"DEFAULT_SITE"}
+  ▲ Next.js 14.2.35
+
+  - Environments: .env
+
+
+   Creating an optimized production build ...
+
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+
+
+
+Source path: C:\codigos\sitemycalc\src\app\globals.css
+
+Setting up new context...
+
+Finding changed files: 8.284ms
+
+Reading changed files: 84.229ms
+
+Sorting candidates: 3.278ms
+
+Generate rules: 210.778ms
+
+Build stylesheet: 4.071ms
+
+Potential classes:  3726
+Active contexts:  1
+
+JIT TOTAL: 471.378ms
+
+
+
+
+ ✓ Compiled successfully
+
+   Skipping validation of types
+
+   Skipping linting
+
+   Collecting page data ...
+
+   Generating static pages (0/5) ...
+
+   Generating static pages (1/5) 
+
+   Generating static pages (2/5) 
+
+   Generating static pages (3/5) 
+
+Sitemap entries: [
+  {
+    url: 'https://mycalconline.com/en',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/meters-to-feet',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/meters-to-feet',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/meters-to-feet',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/weight',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/weight',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/weight',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/temperature',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/temperature',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/temperature',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/length',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/length',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/length',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/average',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/average',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/average',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/gcd',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/gcd',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/gcd',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/lcm',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/lcm',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/lcm',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/rule-of-three',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/rule-of-three',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/rule-of-three',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/prime-factorization',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/prime-factorization',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/prime-factorization',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/discount',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/discount',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/discount',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/percentage',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/percentage',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/percentage',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/bmi',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/bmi',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/bmi',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/roi',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/roi',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/roi',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/calorie',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/calorie',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/calorie',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/body-fat',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/body-fat',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/body-fat',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/age',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/age',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/age',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/date-difference',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/date-difference',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/date-difference',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/circle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/circle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/circle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/square',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/square',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/square',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/rectangle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/rectangle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/rectangle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/triangle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/triangle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/triangle',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/salary',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/salary',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/salary',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/simple-interest',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/simple-interest',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/simple-interest',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/compound-interest',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/compound-interest',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/compound-interest',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/speed',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/speed',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/speed',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/acceleration',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/acceleration',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/acceleration',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/force',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/force',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/force',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/work',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/work',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/work',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/power',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/power',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/power',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/weighted-average',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/weighted-average',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/weighted-average',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/standard-deviation',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/standard-deviation',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/standard-deviation',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/variance',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/pt-BR/calculator/variance',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/es/calculator/variance',
+    alternates: { languages: [Object] }
+  },
+  {
+    url: 'https://mycalconline.com/en/calculator/z-score',
+    alternates: { languages: [Object] }
+  },
+  ... 1796 more items
+]
+
+ ✓ Generating static pages (5/5)
+
+   Finalizing page optimization ...
+
+   Collecting build traces ...
+
+
+
+Route (app)                              Size     First Load JS
+┌ ○ /_not-found                          151 B          87.6 kB
+├ ƒ /[locale]                            2.85 kB         270 kB
+├ ƒ /[locale]/calculator/[id]            167 kB          417 kB
+├ ƒ /[locale]/dashboard                  2.72 kB         107 kB
+├ ƒ /[locale]/temp                       331 B          87.8 kB
+├ ○ /robots.txt                          0 B                0 B
+└ ○ /sitemap.xml                         0 B                0 B
++ First Load JS shared by all            87.5 kB
+  ├ chunks/117-d350486fc999ba53.js       31.9 kB
+  ├ chunks/fd9d1056-66408495c002d330.js  53.6 kB
+  └ other shared chunks (total)          1.91 kB
+
+
+ƒ Middleware                             36.5 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+Building a Cloud Function to run this application. This is needed due to:
+ • middleware
+ • non-static component /[locale]/page
+ • non-static component /[locale]/dashboard/page
+ • non-static component /[locale]/temp/page
+ • non-static component /[locale]/calculator/[id]/page
+
+Warning: Global esbuild version (0.25.8) does not match the required version (^0.19.2).
+[2026-01-06T19:18:03.192Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:18:03.192Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:18:03.193Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites/calculadora-rpida-pt [none]
+[2026-01-06T19:18:04.158Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites/calculadora-rpida-pt 200
+[2026-01-06T19:18:04.158Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/calculadora-rpida-pt/sites/calculadora-rpida-pt {"name":"projects/calculadora-rpida-pt/sites/calculadora-rpida-pt","defaultUrl":"https://calculadora-rpida-pt.web.app","type":"DEFAULT_SITE"}
+!  This integration expects Node version 16, 18, or 20. You're running version 24, problems may be encountered. 
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'nextn@0.1.0',
+npm warn EBADENGINE   required: { node: '20' },
+npm warn EBADENGINE   current: { node: 'v24.2.0', npm: '11.3.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'firebase-frameworks@0.11.8',
+npm warn EBADENGINE   required: { node: '^16.0.0 || ^18.0.0 || ^20.0.0 || ^22.0.0' },
+npm warn EBADENGINE   current: { node: 'v24.2.0', npm: '11.3.0' }
+npm warn EBADENGINE }
+
+up to date in 10s
+
+93 packages are looking for funding
+  run `npm fund` for details
+[2026-01-06T19:18:14.344Z] [web frameworks] effective firebase.json:  {
+  "hosting": [
+    {
+      "source": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "frameworksBackend": {
+        "region": "us-central1"
+      },
+      "site": "calculadora-rpida-pt",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": {
+            "functionId": "ssrcalculadorarpidapt",
+            "region": "us-central1",
+            "pinTag": true
+          }
+        }
+      ],
+      "redirects": [],
+      "headers": [
+        {
+          "source": "/_not-found",
+          "headers": [
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/_not-found/layout,_N_T_/_not-found/page,_N_T_/_not-found"
+            }
+          ]
+        },
+        {
+          "source": "/robots.txt",
+          "headers": [
+            {
+              "key": "cache-control",
+              "value": "public, max-age=0, must-revalidate"
+            },
+            {
+              "key": "content-type",
+              "value": "text/plain"
+            },
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/robots.txt/layout,_N_T_/robots.txt/route,_N_T_/robots.txt"
+            }
+          ]
+        },
+        {
+          "source": "/sitemap.xml",
+          "headers": [
+            {
+              "key": "cache-control",
+              "value": "public, max-age=0, must-revalidate"
+            },
+            {
+              "key": "content-type",
+              "value": "application/xml"
+            },
+            {
+              "key": "x-next-cache-tags",
+              "value": "_N_T_/layout,_N_T_/sitemap.xml/layout,_N_T_/sitemap.xml/route,_N_T_/sitemap.xml"
+            }
+          ]
+        },
+        {
+          "source": "**/*.[jt]s",
+          "headers": [
+            {
+              "key": "Set-Cookie",
+              "value": "__FIREBASE_DEFAULTS__=eyJjb25maWciOnsicHJvamVjdElkIjoiY2FsY3VsYWRvcmEtcnBpZGEtcHQiLCJhcHBJZCI6IjE6OTY4ODUyNTI5MTk2OndlYjoyZThhNmUwYWFkMzJjMDhjMmUzMTg5Iiwic3RvcmFnZUJ1Y2tldCI6ImNhbGN1bGFkb3JhLXJwaWRhLXB0LmZpcmViYXNlc3RvcmFnZS5hcHAiLCJhcGlLZXkiOiJBSXphU3lDM094eWhWeU81R1d3NTc0TG4wcnhLNjNTVlVhcEZhUHciLCJhdXRoRG9tYWluIjoiY2FsY3VsYWRvcmEtcnBpZGEtcHQuZmlyZWJhc2VhcHAuY29tIiwibWVzc2FnaW5nU2VuZGVySWQiOiI5Njg4NTI1MjkxOTYiLCJtZWFzdXJlbWVudElkIjoiRy1KTFpDR00wTlNLIiwicHJvamVjdE51bWJlciI6Ijk2ODg1MjUyOTE5NiIsInZlcnNpb24iOiIyIn0sIl9hdXRoVG9rZW5TeW5jVVJMIjoiL19fc2Vzc2lvbiJ9; SameSite=Strict; Expires=2027-12-02T05:58:14.344Z; Path=/;"
+            }
+          ]
+        }
+      ],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "public": ".firebase\\calculadora-rpida-pt\\hosting",
+      "webFramework": "next_ssr"
+    }
+  ],
+  "functions": [
+    {
+      "source": ".firebase\\calculadora-rpida-pt\\functions",
+      "codebase": "firebase-frameworks-calculadora-rpida-pt"
+    }
+  ]
+}
+[2026-01-06T19:18:14.345Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[2026-01-06T19:18:14.345Z] > authorizing via signed-in user (alexandretmoraes110@gmail.com)
+[2026-01-06T19:18:14.345Z] [iam] checking project calculadora-rpida-pt for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[2026-01-06T19:18:14.345Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:18:14.345Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:18:14.346Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions [none]
+[2026-01-06T19:18:14.346Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions x-goog-quota-user=projects/calculadora-rpida-pt
+[2026-01-06T19:18:14.346Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[2026-01-06T19:18:15.194Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions 200
+[2026-01-06T19:18:15.195Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/calculadora-rpida-pt:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[2026-01-06T19:18:15.195Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:18:15.195Z] Checked if tokens are valid: true, expires at: 1767729579052
+[2026-01-06T19:18:15.196Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/calculadora-rpida-pt/locations/-/functions [none]
+[2026-01-06T19:18:15.523Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/calculadora-rpida-pt/locations/-/functions 403
+[2026-01-06T19:18:15.523Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/calculadora-rpida-pt/locations/-/functions {"error":{"code":403,"message":"Cloud Functions API has not been used in project calculadora-rpida-pt before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=calculadora-rpida-pt then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"activationUrl":"https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=calculadora-rpida-pt","serviceTitle":"Cloud Functions API","consumer":"projects/calculadora-rpida-pt","service":"cloudfunctions.googleapis.com","containerInfo":"calculadora-rpida-pt"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Cloud Functions API has not been used in project calculadora-rpida-pt before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=calculadora-rpida-pt then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=calculadora-rpida-pt"}]}]}}
+[2026-01-06T19:18:15.524Z] [functions] failed to list functions for calculadora-rpida-pt
+[2026-01-06T19:18:15.524Z] [functions] Request to https://cloudfunctions.googleapis.com/v1/projects/calculadora-rpida-pt/locations/-/functions had HTTP Error: 403, Cloud Functions API has not been used in project calculadora-rpida-pt before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=calculadora-rpida-pt then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+[2026-01-06T19:18:15.692Z] FirebaseError: Request to https://cloudfunctions.googleapis.com/v1/projects/calculadora-rpida-pt/locations/-/functions had HTTP Error: 403, Cloud Functions API has not been used in project calculadora-rpida-pt before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=calculadora-rpida-pt then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+    at responseToError (C:\Users\alext\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:53:12)
+    at RetryOperation._fn (C:\Users\alext\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:322:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+Error: Failed to list functions for calculadora-rpida-pt

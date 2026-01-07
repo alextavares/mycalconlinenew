@@ -1,144 +1,320 @@
 import { CalculatorConfig } from '@/types/calculator';
 
 export const calculators: Record<string, CalculatorConfig> = {
+    'age': {
+        id: 'age',
+        title: 'Calculadora de Idade',
+        description: 'Descubra sua idade exata em anos, meses e dias, além de curiosidades sobre seu nascimento.',
+        category: 'everyday',
+        icon: 'Calendar',
+        meta: {
+            title: 'Calculadora de Idade | Calcule sua Idade Exata Online',
+            description: 'Quantos anos eu tenho? Calcule sua idade exata em anos, meses e dias. Veja quantos dias faltam para seu aniversário e descubra seu signo.',
+            keywords: ['calculadora de idade', 'quantos anos tenho', 'calcular idade', 'idade exata', 'dias vividos'],
+        },
+        inputs: [
+            {
+                id: 'birthDate',
+                label: 'Data de Nascimento',
+                type: 'date',
+                placeholder: 'Selecione a data',
+                width: 'full'
+            },
+            {
+                id: 'targetDate',
+                label: 'Calcular idade em (opcional)',
+                type: 'date',
+                placeholder: 'Hoje (padrão)',
+                defaultValue: new Date().toISOString().split('T')[0],
+                width: 'full'
+            }
+        ],
+        outputs: [
+            {
+                label: 'Sua Idade Exata',
+                unit: '',
+                calculate: (inputs) => {
+                    const birthDateStr = inputs['birthDate'] as string;
+                    const targetDateStr = (inputs['targetDate'] as string) || new Date().toISOString().split('T')[0];
+
+                    if (!birthDateStr) return '---';
+
+                    const birth = new Date(birthDateStr);
+                    const target = new Date(targetDateStr);
+
+                    if (isNaN(birth.getTime()) || isNaN(target.getTime())) return 'Data inválida';
+                    if (birth > target) return 'A data de nascimento não pode ser no futuro em relação à data alvo.';
+
+                    let years = target.getFullYear() - birth.getFullYear();
+                    let months = target.getMonth() - birth.getMonth();
+                    let days = target.getDate() - birth.getDate();
+
+                    if (days < 0) {
+                        months--;
+                        // Days in previous month
+                        const previousMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+                        days += previousMonth.getDate();
+                    }
+
+                    if (months < 0) {
+                        years--;
+                        months += 12;
+                    }
+
+                    return `${years} anos, ${months} meses e ${days} dias`;
+                }
+            },
+            {
+                label: 'Próximo Aniversário',
+                unit: '',
+                calculate: (inputs) => {
+                    const birthDateStr = inputs['birthDate'] as string;
+                    const targetDateStr = (inputs['targetDate'] as string) || new Date().toISOString().split('T')[0];
+
+                    if (!birthDateStr) return '---';
+
+                    const birth = new Date(birthDateStr);
+                    const target = new Date(targetDateStr);
+
+                    const nextBirthday = new Date(target.getFullYear(), birth.getMonth(), birth.getDate());
+
+                    if (nextBirthday < target) {
+                        nextBirthday.setFullYear(target.getFullYear() + 1);
+                    }
+
+                    if (nextBirthday.getTime() === target.getTime()) return 'Hoje! Parabéns! 🎂';
+
+                    const diffTime = Math.abs(nextBirthday.getTime() - target.getTime());
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                    if (diffDays === 365 || diffDays === 366) return 'Hoje! Parabéns! 🎂';
+
+                    return `Faltam ${diffDays} dias`;
+                }
+            },
+            {
+                label: 'Signo do Zodíaco',
+                unit: '',
+                calculate: (inputs) => {
+                    const birthDateStr = inputs['birthDate'] as string;
+                    if (!birthDateStr) return '---';
+                    const birth = new Date(birthDateStr);
+                    const day = birth.getDate() + 1; // Fix timezone offset issue if any, simplistic approach
+                    const month = birth.getMonth() + 1;
+
+                    // Simple Zodiac Logic
+                    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return 'Áries ♈';
+                    if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return 'Touro ♉';
+                    if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return 'Gêmeos ♊';
+                    if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return 'Câncer ♋';
+                    if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return 'Leão ♌';
+                    if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return 'Virgem ♍';
+                    if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return 'Libra ♎';
+                    if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return 'Escorpião ♏';
+                    if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return 'Sagitário ♐';
+                    if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return 'Capricórnio ♑';
+                    if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return 'Aquário ♒';
+                    if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return 'Peixes ♓';
+                    return '';
+                }
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>What is Chronological Age?</h3>
+            <p><strong>Chronological age</strong> is the amount of time that has passed from your birth to the given date. It is your age measured in years, months, and days.</p>
+            <p>This is the primary way we define age for legal purposes, such as voting, driving, or retirement eligibility.</p>
+            `,
+            howTo: `
+            <h3>How to use the Age Calculator</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <strong class="text-blue-900 block mb-2">Detailed Age</strong>
+                    <p class="text-sm text-blue-800">We calculate the exact number of years, months, and days.</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
+                    <strong class="text-purple-900 block mb-2">Next Birthday</strong>
+                    <p class="text-sm text-purple-800">Find out exactly how many days are left until your next party!</p>
+                </div>
+            </div>
+            `,
+            faq: [
+                {
+                    question: "Chronological vs. Biological Age?",
+                    answer: "Chronological age is based solely on time. Biological age considers biomarkers and health; it's how fast your body is aging internally. You can be 50 chronologically but have the biological age of a 40-year-old through healthy living."
+                },
+                {
+                    question: "Does this handle leap years?",
+                    answer: "Yes! Our calculator explicitly accounts for leap years (366 days) to ensure the day count is precise."
+                }
+            ]
+        }
+    },
     'meters-to-feet': {
         id: 'meters-to-feet',
-        title: 'Meters to Feet Converter',
-        description: 'Convert meters to feet and inches. Perfect for height, room dimensions, or travel.',
+        title: 'Conversor de Metros para Pés',
+        description: 'Converta metros para pés e polegadas. Ideal para altura, aviação e medidas internacionais.',
         category: 'conversion',
         icon: 'Ruler',
         meta: {
-            title: 'Meters to Feet Converter (m to ft) | Height & Length',
-            description: 'Convert meters to feet and inches. Includes a quick reference table for common heights (1.7m, 1.8m, etc).',
-            keywords: ['meters to feet', 'm to ft', 'height converter', 'metric to imperial', 'length converter'],
+            title: 'Converter Metros para Pés (m para ft) + Tabela de Altura',
+            description: 'Conversor de Metros para Pés e Polegadas. Veja sua altura em medidas americanas (ex: 1.75m = 5\' 9") e consulte tabelas rápidas.',
+            keywords: ['metros para pes', 'm para ft', 'conversor de altura', 'medidas americanas', 'tabela de conversão'],
         },
         inputs: [
             {
                 id: 'meters',
-                label: 'Meters (m)',
+                label: 'Metros (m)',
                 type: 'number',
-                placeholder: 'e.g., 1.75',
+                placeholder: 'ex: 1.75',
                 unit: 'm',
+                defaultValue: 1.75
             },
         ],
         outputs: [
             {
-                label: 'Feet (decimal)',
+                label: 'Pés (decimal)',
                 unit: 'ft',
                 calculate: (inputs) => {
-                    const meters = inputs['meters'];
-                    if (typeof meters !== 'number') return 0;
+                    const meters = Number(inputs['meters']);
+                    if (isNaN(meters)) return 0;
                     return parseFloat((meters * 3.28084).toFixed(4));
                 },
             },
             {
-                label: 'Feet + Inches',
+                label: 'Pés e Polegadas',
                 unit: '',
                 calculate: (inputs) => {
-                    const meters = inputs['meters'];
-                    if (typeof meters !== 'number' || meters <= 0) return 'N/A';
+                    const meters = Number(inputs['meters']);
+                    if (isNaN(meters) || meters <= 0) return '---';
                     const totalInches = meters * 39.3701;
                     const feet = Math.floor(totalInches / 12);
                     const inches = Math.round(totalInches % 12);
+                    // Handle edge case where rounding inches bumps feet (e.g. 5' 12" -> 6' 0")
+                    if (inches === 12) return `${feet + 1}' 0"`;
                     return `${feet}' ${inches}"`;
+                },
+            },
+            {
+                label: 'Referência Visual',
+                unit: '',
+                calculate: (inputs) => {
+                    const m = Number(inputs['meters']);
+                    if (isNaN(m) || m <= 0) return '-';
+                    if (m < 0.5) return 'Tamanho de um recém-nascido (aprox)';
+                    if (m >= 1.60 && m <= 1.65) return 'Média Feminina (Brasil)';
+                    if (m >= 1.70 && m <= 1.75) return 'Média Masculina (Brasil)';
+                    if (m > 2.40) return 'Mais alto que a porta de casa!';
+                    if (m >= 8840) return 'Altura do Monte Everest 🏔️';
+                    if (m >= 10000) return 'Altitude de Cruzeiro (Avião) ✈️';
+                    return 'Altura calculada';
                 },
             },
         ],
         content: {
             whatIs: `
-            <h3>Why Convert Meters to Feet?</h3>
-            <p>While the metric system is used globally, the USA and UK often use feet and inches for human height and room dimensions.</p>
-            <p>Knowing your height in both systems is useful for travel, sports, and international communication.</p>
+            <h3>Por que converter Metros para Pés?</h3>
+            <p>Embora o Brasil use o sistema métrico (metros, centímetros), é muito comum encontrarmos o sistema imperial (pés e polegadas) em:</p>
+            <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
+                <li><strong>Aviação:</strong> Altitudes são sempre dadas em pés (ex: 30.000 pés).</li>
+                <li><strong>Viagens internacionais:</strong> Nos EUA e Reino Unido, a altura das pessoas é medida em pés.</li>
+                <li><strong>Filmes e TVs:</strong> Tamanhos de telas e referências culturais americanas.</li>
+            </ul>
             `,
             howTo: `
-            <h3>Quick Reference Table</h3>
+            <h3>Tabela de Referência Rápida (Alturas Comuns)</h3>
             <div class="overflow-hidden rounded-lg border border-gray-200 mt-4">
                 <table class="min-w-full text-sm text-center">
                     <thead class="bg-gray-50 text-gray-700 font-semibold">
                         <tr>
-                            <th class="py-2 px-4">Meters</th>
-                            <th class="py-2 px-4">Feet (decimal)</th>
-                            <th class="py-2 px-4">Feet + Inches</th>
+                            <th class="py-2 px-4">Metros</th>
+                            <th class="py-2 px-4">Pés (ft)</th>
+                            <th class="py-2 px-4">Nos EUA (ft + in)</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        <tr><td class="py-2 font-medium">1.50 m</td><td>4.92 ft</td><td class="text-blue-600">4' 11"</td></tr>
-                        <tr><td class="py-2 font-medium">1.60 m</td><td>5.25 ft</td><td class="text-blue-600">5' 3"</td></tr>
-                        <tr><td class="py-2 font-medium">1.70 m</td><td>5.58 ft</td><td class="text-blue-600">5' 7"</td></tr>
-                        <tr><td class="py-2 font-medium">1.75 m</td><td>5.74 ft</td><td class="text-blue-600">5' 9"</td></tr>
-                        <tr><td class="py-2 font-medium">1.80 m</td><td>5.91 ft</td><td class="text-blue-600">5' 11"</td></tr>
-                        <tr><td class="py-2 font-medium">1.85 m</td><td>6.07 ft</td><td class="text-blue-600">6' 1"</td></tr>
-                        <tr><td class="py-2 font-medium">1.90 m</td><td>6.23 ft</td><td class="text-blue-600">6' 3"</td></tr>
+                        <tr><td class="py-2">1.50 m</td><td>4.92 ft</td><td class="text-blue-600 font-bold">4' 11"</td></tr>
+                        <tr><td class="py-2">1.60 m</td><td>5.25 ft</td><td class="text-blue-600 font-bold">5' 3"</td></tr>
+                        <tr><td class="py-2">1.65 m</td><td>5.41 ft</td><td class="text-blue-600 font-bold">5' 5"</td></tr>
+                        <tr><td class="py-2 bg-blue-50">1.70 m</td><td class="bg-blue-50">5.58 ft</td><td class="text-blue-800 font-bold bg-blue-50">5' 7"</td></tr>
+                        <tr><td class="py-2 bg-blue-50">1.75 m</td><td class="bg-blue-50">5.74 ft</td><td class="text-blue-800 font-bold bg-blue-50">5' 9"</td></tr>
+                        <tr><td class="py-2">1.80 m</td><td>5.91 ft</td><td class="text-blue-600 font-bold">5' 11"</td></tr>
+                        <tr><td class="py-2">1.90 m</td><td>6.23 ft</td><td class="text-blue-600 font-bold">6' 3"</td></tr>
+                        <tr><td class="py-2">2.00 m</td><td>6.56 ft</td><td class="text-blue-600 font-bold">6' 7"</td></tr>
                     </tbody>
                 </table>
             </div>
             `,
             faq: [
                 {
-                    question: 'How many feet are in 1 meter?',
-                    answer: 'There are approximately 3.28084 feet in 1 meter. For a quick estimate, multiply meters by 3.3.',
+                    question: 'Quanto vale 1 pé em metros?',
+                    answer: 'Um pé (foot) equivale exatamente a 0,3048 metros. Para uma conta rápida mental, você pode dividir o valor em pés por 3 (ex: 30 mil pés / 3 = 10 mil metros, aprox).',
                 },
                 {
-                    question: 'Why does my result show feet AND inches?',
-                    answer: "In the US/UK, height is usually expressed as '5 feet 9 inches' rather than '5.75 feet'. We show both formats for convenience."
+                    question: 'Como se fala minha altura nos EUA?',
+                    answer: 'Ao contrário do Brasil onde dizemos "um e setenta e cinco", nos EUA eles dizem os pés e as polegadas separadamente. Exemplo: 5\' 9" se diz "five nine".',
+                },
+                {
+                    question: 'Por que a aviação usa pés?',
+                    answer: 'É uma herança histórica dos EUA e Reino Unido que dominaram a indústria aeronáutica no início. Hoje é o padrão internacional para controle de tráfego aéreo.'
                 }
             ],
         },
     },
     'weight': {
         id: 'weight',
-        title: 'Weight Converter',
-        description: 'Convert between different units of weight (kg, lbs, oz, g).',
+        title: 'Conversor de Peso',
+        description: 'Converta entre diferentes unidades (kg, lbs, onças, gramas).',
         category: 'conversion',
         icon: 'Scale',
         meta: {
-            title: 'Weight Converter | MyCalcOnline',
-            description: 'Easily convert weight between Kilograms, Pounds, Ounces, and Grams.',
-            keywords: ['weight converter', 'kg to lbs', 'pounds to kg', 'mass converter'],
+            title: 'Conversor de Peso (Kg, Lbs, G) | MyCalcOnline',
+            description: 'Converta facilmente quilos para libras, gramas para onças e muito mais. Ideal para receitas, academia e viagens.',
+            keywords: ['conversor de peso', 'kg para libras', 'libras para kg', 'onças para gramas'],
         },
         inputs: [
             {
                 id: 'value',
-                label: 'Value',
+                label: 'Valor',
                 type: 'number',
-                placeholder: 'e.g. 1',
+                placeholder: 'ex: 1',
             },
             {
                 id: 'unit_from',
-                label: 'From',
+                label: 'De (Unidade)',
                 type: 'select',
                 defaultValue: 'kg',
                 options: [
-                    { label: 'Kilograms (kg)', value: 'kg' },
-                    { label: 'Pounds (lbs)', value: 'lb' },
-                    { label: 'Grams (g)', value: 'g' },
-                    { label: 'Milligrams (mg)', value: 'mg' },
-                    { label: 'Ounces (oz)', value: 'oz' },
+                    { label: 'Quilogramas (kg)', value: 'kg' },
+                    { label: 'Libras (lbs)', value: 'lb' },
+                    { label: 'Gramas (g)', value: 'g' },
+                    { label: 'Miligramas (mg)', value: 'mg' },
+                    { label: 'Onças (oz)', value: 'oz' },
                     { label: 'Stones (st)', value: 'st' },
-                    { label: 'US Tons (ton)', value: 'ton' },
-                    { label: 'Metric Tonnes (t)', value: 'tonne' },
+                    { label: 'Toneladas Curtas (US ton)', value: 'ton' },
+                    { label: 'Toneladas Métricas (t)', value: 'tonne' },
                 ],
             },
             {
                 id: 'unit_to',
-                label: 'To',
+                label: 'Para (Unidade)',
                 type: 'select',
                 defaultValue: 'lb',
                 options: [
-                    { label: 'Kilograms (kg)', value: 'kg' },
-                    { label: 'Pounds (lbs)', value: 'lb' },
-                    { label: 'Grams (g)', value: 'g' },
-                    { label: 'Milligrams (mg)', value: 'mg' },
-                    { label: 'Ounces (oz)', value: 'oz' },
+                    { label: 'Quilogramas (kg)', value: 'kg' },
+                    { label: 'Libras (lbs)', value: 'lb' },
+                    { label: 'Gramas (g)', value: 'g' },
+                    { label: 'Miligramas (mg)', value: 'mg' },
+                    { label: 'Onças (oz)', value: 'oz' },
                     { label: 'Stones (st)', value: 'st' },
-                    { label: 'US Tons (ton)', value: 'ton' },
-                    { label: 'Metric Tonnes (t)', value: 'tonne' },
+                    { label: 'Toneladas Curtas (US ton)', value: 'ton' },
+                    { label: 'Toneladas Métricas (t)', value: 'tonne' },
                 ],
             },
         ],
         outputs: [
             {
-                label: 'Result',
+                label: 'Resultado',
                 calculate: (inputs) => {
                     const val = inputs['value'];
                     const from = inputs['unit_from'] as string;
@@ -167,67 +343,67 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-        <h3>Understanding Weight Units</h3>
-        <p>Weight conversion is essential in many fields, from cooking and grocery shopping to science and engineering. This tool helps you switch seamlessly between:</p>
+        <h3>Entendendo as Medidas de Peso</h3>
+        <p>A conversão de peso é essencial em muitas áreas: culinária (receitas estrangeiras), academia (pesos em libras), ciência e viagens. Nossa ferramenta ajuda você a transitar entre:</p>
         <ul class="list-disc pl-5 space-y-1 text-gray-600">
-            <li><strong>Metric System:</strong> Grams (g), Kilograms (kg), Tonnes (t). Used globally.</li>
-            <li><strong>Imperial/US System:</strong> Ounces (oz), Pounds (lb), Stones (st), Tons. Used mainly in the USA and UK.</li>
+            <li><strong>Sistema Métrico:</strong> Gramas (g), Kg, Toneladas. Padrão no Brasil e no mundo.</li>
+            <li><strong>Sistema Imperial/US:</strong> Onças (oz), Libras (lb), Stones (st). Usado nos EUA e UK.</li>
         </ul>
       `,
             howTo: `
-        <h3>Common Conversion Factors</h3>
+        <h3>Fatores de Conversão Comuns</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
             <div class="bg-indigo-50 p-3 rounded border border-indigo-100">
                 <span class="font-bold text-indigo-900">1 kg = 2.204 lbs</span>
-                <p class="text-xs text-indigo-700 mt-1">To convert Kg to Lbs, multiply by 2.2</p>
+                <p class="text-xs text-indigo-700 mt-1">Para converter Kg em Libras, multiplique por 2.2</p>
             </div>
             <div class="bg-pink-50 p-3 rounded border border-pink-100">
                 <span class="font-bold text-pink-900">1 lb = 453.6 g</span>
-                <p class="text-xs text-pink-700 mt-1">To convert Lbs to Kg, divide by 2.2</p>
+                <p class="text-xs text-pink-700 mt-1">Meio quilo é aproximadamente 1.1 lbs</p>
             </div>
             <div class="bg-amber-50 p-3 rounded border border-amber-100">
                 <span class="font-bold text-amber-900">1 oz = 28.35 g</span>
-                <p class="text-xs text-amber-700 mt-1">Kitchen measurements</p>
+                <p class="text-xs text-amber-700 mt-1">Muito comum em receitas e utensílios de café</p>
             </div>
             <div class="bg-gray-50 p-3 rounded border border-gray-100">
                 <span class="font-bold text-gray-900">1 Stone = 14 lbs</span>
-                <p class="text-xs text-gray-700 mt-1">Common in UK body weight</p>
+                <p class="text-xs text-gray-700 mt-1">Unidade corporal comum no Reino Unido</p>
             </div>
         </div>
       `,
             faq: [
                 {
-                    question: 'How many pounds in a stone?',
-                    answer: 'There are exactly 14 pounds in 1 stone. So a person weighing 10 stone weighs 140 lbs.',
+                    question: 'Quantas libras cabem em um Stone?',
+                    answer: 'Existem exatamente 14 libras em 1 Stone. Se alguém pesa "10 stone", essa pessoa tem 140 libras (aprox 63kg).',
                 },
                 {
-                    question: 'What is the difference between a dashboard Ton and a Metric Tonne?',
-                    answer: 'A Metric Tonne (t) is 1,000 kg (approx 2,204 lbs). A US Short Ton is 2,000 lbs. A UK Long Ton is 2,240 lbs.',
+                    question: 'Qual a diferença entre Tonelada e Tonelada Métrica?',
+                    answer: 'A "Tonelada Métrica" (t) é 1.000 kg. A "Short Ton" (US) é 2.000 libras (aprox 907kg). No Brasil, usamos sempre a Métrica.',
                 }
             ],
         },
     },
     'temperature': {
         id: 'temperature',
-        title: 'Temperature Converter',
-        description: 'Convert between Celsius (°C), Fahrenheit (°F), and Kelvin (K).',
+        title: 'Conversor de Temperatura',
+        description: 'Converta entre Celsius (°C), Fahrenheit (°F) e Kelvin (K).',
         category: 'conversion',
         icon: 'Thermometer',
         meta: {
-            title: 'Temperature Converter (C, F, K) | MyCalcOnline',
-            description: 'Accurate temperature conversion calculator. Convert between Celsius, Fahrenheit, and Kelvin instantly.',
-            keywords: ['temperature converter', 'celsius to fahrenheit', 'fahrenheit to celsius', 'kelvin conversion'],
+            title: 'Conversor de Temperatura (Celsius, Fahrenheit, Kelvin)',
+            description: 'Calculadora de conversão de temperatura precisa. Converta graus Celsius para Fahrenheit e Kelvin instantaneamente. Inclui fórmulas.',
+            keywords: ['conversor de temperatura', 'celsius para fahrenheit', 'fahrenheit para celsius', 'escala kelvin', 'graus'],
         },
         inputs: [
             {
                 id: 'value',
-                label: 'Degree',
+                label: 'Temperatura (Graus)',
                 type: 'number',
-                placeholder: 'e.g. 25',
+                placeholder: 'ex: 25',
             },
             {
                 id: 'unit_from',
-                label: 'From',
+                label: 'De',
                 type: 'select',
                 defaultValue: 'celsius',
                 options: [
@@ -238,7 +414,7 @@ export const calculators: Record<string, CalculatorConfig> = {
             },
             {
                 id: 'unit_to',
-                label: 'To',
+                label: 'Para',
                 type: 'select',
                 defaultValue: 'fahrenheit',
                 options: [
@@ -250,7 +426,7 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         outputs: [
             {
-                label: 'Result',
+                label: 'Resultado',
                 calculate: (inputs) => {
                     const val = inputs['value'];
                     const from = inputs['unit_from'] as string;
@@ -274,23 +450,23 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-        <h3>Temperature Scales Explained</h3>
-        <p>Temperature isn't just a number; it's a measurement of thermal energy. We support the three major scales:</p>
+        <h3>Entendendo as Escalas de Temperatura</h3>
+        <p>Temperatura não é apenas um número no termômetro; é a medida da energia térmica. Nossa ferramenta suporta as três principais escalas:</p>
         <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
-            <li><strong>Celsius (°C):</strong> Based on water freezing at 0° and boiling at 100°. Used globally.</li>
-            <li><strong>Fahrenheit (°F):</strong> Freezing at 32° and boiling at 212°. Used in the USA.</li>
-            <li><strong>Kelvin (K):</strong> The scientific scale starting at Absolute Zero. No degree symbol is used.</li>
+            <li><strong>Celsius (°C):</strong> Baseado na água (congela a 0°, ferve a 100°). Usado no Brasil e na maior parte do mundo.</li>
+            <li><strong>Fahrenheit (°F):</strong> Congela a 32° e ferve a 212°. Padrão nos Estados Unidos.</li>
+            <li><strong>Kelvin (K):</strong> A escala científica que começa no Zero Absoluto. Note que não se usa o símbolo de "grau" (apenas K).</li>
         </ul>
       `,
             howTo: `
-        <h3>Conversion Quick Guide</h3>
+        <h3>Guia Rápido de Conversão (Fórmulas)</h3>
         <div class="overflow-hidden rounded-lg border border-gray-200 mt-4">
             <table class="min-w-full text-sm text-center">
                 <thead class="bg-gray-50 text-gray-700 font-semibold">
                     <tr>
-                        <th class="py-2 px-4">From</th>
-                        <th class="py-2 px-4">To Celsius</th>
-                        <th class="py-2 px-4">To Fahrenheit</th>
+                        <th class="py-2 px-4">De</th>
+                        <th class="py-2 px-4">Para Celsius</th>
+                        <th class="py-2 px-4">Para Fahrenheit</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -315,74 +491,74 @@ export const calculators: Record<string, CalculatorConfig> = {
       `,
             faq: [
                 {
-                    question: 'What is absolute zero?',
-                    answer: 'Absolute zero (0 K) is the theoretical lowest temperature possible, where all molecular motion ceases. It is equivalent to -273.15°C or -459.67°F.',
+                    question: 'O que é o Zero Absoluto?',
+                    answer: 'O Zero Absoluto (0 K) é a menor temperatura teoricamente possível, onde todo movimento molecular cessa. Equivale a -273,15°C.',
                 },
                 {
-                    question: 'At what temperature are Celsius and Fahrenheit the same?',
-                    answer: 'They are exactly equal at -40 degrees (-40°C = -40°F).',
+                    question: 'Em qual temperatura Celsius e Fahrenheit são iguais?',
+                    answer: 'Eles se encontram exatamente em -40 graus (-40°C é igual a -40°F). É muito frio!',
                 }
             ],
         },
     },
     'length': {
         id: 'length',
-        title: 'Length Converter',
-        description: 'Convert between different units of length (m, km, inches, feet, miles).',
+        title: 'Conversor de Comprimento',
+        description: 'Converta entre diferentes unidades de comprimento (m, km, polegadas, pés, milhas).',
         category: 'conversion',
         icon: 'Ruler',
         meta: {
-            title: 'Length Converter (m, ft, in, km) | MyCalcOnline',
-            description: 'Accurate length conversion calculator. Convert between Meters, Feet, Inches, Kilometers and Miles.',
-            keywords: ['length converter', 'meters to feet', 'distance converter', 'mm to inches'],
+            title: 'Conversor de Comprimento (m, km, ft, milhas) | MyCalcOnline',
+            description: 'Calculadora precisa de conversão de comprimento. Converta metros para pés, quilômetros para milhas e muito mais.',
+            keywords: ['conversor de comprimento', 'metros para pés', 'distância', 'milhas para km'],
         },
         inputs: [
             {
                 id: 'value',
-                label: 'Length',
+                label: 'Comprimento',
                 type: 'number',
-                placeholder: 'e.g. 1',
+                placeholder: 'ex: 1',
             },
             {
                 id: 'unit_from',
-                label: 'From',
+                label: 'De (Unidade)',
                 type: 'select',
                 defaultValue: 'm',
                 options: [
-                    { label: 'Micrometers (µm)', value: 'um' },
-                    { label: 'Millimeters (mm)', value: 'mm' },
-                    { label: 'Centimeters (cm)', value: 'cm' },
-                    { label: 'Meters (m)', value: 'm' },
-                    { label: 'Kilometers (km)', value: 'km' },
-                    { label: 'Inches (in)', value: 'in' },
-                    { label: 'Feet (ft)', value: 'ft' },
-                    { label: 'Yards (yd)', value: 'yd' },
-                    { label: 'Miles (mi)', value: 'mi' },
-                    { label: 'Nautical Miles (nmi)', value: 'nmi' },
+                    { label: 'Micrômetros (µm)', value: 'um' },
+                    { label: 'Milímetros (mm)', value: 'mm' },
+                    { label: 'Centímetros (cm)', value: 'cm' },
+                    { label: 'Metros (m)', value: 'm' },
+                    { label: 'Quilômetros (km)', value: 'km' },
+                    { label: 'Polegadas (in)', value: 'in' },
+                    { label: 'Pés (ft)', value: 'ft' },
+                    { label: 'Jardas (yd)', value: 'yd' },
+                    { label: 'Milhas (mi)', value: 'mi' },
+                    { label: 'Milhas Náuticas (nmi)', value: 'nmi' },
                 ],
             },
             {
                 id: 'unit_to',
-                label: 'To',
+                label: 'Para (Unidade)',
                 type: 'select',
                 defaultValue: 'ft',
                 options: [
-                    { label: 'Micrometers (µm)', value: 'um' },
-                    { label: 'Millimeters (mm)', value: 'mm' },
-                    { label: 'Centimeters (cm)', value: 'cm' },
-                    { label: 'Meters (m)', value: 'm' },
-                    { label: 'Kilometers (km)', value: 'km' },
-                    { label: 'Inches (in)', value: 'in' },
-                    { label: 'Feet (ft)', value: 'ft' },
-                    { label: 'Yards (yd)', value: 'yd' },
-                    { label: 'Miles (mi)', value: 'mi' },
-                    { label: 'Nautical Miles (nmi)', value: 'nmi' },
+                    { label: 'Micrômetros (µm)', value: 'um' },
+                    { label: 'Milímetros (mm)', value: 'mm' },
+                    { label: 'Centímetros (cm)', value: 'cm' },
+                    { label: 'Metros (m)', value: 'm' },
+                    { label: 'Quilômetros (km)', value: 'km' },
+                    { label: 'Polegadas (in)', value: 'in' },
+                    { label: 'Pés (ft)', value: 'ft' },
+                    { label: 'Jardas (yd)', value: 'yd' },
+                    { label: 'Milhas (mi)', value: 'mi' },
+                    { label: 'Milhas Náuticas (nmi)', value: 'nmi' },
                 ],
             },
         ],
         outputs: [
             {
-                label: 'Result',
+                label: 'Resultado',
                 calculate: (inputs) => {
                     const val = inputs['value'];
                     const from = inputs['unit_from'] as string;
@@ -413,66 +589,66 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-        <h3>Metric vs. Imperial Lengths</h3>
-        <p>Length is the measure of distance. Most of the world uses the <strong>Metric system</strong> (based on meters), which is decimal-based and easy to scale (x10, x100, x1000).</p>
-        <p>The <strong>Imperial system</strong> (inches, feet, yards, miles) is used primarily in the United States and has less uniform conversion factors (x12, x3, x1760).</p>
+        <h3>Sistema Métrico vs. Imperial</h3>
+        <p>Comprimento é a medida fundamental de distância. A maior parte do mundo, incluindo o Brasil, usa o <strong>Sistema Métrico</strong> (baseado no metro), que é decimal e fácil de escalar.</p>
+        <p>O <strong>Sistema Imperial</strong> (polegadas, pés, jardas, milhas) ainda é amplamente usado nos Estados Unidos e, parcialmente, no Reino Unido (ex: milhas por hora nas estradas).</p>
       `,
             howTo: `
-        <h3>Useful Equivalences</h3>
+        <h3>Equivalências Úteis</h3>
         <div class="grid gap-3 my-4">
             <div class="flex items-center justify-between p-3 bg-gray-50 rounded border border-gray-200">
-                <span class="text-gray-600">Metric Base</span>
-                <span class="font-mono font-bold text-gray-900">1 Meter</span>
+                <span class="text-gray-600">Base Métrica</span>
+                <span class="font-mono font-bold text-gray-900">1 Metro</span>
             </div>
             <div class="flex items-center justify-between p-3 bg-white rounded border border-gray-100 shadow-sm">
-                <span class="text-gray-600">1 Inch</span>
-                <span class="font-mono text-blue-600">2.54 cm</span>
+                <span class="text-gray-600">1 Polegada (inch)</span>
+                <span class="font-mono text-blue-600">2,54 cm</span>
             </div>
             <div class="flex items-center justify-between p-3 bg-white rounded border border-gray-100 shadow-sm">
-                <span class="text-gray-600">1 Foot</span>
-                <span class="font-mono text-blue-600">30.48 cm</span>
+                <span class="text-gray-600">1 Pé (foot)</span>
+                <span class="font-mono text-blue-600">30,48 cm</span>
             </div>
             <div class="flex items-center justify-between p-3 bg-white rounded border border-gray-100 shadow-sm">
-                <span class="text-gray-600">1 Mile</span>
-                <span class="font-mono text-blue-600">1.609 km</span>
+                <span class="text-gray-600">1 Milha (mile)</span>
+                <span class="font-mono text-blue-600">1,609 km</span>
             </div>
         </div>
       `,
             faq: [
                 {
-                    question: 'How many feet in a mile?',
-                    answer: 'There are 5,280 feet in one land (statute) mile.',
+                    question: 'Quantos pés cabem em uma milha?',
+                    answer: 'Existem 5.280 pés em uma milha terrestre. É um número estranho, mas histórico.',
                 },
                 {
-                    question: 'What is a Nautical Mile?',
-                    answer: 'Used in sea and air navigation, a Nautical Mile is slightly longer than a land mile. 1 Nautical Mile = 1.852 km (approx 1.15 land miles).',
+                    question: 'O que é uma Milha Náutica?',
+                    answer: 'Usada em navegação marítima e aérea, a Milha Náutica é baseada na circunferência da Terra e é ligeiramente maior que a milha terrestre: 1 Milha Náutica = 1,852 km.',
                 }
             ],
         },
     },
     'average': {
         id: 'average',
-        title: 'Average Calculator',
-        description: 'Calculate Mean, Median, Mode, and Range of a data set.',
+        title: 'Calculadora de Média',
+        description: 'Calcule Média (Aritmética), Mediana, Moda e Amplitude de um conjunto de dados.',
         category: 'math',
         icon: 'BarChart3',
         meta: {
-            title: 'Average Calculator - Find Mean, Median, Mode & Range Instantly',
-            description: 'Determine the arithmetic mean, median, mode, and range for any data set. Learn how to calculate averages manually, understand outliers, and see step-by-step examples.',
-            keywords: ['average calculator', 'arithmetic mean', 'calculate median', 'find mode', 'range calculator', 'statistics tool', 'data analysis', 'mean median mode'],
+            title: 'Calculadora de Média - Média, Mediana, Moda e Amplitude',
+            description: 'Ferramenta completa de estatística básica. Encontre a média aritmética, mediana, moda e amplitude de qualquer lista de números. Inclui passo a passo.',
+            keywords: ['calculadora de media', 'media aritmetica', 'calcular mediana', 'encontrar moda', 'estatistica basica', 'media moda mediana'],
         },
         inputs: [
             {
                 id: 'numbers',
-                label: 'Numbers (comma separated)',
+                label: 'Números (separados por vírgula)',
                 type: 'text',
-                placeholder: 'e.g. 10, 20, 30, 40',
+                placeholder: 'ex: 10, 20, 30, 40',
                 defaultValue: '10, 20, 30, 40',
             },
         ],
         outputs: [
             {
-                label: 'Mean (Average)',
+                label: 'Média (Aritmética)',
                 calculate: (inputs) => {
                     const str = inputs['numbers'] as string;
                     const nums = str.split(/[,\s]+/).map(n => parseFloat(n)).filter(n => !isNaN(n));
@@ -482,7 +658,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Median',
+                label: 'Mediana',
                 calculate: (inputs) => {
                     const str = inputs['numbers'] as string;
                     const nums = str.split(/[,\s]+/).map(n => parseFloat(n)).filter(n => !isNaN(n)).sort((a, b) => a - b);
@@ -493,11 +669,11 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Mode',
+                label: 'Moda',
                 calculate: (inputs) => {
                     const str = inputs['numbers'] as string;
                     const nums = str.split(/[,\s]+/).map(n => parseFloat(n)).filter(n => !isNaN(n));
-                    if (nums.length === 0) return 'None';
+                    if (nums.length === 0) return 'Nenhuma';
 
                     const freq: Record<number, number> = {};
                     let maxFreq = 0;
@@ -507,7 +683,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                         if (freq[n] > maxFreq) maxFreq = freq[n];
                     });
 
-                    if (maxFreq === 1) return 'No Mode';
+                    if (maxFreq === 1) return 'Amodal (Sem Moda)';
 
                     const modes = Object.keys(freq)
                         .filter(n => freq[parseFloat(n)] === maxFreq)
@@ -518,7 +694,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Range',
+                label: 'Amplitude (Range)',
                 calculate: (inputs) => {
                     const str = inputs['numbers'] as string;
                     const nums = str.split(/[,\s]+/).map(n => parseFloat(n)).filter(n => !isNaN(n)).sort((a, b) => a - b);
@@ -529,76 +705,47 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-            <h3>What is an Average? (The Foundation of Statistics)</h3>
-            <p>In mathematics and everyday life, an <strong>average</strong> provides a single value that represents the "middle" or "typical" point of a collection of numbers. While most people use the term to mean the <em>Arithmetic Mean</em>, statistics actually utilizes several measures of central tendency to describe data more accurately depending on the context.</p>
-            <p class="mt-2 text-gray-700 font-medium">This calculator identifies the four pillars of basic statistics:</p>
+            <h3>O que é uma Média? (A Base da Estatística)</h3>
+            <p>Em matemática e no dia a dia, a "média" é um valor único que tenta representar o centro de uma lista de números. Existem várias formas de medir esse "centro", chamadas de <strong>Medidas de Tendência Central</strong>:</p>
             <ul class="list-disc pl-5 space-y-2 mt-2 text-gray-600">
-                <li><strong>Mean (Average):</strong> The sum of all values divided by the total number of items. It's the most widely used measure for stable datasets.</li>
-                <li><strong>Median:</strong> The middle score in a sorted list. It "slices" your data in half, which is vital for understanding things like salaries or housing prices where extreme values exist.</li>
-                <li><strong>Mode:</strong> The most frequent value in your set. Useful for identifying the most "popular" item in a list.</li>
-                <li><strong>Range:</strong> The distance between the highest and lowest values ($Max - Min$), showing how spread out or "concentrated" your data is.</li>
+                <li><strong>Média (Aritmética):</strong> É a soma de todos os valores dividida pela quantidade de itens. É a mais comum ("média das notas", "média de gols").</li>
+                <li><strong>Mediana:</strong> É o valor exatamente no meio da lista quando organizada em ordem crescente. Essencial para analisar salários ou preços de imóveis, pois ignora valores extremos.</li>
+                <li><strong>Moda:</strong> É o número que aparece com mais frequência. Útil para saber o que é "mais popular".</li>
+                <li><strong>Amplitude:</strong> A diferença entre o maior e o menor valor ($Máx - Mín$), mostrando o quanto os dados variam.</li>
             </ul>
             `,
             howTo: `
-            <h3>How to Use the Average Calculator Efficiently</h3>
-            <p>Our tool is designed to be <strong>dynamic and frictionless</strong>. You don't need to press a "Calculate" button; it works as you type.</p>
-            <ol class="list-decimal pl-5 space-y-3 text-gray-600 mb-6 mt-2">
-                <li><strong>Input Your Dataset:</strong> Simply enter your numbers into the box. You can separate them however you like: with <strong>commas, spaces, or even line breaks</strong>.</li>
-                <li><strong>Dynamic Growth:</strong> Need to average 50 numbers? No problem. The calculator automatically creates new entry slots as you fill them.</li>
-                <li><strong>Real-Time Analysis:</strong> Watch the Mean, Median, and Mode update instantly with every keypress. This allows you to see how adding a new "outlier" changes the entire result.</li>
-                <li><strong>Clear to Restart:</strong> Use the "Clear" button to wipe the dataset and start a fresh calculation in one click.</li>
-            </ol>
-            
-            <h3>How to Calculate an Average Manually</h3>
-            <p class="mb-2">If you're doing this for school or a quick check, the formula is straightforward:</p>
+            <h3>Como Calcular a Média Manualmente</h3>
+            <p class="mb-2">A fórmula clássica da média simples é:</p>
             <div class="latex-formula bg-blue-50 p-4 text-center rounded-lg border border-blue-100 my-4">
-                <p class="text-blue-900 font-mono text-lg">Average = (Sum of all values) ÷ (Total number of values)</p>
+                <p class="text-blue-900 font-mono text-lg">Média = (Soma de tudo) ÷ (Quantidade de itens)</p>
             </div>
             
-            <p class="mb-2 font-semibold">Example Walkthrough:</p>
-            <p class="text-sm text-gray-600 mb-4">Let's find the average of scores: <strong>85, 90, 70, and 95</strong>.</p>
+            <p class="mb-2 font-semibold">Exemplo Prático:</p>
+            <p class="text-sm text-gray-600 mb-4">Vamos achar a média das notas: <strong>8, 9, 7 e 10</strong>.</p>
             <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm space-y-2">
-                <p><strong>1. Sum them up:</strong> $85 + 90 + 70 + 95 = 340$</p>
-                <p><strong>2. Count the entries:</strong> There are 4 scores.</p>
-                <p><strong>3. Divide:</strong> $340 ÷ 4 = 85$</p>
-                <p class="text-indigo-700 font-medium">Result: The average score is 85.</p>
+                <p><strong>1. Some tudo:</strong> $8 + 9 + 7 + 10 = 34$</p>
+                <p><strong>2. Conte os itens:</strong> São 4 notas.</p>
+                <p><strong>3. Divida:</strong> $34 ÷ 4 = 8,5$</p>
+                <p class="text-indigo-700 font-medium">Resultado: A média é 8,5.</p>
             </div>
             
-            <h3 class="mt-8 mb-4">Behind the Scenes: Why Averages Can Be Misleading ⚠️</h3>
-            <p>A common trap in data analysis is relying <em>only</em> on the Mean. Because the mean is calculated by summing everything, a single massive number (an <strong>outlier</strong>) can pull the average far away from reality.</p>
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
-                <div class="p-4 bg-red-50 rounded border border-red-100 italic text-sm">
-                    <strong>The Danger:</strong> If 4 people earn $30k and 1 person earns $1 Million, the "average" income is over $200k. None of them actually earn that!
-                </div>
-                <div class="p-4 bg-green-50 rounded border border-green-100 italic text-sm">
-                    <strong>The Solution:</strong> This is why our calculator also shows the <strong>Median</strong>. In the example above, the Median would be $30k—a much more accurate reflection of the group.
-                </div>
-            </div>
-
-            <h3 class="mt-8 mb-4">Similar Concepts: Weighted Averages & GPA</h3>
-            <p>Sometimes, not every number is "equal." In college, a 4-credit class affects your grade more than a 1-credit class. This is called a <strong>Weighted Average</strong>.</p>
-            <p class="text-gray-600 mt-2">While this calculator treats every value equally (Arithmetic Mean), you can use our dedicated <strong>GPA Calculator</strong> (coming soon) to handle credits and weights specifically.</p>
+            <h3 class="mt-8 mb-4">Cuidado: Média vs Mediana ⚠️</h3>
+            <p>A média pode ser enganosa. Se você tem 4 pessoas ganhando R$ 2.000 e uma pessoa ganhando R$ 1 Milhão, a <strong>média</strong> será de +R$ 200 mil. Isso não reflete a realidade do grupo!</p>
+            <p class="mt-2">Nesse caso, a <strong>Mediana</strong> (que seria R$ 2.000) é muito mais honesta. Sempre verifique a mediana em dados desiguais.</p>
             `,
             faq: [
                 {
-                    question: "What are the 4 main types of averages?",
-                    answer: "The four primary measures are the <strong>Mean</strong> (sum divided by count), <strong>Median</strong> (the middle point), <strong>Mode</strong> (the most frequent value), and <strong>Range</strong> (the spread between high and low)."
+                    question: "O que significa 'Amodal'?",
+                    answer: "Quando nenhum número se repete na lista (ex: 1, 2, 3, 4), dizemos que o conjunto não tem Moda, ou é Amodal."
                 },
                 {
-                    question: "Why do we calculate the average?",
-                    answer: "Averages help us summarize huge amounts of data into a single understandable number. It allows for quick comparisons between different groups or time periods without analyzing every raw data point."
+                    question: "Para que serve a Amplitude?",
+                    answer: "A Amplitude mostra a dispersão. Se a média da turma foi 7, mas a amplitude foi 10 (notas de 0 a 10), a turma é muito desigual. Se a amplitude for 2 (notas de 6 a 8), a turma é homogenêa."
                 },
                 {
-                    question: "How do I calculate an average in Excel?",
-                    answer: "Simply use the formula <code>=AVERAGE(Range)</code>. For example, <code>=AVERAGE(A1:A20)</code>. However, our online calculator is often faster for quick sets as it doesn't require opening software or setting up cells."
-                },
-                {
-                    question: "Is the Mean always better than the Median?",
-                    answer: "No. The Mean is better for symmetric data (like height or weights of a single age group). The Median is <strong>superior</strong> for skewed data (like wealth distribution or sports stats) where a few pros or billionaires would 'break' the regular average."
-                },
-                {
-                    question: "Can I take the average of several averages?",
-                    answer: "Only if the original groups were the <strong>exact same size</strong>. If you average an average of 10 people with an average of 100 people, the result will be wrong. Always sum the original raw totals and divide by the new total count to stay accurate."
+                    question: "Como calcular média no Excel?",
+                    answer: "Simplesmente use a fórmula <code>=MÉDIA(A1:A20)</code>. Para mediana, use <code>=MED(A1:A20)</code>."
                 }
             ]
         }
@@ -606,27 +753,27 @@ export const calculators: Record<string, CalculatorConfig> = {
 
     'gcd': {
         id: 'gcd',
-        title: 'GCD Calculator',
-        description: 'Calculate the Greatest Common Divisor (GCD) of numbers.',
+        title: 'Calculadora de MDC',
+        description: 'Calcule o Máximo Divisor Comum (MDC) entre dois ou mais números.',
         category: 'math',
         icon: 'Calculator',
         meta: {
-            title: 'GCD Calculator (Greatest Common Divisor) | MyCalcOnline',
-            description: 'Find the Greatest Common Divisor (GCD) or Highest Common Factor (HCF) of a set of numbers.',
-            keywords: ['gcd calculator', 'greatest common divisor', 'hcf calculator', 'highest common factor'],
+            title: 'Calculadora de MDC (Máximo Divisor Comum) | MyCalcOnline',
+            description: 'Ferramenta para calcular o MDC (Máximo Divisor Comum) ou HCF. Essencial para simplificação de frações e problemas de divisão igualitária.',
+            keywords: ['calculadora de mdc', 'maximo divisor comum', 'mdc online', 'simplificar frações', 'hcf calculator'],
         },
         inputs: [
             {
                 id: 'numbers',
-                label: 'Numbers (comma separated)',
+                label: 'Números (separados por vírgula)',
                 type: 'text',
-                placeholder: 'e.g. 12, 18, 24',
+                placeholder: 'ex: 12, 18, 24',
                 defaultValue: '12, 18, 24',
             },
         ],
         outputs: [
             {
-                label: 'GCD Result',
+                label: 'Resultado (MDC)',
                 calculate: (inputs) => {
                     const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
                     const str = inputs['numbers'] as string;
@@ -638,61 +785,65 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-            <h3>Greatest Common Divisor (GCD)</h3>
-            <p>The GCD (also known as GCF or HCF) of two or more integers is the <strong>largest positive integer that divides each of them without a remainder</strong>.</p>
-            <p>It is fundamentally useful for simplifying fractions to their lowest terms or dividing different quantities into equal-sized groups.</p>
+            <h3>O que é o MDC (Máximo Divisor Comum)?</h3>
+            <p>O MDC é o <strong>maior número inteiro que divide dois ou mais números sem deixar resto</strong>. Ele é o "rei" da simplificação.</p>
+            <p class="mt-2 text-gray-600">Para que serve?</p>
+            <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600 font-medium">
+                <li><strong>Simplificar Frações:</strong> Se você tem a fração 12/18, o MDC (6) te diz que você pode dividir ambos por 6 para chegar na forma irredutível (2/3).</li>
+                <li><strong>Divisão de Kits:</strong> Se você tem 120 canetas e 150 lápis e quer montar o maior número de kits iguais sem sobrar nada, o MDC é a resposta.</li>
+            </ul>
             `,
             howTo: `
-            <h3>Real-World Example: Tiling a Floor 🧱</h3>
-            <p class="mb-2"><strong>The Problem:</strong> You have a bathroom floor measuring <strong>120cm by 150cm</strong>. You want to cover it with largest possible square tiles without cutting any tile.</p>
+            <h3>Exemplo Real: O Empreiteiro 🧱</h3>
+            <p class="mb-2"><strong>O Problema:</strong> Você tem um banheiro de <strong>120cm por 150cm</strong>. Você quer cobrir o chão com os maiores pisos quadrados possíveis sem ter que cortar nenhum.</p>
             <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-4 text-sm">
-                <p>You need a number that divides both 120 and 150 exactly.</p>
-                <code class="block mt-2 bg-white p-2 rounded text-indigo-900 font-mono">GCD(120, 150) = 30</code>
-                <p class="mt-2"><strong>Solution:</strong> The largest tile you can use is <strong>30cm x 30cm</strong>.</p>
+                <p>Você precisa de um número que divida 120 e 150 exatamente.</p>
+                <code class="block mt-2 bg-white p-2 rounded text-indigo-900 font-mono">MDC(120, 150) = 30</code>
+                <p class="mt-2"><strong>Solução:</strong> O maior piso que você pode usar é de <strong>30cm x 30cm</strong>.</p>
             </div>
-            <h3>How to Calculate (Euclidean Algorithm)</h3>
-            <p class="text-sm text-gray-600 mb-2">Repeatedly subtract the smaller number from the larger one (or use modulo) until one becomes zero.</p>
+            <h3>Como Calcular Manualmente (Algoritmo de Euclides)</h3>
+            <p class="text-sm text-gray-600 mb-2">A forma mais chique e rápida: vá dividindo o maior pelo menor e pegando o resto, até o resto ser zero.</p>
             <ol class="list-decimal pl-5 space-y-1 text-sm text-gray-600">
-                <li>150 % 120 = 30</li>
-                <li>120 % 30 = 0</li>
-                <li>Remainder is 0, so GCD is 30.</li>
+                <li>150 ÷ 120 = Resto 30</li>
+                <li>120 ÷ 30 = Resto 0</li>
+                <li>O resto é zero? Então o divisor atual (30) é a resposta.</li>
             </ol>
             `,
             faq: [
                 {
-                    question: "What if the GCD is 1?",
-                    answer: "If the GCD of two numbers is 1, they are called <strong>'Coprime'</strong> or 'Relatively Prime'. For example, 8 and 9 are coprime (factors of 8: 1,2,4,8; factors of 9: 1,3,9)."
+                    question: "O que acontece se o MDC for 1?",
+                    answer: "Se o MDC de dois números é 1, eles são chamados de <strong>'Primos entre si'</strong>. Por exemplo, 8 e 9 não são números primos sozinhos, mas são primos entre si (o único divisor comum é 1)."
                 },
                 {
-                    question: "Is GCD the same as GCF or HCF?",
-                    answer: "Yes! Greatest Common Divisor (GCD), Greatest Common Factor (GCF), and Highest Common Factor (HCF) are all different names for the exact same mathematical concept."
+                    question: "MDC é a mesma coisa que HCF?",
+                    answer: "Sim! Em calculadoras em inglês, você verá HCF (Highest Common Factor). É exatamente a mesma coisa que nosso MDC."
                 }
             ]
         }
     },
     'lcm': {
         id: 'lcm',
-        title: 'LCM Calculator',
-        description: 'Calculate the Least Common Multiple (LCM) of numbers.',
+        title: 'Calculadora de MMC',
+        description: 'Calcule o Mínimo Múltiplo Comum (MMC) entre números. Ideal para somar frações.',
         category: 'math',
         icon: 'Calculator',
         meta: {
-            title: 'LCM Calculator (Least Common Multiple) | MyCalcOnline',
-            description: 'Find the Least Common Multiple (LCM) of two or more numbers.',
-            keywords: ['lcm calculator', 'least common multiple', 'lowest common multiple'],
+            title: 'Calculadora de MMC (Mínimo Múltiplo Comum) | MyCalcOnline',
+            description: 'Calcule o Mínimo Múltiplo Comum (MMC) para frações e problemas de tempo. Ferramenta rápida para encontrar o menor múltiplo comum.',
+            keywords: ['calculadora de mmc', 'minimo multiplo comum', 'mmc online', 'somar frações', 'mcm calculadora', 'minimo comum multiplo'],
         },
         inputs: [
             {
                 id: 'numbers',
-                label: 'Numbers (comma separated)',
+                label: 'Números (separados por vírgula)',
                 type: 'text',
-                placeholder: 'e.g. 4, 6, 8',
+                placeholder: 'ex: 4, 6, 8',
                 defaultValue: '4, 6, 8',
             },
         ],
         outputs: [
             {
-                label: 'LCM Result',
+                label: 'Resultado (MMC)',
                 calculate: (inputs) => {
                     const gcd = (a: number, b: number): number => (!b ? a : gcd(b, a % b));
                     const lcm = (a: number, b: number): number => (a * b) / gcd(a, b);
@@ -706,92 +857,316 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-            <h3>Least Common Multiple (LCM)</h3>
-            <p>The LCM of two or more integers is the <strong>smallest positive integer that is divisible by all of them</strong>.</p>
-            <p>It is essential for adding fractions with different denominators (finding the "Common Denominator") and for scheduling events that repeat at different intervals.</p>
+            <h3>O que é o MMC (Mínimo Múltiplo Comum)?</h3>
+            <p>O MMC é o <strong>menor número positivo que é múltiplo de todos os números do seu conjunto</strong>. </p>
+            <p><strong>Nota importante sobre o termo "MCM":</strong> Em algumas regiões ou traduções do espanhol, você pode ver a sigla <em>MCM</em> (Mínimo Comum Múltiplo). É exatamente a mesma coisa que o nosso MMC.</p>
+            <p class="mt-2 text-gray-600">É fundamental na escola para:</p>
+            <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600 font-medium">
+                <li><strong>Somar Frações:</strong> Você não pode somar 1/3 + 1/4 sem deixá-las com o mesmo denominador (o MMC de 3 e 4, que é 12).</li>
+                <li><strong>Eventos Cíclicos:</strong> Saber quando dois eventos repetitivos vão acontecer ao mesmo tempo.</li>
+            </ul>
             `,
             howTo: `
-            <h3>Real-World Example: Syncing Lights 🚦</h3>
-            <p class="mb-2"><strong>The Problem:</strong> A red light flashes every <strong>4 seconds</strong>. A green light flashes every <strong>6 seconds</strong>. They just flashed together. When will they match again?</p>
+            <h3>Exemplo Clássico: O Semáforo 🚦</h3>
+            <p class="mb-2"><strong>O Problema:</strong> Um sinal fica vermelho a cada <strong>4 minutos</strong>. Outro sinal, em outra rua, fica vermelho a cada <strong>6 minutos</strong>. Eles acabaram de ficar vermelhos juntos. Daqui a quanto tempo isso vai se repetir?</p>
             <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-4 text-sm">
-                <p>We need a multiple of both 4 and 6.</p>
-                <ul class="list-disc pl-5 mt-2 space-y-1">
-                    <li>Multiples of 4: 4, 8, <strong>12</strong>, 16...</li>
-                    <li>Multiples of 6: 6, <strong>12</strong>, 18...</li>
+                <p>Precisamos de um número que esteja na tabuada do 4 E na tabuada do 6.</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+                    <li>Múltiplos de 4: 4, 8, <strong>12</strong>, 16...</li>
+                    <li>Múltiplos de 6: 6, <strong>12</strong>, 18...</li>
                 </ul>
-                <code class="block mt-2 bg-white p-2 rounded text-indigo-900 font-mono">LCM(4, 6) = 12 seconds</code>
+                <code class="block mt-2 bg-white p-2 rounded text-indigo-900 font-bold font-mono">MMC(4, 6) = 12 minutos</code>
             </div>
-            <h3>Formula using GCD</h3>
-            <p class="text-sm text-gray-600">If you already know the GCD, use this shortcut:</p>
-            <code class="block bg-gray-100 p-2 rounded text-center my-2 font-mono text-sm">LCM(a, b) = (a × b) / GCD(a, b)</code>
+            <h3>Fórmula Secreta usando o MDC</h3>
+            <p class="text-sm text-gray-600">Se você já calculou o MDC, existe um atalho matemático:</p>
+            <code class="block bg-gray-100 p-2 rounded text-center my-2 font-mono text-sm">MMC(a, b) = (a × b) / MDC(a, b)</code>
             `,
             faq: [
                 {
-                    question: "How is LCM used in fractions?",
-                    answer: "To add 1/4 + 1/6, you need a common denominator. The LCM of 4 and 6 is 12. So you convert them: 3/12 + 2/12 = 5/12."
+                    question: "Como fazer MMC de fração?",
+                    answer: "O MMC é usado no <strong>denominador</strong> (o número de baixo). Exemplo: 1/4 + 1/6. O MMC de 4 e 6 é 12. Então transformamos as frações: 3/12 + 2/12 = 5/12."
                 },
                 {
-                    question: "Can LCM be smaller than the numbers?",
-                    answer: "No. The LCM must be greater than or equal to the largest number in the set. (e.g., LCM of 3 and 12 is 12)."
+                    question: "O MMC pode ser menor que os números?",
+                    answer: "Nunca. O MMC será sempre <strong>igual ou maior</strong> que o maior número do seu conjunto. (Ex: MMC de 3 e 12 é o próprio 12)."
+                }
+            ]
+        }
+    },
+    'rule-of-three': {
+        id: 'rule-of-three',
+        title: 'Calculadora de Regra de Três',
+        description: 'Resolva problemas de proporção direta e inversa instantaneamente.',
+        category: 'math',
+        icon: 'Scale',
+        meta: {
+            title: 'Calculadora de Regra de Três Simples (Direta e Inversa)',
+            description: 'Ferramenta para resolver Regra de 3 Simples. Cálculos de proporção direta (receitas, compras) e inversa (velocidade, tempo) com passo a passo.',
+            keywords: ['regra de tres', 'regra de 3', 'proporção', 'regra de tres simples', 'calculo de proporção'],
+        },
+        inputs: [
+            {
+                id: 'type',
+                label: 'Tipo de Proporção',
+                type: 'select',
+                defaultValue: 'direct',
+                options: [
+                    { label: 'Diretamente Proporcional (Padrão)', value: 'direct' },
+                    { label: 'Inversamente Proporcional', value: 'inverse' },
+                ],
+            },
+            {
+                id: 'a',
+                label: 'Valor A',
+                type: 'number',
+                placeholder: 'ex: 2',
+                defaultValue: 2,
+            },
+            {
+                id: 'b',
+                label: 'está para Valor B',
+                type: 'number',
+                placeholder: 'ex: 100',
+                defaultValue: 100,
+            },
+            {
+                id: 'c',
+                label: 'Assim como Valor C',
+                type: 'number',
+                placeholder: 'ex: 5',
+                defaultValue: 5,
+            },
+        ],
+        outputs: [
+            {
+                label: 'Resultado (X)',
+                calculate: (inputs) => {
+                    const a = Number(inputs['a']);
+                    const b = Number(inputs['b']);
+                    const c = Number(inputs['c']);
+                    const type = inputs['type'];
+
+                    if (!a || !b || !c) return 0;
+
+                    if (type === 'inverse') {
+                        // A * B = X * C  => X = (A * B) / C
+                        // Ex: 100km/h * 2h = 200km. If 50km/h (C), then X = 200 / 50 = 4h.
+                        // Wait, standard inverse is A -> B, C -> X.
+                        // Classical: A workers take B days. C workers take X days.
+                        // A * B = Constant work. X = (A * B) / C.
+                        return parseFloat(((a * b) / c).toFixed(4));
+                    } else {
+                        // Direct: A/B = C/X => A*X = B*C => X = (B*C)/A
+                        return parseFloat(((b * c) / a).toFixed(4));
+                    }
+                },
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>O que é Regra de Três?</h3>
+            <p>É o método matemático mais útil do dia a dia. Usamos quando temos 3 números e queremos descobrir o 4º, assumindo que existe uma relação proporcional entre eles.</p>
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="bg-green-50 p-4 rounded border border-green-100">
+                    <strong class="text-green-800">Direta</strong>
+                    <p class="text-xs mt-1">Quando um sobe, o outro sobe.</p>
+                    <p class="text-xs mt-1 text-gray-500">Ex: Comprar maçãs. Mais maçãs = Mais caro.</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded border border-red-100">
+                    <strong class="text-red-800">Inversa</strong>
+                    <p class="text-xs mt-1">Quando um sobe, o outro desce.</p>
+                    <p class="text-xs mt-1 text-gray-500">Ex: Velocidade. Mais rápido = Menos tempo.</p>
+                </div>
+            </div>
+            `,
+            howTo: `
+            <h3>Como Montar a Conta</h3>
+            <p>O segredo é alinhar as grandezas iguais (colocar "banana embaixo de banana").</p>
+            <h4 class="font-bold mt-4">1. Proporção Direta (Multiplica Cruzado)</h4>
+            <div class="latex-formula bg-white p-4 text-center rounded-lg border border-gray-200 my-2 font-mono text-lg">
+                <p>A ───> B</p>
+                <p>C ───> X</p>
+                <p class="mt-2 text-indigo-600 text-base">X = (B × C) ÷ A</p>
+            </div>
+            
+            <h4 class="font-bold mt-4">2. Proporção Inversa (Multiplica Reto)</h4>
+            <div class="latex-formula bg-white p-4 text-center rounded-lg border border-gray-200 my-2 font-mono text-lg">
+                <p>A ───> B</p>
+                <p>C ───> X</p>
+                <p class="mt-2 text-pink-600 text-base">X = (A × B) ÷ C</p>
+            </div>
+            `,
+            faq: [
+                {
+                    question: "Quando usar a Inversa?",
+                    answer: "Pergunte-se: 'Se eu dobrar o primeiro valor, o segundo dobra ou cai pela metade?'. Se cair pela metade, é inversa. Exemplos clássicos: velocidade x tempo, trabalhadores x dias de obra, torneiras x tempo para encher tanque."
+                }
+            ]
+        }
+    },
+    'prime-factorization': {
+        id: 'prime-factorization',
+        title: 'Fatoração (Decomposição)',
+        description: 'Decomponha qualquer número em seus fatores primos (ex: 12 = 2² × 3).',
+        category: 'math',
+        icon: 'Binary',
+        meta: {
+            title: 'Calculadora de Fatoração - Decomposição em Fatores Primos',
+            description: 'Ferramenta para decompor números em fatores primos. Fundamental para encontrar MMC, MDC e simplificar raízes quadradas.',
+            keywords: ['fatoração online', 'fatores primos', 'decomposição de numeros', 'calculadora de fatoração', 'primos'],
+        },
+        inputs: [
+            {
+                id: 'number',
+                label: 'Número para Fatorar',
+                type: 'number',
+                placeholder: 'ex: 120',
+                defaultValue: 120,
+            },
+        ],
+        outputs: [
+            {
+                label: 'Fatores Primos (Texto)',
+                calculate: (inputs) => {
+                    let n = Math.abs(Math.round(Number(inputs['number'])));
+                    if (!n || n < 2) return `O número deve ser >= 2`;
+
+                    const factors: number[] = [];
+                    let divisor = 2;
+
+                    while (n >= 2) {
+                        if (n % divisor === 0) {
+                            factors.push(divisor);
+                            n = n / divisor;
+                        } else {
+                            divisor++;
+                        }
+                    }
+
+                    // Format: 2 x 2 x 3 x 5
+                    return factors.join(' × ');
+                },
+            },
+            {
+                label: 'Forma de Potência (Compacta)',
+                calculate: (inputs) => {
+                    let n = Math.abs(Math.round(Number(inputs['number'])));
+                    if (!n || n < 2) return `-`;
+
+                    const counts: Record<number, number> = {};
+                    let divisor = 2;
+
+                    while (n >= 2) {
+                        if (n % divisor === 0) {
+                            counts[divisor] = (counts[divisor] || 0) + 1;
+                            n = n / divisor;
+                        } else {
+                            divisor++;
+                        }
+                    }
+
+                    return Object.entries(counts)
+                        .map(([num, count]) => count > 1 ? `${num}^${count}` : num)
+                        .join(' × ');
+                },
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>O que é Fatoração?</h3>
+            <p>Todo número inteiro maior que 1 é ou um <strong>Número Primo</strong> ou pode ser escrito como uma multiplicação de números primos. Isso se chama "Teorema Fundamental da Aritmética".</p>
+            <p class="mt-2">Fatorar é simplesmente descobrir quais são esses blocos de construção. Exemplo: <strong>12</strong> não é primo, ele é feito de <strong class="text-indigo-600">2 × 2 × 3</strong>.</p>
+            `,
+            howTo: `
+            <h3>Método das Divisões Sucessivas</h3>
+            <p>Faça uma barra vertical ao lado do número e vá dividindo pelo menor primo possível.</p>
+            <div class="flex gap-8 mt-4 font-mono text-sm bg-gray-50 p-4 rounded-lg inline-block w-full max-w-sm">
+                <div class="text-right border-r-2 border-gray-400 pr-4 space-y-1">
+                    <div class="h-6">120</div>
+                    <div class="h-6">60</div>
+                    <div class="h-6">30</div>
+                    <div class="h-6">15</div>
+                    <div class="h-6">5</div>
+                    <div class="h-6">1</div>
+                </div>
+                <div class="text-left pl-4 space-y-1 text-indigo-600 font-bold">
+                    <div class="h-6">2</div>
+                    <div class="h-6">2</div>
+                    <div class="h-6">2</div>
+                    <div class="h-6">3</div>
+                    <div class="h-6">5</div>
+                    <div class="h-6 text-gray-400 text-xs font-normal flex items-center">Fim</div>
+                </div>
+            </div>
+            <p class="mt-2 font-bold text-indigo-700">Resultado: 2³ × 3 × 5</p>
+            `,
+            faq: [
+                {
+                    question: "O número 1 é primo?",
+                    answer: "Não. Por definição matemática, números primos devem ser maiores que 1."
+                },
+                {
+                    question: "Como isso ajuda no MMC?",
+                    answer: "Para achar o MMC, você fatora os números e pega todos os fatores com o maior expoente. Para o MDC, você pega apenas os fatores comuns com o menor expoente."
                 }
             ]
         }
     },
     'discount': {
         id: 'discount',
-        title: 'Discount Calculator',
-        description: 'Calculate sale price, total savings, and final price including sales tax. Supports percentage off and fixed amount coupons.',
+        title: 'Calculadora de Desconto',
+        description: 'Calcule o preço de venda, economia total e preço final com impostos. Suporta porcentagem ou valor fixo.',
         category: 'finance',
         icon: 'Tag',
         meta: {
-            title: 'Discount Calculator - Calculate Sale Price & Savings Instantly',
-            description: 'The most comprehensive Discount Calculator. Find the final price after sales tax, percentage off, or fixed coupons. Includes double discount logic and manual formulas.',
-            keywords: ['discount calculator', 'sale price calculator', 'percent off calculator', 'savings calculator', 'calculate discount with tax', 'sequential discounts'],
+            title: 'Calculadora de Desconto - Calcule o Preço Final e Economia',
+            description: 'A mais completa Calculadora de Desconto. Encontre o preço final após impostos, descontos percentuais ou cupons fixos. Entenda descontos progressivos.',
+            keywords: ['calculadora de desconto', 'preço de venda', 'calcular porcentagem', 'desconto com imposto', 'cupom de desconto'],
         },
         inputs: [
             {
                 id: 'original_price',
-                label: 'Original Price ($)',
+                label: 'Preço Original (R$)',
                 type: 'number',
                 placeholder: '100',
                 defaultValue: 100,
             },
             {
                 id: 'discount_type',
-                label: 'Discount Type',
+                label: 'Tipo de Desconto',
                 type: 'select',
                 defaultValue: 'percent',
                 options: [
-                    { label: 'Percent Off (%)', value: 'percent' },
-                    { label: 'Fixed Amount Off ($)', value: 'amount' },
+                    { label: 'Porcentagem (%)', value: 'percent' },
+                    { label: 'Valor Fixo (R$)', value: 'amount' },
                 ],
             },
             {
                 id: 'discount_val',
-                label: 'Discount Value',
+                label: 'Valor do Desconto',
                 type: 'number',
                 placeholder: '20',
                 defaultValue: 20,
             },
             {
                 id: 'include_tax',
-                label: 'Include Tax?',
+                label: 'Incluir Imposto?',
                 type: 'checkbox',
                 defaultValue: false,
-                placeholder: 'Add Tax Calculation',
+                placeholder: 'Adicionar Cálculo de Imposto',
             },
             {
                 id: 'tax_rate',
-                label: 'Tax Rate (%)',
+                label: 'Taxa de Imposto (%)',
                 type: 'number',
-                placeholder: 'e.g. 10',
+                placeholder: 'ex: 10',
                 defaultValue: 0,
                 condition: (inputs) => !!inputs['include_tax'],
             },
         ],
         outputs: [
             {
-                label: 'Final Price (You Pay)',
+                label: 'Preço Final (Você Paga)',
                 calculate: (inputs) => {
                     const price = Number(inputs['original_price']);
                     const discount = Number(inputs['discount_val']);
@@ -817,10 +1192,10 @@ export const calculators: Record<string, CalculatorConfig> = {
 
                     return parseFloat(finalPrice.toFixed(2));
                 },
-                unit: '$',
+                unit: 'R$',
             },
             {
-                label: 'You Save',
+                label: 'Você Economiza',
                 calculate: (inputs) => {
                     const price = Number(inputs['original_price']);
                     const discount = Number(inputs['discount_val']);
@@ -834,10 +1209,10 @@ export const calculators: Record<string, CalculatorConfig> = {
                     }
                     return parseFloat(discountAmount.toFixed(2));
                 },
-                unit: '$',
+                unit: 'R$',
             },
             {
-                label: 'Tax Amount',
+                label: 'Valor do Imposto',
                 calculate: (inputs) => {
                     const price = Number(inputs['original_price']);
                     const discount = Number(inputs['discount_val']);
@@ -858,68 +1233,62 @@ export const calculators: Record<string, CalculatorConfig> = {
                     const taxAmount = discountedPrice * (taxRate / 100);
                     return parseFloat(taxAmount.toFixed(2));
                 },
-                unit: '$',
+                unit: 'R$',
             }
         ],
         content: {
             whatIs: `
-            <h3>Mastering the Sale: Why Use a Discount Calculator?</h3>
-            <p>During a sale, prices can be confusing. Is "30% off" better than "$20 off"? What happens if there's tax on top? A <strong>Discount Calculator</strong> removes the guesswork, allowing you to see the exact final price you'll pay at the register.</p>
-            <p class="mt-2 text-gray-600">This tool is essential for:</p>
+            <h3>Dominando as Promoções: Por que Calcular?</h3>
+            <p>Em épocas de Black Friday ou liquidações, os preços podem ser confusos. Será que "30% OFF" é melhor que "R$ 50 de desconto"? E o frete ou impostos? Nossa <strong>Calculadora de Desconto</strong> elimina a dúvida e mostra o valor exato que sairá do seu bolso.</p>
+            <p class="mt-2 text-gray-600">Essencial para:</p>
             <ul class="list-disc pl-5 space-y-2 mt-2 text-gray-600 font-medium">
-                <li><strong>Shopping Smart:</strong> Instantly compare deals between different stores.</li>
-                <li><strong>Budgeting:</strong> Know the *real* price including sales tax before you reach the checkout.</li>
-                <li><strong>Negotiating:</strong> Calculate the dollar value of a percentage discount during professional services or bulk buys.</li>
+                <li><strong>Compras Inteligentes:</strong> Compare ofertas reais entre lojas diferentes.</li>
+                <li><strong>Orçamento:</strong> Saiba o preço final COM impostos antes de chegar ao caixa.</li>
+                <li><strong>Negociação:</strong> Converta porcentagens em reais para argumentar melhor um desconto.</li>
             </ul>
             `,
             howTo: `
-            <h3>How to Calculate a Discount Manually</h3>
-            <p>The math behind a discount depends on whether you have a percentage or a fixed amount.</p>
+            <h3>Como Calcular Descontos Manualmente</h3>
+            <p>A matemática depende se o desconto é percentual ou um valor fixo.</p>
             
-            <h4 class="font-bold mt-4 mb-2 text-gray-800">1. The Percentage Formula (%)</h4>
+            <h4 class="font-bold mt-4 mb-2 text-gray-800">1. A Fórmula da Porcentagem (%)</h4>
             <div class="latex-formula bg-indigo-50 p-4 text-center rounded-lg border border-indigo-100 my-4">
-                <p class="text-indigo-900 font-mono">Savings = Original Price × (Discount % ÷ 100)</p>
-                <p class="text-indigo-900 font-mono mt-1">Final Price = Original Price - Savings</p>
+                <p class="text-indigo-900 font-mono">Economia = Preço Original × (Desconto % ÷ 100)</p>
+                <p class="text-indigo-900 font-mono mt-1">Preço Final = Preço Original - Economia</p>
             </div>
             
-            <h4 class="font-bold mt-6 mb-2 text-gray-800">2. The "Stacked" or Sequential Discount Logic ⚠️</h4>
-            <p>Be careful with "double discounts"! Retailers often advertise "20% off plus an extra 10% off". This is <strong>not</strong> a 30% discount. You must apply them one after the other:</p>
+            <h4 class="font-bold mt-6 mb-2 text-gray-800">2. A lógica do Desconto Progressivo ⚠️</h4>
+            <p>Cuidado com promoções do tipo "20% + 10% extra". Isso <strong>não</strong> é 30% de desconto. Você deve aplicar um de cada vez:</p>
             <div class="bg-amber-50 p-4 rounded-lg border border-amber-100 text-sm italic mt-2">
-                <strong>Example:</strong> $100 item. <br>
-                1. 20% off $100 = $80. <br>
-                2. 10% off <strong>$80</strong> = $72. <br>
-                Total saving is $28 (28%), not $30 (30%).
+                <strong>Exemplo:</strong> Item de R$ 100. <br>
+                1. 20% de R$ 100 = R$ 80. <br>
+                2. 10% de <strong>R$ 80</strong> = R$ 72. <br>
+                O desconto total foi de 28% (R$ 28), e não 30%.
             </div>
             
-            <h3 class="mt-8 mb-4">Real-World Case: The Holiday Shopping Trip 🛒</h3>
-            <p>Imagine you found a coat for <strong>$120</strong>. The store offers <strong>25% off</strong>, and your local sales tax is <strong>7.5%</strong>.</p>
+            <h3 class="mt-8 mb-4">Caso Real: Compras de Fim de Ano 🛒</h3>
+            <p>Imagine um casaco de <strong>R$ 120</strong> com <strong>25% de desconto</strong>.</p>
             <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mt-2 space-y-2 text-sm">
-                <p><strong>Step 1 (Savings):</strong> $120 × 0.25 = <span class="text-green-600 font-bold">$30.00 saved</span>.</p>
-                <p><strong>Step 2 (Sale Price):</strong> $120 - $30 = $90.00.</p>
-                <p><strong>Step 3 (Tax):</strong> $90 × 0.075 = $6.75 tax.</p>
-                <p class="text-blue-700 font-bold text-base">Step 4 (Total): $90 + $6.75 = $96.75 Final Price.</p>
+                <p><strong>Passo 1 (Economia):</strong> R$ 120 × 0,25 = <span class="text-green-600 font-bold">R$ 30,00 de desconto</span>.</p>
+                <p><strong>Passo 2 (Preço Final):</strong> R$ 120 - R$ 30 = <span class="text-blue-700 font-bold">R$ 90,00</span>.</p>
             </div>
             `,
             faq: [
                 {
-                    question: "How do I calculate 20% off 50 dollars?",
-                    answer: "Multiply 50 by 0.20 to get $10 (your savings). Subtract $10 from $50 to get <strong>$40</strong> as the final price."
+                    question: "Quanto é 20% de 50 reais?",
+                    answer: "Multiplique 50 por 0,20 para obter R$ 10 (sua economia). O preço final seria R$ 40."
                 },
                 {
-                    question: "Is tax calculated before or after the discount?",
-                    answer: "In most countries and US states, sales tax is calculated on the <strong>post-discount price</strong>. This means you also save money on tax!"
+                    question: "O imposto é calculado antes ou depois do desconto?",
+                    answer: "Geralmente, impostos sobre vendas (como ICMS ou Sales Tax nos EUA) incidem sobre o <strong>preço final da nota</strong>, ou seja, sobre o preço já com desconto. Você paga menos imposto!"
                 },
                 {
-                    question: "How do I calculate a discount in Excel?",
-                    answer: "If the price is in cell A1 and the discount (e.g., 0.20 for 20%) is in cell B1, use the formula: <code>=A1*(1-B1)</code>."
+                    question: "Como calcular desconto no Excel?",
+                    answer: "Se o preço está na célula A1 e o desconto (ex: 15%) na B1, a fórmula do preço final é: <code>=A1*(1-B1)</code>."
                 },
                 {
-                    question: "What is 15% off 100 dollars?",
-                    answer: "Since 100 is the base, the percentage is equal to the dollar amount. 15% off $100 is exactly $85."
-                },
-                {
-                    question: "Does this calculator handle VAT?",
-                    answer: "Yes! Simply enter your VAT rate in the 'Tax Rate' field. The logic for VAT and Sales Tax is identical in this context."
+                    question: "O que é 'OFF'?",
+                    answer: "'OFF' significa 'a menos' ou 'de desconto'. 50% OFF significa que o preço foi cortado pela metade."
                 }
             ]
         }
@@ -1053,38 +1422,43 @@ export const calculators: Record<string, CalculatorConfig> = {
         category: 'health',
         icon: 'Scale',
         meta: {
-            title: 'BMI Calculator | Body Mass Index & Healthy Weight Range',
-            description: 'Calculate your BMI (Body Mass Index) and discover your ideal weight range. Supports Metric (kg/cm) and Imperial (lbs/ft) units.',
-            keywords: ['bmi calculator', 'body mass index', 'obesity calculator', 'healthy weight calculator', 'ideal weight'],
+            title: 'BMI Calculator - Professional Body Mass Index & Health Guide',
+            description: 'Discover your BMI and healthy weight range using CDC/WHO standards. Understand the math, limitations for athletes, and browse our detailed weight classification table.',
+            title: 'Calculadora de IMC - Índice de Massa Corporal Profissional e Guia de Saúde',
+            description: 'Descubra seu IMC e faixa de peso saudável usando os padrões CDC/OMS. Entenda a matemática, limitações para atletas e consulte nossa tabela detalhada de classificação de peso.',
+            keywords: ['bmi calculator', 'body mass index guide', 'healthy weight range', 'obesity classification', 'ideal weight calculator', 'Calculate BMI'],
         },
         inputs: [
             {
                 id: 'system',
-                label: 'Unit System',
+                label: 'Sistema de Unidades',
                 type: 'select',
                 defaultValue: 'metric',
                 options: [
-                    { label: 'Metric (kg, cm)', value: 'metric' },
-                    { label: 'Imperial (lbs, ft+in)', value: 'imperial' },
+                    { label: 'Métrico (kg, cm)', value: 'metric' },
+                    { label: 'Imperial (lbs, in)', value: 'imperial' },
                 ],
             },
             {
                 id: 'weight',
-                label: 'Weight',
+                label: 'Peso',
                 type: 'number',
-                placeholder: 'e.g. 70 (kg) or 154 (lbs)',
+                placeholder: 'ex: 70',
+                defaultValue: 70,
+                unit: 'kg/lbs',
             },
             {
                 id: 'height',
-                label: 'Height',
+                label: 'Altura',
                 type: 'number',
-                placeholder: 'e.g. 175 (cm) or 69 (total inches)',
-                unit: 'cm / inches',
+                placeholder: 'ex: 175',
+                defaultValue: 175,
+                unit: 'cm/inches',
             },
         ],
         outputs: [
             {
-                label: 'Your BMI',
+                label: 'Seu IMC',
                 unit: '',
                 calculate: (inputs) => {
                     const system = inputs['system'];
@@ -1094,18 +1468,15 @@ export const calculators: Record<string, CalculatorConfig> = {
                     if (!weight || !height) return 0;
 
                     if (system === 'metric') {
-                        // Weight kg, Height cm
                         const hM = height / 100;
                         return parseFloat((weight / (hM * hM)).toFixed(1));
                     } else {
-                        // Weight lb, Height inches
-                        // Formula: 703 * lb / in^2
                         return parseFloat(((weight / (height * height)) * 703).toFixed(1));
                     }
                 },
             },
             {
-                label: 'Category',
+                label: 'Categoria',
                 unit: '',
                 calculate: (inputs) => {
                     const system = inputs['system'];
@@ -1121,14 +1492,16 @@ export const calculators: Record<string, CalculatorConfig> = {
                         bmi = (weight / (height * height)) * 703;
                     }
 
-                    if (bmi < 18.5) return 'Underweight';
-                    if (bmi < 25) return 'Normal Weight';
-                    if (bmi < 30) return 'Overweight';
-                    return 'Obese';
+                    if (bmi < 18.5) return 'Abaixo do peso';
+                    if (bmi < 25) return 'Peso normal';
+                    if (bmi < 30) return 'Sobrepeso';
+                    if (bmi < 35) return 'Obesidade Grau I';
+                    if (bmi < 40) return 'Obesidade Grau II';
+                    return 'Obesidade Grau III';
                 }
             },
             {
-                label: 'Healthy Weight Range',
+                label: 'Peso Ideal Saudável',
                 unit: '',
                 calculate: (inputs) => {
                     const system = inputs['system'];
@@ -1136,115 +1509,139 @@ export const calculators: Record<string, CalculatorConfig> = {
                     if (!height) return 'N/A';
 
                     if (system === 'metric') {
-                        // Normal BMI: 18.5 - 24.9
-                        // Weight = BMI * (height in m)^2
                         const hM = height / 100;
                         const minW = (18.5 * hM * hM).toFixed(1);
                         const maxW = (24.9 * hM * hM).toFixed(1);
-                        return `${minW} kg - ${maxW} kg`;
+                        return `${minW}kg - ${maxW}kg`;
                     } else {
-                        // Weight = (BMI * height^2) / 703
                         const minW = ((18.5 * height * height) / 703).toFixed(0);
                         const maxW = ((24.9 * height * height) / 703).toFixed(0);
-                        return `${minW} lbs - ${maxW} lbs`;
+                        return `${minW}lbs - ${maxW}lbs`;
                     }
                 }
             }
         ],
         content: {
             whatIs: `
-    < h3 > What is BMI ? </h3>
-        < p > <strong>Body Mass Index(BMI) < /strong> is a simple calculation using a person's height and weight. The formula is BMI = kg/m² where kg is a person's weight in kilograms and m² is their height in meters squared.</p>
-            < p > A BMI of 25.0 or more is overweight, while the healthy range is usually < strong > 18.5 to 24.9 < /strong>.</p >
-
-                <div class="mt-6 not-prose" >
-                    <h4 class="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3" > WHO Weight Categories </h4>
-                        < div class="overflow-hidden rounded-xl border border-gray-200" >
-                            <table class="min-w-full divide-y divide-gray-200 text-center" >
-                                <thead class="bg-gray-50" >
-                                    <tr>
-                                    <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" > BMI Range </th>
-                                        < th scope = "col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider" > Classification </th>
-                                            </tr>
-                                            </thead>
-                                            < tbody class="bg-white divide-y divide-gray-200 text-sm" >
-                                                <tr><td class="px-6 py-4 text-blue-600 font-medium" >& lt; 18.5 < /td><td class="px-6 py-4 text-gray-900">Underweight</td > </tr>
-                                                    < tr class="bg-green-50" > <td class="px-6 py-4 text-green-600 font-medium font-bold" > 18.5 – 24.9 < /td><td class="px-6 py-4 text-gray-900 font-bold">Normal Weight</td > </tr>
-                                                        < tr > <td class="px-6 py-4 text-orange-600 font-medium" > 25 – 29.9 < /td><td class="px-6 py-4 text-gray-900">Overweight</td > </tr>
-                                                            < tr > <td class="px-6 py-4 text-red-600 font-medium" > 30 + </td><td class="px-6 py-4 text-gray-900">Obesity</td > </tr>
-                                                                </tbody>
-                                                                </table>
-                                                                </div>
-                                                                </div>
-                                                                    `,
+                <h3>A Ciência por trás do IMC (Índice de Massa Corporal)</h3>
+                <p>O <strong>Índice de Massa Corporal (IMC)</strong>, também conhecido como Índice de Quetelet, é o padrão internacional utilizado pela <strong>Organização Mundial da Saúde (OMS)</strong> e pelo <strong>CDC</strong> para triagem de peso saudável.</p>
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 my-4">
+                    <p class="text-sm">Ele não mede a gordura corporal diretamente, mas correlaciona o peso de uma pessoa com sua altura para identificar se ela está em uma faixa de peso que pode aumentar o risco de problemas de saúde.</p>
+                </div>
+                
+                <h4>Tabela de Classificação da OMS para Adultos:</h4>
+                <div class="overflow-x-auto mt-4">
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-gray-50 font-semibold">
+                            <tr>
+                                <th class="py-2 px-4 border">IMC (kg/m²)</th>
+                                <th class="py-2 px-4 border">Classificação</th>
+                                <th class="py-2 px-4 border">Risco de Saúde</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="py-2 px-4 border font-medium">&lt; 18.5</td><td class="py-2 px-4 border text-blue-600">Abaixo do peso</td><td class="py-2 px-4 border">Baixo (mas risco de desnutrição)</td></tr>
+                            <tr class="bg-green-50"><td class="py-2 px-4 border font-medium">18.5 – 24.9</td><td class="py-2 px-4 border text-green-700">Peso Normal (Saudável)</td><td class="py-2 px-4 border">Mínimo</td></tr>
+                            <tr><td class="py-2 px-4 border font-medium">25.0 – 29.9</td><td class="py-2 px-4 border text-yellow-600">Sobrepeso</td><td class="py-2 px-4 border">Aumentado</td></tr>
+                            <tr class="bg-orange-50"><td class="py-2 px-4 border font-medium">30.0 – 34.9</td><td class="py-2 px-4 border text-orange-700">Obesidade Grau I</td><td class="py-2 px-4 border">Moderado</td></tr>
+                            <tr><td class="py-2 px-4 border font-medium">35.0 – 39.9</td><td class="py-2 px-4 border text-red-600">Obesidade Grau II</td><td class="py-2 px-4 border">Grave</td></tr>
+                            <tr class="bg-red-50"><td class="py-2 px-4 border font-medium">≥ 40.0</td><td class="py-2 px-4 border text-red-800">Obesidade Grau III</td><td class="py-2 px-4 border">Muito Grave</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            `,
             howTo: `
-                                                                < h3 > How to Calculate BMI Locally </h3>
-                                                                    < div class="grid md:grid-cols-2 gap-4 my-4" >
-                                                                        <div class="p-4 bg-blue-50 rounded-lg border border-blue-100" >
-                                                                            <h5 class="font-semibold text-blue-900 mb-2" > Metric Formula </h5>
-                                                                                < p class="text-sm text-blue-800" > Weight(kg) / Height(m)²</p>
-                                                                                    < p class="text-xs text-blue-600 mt-2 italic" > Example: 70kg / (1.75m)² = <strong>22.86 < /strong></p >
-                                                                                        </div>
-                                                                                        < div class="p-4 bg-indigo-50 rounded-lg border border-indigo-100" >
-                                                                                            <h5 class="font-semibold text-indigo-900 mb-2" > Imperial Formula </h5>
-                                                                                                < p class="text-sm text-indigo-800" > [Weight(lbs) / Height(in)²] × 703 </p>
-                                                                                                    < p class="text-xs text-indigo-600 mt-2 italic" > Example: [154lbs / (69in)²] × 703 = <strong>22.7 < /strong></p >
-                                                                                                        </div>
-                                                                                                        </div>
-                                                                                                            `,
+                <h3>Como Calcular o IMC Manualmente</h3>
+                <p>O cálculo utiliza o peso dividido pelo quadrado da altura. Dependendo do sistema de medidas, a fórmula muda ligeiramente:</p>
+                
+                <div class="grid md:grid-cols-2 gap-4 my-6">
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <h4 class="text-blue-600 font-bold mb-2">Sistema Métrico</h4>
+                        <p class="text-sm mb-2 text-gray-500">Usado na maior parte do mundo.</p>
+                        <code class="block bg-gray-50 p-3 rounded-lg text-lg">BMI = weight(kg) / height(m)²</code>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                        <h4 class="text-blue-600 font-bold mb-2">Sistema Imperial</h4>
+                        <p class="text-sm mb-2 text-gray-500">Usado nos EUA e Reino Unido.</p>
+                        <code class="block bg-gray-50 p-3 rounded-lg text-lg">BMI = 703 × weight(lbs) / height(in)²</code>
+                    </div>
+                </div>
+
+                <h4>Exemplo Real (Sistema Métrico):</h4>
+                <p class="text-sm bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                    Se você pesa <strong>70kg</strong> e mede <strong>1.75m</strong>:<br>
+                    $70 / (1.75 \times 1.75) = 70 / 3.0625 = \mathbf{22.86}$
+                </p>
+
+                <blockquote class="border-l-4 border-yellow-400 pl-4 py-2 mt-6 text-gray-600 italic">
+                    <strong>Importante:</strong> O IMC é uma ferramenta de triagem, não um diagnóstico definitivo. Atletas com muita massa muscular podem ter um IMC alto sem ter gordura corporal excessiva.
+                </blockquote>
+            `,
             faq: [
                 {
-                    question: "Is BMI accurate for everyone?",
-                    answer: "No. BMI does not distinguish between muscle and fat. Athletes or bodybuilders may have a high BMI (classified as overweight) despite having low body fat and being very healthy."
+                    question: 'O IMC é preciso para quem faz musculação?',
+                    answer: 'Não totalmente. Como o músculo é mais denso que a gordura, atletas musculosos podem ser classificados como "Sobrepeso" ou "Obeso", mesmo tendo baixo percentual de gordura. Nestes casos, medidas como percentual de gordura ou circunferência abdominal são melhores.'
                 },
                 {
-                    question: "What is my 'Healthy Weight' range?",
-                    answer: "Our calculator automatically shows this! It reverses the BMI formula to find what weight would put you exactly between BMI 18.5 and 24.9 for your height."
+                    question: 'Qual é a faixa de peso saudável para mim?',
+                    answer: 'Para a maioria dos adultos, um IMC entre 18,5 e 24,9 é considerado ideal. Nossa calculadora mostra essa faixa exata em quilos (kg) logo abaixo do seu resultado.'
+                },
+                {
+                    question: 'O IMC serve para crianças e adolescentes?',
+                    answer: 'A fórmula é a mesma, mas a interpretação é diferente. Para menores de 20 anos, usa-se o "IMC por idade" em percentis, pois o corpo das crianças muda rapidamente conforme crescem.'
+                },
+                {
+                    question: 'Como calcular o IMC no Excel ou Google Sheets?',
+                    answer: 'Use a fórmula: `=peso/(altura*altura)`. Se a altura estiver em centímetros, use `=peso/((altura/100)^2)`.'
+                },
+                {
+                    question: 'Existem diferenças étnicas no IMC?',
+                    answer: 'Sim. Pesquisas sugerem que para populações asiáticas, o risco de saúde aumenta em IMCs mais baixos (acima de 23). Sempre consulte um profissional de saúde para uma avaliação personalizada.'
                 }
             ]
         }
     },
     'roi': {
         id: 'roi',
-        title: 'ROI Calculator',
-        description: 'Calculate Return on Investment (ROI) and annualized return.',
+        title: 'Calculadora de ROI',
+        description: 'Calcule o Retorno sobre o Investimento (ROI) e o retorno anualizado.',
         category: 'finance',
         icon: 'TrendingUp',
         meta: {
-            title: 'ROI Calculator | Return on Investment & Annualized Profit',
-            description: 'Free ROI Calculator. Calculate Return on Investment, annualized ROI, and total profit. Includes investment duration support (years/months).',
-            keywords: ['roi calculator', 'return on investment', 'investment calculator', 'profit calculator', 'annualized return', 'roi formula'],
+            title: 'Calculadora de ROI - Retorno sobre Investimento & Lucro Anualizado',
+            description: 'Calculadora de ROI gratuita. Calcule o lucro total, ROI e rentabilidade anualizada do seu investimento com facilidade. Suporta meses e anos.',
+            keywords: ['calculadora roi', 'retorno sobre investimento', 'calcular lucro', 'roi anualizado', 'rentabilidade', 'investimentos', 'fórmula roi'],
         },
         inputs: [
             {
                 id: 'invested',
-                label: 'Amount Invested ($)',
+                label: 'Valor Investido ($)',
                 type: 'number',
-                placeholder: 'e.g. 1000',
+                placeholder: 'ex: 1000',
                 defaultValue: 1000,
             },
             {
                 id: 'returned',
-                label: 'Amount Returned ($)',
+                label: 'Valor Retornado ($)',
                 type: 'number',
-                placeholder: 'e.g. 1500',
+                placeholder: 'ex: 1500',
                 defaultValue: 1500,
             },
             {
                 id: 'duration',
-                label: 'Investment Duration',
+                label: 'Duração do Investimento',
                 type: 'number',
                 defaultValue: 1,
-                placeholder: 'e.g. 1',
+                placeholder: 'ex: 1',
             },
             {
                 id: 'time_unit',
-                label: 'Time Unit',
+                label: 'Unidade de Tempo',
                 type: 'select',
                 defaultValue: 'years',
                 options: [
-                    { label: 'Years', value: 'years' },
-                    { label: 'Months', value: 'months' },
+                    { label: 'Anos', value: 'years' },
+                    { label: 'Meses', value: 'months' },
                 ]
             },
         ],
@@ -1260,7 +1657,7 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Total Profit',
+                label: 'Lucro Total',
                 unit: '$',
                 calculate: (inputs) => {
                     const initial = Number(inputs['invested']);
@@ -1269,78 +1666,89 @@ export const calculators: Record<string, CalculatorConfig> = {
                 },
             },
             {
-                label: 'Annualized ROI',
+                label: 'ROI Anualizado',
                 unit: '%',
                 calculate: (inputs) => {
                     const initial = Number(inputs['invested']);
                     const final = Number(inputs['returned']);
-                    const duration = Number(inputs['duration']) || 0;
+                    const duration = Number(inputs['duration']) || 1;
                     const unit = inputs['time_unit'];
 
-                    if (!initial || initial < 0 || final < 0 || duration <= 0) return 0;
+                    if (!initial || initial <= 0 || final <= 0) return 0;
 
-                    // Normalize time to years
                     const years = unit === 'months' ? duration / 12 : duration;
+                    if (years === 0) return 0;
 
-                    // Formula: ( (Final / Initial) ^ (1/t) ) - 1
+                    // Annualized ROI Formula: ((Final / Initial) ^ (1 / Years)) - 1
                     const annualized = (Math.pow(final / initial, 1 / years) - 1) * 100;
                     return parseFloat(annualized.toFixed(2));
                 },
-            }
+            },
         ],
         content: {
             whatIs: `
-                                                                                                        < h3 > What is ROI ? </h3>
-                                                                                                            < p > <strong>Return on Investment(ROI) < /strong> is the ultimate metric to measure the efficiency of an investment. It tells you exactly how much money you've made (or lost) relative to what you spent.</p >
-                                                                                                                <p>Whether you're flipping houses, buying stocks, or running a lemonade stand, ROI answers the golden question: <em>"Was it worth it?"</em></p>
-                                                                                                                    `,
+                <h3>O que é ROI (Return on Investment)?</h3>
+                <p>O <strong>Retorno sobre o Investimento (ROI)</strong> é uma métrica financeira universal usada para avaliar a eficiência de um investimento ou comparar a rentabilidade de diferentes opções.</p>
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 my-4">
+                    <p class="text-sm">Em termos simples, o ROI diz quanto dinheiro você ganhou (ou perdeu) em relação ao valor que investiu inicialmente. É a ferramenta fundamental para investidores, empresários e gestores de marketing.</p>
+                </div>
+                
+                <h4>Por que o ROI é importante?</h4>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-sm">
+                    <li><strong>Tomada de Decisão:</strong> Ajuda a decidir se um projeto ou investimento vale a pena.</li>
+                    <li><strong>Comparabilidade:</strong> Permite comparar uma ação na bolsa com um investimento em imóvel, por exemplo.</li>
+                    <li><strong>Simplicidade:</strong> Fornece um único número percentual que é fácil de entender e comunicar.</li>
+                </ul>
+            `,
             howTo: `
-                                                                                                                    < h3 > Step - by - Step Example: Real Estate Flip </h3>
-                                                                                                                        < div class="space-y-6 my-6" >
-                                                                                                                            <div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200" >
-                                                                                                                                <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold" > 1 </div>
-                                                                                                                                    < div >
-                                                                                                                                    <h4 class="font-bold text-gray-900" > The Investment </h4>
-                                                                                                                                        < p class="text-sm text-gray-600 mb-2" > You buy a fixer - upper house for <strong>$200,000 < /strong>.</p >
-                                                                                                                                            <p class= "text-xs text-gray-500 font-mono" > Input: Amount Invested = 200000 </p>
-                                                                                                                                                </div>
-                                                                                                                                                </div>
+                <h3>Como Calcular o ROI Manualmente</h3>
+                <p>Existem duas formas principais de olhar para o retorno: o ROI simples e o ROI anualizado (que considera o tempo).</p>
+                
+                <div class="space-y-6 my-6">
+                    <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm text-center">
+                        <h4 class="text-blue-600 font-bold mb-2">Fórmula do ROI Simples</h4>
+                        <code class="block bg-gray-50 p-3 rounded-lg text-lg">ROI = [(Ganho - Custo) / Custo] × 100</code>
+                    </div>
 
-                                                                                                                                                < div class="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200" >
-                                                                                                                                                    <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold" > 2 </div>
-                                                                                                                                                        < div >
-                                                                                                                                                        <h4 class="font-bold text-gray-900" > The Return </h4>
-                                                                                                                                                            < p class="text-sm text-gray-600 mb-2" > After renovations, you sell it for <strong>$250,000 < /strong>.</p >
-                                                                                                                                                                <p class= "text-xs text-gray-500 font-mono" > Input: Amount Returned = 250000 </p>
-                                                                                                                                                                    </div>
-                                                                                                                                                                    </div>
+                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
+                        <h4 class="text-indigo-700 font-bold mb-2">Exemplo Prático:</h4>
+                        <p class="text-sm">
+                            Você investiu <strong>R$ 1.000</strong> e após um ano vendeu por <strong>R$ 1.200</strong>.<br>
+                            $ROI = [(1.200 - 1.000) / 1.000] = 0,2$ ou $\mathbf{20\%}$
+                        </p>
+                    </div>
 
-                                                                                                                                                                    < div class="flex gap-4 p-4 bg-green-50 rounded-xl border border-green-100" >
-                                                                                                                                                                        <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-100 text-green-700 font-bold" >= </div>
-                                                                                                                                                                            < div >
-                                                                                                                                                                            <h4 class="font-bold text-green-900" > The Result </h4>
-                                                                                                                                                                                < p class="text-sm text-green-800 mb-2" > The calculator shows a < strong > 25 % ROI < /strong>.</p >
-                                                                                                                                                                                    <p class="text-xs text-green-700" > Profit: $50,000 </p>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                        </div>
+                    <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm text-center border-t-4 border-t-green-500">
+                        <h4 class="text-green-600 font-bold mb-2">Fórmula do ROI Anualizado</h4>
+                        <p class="text-xs text-gray-500 mb-3">Essencial para comparar investimentos de durações diferentes.</p>
+                        <code class="block bg-gray-50 p-3 rounded-lg text-lg">ROI_{anual} = [(\frac{Final}{Inicial})^{\frac{1}{Anos}} - 1] \times 100</code>
+                    </div>
+                </div>
 
-                                                                                                                                                                                        < h3 > Understanding Annualized ROI </h3>
-                                                                                                                                                                                            < p > If that house flip took < strong > 6 months < /strong> (0.5 years), your money grew much faster than if it took 5 years. The "Annualized ROI" adjusts for this time.</p >
-                                                                                                                                                                                                <p><em>In our example: earning 25 % in 6 months is equivalent to a massive < strong > 56.25 % </strong> annual rate!</em > </p>
-                                                                                                                                                                                                    `,
+                <blockquote class="border-l-4 border-yellow-400 pl-4 py-2 mt-6 text-gray-600 italic text-sm">
+                    <strong>Dica de Pró:</strong> Um ROI alto em um curto período é geralmente melhor do que o mesmo ROI em um período longo. Por isso, sempre olhe para o <strong>ROI Anualizado</strong> para uma comparação justa.
+                </blockquote>
+            `,
             faq: [
                 {
-                    question: "What is a good ROI?",
-                    answer: "It depends heavily on the risk and timeframe. The stock market historically averages about 7-10% annually. For real estate or high-risk businesses, investors often look for 15-20% or more."
+                    question: 'O que é um "bom" ROI?',
+                    answer: 'Não existe um número único. Para ações, 7-10% ao ano é comum. Para negócios próprios ou marketing (ROAS), espera-se frequentemente retornos muito maiores. Tudo depende do risco envolvido.'
                 },
                 {
-                    question: "Can ROI be negative?",
-                    answer: "Yes. If your 'Amount Returned' is less than your 'Amount Invested', you have lost money, and your ROI will be a negative percentage (e.g., -15%)."
+                    question: 'Devo incluir impostos e taxas no cálculo?',
+                    answer: 'Sim! Para obter o "ROI Real" ou líquido, você deve subtrair taxas de corretagem, impostos de renda e inflação do lucro final. Caso contrário, seu retorno estará superestimado.'
                 },
                 {
-                    question: "Why is Annualized ROI sometimes higher than total ROI?",
-                    answer: "If your investment duration is less than 1 year (e.g., 6 months), the Annualized ROI projects what you would earn if you could repeat that success for a full year. It shows the 'speed' of your compounding."
+                    question: 'Qual a diferença entre ROI e ROE?',
+                    answer: 'O ROI mede o retorno sobre todo o capital investido. O ROE (Return on Equity) mede o retorno apenas sobre o capital próprio dos acionistas, sendo muito usado para analisar empresas na bolsa.'
+                },
+                {
+                    question: 'O ROI pode ser negativo?',
+                    answer: 'Sim. Um ROI negativo indica que o investimento resultou em prejuízo. Por exemplo, um ROI de -10% significa que você perdeu 10% do valor que investiu.'
+                },
+                {
+                    question: 'Como calcular o ROI se eu tiver aportes mensais?',
+                    answer: 'Para múltiplos aportes, o cálculo simples não funciona bem. Nesse caso, recomenda-se o uso da TIR (Taxa Interna de Retorno), que considera o fluxo de caixa no tempo.'
                 }
             ]
         }
@@ -1515,24 +1923,24 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                    < h3 > What is TDEE vs BMR ? </h3>
-                                                                                                                                                                                                        < p > <strong>BMR(Basal Metabolic Rate) < /strong> is the number of calories your body burns just to exist — if you laid in bed all day in a coma, this is what you'd burn.</p >
-                                                                                                                                                                                                        <p><strong>TDEE(Total Daily Energy Expenditure) < /strong> is your BMR plus the energy you use for movement, work, and exercise. This is your true "Maintenance Calorie" number.</p >
-                                                                                                                                                                                                        `,
+                                                                                        < h3 > What is TDEE vs BMR ? </h3>
+                                                                                            < p > <strong>BMR(Basal Metabolic Rate) < /strong> is the number of calories your body burns just to exist — if you laid in bed all day in a coma, this is what you'd burn.</p >
+                                                                                            <p><strong>TDEE(Total Daily Energy Expenditure) < /strong> is your BMR plus the energy you use for movement, work, and exercise. This is your true "Maintenance Calorie" number.</p >
+                                                                                            `,
             howTo: `
-                                                                                                                                                                                                        < h3 > The Pizza Slice Logic 🍕</h3>
-                                                                                                                                                                                                            < p > Why do we talk about calories ? Because weight management is math.</p>
-                                                                                                                                                                                                                < div class="grid gap-4 my-4" >
-                                                                                                                                                                                                                    <div class="p-4 bg-orange-50 rounded-lg border border-orange-100" >
-                                                                                                                                                                                                                        <h5 class="font-semibold text-orange-900" > To Lose Weight </h5>
-                                                                                                                                                                                                                            < p class="text-sm text-gray-700" > You must eat BELOW your TDEE.A 500 calorie deficit per day = 3500 per week = approx < strong > 0.5kg(1lb) of fat loss < /strong>.</p >
-                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                < div class="p-4 bg-emerald-50 rounded-lg border border-emerald-100" >
-                                                                                                                                                                                                                                    <h5 class="font-semibold text-emerald-900" > To Gain Muscle </h5>
-                                                                                                                                                                                                                                        < p class="text-sm text-gray-700" > You must eat ABOVE your TDEE to give your body fuel to build new tissue.A 250 - 500 calorie surplus is standard.</p>
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                `,
+                                                                                            < h3 > The Pizza Slice Logic 🍕</h3>
+                                                                                                < p > Why do we talk about calories ? Because weight management is math.</p>
+                                                                                                    < div class="grid gap-4 my-4" >
+                                                                                                        <div class="p-4 bg-orange-50 rounded-lg border border-orange-100" >
+                                                                                                            <h5 class="font-semibold text-orange-900" > To Lose Weight </h5>
+                                                                                                                < p class="text-sm text-gray-700" > You must eat BELOW your TDEE.A 500 calorie deficit per day = 3500 per week = approx < strong > 0.5kg(1lb) of fat loss < /strong>.</p >
+                                                                                                                    </div>
+                                                                                                                    < div class="p-4 bg-emerald-50 rounded-lg border border-emerald-100" >
+                                                                                                                        <h5 class="font-semibold text-emerald-900" > To Gain Muscle </h5>
+                                                                                                                            < p class="text-sm text-gray-700" > You must eat ABOVE your TDEE to give your body fuel to build new tissue.A 250 - 500 calorie surplus is standard.</p>
+                                                                                                                                </div>
+                                                                                                                                </div>
+                                                                                                                                    `,
             faq: [
                 {
                     question: "Should I eat back my exercise calories?",
@@ -1631,30 +2039,30 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                            < h3 > Body Fat Percentage </h3>
-                                                                                                                                                                                                                                                < p > Your body fat percentage is essentially the amount of fat your body contains compared to everything else (organs, muscles, bones, tendons, water, etc.).</p>
-                                                                                                                                                                                                                                                    < p > Men and women carry different amounts of body fat.Essential fat is the minimal amount of fat necessary for normal physiological function: about 2 - 5 % for men and 10 - 13 % for women.</p>
-                                                                                                                                                                                                                                                        `,
+                                                                                                                                < h3 > Body Fat Percentage </h3>
+                                                                                                                                    < p > Your body fat percentage is essentially the amount of fat your body contains compared to everything else (organs, muscles, bones, tendons, water, etc.).</p>
+                                                                                                                                        < p > Men and women carry different amounts of body fat.Essential fat is the minimal amount of fat necessary for normal physiological function: about 2 - 5 % for men and 10 - 13 % for women.</p>
+                                                                                                                                            `,
             howTo: `
-                                                                                                                                                                                                                                                        < h3 > Understanding Body Fat Ranges </h3>
-                                                                                                                                                                                                                                                            < div class="mt-4 overflow-hidden rounded-xl border border-gray-200" >
-                                                                                                                                                                                                                                                                <table class="min-w-full divide-y divide-gray-200 text-sm" >
-                                                                                                                                                                                                                                                                    <thead class="bg-gray-50" >
-                                                                                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                                                                                        <th class="px-4 py-3 text-left font-medium text-gray-500" > Description </th>
-                                                                                                                                                                                                                                                                            < th class="px-4 py-3 text-left font-medium text-gray-500" > Women </th>
-                                                                                                                                                                                                                                                                                < th class="px-4 py-3 text-left font-medium text-gray-500" > Men </th>
-                                                                                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                                                                                    </thead>
-                                                                                                                                                                                                                                                                                    < tbody class="bg-white divide-y divide-gray-200" >
-                                                                                                                                                                                                                                                                                        <tr><td class="px-4 py-3 font-medium text-emerald-600" > Athletes < /td><td class="px-4 py-3">14-20%</td > <td class="px-4 py-3" > 6 - 13 % </td></tr >
-                                                                                                                                                                                                                                                                                            <tr><td class="px-4 py-3 font-medium text-green-600" > Fitness < /td><td class="px-4 py-3">21-24%</td > <td class="px-4 py-3" > 14 - 17 % </td></tr >
-                                                                                                                                                                                                                                                                                                <tr><td class="px-4 py-3 font-medium text-blue-600" > Average < /td><td class="px-4 py-3">25-31%</td > <td class="px-4 py-3" > 18 - 24 % </td></tr >
-                                                                                                                                                                                                                                                                                                    <tr><td class="px-4 py-3 font-medium text-orange-600" > Obese < /td><td class="px-4 py-3">32%+</td > <td class="px-4 py-3" > 25 % +</td></tr >
-                                                                                                                                                                                                                                                                                                        </tbody>
-                                                                                                                                                                                                                                                                                                        </table>
-                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                            `,
+                                                                                                                                            < h3 > Understanding Body Fat Ranges </h3>
+                                                                                                                                                < div class="mt-4 overflow-hidden rounded-xl border border-gray-200" >
+                                                                                                                                                    <table class="min-w-full divide-y divide-gray-200 text-sm" >
+                                                                                                                                                        <thead class="bg-gray-50" >
+                                                                                                                                                            <tr>
+                                                                                                                                                            <th class="px-4 py-3 text-left font-medium text-gray-500" > Description </th>
+                                                                                                                                                                < th class="px-4 py-3 text-left font-medium text-gray-500" > Women </th>
+                                                                                                                                                                    < th class="px-4 py-3 text-left font-medium text-gray-500" > Men </th>
+                                                                                                                                                                        </tr>
+                                                                                                                                                                        </thead>
+                                                                                                                                                                        < tbody class="bg-white divide-y divide-gray-200" >
+                                                                                                                                                                            <tr><td class="px-4 py-3 font-medium text-emerald-600" > Athletes < /td><td class="px-4 py-3">14-20%</td > <td class="px-4 py-3" > 6 - 13 % </td></tr >
+                                                                                                                                                                                <tr><td class="px-4 py-3 font-medium text-green-600" > Fitness < /td><td class="px-4 py-3">21-24%</td > <td class="px-4 py-3" > 14 - 17 % </td></tr >
+                                                                                                                                                                                    <tr><td class="px-4 py-3 font-medium text-blue-600" > Average < /td><td class="px-4 py-3">25-31%</td > <td class="px-4 py-3" > 18 - 24 % </td></tr >
+                                                                                                                                                                                        <tr><td class="px-4 py-3 font-medium text-orange-600" > Obese < /td><td class="px-4 py-3">32%+</td > <td class="px-4 py-3" > 25 % +</td></tr >
+                                                                                                                                                                                            </tbody>
+                                                                                                                                                                                            </table>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                                `,
             faq: [
                 {
                     question: "How accurate is the BMI method for Body Fat?",
@@ -1751,30 +2159,30 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                        < h3 > Why Calculate Your Exact Age ? </h3>
-                                                                                                                                                                                                                                                                                                            < p > Your "age" isn't just a single number. For legal documents, visa applications, school cutoffs, and milestone planning, knowing your exact age in <strong>years, months, and days</strong> matters.</p>
-                                                                                                                                                                                                                                                                                                                < p > Plus, who doesn't want to know exactly how many days until their next birthday? 🎂</p>
-                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                            < h3 > Why Calculate Your Exact Age ? </h3>
+                                                                                                                                                                                                < p > Your "age" isn't just a single number. For legal documents, visa applications, school cutoffs, and milestone planning, knowing your exact age in <strong>years, months, and days</strong> matters.</p>
+                                                                                                                                                                                                    < p > Plus, who doesn't want to know exactly how many days until their next birthday? 🎂</p>
+                                                                                                                                                                                                        `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                    < h3 > Age Milestones </h3>
-                                                                                                                                                                                                                                                                                                                        < div class="grid md:grid-cols-3 gap-4 mt-4" >
-                                                                                                                                                                                                                                                                                                                            <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                <span class="text-3xl" >🎂</span>
-                                                                                                                                                                                                                                                                                                                                    < p class="font-bold text-yellow-900 mt-2" > 10,000 Days </p>
-                                                                                                                                                                                                                                                                                                                                        < p class="text-xs text-yellow-700" >≈ 27 years old </p>
-                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                            < div class="p-4 bg-blue-50 rounded-lg border border-blue-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                <span class="text-3xl" >🍷</span>
-                                                                                                                                                                                                                                                                                                                                                    < p class="font-bold text-blue-900 mt-2" > 1 Billion Seconds </p>
-                                                                                                                                                                                                                                                                                                                                                        < p class="text-xs text-blue-700" >≈ 31.7 years old </p>
-                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                            < div class="p-4 bg-purple-50 rounded-lg border border-purple-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                <span class="text-3xl" >🌟</span>
-                                                                                                                                                                                                                                                                                                                                                                    < p class="font-bold text-purple-900 mt-2" > 20,000 Days </p>
-                                                                                                                                                                                                                                                                                                                                                                        < p class="text-xs text-purple-700" >≈ 54.7 years old </p>
-                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                        < h3 > Age Milestones </h3>
+                                                                                                                                                                                                            < div class="grid md:grid-cols-3 gap-4 mt-4" >
+                                                                                                                                                                                                                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center" >
+                                                                                                                                                                                                                    <span class="text-3xl" >🎂</span>
+                                                                                                                                                                                                                        < p class="font-bold text-yellow-900 mt-2" > 10,000 Days </p>
+                                                                                                                                                                                                                            < p class="text-xs text-yellow-700" >≈ 27 years old </p>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                < div class="p-4 bg-blue-50 rounded-lg border border-blue-100 text-center" >
+                                                                                                                                                                                                                                    <span class="text-3xl" >🍷</span>
+                                                                                                                                                                                                                                        < p class="font-bold text-blue-900 mt-2" > 1 Billion Seconds </p>
+                                                                                                                                                                                                                                            < p class="text-xs text-blue-700" >≈ 31.7 years old </p>
+                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                < div class="p-4 bg-purple-50 rounded-lg border border-purple-100 text-center" >
+                                                                                                                                                                                                                                                    <span class="text-3xl" >🌟</span>
+                                                                                                                                                                                                                                                        < p class="font-bold text-purple-900 mt-2" > 20,000 Days </p>
+                                                                                                                                                                                                                                                            < p class="text-xs text-purple-700" >≈ 54.7 years old </p>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                    `,
             faq: [
                 {
                     question: "Does this account for Leap Years?",
@@ -1843,22 +2251,22 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                            < h3 > Calculate Time Between Dates </h3>
-                                                                                                                                                                                                                                                                                                                                                                                < p > This calculator determines the exact duration between two calendar dates.It's perfect for planning events, tracking project timelines, or just figuring out exactly how many days are left until your next vacation.</p>
-                                                                                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                                                                                                < h3 > Calculate Time Between Dates </h3>
+                                                                                                                                                                                                                                                                    < p > This calculator determines the exact duration between two calendar dates.It's perfect for planning events, tracking project timelines, or just figuring out exactly how many days are left until your next vacation.</p>
+                                                                                                                                                                                                                                                                        `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Common Uses </h3>
-                                                                                                                                                                                                                                                                                                                                                                                        < div class="grid gap-4 mt-4" >
-                                                                                                                                                                                                                                                                                                                                                                                            <div class="p-4 bg-blue-50 rounded-lg border border-blue-100" >
-                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-blue-900" > Project Management </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-sm text-blue-800" > Calculate the number of days between a project start date and the deadline to plan sprints effectively.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                        < div class="p-4 bg-green-50 rounded-lg border border-green-100" >
-                                                                                                                                                                                                                                                                                                                                                                                                            <h5 class="font-bold text-green-900" > Event Countdown </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-green-800" > Find out exactly how many weeks and days remain until a wedding, anniversary, or holiday.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+                                                                                                                                                                                                                                                                        < h3 > Common Uses </h3>
+                                                                                                                                                                                                                                                                            < div class="grid gap-4 mt-4" >
+                                                                                                                                                                                                                                                                                <div class="p-4 bg-blue-50 rounded-lg border border-blue-100" >
+                                                                                                                                                                                                                                                                                    <h5 class="font-bold text-blue-900" > Project Management </h5>
+                                                                                                                                                                                                                                                                                        < p class="text-sm text-blue-800" > Calculate the number of days between a project start date and the deadline to plan sprints effectively.</p>
+                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                            < div class="p-4 bg-green-50 rounded-lg border border-green-100" >
+                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-green-900" > Event Countdown </h5>
+                                                                                                                                                                                                                                                                                                    < p class="text-sm text-green-800" > Find out exactly how many weeks and days remain until a wedding, anniversary, or holiday.</p>
+                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                            `,
             faq: [
                 {
                     question: "Does this include the end date?",
@@ -1874,89 +2282,175 @@ export const calculators: Record<string, CalculatorConfig> = {
     'circle': {
         id: 'circle',
         title: 'Circle Calculator',
-        description: 'Calculate Area, Circumference, Diameter and more from any known value.',
+        description: 'Calculate Area, Circumference, Diameter and Radius.',
         category: 'math',
         icon: 'Circle',
         meta: {
             title: 'Circle Calculator | Area, Circumference & Radius',
-            description: 'Instantly calculate circle area, circumference, diameter. Includes visual formulas and real-world examples (pizza slices!).',
-            keywords: ['circle calculator', 'circle area', 'circumference calculator', 'radius to diameter', 'pi calculator'],
+            description: 'Instantly calculate circle area, circumference, diameter or radius. Enter any one value to find the others. Includes formulas and Pi explanation.',
+            keywords: ['circle calculator', 'circle area', 'circumference calculator', 'radius to diameter', 'pi calculator', 'geometry'],
         },
         inputs: [
+            {
+                id: 'given',
+                label: 'Known Value',
+                type: 'select',
+                defaultValue: 'radius',
+                options: [
+                    { value: 'radius', label: 'Radius (r)' },
+                    { value: 'diameter', label: 'Diameter (d)' },
+                    { value: 'circumference', label: 'Circumference (C)' },
+                    { value: 'area', label: 'Area (A)' }
+                ]
+            },
             {
                 id: 'radius',
                 label: 'Radius (r)',
                 type: 'number',
+                placeholder: 'e.g. 5',
+                condition: (inputs) => inputs.given === 'radius'
+            },
+            {
+                id: 'diameter',
+                label: 'Diameter (d)',
+                type: 'number',
                 placeholder: 'e.g. 10',
-                unit: 'units',
+                condition: (inputs) => inputs.given === 'diameter'
+            },
+            {
+                id: 'circumference',
+                label: 'Circumference (C)',
+                type: 'number',
+                placeholder: 'e.g. 31.4',
+                condition: (inputs) => inputs.given === 'circumference'
+            },
+            {
+                id: 'area',
+                label: 'Area (A)',
+                type: 'number',
+                placeholder: 'e.g. 78.5',
+                condition: (inputs) => inputs.given === 'area'
             }
         ],
         outputs: [
             {
-                label: 'Area (A)',
-                unit: 'sq units',
-                calculate: (inputs) => {
-                    const r = Number(inputs['radius']);
-                    if (!r) return 0;
-                    return parseFloat((Math.PI * r * r).toFixed(4));
-                },
-            },
-            {
-                label: 'Circumference (C)',
+                label: 'Radius (r)',
                 unit: 'units',
                 calculate: (inputs) => {
-                    const r = Number(inputs['radius']);
-                    if (!r) return 0;
-                    return parseFloat((2 * Math.PI * r).toFixed(4));
+                    const type = inputs.given;
+                    const r = Number(inputs.radius);
+                    const d = Number(inputs.diameter);
+                    const c = Number(inputs.circumference);
+                    const a = Number(inputs.area);
+
+                    let radius = 0;
+                    if (type === 'radius') radius = r;
+                    else if (type === 'diameter') radius = d / 2;
+                    else if (type === 'circumference') radius = c / (2 * Math.PI);
+                    else if (type === 'area') radius = Math.sqrt(a / Math.PI);
+
+                    if (isNaN(radius) || radius <= 0) return 0;
+                    return parseFloat(radius.toFixed(4));
                 },
             },
             {
                 label: 'Diameter (d)',
                 unit: 'units',
                 calculate: (inputs) => {
-                    const r = Number(inputs['radius']);
-                    if (!r) return 0;
-                    return r * 2;
+                    const type = inputs.given;
+                    const r = Number(inputs.radius);
+                    const d = Number(inputs.diameter);
+                    const c = Number(inputs.circumference);
+                    const a = Number(inputs.area);
+
+                    let radius = 0;
+                    if (type === 'radius') radius = r;
+                    else if (type === 'diameter') radius = d / 2;
+                    else if (type === 'circumference') radius = c / (2 * Math.PI);
+                    else if (type === 'area') radius = Math.sqrt(a / Math.PI);
+
+                    if (isNaN(radius) || radius <= 0) return 0;
+                    return parseFloat((radius * 2).toFixed(4));
+                },
+            },
+            {
+                label: 'Circumference (C)',
+                unit: 'units',
+                calculate: (inputs) => {
+                    const type = inputs.given;
+                    const r = Number(inputs.radius);
+                    const d = Number(inputs.diameter);
+                    const c = Number(inputs.circumference);
+                    const a = Number(inputs.area);
+
+                    let radius = 0;
+                    if (type === 'radius') radius = r;
+                    else if (type === 'diameter') radius = d / 2;
+                    else if (type === 'circumference') radius = c / (2 * Math.PI);
+                    else if (type === 'area') radius = Math.sqrt(a / Math.PI);
+
+                    if (isNaN(radius) || radius <= 0) return 0;
+                    return parseFloat((2 * Math.PI * radius).toFixed(4));
+                },
+            },
+            {
+                label: 'Area (A)',
+                unit: 'sq units',
+                calculate: (inputs) => {
+                    const type = inputs.given;
+                    const r = Number(inputs.radius);
+                    const d = Number(inputs.diameter);
+                    const c = Number(inputs.circumference);
+                    const a = Number(inputs.area);
+
+                    let radius = 0;
+                    if (type === 'radius') radius = r;
+                    else if (type === 'diameter') radius = d / 2;
+                    else if (type === 'circumference') radius = c / (2 * Math.PI);
+                    else if (type === 'area') radius = Math.sqrt(a / Math.PI);
+
+                    if (isNaN(radius) || radius <= 0) return 0;
+                    return parseFloat((Math.PI * radius * radius).toFixed(4));
                 },
             }
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > What is a Circle ? </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                        < p > A circle is a 2D shape where every point on its edge is exactly the same distance from the center.This distance is called the < strong > radius(r) < /strong>.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                            <p>The < strong > diameter(d) < /strong> is the distance across the circle through the center (d = 2r). The <strong>circumference (C)</strong > is the total length around the circle.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+            <h3>What is a Circle?</h3>
+            <p>A circle is a 2D shape where every point on its edge is exactly the same distance from the center. This distance is called the <strong>radius (r)</strong>.</p>
+            <p>The <strong>diameter (d)</strong> is the distance across the circle through the center (d = 2r). The <strong>circumference (C)</strong> is the total length around the circle.</p>
+            `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > The Magic of Pi(π) </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > All circle calculations involve π(pi), the ratio of a circle's circumference to its diameter. Pi is approximately <strong>3.14159</strong>.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-blue-900 mb-2" > Area(A) </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    < code class="text-lg font-mono text-blue-700" > A = πr²</code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="text-xs text-blue-600 mt-2" > How much pizza is inside one slice! </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-indigo-900 mb-2" > Circumference(C) </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < code class="text-lg font-mono text-indigo-700" > C = 2πr </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="text-xs text-indigo-600 mt-2" > The length of the pizza crust.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-purple-900 mb-2" > Diameter(d) </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < code class="text-lg font-mono text-purple-700" > d = 2r </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="text-xs text-purple-600 mt-2" > The width of the box you need.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h4 class="font-semibold mt-4" > Example: The 12" Pizza</h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-gray-600" > A 12 - inch pizza has a diameter of 12 inches(r = 6 inches).Its area is π × 6² ≈ <strong>113 sq in </strong>. A 16-inch pizza has π × 8² ≈ <strong>201 sq in</strong > — almost double! </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+            <h3>The Magic of Pi (π)</h3>
+            <p>All circle calculations involve π (pi), approximately <strong>3.14159</strong>.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                    <h5 class="font-bold text-blue-900 mb-2">Area (A)</h5>
+                    <code class="text-lg font-mono text-blue-700">A = πr²</code>
+                    <p class="text-xs text-blue-600 mt-2">Space inside.</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center">
+                    <h5 class="font-bold text-indigo-900 mb-2">Circumference (C)</h5>
+                    <code class="text-lg font-mono text-indigo-700">C = 2πr</code>
+                    <p class="text-xs text-indigo-600 mt-2">Distance around.</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center">
+                    <h5 class="font-bold text-purple-900 mb-2">Diameter (d)</h5>
+                    <code class="text-lg font-mono text-purple-700">d = 2r</code>
+                    <p class="text-xs text-purple-600 mt-2">Width across.</p>
+                </div>
+            </div>
+            <h4 class="font-semibold mt-4">Example: Large Pizza</h4>
+            <p class="text-sm text-gray-600">A 16-inch pizza implies Diameter = 16". So Radius = 8". Area = π × 8² ≈ <strong>201 sq in</strong>.</p>
+            `,
             faq: [
                 {
                     question: "What is Pi (π)?",
-                    answer: "Pi is a mathematical constant (≈ 3.14159) that represents the ratio of a circle's circumference to its diameter. It's the same for every circle, no matter how big or small."
+                    answer: "Pi is a mathematical constant (≈ 3.14159) representing the ratio of circumference to diameter. It's irrational, meaning its decimals go on forever without repeating."
                 },
                 {
-                    question: "Why does a slightly larger pizza have SO much more area?",
-                    answer: "Because area grows with the <strong>square</strong> of the radius. Doubling the radius quadruples the area. A 16-inch pizza is 78% bigger than a 12-inch, not just 33%!"
+                    question: "Why do we use Radius vs Diameter?",
+                    answer: "Formulas usually use Radius (A = πr²), but in real life (like buying pipes or pizzas), people measure Diameter because it's easier to measure across the object."
                 }
             ]
         }
@@ -2012,29 +2506,29 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > What is a Square ? </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > A square is a special rectangle where all four sides are equal.It has four right angles(90°) and equal diagonals that bisect each other at 90°.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > Squares are everywhere: floor tiles, window panes, chess boards, and even your phone's app icons are often square.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                        < h3 > What is a Square ? </h3>
+                                                                                                                                                                                                                                                                                                                                                                                            < p > A square is a special rectangle where all four sides are equal.It has four right angles(90°) and equal diagonals that bisect each other at 90°.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                < p > Squares are everywhere: floor tiles, window panes, chess boards, and even your phone's app icons are often square.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                    `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Key Formulas </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h5 class="font-bold text-blue-900 mb-2" > Area </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < code class="text-lg font-mono text-blue-700" > A = a²</code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h5 class="font-bold text-indigo-900 mb-2" > Perimeter </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < code class="text-lg font-mono text-indigo-700" > P = 4a </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <h5 class="font-bold text-purple-900 mb-2" > Diagonal </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < code class="text-lg font-mono text-purple-700" > d = a√2 </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h4 class="font-semibold mt-4" > Example: Tiling a 10x10 Floor </h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-gray-600" > A 10 - foot x 10 - foot room has an area of 10² = <strong>100 sq ft < /strong>. If each tile covers 2 sq ft, you'll need 50 tiles (+ ~10% for waste).</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Key Formulas </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                        < div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4" >
+                                                                                                                                                                                                                                                                                                                                                                                                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-blue-900 mb-2" > Area </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                    < code class="text-lg font-mono text-blue-700" > A = a²</code>
+                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                            <h5 class="font-bold text-indigo-900 mb-2" > Perimeter </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                < code class="text-lg font-mono text-indigo-700" > P = 4a </code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <h5 class="font-bold text-purple-900 mb-2" > Diagonal </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                            < code class="text-lg font-mono text-purple-700" > d = a√2 </code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                < h4 class="font-semibold mt-4" > Example: Tiling a 10x10 Floor </h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-sm text-gray-600" > A 10 - foot x 10 - foot room has an area of 10² = <strong>100 sq ft < /strong>. If each tile covers 2 sq ft, you'll need 50 tiles (+ ~10% for waste).</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
             faq: [
                 {
                     question: "Is a square a rectangle?",
@@ -2108,28 +2602,28 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > What is a Rectangle ? </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > A rectangle is a 4 - sided shape with <strong>opposite sides equal < /strong> and <strong>4 right angles (90°)</strong >.It's one of the most common shapes in everyday life: screens, doors, tables, books.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > What is a Rectangle ? </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > A rectangle is a 4 - sided shape with <strong>opposite sides equal < /strong> and <strong>4 right angles (90°)</strong >.It's one of the most common shapes in everyday life: screens, doors, tables, books.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > Key Formulas </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h5 class="font-bold text-blue-900 mb-2" > Area </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < code class="text-lg font-mono text-blue-700" > A = l × w </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <h5 class="font-bold text-indigo-900 mb-2" > Perimeter </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < code class="text-lg font-mono text-indigo-700" > P = 2(l + w) </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-purple-900 mb-2" > Diagonal </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < code class="text-lg font-mono text-purple-700" > d = √(l² + w²)</code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h4 class="font-semibold mt-4" > Example: TV Screen Sizes 📺</h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="text-sm text-gray-600" > A "55-inch TV" refers to the < strong > diagonal < /strong>, not width! A 16:9 TV with 55" diagonal has dimensions ~48" × 27". The diagonal formula (Pythagorean theorem) connects all three measurements.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Key Formulas </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h5 class="font-bold text-blue-900 mb-2" > Area </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < code class="text-lg font-mono text-blue-700" > A = l × w </code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h5 class="font-bold text-indigo-900 mb-2" > Perimeter </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < code class="text-lg font-mono text-indigo-700" > P = 2(l + w) </code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="bg-purple-50 p-4 rounded-xl border border-purple-100 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <h5 class="font-bold text-purple-900 mb-2" > Diagonal </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < code class="text-lg font-mono text-purple-700" > d = √(l² + w²)</code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h4 class="font-semibold mt-4" > Example: TV Screen Sizes 📺</h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-gray-600" > A "55-inch TV" refers to the < strong > diagonal < /strong>, not width! A 16:9 TV with 55" diagonal has dimensions ~48" × 27". The diagonal formula (Pythagorean theorem) connects all three measurements.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             faq: [
                 {
                     question: "Why are TV screens measured by diagonal?",
@@ -2142,31 +2636,580 @@ export const calculators: Record<string, CalculatorConfig> = {
             ]
         }
     },
-    'triangle': {
-        id: 'triangle',
-        title: 'Triangle Calculator',
-        description: 'Calculate the area of any triangle using base × height or explore other types.',
+    'pythagorean': {
+        id: 'pythagorean',
+        title: 'Pythagorean Theorem Calculator',
+        description: 'Calculate the missing side of a right triangle.',
         category: 'math',
         icon: 'Triangle',
         meta: {
-            title: 'Triangle Calculator | Area & Types',
-            description: 'Calculate triangle area using base and height. Includes roof and land measurement examples.',
-            keywords: ['triangle calculator', 'area of triangle', 'herons formula', 'roof area', 'land measurement'],
+            title: 'Pythagorean Theorem Calculator | Find Hypotenuse or Leg',
+            description: 'Instantly calculate the missing side of a right triangle using a² + b² = c². find the hypotenuse or a leg length.',
+            keywords: ['pythagorean theorem', 'hypotenuse calculator', 'right triangle calculator', 'a2 b2 c2', 'triangle sides'],
         },
         inputs: [
+            {
+                id: 'target',
+                label: 'What do you want to find?',
+                type: 'select',
+                defaultValue: 'hypotenuse',
+                options: [
+                    { value: 'hypotenuse', label: 'Hypotenuse (c)' },
+                    { value: 'leg_a', label: 'Leg (a)' },
+                    { value: 'leg_b', label: 'Leg (b)' }
+                ]
+            },
+            {
+                id: 'side_a',
+                label: 'Side A (Leg)',
+                type: 'number',
+                placeholder: 'e.g. 3',
+                condition: (inputs) => inputs.target === 'hypotenuse' || inputs.target === 'leg_b'
+            },
+            {
+                id: 'side_b',
+                label: 'Side B (Leg)',
+                type: 'number',
+                placeholder: 'e.g. 4',
+                condition: (inputs) => inputs.target === 'hypotenuse' || inputs.target === 'leg_a'
+            },
+            {
+                id: 'side_c',
+                label: 'Side C (Hypotenuse)',
+                type: 'number',
+                placeholder: 'e.g. 5',
+                condition: (inputs) => inputs.target === 'leg_a' || inputs.target === 'leg_b'
+            }
+        ],
+        outputs: [
+            {
+                label: 'Result',
+                calculate: (inputs) => {
+                    const target = inputs.target || 'hypotenuse';
+                    const a = Number(inputs.side_a);
+                    const b = Number(inputs.side_b);
+                    const c = Number(inputs.side_c);
+
+                    if (target === 'hypotenuse') {
+                        if (!a || !b) return 0;
+                        return parseFloat(Math.sqrt(a * a + b * b).toFixed(4));
+                    }
+                    if (target === 'leg_a') {
+                        if (!c || !b) return 0;
+                        if (c <= b) return 'Error (c > b)';
+                        return parseFloat(Math.sqrt(c * c - b * b).toFixed(4));
+                    }
+                    if (target === 'leg_b') {
+                        if (!c || !a) return 0;
+                        if (c <= a) return 'Error (c > a)';
+                        return parseFloat(Math.sqrt(c * c - a * a).toFixed(4));
+                    }
+                    return 0;
+                }
+            },
+            {
+                label: 'Formula',
+                calculate: (inputs) => {
+                    const target = inputs.target || 'hypotenuse';
+                    if (target === 'hypotenuse') return 'c = √(a² + b²)';
+                    if (target === 'leg_a') return 'a = √(c² - b²)';
+                    if (target === 'leg_b') return 'b = √(c² - a²)';
+                    return '';
+                }
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>What is the Pythagorean Theorem?</h3>
+            <p>The Pythagorean Theorem states that in a right-angled triangle, the square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides.</p>
+            <p class="text-center my-4 font-mono text-xl bg-blue-50 p-2 rounded">a² + b² = c²</p>
+            <p>It is one of the most fundamental rules in geometry and is used in construction, navigation, and physics.</p>
+            `,
+            howTo: `
+            <h3>How to Calculate</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <strong class="text-blue-900 block mb-2">Finding Hypotenuse (c)</strong>
+                    <code class="text-lg text-blue-800">c = √(a² + b²)</code>
+                    <p class="text-xs text-blue-700 mt-1">Example: √(3² + 4²) = √(9+16) = √25 = 5</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                    <strong class="text-indigo-900 block mb-2">Finding a Leg (a or b)</strong>
+                    <code class="text-lg text-indigo-800">a = √(c² - b²)</code>
+                    <p class="text-xs text-indigo-700 mt-1">Example: √(5² - 4²) = √(25-16) = √9 = 3</p>
+                </div>
+            </div>
+            `,
+            faq: [
+                {
+                    question: "What are Pythagorean Triples?",
+                    answer: "They are sets of three positive integers that fit the rule a² + b² = c² exactly. Common examples: (3, 4, 5), (5, 12, 13), (8, 15, 17)."
+                },
+                {
+                    question: "Does this work for all triangles?",
+                    answer: "No! The Pythagorean theorem **only** works for right-angled triangles (one angle is 90°)."
+                }
+            ]
+        }
+    },
+    'percentage': {
+        id: 'percentage',
+        title: 'Percentage Calculator',
+        description: 'Solve "What is X% of Y?", "X is what % of Y?", and Percentage Change.',
+        category: 'math',
+        icon: 'Percent',
+        meta: {
+            title: 'Percentage Calculator | %, Change, Difference & Phrases',
+            description: 'Calculate percentages instantly. 3 Modes: Find Percentage (X% of Y), Find the Percent (X is what % of Y), and Percentage Change/Increase/Decrease.',
+            keywords: ['percentage calculator', 'percent change', 'what percent is', 'percentage formula', 'increase decrease calculator'],
+        },
+        inputs: [
+            {
+                id: 'mode',
+                label: 'Calculation Mode',
+                type: 'select',
+                defaultValue: 'percentage_of',
+                options: [
+                    { value: 'percentage_of', label: 'What is X% of Y?' },
+                    { value: 'what_percentage', label: 'X is what % of Y?' },
+                    { value: 'percentage_change', label: 'Percentage Change (From X to Y)' }
+                ],
+                width: 'full'
+            },
+            {
+                id: 'val1',
+                label: 'Value X',
+                type: 'number',
+                placeholder: (inputs) => {
+                    if (inputs.mode === 'percentage_of') return 'e.g. 20 (%)';
+                    if (inputs.mode === 'what_percentage') return 'e.g. 20';
+                    if (inputs.mode === 'percentage_change') return 'e.g. 100 (From)';
+                    return 'Value 1';
+                },
+                condition: () => true
+            },
+            {
+                id: 'val2',
+                label: 'Value Y',
+                type: 'number',
+                placeholder: (inputs) => {
+                    if (inputs.mode === 'percentage_of') return 'e.g. 100';
+                    if (inputs.mode === 'what_percentage') return 'e.g. 100';
+                    if (inputs.mode === 'percentage_change') return 'e.g. 150 (To)';
+                    return 'Value 2';
+                },
+                condition: () => true
+            }
+        ],
+        outputs: [
+            {
+                label: 'Result',
+                calculate: (inputs) => {
+                    const mode = inputs.mode || 'percentage_of';
+                    const v1 = Number(inputs.val1);
+                    const v2 = Number(inputs.val2);
+
+                    if (mode === 'percentage_of') {
+                        // What is v1% of v2?
+                        return parseFloat(((v1 / 100) * v2).toFixed(4));
+                    }
+                    if (mode === 'what_percentage') {
+                        // v1 is what % of v2?
+                        if (v2 === 0) return 0;
+                        return parseFloat(((v1 / v2) * 100).toFixed(4)) + '%';
+                    }
+                    if (mode === 'percentage_change') {
+                        // Change from v1 to v2
+                        if (v1 === 0) return 0; // Avoid division by zero
+                        const change = ((v2 - v1) / v1) * 100;
+                        const sign = change > 0 ? '+' : '';
+                        return `${sign}${parseFloat(change.toFixed(4))}%`;
+                    }
+                    return 0;
+                }
+            },
+            {
+                label: 'Explanation',
+                calculate: (inputs) => {
+                    const mode = inputs.mode || 'percentage_of';
+                    const v1 = Number(inputs.val1);
+                    const v2 = Number(inputs.val2);
+
+                    if (mode === 'percentage_of') return `${v1}% × ${v2} = ${(v1 / 100)} × ${v2}`;
+                    if (mode === 'what_percentage') return `(${v1} ÷ ${v2}) × 100`;
+                    if (mode === 'percentage_change') return `(${v2} - ${v1}) ÷ ${v1} × 100`;
+                    return '';
+                }
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>What is a Percentage?</h3>
+            <p>A percentage is a number or ratio expressed as a fraction of 100. It is denoted using the percent sign (<strong>%</strong>).</p>
+            <p>For example, <strong>45%</strong> represents <strong>45 out of 100</strong>, or <strong>0.45</strong>.</p>
+            `,
+            howTo: `
+            <h3>Percentage Formulas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <strong class="text-blue-900 block mb-2">X% of Y</strong>
+                    <code class="text-sm text-blue-800">Result = (X ÷ 100) × Y</code>
+                    <p class="text-xs text-blue-700 mt-2">Use for: Sales tax, tips.</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                    <strong class="text-indigo-900 block mb-2">X is what % of Y?</strong>
+                    <code class="text-sm text-indigo-800">Result = (X ÷ Y) × 100</code>
+                    <p class="text-xs text-indigo-700 mt-2">Use for: Test scores, completion rates.</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
+                    <strong class="text-purple-900 block mb-2">% Change</strong>
+                    <code class="text-sm text-purple-800">((New - Old) ÷ Old) × 100</code>
+                    <p class="text-xs text-purple-700 mt-2">Use for: Price hikes, discounts, growth.</p>
+                </div>
+            </div>
+            `,
+            faq: [
+                {
+                    question: "How do I calculate a 20% tip?",
+                    answer: "Multiply the bill by 0.20. For example, if the bill is $50, the tip is 50 × 0.20 = $10."
+                },
+                {
+                    question: "What is the formula for percentage increase?",
+                    answer: "Subtract the original number from the new number, divide by the original number, and multiply by 100."
+                }
+            ]
+        }
+    },
+    'bmi': {
+        id: 'bmi',
+        title: 'BMI Calculator',
+        description: 'Calculate Body Mass Index and check health categories.',
+        category: 'health',
+        icon: 'Activity',
+        meta: {
+            title: 'BMI Calculator | Body Mass Index (WHO Standards)',
+            description: 'Calculate your BMI (Body Mass Index) instantly. Includes WHO standard categories (Underweight, Normal, Overweight, Obese) and health risks.',
+            keywords: ['bmi calculator', 'body mass index', 'calculate bmi', 'obesity calculator', 'healthy weight'],
+        },
+        inputs: [
+            {
+                id: 'weight',
+                label: 'Weight (kg)',
+                type: 'number',
+                placeholder: 'e.g. 70',
+                condition: () => true
+            },
+            {
+                id: 'height',
+                label: 'Height (cm)',
+                type: 'number',
+                placeholder: 'e.g. 175',
+                condition: () => true
+            }
+        ],
+        outputs: [
+            {
+                label: 'Your BMI',
+                calculate: (inputs) => {
+                    const w = Number(inputs.weight);
+                    const h_cm = Number(inputs.height);
+                    if (!w || !h_cm) return 0;
+                    const h_m = h_cm / 100;
+                    return parseFloat((w / (h_m * h_m)).toFixed(1));
+                }
+            },
+            {
+                label: 'Category',
+                calculate: (inputs) => {
+                    const w = Number(inputs.weight);
+                    const h_cm = Number(inputs.height);
+                    if (!w || !h_cm) return '---';
+                    const h_m = h_cm / 100;
+                    const bmi = w / (h_m * h_m);
+
+                    if (bmi < 18.5) return 'Underweight';
+                    if (bmi < 25) return 'Normal weight';
+                    if (bmi < 30) return 'Overweight';
+                    if (bmi < 35) return 'Obesity Class I';
+                    if (bmi < 40) return 'Obesity Class II';
+                    return 'Obesity Class III';
+                }
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>What is BMI?</h3>
+            <p><strong>BMI (Body Mass Index)</strong> is a simple calculation using a person's height and weight. The formula is BMI = kg/m² where kg is a person's weight in kilograms and m² is their height in metres squared.</p>
+            <p>It is widely used as a general indicator of whether a person has a healthy body weight for their height.</p>
+            `,
+            howTo: `
+            <h3>BMI Categories (WHO)</h3>
+            <div class="overflow-hidden rounded-lg border border-gray-200 mt-4">
+                <table class="min-w-full text-sm text-center">
+                    <thead class="bg-gray-50 text-gray-700 font-semibold">
+                        <tr>
+                            <th class="py-2 px-4">BMI Range</th>
+                            <th class="py-2 px-4">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr><td class="py-2">< 18.5</td><td class="text-blue-600">Underweight</td></tr>
+                        <tr><td class="py-2">18.5 - 24.9</td><td class="text-green-600 font-bold">Normal Weight</td></tr>
+                        <tr><td class="py-2">25 - 29.9</td><td class="text-orange-500">Overweight</td></tr>
+                        <tr><td class="py-2">30 - 34.9</td><td class="text-red-500">Obesity I</td></tr>
+                        <tr><td class="py-2">35 - 39.9</td><td class="text-red-600">Obesity II</td></tr>
+                        <tr><td class="py-2">≥ 40</td><td class="text-red-800 font-bold">Obesity III</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Source: World Health Organization (WHO)</p>
+            `,
+            faq: [
+                {
+                    question: "Is BMI accurate for everyone?",
+                    answer: "No. BMI does not distinguish between muscle and fat. Athletes or muscular individuals may have a high BMI but not be overweight."
+                },
+                {
+                    question: "What is a healthy BMI?",
+                    answer: "A BMI between 18.5 and 24.9 is considered healthy for most adults."
+                }
+            ]
+        }
+    },
+    'fraction': {
+        id: 'fraction',
+        title: 'Fraction Calculator',
+        description: 'Add, Subtract, Multiply and Divide Fractions (Result in Lowest Terms).',
+        category: 'math',
+        icon: 'Divide',
+        meta: {
+            title: 'Fraction Calculator | Add, Subtract, Multiply, Divide',
+            description: 'Solve fraction problems instantly. Supports addition, subtraction, multiplication, and division. Shows results in lowest terms and mixed numbers.',
+            keywords: ['fraction calculator', 'adding fractions', 'multiplying fractions', 'simplify fractions', 'math calculator'],
+        },
+        inputs: [
+            {
+                id: 'n1', label: 'Numerator 1', type: 'number', placeholder: '1', width: '1/3', condition: () => true
+            },
+            {
+                id: 'd1', label: 'Denominator 1', type: 'number', placeholder: '2', width: '1/3', condition: () => true
+            },
+            {
+                id: 'op', label: 'Operation', type: 'select', defaultValue: 'add',
+                options: [
+                    { value: 'add', label: '+' },
+                    { value: 'sub', label: '-' },
+                    { value: 'mul', label: '×' },
+                    { value: 'div', label: '÷' }
+                ],
+                width: '1/3', condition: () => true
+            },
+            {
+                id: 'n2', label: 'Numerator 2', type: 'number', placeholder: '1', width: '1/3', condition: () => true
+            },
+            {
+                id: 'd2', label: 'Denominator 2', type: 'number', placeholder: '4', width: '1/3', condition: () => true
+            }
+        ],
+        outputs: [
+            {
+                label: 'Result (Fraction)',
+                calculate: (inputs) => {
+                    const n1 = Number(inputs.n1);
+                    const d1 = Number(inputs.d1);
+                    const n2 = Number(inputs.n2);
+                    const d2 = Number(inputs.d2);
+                    const op = inputs.op || 'add';
+
+                    if (!d1 || !d2) return 'Undefined';
+
+                    let rn = 0, rd = 1;
+
+                    if (op === 'add') {
+                        rn = n1 * d2 + n2 * d1;
+                        rd = d1 * d2;
+                    } else if (op === 'sub') {
+                        rn = n1 * d2 - n2 * d1;
+                        rd = d1 * d2;
+                    } else if (op === 'mul') {
+                        rn = n1 * n2;
+                        rd = d1 * d2;
+                    } else if (op === 'div') {
+                        if (n2 === 0) return 'Undefined';
+                        rn = n1 * d2;
+                        rd = d1 * n2;
+                    }
+
+                    // Simplify
+                    const gcd = (a: number, b: number): number => {
+                        return b === 0 ? a : gcd(b, a % b);
+                    };
+                    const common = Math.abs(gcd(rn, rd));
+                    rn /= common;
+                    rd /= common;
+
+                    // Handle negative signs cleanly
+                    if (rd < 0) { rn = -rn; rd = -rd; }
+
+                    if (rd === 1) return `${rn}`;
+                    return `${rn}/${rd}`;
+                }
+            },
+            {
+                label: 'Result (Decimal)',
+                calculate: (inputs) => {
+                    // Logic duplication for safe output
+                    const n1 = Number(inputs.n1);
+                    const d1 = Number(inputs.d1);
+                    const n2 = Number(inputs.n2);
+                    const d2 = Number(inputs.d2);
+                    const op = inputs.op || 'add';
+                    if (!d1 || !d2) return 0;
+                    let val = 0;
+                    if (op === 'add') val = (n1 / d1) + (n2 / d2);
+                    if (op === 'sub') val = (n1 / d1) - (n2 / d2);
+                    if (op === 'mul') val = (n1 / d1) * (n2 / d2);
+                    if (op === 'div') val = (n2 / d2) === 0 ? 0 : (n1 / d1) / (n2 / d2);
+                    return parseFloat(val.toFixed(4));
+                }
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>Working with Fractions</h3>
+            <p>A fraction consists of a numerator (top) and denominator (bottom).</p>
+            `,
+            howTo: `
+            <h3>Quick Rules</h3>
+            <p><strong>Add/Sub:</strong> Find common denominator.</p>
+            <p><strong>Multiply:</strong> Top×Top, Bottom×Bottom.</p>
+            <p><strong>Divide:</strong> Flip second fraction and multiply.</p>
+            `,
+            faq: []
+        }
+    },
+    'cylinder': {
+        id: 'cylinder',
+        title: 'Cylinder Volume',
+        description: 'Calculate the volume of a cylinder.',
+        category: 'geometry',
+        icon: 'Cylinder',
+        meta: {
+            title: 'Cylinder Volume Calculator | Calculate Volume of a Cylinder',
+            description: 'Determine the volume of a cylinder instantly. Enter radius and height to find the cubic volume.',
+            keywords: ['cylinder volume', 'volume calculator', 'cylinder formula', 'pi r squared h'],
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius (r)', type: 'number', placeholder: 'e.g. 3', condition: () => true },
+            { id: 'height', label: 'Height (h)', type: 'number', placeholder: 'e.g. 10', condition: () => true }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                unit: 'cubic units',
+                calculate: (inputs) => {
+                    const r = Number(inputs.radius);
+                    const h = Number(inputs.height);
+                    if (!r || !h) return 0;
+                    return parseFloat((Math.PI * r * r * h).toFixed(4));
+                }
+            }
+        ],
+        content: {
+            whatIs: `<h3>Cylinder Volume</h3><p>A cylinder is a 3D shape with two identical circular bases connected by a curved surface. The volume is the amount of space inside.</p>`,
+            howTo: `<h3>Formula</h3><p><strong>V = π × r² × h</strong></p><p>Where <br><strong>r</strong> = radius of base<br><strong>h</strong> = height</p>`,
+            faq: []
+        }
+    },
+    'cone': {
+        id: 'cone',
+        title: 'Cone Volume',
+        description: 'Calculate the volume of a cone.',
+        category: 'geometry',
+        icon: 'Cone',
+        meta: {
+            title: 'Cone Volume Calculator | Calculate Volume of a Cone',
+            description: 'Find the volume of a cone given radius and height.',
+            keywords: ['cone volume', 'volume of cone', 'cone calculator', 'geometry'],
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius (r)', type: 'number', placeholder: 'e.g. 3', condition: () => true },
+            { id: 'height', label: 'Height (h)', type: 'number', placeholder: 'e.g. 10', condition: () => true }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                unit: 'cubic units',
+                calculate: (inputs) => {
+                    const r = Number(inputs.radius);
+                    const h = Number(inputs.height);
+                    if (!r || !h) return 0;
+                    return parseFloat(((1 / 3) * Math.PI * r * r * h).toFixed(4));
+                }
+            }
+        ],
+        content: {
+            whatIs: `<h3>Cone Volume</h3><p>A cone is a 3D shape that tapers smoothly from a flat base to a point (apex).</p>`,
+            howTo: `<h3>Formula</h3><p><strong>V = (1/3) × π × r² × h</strong></p><p>A cone has exactly 1/3 the volume of a cylinder with the same dimensions.</p>`,
+            faq: []
+        }
+    },
+    'triangle': {
+        id: 'triangle',
+        title: 'Triangle Calculator',
+        description: 'Calculate Area, Perimeter and Angles using various methods.',
+        category: 'math',
+        icon: 'Triangle',
+        meta: {
+            title: 'Triangle Calculator | Area, Perimeter & Heron\'s Formula',
+            description: 'Calculate triangle area using Base & Height or Heron\'s Formula (3 sides). Find perimeter and types of triangles.',
+            keywords: ['triangle calculator', 'area of triangle', 'herons formula', 'triangle perimeter', 'geometry calculator'],
+        },
+        inputs: [
+            {
+                id: 'mode',
+                label: 'Calculation Method',
+                type: 'select',
+                defaultValue: 'base_height',
+                options: [
+                    { value: 'base_height', label: 'Base & Height' },
+                    { value: 'three_sides', label: "Three Sides (Heron's)" }
+                ]
+            },
             {
                 id: 'base',
                 label: 'Base (b)',
                 type: 'number',
                 placeholder: 'e.g. 10',
-                unit: 'units',
+                condition: (inputs) => inputs.mode === 'base_height'
             },
             {
                 id: 'height',
                 label: 'Height (h)',
                 type: 'number',
-                placeholder: 'e.g. 8',
-                unit: 'units',
+                placeholder: 'e.g. 5',
+                condition: (inputs) => inputs.mode === 'base_height'
+            },
+            {
+                id: 'side_a',
+                label: 'Side A',
+                type: 'number',
+                placeholder: 'e.g. 3',
+                condition: (inputs) => inputs.mode === 'three_sides'
+            },
+            {
+                id: 'side_b',
+                label: 'Side B',
+                type: 'number',
+                placeholder: 'e.g. 4',
+                condition: (inputs) => inputs.mode === 'three_sides'
+            },
+            {
+                id: 'side_c',
+                label: 'Side C',
+                type: 'number',
+                placeholder: 'e.g. 5',
+                condition: (inputs) => inputs.mode === 'three_sides'
             }
         ],
         outputs: [
@@ -2174,36 +3217,68 @@ export const calculators: Record<string, CalculatorConfig> = {
                 label: 'Area (A)',
                 unit: 'sq units',
                 calculate: (inputs) => {
-                    const b = Number(inputs['base']);
-                    const h = Number(inputs['height']);
+                    if (inputs.mode === 'three_sides') {
+                        const a = Number(inputs.side_a);
+                        const b = Number(inputs.side_b);
+                        const c = Number(inputs.side_c);
+                        if (!a || !b || !c) return 0;
+                        const s = (a + b + c) / 2;
+                        const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+                        return isNaN(area) ? 0 : parseFloat(area.toFixed(4));
+                    }
+                    // default base_height
+                    const b = Number(inputs.base);
+                    const h = Number(inputs.height);
                     if (!b || !h) return 0;
                     return parseFloat(((b * h) / 2).toFixed(4));
+                },
+            },
+            {
+                label: 'Perimeter (P)',
+                unit: 'units',
+                calculate: (inputs) => {
+                    if (inputs.mode === 'three_sides') {
+                        const a = Number(inputs.side_a);
+                        const b = Number(inputs.side_b);
+                        const c = Number(inputs.side_c);
+                        if (a && b && c) return parseFloat((a + b + c).toFixed(4));
+                    }
+                    // Cannot calc perimeter from base/height only (needs assumptions or hypotenuse)
+                    // So return 0 or maybe a message? 0 is safer for now.
+                    return 0;
                 },
             }
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > What is a Triangle ? </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > A triangle is the simplest polygon: 3 sides, 3 angles.The sum of internal angles is always < strong > 180°</strong>. Triangles appear everywhere: roofs, pizza slices, yield signs, and land surveys.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+            <h3>What is a Triangle?</h3>
+            <p>A triangle is the simplest polygon: 3 sides, 3 angles. The sum of internal angles is always <strong>180°</strong>. Triangles appear everywhere: roofs, pizza slices, yield signs, and land surveys.</p>
+            `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > The Golden Formula </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-yellow-50 p-6 rounded-xl border border-yellow-100 text-center my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="text-xs text-yellow-800 uppercase tracking-widest font-bold mb-2" > Standard Formula </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < code class="text-2xl font-mono text-yellow-900" > Area = ½ × base × height </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="text-sm text-yellow-700 mt-2" > Multiply the base by the perpendicular height, then divide by 2. </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h4 class="font-semibold mt-4" > Example: Estimating Roof Area 🏠</h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-gray-600" > A gable roof section with base 12m and height 4m has area = ½ × 12 × 4 = <strong>24 m²</strong>. Multiply by 2 for both sides = 48 m² of shingles needed.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+            <h3>Formulas</h3>
+            <p>Depending on what you know, different formulas apply.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
+                    <strong class="text-yellow-900 block mb-2">1. Base & Height</strong>
+                    <code class="text-lg text-yellow-800">Area = ½ × b × h</code>
+                    <p class="text-xs text-yellow-700 mt-1">Best for textbook problems.</p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                    <strong class="text-orange-900 block mb-2">2. Heron's Formula</strong>
+                    <code class="text-lg text-orange-800">Area = √[s(s-a)(s-b)(s-c)]</code>
+                    <p class="text-xs text-orange-700 mt-1">Where s = (a+b+c)/2. Best for land measurement.</p>
+                </div>
+            </div>
+            `,
             faq: [
                 {
-                    question: "What if I don't know the height?",
-                    answer: "If you know all 3 sides (a, b, c), use Heron's Formula: Calculate s = (a+b+c)/2, then Area = √[s(s-a)(s-b)(s-c)]."
+                    question: "What is 's' in Heron's Formula?",
+                    answer: "It stands for Semi-perimeter. It's simply half of the perimeter: (Side A + Side B + Side C) / 2."
                 },
                 {
-                    question: "What are the triangle types?",
-                    answer: "By sides: Equilateral (all equal), Isosceles (2 equal), Scalene (all different). By angles: Acute (all < 90°), Right (one = 90°), Obtuse (one > 90°)."
+                    question: "Can I verify a Right Triangle?",
+                    answer: "Yes! If a² + b² = c² (Pythagorean theorem), it's a right triangle."
                 }
             ]
         }
@@ -2321,24 +3396,24 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Hourly vs.Yearly: The Big Picture </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > Ever wondered what $25 / hour looks like as an annual salary ? Or how much a $60k salary breaks down to per week ? This calculator does all the math for you.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > It's an essential tool for job offers, salary negotiations, and budget planning.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > Hourly vs.Yearly: The Big Picture </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > Ever wondered what $25 / hour looks like as an annual salary ? Or how much a $60k salary breaks down to per week ? This calculator does all the math for you.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > It's an essential tool for job offers, salary negotiations, and budget planning.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > The 2080 - Hour Rule </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="bg-green-50 p-6 rounded-xl border border-green-100 text-center my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <p class="text-xs text-green-800 uppercase tracking-widest font-bold mb-2" > Standard Year </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < code class="text-2xl font-mono text-green-900" > 40 hours / wk × 52 weeks = 2,080 hours </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="text-sm text-green-700 mt-2" > <strong>Quick Trick: </strong> To estimate yearly salary, double your hourly rate and add three zeros. (e.g., $25/hr → $50 → $50,000).</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h4 class="font-semibold mt-4" > Common Pay Periods </h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < ul class="list-disc pl-5 space-y-2 text-gray-600" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li><strong>Bi - weekly: </strong> Paid every 2 weeks (26 checks/year).</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < li > <strong>Semi - monthly: </strong> Paid twice a month (24 checks/year).</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < li > <strong>Monthly: </strong> Paid once a month (12 checks/year).</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > The 2080 - Hour Rule </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-green-50 p-6 rounded-xl border border-green-100 text-center my-4" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p class="text-xs text-green-800 uppercase tracking-widest font-bold mb-2" > Standard Year </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < code class="text-2xl font-mono text-green-900" > 40 hours / wk × 52 weeks = 2,080 hours </code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-green-700 mt-2" > <strong>Quick Trick: </strong> To estimate yearly salary, double your hourly rate and add three zeros. (e.g., $25/hr → $50 → $50,000).</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h4 class="font-semibold mt-4" > Common Pay Periods </h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < ul class="list-disc pl-5 space-y-2 text-gray-600" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><strong>Bi - weekly: </strong> Paid every 2 weeks (26 checks/year).</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < li > <strong>Semi - monthly: </strong> Paid twice a month (24 checks/year).</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < li > <strong>Monthly: </strong> Paid once a month (12 checks/year).</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
             faq: [
                 {
                     question: "Is this Gross or Net income?",
@@ -2411,26 +3486,26 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > What is Simple Interest ? </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > Simple interest is the money you earn(or pay) < strong > only on the principal amount < /strong>. Unlike compound interest, the interest doesn't earn its own interest.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p>It's commonly used for short-term loans, informal lending between friends/family, and some types of bonds.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > What is Simple Interest ? </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > Simple interest is the money you earn(or pay) < strong > only on the principal amount < /strong>. Unlike compound interest, the interest doesn't earn its own interest.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p>It's commonly used for short-term loans, informal lending between friends/family, and some types of bonds.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > The Formula </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 text-center my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <code class="text-2xl font-mono text-indigo-900" > I = P × r × t </code>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="text-sm text-indigo-700 mt-2" > Interest = Principal × Rate × Time </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-xs text-indigo-500 mt-1" > (Total Amount = Principal + Interest)</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h4 class="font-semibold mt-4" > Example: The "Friend Loan" 🤝</h4>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="text-sm text-gray-600" > You lend a friend < strong > $1,000 < /strong> for <strong>2 years</strong > at < strong > 5 % </strong> simple interest.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600 mt-2" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li>Year 1 Interest: $1,000 × 0.05 = $50 </li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < li > Year 2 Interest: $1,000 × 0.05 = $50 </li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < li > <strong>Total Interest: </strong> $100</li >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><strong>Total Repayment: </strong> $1,100</li >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > The Formula </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 text-center my-4" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <code class="text-2xl font-mono text-indigo-900" > I = P × r × t </code>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-indigo-700 mt-2" > Interest = Principal × Rate × Time </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-xs text-indigo-500 mt-1" > (Total Amount = Principal + Interest)</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h4 class="font-semibold mt-4" > Example: The "Friend Loan" 🤝</h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="text-sm text-gray-600" > You lend a friend < strong > $1,000 < /strong> for <strong>2 years</strong > at < strong > 5 % </strong> simple interest.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600 mt-2" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li>Year 1 Interest: $1,000 × 0.05 = $50 </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < li > Year 2 Interest: $1,000 × 0.05 = $50 </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < li > <strong>Total Interest: </strong> $100</li >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li><strong>Total Repayment: </strong> $1,100</li >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
             faq: [
                 {
                     question: "Simple vs. Compound Interest: What's better?",
@@ -2567,50 +3642,50 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-            <h3>The Snowball Effect: Understanding Compound Interest</h3>
-            <p>Albert Einstein famously called compound interest the "eighth wonder of the world." Unlike simple interest, which is calculated only on the initial principal, <strong>compound interest</strong> is calculated on the principal plus all interest accumulated from previous periods.</p>
-            <p class="mt-2 text-gray-600 italic">"He who understands it, earns it; he who doesn't, pays it."</p>
-            
-            <h4 class="font-bold mt-4 text-gray-800">Why Frequency Matters</h4>
-            <p>The more often interest is added back to your principal (daily vs. annually), the faster your money grows. This tool allows you to compare different frequencies to see the real-world impact on your wealth.</p>
-            `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > The Snowball Effect: Understanding Compound Interest </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > Albert Einstein famously called compound interest the "eighth wonder of the world." Unlike simple interest, which is calculated only on the initial principal, <strong>compound interest < /strong> is calculated on the principal plus all interest accumulated from previous periods.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="mt-2 text-gray-600 italic" > "He who understands it, earns it; he who doesn't, pays it." </p>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h4 class="font-bold mt-4 text-gray-800" > Why Frequency Matters </h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > The more often interest is added back to your principal(daily vs.annually), the faster your money grows.This tool allows you to compare different frequencies to see the real - world impact on your wealth.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
             howTo: `
-            <h3>The Mathematics of Growth</h3>
-            <p>To calculate the future value of an investment with regular contributions, we use a two-part formula:</p>
-            
-            <div class="space-y-4 my-6">
-                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
-                    <h4 class="text-sm font-bold text-indigo-900 mb-2 uppercase">Part 1: Initial Investment Growth</h4>
-                    <p class="font-mono text-blue-800">A = P(1 + r/n)^{nt}</p>
-                </div>
-                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
-                    <h4 class="text-sm font-bold text-indigo-900 mb-2 uppercase">Part 2: Regular Contributions (Annuity)</h4>
-                    <p class="font-mono text-blue-800">FV = PMT × [ (1 + r/n)^{nt} - 1 ] / (r/n)</p>
-                </div>
-            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > The Mathematics of Growth </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > To calculate the future value of an investment with regular contributions, we use a two - part formula: </p>
 
-            <h3 class="mt-8">Comparison Table: Impact of Compounding</h3>
-            <p class="text-sm text-gray-500 mb-4">Initial Investment: $10,000 | Rate: 5% | Time: 10 Years</p>
-            <div class="overflow-hidden rounded-xl border border-gray-200">
-                <table class="min-w-full text-sm text-center">
-                    <thead class="bg-gray-50 text-gray-700 font-bold uppercase tracking-wider">
-                        <tr>
-                            <th class="py-3 px-4">Frequency</th>
-                            <th class="py-3 px-4">Final Amount</th>
-                            <th class="py-3 px-4">Total Interest</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100 italic">
-                        <tr><td class="py-3 font-medium">Annually</td><td class="text-blue-600">$16,288.95</td><td>$6,288.95</td></tr>
-                        <tr><td class="py-3 font-medium">Monthly</td><td class="text-blue-600">$16,470.09</td><td>$6,470.09</td></tr>
-                        <tr><td class="py-3 font-medium">Daily</td><td class="text-blue-600">$16,486.65</td><td>$6,486.65</td></tr>
-                    </tbody>
-                </table>
-            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="space-y-4 my-6" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h4 class="text-sm font-bold text-indigo-900 mb-2 uppercase" > Part 1: Initial Investment Growth </h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="font-mono text-blue-800" > A = P(1 + r / n) ^ { nt } </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <h4 class="text-sm font-bold text-indigo-900 mb-2 uppercase" > Part 2: Regular Contributions(Annuity) </h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="font-mono text-blue-800" > FV = PMT ×[(1 + r / n) ^ { nt } - 1] / (r / n) </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
 
-            <h3 class="mt-8">Rule of 72: A Quick Trick</h3>
-            <p>Want to know how long it takes to double your money? Divide 72 by your interest rate. If you earn <strong>8%</strong>, your money will double in roughly <strong>9 years</strong> (72 / 8 = 9).</p>
-            `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 class="mt-8" > Comparison Table: Impact of Compounding </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-gray-500 mb-4" > Initial Investment: $10,000 | Rate: 5 % | Time: 10 Years </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="overflow-hidden rounded-xl border border-gray-200" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <table class="min-w-full text-sm text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <thead class="bg-gray-50 text-gray-700 font-bold uppercase tracking-wider" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <th class="py-3 px-4" > Frequency </th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < th class="py-3 px-4" > Final Amount </th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < th class="py-3 px-4" > Total Interest </th>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </thead>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < tbody class="divide-y divide-gray-100 italic" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <tr><td class="py-3 font-medium" > Annually < /td><td class="text-blue-600">$16,288.95</td > <td>$6, 288.95 < /td></tr >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <tr><td class="py-3 font-medium" > Monthly < /td><td class="text-blue-600">$16,470.09</td > <td>$6, 470.09 < /td></tr >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <tr><td class="py-3 font-medium" > Daily < /td><td class="text-blue-600">$16,486.65</td > <td>$6, 486.65 < /td></tr >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </tbody>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </table>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 class="mt-8" > Rule of 72: A Quick Trick </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > Want to know how long it takes to double your money ? Divide 72 by your interest rate.If you earn < strong > 8 % </strong>, your money will double in roughly <strong>9 years</strong > (72 / 8 = 9).</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             faq: [
                 {
                     question: "What is the difference between APR and APY?",
@@ -2638,94 +3713,115 @@ export const calculators: Record<string, CalculatorConfig> = {
     'speed': {
         id: 'speed',
         title: 'Speed Calculator',
-        description: 'Calculate Speed, Distance, or Time.',
+        description: 'Calculate Speed, Distance or Time using the formula v = d/t.',
         category: 'physics',
         icon: 'Zap',
         meta: {
-            title: 'Speed Calculator | Distance & Time',
-            description: 'Calculate speed, distance or time instantly. v = d/t, d = vt, t = d/v.',
-            keywords: ['speed calculator', 'velocity calculator', 'how to calculate speed', 'distance time speed'],
+            title: 'Speed Calculator | Distance & Time Formula (v=d/t)',
+            description: 'Calculate speed, distance or time instantly. Enter any two values to find the third. Includes formula explanations and unit conversions.',
+            keywords: ['speed calculator', 'velocity calculator', 'calculate speed', 'distance formula', 'time calculator', 'average speed'],
         },
         inputs: [
+            {
+                id: 'target',
+                label: 'What do you want to calculate?',
+                type: 'select',
+                defaultValue: 'speed',
+                options: [
+                    { value: 'speed', label: 'Speed (v)' },
+                    { value: 'distance', label: 'Distance (d)' },
+                    { value: 'time', label: 'Time (t)' }
+                ]
+            },
             {
                 id: 'distance',
                 label: 'Distance (d)',
                 type: 'number',
                 placeholder: 'e.g. 100',
+                condition: (inputs) => inputs.target === 'speed' || inputs.target === 'time'
             },
             {
                 id: 'time',
                 label: 'Time (t)',
                 type: 'number',
                 placeholder: 'e.g. 10',
+                condition: (inputs) => inputs.target === 'speed' || inputs.target === 'distance'
             },
             {
                 id: 'speed',
                 label: 'Speed (v)',
                 type: 'number',
-                placeholder: 'e.g. 10',
+                placeholder: 'e.g. 50',
+                condition: (inputs) => inputs.target === 'distance' || inputs.target === 'time'
             }
         ],
         outputs: [
             {
-                label: 'Result: Speed',
-                unit: 'm/s',
+                label: 'Result',
                 calculate: (inputs) => {
-                    const d = Number(inputs['distance']);
-                    const t = Number(inputs['time']);
-                    if (d && t) return parseFloat((d / t).toFixed(2));
+                    const target = inputs.target || 'speed';
+                    const d = Number(inputs.distance);
+                    const t = Number(inputs.time);
+                    const v = Number(inputs.speed);
+
+                    if (target === 'speed') {
+                        if (!d || !t) return 0;
+                        return parseFloat((d / t).toFixed(2)) + ' m/s';
+                    }
+                    if (target === 'distance') {
+                        if (!v || !t) return 0;
+                        return parseFloat((v * t).toFixed(2)) + ' m';
+                    }
+                    if (target === 'time') {
+                        if (!d || !v) return 0;
+                        return parseFloat((d / v).toFixed(2)) + ' s';
+                    }
                     return 0;
-                },
+                }
             },
             {
-                label: 'Result: Distance',
-                unit: 'm',
+                label: 'Steps / Formula',
                 calculate: (inputs) => {
-                    const v = Number(inputs['speed']);
-                    const t = Number(inputs['time']);
-                    if (v && t) return parseFloat((v * t).toFixed(2));
-                    return 0;
-                },
-            },
-            {
-                label: 'Result: Time',
-                unit: 's',
-                calculate: (inputs) => {
-                    const d = Number(inputs['distance']);
-                    const v = Number(inputs['speed']);
-                    if (d && v) return parseFloat((d / v).toFixed(2));
-                    return 0;
-                },
+                    const target = inputs.target || 'speed';
+                    if (target === 'speed') return 'v = d / t';
+                    if (target === 'distance') return 'd = v × t';
+                    if (target === 'time') return 't = d / v';
+                    return '';
+                }
             }
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > Speed vs.Velocity </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > <strong>Speed < /strong> is a scalar quantity that refers to "how fast an object is moving." It can be thought of as the rate at which an object covers distance.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p><strong>Velocity < /strong> is a vector quantity that refers to "the rate at which an object changes its position." It includes direction.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
+            <h3>Speed vs. Velocity</h3>
+            <p><strong>Speed</strong> is a scalar quantity that refers to "how fast an object is moving." It can be thought of as the rate at which an object covers distance.</p>
+            <p><strong>Velocity</strong> is a vector quantity that refers to "the rate at which an object changes its position." It includes direction.</p>
+            `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > The Magic Triangle </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > Cover the variable you want to find in the triangle below to get the formula: </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="flex justify-center my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="relative w-32 h-28 bg-blue-100 rounded-lg flex flex-col items-center justify-center border-2 border-blue-300" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="font-bold text-2xl text-blue-900 border-b-2 border-blue-900 w-full text-center pb-1" > d </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="flex w-full justify-around pt-1" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span class="font-bold text-2xl text-blue-900 border-r-2 border-blue-900 w-1/2 text-center" > v </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < span class="font-bold text-2xl text-blue-900 w-1/2 text-center" > t </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li><strong>Distance(d) < /strong> = Speed (v) × Time (t)</li >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li><strong>Speed(v) < /strong> = Distance (d) / Time(t) </li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < li > <strong>Time(t) < /strong> = Distance (d) / Speed(v) </li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
+            <h3>The Magic Triangle</h3>
+            <p>Cover the variable you want to find in the triangle below to get the formula:</p>
+            <div class="flex justify-center my-4">
+                <div class="relative w-32 h-28 bg-blue-100 rounded-lg flex flex-col items-center justify-center border-2 border-blue-300">
+                    <span class="font-bold text-2xl text-blue-900 border-b-2 border-blue-900 w-full text-center pb-1">d</span>
+                    <div class="flex w-full justify-around pt-1">
+                        <span class="font-bold text-2xl text-blue-900 border-r-2 border-blue-900 w-1/2 text-center">v</span>
+                        <span class="font-bold text-2xl text-blue-900 w-1/2 text-center">t</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
+                <li><strong>Distance (d)</strong> = Speed (v) × Time (t)</li>
+                <li><strong>Speed (v)</strong> = Distance (d) / Time (t)</li>
+                <li><strong>Time (t)</strong> = Distance (d) / Speed (v)</li>
+            </ul>
+            `,
             faq: [
                 {
                     question: "What is average speed?",
                     answer: "Average speed is the total distance traveled divided by the total time elapsed."
+                },
+                {
+                    question: "How to convert km/h to m/s?",
+                    answer: "Divide the speed in km/h by 3.6. For example, 72 km/h ÷ 3.6 = 20 m/s."
                 }
             ]
         }
@@ -2776,17 +3872,17 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > Understanding Acceleration </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > Acceleration is the rate of change of velocity of an object with respect to time.An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Understanding Acceleration </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > Acceleration is the rate of change of velocity of an object with respect to time.An object's acceleration is the net result of any and all forces acting on the object, as described by Newton's Second Law.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > The Formula </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-indigo-900 text-white p-6 rounded-xl my-4 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p class="text-3xl font-mono mb-2 tracking-widest" > a = Δv / t </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="text-sm opacity-80 mt-2" > Acceleration = (Final Velocity - Initial Velocity) / Time</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > <strong>Units: </strong> Meters per second squared (m/s²).</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > The Formula </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="bg-indigo-900 text-white p-6 rounded-xl my-4 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <p class="text-3xl font-mono mb-2 tracking-widest" > a = Δv / t </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="text-sm opacity-80 mt-2" > Acceleration = (Final Velocity - Initial Velocity) / Time</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > <strong>Units: </strong> Meters per second squared (m/s²).</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
             faq: [
                 {
                     question: "Can acceleration be negative?",
@@ -2798,58 +3894,129 @@ export const calculators: Record<string, CalculatorConfig> = {
     'force': {
         id: 'force',
         title: 'Force Calculator',
-        description: 'Calculate Force using Newton\'s Second Law (F=ma).',
+        description: 'Calculate Force, Mass, or Acceleration using Newton\'s Second Law (F=ma).',
         category: 'physics',
         icon: 'Hammer',
         meta: {
             title: 'Force Calculator (F=ma) | Newton\'s Second Law',
-            description: 'Calculate Force (N), Mass (kg), or Acceleration (m/s²) using Newton\'s Second Law.',
-            keywords: ['force calculator', 'newtons second law', 'f=ma calculator', 'physics force'],
+            description: 'Calculate Force (N), Mass (kg), or Acceleration (m/s²) instantly. Includes Newton\'s Second Law formulas and examples.',
+            keywords: ['force calculator', 'newtons second law', 'f=ma calculator', 'calculate mass', 'calculate acceleration', 'physics'],
         },
         inputs: [
+            {
+                id: 'target',
+                label: 'What do you want to calculate?',
+                type: 'select',
+                defaultValue: 'force',
+                options: [
+                    { value: 'force', label: 'Force (F)' },
+                    { value: 'mass', label: 'Mass (m)' },
+                    { value: 'acceleration', label: 'Acceleration (a)' }
+                ]
+            },
+            {
+                id: 'force',
+                label: 'Force (F)',
+                type: 'number',
+                placeholder: 'e.g. 50',
+                condition: (inputs) => inputs.target !== 'force'
+            },
             {
                 id: 'mass',
                 label: 'Mass (m)',
                 type: 'number',
                 placeholder: 'e.g. 10',
+                condition: (inputs) => inputs.target !== 'mass'
             },
             {
                 id: 'acceleration',
                 label: 'Acceleration (a)',
                 type: 'number',
-                placeholder: 'e.g. 9.8',
+                placeholder: 'e.g. 5',
+                condition: (inputs) => inputs.target !== 'acceleration'
             }
         ],
         outputs: [
             {
-                label: 'Force (F)',
-                unit: 'N',
+                label: 'Result',
                 calculate: (inputs) => {
-                    const m = Number(inputs['mass']);
-                    const a = Number(inputs['acceleration']);
-                    if (!m || !a) return 0;
-                    return parseFloat((m * a).toFixed(2));
-                },
+                    const target = inputs.target || 'force';
+                    const F = Number(inputs.force);
+                    const m = Number(inputs.mass);
+                    const a = Number(inputs.acceleration);
+
+                    if (target === 'force') {
+                        if (!m || !a) return 0;
+                        return parseFloat((m * a).toFixed(2)) + ' N';
+                    }
+                    if (target === 'mass') {
+                        if (!F || !a) return 0;
+                        return parseFloat((F / a).toFixed(2)) + ' kg';
+                    }
+                    if (target === 'acceleration') {
+                        if (!F || !m) return 0;
+                        return parseFloat((F / m).toFixed(2)) + ' m/s²';
+                    }
+                    return 0;
+                }
+            },
+            {
+                label: 'Formula Used',
+                calculate: (inputs) => {
+                    const target = inputs.target || 'force';
+                    if (target === 'force') return 'F = m × a';
+                    if (target === 'mass') return 'm = F / a';
+                    if (target === 'acceleration') return 'a = F / m';
+                    return '';
+                }
             }
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Newton's Second Law</h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > <strong>Force < /strong> is an interaction that, when unopposed, will change the motion of an object. Newton's Second Law states that the force acting on an object is equal to the mass of that object times its acceleration.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+            <h3>Newton's Second Law</h3>
+            <p><strong>Force</strong> is a push or pull upon an object resulting from the object's interaction with another object. <strong>Newton's Second Law of Motion</strong> pertains to the behavior of objects for which all existing forces are not balanced.</p>
+            <p>The law states that the acceleration of an object is dependent upon two variables: the net <strong>force</strong> acting upon the object and the <strong>mass</strong> of the object.</p>
+            `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > F = ma </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-indigo-900 text-white p-6 rounded-xl my-4 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="text-4xl font-mono mb-2 font-bold tracking-widest" > F = m × a </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-sm opacity-80 mt-2" > Force(N) = Mass(kg) × Acceleration(m / s²) </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > <strong>Example: </strong> How much force is needed to accelerate a <strong>10 kg</strong > object at a rate of < strong > 5 m / s²</strong>?</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="ml-4 mt-1 font-mono text-indigo-700" > F = 10 kg × 5 m / s² = 50 N </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+            <h3>The Magic Triangle (F-m-a)</h3>
+            <p>You can use this triangle to remember the formulas. Cover the letter you want to find:</p>
+            <div class="flex justify-center my-6">
+                <div class="relative w-32 h-28 bg-indigo-50 rounded-lg flex flex-col items-center justify-center border-2 border-indigo-200">
+                    <span class="font-bold text-2xl text-indigo-900 border-b-2 border-indigo-200 w-full text-center pb-1">F</span>
+                    <div class="flex w-full justify-around pt-1">
+                        <span class="font-bold text-2xl text-indigo-900 border-r-2 border-indigo-200 w-1/2 text-center">m</span>
+                        <span class="font-bold text-2xl text-indigo-900 w-1/2 text-center">a</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="block text-gray-700 mb-1">To find Force (F):</strong>
+                    <code class="text-indigo-600">F = m × a</code>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="block text-gray-700 mb-1">To find Mass (m):</strong>
+                    <code class="text-indigo-600">m = F / a</code>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="block text-gray-700 mb-1">To find Accel. (a):</strong>
+                    <code class="text-indigo-600">a = F / m</code>
+                </div>
+            </div>
+            `,
             faq: [
                 {
-                    question: "What is a Newton?",
-                    answer: "One Newton (N) is the force needed to accelerate one kilogram of mass at the rate of one meter per second squared."
+                    question: "What is 1 Newton equal to?",
+                    answer: "One Newton (1 N) is defined as the force required to accelerate a mass of 1 kilogram at a rate of 1 meter per second squared (1 kg⋅m/s²)."
+                },
+                {
+                    question: "Does mass change with location?",
+                    answer: "No, <strong>mass</strong> is the amount of matter in an object and remains constant everywhere. <strong>Weight</strong>, however, depends on gravity (Weight = mass × gravity) and changes if you go to the Moon or Mars."
+                },
+                {
+                    question: "What happens if net force is zero?",
+                    answer: "If the net force is zero, the object will either stay at rest or continue moving at a constant velocity (zero acceleration). This is Newton's First Law."
                 }
             ]
         }
@@ -2893,17 +4060,17 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Definition of Work </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > In physics, <strong>Work < /strong> is the energy transferred to or from an object via the application of force along a displacement. In its simplest form, it is force times distance.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > Definition of Work </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > In physics, <strong>Work < /strong> is the energy transferred to or from an object via the application of force along a displacement. In its simplest form, it is force times distance.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > W = Fd </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-green-50 p-6 rounded-xl border border-green-100 my-4 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="text-3xl font-mono mb-2 text-green-900 font-bold" > W = F × d </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-sm text-green-800" > Work(Joules) = Force(Newtons) × Distance(Meters) </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > <strong>Key Concept: </strong> No work is done if the object doesn't move, no matter how much force you apply!</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > W = Fd </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-green-50 p-6 rounded-xl border border-green-100 my-4 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="text-3xl font-mono mb-2 text-green-900 font-bold" > W = F × d </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-green-800" > Work(Joules) = Force(Newtons) × Distance(Meters) </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > <strong>Key Concept: </strong> No work is done if the object doesn't move, no matter how much force you apply!</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
             faq: [
                 {
                     question: "What unit is Work measured in?",
@@ -2951,17 +4118,17 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > Understanding Power </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > <strong>Power < /strong> is the rate at which work is done. It measures how fast energy is being transferred or transformed.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p>Think of it this way: Walking up stairs and running up stairs requires the same amount of < em > Work < /em> (lifting your body mass against gravity), but running requires more <em>Power</em > because you do it in less time.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > Understanding Power </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > <strong>Power < /strong> is the rate at which work is done. It measures how fast energy is being transferred or transformed.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p>Think of it this way: Walking up stairs and running up stairs requires the same amount of < em > Work < /em> (lifting your body mass against gravity), but running requires more <em>Power</em > because you do it in less time.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > P = W / t </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-yellow-50 p-6 rounded-xl border border-yellow-100 my-4 text-center" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="text-3xl font-mono mb-2 text-yellow-900 font-bold" > P = W / t </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-sm text-yellow-800" > Power(Watts) = Work(Joules) / Time(Seconds) </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > P = W / t </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-yellow-50 p-6 rounded-xl border border-yellow-100 my-4 text-center" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p class="text-3xl font-mono mb-2 text-yellow-900 font-bold" > P = W / t </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p class="text-sm text-yellow-800" > Power(Watts) = Work(Joules) / Time(Seconds) </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             faq: [
                 {
                     question: "What is a Watt?",
@@ -3037,27 +4204,27 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Weighted Average vs.Simple Average </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > A < strong > Simple Average < /strong> (Mean) treats all numbers equally. A <strong>Weighted Average</strong > assigns a specific "weight" or importance to each number.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > This is most commonly used in grading.For example, a Final Exam might be worth 50 % of your grade, while homework is only 10 %.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Weighted Average vs.Simple Average </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > A < strong > Simple Average < /strong> (Mean) treats all numbers equally. A <strong>Weighted Average</strong > assigns a specific "weight" or importance to each number.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p > This is most commonly used in grading.For example, a Final Exam might be worth 50 % of your grade, while homework is only 10 %.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Calculation Steps </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < ol class="list-decimal pl-5 space-y-2 text-gray-600 mt-2" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li>Multiply each number(x) by its weight(w).</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < li > Add all of these products together(Σxw) to get the "Weighted Sum".</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < li > Add all the weights together(Σw).</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < li > Divide the Weighted Sum by the Sum of Weights.</li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ol>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-blue-50 p-4 rounded-lg my-4 border border-blue-100" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="font-bold text-blue-900 text-sm" > Example: Grades </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < div class="text-sm mt-1" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <p>Test(80)[Weight 2]+ Homework(100)[Weight 1]</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < p class="font-mono mt-1 text-blue-800" > (80×2 + 100×1) / (2+1)</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="font-mono text-blue-800" > (160 + 100) / 3 = 260 / 3 = <strong>86.66 < /strong></p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > Calculation Steps </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < ol class="list-decimal pl-5 space-y-2 text-gray-600 mt-2" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li>Multiply each number(x) by its weight(w).</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < li > Add all of these products together(Σxw) to get the "Weighted Sum".</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < li > Add all the weights together(Σw).</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < li > Divide the Weighted Sum by the Sum of Weights.</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ol>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="bg-blue-50 p-4 rounded-lg my-4 border border-blue-100" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p class="font-bold text-blue-900 text-sm" > Example: Grades </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="text-sm mt-1" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p>Test(80)[Weight 2]+ Homework(100)[Weight 1]</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="font-mono mt-1 text-blue-800" > (80×2 + 100×1) / (2+1)</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p class="font-mono text-blue-800" > (160 + 100) / 3 = 260 / 3 = <strong>86.66 < /strong></p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
             faq: [
                 {
                     question: "Do weights have to add up to 100?",
@@ -3134,28 +4301,28 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Measuring Spread </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > <strong>Standard Deviation < /strong> (σ or s) is a measure of how spread out numbers are. </p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><strong>Low SD: </strong> Data points are close to the mean (consistent).</li >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li><strong>High SD: </strong> Data points are spread out over a wider range (volatile).</li >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > Measuring Spread </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > <strong>Standard Deviation < /strong> (σ or s) is a measure of how spread out numbers are. </p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li><strong>Low SD: </strong> Data points are close to the mean (consistent).</li >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><strong>High SD: </strong> Data points are spread out over a wider range (volatile).</li >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Population vs.Sample </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-gray-900 mb-1" > Population(σ) </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-xs text-gray-500 mb-2" > Use when you have data for the < em > entire < /em> group.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <code class= "block font-mono bg-white p-2 rounded text-xs select-all" > σ = √(Σ(x - μ)² / N)</code >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-gray-50 p-4 rounded-xl border border-gray-100" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <h5 class="font-bold text-gray-900 mb-1" > Sample(s) </h5>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-xs text-gray-500 mb-2" > Use when you have a < em > subset < /em> of the group.</p >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <code class="block font-mono bg-white p-2 rounded text-xs select-all" > s = √(Σ(x - x̄)² / (n - 1))</code >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < h3 > Population vs.Sample </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h5 class="font-bold text-gray-900 mb-1" > Population(σ) </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-xs text-gray-500 mb-2" > Use when you have data for the < em > entire < /em> group.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <code class= "block font-mono bg-white p-2 rounded text-xs select-all" > σ = √(Σ(x - μ)² / N)</code >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-gray-50 p-4 rounded-xl border border-gray-100" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h5 class="font-bold text-gray-900 mb-1" > Sample(s) </h5>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-xs text-gray-500 mb-2" > Use when you have a < em > subset < /em> of the group.</p >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <code class="block font-mono bg-white p-2 rounded text-xs select-all" > s = √(Σ(x - x̄)² / (n - 1))</code >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
             faq: [
                 {
                     question: "Why divide by n-1 for Sample SD?",
@@ -3209,17 +4376,17 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: {
             whatIs: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < h3 > Variance Explained </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > <strong>Variance < /strong> (σ²) is the average of the <strong>squared</strong > differences from the Mean.It gives you a general idea of the spread of your data.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p > Because it is squared, the units are also squared(e.g., "dollars squared"), which can be hard to interpret.That's why we often take the square root of Variance to get the Standard Deviation.</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > Variance Explained </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < p > <strong>Variance < /strong> (σ²) is the average of the <strong>squared</strong > differences from the Mean.It gives you a general idea of the spread of your data.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p > Because it is squared, the units are also squared(e.g., "dollars squared"), which can be hard to interpret.That's why we often take the square root of Variance to get the Standard Deviation.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `,
             howTo: `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < h3 > Relationship to Standard Deviation </h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            < div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 text-center my-4" >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="text-lg font-medium text-indigo-900" > Standard Deviation = √(Variance) </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < p class="text-lg font-medium text-indigo-900 mt-2" > Variance = (Standard Deviation)²</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    < h3 > Relationship to Standard Deviation </h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        < div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 text-center my-4" >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p class="text-lg font-medium text-indigo-900" > Standard Deviation = √(Variance) </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                < p class="text-lg font-medium text-indigo-900 mt-2" > Variance = (Standard Deviation)²</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `,
             faq: [
                 {
                     question: "Why do we square the differences?",
@@ -19335,20 +20502,115 @@ export const calculators: Record<string, CalculatorConfig> = {
     },
     'gpa-calculator': {
         id: 'gpa-calculator',
-        title: 'GPA Calculator',
-        description: '4.0 scale.',
+        title: 'Calculadora de GPA (Média Escolar)',
+        description: 'Calcule sua média escolar (GPA) na escala 4.0. Ideal para applications internacionais.',
         category: 'education',
         icon: 'GraduationCap',
+        meta: {
+            title: 'Calculadora de GPA 4.0 - Converter Notas para Escala Americana',
+            description: 'Calculadora de GPA Gratuita. Converta suas notas para a escala 4.0 (A-F). Essencial para intercâmbios, High School e universidades no exterior.',
+            keywords: ['calculadora gpa', 'calcular gpa', 'média escolar 4.0', 'converter notas gpa', 'escala americana de notas'],
+        },
         inputs: [
-            { id: 'a', label: 'A grades (4.0)', type: 'number', placeholder: '3' },
-            { id: 'b', label: 'B grades (3.0)', type: 'number', placeholder: '2' },
-            { id: 'c', label: 'C grades (2.0)', type: 'number', placeholder: '1' },
-            { id: 'd', label: 'D grades (1.0)', type: 'number', placeholder: '0' }
+            { id: 'a', label: 'Notas A (Excelente - 4.0)', type: 'number', placeholder: 'ex: 3 matérias' },
+            { id: 'b', label: 'Notas B (Bom - 3.0)', type: 'number', placeholder: 'ex: 4 matérias' },
+            { id: 'c', label: 'Notas C (Regular - 2.0)', type: 'number', placeholder: 'ex: 2 matérias' },
+            { id: 'd', label: 'Notas D (Mínimo - 1.0)', type: 'number', placeholder: 'ex: 1 matéria' },
+            { id: 'f', label: 'Notas F (Reprovado - 0.0)', type: 'number', placeholder: 'ex: 0 matérias' }
         ],
         outputs: [
-            { label: 'GPA', calculate: (inputs) => { const a = Number(inputs.a); const b = Number(inputs.b); const c = Number(inputs.c); const d = Number(inputs.d); const total = a + b + c + d; return total ? ((a * 4 + b * 3 + c * 2 + d * 1) / total).toFixed(2) : '0'; } }
+            {
+                label: 'GPA (Média)',
+                calculate: (inputs) => {
+                    const a = Number(inputs.a) || 0;
+                    const b = Number(inputs.b) || 0;
+                    const c = Number(inputs.c) || 0;
+                    const d = Number(inputs.d) || 0;
+                    const f = Number(inputs.f) || 0; // The missing logic fix!
+
+                    const totalClasses = a + b + c + d + f;
+                    const totalPoints = (a * 4) + (b * 3) + (c * 2) + (d * 1) + (f * 0);
+
+                    if (totalClasses === 0) return '0.00';
+                    return (totalPoints / totalClasses).toFixed(2);
+                }
+            },
+            {
+                label: 'Total de Créditos/Matérias',
+                calculate: (inputs) => {
+                    return (Number(inputs.a) || 0) + (Number(inputs.b) || 0) + (Number(inputs.c) || 0) + (Number(inputs.d) || 0) + (Number(inputs.f) || 0);
+                }
+            }
         ],
-        content: { whatIs: '<p>Calculates GPA on 4.0 scale.</p>' }
+        content: {
+            whatIs: `
+                <h3>O que é o GPA (Grade Point Average)?</h3>
+                <p>O <strong>GPA</strong> é a média ponderada das suas notas, usada universalmente no sistema educacional americano e em muitas universidades internacionais. Diferente do Brasil, que usa escalas de 0 a 10 ou 0 a 100, o GPA geralmente varia de <strong>0.0 a 4.0</strong>.</p>
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 my-4">
+                    <p class="text-sm">Um GPA alto é crucial para admissões em universidades (o "application"), bolsas de estudo e até oportunidades de emprego no exterior.</p>
+                </div>
+                
+                <h4>Tabela de Conversão Típica (Brasil x EUA)</h4>
+                <div class="overflow-x-auto mt-4 mb-6">
+                    <table class="min-w-full text-sm text-center border">
+                        <thead class="bg-gray-50 font-semibold text-gray-700">
+                            <tr>
+                                <th class="p-2 border">Conceito EUA</th>
+                                <th class="p-2 border">Pontos (GPA)</th>
+                                <th class="p-2 border">Nota Brasil (Aprox.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-green-50"><td class="p-2 border font-bold text-green-700">A</td><td class="p-2 border">4.0</td><td class="p-2 border">9.0 - 10.0</td></tr>
+                            <tr><td class="p-2 border font-bold text-blue-600">B</td><td class="p-2 border">3.0</td><td class="p-2 border">8.0 - 8.9</td></tr>
+                            <tr><td class="p-2 border font-bold text-yellow-600">C</td><td class="p-2 border">2.0</td><td class="p-2 border">7.0 - 7.9</td></tr>
+                            <tr><td class="p-2 border font-bold text-orange-600">D</td><td class="p-2 border">1.0</td><td class="p-2 border">6.0 - 6.9</td></tr>
+                            <tr class="bg-red-50"><td class="p-2 border font-bold text-red-600">F</td><td class="p-2 border">0.0</td><td class="p-2 border">< 6.0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            `,
+            howTo: `
+                <h3>Como Calcular o GPA Manualmente</h3>
+                <p>O cálculo é uma média simples baseada nos pontos de cada nota.</p>
+                
+                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm text-center my-6">
+                    <h4 class="text-blue-600 font-bold mb-2">Fórmula Básica</h4>
+                    <code class="block bg-gray-50 p-3 rounded-lg text-lg">GPA = Total de Pontos / Total de Matérias</code>
+                </div>
+
+                <h4>Exemplo Prático:</h4>
+                <p class="text-sm mb-4">Imagine que você fez 5 matérias este semestre:</p>
+                <ul class="list-disc pl-6 space-y-1 text-sm bg-gray-50 p-4 rounded-lg mb-4">
+                    <li>3 matérias com nota <strong>A</strong> (3 x 4.0 = 12 pontos)</li>
+                    <li>1 matéria com nota <strong>B</strong> (1 x 3.0 = 3 pontos)</li>
+                    <li>1 matéria com nota <strong>C</strong> (1 x 2.0 = 2 pontos)</li>
+                </ul>
+                <p class="text-sm">
+                    <strong>Total de Matérias:</strong> 5<br>
+                    <strong>Total de Pontos:</strong> 12 + 3 + 2 = 17<br>
+                    <strong>Cálculo:</strong> $17 / 5 = \mathbf{3.4}$
+                </p>
+            `,
+            faq: [
+                {
+                    question: 'O que acontece se eu reprovar (Nota F)?',
+                    answer: 'Essa é a "armadilha" do GPA. Uma nota F conta como 0.0 pontos, mas a matéria ainda conta para o divisor total. Isso puxa sua média para baixo drasticamente. Por isso, adicionamos o campo "Notas F" nesta calculadora para garantir precisão.'
+                },
+                {
+                    question: 'O que é Weighted vs Unweighted GPA?',
+                    answer: 'O "Unweighted" (não ponderado) vai até 4.0 e trata todas as aulas igual. O "Weighted" (ponderado) pode ir até 5.0, dando pontos extras para aulas difíceis (como AP ou Honors). Esta calculadora usa o modelo padrão Unweighted (4.0).'
+                },
+                {
+                    question: 'Qual é um bom GPA para Ivy League?',
+                    answer: 'Universidades de elite (Harvard, Yale, etc.) geralmente esperam um GPA próximo de 4.0 (ou seja, quase só notas A), além de atividades extracurriculares fortes.'
+                },
+                {
+                    question: 'Como converto notas percentuais (0-100) para GPA?',
+                    answer: 'Geralmente: 90-100 é A (4.0), 80-89 é B (3.0), 70-79 é C (2.0), 60-69 é D (1.0) e abaixo de 60 é F (0.0). Mas cada escola pode ter sua regra específica.'
+                }
+            ]
+        }
     },
     'study-hours-calculator': {
         id: 'study-hours-calculator',
@@ -19384,19 +20646,100 @@ export const calculators: Record<string, CalculatorConfig> = {
     },
     'exam-score-needed-calculator': {
         id: 'exam-score-needed-calculator',
-        title: 'Exam Score Needed',
-        description: 'Final grade target.',
+        title: 'Calculadora de Nota Necessária (Exame Final)',
+        description: 'Descubra quanto você precisa tirar na prova final para passar de ano ou atingir sua meta.',
         category: 'education',
-        icon: 'GraduationCap',
+        icon: 'Calculator',
+        meta: {
+            title: 'Calculadora de Nota Necessária no Exame Final - Quanto preciso tirar?',
+            description: 'Calculadora de Nota de Prova Final. Descubra exatamente quanto você precisa tirar no exame para passar ou alcançar sua média desejada com base no peso da prova.',
+            keywords: ['calculadora nota final', 'quanto preciso tirar', 'calculadora de média', 'nota exame final', 'passar de ano'],
+        },
         inputs: [
-            { id: 'current', label: 'Current Average', type: 'number', placeholder: '75' },
-            { id: 'target', label: 'Target Grade', type: 'number', placeholder: '80' },
-            { id: 'examWeight', label: 'Exam Weight (%)', type: 'number', placeholder: '30' }
+            { id: 'current', label: 'Média Atual (%)', type: 'number', placeholder: 'ex: 75', defaultValue: 75 },
+            { id: 'target', label: 'Nota Desejada / Meta (%)', type: 'number', placeholder: 'ex: 80', defaultValue: 80 },
+            { id: 'examWeight', label: 'Peso da Prova Final (%)', type: 'number', placeholder: 'ex: 30', defaultValue: 30 }
         ],
         outputs: [
-            { label: 'Score Needed', calculate: (inputs) => { const c = Number(inputs.current); const t = Number(inputs.target); const w = Number(inputs.examWeight) / 100; const needed = (t - c * (1 - w)) / w; return needed.toFixed(1); } }
+            {
+                label: 'Nota Necessária no Exame',
+                calculate: (inputs) => {
+                    const c = Number(inputs.current);
+                    const t = Number(inputs.target);
+                    const w = Number(inputs.examWeight) / 100;
+
+                    if (w === 0) return '0';
+
+                    // Formula: Needed = (Target - (Current * (1 - Weight))) / Weight
+                    const needed = (t - c * (1 - w)) / w;
+
+                    if (needed > 100) return `${needed.toFixed(1)}% (Impossível*)`;
+                    if (needed <= 0) return '0% (Você já passou!)';
+
+                    return `${needed.toFixed(1)}%`;
+                }
+            },
+            {
+                label: 'Diagnóstico',
+                calculate: (inputs) => {
+                    const c = Number(inputs.current);
+                    const t = Number(inputs.target);
+                    const w = Number(inputs.examWeight) / 100;
+                    if (w === 0) return 'Peso inválido';
+
+                    const needed = (t - c * (1 - w)) / w;
+
+                    if (needed > 100) return 'Matematicamente impossível sem pontos extras.';
+                    if (needed > 90) return 'Missão difícil! Vai precisar estudar muito.';
+                    if (needed <= 0) return 'Parabéns! Sua média atual já garante a meta.';
+                    return 'É possível! Mantenha o foco.';
+                }
+            }
         ],
-        content: { whatIs: '<p>Calculates exam score needed for target grade.</p>' }
+        content: {
+            whatIs: `
+                <h3>Como Funciona a Nota do Exame Final?</h3>
+                <p>Na maioria das escolas e universidades, a nota final é uma <strong>Média Ponderada</strong>. Isso significa que sua "Média Atual" vale uma parte da nota (por exemplo, 70%) e a "Prova Final" vale o restante (30%).</p>
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 my-4">
+                    <p class="text-sm">Esta calculadora faz a matemática reversa para dizer exatamente quanto a prova final precisa "pesar" na balança para você atingir seu objetivo.</p>
+                </div>
+            `,
+            howTo: `
+                <h3>A Fórmula da Esperança (ou Desespero)</h3>
+                <p>Para descobrir a nota necessária, usamos a seguinte lógica:</p>
+                
+                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm text-center my-6">
+                    <h4 class="text-blue-600 font-bold mb-2">Fórmula</h4>
+                    <code class="block bg-gray-50 p-3 rounded-lg text-lg">Nota = (Meta - (Atual × (1 - Peso))) / Peso</code>
+                </div>
+
+                <h4>Exemplo Real:</h4>
+                <ul class="list-disc pl-6 space-y-2 text-sm bg-gray-50 p-4 rounded-lg mb-4">
+                    <li><strong>Média Atual:</strong> 80%</li>
+                    <li><strong>Meta:</strong> 85%</li>
+                    <li><strong>Peso da Prova:</strong> 40% (ou 0.4)</li>
+                </ul>
+                <p class="text-sm">
+                    $Nota = (85 - (80 \times 0.6)) / 0.4$<br>
+                    $Nota = (85 - 48) / 0.4$<br>
+                    $Nota = 37 / 0.4 = \mathbf{92.5\%}$
+                </p>
+            `,
+            faq: [
+                {
+                    question: 'E se a nota necessária for maior que 100%?',
+                    answer: 'Infelizmente, isso significa que é matematicamente impossível atingir sua meta apenas com a prova final, a menos que seu professor ofereça pontos extras (extra credit).'
+                },
+                {
+                    question: 'Como calcular se meu professor usa pontos em vez de porcentagem?',
+                    answer: 'A lógica é a mesma. Se a prova vale 100 pontos e você precisa de 90%, insira 90 como meta e o peso proporcional da prova no semestre.'
+                },
+                {
+                    question: 'O que significa um resultado negativo (ex: -10%)?',
+                    answer: 'Boas notícias! Significa que sua média atual é tão alta que, mesmo se você tirar zero na prova final, ainda atingirá sua meta. Você já garantiu sua aprovação.'
+                }
+            ]
+        }
     },
     // Batch CN: Electrical II
     'wire-gauge-calculator': {
@@ -22193,5 +23536,127 @@ export const calculators: Record<string, CalculatorConfig> = {
             { label: 'Time Remaining %', calculate: (inputs) => Math.max(0, 100 - (Number(inputs.age) / 80 * 100)).toFixed(1) + '%' }
         ],
         content: { whatIs: '<p>Calculates percentage of "productive years" remaining until 80.</p>' }
+    },
+
+
+    'countdown-timer': {
+        id: 'countdown-timer',
+        title: 'Contagem Regressiva (Eventos)',
+        description: 'Faltam quantos dias para o Carnaval, Enem ou suas Férias?',
+        category: 'everyday',
+        icon: 'Clock',
+        meta: {
+            title: 'Contagem Regressiva Online - Carnaval, Enem 2026 e Feriados',
+            description: 'Descubra exatamente quantos dias, horas e minutos faltam para datas importantes ou crie sua própria contagem regressiva personalizada.',
+            keywords: ['contagem regressiva', 'dias para o carnaval', 'dias para o enem', 'contador online', 'calculadora de tempo'],
+        },
+        inputs: [
+            {
+                id: 'mode',
+                label: 'Escolha o Evento',
+                type: 'select',
+                defaultValue: 'custom',
+                options: [
+                    { value: 'custom', label: '📅 Data Personalizada' },
+                    { value: 'carnaval2026', label: '🎭 Carnaval 2026 (17/Fev)' },
+                    { value: 'enem2026_1', label: '📚 Enem 2026 (Dia 1 - Est.)' },
+                    { value: 'natal2026', label: '🎄 Natal 2026' },
+                    { value: 'anonovo2027', label: '🎆 Ano Novo 2027' }
+                ]
+            },
+            {
+                id: 'customDate',
+                label: 'Sua Data',
+                type: 'date',
+                defaultValue: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                condition: (inputs) => inputs.mode === 'custom'
+            },
+            {
+                id: 'customName',
+                label: 'Nome do Evento',
+                type: 'text',
+                placeholder: 'Ex: Minhas Férias',
+                defaultValue: 'Meu Evento',
+                condition: (inputs) => inputs.mode === 'custom'
+            }
+        ],
+        outputs: [
+            {
+                label: 'Tempo Restante',
+                calculate: (inputs) => {
+                    let targetDate: Date;
+                    // Presets for 2026/2027
+                    switch (inputs.mode) {
+                        case 'carnaval2026': targetDate = new Date('2026-02-17T00:00:00'); break; // Estimated
+                        case 'enem2026_1': targetDate = new Date('2026-11-01T13:00:00'); break; // Estimated 1st Sunday Nov
+                        case 'natal2026': targetDate = new Date('2026-12-25T00:00:00'); break;
+                        case 'anonovo2027': targetDate = new Date('2027-01-01T00:00:00'); break;
+                        default: targetDate = new Date(inputs.customDate);
+                    }
+
+                    if (isNaN(targetDate.getTime())) return '-';
+
+                    const now = new Date();
+                    const diff = targetDate.getTime() - now.getTime();
+
+                    if (diff <= 0) return 'O evento já chegou! 🎉';
+
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                    return `${days} dias, ${hours} horas, ${minutes} min`;
+                }
+            },
+            {
+                label: 'Total em Dias',
+                calculate: (inputs) => {
+                    let targetDate: Date;
+                    switch (inputs.mode) {
+                        case 'carnaval2026': targetDate = new Date('2026-02-17T00:00:00'); break;
+                        case 'enem2026_1': targetDate = new Date('2026-11-01T13:00:00'); break;
+                        case 'natal2026': targetDate = new Date('2026-12-25T00:00:00'); break;
+                        case 'anonovo2027': targetDate = new Date('2027-01-01T00:00:00'); break;
+                        default: targetDate = new Date(inputs.customDate);
+                    }
+                    if (isNaN(targetDate.getTime())) return '-';
+                    const now = new Date();
+                    const diff = targetDate.getTime() - now.getTime();
+                    if (diff <= 0) return '0';
+
+                    return Math.ceil(diff / (1000 * 60 * 60 * 24)) + ' dias';
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs) => {
+                    let eventName = '';
+                    switch (inputs.mode) {
+                        case 'carnaval2026': eventName = 'o Carnaval'; break;
+                        case 'enem2026_1': eventName = 'o Enem'; break;
+                        case 'natal2026': eventName = 'o Natal'; break;
+                        case 'anonovo2027': eventName = 'o Ano Novo'; break;
+                        default: eventName = inputs.customName || 'seu evento';
+                    }
+                    return `Contando para ${eventName}...`;
+                }
+            }
+        ],
+        content: {
+            whatIs: `
+            <h3>O poder da antecipação</h3>
+            <p>Saber exatamente quanto tempo falta para um evento importante pode ajudar no planejamento e na ansiedade (ou aumentá-la!). Nossa calculadora ajusta o tempo em tempo real.</p>
+            `,
+            howTo: `
+            <h3>Como usar</h3>
+            <p>Selecione um evento predefinido da lista (como Carnaval ou Enem) para ver a contagem oficial estimada. Se preferir, escolha "Data Personalizada" e insira o dia do seu próprio evento (aniversário, viagem, casamento).</p>
+            `,
+            faq: [
+                {
+                    question: 'As datas do Enem e Carnaval estão confirmadas?',
+                    answer: 'Usamos as datas mais prováveis baseadas no calendário oficial ou histórico. Para o Enem, a data oficial é confirmada pelo MEC no edital do ano.'
+                }
+            ]
+        }
     }
 };
