@@ -735,6 +735,330 @@
         }
       ]
     },
+    "kinetic-energy": {
+      "title": "Calculadora de Energía Cinética",
+      "description": "Calcula Energía Cinética (EC), Masa (m) o Velocidad (v) usando EC = ½mv².",
+      "whatIs": "<h3>¿Qué es la Energía Cinética?</h3><p>La <strong>Energía Cinética (EC)</strong> es la energía que posee un objeto debido a su movimiento. Cualquier objeto en movimiento tiene energía cinética.</p><p>Cuanto más rápido se mueve un objeto, más energía cinética tiene. Es importante notar que la EC depende del <strong>cuadrado</strong> de la velocidad: ¡duplicar la velocidad cuadruplica la energía!</p>",
+      "howTo": "<h3>Fórmula de Energía Cinética</h3><div class=\"bg-green-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">EC = ½ × m × v²</p><p class=\"text-sm opacity-80 mt-2\">Energía (J) = ½ × Masa (kg) × Velocidad² (m/s)</p></div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Para Masa (m):</strong><code class=\"text-green-600\">m = 2 × EC / v²</code></div><div class=\"p-4 bg-gray-50 rounded-lg border border-gray-100\"><strong class=\"block text-gray-700 mb-1\">Para Velocidad (v):</strong><code class=\"text-green-600\">v = √(2 × EC / m)</code></div></div>",
+      "faq": [
+        {
+          "question": "¿Diferencia entre Energía Cinética y Potencial?",
+          "answer": "La <strong>Energía Cinética</strong> es energía de movimiento. La <strong>Energía Potencial</strong> es energía almacenada por posición (como altura) o configuración (como un resorte comprimido). Pueden convertirse entre sí."
+        },
+        {
+          "question": "¿Por qué la velocidad afecta más que la masa?",
+          "answer": "Porque la velocidad está <strong>elevada al cuadrado</strong> en la fórmula. Si duplicas la masa, EC se duplica. Pero si duplicas la velocidad, EC se <strong>cuadruplica</strong> (2² = 4)."
+        },
+        {
+          "question": "¿Puede ser negativa la energía cinética?",
+          "answer": "No. Aunque la velocidad puede ser negativa (indicando dirección), v² siempre es positivo. La masa también es siempre positiva. Por lo tanto, EC siempre es cero o positiva."
+        }
+      ]
+    },
+    "potential-energy": {
+      "title": "Calculadora de Energía Potencial",
+      "description": "Calcula Energía Potencial Gravitacional (EP), Masa (m) o Altura (h) usando EP = mgh.",
+      "whatIs": "<h3>¿Qué es la Energía Potencial?</h3><p>La <strong>Energía Potencial (EP)</strong> es energía almacenada debido a la posición de un objeto. Cuanto más alto levantes un objeto, más EP almacena.</p><p>Cuando se libera, esta energía se convierte en <strong>Energía Cinética</strong> mientras el objeto cae. La energía mecánica total (EP + EC) se conserva.</p>",
+      "howTo": "<h3>Fórmula de Energía Potencial</h3><div class=\"bg-purple-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">EP = m × g × h</p><p class=\"text-sm opacity-80 mt-2\">Energía (J) = Masa (kg) × Gravedad (m/s²) × Altura (m)</p></div>",
+      "faq": [
+        {
+          "question": "¿Cómo se relacionan EP y EC?",
+          "answer": "¡Se convierten entre sí! Un objeto cayendo pierde EP y gana EC. En el punto más alto, EP es máxima y EC es cero."
+        },
+        {
+          "question": "¿Por qué g = 9.81 m/s²?",
+          "answer": "Es la aceleración gravitacional promedio de la Tierra. En la Luna, g ≈ 1.62 m/s². En Marte, g ≈ 3.71 m/s²."
+        }
+      ]
+    },
+    "momentum": {
+      "title": "Calculadora de Momento",
+      "description": "Calcula Momento (p), Masa (m) o Velocidad (v) usando p = mv.",
+      "whatIs": "<h3>¿Qué es el Momento?</h3><p>El <strong>Momento (p)</strong> es la cantidad de movimiento que tiene un objeto. Depende de la masa y la velocidad.</p><p>Un objeto más pesado o más rápido tiene más momento. Un camión moviéndose lentamente puede tener el mismo momento que un auto moviéndose rápido.</p>",
+      "howTo": "<h3>Fórmula del Momento</h3><div class=\"bg-indigo-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">p = m × v</p><p class=\"text-sm opacity-80 mt-2\">Momento (kg·m/s) = Masa (kg) × Velocidad (m/s)</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué es importante el momento?",
+          "answer": "El momento se conserva en colisiones. En un sistema cerrado, momento total antes = momento total después."
+        },
+        {
+          "question": "¿Momento vs Energía Cinética?",
+          "answer": "El Momento (p=mv) es un vector (tiene dirección). La Energía Cinética (EC=½mv²) es un escalar (sin dirección). Ambos se conservan en colisiones elásticas."
+        }
+      ]
+    },
+    "impulse": {
+      "title": "Calculadora de Impulso",
+      "description": "Calcula Impulso (J), Fuerza (F) o Tiempo (Δt) usando J = F × Δt.",
+      "whatIs": "<h3>¿Qué es el Impulso?</h3><p>El <strong>Impulso (J)</strong> es el producto de la fuerza y el intervalo de tiempo durante el cual actúa. Es igual al cambio de momento (Δp).</p><p>Por eso funcionan los airbags: <strong>aumentan el tiempo</strong> de colisión, reduciendo la fuerza sobre el pasajero mientras absorben el mismo impulso.</p>",
+      "howTo": "<h3>Fórmula del Impulso</h3><div class=\"bg-rose-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">J = F × Δt = Δp</p><p class=\"text-sm opacity-80 mt-2\">Impulso (N·s) = Fuerza (N) × Tiempo (s)</p></div>",
+      "faq": [
+        {
+          "question": "¿N·s es lo mismo que kg·m/s?",
+          "answer": "¡Sí! Ambas son unidades de Impulso (y Momento). 1 N·s = 1 kg·m/s. Esto es porque N = kg·m/s², entonces N·s = kg·m/s."
+        },
+        {
+          "question": "¿Cómo usan el impulso los airbags?",
+          "answer": "Los airbags aumentan el tiempo de colisión (Δt). Como J = F × Δt es constante (mismo cambio de momento), más tiempo significa menos fuerza."
+        }
+      ]
+    },
+    "pressure": {
+      "title": "Calculadora de Presión",
+      "description": "Calcula Presión (P), Fuerza (F) o Área (A) usando P = F/A.",
+      "whatIs": "<h3>¿Qué es la Presión?</h3><p>La <strong>Presión (P)</strong> es la Fuerza por unidad de Área. Describe qué tan concentrada está una fuerza sobre una superficie.</p><p>Un cuchillo afilado corta fácilmente porque aplica la misma fuerza a un área pequeña, creando alta presión. Las raquetas de nieve distribuyen el peso sobre un área mayor, reduciendo la presión.</p>",
+      "howTo": "<h3>Fórmula de Presión</h3><div class=\"bg-cyan-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">P = F / A</p><p class=\"text-sm opacity-80 mt-2\">Presión (Pa) = Fuerza (N) / Área (m²)</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es 1 Pascal?",
+          "answer": "1 Pascal (Pa) = 1 Newton por metro cuadrado (N/m²). La presión atmosférica a nivel del mar es aproximadamente 101,325 Pa (1 atm)."
+        },
+        {
+          "question": "¿Por qué objetos afilados cortan mejor?",
+          "answer": "Un borde afilado tiene un área superficial pequeña. P = F/A significa que para la misma fuerza, menor área = mayor presión, facilitando penetrar materiales."
+        }
+      ]
+    },
+    "density": {
+      "title": "Calculadora de Densidad",
+      "description": "Calcula Densidad (ρ), Masa (m) o Volumen (V) usando ρ = m/V.",
+      "whatIs": "<h3>¿Qué es la Densidad?</h3><p>La <strong>Densidad (ρ)</strong> es la masa por unidad de volumen. Indica qué tan \"empaquetada\" está la materia.</p><p>El hierro es más denso que la madera. Objetos menos densos que el agua (1000 kg/m³) flotan.</p>",
+      "howTo": "<h3>Fórmula de Densidad</h3><div class=\"bg-amber-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">ρ = m / V</p><p class=\"text-sm opacity-80 mt-2\">Densidad = Masa / Volumen</p></div>",
+      "faq": [
+        {
+          "question": "¿Densidades comunes?",
+          "answer": "Agua: 1000 kg/m³, Aire: 1.225 kg/m³, Hierro: 7874 kg/m³, Oro: 19300 kg/m³, Hielo: 917 kg/m³ (flota)."
+        },
+        {
+          "question": "¿Por qué flota el hielo?",
+          "answer": "El hielo (917 kg/m³) es menos denso que el agua líquida (1000 kg/m³). El agua es inusual - la mayoría de sustancias son más densas como sólidos."
+        }
+      ]
+    },
+    "acceleration": {
+      "title": "Calculadora de Aceleración",
+      "description": "Calcula Aceleración (a), Cambio de Velocidad (Δv) o Tiempo (Δt) usando a = Δv/Δt.",
+      "whatIs": "<h3>¿Qué es la Aceleración?</h3><p>La <strong>Aceleración (a)</strong> es la tasa de cambio de velocidad. Indica qué tan rápido cambia la rapidez o dirección.</p><p>Un auto de 0 a 100 km/h en 10 segundos tiene aceleración positiva. Frenar es aceleración negativa (desaceleración).</p>",
+      "howTo": "<h3>Fórmula de Aceleración</h3><div class=\"bg-orange-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">a = Δv / Δt</p><p class=\"text-sm opacity-80 mt-2\">Aceleración = Cambio de Velocidad / Tiempo</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es 1g?",
+          "answer": "1g = 9.81 m/s², aceleración gravitacional de la Tierra. Pilotos de combate experimentan hasta 9g. Montañas rusas típicamente alcanzan 3-4g."
+        },
+        {
+          "question": "¿Aceleración vs Velocidad?",
+          "answer": "Velocidad es qué tan rápido vas. Aceleración es qué tan rápido cambia tu velocidad. Puedes tener alta velocidad con cero aceleración (velocidad constante)."
+        }
+      ]
+    },
+    "speed": {
+      "title": "Calculadora de Velocidad",
+      "description": "Calcula Velocidad (v), Distancia (d) o Tiempo (t) usando v = d/t.",
+      "whatIs": "<h3>¿Qué es la Velocidad?</h3><p>La <strong>Velocidad (v)</strong> es la tasa a la que un objeto cubre distancia. Es qué tan rápido se mueve algo.</p><p>Un auto a 60 km/h cubre 60 kilómetros cada hora. ¡La velocidad de la luz es la más rápida posible: ~300,000 km/s!</p>",
+      "howTo": "<h3>Fórmula de Velocidad</h3><div class=\"bg-blue-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">v = d / t</p><p class=\"text-sm opacity-80 mt-2\">Velocidad = Distancia / Tiempo</p></div>",
+      "faq": [
+        {
+          "question": "¿Rapidez vs Velocidad?",
+          "answer": "Rapidez es escalar (solo magnitud). Velocidad es vectorial (magnitud + dirección). 60 km/h Norte es velocidad; 60 km/h es rapidez."
+        },
+        {
+          "question": "¿Velocidades comunes?",
+          "answer": "Caminando: ~1.4 m/s (5 km/h). Sonido: 343 m/s (1235 km/h). Luz: 299,792,458 m/s (1.08 mil millones km/h)."
+        }
+      ]
+    },
+    "frequency": {
+      "title": "Calculadora de Frecuencia",
+      "description": "Calcula Frecuencia (f) o Período (T) usando f = 1/T.",
+      "whatIs": "<h3>¿Qué es la Frecuencia?</h3><p>La <strong>Frecuencia (f)</strong> es el número de ciclos u oscilaciones por segundo. El <strong>Período (T)</strong> es el tiempo para un ciclo completo.</p><p>El sonido es una onda con frecuencia en Hertz (Hz). La nota musical A4 es 440 Hz. Ondas de radio están en MHz o GHz.</p>",
+      "howTo": "<h3>Relación Frecuencia-Período</h3><div class=\"bg-violet-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">f = 1 / T</p><p class=\"text-sm opacity-80 mt-2\">Frecuencia (Hz) = 1 / Período (s)</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué frecuencias oyen los humanos?",
+          "answer": "Humanos oyen 20 Hz a 20,000 Hz (20 kHz). Debajo es infrasonido; arriba es ultrasonido. Perros oyen hasta 65 kHz."
+        },
+        {
+          "question": "¿Frecuencias de Wi-Fi y radio?",
+          "answer": "Radio FM: ~100 MHz. Wi-Fi: 2.4 GHz o 5 GHz. 5G: hasta 39 GHz. Microondas: ~2.45 GHz."
+        }
+      ]
+    },
+    "ohms-law": {
+      "title": "Calculadora Ley de Ohm",
+      "description": "Calcula Voltaje (V), Corriente (I) o Resistencia (R) usando V = IR.",
+      "whatIs": "<h3>¿Qué es la Ley de Ohm?</h3><p>La <strong>Ley de Ohm</strong> relaciona Voltaje (V), Corriente (I) y Resistencia (R). Es la base de la electrónica.</p><p>El voltaje es como presión de agua; la corriente es el flujo; la resistencia es el tamaño del tubo.</p>",
+      "howTo": "<h3>Fórmula de la Ley de Ohm</h3><div class=\"bg-yellow-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">V = I × R</p><p class=\"text-sm opacity-80 mt-2\">Voltaje (V) = Corriente (A) × Resistencia (Ω)</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es la Potencia (P)?",
+          "answer": "Potencia P = V × I (Watts). Es la tasa de uso de energía. Un foco de 60W a 120V consume 0.5 Amps."
+        },
+        {
+          "question": "¿Voltajes comunes?",
+          "answer": "USB: 5V. Batería de auto: 12V. Enchufe EEUU: 120V. Enchufe EU: 230V. Batería EV: 400-800V."
+        }
+      ]
+    },
+    "wavelength": {
+      "title": "Calculadora de Longitud de Onda",
+      "description": "Calcula Longitud de Onda (λ), Velocidad (v) o Frecuencia (f) usando λ = v/f.",
+      "whatIs": "<h3>¿Qué es la Longitud de Onda?</h3><p>La <strong>Longitud de Onda (λ)</strong> es la distancia entre dos picos consecutivos de una onda. Está inversamente relacionada con la frecuencia.</p><p>La luz roja tiene mayor longitud de onda (~700nm) que la azul (~450nm). Las ondas de radio pueden medir metros; los rayos gamma son fracciones del nanómetro.</p>",
+      "howTo": "<h3>Ecuación de Onda</h3><div class=\"bg-teal-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">λ = v / f</p><p class=\"text-sm opacity-80 mt-2\">Longitud de Onda = Velocidad / Frecuencia</p></div>",
+      "faq": [
+        {
+          "question": "¿Velocidad de luz vs sonido?",
+          "answer": "Luz: 299,792,458 m/s (en vacío). Sonido: ~343 m/s (en aire a 20°C). ¡La luz es ~874,000× más rápida que el sonido!"
+        },
+        {
+          "question": "¿Longitudes de onda de luz visible?",
+          "answer": "Violeta: 380-450nm, Azul: 450-495nm, Verde: 495-570nm, Amarillo: 570-590nm, Naranja: 590-620nm, Rojo: 620-750nm."
+        }
+      ]
+    },
+    "electric-power": {
+      "title": "Calculadora de Potencia Eléctrica",
+      "description": "Calcula Potencia (P), Voltaje (V) o Corriente (I) usando P = IV.",
+      "whatIs": "<h3>¿Qué es la Potencia Eléctrica?</h3><p>La <strong>Potencia Eléctrica (P)</strong> es la tasa de transferencia de energía eléctrica. Se mide en Watts (W).</p><p>Un foco de 60W usa 60 Joules de energía por segundo. Tu factura de luz se basa en kilovatios-hora (kWh) = 1000W por 1 hora.</p>",
+      "howTo": "<h3>Fórmulas de Potencia</h3><div class=\"bg-yellow-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">P = I × V</p><p class=\"text-sm opacity-80 mt-2\">También: P = I²R y P = V²/R</p></div>",
+      "faq": [
+        {
+          "question": "¿Watts vs kWh?",
+          "answer": "Watt es potencia (tasa). kWh es energía (cantidad). Foco de 100W por 10 horas = 1 kWh. Tu factura cobra por kWh."
+        },
+        {
+          "question": "¿Potencia de electrodomésticos comunes?",
+          "answer": "LED: 10W. Laptop: 50W. TV: 100W. Refrigerador: 150W. Microondas: 1000W. Aire acondicionado: 1500W. Horno eléctrico: 2500W."
+        }
+      ]
+    },
+    "torque": {
+      "title": "Calculadora de Torque",
+      "description": "Calcula Torque (τ), Fuerza (F) o Brazo de Palanca (r) usando τ = F × r.",
+      "whatIs": "<h3>¿Qué es el Torque?</h3><p>El <strong>Torque (τ)</strong> es el equivalente rotacional de la fuerza. Es lo que hace girar las cosas.</p><p>Usar una llave más larga te da más torque con la misma fuerza. Los motores de autos se clasifican en N·m o lb·ft de torque.</p>",
+      "howTo": "<h3>Fórmula de Torque</h3><div class=\"bg-rose-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">τ = F × r</p><p class=\"text-sm opacity-80 mt-2\">Torque = Fuerza × Brazo de Palanca</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué llave más larga = más fácil?",
+          "answer": "Torque = Fuerza × Distancia. Con un mango más largo (r), necesitas menos fuerza (F) para el mismo torque. ¡Eso es ventaja mecánica!"
+        },
+        {
+          "question": "¿Clasificaciones de torque de motores?",
+          "answer": "Auto económico: ~150 N·m. Auto deportivo: ~400 N·m. Camioneta: ~600+ N·m. F1: ~260 N·m (pero a altas RPM)."
+        }
+      ]
+    },
+    "angular-velocity": {
+      "title": "Calculadora de Velocidad Angular",
+      "description": "Calcula Velocidad Angular (ω), Ángulo (θ) o Tiempo (t) usando ω = θ/t.",
+      "whatIs": "<h3>¿Qué es la Velocidad Angular?</h3><p>La <strong>Velocidad Angular (ω)</strong> es qué tan rápido gira algo. Se mide en radianes por segundo (rad/s) o RPM.</p><p>Una rotación completa = 2π radianes = 360°. La Tierra gira a ~0.0000727 rad/s (una vez por día). Una lavadora gira a ~1200 RPM.</p>",
+      "howTo": "<h3>Fórmula de Velocidad Angular</h3><div class=\"bg-indigo-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">ω = θ / t</p><p class=\"text-sm opacity-80 mt-2\">1 revolución = 2π rad ≈ 6.28 rad</p></div>",
+      "faq": [
+        {
+          "question": "¿rad/s a RPM?",
+          "answer": "RPM = (rad/s × 60) / (2π). Para convertir: 1 rad/s ≈ 9.55 RPM. 100 rad/s ≈ 955 RPM."
+        },
+        {
+          "question": "¿Velocidades angulares comunes?",
+          "answer": "Motor de auto: 1000-7000 RPM. HDD: 7200 RPM. CD player: 200-500 RPM. Rotor de helicóptero: ~300 RPM."
+        }
+      ]
+    },
+    "centripetal-force": {
+      "title": "Calculadora de Fuerza Centrípeta",
+      "description": "Calcula Fuerza Centrípeta (F), Masa (m), Velocidad (v) o Radio (r) usando F = mv²/r.",
+      "whatIs": "<h3>¿Qué es la Fuerza Centrípeta?</h3><p>La <strong>Fuerza Centrípeta (F)</strong> es la fuerza que mantiene un objeto moviéndose en círculo. Siempre apunta hacia el centro.</p><p>Cuando giras una pelota en una cuerda, la tensión ES la fuerza centrípeta. ¡'Fuerza centrífuga' es solo la reacción que sientes - no es una fuerza real!</p>",
+      "howTo": "<h3>Fórmula de Fuerza Centrípeta</h3><div class=\"bg-pink-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">F = mv² / r</p><p class=\"text-sm opacity-80 mt-2\">Fuerza = Masa × Velocidad² / Radio</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué sientes que te empujan hacia afuera en una curva?",
+          "answer": "Tu cuerpo quiere ir recto (inercia). El auto te empuja hacia adentro (centrípeta). SIENTES que te empujan hacia afuera, pero eso no es una fuerza real - se llama fuerza centrífuga 'ficticia'."
+        },
+        {
+          "question": "¿Ejemplo de auto en curva?",
+          "answer": "Un auto de 1500kg a 20 m/s en una curva de radio 50m necesita F = 1500 × 20² / 50 = 12,000 N de fricción para mantenerse en la carretera."
+        }
+      ]
+    },
+    "hookes-law": {
+      "title": "Calculadora de Ley de Hooke",
+      "description": "Calcula Fuerza del Resorte (F), Constante (k) o Desplazamiento (x) usando F = kx.",
+      "whatIs": "<h3>¿Qué es la Ley de Hooke?</h3><p>La <strong>Ley de Hooke</strong> establece que la fuerza necesaria para estirar o comprimir un resorte es proporcional al desplazamiento.</p><p>Resortes más rígidos tienen valores k más altos. Un resorte de suspensión de auto puede ser 50,000 N/m. Un resorte de bolígrafo puede ser 100 N/m.</p>",
+      "howTo": "<h3>Fórmula de la Ley de Hooke</h3><div class=\"bg-emerald-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">F = k × x</p><p class=\"text-sm opacity-80 mt-2\">Fuerza = Constante × Desplazamiento</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es la constante del resorte?",
+          "answer": "La constante (k) mide la rigidez. Mayor k = resorte más rígido. Es la fuerza necesaria por unidad de estiramiento."
+        },
+        {
+          "question": "¿Importa la dirección?",
+          "answer": "¡Sí! Técnicamente F = -kx. El signo negativo significa que la fuerza se opone al desplazamiento (fuerza restauradora)."
+        }
+      ]
+    },
+    "elastic-potential-energy": {
+      "title": "Calculadora de Energía Potencial Elástica",
+      "description": "Calcula EP Elástica, Constante (k) o Desplazamiento (x) usando EP = ½kx².",
+      "whatIs": "<h3>¿Qué es la Energía Potencial Elástica?</h3><p>La <strong>EP Elástica</strong> es energía almacenada cuando un resorte se estira o comprime. Puede liberarse para realizar trabajo.</p>",
+      "howTo": "<h3>Fórmula de EP Elástica</h3><div class=\"bg-lime-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">EP = ½kx²</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué es x² y no solo x?",
+          "answer": "Energía es Fuerza × Distancia. La fuerza aumenta linealmente con x (F=kx), pero también estiras MÁS distancia. ¡La combinación da x²!"
+        },
+        {
+          "question": "¿A dónde va esta energía?",
+          "answer": "Al liberarse, la EP elástica se convierte en energía cinética, sonido o calor."
+        }
+      ]
+    },
+    "gravitational-force": {
+      "title": "Calculadora de Fuerza Gravitacional",
+      "description": "Calcula la Fuerza Gravitacional usando la Ley de Newton: F = Gm₁m₂/r².",
+      "whatIs": "<h3>¿Qué es la Fuerza Gravitacional?</h3><p>La <strong>Ley de Gravitación Universal de Newton</strong> establece que toda masa atrae a toda otra masa con una fuerza proporcional a ambas masas e inversamente proporcional al cuadrado de la distancia.</p>",
+      "howTo": "<h3>Fórmula de Gravitación Universal</h3><div class=\"bg-blue-900 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">F = Gm₁m₂ / r²</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué G es tan pequeña?",
+          "answer": "¡La gravedad es la más débil de las 4 fuerzas fundamentales! Solo la notas con masas enormes como planetas."
+        },
+        {
+          "question": "¿Masas comunes?",
+          "answer": "Tierra: 5.97×10²⁴ kg. Luna: 7.35×10²² kg. Sol: 1.99×10³⁰ kg."
+        }
+      ]
+    },
+    "pendulum-period": {
+      "title": "Calculadora de Período del Péndulo",
+      "description": "Calcula Período (T), Longitud (L) o Gravedad (g) usando T = 2π√(L/g).",
+      "whatIs": "<h3>¿Qué es el Período de un Péndulo?</h3><p>El <strong>período (T)</strong> es el tiempo para una oscilación completa. ¡Solo depende de la longitud y la gravedad, no de la masa!</p>",
+      "howTo": "<h3>Fórmula del Período del Péndulo</h3><div class=\"bg-amber-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">T = 2π√(L/g)</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué no importa la masa?",
+          "answer": "Los péndulos más pesados tienen más inercia pero también más fuerza gravitacional. ¡Estos efectos se cancelan perfectamente!"
+        },
+        {
+          "question": "¿Y para oscilaciones grandes?",
+          "answer": "Para ángulos >15°, el período aumenta. T = 2π√(L/g) es la 'aproximación de ángulo pequeño'."
+        }
+      ]
+    },
+    "spring-period": {
+      "title": "Calculadora de Período del Resorte",
+      "description": "Calcula Período (T), Masa (m) o Constante (k) usando T = 2π√(m/k).",
+      "whatIs": "<h3>¿Qué es el Período del Resorte?</h3><p>Cuando una masa en un resorte se desplaza y se suelta, oscila con un <strong>período (T)</strong> predecible. Esto se llama Movimiento Armónico Simple.</p>",
+      "howTo": "<h3>Fórmula del Período Masa-Resorte</h3><div class=\"bg-cyan-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">T = 2π√(m/k)</p></div>",
+      "faq": [
+        {
+          "question": "¿Péndulo vs Resorte?",
+          "answer": "Péndulo: T depende de L y g, NO de la masa. Resorte: T depende de m y k, NO de la gravedad."
+        },
+        {
+          "question": "¿Dónde se usa el MAS?",
+          "answer": "Relojes, sismómetros, suspensiones de auto, vibraciones moleculares. ¡Cualquier sistema con fuerza restauradora proporcional al desplazamiento!"
+        }
+      ]
+    },
     "age": {
       "title": "Calculadora de Edad",
       "description": "Calcula tu edad exacta en años, meses y días.",
@@ -744,6 +1068,438 @@
         {
           "question": "¿Cuenta años bisiestos?",
           "answer": "Sí, el cálculo es exacto e incluye los días extra de los años bisiestos."
+        }
+      ]
+    },
+    "heat-energy": {
+      "title": "Calculadora de Energía Térmica",
+      "description": "Calcula Energía Térmica (Q), Masa (m), Calor Específico (c) o Cambio de Temperatura (ΔT) usando Q = mcΔT.",
+      "whatIs": "<h3>¿Qué es la Energía Térmica?</h3><p>La <strong>Energía Térmica (Q)</strong> es energía transferida debido a una diferencia de temperatura. Se mide en Joules o calorías.</p><p>Se necesitan 4186 J (1 kcal) para calentar 1 kg de agua 1°C. ¡Por eso el agua es excelente para enfriar - alto calor específico!</p>",
+      "howTo": "<h3>Fórmula de Energía Térmica</h3><div class=\"bg-orange-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">Q = mcΔT</p></div>",
+      "faq": [
+        {
+          "question": "¿Valores comunes de calor específico?",
+          "answer": "Agua: 4186 J/(kg·K). Hielo: 2090. Aluminio: 897. Hierro: 449. Cobre: 385. Oro: 129. ¡El agua tiene el más alto!"
+        },
+        {
+          "question": "¿°C o Kelvin para ΔT?",
+          "answer": "¡Cualquiera funciona! Un cambio de 1°C equivale a un cambio de 1 K. Solo no los mezcles en el mismo cálculo."
+        }
+      ]
+    },
+    "ideal-gas-law": {
+      "title": "Calculadora de Ley de los Gases Ideales",
+      "description": "Calcula Presión (P), Volumen (V), Moles (n) o Temperatura (T) usando PV = nRT.",
+      "whatIs": "<h3>¿Qué es la Ley de los Gases Ideales?</h3><p>La <strong>Ley de los Gases Ideales</strong> relaciona presión, volumen, temperatura y cantidad de gas. Combina las leyes de Boyle, Charles y Avogadro.</p>",
+      "howTo": "<h3>Fórmula de la Ley de Gases Ideales</h3><div class=\"bg-sky-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">PV = nRT</p><p class=\"text-sm opacity-80 mt-2\">R = 8.314 J/(mol·K)</p></div>",
+      "faq": [
+        {
+          "question": "¿Conversiones de unidades?",
+          "answer": "1 atm = 101,325 Pa. 1 L = 0.001 m³. °C a K: sumar 273.15. Usando unidades SI (Pa, m³, mol, K) da R = 8.314 J/(mol·K)."
+        },
+        {
+          "question": "¿Cuándo falla?",
+          "answer": "A altas presiones o bajas temperaturas, los gases reales se desvían. Las moléculas tienen volumen y se atraen."
+        }
+      ]
+    },
+    "work": {
+      "title": "Calculadora de Trabajo",
+      "description": "Calcula Trabajo (W), Fuerza (F) o Distancia (d) usando W = Fd.",
+      "whatIs": "<h3>¿Qué es el Trabajo?</h3><p>El <strong>Trabajo</strong> es energía transferida cuando una fuerza mueve un objeto. Trabajo = Fuerza × Distancia en la dirección de la fuerza.</p><p>¡Sin desplazamiento = sin trabajo! Sostener una caja pesada sin moverse hace cero trabajo físico.</p>",
+      "howTo": "<h3>Fórmula del Trabajo</h3><div class=\"bg-violet-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">W = Fd cos θ</p></div>",
+      "faq": [
+        {
+          "question": "¿Y si empujo en ángulo?",
+          "answer": "Usa W = Fd cos θ. A 0° (paralelo): trabajo completo. A 90° (perpendicular): cero trabajo. A 180° (opuesto): trabajo negativo."
+        },
+        {
+          "question": "¿Trabajo vs Energía?",
+          "answer": "El trabajo es la TRANSFERENCIA de energía. Cuando haces 100J de trabajo sobre un objeto, le transfieres 100J de energía."
+        }
+      ]
+    },
+    "specific-heat": {
+      "title": "Calculadora de Calor Específico",
+      "description": "Calcula la Capacidad Calorífica Específica (c) a partir de Q, m y ΔT. Compara con materiales comunes.",
+      "whatIs": "<h3>¿Qué es el Calor Específico?</h3><p>El <strong>Calor Específico (c)</strong> es la cantidad de calor necesaria para elevar 1 kg de una sustancia en 1°C (o 1 K).</p><p>Materiales con alto c (como agua) cambian temperatura lentamente. Materiales con bajo c (como metales) se calientan rápido.</p>",
+      "howTo": "<h3>Fórmula del Calor Específico</h3><div class=\"bg-rose-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">c = Q / (m × ΔT)</p></div>",
+      "faq": [
+        {
+          "question": "¿Valores comunes?",
+          "answer": "Agua: 4186 J/(kg·K) - ¡el más alto! Hielo: 2090. Aluminio: 897. Hierro: 449. Cobre: 385. Oro: 129."
+        },
+        {
+          "question": "¿Por qué el agua tiene alto c?",
+          "answer": "¡Puentes de hidrógeno! Las moléculas de agua están fuertemente unidas, requiriendo más energía para aumentar su temperatura."
+        }
+      ]
+    },
+    "wave-speed": {
+      "title": "Calculadora de Velocidad de Onda",
+      "description": "Calcula Velocidad de Onda (v), Frecuencia (f) o Longitud de Onda (λ) usando v = fλ.",
+      "whatIs": "<h3>¿Qué es la Velocidad de Onda?</h3><p>La <strong>velocidad de onda (v)</strong> es qué tan rápido viaja una onda a través de un medio. Es igual a frecuencia por longitud de onda.</p><p>Luz: 299,792,458 m/s (vacío). Sonido en aire: ~343 m/s (20°C). Sonido en agua: ~1,480 m/s.</p>",
+      "howTo": "<h3>Fórmula de Velocidad de Onda</h3><div class=\"bg-indigo-800 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">v = f × λ</p></div>",
+      "faq": [
+        {
+          "question": "¿Frecuencia de luz vs sonido?",
+          "answer": "Luz visible: 400-800 THz (10¹⁴ Hz). Audición humana: 20 Hz - 20 kHz. Nota musical La4: 440 Hz."
+        },
+        {
+          "question": "¿Por qué la luz es tan rápida?",
+          "answer": "La luz es una onda electromagnética - no necesita medio y viaja al límite de velocidad universal c ≈ 3×10⁸ m/s en vacío."
+        }
+      ]
+    },
+    "kinetic-energy": {
+      "title": "Calculadora de Energía Cinética",
+      "description": "Calcula Energía Cinética (EC), Masa (m) o Velocidad (v) usando EC = ½mv².",
+      "whatIs": "<h3>¿Qué es la Energía Cinética?</h3><p>La <strong>Energía Cinética (EC)</strong> es la energía del movimiento. Cualquier objeto en movimiento tiene EC.</p><p>¡La EC depende del cuadrado de la velocidad! Duplicar la velocidad = 4 veces la EC. Por eso accidentes a alta velocidad son mucho más dañinos.</p>",
+      "howTo": "<h3>Fórmula de Energía Cinética</h3><div class=\"bg-green-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">EC = ½mv²</p></div>",
+      "faq": [
+        {
+          "question": "¿Por qué la velocidad es al cuadrado?",
+          "answer": "Porque la energía para detener un objeto depende tanto de la fuerza como de la distancia. Objetos más rápidos necesitan más distancia para frenar, ¡escalando cuadráticamente!"
+        },
+        {
+          "question": "¿Ejemplos reales?",
+          "answer": "Bala: ~2000 J. Bicicleta: ~250 J. Auto a 100 km/h: ~400,000 J. Avión 747: ~10 mil millones J."
+        }
+      ]
+    },
+    "potential-energy": {
+      "title": "Calculadora de Energía Potencial Gravitatoria",
+      "description": "Calcula Energía Potencial (EP), Masa (m) o Altura (h) usando EP = mgh.",
+      "whatIs": "<h3>¿Qué es la Energía Potencial Gravitatoria?</h3><p>La <strong>Energía Potencial (EP)</strong> es energía almacenada debido a la posición de un objeto en un campo gravitacional.</p><p>Cuanto más alto un objeto, más EP tiene. Al caer, la EP se convierte en Energía Cinética.</p>",
+      "howTo": "<h3>Fórmula de Energía Potencial</h3><div class=\"bg-teal-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">EP = mgh</p></div>",
+      "faq": [
+        {
+          "question": "¿Importa la altura cero?",
+          "answer": "¡La altura es RELATIVA! Puedes elegir cualquier punto como h=0. Lo que importa es el CAMBIO de altura, no la altura absoluta."
+        },
+        {
+          "question": "¿Y en otros planetas?",
+          "answer": "La misma masa a la misma altura tiene distinta EP. Luna (g=1.62): EP es ~17% de la Tierra. Júpiter (g=24.8): EP es ~2.5× la de la Tierra."
+        }
+      ]
+    },
+    "coulombs-law": {
+      "title": "Calculadora de Ley de Coulomb",
+      "description": "Calcula Fuerza (F), Carga (q₁, q₂) o Distancia (r) usando F = kq₁q₂/r².",
+      "whatIs": "<h3>¿Qué es la Ley de Coulomb?</h3><p>La <strong>Ley de Coulomb</strong> describe la fuerza entre cargas eléctricas. Cargas iguales se repelen; cargas opuestas se atraen.</p><p>Esta fuerza es ENORME comparada con la gravedad - ¡10³⁶ veces más fuerte!</p>",
+      "howTo": "<h3>Fórmula de Ley de Coulomb</h3><div class=\"bg-purple-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">F = kq₁q₂/r²</p><p class=\"text-sm opacity-80 mt-2\">k = 8.99 × 10⁹ N⋅m²/C²</p></div>",
+      "faq": [
+        {
+          "question": "¿Valores típicos de cargas?",
+          "answer": "Electrón: 1.6×10⁻¹⁹ C. Rayo: ~15 C. Tu cuerpo: ~10⁻⁶ C (estática). El Coulomb es una unidad MUY grande."
+        },
+        {
+          "question": "¿Se parece a la gravedad?",
+          "answer": "¡Ambas son leyes del inverso del cuadrado (1/r²)! Pero la electrostática puede ser atractiva O repulsiva, mientras la gravedad siempre atrae."
+        }
+      ]
+    },
+    "electric-field": {
+      "title": "Calculadora de Campo Eléctrico",
+      "description": "Calcula Campo Eléctrico (E), Carga (Q) o Distancia (r) usando E = kQ/r².",
+      "whatIs": "<h3>¿Qué es el Campo Eléctrico?</h3><p>El <strong>Campo Eléctrico (E)</strong> es la fuerza por unidad de carga ejercida sobre una carga de prueba. Se mide en N/C o V/m (¡equivalentes!).</p>",
+      "howTo": "<h3>Fórmula del Campo Eléctrico</h3><div class=\"bg-cyan-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">E = kQ/r²</p><p class=\"text-sm opacity-80 mt-2\">k = 8.99 × 10⁹ N⋅m²/C²</p></div>",
+      "faq": [
+        {
+          "question": "¿Dirección del campo?",
+          "answer": "Cargas positivas: campo apunta HACIA AFUERA. Cargas negativas: campo apunta HACIA DENTRO. La carga de prueba sigue el campo si es positiva."
+        },
+        {
+          "question": "¿N/C vs V/m?",
+          "answer": "¡Son idénticos! 1 N/C = 1 V/m. N/C es la perspectiva fuerza-por-carga. V/m es la perspectiva gradiente-de-potencial."
+        }
+      ]
+    },
+    "capacitance": {
+      "title": "Calculadora de Capacitancia",
+      "description": "Calcula Capacitancia (C), Carga (Q) o Voltaje (V) usando C = Q/V.",
+      "whatIs": "<h3>¿Qué es la Capacitancia?</h3><p>La <strong>Capacitancia (C)</strong> mide cuánta carga un capacitor puede almacenar por voltio aplicado. Unidad: Faradio (F).</p><p>¡1 Faradio es ENORME! La mayoría son μF (10⁻⁶), nF (10⁻⁹) o pF (10⁻¹²). Los supercapacitores llegan a miles de Faradios.</p>",
+      "howTo": "<h3>Fórmulas de Capacitancia</h3><div class=\"bg-amber-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">C = Q/V</p><p class=\"text-xl font-mono mb-2\">Energía: E = ½CV²</p></div>",
+      "faq": [
+        {
+          "question": "¿Valores comunes de capacitores?",
+          "answer": "Cerámicos: 1pF-1μF. Electrolíticos: 1μF-10,000μF. Supercaps: 1-5000 F. Mayor C = más carga almacenada."
+        },
+        {
+          "question": "¿Por qué la energía usa V²?",
+          "answer": "Energía = ½QV = ½CV². Al agregar más carga, el voltaje sube, haciendo que cada bit adicional requiera más trabajo."
+        }
+      ]
+    },
+    "resistance": {
+      "title": "Calculadora de Resistencia (Resistividad)",
+      "description": "Calcula Resistencia (R), Resistividad (ρ), Longitud (L) o Área (A) usando R = ρL/A.",
+      "whatIs": "<h3>¿Qué es la Resistencia Eléctrica?</h3><p>La <strong>Resistencia (R)</strong> se opone al flujo de corriente. Depende del material (resistividad), longitud y área transversal.</p><p>Cables más largos = más R. Cables más gruesos = menos R. Mejores conductores = menor resistividad = menos R.</p>",
+      "howTo": "<h3>Fórmula de Resistencia</h3><div class=\"bg-slate-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">R = ρL/A</p></div>",
+      "faq": [
+        {
+          "question": "¿Valores comunes de resistividad?",
+          "answer": "Plata: 1.59×10⁻⁸. Cobre: 1.68×10⁻⁸. Aluminio: 2.65×10⁻⁸. Hierro: 9.71×10⁻⁸. Nicromo: 1.10×10⁻⁶ Ω⋅m."
+        },
+        {
+          "question": "¿Por qué usar cobre en cables?",
+          "answer": "El cobre tiene baja resistividad (buen conductor), es relativamente barato y dúctil (fácil de formar en cables). La plata es mejor pero mucho más cara."
+        }
+      ]
+    },
+    "magnetic-force": {
+      "title": "Calculadora de Fuerza Magnética",
+      "description": "Calcula Fuerza Magnética (F), Carga (q), Velocidad (v) o Campo (B) usando F = qvB.",
+      "whatIs": "<h3>¿Qué es la Fuerza Magnética?</h3><p>La <strong>Fuerza Magnética</strong> actúa sobre una carga en movimiento dentro de un campo magnético. ¡Es SIEMPRE perpendicular a la velocidad y al campo!</p><p>Por eso la fuerza magnética puede cambiar dirección pero nunca velocidad. Las partículas curvan pero no aceleran ni frenan.</p>",
+      "howTo": "<h3>Fórmula de Fuerza Magnética</h3><div class=\"bg-pink-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">F = qvB sin θ</p></div>",
+      "faq": [
+        {
+          "question": "¿Regla de la mano derecha?",
+          "answer": "Apunta dedos en dirección de v, curva hacia B, el pulgar apunta en dirección de F (para cargas positivas). Cargas negativas: dirección opuesta."
+        },
+        {
+          "question": "¿Valores típicos de campo magnético?",
+          "answer": "Tierra: ~50 μT. Imán de nevera: ~5 mT. Máquina de MRI: 1.5-7 T. ¡Imán de laboratorio más fuerte: ~45 T!"
+        }
+      ]
+    },
+    "buoyancy": {
+      "title": "Calculadora de Flotabilidad",
+      "description": "Calcula Fuerza de Empuje (F), Densidad del Fluído (ρ) o Volumen Desplazado (V) usando F = ρVg.",
+      "whatIs": "<h3>¿Qué es la Flotabilidad?</h3><p>La <strong>Flotabilidad</strong> es la fuerza ascendente ejercida por un fluido sobre un objeto sumergido, igual al peso del fluido desplazado. ¡Este es el Principio de Arquímedes!</p>",
+      "howTo": "<h3>Fórmula de Flotabilidad</h3><div class=\"bg-blue-600 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest\">F = ρVg</p></div>",
+      "faq": [
+        {
+          "question": "¿Densidades de fluidos comunes?",
+          "answer": "Agua dulce: 1000 kg/m³. Agua de mar: 1025. Aceite: ~900. ¡Mercurio: 13,600! Fluido más denso = más flotabilidad."
+        },
+        {
+          "question": "¿Por qué flotan los barcos?",
+          "answer": "Los barcos desplazan un enorme volumen de agua. Aunque el acero es más denso que el agua, el casco hueco desplaza suficiente agua para que la fuerza de empuje > peso del barco."
+        }
+      ]
+    },
+    "terminal-velocity": {
+      "title": "Calculadora de Velocidad Terminal",
+      "description": "Calcula Velocidad Terminal (v), Masa (m) o Coef. de Arrastre (C_d) usando v = √(2mg/ρAC_d).",
+      "whatIs": "<h3>¿Qué es la Velocidad Terminal?</h3><p>La <strong>Velocidad Terminal</strong> es la velocidad máxima que alcanza un objeto cayendo cuando el arrastre del aire iguala la gravedad. ¡No más aceleración!</p><p>Paracaidistas: ~55 m/s águila; ~90 m/s cabeza abajo. Gatos: ~27 m/s. Gotas de lluvia: ~9 m/s.</p>",
+      "howTo": "<h3>Fórmula de Velocidad Terminal</h3><div class=\"bg-sky-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-2xl font-mono mb-2 font-bold tracking-widest\">v = √(2mg / ρAC_d)</p></div>",
+      "faq": [
+        {
+          "question": "¿Coeficientes de arrastre típicos?",
+          "answer": "Esfera: 0.47. Cilindro: 0.82. Persona (águila): 1.0-1.3. Placa plana: 1.28. Aerodinámico: 0.04. Menor C_d = menos arrastre = más rápido."
+        },
+        {
+          "question": "¿La masa afecta la velocidad terminal?",
+          "answer": "¡SÍ! Objetos más pesados caen más rápido en velocidad terminal (v ∝ √m). En vacío todos caen igual, pero con resistencia del aire la masa importa."
+        }
+      ]
+    },
+    "doppler-effect": {
+      "title": "Calculadora de Efecto Doppler",
+      "description": "Calcula frecuencia observada (f'), frecuencia fuente (f) o velocidades usando la fórmula Doppler.",
+      "whatIs": "<h3>¿Qué es el Efecto Doppler?</h3><p>El <strong>Efecto Doppler</strong> es el cambio de frecuencia de una onda cuando fuente y observador se mueven relativamente.</p><p>Acercándose = tono más alto (corrimiento al azul). Alejándose = tono más bajo (corrimiento al rojo). ¡Piensa en la sirena de ambulancia!</p>",
+      "howTo": "<h3>Fórmula del Efecto Doppler</h3><div class=\"bg-violet-700 text-white p-6 rounded-xl my-4 text-center\"><p class=\"text-2xl font-mono mb-2 font-bold tracking-widest\">f' = f × (v + v_o) / (v - v_s)</p></div>",
+      "faq": [
+        {
+          "question": "¿Doppler para luz?",
+          "answer": "¡Mismo principio! Estrellas alejándose: corrimiento al rojo (mayor λ). Acercándose: corrimiento al azul (menor λ). ¡Esto probó que el universo se expande!"
+        },
+        {
+          "question": "¿Aplicaciones en el mundo real?",
+          "answer": "Pistolas de radar, radar meteorológico, ultrasonido médico, astronomía (corrimiento al rojo), y hasta ecolocalización de murciélagos usan Doppler."
+        }
+      ]
+    },
+    "projectile-motion": {
+      "title": "Calculadora de Movimiento de Proyectiles",
+      "description": "Calcula el alcance, la altura máxima y el tiempo de vuelo de un proyectil.",
+      "whatIs": "<h3>¿Qué es el Movimiento de Proyectiles?</h3><p>Es el movimiento de un objeto lanzado al aire, sujeto únicamente a la aceleración de la gravedad.</p>",
+      "howTo": "<h3>Fórmulas de Proyectiles</h3><p>Alcance: R = (v₀² sin 2θ) / g</p><p>Altura Máxima: H = (v₀² sin² θ) / 2g</p>",
+      "faq": [
+        {
+          "question": "¿Qué ángulo da el alcance máximo?",
+          "answer": "En terreno plano y sin resistencia del aire, el ángulo óptimo es de 45 grados."
+        },
+        {
+          "question": "¿Afecta la masa al movimiento?",
+          "answer": "No, en ausencia de resistencia del aire, todos los objetos siguen la misma trayectoria independientemente de su masa."
+        }
+      ]
+    },
+    "radioactive-decay": {
+      "title": "Calculadora de Decaimiento Radiactivo",
+      "description": "Calcula la cantidad restante de isótopo, la vida media o la constante de decaimiento.",
+      "whatIs": "<h3>¿Qué es el Decaimiento Radiactivo?</h3><p>Es el proceso por el cual un núcleo atómico inestable pierde energía mediante la emisión de radiación.</p>",
+      "howTo": "<h3>Fórmula de Decaimiento</h3><div class=\"bg-slate-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-slate-200\">N(t) = N₀(1/2)^(t/t₁/₂)</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es la vida media?",
+          "answer": "Es el tiempo necesario para que la mitad de los núcleos de una muestra radiactiva se desintegren."
+        },
+        {
+          "question": "¿Es posible predecir cuándo decaerá un átomo específico?",
+          "answer": "No, es un proceso puramente estadístico. Solo podemos predecir el comportamiento de un gran número de átomos."
+        }
+      ]
+    },
+    "parallel-plate-capacitor": {
+      "title": "Calculadora de Capacitor de Placas Paralelas",
+      "description": "Calcula la capacitancia basada en el área de las placas, la distancia y el material dieléctrico.",
+      "whatIs": "<h3>¿Qué es un Capacitor de Placas Paralelas?</h3><p>Es un dispositivo que almacena carga eléctrica mediante dos placas conductoras separadas por un material aislante (dieléctrico).</p>",
+      "howTo": "<h3>Fórmula de Capacitancia</h3><div class=\"bg-blue-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-blue-200\">C = ε₀εᵣA / d</p></div>",
+      "faq": [
+        {
+          "question": "¿Cómo aumentar la capacitancia?",
+          "answer": "Aumentando el área de las placas, disminuyendo la distancia entre ellas o usando un material con mayor constante dieléctrica."
+        },
+        {
+          "question": "¿Qué hace el dieléctrico?",
+          "answer": "Aumenta la capacidad de almacenamiento de carga al reducir el campo eléctrico efectivo entre las placas."
+        }
+      ]
+    },
+    "stefan-boltzmann": {
+      "title": "Calculadora de Ley de Stefan-Boltzmann",
+      "description": "Calcula la potencia radiante de un cuerpo negro basada en la temperatura.",
+      "whatIs": "<h3>¿Qué es la Ley de Stefan-Boltzmann?</h3><p>Establece que la potencia total irradiada por unidad de área de un cuerpo negro es proporcional a la cuarta potencia de su temperatura termodinámica.</p>",
+      "howTo": "<h3>Fórmula de Stefan-Boltzmann</h3><div class=\"bg-orange-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-orange-200\">P = εσAT⁴</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es un cuerpo negro?",
+          "answer": "Es un objeto ideal que absorbe toda la radiación que incide sobre él y emite radiación térmica de forma perfecta."
+        },
+        {
+          "question": "¿Por qué es importante la temperatura a la cuarta potencia?",
+          "answer": "Significa que pequeños cambios en la temperatura resultan en cambios masivos en la cantidad de energía irradiada."
+        }
+      ]
+    },
+    "youngs-modulus": {
+      "title": "Calculadora de Módulo de Young",
+      "description": "Calcula la elasticidad a la tracción de un material (Esfuerzo / Deformación).",
+      "whatIs": "<h3>¿Qué es el Módulo de Young?</h3><p>Es una medida de la rigidez de un material elástico. Indica cuánto se deforma un material bajo una carga de tracción o compresión.</p>",
+      "howTo": "<h3>Fórmula del Módulo de Young</h3><div class=\"bg-stone-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-stone-200\">E = σ / ε</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué material tiene un módulo de Young alto?",
+          "answer": "Los materiales rígidos como el acero o el diamante tienen valores muy altos, mientras que materiales como el caucho tienen valores bajos."
+        },
+        {
+          "question": "¿Es el módulo de Young el mismo para compresión y tracción?",
+          "answer": "Para muchos materiales comunes (como los metales) es aproximadamente el mismo en el rango elástico."
+        }
+      ]
+    },
+    "bernoulli-equation": {
+      "title": "Calculadora de Ecuación de Bernoulli",
+      "description": "Calcula las relaciones entre presión, velocidad y altura de un fluido.",
+      "whatIs": "<h3>¿Qué es la Ecuación de Bernoulli?</h3><p>Describe el comportamiento de un fluido moviéndose a lo largo de una línea de corriente. Expresa la conservación de la energía en fluidos.</p>",
+      "howTo": "<h3>Ecuación de Bernoulli</h3><div class=\"bg-blue-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-xl font-mono mb-2 font-bold text-blue-200\">P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂</p></div>",
+      "faq": [
+        {
+          "question": "¿Cómo vuela un avión?",
+          "answer": "El aire se mueve más rápido sobre el ala, creando una presión menor arriba que abajo, lo que genera sustentación (según el principio de Bernoulli)."
+        },
+        {
+          "question": "¿Se aplica a todos los fluidos?",
+          "answer": "Se aplica estrictamente a fluidos ideales (incompresibles y sin viscosidad), pero es una excelente aproximación para muchos casos reales."
+        }
+      ]
+    },
+    "mass-energy": {
+      "title": "Calculadora de Equivalencia Masa-Energía",
+      "description": "Calcula la energía a partir de la masa usando la fórmula de Einstein E = mc².",
+      "whatIs": "<h3>¿Qué es E = mc²?</h3><p>Es la ecuación más famosa de la física, que establece que la masa y la energía son dos formas de la misma cosa y pueden convertirse una en otra.</p>",
+      "howTo": "<h3>Fórmula de Einstein</h3><div class=\"bg-red-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-red-200\">E = mc²</p></div>",
+      "faq": [
+        {
+          "question": "¿Cuánta energía hay en 1 gramo de materia?",
+          "answer": "¡Muchísima! Aproximadamente 90 terajulios, equivalente a la energía liberada por 21 kilotones de TNT."
+        },
+        {
+          "question": "¿Dónde vemos esto en la naturaleza?",
+          "answer": "Es el proceso que alimenta las estrellas (fusión nuclear) y lo que ocurre en las reacciones nucleares en la Tierra."
+        }
+      ]
+    },
+    "snells-law": {
+      "title": "Calculadora de Ley de Snell",
+      "description": "Calcula el ángulo de refracción o el índice de refracción usando la Ley de Snell.",
+      "whatIs": "<h3>¿Qué es la Ley de Snell?</h3><p>La <strong>Ley de Snell</strong> describe cómo se dobla la luz al pasar de un medio a otro con diferente índice de refracción.</p><p>Es fundamental en óptica para entender cómo funcionan los lentes, los prismas y la fibra óptica.</p>",
+      "howTo": "<h3>Fórmula de la Ley de Snell</h3><div class=\"bg-blue-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-blue-200\">n₁ sin(θ₁) = n₂ sin(θ₂)</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es el ángulo crítico?",
+          "answer": "Es el ángulo de incidencia por encima del cual la luz ya no se refracta, sino que se refleja totalmente (Reflexión Interna Total)."
+        },
+        {
+          "question": "¿Índices comunes?",
+          "answer": "Aire: 1.0, Agua: 1.33, Vidrio: 1.5, Diamante: 2.42."
+        }
+      ]
+    },
+    "hydrostatic-pressure": {
+      "title": "Calculadora de Presión Hidrostática",
+      "description": "Calcula la presión a una profundidad determinada en un fluido.",
+      "whatIs": "<h3>¿Qué es la Presión Hidrostática?</h3><p>Es la presión ejercida por un fluido en equilibrio debido a la fuerza de la gravedad. Aumenta con la profundidad por el peso del fluido arriba.</p>",
+      "howTo": "<h3>Fórmula de Presión Hidrostática</h3><div class=\"bg-indigo-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-indigo-200\">P = P₀ + ρgh</p></div>",
+      "faq": [
+        {
+          "question": "¿Afecta la forma del recipiente?",
+          "answer": "No. La presión solo depende de la altura vertical de la columna de fluido, no del volumen total."
+        },
+        {
+          "question": "¿Cuánto aumenta en el agua?",
+          "answer": "Aproximadamente 1 atmósfera cada 10 metros de profundidad."
+        }
+      ]
+    },
+    "escape-velocity": {
+      "title": "Calculadora de Velocidad de Escape",
+      "description": "Calcula la velocidad mínima para escapar de la gravedad de un cuerpo celeste.",
+      "whatIs": "<h3>¿Qué es la Velocidade de Escape?</h3><p>Es la velocidad mínima necesaria para que un objeto venza la atracción gravitatoria de un planeta o estrella y no vuelva a caer.</p>",
+      "howTo": "<h3>Fórmula de Velocidad de Escape</h3><div class=\"bg-rose-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-rose-200\">v_e = √(2GM / R)</p></div>",
+      "faq": [
+        {
+          "question": "¿Depende de la masa del objeto?",
+          "answer": "No. Un satélite o una piedra necesitan la misma velocidad para escapar del mismo planeta."
+        },
+        {
+          "question": "¿Velocidad de escape terrestre?",
+          "answer": "Unos 11.2 km/s (aprox 40,320 km/h)."
+        }
+      ]
+    },
+    "time-dilation": {
+      "title": "Calculadora de Dilatación del Tiempo",
+      "description": "Calcula los efectos de la dilatación temporal según la Relatividad Especial.",
+      "whatIs": "<h3>¿Qué es la Dilatación del Tiempo?</h3><p>Es un fenómeno donde el tiempo pasa más lento para un objeto que se mueve a altas velocidades en comparación con un observador estacionario.</p>",
+      "howTo": "<h3>Fórmula de Dilatación Temporal</h3><div class=\"bg-amber-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-amber-200\">Δt' = Δt / √(1 - v²/c²)</p></div>",
+      "faq": [
+        {
+          "question": "¿Es real?",
+          "answer": "Sí, ha sido comprobado con relojes atómicos en aviones y satélites. El GPS debe corregir este efecto para ser preciso."
+        },
+        {
+          "question": "¿Qué es la Paradoja de los Gemelos?",
+          "answer": "Un gemelo que viaja al espacio a velocidades cercanas a la de la luz regresará más joven que su hermano que se quedó en la Tierra."
+        }
+      ]
+    },
+    "thin-lens": {
+      "title": "Calculadora de Ecuación de Lentes Delgadas",
+      "description": "Calcula la posición de la imagen, distancia focal y aumento en óptica.",
+      "whatIs": "<h3>¿Qué es la Ecuación de Lentes Delgadas?</h3><p>Es una fórmula que relaciona la distancia focal de un lente con la distancia del objeto y la distancia de la imagen formada.</p>",
+      "howTo": "<h3>Fórmula de Lentes Delgadas</h3><div class=\"bg-cyan-900/50 p-6 rounded-xl my-4 text-center\"><p class=\"text-3xl font-mono mb-2 font-bold tracking-widest text-cyan-200\">1/f = 1/dₒ + 1/dᵢ</p></div>",
+      "faq": [
+        {
+          "question": "¿Qué es el aumento?",
+          "answer": "Es la relación entre el tamaño de la imagen y el objeto (M = -dᵢ / dₒ). Describe si la imagen es mayor o menor."
+        },
+        {
+          "question": "¿Imagen Real vs Virtual?",
+          "answer": "Una imagen real puede proyectarse en una pantalla; una virtual solo puede verse a través del lente."
         }
       ]
     },
@@ -3254,6 +4010,197 @@
     "cone": {
       "title": "Volumen del Cono",
       "description": "Calcula el volumen de un cono."
+    },
+    "solenoid-magnetic-field": {
+      "metadataTitle": "Calculadora de Campo Magnético de Solenoide | Física",
+      "metadataDescription": "Calcula la intensidad del campo magnético dentro de un solenoide usando B = μ₀nI. Incluye número de vueltas, corriente y longitud.",
+      "metadataKeywords": "campo magnético solenoide, ley de ampere, densidad de flujo magnético, calculadora física, electromagnetismo",
+      "title": "Calculadora de Campo Magnético de Solenoide",
+      "description": "Calcula la intensidad del campo magnético (B) dentro de un solenoide ideal.",
+      "numTurns": "Número de Vueltas (N)",
+      "length": "Longitud (L)",
+      "current": "Corriente (I)",
+      "coreMaterial": "Material del Núcleo",
+      "magneticField": "Campo Magnético (B)",
+      "fieldGauss": "Campo en Gauss",
+      "whatIs": "<h3>¿Qué es el Campo Magnético de un Solenoide?</h3><p>Un <strong>solenoide</strong> es una bobina de alambre enrollada en espiral compacta. Cuando circula corriente eléctrica, crea un campo magnético casi uniforme en su interior, similar a un imán de barra.</p><p>La intensidad de este campo depende de la corriente, la densidad de vueltas (vueltas por unidad de longitud) y la permeabilidad magnética del material del núcleo.</p>",
+      "howTo": "<h3>Cómo Calcular el Campo Magnético del Solenoide</h3><p>El campo magnético (B) dentro de un solenoide ideal se calcula con la fórmula:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">B = μ₀ × (N / L) × I</strong><p class=\"text-sm text-blue-800\">B = μ₀ × n × I</p></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>B:</strong> Campo magnético (Tesla, T)</li><li><strong>μ₀:</strong> Permeabilidad del vacío (4π × 10⁻⁷ T·m/A)</li><li><strong>N:</strong> Número total de vueltas</li><li><strong>L:</strong> Longitud del solenoide (metros)</li><li><strong>I:</strong> Corriente (Amperios)</li><li><strong>n:</strong> Número de vueltas por unidad de longitud (N/L)</li></ul>",
+      "faq": [
+        {
+          "question": "¿Por qué el campo es más fuerte adentro?",
+          "answer": "Dentro del solenoide, las líneas de campo magnético de cada vuelta se suman constructivamente, creando un campo fuerte y uniforme. Afuera, tienden a cancelarse, resultando en un campo mucho más débil."
+        },
+        {
+          "question": "¿El diámetro afecta al campo?",
+          "answer": "Para un solenoide ideal largo (longitud mucho mayor que diámetro), la intensidad del campo interior es independiente del diámetro y solo depende de la densidad de vueltas y la corriente."
+        },
+        {
+          "question": "¿Qué es la permeabilidad del vacío (μ₀)?",
+          "answer": "μ₀ es una constante física que representa la capacidad del vacío para soportar un campo magnético. Su valor es aprox. 1.256637 × 10⁻⁶ T·m/A."
+        }
+      ]
+    },
+    "electric-potential": {
+      "metadataTitle": "Calculadora de Potencial Eléctrico | V = kQ/r",
+      "metadataDescription": "Calcula el potencial eléctrico en un punto debido a una carga puntual o grupo de cargas.",
+      "metadataKeywords": "potencial eléctrico, ley de coulomb, electrostática, energía potencial, calculadora física",
+      "title": "Calculadora de Potencial Eléctrico",
+      "description": "Calcula el potencial eléctrico (V) creado por una carga puntual a una distancia específica.",
+      "charge": "Carga (Q)",
+      "distance": "Distancia (r)",
+      "potential": "Potencial Eléctrico (V)",
+      "whatIs": "<h3>¿Qué es el Potencial Eléctrico?</h3><p>El <strong>potencial eléctrico</strong> (o voltaje) es el trabajo necesario para mover una unidad de carga positiva desde un punto de referencia hasta un punto específico dentro de un campo eléctrico sin producir aceleración.</p><p>En términos simples, describe la \"energía potencial por unidad de carga\" en una ubicación dada.</p>",
+      "howTo": "<h3>Cómo Calcular el Potencial Eléctrico</h3><p>Para una carga puntual única, el potencial (V) es:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">V = k × Q / r</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>V:</strong> Potencial Eléctrico (Voltios, V)</li><li><strong>k:</strong> Constante de Coulomb (≈ 8.99 × 10⁹ N·m²/C²)</li><li><strong>Q:</strong> Carga (Coulombs, C)</li><li><strong>r:</strong> Distancia a la carga (metros, m)</li></ul>",
+      "faq": [
+        {
+          "question": "¿El potencial eléctrico es vector o escalar?",
+          "answer": "El potencial eléctrico es una cantidad <strong>escalar</strong>. A diferencia del campo eléctrico (vector), no tiene dirección, solo magnitud. Esto facilita sumar potenciales de múltiples cargas."
+        },
+        {
+          "question": "¿Diferencia entre potencial y energía potencial?",
+          "answer": "El potencial es la energía <em>por unidad de carga</em> (V = PE/q). La energía potencial eléctrica es la <em>energía total</em> de una carga específica en ese campo."
+        },
+        {
+          "question": "¿Puede ser negativo el potencial?",
+          "answer": "Sí. El signo depende del signo de la carga. Una carga positiva crea potencial positivo, y una negativa crea potencial negativo."
+        }
+      ]
+    },
+    "carnot-efficiency": {
+      "metadataTitle": "Calculadora de Eficiencia de Carnot | η = 1 - Tc/Th",
+      "metadataDescription": "Calcula la eficiencia máxima teórica de una máquina térmica basada en temperaturas de focos caliente y frío.",
+      "metadataKeywords": "eficiencia carnot, termodinámica, segunda ley termodinámica, máquina térmica, calculadora física",
+      "title": "Calculadora de Eficiencia de Carnot",
+      "description": "Calcula la máxima eficiencia posible para una máquina térmica operando entre dos temperaturas.",
+      "tempHot": "Foco Caliente (Th)",
+      "tempCold": "Foco Frío (Tc)",
+      "efficiency": "Eficiencia de Carnot",
+      "whatIs": "<h3>¿Qué es la Eficiencia de Carnot?</h3><p>La <strong>eficiencia de Carnot</strong> define el límite máximo teórico que cualquier máquina térmica puede alcanzar, derivado por Sadi Carnot en 1824.</p><p>Se basa en la Segunda Ley de la Termodinámica y muestra que ninguna máquina puede ser 100% eficiente mientras opere entre temperaturas finitas.</p>",
+      "howTo": "<h3>Cómo Calcular la Eficiencia de Carnot</h3><p>La eficiencia (η) depende solo de las temperaturas absolutas (en Kelvin):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">η = 1 - (Tc / Th)</strong><p class=\"text-sm text-blue-800\">Multiplica por 100 para porcentaje (%)</p></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>η:</strong> Eficiencia (decimal)</li><li><strong>Th:</strong> Temperatura foco caliente (Kelvin)</li><li><strong>Tc:</strong> Temperatura foco frío (Kelvin)</li></ul><p class=\"mt-4 text-sm font-bold text-red-600 italic\">Nota: Las temperaturas DEBEN ser en Kelvin (K = °C + 273.15).</p>",
+      "faq": [
+        {
+          "question": "¿Puede una máquina alcanzar la eficiencia de Carnot?",
+          "answer": "No. El ciclo de Carnot es ideal y reversible, sin fricción. Las máquinas reales tienen eficiencias menores debido a irreversibilidades."
+        },
+        {
+          "question": "¿Cómo aumentar la eficiencia?",
+          "answer": "Según la fórmula, puedes aumentar la eficiencia aumentando la temperatura del foco caliente (Th) o disminuyendo la del foco frío (Tc)."
+        },
+        {
+          "question": "¿Es posible el 100% de eficiencia?",
+          "answer": "Teóricamente, solo si el foco frío (Tc) estuviera en el Cero Absoluto (0 K), lo cual es físicamente imposible según la Tercera Ley de la Termodinámica."
+        }
+      ]
+    },
+    "thermal-conduction": {
+      "metadataTitle": "Calculadora de Conducción Térmica | Q/t = kAΔT/d",
+      "metadataDescription": "Calcula la tasa de transferencia de calor a través de materiales sólidos usando la ley de conducción térmica.",
+      "metadataKeywords": "conducción térmica, transferencia calor, termodinámica, conductividad térmica, calculadora física",
+      "title": "Calculadora de Conducción Térmica",
+      "description": "Calcula la tasa de flujo de calor a través de un material basado en su conductividad, área y diferencia de temperatura.",
+      "area": "Área (A)",
+      "thickness": "Espesor (d)",
+      "tempDiff": "Dif. Temperatura (ΔT)",
+      "material": "Material",
+      "heatRate": "Tasa Transferencia Calor (P)",
+      "whatIs": "<h3>¿Qué es la Conducción Térmica?</h3><p>La <strong>conducción térmica</strong> es la transferencia de energía térmica interna por colisiones de partículas microscópicas y movimiento de electrones.</p><p>Ocurre cuando hay un gradiente de temperatura en un sólido o fluido, fluyendo el calor de la región caliente a la fría.</p>",
+      "howTo": "<h3>Cómo Calcular la Tasa de Conducción</h3><p>La tasa de transferencia (P o Q/t) viene dada por la Ley de Fourier:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">P = (k × A × ΔT) / d</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>P:</strong> Tasa de calor (Watts, W)</li><li><strong>k:</strong> Conductividad térmica (W/m·K)</li><li><li><strong>A:</strong> Área superficial (m²)</li><li><strong>ΔT:</strong> Diferencia de temperatura (K o °C)</li><li><strong>d:</strong> Espesor del material (m)</li></ul>",
+      "faq": [
+        {
+          "question": "¿Qué material conduce mejor el calor?",
+          "answer": "La plata y el cobre tienen muy alta conductividad. Sin embargo, el diamante es uno de los mejores conductores térmicos conocidos."
+        },
+        {
+          "question": "¿Diferencia entre conducción, convección y radiación?",
+          "answer": "Conducción es a través de un sólido. Convección es mediante movimiento de fluidos (gas/líquido). Radiación es vía ondas electromagnéticas."
+        },
+        {
+          "question": "¿Cómo afecta el espesor?",
+          "answer": "La transferencia es inversamente proporcional al espesor. Doblar el espesor de un aislante reduce a la mitad la pérdida de calor."
+        }
+      ]
+    },
+    "relativistic-ke": {
+      "metadataTitle": "Calculadora de Energía Cinética Relativista | Eₖ = (γ-1)m₀c²",
+      "metadataDescription": "Calcula la energía cinética de objetos a velocidades cercanas a la luz usando Relatividad Especial.",
+      "metadataKeywords": "energía cinética relativista, relatividad especial, factor lorentz, einstein, calculadora física",
+      "title": "Calculadora de Energía Cinética Relativista",
+      "description": "Calcula la energía cinética de un objeto a velocidades relativistas.",
+      "mass": "Masa en Reposo (m₀)",
+      "velocity": "Velocidad (v)",
+      "kineticEnergy": "KE Relativista",
+      "lorentzFactor": "Factor de Lorentz (γ)",
+      "whatIs": "<h3>¿Qué es la Energía Cinética Relativista?</h3><p>En mecánica clásica, KE = ½mv². Pero cuando la velocidad se acerca a la de la luz (c), la física clásica falla y se usa la <strong>Relatividad Especial</strong> de Einstein.</p><p>La energía cinética relativista considera que la masa efectivamente aumenta con la velocidad y que ningún objeto con masa puede alcanzar 'c'.</p>",
+      "howTo": "<h3>Fórmulas Relativistas</h3><p>Primero, calculamos el <strong>Factor de Lorentz (γ)</strong>:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">γ = 1 / √(1 - v²/c²)</strong></div><p>Luego, la Energía Cinética (KE) es:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">KE = (γ - 1) × m₀ × c²</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>m₀:</strong> Masa en reposo (kg)</li><li><strong>v:</strong> Velocidad (m/s)</li><li><strong>c:</strong> Velocidad de la luz (≈ 3 × 10⁸ m/s)</li></ul>",
+      "faq": [
+        {
+          "question": "¿Cuándo usar la fórmula relativista?",
+          "answer": "La fórmula clásica (½mv²) es precisa hasta ~10% de la velocidad de la luz. Arriba de eso, la relativista es necesaria. A mayor velocidad, la diferencia es masiva."
+        },
+        {
+          "question": "¿Qué pasa si llegamos a la velocidad de la luz?",
+          "answer": "Si v tiende a c, el factor Lorentz (γ) tiende a infinito. Se requeriría energía infinita para acelerar una masa a la velocidad de la luz."
+        },
+        {
+          "question": "¿Incluye la energía en reposo?",
+          "answer": "La energía total es KE + m₀c². Nuestra calculadora resuelve solo la energía <em>adicional</em> debida al movimiento (KE)."
+        }
+      ]
+    },
+    "de-broglie-wavelength": {
+      "metadataTitle": "Calculadora de Longitud de Onda de Broglie | λ = h/p",
+      "metadataDescription": "Calcula la longitud de onda de una partícula como un electrón usando la dualidad onda-partícula.",
+      "metadataKeywords": "longitud onda de broglie, mecánica cuántica, dualidad onda-partícula, constante planck, calculadora física",
+      "title": "Calculadora de Longitud de Onda de Broglie",
+      "description": "Calcula la longitud de onda asociada a una partícula basada en su masa y velocidad.",
+      "mass": "Masa (m)",
+      "velocity": "Velocidad (v)",
+      "wavelength": "Longitud de Onda (λ)",
+      "whatIs": "<h3>¿Qué es la Longitud de Onda de Broglie?</h3><p>Propuesta por Louis de Broglie en 1924, sugiere que toda la materia exhibe propiedades ondulatorias. Esto se conoce como <strong>dualidad onda-partícula</strong>, pilar de la mecánica cuántica.</p><p>Todo objeto en movimiento tiene una longitud de onda asociada, aunque solo es detectable en partículas subatómicas.</p>",
+      "howTo": "<h3>La Ecuación de de Broglie</h3><p>La longitud de onda (λ) es inversamente proporcional al momento (p):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">λ = h / p = h / (m × v)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>λ:</strong> Longitud de onda (metros)</li><li><strong>h:</strong> Constante de Planck (6.626 × 10⁻³⁴ J·s)</li><li><strong>m:</strong> Masa (kg)</li><li><strong>v:</strong> Velocidad (m/s)</li></ul>",
+      "faq": [
+        {
+          "question": "¿Por qué no vemos ondas en objetos grandes?",
+          "answer": "La constante de Planck es minúscula. Para masas grandes (como un auto), la longitud de onda es tan pequeña que no se puede medir. Para electrones, es comparable a escalas atómicas."
+        },
+        {
+          "question": "¿Qué significa esta longitud de onda?",
+          "answer": "En mecánica cuántica, representa la onda de probabilidad de la posición de la partícula. Se verifica experimentalmente mediante difracción (ej. Microscopios Electrónicos)."
+        },
+        {
+          "question": "¿Y si la velocidad es cero?",
+          "answer": "Si v=0, la longitud de onda es indefinida (infinita). Una partícula debe moverse para tener longitud de onda de Broglie."
+        }
+      ]
+    },
+    "photon-energy": {
+      "metadataTitle": "Calculadora de Energía de Fotón | E = hf = hc/λ",
+      "metadataDescription": "Calcula la energía de un fotón basada en su longitud de onda o frecuencia. Soporta nm, THz y eV.",
+      "metadataKeywords": "energía fotón, ecuación planck, energía luz, física cuántica, calculadora física",
+      "title": "Calculadora de Energía de Fotón",
+      "description": "Calcula la energía de un fotón en Joules y electronvoltios (eV) dada su longitud de onda o frecuencia.",
+      "mode": "Modo de Entrada",
+      "wavelength": "Longitud de Onda",
+      "frequency": "Frecuencia",
+      "energyJ": "Energía (Joules)",
+      "energyEV": "Energía (eV)",
+      "type": "Tipo de Luz",
+      "whatIs": "<h3>¿Qué es la Energía de un Fotón?</h3><p>Un <strong>fotón</strong> es un cuanto de luz o radiación electromagnética. La luz se comporta como paquetes discretos de energía.</p><p>La energía es directamente proporcional a su frecuencia e inversamente proporcional a su longitud de onda.</p>",
+      "howTo": "<h3>Relación de Planck-Einstein</h3><p>La energía (E) se calcula de dos formas:</p><ol class=\"list-decimal pl-5 space-y-4 my-4\"><li><strong>Usando Frecuencia (f):</strong><div class=\"bg-blue-50 p-3 rounded-lg border border-blue-100 mt-1\">E = h × f</div></li><li><strong>Usando Longitud de Onda (λ):</strong><div class=\"bg-blue-50 p-3 rounded-lg border border-blue-100 mt-1\">E = (h × c) / λ</div></li></ol><ul class=\"list-disc pl-5 space-y-2 text-sm\"><li><strong>h:</strong> Constante de Planck (6.626 × 10⁻³⁴ J·s)</li><li><strong>c:</strong> Velocidad de la luz (299,792,458 m/s)</li></ul>",
+      "faq": [
+        {
+          "question": "¿Qué tiene más energía: luz Roja o Azul?",
+          "answer": "La luz azul tiene menor longitud de onda y mayor frecuencia. Por tanto, un fotón azul tiene <strong>más energía</strong> que uno rojo."
+        },
+        {
+          "question": "¿Qué es un Electronvoltio (eV)?",
+          "answer": "Un eV es la energía cinética ganada por un electrón al acelerar a través de un voltio. Es una unidad más cómoda para energía de fotones que el Joule."
+        },
+        {
+          "question": "¿Los fotones tienen masa?",
+          "answer": "No, tienen masa en reposo de cero. Sin embargo, tienen momento y energía, por eso les afecta la gravedad."
+        }
+      ]
     },
     "age": {
       "title": "Calculadora de Edad",

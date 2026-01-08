@@ -856,6 +856,26 @@
       "title": "Doppler Effect Calculator",
       "description": "Calculate frequency shift due to relative motion."
     },
+    "snells-law": {
+      "title": "Snell's Law Calculator",
+      "description": "Calculate the angle of refraction or refractive index using Snell's Law."
+    },
+    "hydrostatic-pressure": {
+      "title": "Hydrostatic Pressure Calculator",
+      "description": "Calculate the pressure at a certain depth in a fluid."
+    },
+    "escape-velocity": {
+      "title": "Escape Velocity Calculator",
+      "description": "Calculate the minimum speed needed to escape a celestial body's gravity."
+    },
+    "time-dilation": {
+      "title": "Time Dilation Calculator",
+      "description": "Calculate time dilation effects according to Special Relativity."
+    },
+    "thin-lens": {
+      "title": "Thin Lens Equation Calculator",
+      "description": "Calculate image position, focal length, and magnification for optics."
+    },
     "pendulum": {
       "title": "Pendulum Period Calculator",
       "description": "Calculate pendulum period using T = 2π√(L/g)."
@@ -891,6 +911,34 @@
     "work": {
       "title": "Work Calculator",
       "description": "Calculate work done by a force using W = Fd cos(θ)."
+    },
+    "projectile-motion": {
+      "title": "Projectile Motion Calculator",
+      "description": "Calculate range, maximum height, and time of flight for a projectile."
+    },
+    "radioactive-decay": {
+      "title": "Radioactive Decay Calculator",
+      "description": "Calculate remaining isotope amount, half-life, or decay constant."
+    },
+    "parallel-plate-capacitor": {
+      "title": "Parallel Plate Capacitor Calculator",
+      "description": "Calculate capacitance based on plate area, distance, and dielectric material."
+    },
+    "stefan-boltzmann": {
+      "title": "Stefan-Boltzmann Law Calculator",
+      "description": "Calculate radiant power from a blackbody based on temperature."
+    },
+    "youngs-modulus": {
+      "title": "Young's Modulus Calculator",
+      "description": "Calculate tensile elasticity of a material (Stress / Strain)."
+    },
+    "bernoulli-equation": {
+      "title": "Bernoulli's Equation Calculator",
+      "description": "Calculate fluid pressure, velocity, and height relationships."
+    },
+    "mass-energy": {
+      "title": "Mass-Energy Equivalence Calculator",
+      "description": "Calculate energy from mass using Einstein's E = mc²."
     }
   },
   "RomanDecimalConverter": {
@@ -4073,6 +4121,197 @@
     "cone": {
       "title": "Cone Volume",
       "description": "Calculate the volume of a cone."
+    },
+    "solenoid-magnetic-field": {
+      "metadataTitle": "Solenoid Magnetic Field Calculator | Physics Tool",
+      "metadataDescription": "Calculate the magnetic field strength inside a solenoid using the formula B = μ₀nI. Includes number of turns, current, and length.",
+      "metadataKeywords": "solenoid magnetic field, ampere's law, magnetic flux density, physics calculator, electromagnetism",
+      "title": "Solenoid Magnetic Field Calculator",
+      "description": "Calculate the magnetic field strength (B) inside an ideal solenoid.",
+      "numTurns": "Number of Turns (N)",
+      "length": "Length (L)",
+      "current": "Current (I)",
+      "coreMaterial": "Core Material",
+      "magneticField": "Magnetic Field (B)",
+      "fieldGauss": "Field in Gauss",
+      "whatIs": "<h3>What is a Solenoid's Magnetic Field?</h3><p>A <strong>solenoid</strong> is a coil of wire wound into a tightly packed helix. When an electric current flows through it, it creates a nearly uniform magnetic field inside its core, similar to a bar magnet.</p><p>The strength of this magnetic field depends on the current, the density of turns (turns per unit length), and the magnetic permeability of the core material.</p>",
+      "howTo": "<h3>How to Calculate Solenoid Magnetic Field</h3><p>The magnetic field (B) inside an ideal solenoid is calculated using the formula:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">B = μ₀ × (N / L) × I</strong><p class=\"text-sm text-blue-800\">B = μ₀ × n × I</p></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>B:</strong> Magnetic field (Tesla, T)</li><li><strong>μ₀:</strong> Permeability of free space (4π × 10⁻⁷ T·m/A)</li><li><strong>N:</strong> Total number of turns</li><li><strong>L:</strong> Length of the solenoid (meters)</li><li><strong>I:</strong> Current (Amperes)</li><li><strong>n:</strong> Number of turns per unit length (N/L)</li></ul>",
+      "faq": [
+        {
+          "question": "Why is the field stronger inside than outside?",
+          "answer": "Inside the solenoid, the magnetic field lines from each turn of wire add up constructively, creating a strong, uniform field. Outside, the field lines from different parts of the coil tend to cancel each other out, resulting in a much weaker field."
+        },
+        {
+          "question": "Does the diameter of the solenoid affect the field?",
+          "answer": "For an ideal, long solenoid (where length is much greater than diameter), the field strength inside is independent of the diameter and only depends on the turn density and current."
+        },
+        {
+          "question": "What is the permeability of free space (μ₀)?",
+          "answer": "μ₀ is a physical constant that represents the capability of a vacuum to support a magnetic field. Its value is approximately 1.256637 × 10⁻⁶ T·m/A."
+        }
+      ]
+    },
+    "electric-potential": {
+      "metadataTitle": "Electric Potential Calculator | V = kQ/r",
+      "metadataDescription": "Calculate the electric potential at a point due to a point charge or group of charges.",
+      "metadataKeywords": "electric potential, coulomb's law, electrostatics, potential energy, physics calculator",
+      "title": "Electric Potential Calculator",
+      "description": "Calculate the electric potential (V) created by a point charge at a specific distance.",
+      "charge": "Charge (Q)",
+      "distance": "Distance (r)",
+      "potential": "Electric Potential (V)",
+      "whatIs": "<h3>What is Electric Potential?</h3><p><strong>Electric potential</strong> (often called voltage) is the amount of work energy needed to move a unit of positive charge from a reference point to a specific point inside an electric field without producing an acceleration.</p><p>In simpler terms, it describes the \"potential energy per unit charge\" at a given location in space.</p>",
+      "howTo": "<h3>How to Calculate Electric Potential</h3><p>For a single point charge, the electric potential (V) is calculated as:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">V = k × Q / r</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>V:</strong> Electric Potential (Volts, V)</li><li><strong>k:</strong> Coulomb's constant (≈ 8.99 × 10⁹ N·m²/C²)</li><li><strong>Q:</strong> Charge magnitude (Coulombs, C)</li><li><strong>r:</strong> Distance from the charge (meters, m)</li></ul>",
+      "faq": [
+        {
+          "question": "Is electric potential a vector or scalar?",
+          "answer": "Electric potential is a <strong>scalar</strong> quantity. Unlike the electric field (which is a vector), potential does not have a direction, only a magnitude. This makes it much easier to add potentials from multiple charges."
+        },
+        {
+          "question": "What is the difference between potential and potential energy?",
+          "answer": "Electric potential is the energy <em>per unit charge</em> (V = PE/q). Electric potential energy is the <em>total energy</em> of a specific charge in that field."
+        },
+        {
+          "question": "Can electric potential be negative?",
+          "answer": "Yes. The sign of the potential depends on the sign of the charge. A positive charge creates positive potential, and a negative charge creates negative potential."
+        }
+      ]
+    },
+    "carnot-efficiency": {
+      "metadataTitle": "Carnot Efficiency Calculator | η = 1 - Tc/Th",
+      "metadataDescription": "Calculate the maximum theoretical efficiency of a heat engine based on the temperatures of the hot and cold reservoirs.",
+      "metadataKeywords": "carnot efficiency, thermodynamics, second law of thermodynamics, heat engine, physics calculator",
+      "title": "Carnot Efficiency Calculator",
+      "description": "Calculate the maximum possible efficiency for a heat engine operating between two temperatures.",
+      "tempHot": "Hot Reservoir (Th)",
+      "tempCold": "Cold Reservoir (Tc)",
+      "efficiency": "Carnot Efficiency",
+      "whatIs": "<h3>What is Carnot Efficiency?</h3><p><strong>Carnot efficiency</strong> defines the absolute maximum theoretical limit of efficiency that any heat engine can achieve, as derived by Sadi Carnot in 1824.</p><p>It is based on the Second Law of Thermodynamics and shows that no engine can ever be 100% efficient as long as it operates between finite temperatures.</p>",
+      "howTo": "<h3>How to Calculate Carnot Efficiency</h3><p>Efficiency (η) depends only on the absolute temperatures (in Kelvin) of the reservoirs:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">η = 1 - (Tc / Th)</strong><p class=\"text-sm text-blue-800\">Multiply by 100 for percentage (%)</p></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>η:</strong> Efficiency (decimal)</li><li><strong>Th:</strong> Temperature of the hot reservoir (Kelvin)</li><li><strong>Tc:</strong> Temperature of the cold reservoir (Kelvin)</li></ul><p class=\"mt-4 text-sm font-bold text-red-600 italic\">Note: Temperatures MUST be in Kelvin (K = °C + 273.15).</p>",
+      "faq": [
+        {
+          "question": "Can an engine reach Carnot efficiency?",
+          "answer": "No. The Carnot cycle is an ideal, reversible process with no friction or heat loss. Real engines always have efficiencies significantly lower than the Carnot limit due to irreversibilities."
+        },
+        {
+          "question": "How can I increase the efficiency of an engine?",
+          "answer": "According to the formula, you can increase efficiency by either increasing the temperature of the hot reservoir (Th) or decreasing the temperature of the cold reservoir (Tc)."
+        },
+        {
+          "question": "Is 100% efficiency possible?",
+          "answer": "Theoretically, 100% efficiency would only be reached if the cold reservoir (Tc) was at Absolute Zero (0 K), which is physically impossible to achieve according to the Third Law of Thermodynamics."
+        }
+      ]
+    },
+    "thermal-conduction": {
+      "metadataTitle": "Thermal Conduction Calculator | Q/t = kAΔT/d",
+      "metadataDescription": "Calculate the rate of heat transfer through solid materials using the law of thermal conduction.",
+      "metadataKeywords": "thermal conduction, heat transfer, thermodynamics, thermal conductivity, physics calculator",
+      "title": "Thermal Conduction Calculator",
+      "description": "Calculate the rate of heat flow through a material based on its conductivity, area, and temperature difference.",
+      "area": "Area (A)",
+      "thickness": "Thickness (d)",
+      "tempDiff": "Temp Difference (ΔT)",
+      "material": "Material",
+      "heatRate": "Heat Transfer Rate (P)",
+      "whatIs": "<h3>What is Thermal Conduction?</h3><p><strong>Thermal conduction</strong> is the transfer of internal thermal energy by collisions of microscopic particles and movement of electrons within a body.</p><p>It occurs when there is a temperature gradient between two regions of a solid or fluid, and heat flows from the hotter region to the colder one.</p>",
+      "howTo": "<h3>How to Calculate Heat Conduction Rate</h3><p>The rate of heat transfer (P or Q/t) is given by Fourier's Law:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">P = (k × A × ΔT) / d</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>P:</strong> Heat transfer rate (Watts, W)</li><li><strong>k:</strong> Thermal conductivity (W/m·K)</li><li><li><strong>A:</strong> Surface area (m²)</li><li><strong>ΔT:</strong> Temperature difference across the material (K or °C)</li><li><strong>d:</strong> Thickness of the material (m)</li></ul>",
+      "faq": [
+        {
+          "question": "What material has the highest thermal conductivity?",
+          "answer": "Among common materials, silver and copper have very high thermal conductivity. However, diamond is one of the best known thermal conductors at room temperature."
+        },
+        {
+          "question": "What is the difference between conduction, convection, and radiation?",
+          "answer": "Conduction is transfer within a solid. Convection is transfer through fluid motion (gas or liquid). Radiation is transfer via electromagnetic waves (no medium required)."
+        },
+        {
+          "question": "How does thickness affect heat loss?",
+          "answer": "Heat transfer is inversely proportional to thickness. Doubling the thickness of an insulation layer will halve the rate of heat loss."
+        }
+      ]
+    },
+    "relativistic-ke": {
+      "metadataTitle": "Relativistic Kinetic Energy Calculator | Eₖ = (γ-1)m₀c²",
+      "metadataDescription": "Calculate the kinetic energy of objects moving at speeds near the speed of light using Special Relativity.",
+      "metadataKeywords": "relativistic kinetic energy, special relativity, lorentz factor, einstein, physics calculator",
+      "title": "Relativistic Kinetic Energy Calculator",
+      "description": "Calculate the kinetic energy of an object moving at relativistic speeds.",
+      "mass": "Rest Mass (m₀)",
+      "velocity": "Velocity (v)",
+      "kineticEnergy": "Relativistic KE",
+      "lorentzFactor": "Lorentz Factor (γ)",
+      "whatIs": "<h3>What is Relativistic Kinetic Energy?</h3><p>In classical mechanics, kinetic energy is predicted by ½mv². However, as an object's speed approaches the speed of light (c), classical physics fails, and Einstein's <strong>Special Relativity</strong> must be used.</p><p>Relativistic kinetic energy accounts for the fact that mass effectively increases with speed and that no massive object can ever reach the speed of light.</p>",
+      "howTo": "<h3>Relativistic Energy Formulas</h3><p>First, we calculate the <strong>Lorentz Factor (γ)</strong>:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">γ = 1 / √(1 - v²/c²)</strong></div><p>Then, the Kinetic Energy (KE) is:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">KE = (γ - 1) × m₀ × c²</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>m₀:</strong> Rest mass (kg)</li><li><strong>v:</strong> Velocity (m/s)</li><li><strong>c:</strong> Speed of light (≈ 3 × 10⁸ m/s)</li></ul>",
+      "faq": [
+        {
+          "question": "When should I use the relativistic formula?",
+          "answer": "The classical formula (½mv²) is very accurate for speeds up to about 10% of the speed of light. Above that, the relativistic formula is necessary for precision. As speed increases, the difference becomes massive."
+        },
+        {
+          "question": "What happens as velocity reaches the speed of light?",
+          "answer": "As v approaches c, the Lorentz factor (γ) approaches infinity. This means that an infinite amount of work (energy) would be required to accelerate a massive object to the speed of light."
+        },
+        {
+          "question": "Does this include rest energy?",
+          "answer": "The total energy (E) is KE + m₀c². Our calculator specifically solves for the <em>additional</em> energy due to motion (KE)."
+        }
+      ]
+    },
+    "de-broglie-wavelength": {
+      "metadataTitle": "de Broglie Wavelength Calculator | λ = h/p",
+      "metadataDescription": "Calculate the wavelength of a moving particle like an electron using de Broglie's wave-particle duality theory.",
+      "metadataKeywords": "de broglie wavelength, quantum mechanics, wave-particle duality, planck's constant, physics calculator",
+      "title": "de Broglie Wavelength Calculator",
+      "description": "Calculate the wavelength associated with a particle based on its mass and velocity.",
+      "mass": "Mass (m)",
+      "velocity": "Velocity (v)",
+      "wavelength": "Wavelength (λ)",
+      "whatIs": "<h3>What is the de Broglie Wavelength?</h3><p>Proposed by Louis de Broglie in 1924, this theory suggests that all matter exhibits wave-like properties. This concept, known as <strong>wave-particle duality</strong>, is a fundamental pillar of quantum mechanics.</p><p>Essentially, every moving object—from an electron to a baseball—has an associated wavelength, though it's only detectable for subatomic particles.</p>",
+      "howTo": "<h3>The de Broglie Equation</h3><p>The wavelength (λ) is inversely proportional to the particle's momentum (p):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">λ = h / p = h / (m × v)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>λ:</strong> Wavelength (meters)</li><li><strong>h:</strong> Planck's constant (6.626 × 10⁻³⁴ J·s)</li><li><strong>m:</strong> Mass (kg)</li><li><strong>v:</strong> Velocity (m/s)</li></ul>",
+      "faq": [
+        {
+          "question": "Why don't we see waves for large objects?",
+          "answer": "Because Planck's constant (h) is extremely small. For a large mass (like a car), the resulting wavelength is so incredibly tiny that it cannot be measured or observed. For tiny masses like electrons, the wavelength is comparable to atomic scales."
+        },
+        {
+          "question": "What does this wavelength mean?",
+          "answer": "According to quantum mechanics, it represents the probability wave of the particle's position. It is verified experimentally through diffraction patterns, such as in Electron Microscopy."
+        },
+        {
+          "question": "What happens if velocity is zero?",
+          "answer": "If velocity is zero, the wavelength is mathematically undefined (infinite). A particle must be in motion to exhibit a measurable de Broglie wavelength."
+        }
+      ]
+    },
+    "photon-energy": {
+      "metadataTitle": "Photon Energy Calculator | E = hf = hc/λ",
+      "metadataDescription": "Calculate the energy of a photon based on its wavelength or frequency. Supports units like nm, THz, and eV.",
+      "metadataKeywords": "photon energy, planck's equation, light energy, quantum physics, physics calculator",
+      "title": "Photon Energy Calculator",
+      "description": "Calculate photon energy in Joules and electronvolts (eV) given its wavelength or frequency.",
+      "mode": "Input Mode",
+      "wavelength": "Wavelength",
+      "frequency": "Frequency",
+      "energyJ": "Energy (Joules)",
+      "energyEV": "Energy (eV)",
+      "type": "Light Type",
+      "whatIs": "<h3>What is Photon Energy?</h3><p>A <strong>photon</strong> is a quantum of light or electromagnetic radiation. Unlike classical waves, light behaves as discrete packets of energy.</p><p>The energy of a single photon is directly proportional to its frequency and inversely proportional to its wavelength.</p>",
+      "howTo": "<h3>Planck-Einstein Relation</h3><p>Photon energy (E) can be calculated in two ways:</p><ol class=\"list-decimal pl-5 space-y-4 my-4\"><li><strong>Using Frequency (f):</strong><div class=\"bg-blue-50 p-3 rounded-lg border border-blue-100 mt-1\">E = h × f</div></li><li><strong>Using Wavelength (λ):</strong><div class=\"bg-blue-50 p-3 rounded-lg border border-blue-100 mt-1\">E = (h × c) / λ</div></li></ol><ul class=\"list-disc pl-5 space-y-2 text-sm\"><li><strong>h:</strong> Planck's constant (6.626 × 10⁻³⁴ J·s)</li><li><strong>c:</strong> Speed of light (299,792,458 m/s)</li></ul>",
+      "faq": [
+        {
+          "question": "What has more energy: Red or Blue light?",
+          "answer": "Blue light has a shorter wavelength and higher frequency than red light. Therefore, a blue photon has <strong>more energy</strong> than a red photon."
+        },
+        {
+          "question": "What is an Electronvolt (eV)?",
+          "answer": "An eV is the amount of kinetic energy gained by a single electron accelerating through an electric potential difference of one volt. It is a more convenient unit for photon energy than Joules."
+        },
+        {
+          "question": "Do photons have mass?",
+          "answer": "No. Photons have zero rest mass. However, they do have momentum and carry energy, which is why they are affected by gravity (Relativity)."
+        }
+      ]
     }
   }
 }

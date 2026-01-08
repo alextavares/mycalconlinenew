@@ -1,0 +1,76 @@
+
+> nextn@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.35
+  - Environments: .env
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/config/calculators.ts
+Error: 
+  x Expression expected
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:9210:1]
+ 9210 |         }
+ 9211 |     },
+ 9212 | }
+ 9213 |             ]
+      :             ^
+ 9214 |         }
+ 9215 |     },
+ 9215 | 'escape-velocity': {
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/config/calculators.ts
+./src/app/[locale]/page.tsx
+
+./src/config/calculators.ts
+Error: 
+  x Expression expected
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:9210:1]
+ 9210 |         }
+ 9211 |     },
+ 9212 | }
+ 9213 |             ]
+      :             ^
+ 9214 |         }
+ 9215 |     },
+ 9215 | 'escape-velocity': {
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/config/calculators.ts
+./src/app/sitemap.ts
+./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2Fsitemap.xml%2Froute&filePath=C%3A%5Ccodigos%5Csitemycalc%5Csrc%5Capp%5Csitemap.ts&isDynamic=1!?__next_metadata_route__
+
+./src/config/calculators.ts
+Error: 
+  x Expression expected
+      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:9210:1]
+ 9210 |         }
+ 9211 |     },
+ 9212 | }
+ 9213 |             ]
+      :             ^
+ 9214 |         }
+ 9215 |     },
+ 9215 | 'escape-velocity': {
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/config/calculators.ts
+./src/app/[locale]/layout.tsx
+
+
+> Build failed because of webpack errors
