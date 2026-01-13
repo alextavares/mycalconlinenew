@@ -1,0 +1,309 @@
+src/app/[locale]/calculator/[id]/engine-client.tsx(249,105): error TS2322: Type 'string | ((inputs: Record<string, any>) => string)' is not assignable to type 'ReactNode'.
+  Type '(inputs: Record<string, any>) => string' is not assignable to type 'ReactNode'.
+src/app/[locale]/calculator/[id]/engine-client.tsx(258,53): error TS2322: Type 'string | ((inputs: Record<string, any>) => string) | undefined' is not assignable to type 'string | undefined'.
+  Type '(inputs: Record<string, any>) => string' is not assignable to type 'string'.
+src/config/calculators.ts(10480,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(10481,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(10482,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(10491,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(10492,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(10493,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(11667,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(11687,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(12779,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(12779,34): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/config/calculators.ts(12779,37): error TS7006: Parameter 'y' implicitly has an 'any' type.
+src/config/calculators.ts(12789,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(12789,34): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/config/calculators.ts(12789,37): error TS7006: Parameter 'y' implicitly has an 'any' type.
+src/config/calculators.ts(12896,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(12979,44): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(12980,46): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13034,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13035,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13081,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13082,44): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13091,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13092,44): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13177,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13178,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13179,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13512,32): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(13520,32): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(13520,60): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/config/calculators.ts(13542,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(13543,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(13557,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(13558,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(13728,50): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13728,65): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13728,99): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13729,50): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13729,65): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13729,99): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13743,50): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13743,65): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13743,99): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13766,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13766,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13766,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13767,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13767,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13767,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13771,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13771,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13772,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13772,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13773,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13773,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13773,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(13774,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13774,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13775,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13775,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13800,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13800,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13800,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13801,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13801,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13801,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13804,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13804,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13805,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13805,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13806,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13806,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13806,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(13807,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13807,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13816,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13816,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13816,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13817,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13817,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13817,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13820,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13820,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13821,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13821,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13822,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13822,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13822,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(13823,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13823,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13846,38): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13847,38): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13848,38): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(13918,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13918,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13918,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13920,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13920,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13923,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13923,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13930,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13930,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13930,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13932,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13932,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13934,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13934,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13941,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13941,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13941,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13943,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13943,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13945,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13945,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13966,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13966,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13966,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13968,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13968,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13971,36): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13983,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(13983,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13983,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(13985,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13985,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13988,36): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14559,51): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14559,66): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14559,100): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14560,54): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14560,69): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14560,103): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14596,54): error TS2339: Property 'trim' does not exist on type 'string | number'.
+  Property 'trim' does not exist on type 'number'.
+src/config/calculators.ts(14603,60): error TS2339: Property 'length' does not exist on type 'string | number'.
+  Property 'length' does not exist on type 'number'.
+src/config/calculators.ts(14607,60): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(14636,49): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(14637,49): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(14639,34): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(14639,53): error TS7006: Parameter 'txt' implicitly has an 'any' type.
+src/config/calculators.ts(14642,34): error TS2339: Property 'charAt' does not exist on type 'string | number'.
+  Property 'charAt' does not exist on type 'number'.
+src/config/calculators.ts(14642,62): error TS2339: Property 'slice' does not exist on type 'string | number'.
+  Property 'slice' does not exist on type 'number'.
+src/config/calculators.ts(14682,60): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14708,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14867,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14868,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14888,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(14889,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(15615,31): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(15616,29): error TS2339: Property 'length' does not exist on type 'string | number'.
+  Property 'length' does not exist on type 'number'.
+src/config/calculators.ts(15616,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(15616,67): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/config/calculators.ts(15617,29): error TS2339: Property 'length' does not exist on type 'string | number'.
+  Property 'length' does not exist on type 'number'.
+src/config/calculators.ts(15618,44): error TS2339: Property 'substring' does not exist on type 'string | number'.
+  Property 'substring' does not exist on type 'number'.
+src/config/calculators.ts(15619,44): error TS2339: Property 'substring' does not exist on type 'string | number'.
+  Property 'substring' does not exist on type 'number'.
+src/config/calculators.ts(15620,44): error TS2339: Property 'substring' does not exist on type 'string | number'.
+  Property 'substring' does not exist on type 'number'.
+src/config/calculators.ts(15829,35): error TS7006: Parameter 'Cp' implicitly has an 'any' type.
+src/config/calculators.ts(15829,39): error TS7006: Parameter 'Ih' implicitly has an 'any' type.
+src/config/calculators.ts(15829,43): error TS7006: Parameter 'Il' implicitly has an 'any' type.
+src/config/calculators.ts(15829,47): error TS7006: Parameter 'BPh' implicitly has an 'any' type.
+src/config/calculators.ts(15829,52): error TS7006: Parameter 'BPl' implicitly has an 'any' type.
+src/config/calculators.ts(15890,34): error TS7006: Parameter 'm' implicitly has an 'any' type.
+src/config/calculators.ts(16928,52): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(16929,52): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(16981,60): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(16985,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+  Overload 2 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16988,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+  Overload 2 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17013,60): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(17016,55): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17043,45): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17045,48): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17335,9): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(17628,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(17675,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(17743,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(17765,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(23951,34): error TS2322: Type 'string | number' is not assignable to type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(23978,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(23983,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24016,31): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24016,49): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24017,44): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24032,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(24039,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(24044,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24057,33): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24057,50): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24064,40): error TS2365: Operator '>' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(24064,84): error TS2365: Operator '<' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(24070,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(24077,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(24082,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24094,32): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(24095,32): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(24104,41): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(24104,71): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(24116,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(24121,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24155,33): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24155,47): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24155,66): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24163,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(24170,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(24175,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24190,34): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24192,42): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24201,47): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24209,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(24216,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(24221,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24234,33): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24234,47): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24242,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(24249,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(24254,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(24279,40): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24282,35): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24301,25): error TS2322: Type 'string | number' is not assignable to type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/config/calculators.ts(24303,44): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(24316,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.

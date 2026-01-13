@@ -1,0 +1,40 @@
+src/app/[locale]/calculator/[id]/engine-client.tsx(249,105): error TS2322: Type 'string | ((inputs: Record<string, any>) => string)' is not assignable to type 'ReactNode'.
+  Type '(inputs: Record<string, any>) => string' is not assignable to type 'ReactNode'.
+src/app/[locale]/calculator/[id]/engine-client.tsx(258,53): error TS2322: Type 'string | ((inputs: Record<string, any>) => string) | undefined' is not assignable to type 'string | undefined'.
+  Type '(inputs: Record<string, any>) => string' is not assignable to type 'string'.
+src/config/calculators.ts(12996,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(12996,34): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/config/calculators.ts(12996,37): error TS7006: Parameter 'y' implicitly has an 'any' type.
+src/config/calculators.ts(13006,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(13006,34): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/config/calculators.ts(13006,37): error TS7006: Parameter 'y' implicitly has an 'any' type.
+src/config/calculators.ts(13745,60): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/config/calculators.ts(13998,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(13998,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(13998,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(14031,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(14031,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(14031,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(14047,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(14047,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(14047,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(14148,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(14148,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14159,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(14159,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14170,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(14170,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14196,36): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14213,36): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(14864,53): error TS7006: Parameter 'txt' implicitly has an 'any' type.
+src/config/calculators.ts(15841,67): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/config/calculators.ts(16054,35): error TS7006: Parameter 'Cp' implicitly has an 'any' type.
+src/config/calculators.ts(16054,39): error TS7006: Parameter 'Ih' implicitly has an 'any' type.
+src/config/calculators.ts(16054,43): error TS7006: Parameter 'Il' implicitly has an 'any' type.
+src/config/calculators.ts(16054,47): error TS7006: Parameter 'BPh' implicitly has an 'any' type.
+src/config/calculators.ts(16054,52): error TS7006: Parameter 'BPl' implicitly has an 'any' type.
+src/config/calculators.ts(16115,34): error TS7006: Parameter 'm' implicitly has an 'any' type.
+src/config/calculators.ts(17840,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(17887,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(17955,17): error TS2322: Type 'boolean' is not assignable to type 'string'.
+src/config/calculators.ts(17977,17): error TS2322: Type 'boolean' is not assignable to type 'string'.

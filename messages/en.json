@@ -4312,6 +4312,772 @@
           "answer": "No. Photons have zero rest mass. However, they do have momentum and carry energy, which is why they are affected by gravity (Relativity)."
         }
       ]
+    },
+    "orbital-velocity": {
+      "metadataTitle": "Orbital Velocity Calculator | Astronomy & Space",
+      "metadataDescription": "Calculate the orbital speed required for a satellite to orbit a massive body at a specific specific radius.",
+      "metadataKeywords": "orbital velocity, satellite speed, astronomy, gravity, orbital mechanics, physics calculator",
+      "title": "Orbital Velocity Calculator",
+      "description": "Calculate the speed needed to orbit a massive body.",
+      "mass": "Central Mass (M)",
+      "radius": "Orbit Radius (r)",
+      "velocity": "Orbital Velocity (v)",
+      "period": "Orbital Period (T)",
+      "whatIs": "<h3>What is Orbital Velocity?</h3><p><strong>Orbital velocity</strong> is the speed at which an object must travel to remain in a stable orbit around a larger body, balancing gravitational pull with its own inertia.</p><p>For a circular orbit, this speed depends only on the mass of the central body and the distance from its center.</p>",
+      "howTo": "<h3>How to Calculate Orbital Speed</h3><p>The formula for circular orbital velocity (v) is:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">v = √(GM / r)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>v:</strong> Orbital Velocity (m/s)</li><li><strong>G:</strong> Gravitational Constant (≈ 6.674×10⁻¹¹ m³/kg·s²)</li><li><strong>M:</strong> Mass of the central body (kg)</li><li><strong>r:</strong> Radius of orbit from the center of mass (m)</li></ul>",
+      "faq": [
+        {
+          "question": "What happens if a satellite goes faster?",
+          "answer": "If it goes faster than the circular orbital velocity, it will enter an elliptical orbit or, if fast enough (escape velocity), leave the orbit entirely."
+        },
+        {
+          "question": "Does the mass of the satellite matter?",
+          "answer": "No. In simple orbital mechanics, the mass of the satellite cancels out. A feather and a space station would orbit at the same speed at the same distance."
+        },
+        {
+          "question": "How is the period calculated?",
+          "answer": "The orbital period T = 2πr / v. It represents the time it takes to complete one full revolution."
+        }
+      ]
+    },
+    "decibel": {
+      "metadataTitle": "Decibel Calculator | Power & Amplitude Ratios",
+      "metadataDescription": "Convert power and voltage ratios to decibels (dB) and vice-versa. Essential tool for audio and electronics.",
+      "metadataKeywords": "decibel calculator, dB, power ratio, voltage ratio, signal gain, audio engineering",
+      "title": "Decibel Calculator",
+      "description": "Calculate Power Ratio or Amplitude Ratio in dB.",
+      "type": "Calculation Type",
+      "value1": "Value (P or V)",
+      "reference": "Reference (P₀ or V₀)",
+      "resultDb": "Result (dB)",
+      "whatIs": "<h3>What is a Decibel (dB)?</h3><p>The <strong>decibel (dB)</strong> is a logarithmic unit used to express the ratio of two values of a physical quantity, often power or intensity. It is widely used in acoustics, electronics, and control theory.</p><p>Because it is logarithmic, a small increase in dB represents a large increase in actual power or magnitude.</p>",
+      "howTo": "<h3>Decibel Formulas</h3><p>The formula depends on whether you are measuring Power or Field Amplitude (Voltage/Current):</p><ul class=\"list-disc pl-5 space-y-2 my-4\"><li><strong>Power Ratio:</strong><br><code>dB = 10 × log₁₀(P / P₀)</code></li><li><strong>Amplitude/Voltage Ratio:</strong><br><code>dB = 20 × log₁₀(V / V₀)</code></li></ul><p>Note: Amplitude uses a factor of 20 because power is proportional to the square of amplitude (P ∝ V²), and log(x²) = 2log(x).</p>",
+      "faq": [
+        {
+          "question": "What is 0 dB?",
+          "answer": "0 dB means the measured value is equal to the reference value (ratio = 1). It does not mean 'zero sound' or 'zero power'."
+        },
+        {
+          "question": "How much is +3 dB and +10 dB?",
+          "answer": "For power, +3 dB is approximately 2x power, and +10 dB is exactly 10x power. For voltage, +6 dB is 2x voltage, and +20 dB is 10x voltage."
+        },
+        {
+          "question": "Why do we use decibels?",
+          "answer": "Decibels allow us to represent huge ranges of values (like sound intensity) in manageable numbers. It aligns well with human perception, which is also logarithmic."
+        }
+      ]
+    },
+    "mach-number": {
+      "metadataTitle": "Mach Number Calculator | Speed of Sound",
+      "metadataDescription": "Calculate the Mach number of an object based on its speed and the surrounding air temperature.",
+      "metadataKeywords": "mach number, speed of sound, aerodynamics, supersonic, subsonic, flight calculation",
+      "title": "Mach Number Calculator",
+      "description": "Calculate Mach number from speed and temperature.",
+      "speed": "Object Speed",
+      "unit": "Speed Unit",
+      "temp": "Air Temperature",
+      "mach": "Mach Number (M)",
+      "category": "Flight Regime",
+      "whatIs": "<h3>What is Mach Number?</h3><p><strong>Mach number (M)</strong> is a dimensionless quantity representing the ratio of flow velocity past a boundary to the local speed of sound.</p><p>It is crucial in aerodynamics to determine if flow is subsonic, transonic, supersonic, or hypersonic.</p>",
+      "howTo": "<h3>How to Calculate Mach Number</h3><p>First, we find the speed of sound (c) for air at a given temperature T (in Celsius):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">c ≈ 331.3 + 0.606 × T</strong></div><p>Then, divide the object's speed (v) by the speed of sound:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">M = v / c</strong></div>",
+      "faq": [
+        {
+          "question": "What is Mach 1?",
+          "answer": "Mach 1 is the speed of sound. At sea level and 20°C, it is approximately 343 m/s (1235 km/h)."
+        },
+        {
+          "question": "What are the flight regimes?",
+          "answer": "Subsonic (M < 0.8), Transonic (0.8 < M < 1.2), Supersonic (1.2 < M < 5.0), and Hypersonic (M > 5.0)."
+        },
+        {
+          "question": "Does altitude affect Mach number?",
+          "answer": " indirectly. Altitude affects temperature, and temperature affects the speed of sound. An airplane traveling at 1000 km/h will have a higher Mach number at high altitude (where it's cold) than at sea level."
+        }
+      ]
+    },
+    "flow-rate": {
+      "metadataTitle": "Flow Rate Calculator | Q = Av",
+      "metadataDescription": "Calculate volumetric flow rate based on pipe diameter and flow velocity.",
+      "metadataKeywords": "flow rate, volumetric flow, fluid dynamics, pipe diameter, velocity, hydraulics",
+      "title": "Flow Rate Calculator",
+      "description": "Calculate Volumetric Flow Rate given Area and Velocity.",
+      "diameter": "Pipe Diameter (d)",
+      "velocity": "Flow Velocity (v)",
+      "flowRate": "Flow Rate (Q)",
+      "flowRateM3": "Flow Rate (m³/h)",
+      "whatIs": "<h3>What is Volumetric Flow Rate?</h3><p><strong>Volumetric flow rate</strong> (Q) is the volume of fluid which passes per unit time. It is a fundamental concept in fluid dynamics and engineering.</p><p>It relates the cross-sectional area of a pipe to the average velocity of the fluid flowing through it.</p>",
+      "howTo": "<h3>How to Calculate Flow Rate</h3><p>The formula is simply the product of cross-sectional Area (A) and Velocity (v):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Q = A × v</strong></div><p>For a circular pipe with diameter <em>d</em>, Area is A = π(d/2)².</p>",
+      "faq": [
+        {
+          "question": "Does pressure affect flow rate?",
+          "answer": "Pressure drives flow, but this specific calculator relates velocity to rate. If you increase pressure, velocity typically increases, which increases flow rate."
+        },
+        {
+          "question": "Why is diameter so important?",
+          "answer": "Since Area implies radius squared (r²), doubling the diameter quadruples the area, which can quadruple the flow rate for the same velocity."
+        }
+      ]
+    },
+    "lc-resonance": {
+      "metadataTitle": "LC Resonance Calculator | f = 1/2π√LC",
+      "metadataDescription": "Calculate the resonant frequency of an LC circuit given inductance and capacitance values.",
+      "metadataKeywords": "lc resonance, resonant frequency, tuned circuit, inductance, capacitance, rf calculator",
+      "title": "LC Resonance Calculator",
+      "description": "Calculate resonant frequency of an LC circuit.",
+      "inductance": "Inductance (L)",
+      "lUnit": "L Unit",
+      "capacitance": "Capacitance (C)",
+      "cUnit": "C Unit",
+      "frequency": "Resonant Frequency (f)",
+      "whatIs": "<h3>What is LC Resonance?</h3><p>An <strong>LC circuit</strong> consists of an inductor (L) and a capacitor (C). At a specific frequency, the inductive and capacitive reactances cancel each other out.</p><p>This frequency is called the <strong>resonant frequency</strong>, where the circuit oscillates with minimum impedance (in series) or maximum impedance (in parallel).</p>",
+      "howTo": "<h3>Resonant Frequency Formula</h3><p>The Thomson formula determines the resonant frequency (f):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">f = 1 / (2π√LC)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Frequency (Hertz)</li><li><strong>L:</strong> Inductance (Henries)</li><li><strong>C:</strong> Capacitance (Farads)</li></ul>",
+      "faq": [
+        {
+          "question": "Where are LC circuits used?",
+          "answer": "They are fundamental in radio frequency (RF) technology, used in tuners, filters, frequency mixers, and signal generators."
+        },
+        {
+          "question": "What happens at resonance?",
+          "answer": "Energy oscillates back and forth between the magnetic field of the inductor and the electric field of the capacitor with maximum amplitude."
+        }
+      ]
+    },
+    "magnification": {
+      "metadataTitle": "Magnification Calculator | Optics M = -di/do",
+      "metadataDescription": "Calculate the linear magnification of a lens or mirror system given object and image distances.",
+      "metadataKeywords": "magnification, optics, lens equation, mirror, image size, physics calculator",
+      "title": "Magnification Calculator",
+      "description": "Calculate optical magnification and image properties.",
+      "objectDist": "Object Distance (do)",
+      "imageDist": "Image Distance (di)",
+      "magnification": "Magnification (m)",
+      "type": "Image Type",
+      "whatIs": "<h3>What is Optical Magnification?</h3><p><strong>Magnification (m)</strong> is the ratio of the height of an image to the height of the object. It indicates how much larger or smaller the image is compared to the object.</p><p>It also tells us about the orientation of the image (upright or inverted).</p>",
+      "howTo": "<h3>Magnification Formula</h3><p>Magnification is calculated using the image distance (di) and object distance (do):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">m = - di / do</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>m:</strong> Magnification (dimensionless)</li><li><strong>di:</strong> Distance from lens/mirror to image</li><li><strong>do:</strong> Distance from lens/mirror to object</li></ul>",
+      "faq": [
+        {
+          "question": "What does negative magnification mean?",
+          "answer": "A negative 'm' indicates that the image is <strong>inverted</strong> (upside down) relative to the object. A positive 'm' means the image is upright."
+        },
+        {
+          "question": "What if m is less than 1?",
+          "answer": "If the absolute value |m| < 1, the image is smaller than the object (demagnified). If |m| > 1, the image is larger."
+        }
+      ]
+    },
+    "rms-speed": {
+      "metadataTitle": "RMS Speed Calculator | Gas Molecules",
+      "metadataDescription": "Calculate the Root Mean Square (RMS) speed of gas molecules at a given temperature.",
+      "metadataKeywords": "rms speed, root mean square velocity, kinetic theory of gases, thermodynamics, physics calculator",
+      "title": "RMS Speed Calculator",
+      "description": "Calculate Root Mean Square speed of gas molecules.",
+      "temperature": "Temperature (T)",
+      "gas": "Gas Type",
+      "molarMass": "Molar Mass (M)",
+      "vrms": "RMS Speed (v_rms)",
+      "whatIs": "<h3>What is RMS Speed?</h3><p><strong>Root Mean Square (RMS) speed</strong> is a measure of the average speed of particles in a gas. Since gas particles move in random directions with various speeds, RMS provides a statistical average speed derived from their kinetic energy.</p>",
+      "howTo": "<h3>RMS Speed Formula</h3><p>Derived from the Kinetic Molecular Theory:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">vrms = √(3RT / M)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>vrms:</strong> RMS speed (m/s)</li><li><strong>R:</strong> Ideal Gas Constant (8.314 J/mol·K)</li><li><strong>T:</strong> Temperature (Kelvin)</li><li><strong>M:</strong> Molar Mass (kg/mol)</li></ul><p class=\"text-sm text-red-600 mt-2\">Note: Molar mass must be converted to kg/mol for this formula!</p>",
+      "faq": [
+        {
+          "question": "Why use RMS instead of average speed?",
+          "answer": "The average velocity of gas particles is zero (because directions cancel out). RMS speed gives a useful measure of the magnitude of velocity related to energy."
+        },
+        {
+          "question": "How does mass affect speed?",
+          "answer": "Lighter molecules move faster than heavier ones at the same temperature. For example, Helium atoms move much faster than Oxygen molecules."
+        }
+      ]
+    },
+    "impedance": {
+      "metadataTitle": "Impedance Calculator | AC Circuits Z",
+      "metadataDescription": "Calculate electrical impedance (Z), phase angle, and individual reactances for Series RLC circuits.",
+      "metadataKeywords": "impedance calculator, Z, RLC circuit, phase angle, electrical engineering, AC circuits",
+      "title": "Impedance Calculator",
+      "description": "Calculate impedance (Z) in electrical circuits.",
+      "resistance": "Resistance (R)",
+      "inductance": "Inductive Reactance (XL)",
+      "capacitance": "Capacitive Reactance (XC)",
+      "impedance": "Impedance (Z)",
+      "phaseAngle": "Phase Angle (φ)",
+      "whatIs": "<h3>What is Impedance?</h3><p><strong>Impedance (Z)</strong> is the total opposition to current flow in an AC circuit. It combines resistance (R) and reactance (X) into a single value measured in Ohms (Ω).</p><p>Unlike simple resistance, impedance varies with frequency because it includes effects from capacitors and inductors.</p>",
+      "howTo": "<h3>Impedance Formula</h3><p>For a Series RLC circuit:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Z = √(R² + (XL - XC)²)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>R:</strong> Resistance (Ω)</li><li><strong>XL:</strong> Inductive Reactance (Ω)</li><li><strong>XC:</strong> Capacitive Reactance (Ω)</li></ul>",
+      "faq": [
+        {
+          "question": "What is the difference between Resistance and Impedance?",
+          "answer": "Resistance applies to both DC and AC and opposes current by dissipating heat. Impedance includes resistance PLUS reactance (energy storage in fields) and applies only to AC."
+        },
+        {
+          "question": "what is phase angle?",
+          "answer": "The phase angle represents the time delay between the voltage and current waveforms. A positive angle means voltage leads current (inductive), while negative means current leads voltage (capacitive)."
+        }
+      ]
+    },
+    "power-factor": {
+      "metadataTitle": "Power Factor Calculator | P vs S",
+      "metadataDescription": "Calculate Power Factor (PF), Real Power (P), Apparent Power (S), and Reactive Power (Q).",
+      "metadataKeywords": "power factor, pf, real power, apparent power, reactive power, electrical efficiency",
+      "title": "Power Factor Calculator",
+      "description": "Calculate Power Factor, Real Power, and Apparent Power.",
+      "realPower": "Real Power (P)",
+      "apparentPower": "Apparent Power (S)",
+      "pf": "Power Factor (PF)",
+      "reactivePower": "Reactive Power (Q)",
+      "whatIs": "<h3>What is Power Factor?</h3><p><strong>Power Factor (PF)</strong> is a measure of how effectively electrical power is being used. It is the ratio of Real Power (used to do work) to Apparent Power (total power supplied).</p><p>A PF of 1.0 (unity) is ideal, meaning 100% of the power is useful.</p>",
+      "howTo": "<h3>Power Factor Formula</h3><p>The formula is a simple ratio:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">PF = P / S = cos(φ)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>P:</strong> Real Power (Watts)</li><li><strong>S:</strong> Apparent Power (VA)</li><li><strong>φ:</strong> Phase Angle</li></ul>",
+      "faq": [
+        {
+          "question": "Why is low power factor bad?",
+          "answer": "A low PF means you are drawing more current than you are effectively using. This wastes energy in distribution lines and can lead to utility penalty charges."
+        },
+        {
+          "question": "How to correct power factor?",
+          "answer": "Capacitor banks are often added to industrial circuits to counteract the inductive reactance of motors, bringing the PF closer to 1.0."
+        }
+      ]
+    },
+    "transformer": {
+      "metadataTitle": "Transformer Calculator | Turns Ratio & Voltage",
+      "metadataDescription": "Calculate step-up/step-down transformer voltages, currents, and turns ratios.",
+      "metadataKeywords": "transformer calculator, turns ratio, step up, step down, voltage transformation, electronics",
+      "title": "Transformer Calculator",
+      "description": "Calculate voltage, current, and turns ratio.",
+      "priVolts": "Primary Voltage (Vp)",
+      "priTurns": "Primary Turns (Np)",
+      "secTurns": "Secondary Turns (Ns)",
+      "secVolts": "Secondary Voltage (Vs)",
+      "ratio": "Turns Ratio (N)",
+      "whatIs": "<h3>What is a Transformer?</h3><p>A <strong>transformer</strong> acts like a magnetic gear used to change AC voltage levels. It consists of two coils (primary and secondary) wrapped around a magnetic core.</p>",
+      "howTo": "<h3>Transformer Formula</h3><p>The voltage ratio equals the turns ratio:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Vp / Vs = Np / Ns</strong></div><p>Current is inversely proportional:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Ip / Is = Ns / Np</strong></div>",
+      "faq": [
+        {
+          "question": "Can transformers work with DC?",
+          "answer": "No. Transformers rely on a <strong>changing</strong> magnetic field to induce voltage. DC creates a constant field, so no induction occurs (and the coil may overheat)."
+        },
+        {
+          "question": "What is a step-up transformer?",
+          "answer": "One where the secondary voltage is higher than the primary (Vs > Vp). It has more turns on the secondary coil."
+        }
+      ]
+    },
+    "capacitive-reactance": {
+      "metadataTitle": "Capacitive Reactance Calculator | Xc Formula",
+      "metadataDescription": "Calculate the impedance of a capacitor at a specific AC frequency.",
+      "metadataKeywords": "capacitive reactance, xc, capacitor impedance, ac circuit, electronics calculator",
+      "title": "Capacitive Reactance Calculator",
+      "description": "Calculate reactance of a capacitor at a frequency.",
+      "frequency": "Frequency (f)",
+      "capacitance": "Capacitance (C)",
+      "reactance": "Reactance (Xc)",
+      "whatIs": "<h3>What is Capacitive Reactance?</h3><p><strong>Capacitive Reactance (Xc)</strong> is the opposition a capacitor offers to alternating current. Unlike a resistor, its 'resistance' drops as frequency increases.</p><p>This makes capacitors useful for blocking DC (0 Hz has infinite reactance) while passing AC signals.</p>",
+      "howTo": "<h3>Calculation Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Xc = 1 / (2πfC)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Frequency (Hz)</li><li><strong>C:</strong> Capacitance (Farads)</li></ul>",
+      "faq": [
+        {
+          "question": "Does reactance consume power?",
+          "answer": "Ideally, no. Reactance stores and releases energy rather than dissipating it as heat like resistance does."
+        },
+        {
+          "question": "What happens at high frequency?",
+          "answer": "At very high frequencies, Xc becomes very small, and the capacitor acts almost like a short circuit."
+        }
+      ]
+    },
+    "inductive-reactance": {
+      "metadataTitle": "Inductive Reactance Calculator | XL Formula",
+      "metadataDescription": "Calculate the impedance of an inductor (coil) at a specific AC frequency.",
+      "metadataKeywords": "inductive reactance, xl, inductor impedance, coil, ac circuit, electronics calculator",
+      "title": "Inductive Reactance Calculator",
+      "description": "Calculate reactance of an inductor at a frequency.",
+      "frequency": "Frequency (f)",
+      "inductance": "Inductance (L)",
+      "reactance": "Reactance (XL)",
+      "whatIs": "<h3>What is Inductive Reactance?</h3><p><strong>Inductive Reactance (XL)</strong> is the opposition an inductor offers to changing current. It increases as frequency increases.</p><p>This property allows inductors to block high-frequency noise (chokes) while passing DC or low-frequency signals.</p>",
+      "howTo": "<h3>Calculation Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">XL = 2πfL</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Frequency (Hz)</li><li><strong>L:</strong> Inductance (Henries)</li></ul>",
+      "faq": [
+        {
+          "question": "Why does an inductor oppose change?",
+          "answer": "According to Lenz's Law, a changing current induces a magnetic field which creates a back-EMF that opposes the change in current."
+        }
+      ]
+    },
+    "voltage-divider": {
+      "metadataTitle": "Voltage Divider Calculator | Resistor Circuit",
+      "metadataDescription": "Calculate the output voltage (Vout) of a simple two-resistor voltage divider circuit.",
+      "metadataKeywords": "voltage divider, resistor divider, vout, electronics calculator, ohm's law",
+      "title": "Voltage Divider Calculator",
+      "description": "Calculate output voltage of a resistor divider.",
+      "vin": "Input Voltage (Vin)",
+      "r1": "Resistor R1",
+      "r2": "Resistor R2",
+      "vout": "Output Voltage (Vout)",
+      "whatIs": "<h3>What is a Voltage Divider?</h3><p>A <strong>voltage divider</strong> is a simple circuit that turns a large voltage into a smaller one using two series resistors.</p><p>It is widely used for reading sensors, creating reference voltages, and signal attenuation.</p>",
+      "howTo": "<h3>Voltage Divider Formula</h3><p>The output voltage depends on the ratio of the resistors:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Vout = Vin × [R2 / (R1 + R2)]</strong></div><p>R1 connects to Vin, and R2 connects to Ground. Vout is measured across R2.</p>",
+      "faq": [
+        {
+          "question": "Can I use this to power a motor?",
+          "answer": "<strong>No!</strong> Voltage dividers are for signals, not power. If you attach a load (like a motor) to Vout, it acts as a third resistor in parallel, causing the voltage to drop significantly."
+        }
+      ]
+    },
+    "led-resistor": {
+      "metadataTitle": "LED Resistor Calculator | Series Resistor",
+      "metadataDescription": "Calculate the correct series resistor value to protect your LED from burning out.",
+      "metadataKeywords": "led resistor, current limiting, led circuit, electronics calculator, diode",
+      "title": "LED Resistor Calculator",
+      "description": "Calculate required series resistor for an LED.",
+      "vs": "Supply Voltage (Vs)",
+      "vf": "LED Forward Voltage (Vf)",
+      "if": "LED Current (If)",
+      "resistor": "Resistor Value (R)",
+      "power": "Resistor Power Rating",
+      "whatIs": "<h3>Why do LEDs need resistors?</h3><p>LEDs are 'current-driven' devices. If you connect them directly to a voltage source higher than their forward voltage, they will draw infinite current and burn out instantly.</p><p>A series resistor limits the current to a safe level (usually 20mA for standard LEDs).</p>",
+      "howTo": "<h3>Ohm's Law for LEDs</h3><p>We need to drop the excess voltage across the resistor:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">R = (Vs - Vf) / If</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Vs:</strong> Supply Voltage</li><li><strong>Vf:</strong> LED Forward Voltage (e.g., 2V for Red, 3V for Blue)</li><li><strong>If:</strong> Desired Current (Amps)</li></ul>",
+      "faq": [
+        {
+          "question": "What is the Forward Voltage (Vf)?",
+          "answer": "It depends on color: Red/Orange/Yellow are usually ~2.0V, while Green/Blue/White are ~3.0-3.3V."
+        },
+        {
+          "question": "Can I put LEDs in parallel?",
+          "answer": "It's best to give each LED its own resistor. LEDs in parallel might not share current equally due to manufacturing variances, leading to one burning out first."
+        }
+      ]
+    },
+    "battery-life": {
+      "metadataTitle": "Battery Life Calculator | Estimator",
+      "metadataDescription": "Estimate how long a battery will last given its capacity and the load current consumption.",
+      "metadataKeywords": "battery life, runtime calculator, mah, capacity, electronics, power consumption",
+      "title": "Battery Life Calculator",
+      "description": "Estimate battery runtime for a given load.",
+      "capacity": "Battery Capacity (mAh)",
+      "load": "Load Current (mA)",
+      "hours": "Estimated Runtime",
+      "whatIs": "<h3>Battery Runtime Estimation</h3><p>This calculator estimates how long a device will run on a battery. It considers the capacity (how much 'fuel' the battery has) and the load (how fast the device drinks portions of that fuel).</p>",
+      "howTo": "<h3>Estimation Formula</h3><p>The basic formula is Capacity / Load, but real batteries aren't 100% efficient. We apply a <strong>derating factor of 0.7</strong> (Rule of Thumb) to account for discharge curves, temperature, and efficiency:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Time = (Capacity / Load) × 0.7</strong></div>",
+      "faq": [
+        {
+          "question": "Why the 0.7 factor?",
+          "answer": "Batteries rarely deliver their full rated capacity, especially at high discharge rates. Voltage drops as they empty, potentially hitting the device's cutoff voltage before the battery is chemically empty."
+        }
+      ]
+    },
+    "parallel-resistors": {
+      "metadataTitle": "Parallel Resistor Calculator | Equivalent Resistance",
+      "metadataDescription": "Calculate total equivalent resistance for resistors connected in parallel.",
+      "metadataKeywords": "parallel resistors, equivalent resistance, circuit calculator, ohm's law",
+      "title": "Parallel Resistors Calculator",
+      "description": "Calculate equivalent resistance of resistors in parallel.",
+      "r1": "Resistor 1",
+      "r2": "Resistor 2",
+      "r3": "Resistor 3 (Optional)",
+      "req": "Equivalent Resistance (Req)",
+      "whatIs": "<h3>Resistors in Parallel</h3><p>When resistors are connected in parallel, the total resistance decreases. The total current has multiple paths to flow through, making it 'easier' for electrons to pass.</p><p>The equivalent resistance is always <strong>lower</strong> than the smallest individual resistor.</p>",
+      "howTo": "<h3>Calculation Formula</h3><p>The inverse of the total resistance is the sum of the inverses:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">1/Req = 1/R1 + 1/R2 + 1/R3...</strong></div>",
+      "faq": [
+        {
+          "question": "Why put resistors in parallel?",
+          "answer": "To get a specific resistance value that isn't standard, or to increase the power handling capability (wattage) since the heat is shared across multiple components."
+        }
+      ]
+    },
+    "rc-time-constant": {
+      "metadataTitle": "RC Time Constant Calculator | Tau τ",
+      "metadataDescription": "Calculate the time constant (tau) of a resistor-capacitor circuit. Determine charging times.",
+      "metadataKeywords": "rc time constant, tau, capacitor charging, transient response, electronics calculator",
+      "title": "RC Time Constant Calculator",
+      "description": "Calculate capacitor charging time (τ).",
+      "resistance": "Resistance (R)",
+      "capacitance": "Capacitance (C)",
+      "tau": "Time Constant (τ)",
+      "fullCharge": "Full Charge Time (5τ)",
+      "whatIs": "<h3>What is the RC Time Constant?</h3><p>The <strong>Time Constant (symbol τ, Tau)</strong> represents the time required to charge a capacitor, through a resistor, to approximately 63.2% of the source voltage.</p><p>It also dictates how fast a filter responds to changes in signal.</p>",
+      "howTo": "<h3>Tau Formula</h3><p>The time constant is simply the product of R and C:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">τ = R × C</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>τ:</strong> Time in seconds</li><li><strong>R:</strong> Resistance in Ohms</li><li><strong>C:</strong> Capacitance in Farads</li></ul>",
+      "faq": [
+        {
+          "question": "When is the capacitor fully charged?",
+          "answer": "Theoretically never, but for practical purposes, it is considered fully charged (99.3%) after <strong>5 time constants (5τ)</strong>."
+        }
+      ]
+    },
+    "specific-heat": {
+      "metadataTitle": "Specific Heat Calculator (Q=mcΔT)",
+      "metadataDescription": "Calculate heat energy required to change temperature. Common materials presets included.",
+      "metadataKeywords": "specific heat, heat capacity, calorimetry, thermodynamics, physics calculator",
+      "title": "Specific Heat Calculator",
+      "description": "Calculate Heat Energy (Q) required to change temperature.",
+      "heat": "Heat Energy (Q)",
+      "mass": "Mass (m)",
+      "specificHeat": "Specific Heat (c)",
+      "tempChange": "Temp Change (ΔT)",
+      "whatIs": "<h3>What is Specific Heat?</h3><p><strong>Specific Heat Capacity (c)</strong> is the amount of energy required to raise the temperature of 1 kg of a substance by 1°C.</p><p>Water has a very high specific heat (4186 J/kg°C), which is why it takes a long time to boil and is effective for cooling.</p>",
+      "howTo": "<h3>Specific Heat Formula</h3><p>The fundamental equation of calorimetry:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Q = mcΔT</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Q:</strong> Heat Energy (Joules)</li><li><strong>m:</strong> Mass (kg)</li><li><strong>c:</strong> Specific Heat Capacity (J/kg°C)</li><li><strong>ΔT:</strong> Change in Temperature (°C)</li></ul>",
+      "faq": [
+        {
+          "question": "Does Q depend on initial temp?",
+          "answer": "No, only on the <strong>change</strong> in temperature (ΔT). However, specific heat (c) can change slightly with temperature, but we treat it as constant for simple problems."
+        }
+      ]
+    },
+    "thermal-expansion": {
+      "metadataTitle": "Thermal Expansion Calculator (ΔL)",
+      "metadataDescription": "Calculate linear expansion of solids due to temperature change.",
+      "metadataKeywords": "thermal expansion, linear expansion, expansion coefficient, thermodynamics",
+      "title": "Thermal Expansion Calculator",
+      "description": "Calculate Linear Thermal Expansion of solids.",
+      "length": "Initial Length (L₀)",
+      "alpha": "Coefficient (α)",
+      "tempChange": "Temp Change (ΔT)",
+      "deltaL": "Change in Length (ΔL)",
+      "finalL": "Final Length (L)",
+      "whatIs": "<h3>What is Thermal Expansion?</h3><p>Most materials expand when heated and contract when cooled. <strong>Linear expansion</strong> refers to the change in length of a solid.</p><p>Engineers must leave gaps in bridges and railway tracks to prevent buckling on hot days.</p>",
+      "howTo": "<h3>Expansion Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">ΔL = αL₀ΔT</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>ΔL:</strong> Change in Length (m)</li><li><strong>α (Alpha):</strong> Coefficient of Linear Expansion (1/°C)</li><li><strong>L₀:</strong> Initial Length (m)</li></ul>",
+      "faq": [
+        {
+          "question": "Which expands more: Steel or Aluminum?",
+          "answer": "Aluminum (α ≈ 23×10⁻⁶) expands almost twice as much as Steel (α ≈ 12×10⁻⁶) for the same temperature change."
+        }
+      ]
+    },
+    "boyles-law": {
+      "metadataTitle": "Boyle's Law Calculator (P₁V₁ = P₂V₂)",
+      "metadataDescription": "Calculate Pressure or Volume changes at constant Temperature.",
+      "metadataKeywords": "boyles law, gas laws, pressure volume, thermodynamics, ideal gas",
+      "title": "Boyle's Law Calculator",
+      "description": "Calculate Pressure/Volume at constant Temperature.",
+      "p1": "Initial Pressure (P₁)",
+      "v1": "Initial Volume (V₁)",
+      "p2": "Final Pressure (P₂)",
+      "v2": "Final Volume (V₂)",
+      "whatIs": "<h3>What is Boyle's Law?</h3><p><strong>Boyle's Law</strong> states that for a fixed amount of gas at a constant temperature, pressure and volume are inversely proportional. As volume decreases, pressure increases.</p>",
+      "howTo": "<h3>Boyle's Law Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">P₁V₁ = P₂V₂</strong></div><p>This means the product of pressure and volume remains constant as long as temperature doesn't change.</p>",
+      "faq": [
+        {
+          "question": "Real life example?",
+          "answer": "Squeezing a balloon decreases its volume, which increases the pressure inside until it might pop. Or a syringe: pushing the plunger (less volume) increases pressure."
+        }
+      ]
+    },
+    "charles-law": {
+      "metadataTitle": "Charles's Law Calculator (V₁/T₁ = V₂/T₂)",
+      "metadataDescription": "Calculate Volume or Temperature changes at constant Pressure.",
+      "metadataKeywords": "charles law, gas laws, volume temperature, thermodynamics",
+      "title": "Charles's Law Calculator",
+      "description": "Calculate Volume/Temp at constant Pressure.",
+      "v1": "Initial Volume (V₁)",
+      "t1": "Initial Temp (T₁)",
+      "v2": "Final Volume (V₂)",
+      "t2": "Final Temp (T₂)",
+      "whatIs": "<h3>What is Charles's Law?</h3><p><strong>Charles's Law</strong> states that volume is directly proportional to temperature (in Kelvin) at constant pressure. Heating a gas makes it expand.</p>",
+      "howTo": "<h3>Charles's Law Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">V₁ / T₁ = V₂ / T₂</strong></div><p><strong>Important:</strong> Temperature MUST be in Kelvin! (K = °C + 273.15)</p>",
+      "faq": [
+        {
+          "question": "Why Kelvin?",
+          "answer": "Gas laws don't work with Celsius or Fahrenheit because 0°C is not 'zero thermal energy'. Kelvin starts at Absolute Zero, where volume theoretically becomes zero."
+        }
+      ]
+    },
+    "ideal-gas-law": {
+      "metadataTitle": "Ideal Gas Law Calculator (PV=nRT)",
+      "metadataDescription": "Calculate Pressure, Volume, Temperature, or Moles using PV = nRT.",
+      "metadataKeywords": "ideal gas law, pv=nrt, gas constant, thermodynamics, physics calculator",
+      "title": "Ideal Gas Law Calculator",
+      "description": "Calculate properties of an Ideal Gas.",
+      "pressure": "Pressure (P)",
+      "volume": "Volume (V)",
+      "moles": "Moles (n)",
+      "temp": "Temperature (T)",
+      "whatIs": "<h3>What is the Ideal Gas Law?</h3><p>The <strong>Ideal Gas Law</strong> combines Boyle's, Charles's, and Avogadro's laws into one equation describing the state of a hypothetical ideal gas.</p>",
+      "howTo": "<h3>Ideal Gas Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">PV = nRT</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>P:</strong> Pressure (Pa)</li><li><strong>V:</strong> Volume (m³)</li><li><strong>n:</strong> Moles of substance</li><li><strong>R:</strong> Ideal Gas Constant (8.314 J/mol·K)</li><li><strong>T:</strong> Temperature (Kelvin)</li></ul>",
+      "faq": [
+        {
+          "question": "When is a gas 'Ideal'?",
+          "answer": "At high temperatures and low pressures. Real gases deviate from this law at high pressures or low temperatures (near liquefaction) due to molecular size and intermolecular forces."
+        }
+      ]
+    },
+    "hydrostatic-pressure": {
+      "metadataTitle": "Hydrostatic Pressure Calculator (P=ρgh)",
+      "metadataDescription": "Calculate pressure at depth in a fluid.",
+      "metadataKeywords": "hydrostatic pressure, fluid mechanics, pressure depth, physics calculator",
+      "title": "Hydrostatic Pressure Calculator",
+      "description": "Calculate pressure at a specific depth.",
+      "density": "Density (ρ)",
+      "gravity": "Gravity (g)",
+      "height": "Depth (h)",
+      "pressure": "Pressure (P)",
+      "whatIs": "<h3>What is Hydrostatic Pressure?</h3><p>It is the pressure exerted by a fluid at equilibrium at a given point within the fluid, due to the force of gravity. Pressure increases with depth.</p>",
+      "howTo": "<h3>Hydrostatic Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">P = ρgh</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>ρ (rho):</strong> Fluid Density (kg/m³)</li><li><strong>g:</strong> Gravity (9.81 m/s²)</li><li><strong>h:</strong> Depth (m)</li></ul>",
+      "faq": [
+        {
+          "question": "Does shape of container matter?",
+          "answer": "No! Only the depth matters. This is known as the 'Hydrostatic Paradox'. A thin tube and a swimming pool have the same pressure at the same depth."
+        }
+      ]
+    },
+    "buoyancy": {
+      "metadataTitle": "Buoyancy Calculator (Archimedes)",
+      "metadataDescription": "Calculate Buoyant Force based on displaced fluid volume.",
+      "metadataKeywords": "buoyancy, archimedes principle, fluid mechanics, floating, displacement",
+      "title": "Buoyancy Calculator",
+      "description": "Calculate Buoyant Force (Archimedes' Principle).",
+      "density": "Fluid Density (ρ)",
+      "volume": "Displaced Volume (V)",
+      "gravity": "Gravity (g)",
+      "force": "Buoyant Force (Fb)",
+      "liftMass": "Mass of Displaced Fluid",
+      "whatIs": "<h3>What is Buoyancy?</h3><p><strong>Buoyancy</strong> is the upward force exerted by a fluid that opposes the weight of a partially or fully immersed object.</p><p><strong>Archimedes' Principle:</strong> The buoyant force is equal to the weight of the fluid displaced by the object.</p>",
+      "howTo": "<h3>Buoyancy Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Fb = ρVg</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>ρ:</strong> Fluid Density (kg/m³)</li><li><strong>V:</strong> Displaced Volume (m³)</li><li><strong>g:</strong> Gravity</li></ul>",
+      "faq": [
+        {
+          "question": "Why do steel ships float?",
+          "answer": "Because they are shaped to displace a huge volume of water. The weight of that water is greater than the weight of the steel ship!"
+        }
+      ]
+    },
+    "reynolds-number": {
+      "metadataTitle": "Reynolds Number Calculator (Re)",
+      "metadataDescription": "Calculate Reynolds Number to predict Laminar vs Turbulent flow.",
+      "metadataKeywords": "reynolds number, fluid dynamics, laminar flow, turbulent flow, pipe flow",
+      "title": "Reynolds Number Calculator",
+      "description": "Predict Laminar vs Turbulent flow.",
+      "velocity": "Flow Velocity (v)",
+      "length": "Char. Length (D)",
+      "viscosityType": "Viscosity Input",
+      "dynamicVisc": "Dynamic Viscosity (μ)",
+      "kinematicVisc": "Kinematic Viscosity (ν)",
+      "re": "Reynolds Number (Re)",
+      "regime": "Flow Regime",
+      "whatIs": "<h3>What is Reynolds Number?</h3><p>The <strong>Reynolds Number (Re)</strong> is a dimensionless quantity used to predict flow patterns in different fluid flow situations.</p><p>Low Re indicates laminar (smooth) flow. High Re indicates turbulent (chaotic) flow.</p>",
+      "howTo": "<h3>Re Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Re = (ρvD) / μ = vD / ν</strong></div><p>Changes from Laminar to Turbulent typically occur between Re 2300 and 4000 in pipes.</p>",
+      "faq": [
+        {
+          "question": "Why is it unitless?",
+          "answer": "Because the units in the numerator and denominator cancel out perfectly. It allows scaling of experiments (e.g., testing small airplane models in wind tunnels)."
+        }
+      ]
+    },
+    "pascal-principle": {
+      "metadataTitle": "Pascal's Principle Calculator | Hydraulic Lift",
+      "metadataDescription": "Solve hydraulic lift problems. Calculate input force, output force, or piston areas.",
+      "metadataKeywords": "pascal principle, hydraulics, hydraulic lift, pressure force, fluid mechanics",
+      "title": "Pascal's Principle Calculator",
+      "description": "Calculate Force and Area ratios for hydraulic systems (F₁/A₁ = F₂/A₂).",
+      "f1": "Input Force (F₁)",
+      "a1": "Input Area (A₁)",
+      "a2": "Output Area (A₂)",
+      "f2": "Output Force (F₂)",
+      "amplification": "Force Multiplier",
+      "whatIs": "<h3>What is Pascal's Principle?</h3><p>Pascal's Principle states that a pressure change occurring anywhere in a confined incompressible fluid is transmitted throughout the fluid such that the same change occurs everywhere.</p><p>This is the fundamental principle behind <strong>hydraulic systems</strong>, such as car brakes and hydraulic lifts.</p>",
+      "howTo": "<h3>Hydraulic Lift Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">F₁ / A₁ = F₂ / A₂</strong></div><p>To use this calculator, enter the input force and both piston areas to find the output force. You can also see the force multiplier (A₂/A₁).</p>",
+      "faq": [
+        {
+          "question": "Does a hydraulic lift create energy?",
+          "answer": "No. While a hydraulic lift increases force, it does not increase energy. The smaller piston must be moved through a larger distance compared to the larger piston."
+        }
+      ]
+    },
+    "heat-transfer-conduction": {
+      "metadataTitle": "Heat Conduction Calculator | Fourier Law",
+      "metadataDescription": "Calculate rate of heat transfer through a material via conduction.",
+      "metadataKeywords": "heat transfer, conduction, fourier law, thermal conductivity, thermodynamics",
+      "title": "Heat Conduction Calculator",
+      "description": "Calculate Heat Transfer Rate using Fourier's Law.",
+      "k": "Thermal Conductivity (k) W/m·K",
+      "area": "Surface Area (A) m²",
+      "thickness": "Thickness (d) m",
+      "tempDiff": "Temp Difference (ΔT) °C",
+      "rate": "Heat Transfer Rate (Q/t)",
+      "whatIs": "<h3>What is Thermal Conduction?</h3><p><strong>Conduction</strong> is the process where heat is transferred through a material by direct contact of particles. In solids, this happens through vibration of atoms and movement of free electrons.</p>",
+      "howTo": "<h3>Fourier's Law Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Q/t = (k × A × ΔT) / d</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>k:</strong> Thermal conductivity</li><li><strong>A:</strong> Surface area</li><li><strong>ΔT:</strong> Temperature difference</li><li><strong>d:</strong> Material thickness</li></ul>",
+      "faq": [
+        {
+          "question": "Which materials conduct heat best?",
+          "answer": "Metals like silver, copper, and aluminum are excellent heat conductors. Materials like wood, plastic, and trapped air are poor conductors (insulators)."
+        }
+      ]
+    },
+    "snells-law": {
+      "metadataTitle": "Snell's Law Calculator | Angle of Refraction",
+      "metadataDescription": "Calculate the angle of refraction or refractive index using Snell's Law.",
+      "metadataKeywords": "snell law, refraction, optics, refractive index, light physics",
+      "title": "Snell's Law Calculator",
+      "description": "Calculate Refraction Angles.",
+      "n1": "Index 1 (n₁)",
+      "theta1": "Incident Angle (θ₁)",
+      "n2": "Index 2 (n₂)",
+      "theta2": "Refracted Angle (θ₂)",
+      "whatIs": "<h3>What is Snell's Law?</h3><p><strong>Snell's Law</strong> (also known as the law of refraction) describes the relationship between the angles of incidence and refraction when light passes through the boundary between two different media, such as air and water.</p>",
+      "howTo": "<h3>Snell's Law Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">n₁ sin(θ₁) = n₂ sin(θ₂)</strong></div><p>Where n₁ and n₂ are the refractive indices of the media, and θ₁ and θ₂ are the angles relative to the normal (perpendicular line) at the boundary.</p>",
+      "faq": [
+        {
+          "question": "What is the refractive index of water?",
+          "answer": "The refractive index of pure water is approximately 1.33."
+        }
+      ]
+    },
+    "lens-equation": {
+      "metadataTitle": "Lens Equation Calculator | Thin Lens Formula",
+      "metadataDescription": "Calculate focal length, object distance, or image distance for lenses.",
+      "metadataKeywords": "lens equation, focal length, image distance, optics, physics",
+      "title": "Lens Equation Calculator",
+      "description": "Solve Thin Lens Formula.",
+      "f": "Focal Length (f)",
+      "do": "Object Distance (dₒ)",
+      "di": "Image Distance (dᵢ)",
+      "whatIs": "<h3>What is the Lens Equation?</h3><p>The <strong>Thin Lens Equation</strong> relates the focal length of a lens to the distances of the object and the resulting image.</p>",
+      "howTo": "<h3>Lens Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">1/f = 1/dₒ + 1/dᵢ</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Focal length</li><li><strong>dₒ:</strong> Distance from object to lens</li><li><strong>dᵢ:</strong> Distance from image to lens</li></ul>",
+      "faq": [
+        {
+          "question": "Is focal length positive or negative?",
+          "answer": "For converging (convex) lenses, focal length is positive. For diverging (concave) lenses, it is negative."
+        }
+      ]
+    },
+    "mirror-equation": {
+      "metadataTitle": "Mirror Equation Calculator | Spherical Mirror Formula",
+      "metadataDescription": "Calculate properties for concave and convex mirrors.",
+      "metadataKeywords": "mirror equation, concave mirror, convex mirror, optics, physics",
+      "title": "Mirror Equation Calculator",
+      "description": "Solve Spherical Mirror Formula.",
+      "type": "Mirror Type",
+      "f": "Focal Length (f)",
+      "do": "Object Distance (dₒ)",
+      "di": "Image Distance (dᵢ)",
+      "whatIs": "<h3>What is the Mirror Equation?</h3><p>Similar to lenses, the <strong>Mirror Equation</strong> relates the focal length of a spherical mirror to the object and image distances.</p>",
+      "howTo": "<h3>Mirror Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">1/f = 1/dₒ + 1/dᵢ</strong></div><p>Note: For concave mirrors, f is positive. For convex mirrors, f is negative.</p>",
+      "faq": [
+        {
+          "question": "What is a virtual image?",
+          "answer": "A virtual image occurs when dᵢ is negative. It appears to be 'behind' the mirror and cannot be projected onto a screen."
+        }
+      ]
+    },
+    "magnification": {
+      "metadataTitle": "Magnification Calculator | Linear Magnification",
+      "metadataDescription": "Calculate image height or magnification factor for optical systems.",
+      "metadataKeywords": "magnification, optics, image height, lens magnification, physics",
+      "title": "Magnification Calculator",
+      "description": "Calculate Optical Magnification.",
+      "di": "Image Distance (dᵢ)",
+      "do": "Object Distance (dₒ)",
+      "ho": "Object Height (hₒ)",
+      "m": "Magnification (M)",
+      "hi": "Image Height (hᵢ)",
+      "whatIs": "<h3>What is Magnification?</h3><p><strong>Magnification</strong> is the ratio of the image height to the object height. It tells you how much larger or smaller the image is compared to the original object.</p>",
+      "howTo": "<h3>Magnification Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">M = -dᵢ / dₒ = hᵢ / hₒ</strong></div><p>A negative magnification indicates that the image is inverted.</p>",
+      "faq": [
+        {
+          "question": "What does M < 1 mean?",
+          "answer": "If the absolute value of M is less than 1, the image is smaller than the object (diminished)."
+        }
+      ]
+    },
+    "wave-speed": {
+      "metadataTitle": "Wave Speed Calculator | v = fλ",
+      "metadataDescription": "Calculate wave velocity, frequency, or wavelength.",
+      "metadataKeywords": "wave speed, frequency, wavelength, wave equation, physics",
+      "title": "Wave Speed Calculator",
+      "description": "Solve the Wave Equation.",
+      "v": "Velocity (v)",
+      "f": "Frequency (f)",
+      "l": "Wavelength (λ)",
+      "whatIs": "<h3>What is the Wave Equation?</h3><p>The <strong>Wave Equation</strong> relates the speed of a wave to its frequency and wavelength. This applies to all waves, including sound, light, and water waves.</p>",
+      "howTo": "<h3>Wave Speed Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">v = f × λ</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>v:</strong> Wave speed (m/s)</li><li><strong>f:</strong> Frequency (Hz)</li><li><strong>λ:</strong> Wavelength (m)</li></ul>",
+      "faq": [
+        {
+          "question": "What is the speed of light?",
+          "answer": "In a vacuum, light travels at approximately 299,792,458 m/s (usually rounded to 3x10⁸ m/s)."
+        }
+      ]
+    },
+    "frequency-period": {
+      "metadataTitle": "Frequency & Period Calculator | f = 1/T",
+      "metadataDescription": "Simple tool to calculate frequency from period or vice versa.",
+      "metadataKeywords": "frequency, period, oscillation, physics, waves",
+      "title": "Frequency & Period Calculator",
+      "description": "Convert Frequency and Period.",
+      "f": "Frequency (Hz)",
+      "t": "Period (s)",
+      "whatIs": "<h3>Frequency vs Period</h3><p><strong>Frequency (f)</strong> is the number of cycles per second. <strong>Period (T)</strong> is the time it takes for one complete cycle.</p>",
+      "howTo": "<h3>Relationship Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">f = 1 / T</strong></div><p>They are inversely proportional: as period increases, frequency decreases.</p>",
+      "faq": [
+        {
+          "question": "What is 1 Hertz (Hz)?",
+          "answer": "1 Hz equals one cycle per second."
+        }
+      ]
+    },
+    "photon-energy": {
+      "metadataTitle": "Photon Energy Calculator | Planck's Law",
+      "metadataDescription": "Determine photon energy in Joules or electron-volts (eV).",
+      "metadataKeywords": "photon energy, planck law, optics, quantum physics, wavelength",
+      "title": "Photon Energy Calculator",
+      "description": "Calculate Light Particle Energy.",
+      "val": "Input Value",
+      "joules": "Energy (Joules)",
+      "ev": "Energy (eV)",
+      "whatIs": "<h3>What is Photon Energy?</h3><p>Photons are elementary particles of light. Their energy is directly proportional to their electromagnetic frequency and inversely proportional to their wavelength.</p>",
+      "howTo": "<h3>Energy Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">E = hf = hc / λ</strong></div><p>Where <strong>h</strong> is Planck's constant (6.626 x 10⁻³⁴ J·s) and <strong>c</strong> is the speed of light.</p>",
+      "faq": [
+        {
+          "question": "Which light has more energy: Red or Blue?",
+          "answer": "Blue light has a shorter wavelength and higher frequency, therefore blue photons have more energy than red photons."
+        }
+      ]
+    },
+    "doppler-effect": {
+      "metadataTitle": "Doppler Effect Calculator | Frequency Shift",
+      "metadataDescription": "Calculate frequency shifts for sound or light waves.",
+      "metadataKeywords": "doppler effect, frequency shift, waves, physics, acoustics",
+      "title": "Doppler Effect Calculator",
+      "description": "Calculate Frequency Shifts.",
+      "fs": "Source Frequency",
+      "v": "Wave Speed",
+      "vo": "Observer Velocity",
+      "vs": "Source Velocity",
+      "fo": "Observed Frequency",
+      "whatIs": "<h3>What is the Doppler Effect?</h3><p>The <strong>Doppler Effect</strong> is the change in frequency of a wave in relation to an observer who is moving relative to the wave source (e.g., the changing pitch of a siren passing by).</p>",
+      "howTo": "<h3>Doppler Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">fₒ = fₛ (v + vₒ) / (v - vₛ)</strong></div><p>Ensure that velocities are positive if moving toward each other and negative if moving away.</p>",
+      "faq": [
+        {
+          "question": "Does it apply to light?",
+          "answer": "Yes. This causes 'Redshift' for stars moving away from Earth and 'Blueshift' for those moving toward us."
+        }
+      ]
+    },
+    "sound-intensity": {
+      "metadataTitle": "Sound Intensity Level | dB Calculator",
+      "metadataDescription": "Convert between sound intensity (W/m²) and decibels (dB).",
+      "metadataKeywords": "sound intensity, decibels, dB, acoustics, physics",
+      "title": "Sound Intensity Calculator",
+      "description": "Convert Intensity and dB.",
+      "val": "Input Value",
+      "result": "Result",
+      "whatIs": "<h3>Sound Intensity Level</h3><p>Sound intensity level is a logarithmic measure of the intensity of a sound relative to a reference value (the threshold of human hearing).</p>",
+      "howTo": "<h3>Intensity Level Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">L = 10 log₁₀( I / I₀ )</strong></div><p>Where I₀ is the threshold of hearing (10⁻¹² W/m²).</p>",
+      "faq": [
+        {
+          "question": "What is the threshold of pain?",
+          "answer": "Typically around 120 dB to 130 dB for the human ear."
+        }
+      ]
+    },
+    "brewsters-angle": {
+      "metadataTitle": "Brewster's Angle Calculator | Polarization",
+      "metadataDescription": "Calculate the angle at which reflected light is perfectly polarized.",
+      "metadataKeywords": "brewster angle, polarization, optics, refractive index, physics",
+      "title": "Brewster's Angle Calculator",
+      "description": "Calculate Polarization Angle.",
+      "n1": "Index 1 (n₁)",
+      "n2": "Index 2 (n₂)",
+      "theta": "Brewster's Angle",
+      "whatIs": "<h3>What is Brewster's Angle?</h3><p><strong>Brewster's Angle</strong> (also known as the polarization angle) is an angle of incidence at which light with a particular polarization is perfectly transmitted through a transparent surface, with no reflection.</p>",
+      "howTo": "<h3>Brewster Formula</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">θ_B = arctan( n₂ / n₁ )</strong></div><p>Reflected light at this angle is 100% linearly polarized.</p>",
+      "faq": [
+        {
+          "question": "How do polarized sunglasses work?",
+          "answer": "They block reflected glare (which is often polarized horizontally) from surfaces like water or roads, improving visibility."
+        }
+      ]
     }
   }
 }

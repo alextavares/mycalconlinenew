@@ -1,0 +1,345 @@
+src/config/calculators.ts(4058,13): error TS1003: Identifier expected.
+src/config/calculators.ts(4058,30): error TS1003: Identifier expected.
+src/config/calculators.ts(4058,44): error TS1003: Identifier expected.
+src/config/calculators.ts(4099,9): error TS1109: Expression expected.
+src/config/calculators.ts(4251,9): error TS1109: Expression expected.
+src/config/calculators.ts(4472,9): error TS1109: Expression expected.
+src/config/calculators.ts(4666,9): error TS1109: Expression expected.
+src/config/calculators.ts(4804,9): error TS1109: Expression expected.
+src/config/calculators.ts(4946,9): error TS1109: Expression expected.
+src/config/calculators.ts(5087,9): error TS1109: Expression expected.
+src/config/calculators.ts(5225,9): error TS1109: Expression expected.
+src/config/calculators.ts(5382,9): error TS1109: Expression expected.
+src/config/calculators.ts(5546,9): error TS1109: Expression expected.
+src/config/calculators.ts(5669,9): error TS1109: Expression expected.
+src/config/calculators.ts(5833,9): error TS1109: Expression expected.
+src/config/calculators.ts(5994,9): error TS1109: Expression expected.
+src/config/calculators.ts(6144,9): error TS1109: Expression expected.
+src/config/calculators.ts(6311,9): error TS1109: Expression expected.
+src/config/calculators.ts(6483,9): error TS1109: Expression expected.
+src/config/calculators.ts(6705,9): error TS1109: Expression expected.
+src/config/calculators.ts(6869,9): error TS1109: Expression expected.
+src/config/calculators.ts(7040,9): error TS1109: Expression expected.
+src/config/calculators.ts(7181,9): error TS1109: Expression expected.
+src/config/calculators.ts(7322,9): error TS1109: Expression expected.
+src/config/calculators.ts(7461,9): error TS1109: Expression expected.
+src/config/calculators.ts(7566,9): error TS1109: Expression expected.
+src/config/calculators.ts(7712,9): error TS1109: Expression expected.
+src/config/calculators.ts(7816,9): error TS1109: Expression expected.
+src/config/calculators.ts(7935,9): error TS1109: Expression expected.
+src/config/calculators.ts(8016,9): error TS1109: Expression expected.
+src/config/calculators.ts(8077,9): error TS1109: Expression expected.
+src/config/calculators.ts(8198,9): error TS1109: Expression expected.
+src/config/calculators.ts(8305,9): error TS1109: Expression expected.
+src/config/calculators.ts(8361,9): error TS1109: Expression expected.
+src/config/calculators.ts(8427,9): error TS1109: Expression expected.
+src/config/calculators.ts(8598,9): error TS1109: Expression expected.
+src/config/calculators.ts(9001,5): error TS1109: Expression expected.
+src/config/calculators.ts(9032,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9032,19): error TS1005: ',' expected.
+src/config/calculators.ts(9032,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(9032,26): error TS1137: Expression or comma expected.
+src/config/calculators.ts(9032,32): error TS1109: Expression expected.
+src/config/calculators.ts(9033,13): error TS1109: Expression expected.
+src/config/calculators.ts(9033,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(9034,19): error TS1109: Expression expected.
+src/config/calculators.ts(9036,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9037,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9235,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9235,19): error TS1005: ',' expected.
+src/config/calculators.ts(9235,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(9236,9): error TS1005: ',' expected.
+src/config/calculators.ts(9236,11): error TS1109: Expression expected.
+src/config/calculators.ts(9237,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9246,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9316,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9316,20): error TS1005: ',' expected.
+src/config/calculators.ts(9316,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(9316,27): error TS1137: Expression or comma expected.
+src/config/calculators.ts(9316,33): error TS1109: Expression expected.
+src/config/calculators.ts(9317,13): error TS1109: Expression expected.
+src/config/calculators.ts(9317,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(9319,11): error TS1109: Expression expected.
+src/config/calculators.ts(9320,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9325,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9369,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9369,19): error TS1005: ',' expected.
+src/config/calculators.ts(9369,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(9370,9): error TS1005: ',' expected.
+src/config/calculators.ts(9370,11): error TS1109: Expression expected.
+src/config/calculators.ts(9371,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9374,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9477,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9477,20): error TS1005: ',' expected.
+src/config/calculators.ts(9477,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(9478,9): error TS1005: ',' expected.
+src/config/calculators.ts(9478,11): error TS1109: Expression expected.
+src/config/calculators.ts(9479,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9484,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9667,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9667,22): error TS1005: ',' expected.
+src/config/calculators.ts(9667,24): error TS1136: Property assignment expected.
+src/config/calculators.ts(9667,29): error TS1137: Expression or comma expected.
+src/config/calculators.ts(9667,35): error TS1109: Expression expected.
+src/config/calculators.ts(9668,13): error TS1109: Expression expected.
+src/config/calculators.ts(9668,19): error TS1109: Expression expected.
+src/config/calculators.ts(9670,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9671,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9967,19): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(9967,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(9967,23): error TS1136: Property assignment expected.
+src/config/calculators.ts(9968,9): error TS1005: ',' expected.
+src/config/calculators.ts(9968,11): error TS1109: Expression expected.
+src/config/calculators.ts(9969,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(9973,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10016,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10016,19): error TS1005: ',' expected.
+src/config/calculators.ts(10016,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10016,26): error TS1137: Expression or comma expected.
+src/config/calculators.ts(10016,32): error TS1109: Expression expected.
+src/config/calculators.ts(10017,13): error TS1109: Expression expected.
+src/config/calculators.ts(10017,19): error TS1109: Expression expected.
+src/config/calculators.ts(10019,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10020,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10054,9): error TS1109: Expression expected.
+src/config/calculators.ts(10335,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10335,22): error TS1005: ',' expected.
+src/config/calculators.ts(10335,24): error TS1136: Property assignment expected.
+src/config/calculators.ts(10336,9): error TS1005: ',' expected.
+src/config/calculators.ts(10336,11): error TS1109: Expression expected.
+src/config/calculators.ts(10337,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10346,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10503,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10503,19): error TS1005: ',' expected.
+src/config/calculators.ts(10503,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10504,9): error TS1005: ',' expected.
+src/config/calculators.ts(10504,11): error TS1109: Expression expected.
+src/config/calculators.ts(10505,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10508,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10589,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10589,19): error TS1005: ',' expected.
+src/config/calculators.ts(10589,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10589,26): error TS1137: Expression or comma expected.
+src/config/calculators.ts(10589,32): error TS1109: Expression expected.
+src/config/calculators.ts(10590,13): error TS1109: Expression expected.
+src/config/calculators.ts(10590,19): error TS1109: Expression expected.
+src/config/calculators.ts(10592,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10593,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10634,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10634,19): error TS1005: ',' expected.
+src/config/calculators.ts(10634,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10635,9): error TS1005: ',' expected.
+src/config/calculators.ts(10635,11): error TS1109: Expression expected.
+src/config/calculators.ts(10636,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10639,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10695,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10695,19): error TS1005: ',' expected.
+src/config/calculators.ts(10695,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10696,9): error TS1005: ',' expected.
+src/config/calculators.ts(10696,11): error TS1109: Expression expected.
+src/config/calculators.ts(10697,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10700,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10741,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10741,19): error TS1005: ',' expected.
+src/config/calculators.ts(10741,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10741,26): error TS1137: Expression or comma expected.
+src/config/calculators.ts(10741,32): error TS1109: Expression expected.
+src/config/calculators.ts(10742,13): error TS1109: Expression expected.
+src/config/calculators.ts(10742,19): error TS1109: Expression expected.
+src/config/calculators.ts(10744,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10745,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10796,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(10796,19): error TS1005: ',' expected.
+src/config/calculators.ts(10796,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(10797,9): error TS1005: ',' expected.
+src/config/calculators.ts(10797,11): error TS1109: Expression expected.
+src/config/calculators.ts(10798,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(10801,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11367,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(11367,19): error TS1005: ',' expected.
+src/config/calculators.ts(11367,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(11368,9): error TS1005: ',' expected.
+src/config/calculators.ts(11368,11): error TS1109: Expression expected.
+src/config/calculators.ts(11369,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11375,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11426,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(11426,22): error TS1005: ',' expected.
+src/config/calculators.ts(11426,24): error TS1136: Property assignment expected.
+src/config/calculators.ts(11426,29): error TS1137: Expression or comma expected.
+src/config/calculators.ts(11426,35): error TS1109: Expression expected.
+src/config/calculators.ts(11428,13): error TS1109: Expression expected.
+src/config/calculators.ts(11429,11): error TS1109: Expression expected.
+src/config/calculators.ts(11430,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11436,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11513,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(11513,24): error TS1005: ',' expected.
+src/config/calculators.ts(11513,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(11513,31): error TS1137: Expression or comma expected.
+src/config/calculators.ts(11513,37): error TS1109: Expression expected.
+src/config/calculators.ts(11515,13): error TS1109: Expression expected.
+src/config/calculators.ts(11516,11): error TS1109: Expression expected.
+src/config/calculators.ts(11517,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11526,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11651,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(11651,24): error TS1005: ',' expected.
+src/config/calculators.ts(11651,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(11651,31): error TS1137: Expression or comma expected.
+src/config/calculators.ts(11651,37): error TS1109: Expression expected.
+src/config/calculators.ts(11652,13): error TS1109: Expression expected.
+src/config/calculators.ts(11653,11): error TS1109: Expression expected.
+src/config/calculators.ts(11659,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11660,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(11875,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(11875,28): error TS1003: Identifier expected.
+src/config/calculators.ts(11876,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(11876,28): error TS1003: Identifier expected.
+src/config/calculators.ts(12172,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(12172,20): error TS1005: ',' expected.
+src/config/calculators.ts(12172,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(12173,9): error TS1005: ',' expected.
+src/config/calculators.ts(12173,11): error TS1109: Expression expected.
+src/config/calculators.ts(12174,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12181,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12226,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(12226,28): error TS1003: Identifier expected.
+src/config/calculators.ts(12307,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(12307,28): error TS1003: Identifier expected.
+src/config/calculators.ts(12620,19): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(12620,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(12620,23): error TS1136: Property assignment expected.
+src/config/calculators.ts(12620,28): error TS1137: Expression or comma expected.
+src/config/calculators.ts(12620,34): error TS1109: Expression expected.
+src/config/calculators.ts(12621,13): error TS1109: Expression expected.
+src/config/calculators.ts(12621,19): error TS1109: Expression expected.
+src/config/calculators.ts(12623,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12624,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12907,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(12907,24): error TS1005: ',' expected.
+src/config/calculators.ts(12907,26): error TS1136: Property assignment expected.
+src/config/calculators.ts(12907,31): error TS1137: Expression or comma expected.
+src/config/calculators.ts(12907,37): error TS1109: Expression expected.
+src/config/calculators.ts(12908,13): error TS1109: Expression expected.
+src/config/calculators.ts(12908,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(12909,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(12910,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(12911,22): error TS1109: Expression expected.
+src/config/calculators.ts(12911,24): error TS1109: Expression expected.
+src/config/calculators.ts(12911,29): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12911,37): error TS1109: Expression expected.
+src/config/calculators.ts(12912,13): error TS1109: Expression expected.
+src/config/calculators.ts(12912,19): error TS1109: Expression expected.
+src/config/calculators.ts(12914,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12915,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12970,26): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(12970,38): error TS1005: ',' expected.
+src/config/calculators.ts(12970,40): error TS1136: Property assignment expected.
+src/config/calculators.ts(12970,57): error TS1005: ',' expected.
+src/config/calculators.ts(12970,60): error TS1109: Expression expected.
+src/config/calculators.ts(12971,13): error TS1137: Expression or comma expected.
+src/config/calculators.ts(12971,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(12972,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(12973,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(12974,19): error TS1109: Expression expected.
+src/config/calculators.ts(12976,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(12977,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13023,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(13023,20): error TS1005: ',' expected.
+src/config/calculators.ts(13023,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(13023,27): error TS1137: Expression or comma expected.
+src/config/calculators.ts(13023,33): error TS1109: Expression expected.
+src/config/calculators.ts(13024,13): error TS1109: Expression expected.
+src/config/calculators.ts(13024,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(13025,19): error TS1109: Expression expected.
+src/config/calculators.ts(13027,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13028,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13130,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(13130,19): error TS1005: ',' expected.
+src/config/calculators.ts(13130,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(13131,9): error TS1005: ',' expected.
+src/config/calculators.ts(13131,11): error TS1109: Expression expected.
+src/config/calculators.ts(13132,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13135,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13314,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(13314,20): error TS1005: ',' expected.
+src/config/calculators.ts(13314,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(13315,9): error TS1005: ',' expected.
+src/config/calculators.ts(13315,11): error TS1109: Expression expected.
+src/config/calculators.ts(13316,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13322,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13365,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(13365,21): error TS1005: ',' expected.
+src/config/calculators.ts(13365,23): error TS1136: Property assignment expected.
+src/config/calculators.ts(13365,28): error TS1137: Expression or comma expected.
+src/config/calculators.ts(13365,34): error TS1109: Expression expected.
+src/config/calculators.ts(13366,13): error TS1109: Expression expected.
+src/config/calculators.ts(13366,19): error TS1109: Expression expected.
+src/config/calculators.ts(13368,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13369,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13445,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(13445,27): error TS1005: ',' expected.
+src/config/calculators.ts(13445,29): error TS1136: Property assignment expected.
+src/config/calculators.ts(13445,34): error TS1137: Expression or comma expected.
+src/config/calculators.ts(13445,40): error TS1109: Expression expected.
+src/config/calculators.ts(13446,13): error TS1109: Expression expected.
+src/config/calculators.ts(13446,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(13447,18): error TS1134: Variable declaration expected.
+src/config/calculators.ts(13450,11): error TS1109: Expression expected.
+src/config/calculators.ts(13455,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13456,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13741,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(13741,19): error TS1005: ',' expected.
+src/config/calculators.ts(13741,21): error TS1136: Property assignment expected.
+src/config/calculators.ts(13741,26): error TS1137: Expression or comma expected.
+src/config/calculators.ts(13741,32): error TS1109: Expression expected.
+src/config/calculators.ts(13743,13): error TS1109: Expression expected.
+src/config/calculators.ts(13743,19): error TS1109: Expression expected.
+src/config/calculators.ts(13745,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(13746,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(14250,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(14250,21): error TS1005: ',' expected.
+src/config/calculators.ts(14250,23): error TS1136: Property assignment expected.
+src/config/calculators.ts(14250,28): error TS1137: Expression or comma expected.
+src/config/calculators.ts(14250,34): error TS1109: Expression expected.
+src/config/calculators.ts(14251,13): error TS1109: Expression expected.
+src/config/calculators.ts(14251,19): error TS1109: Expression expected.
+src/config/calculators.ts(14253,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(14254,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(14676,21): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(14676,23): error TS1136: Property assignment expected.
+src/config/calculators.ts(14676,25): error TS1136: Property assignment expected.
+src/config/calculators.ts(14677,13): error TS1137: Expression or comma expected.
+src/config/calculators.ts(14677,17): error TS1137: Expression or comma expected.
+src/config/calculators.ts(14677,21): error TS1137: Expression or comma expected.
+src/config/calculators.ts(14678,11): error TS1109: Expression expected.
+src/config/calculators.ts(14679,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(14681,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(14873,16): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(14873,20): error TS1005: ',' expected.
+src/config/calculators.ts(14873,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(14873,27): error TS1137: Expression or comma expected.
+src/config/calculators.ts(14873,33): error TS1109: Expression expected.
+src/config/calculators.ts(14874,13): error TS1109: Expression expected.
+src/config/calculators.ts(14874,19): error TS1109: Expression expected.
+src/config/calculators.ts(14876,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(14877,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(15200,32): error TS1138: Parameter declaration expected.
+src/config/calculators.ts(15200,38): error TS1005: ',' expected.
+src/config/calculators.ts(15200,40): error TS1136: Property assignment expected.
+src/config/calculators.ts(15201,9): error TS1005: ',' expected.
+src/config/calculators.ts(15201,12): error TS1109: Expression expected.
+src/config/calculators.ts(15202,22): error TS1136: Property assignment expected.
+src/config/calculators.ts(15202,24): error TS1003: Identifier expected.
+src/config/calculators.ts(15204,5): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(15206,1): error TS1128: Declaration or statement expected.
+src/config/calculators.ts(15915,9): error TS1109: Expression expected.
+src/config/calculators.ts(16265,9): error TS1109: Expression expected.
+src/config/calculators.ts(25921,9): error TS1109: Expression expected.
+src/config/calculators.ts(30419,9): error TS1109: Expression expected.
+src/config/calculators.ts(30541,9): error TS1109: Expression expected.
+src/config/calculators.ts(30666,9): error TS1109: Expression expected.
+src/config/calculators.ts(30768,9): error TS1109: Expression expected.
+src/config/calculators.ts(30887,9): error TS1109: Expression expected.
+src/config/calculators.ts(31006,9): error TS1109: Expression expected.
+src/config/calculators.ts(31116,9): error TS1109: Expression expected.
+src/config/calculators.ts(31224,9): error TS1109: Expression expected.
+src/config/calculators.ts(31539,9): error TS1109: Expression expected.

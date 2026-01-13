@@ -1,0 +1,961 @@
+src/config/calculators.ts(1427,13): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(1428,13): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(2074,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(2755,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(2777,17): error TS2322: Type '({ id: string; label: string; type: "select"; defaultValue: string; options: { value: string; label: string; }[]; width: string; } | { id: string; label: string; type: "number"; placeholder: (inputs: any) => "e.g. 20" | ... 2 more ... | "Value 1"; condition: () => true; } | { ...; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; type: "select"; defaultValue: string; options: { value: string; label: string; }[]; width: string; } | { id: string; label: string; type: "number"; placeholder: (inputs: any) => "e.g. 20" | ... 2 more ... | "Value 1"; condition: () => true; } | { ...; }' is not assignable to type 'CalculatorInput'.
+    Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(2777,17): error TS2353: Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(2783,30): error TS2322: Type '(inputs: any) => "e.g. 20" | "e.g. 20 (%)" | "e.g. 100 (From)" | "Value 1"' is not assignable to type 'string'.
+src/config/calculators.ts(2783,31): error TS7006: Parameter 'inputs' implicitly has an 'any' type.
+src/config/calculators.ts(2795,30): error TS2322: Type '(inputs: any) => "e.g. 100" | "e.g. 150 (To)" | "Value 2"' is not assignable to type 'string'.
+src/config/calculators.ts(2795,31): error TS7006: Parameter 'inputs' implicitly has an 'any' type.
+src/config/calculators.ts(2883,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(2992,83): error TS2353: Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(2995,85): error TS2353: Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3005,17): error TS2353: Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3008,83): error TS2353: Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3011,85): error TS2353: Object literal may only specify known properties, and 'width' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3095,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(3128,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(3452,17): error TS2353: Object literal may only specify known properties, and 'primaryUnit' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3459,17): error TS2353: Object literal may only specify known properties, and 'primaryUnit' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3551,17): error TS2353: Object literal may only specify known properties, and 'primaryUnit' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(3559,17): error TS2353: Object literal may only specify known properties, and 'primaryUnit' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(4288,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(5127,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(5249,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(5530,9): error TS2322: Type '{ label: string; calculate: (inputs: Record<string, string | number>) => number | null; }[]' is not assignable to type 'CalculatorOutput[]'.
+  Type '{ label: string; calculate: (inputs: Record<string, string | number>) => number | null; }' is not assignable to type 'CalculatorOutput'.
+    The types returned by 'calculate(...)' are incompatible between these types.
+      Type 'number | null' is not assignable to type 'string | number'.
+        Type 'null' is not assignable to type 'string | number'.
+src/config/calculators.ts(7014,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(7144,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(7156,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(7298,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(7395,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(7411,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(7530,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(7542,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(7670,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(8519,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(8641,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(8806,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(8943,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(8959,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(9012,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9040,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9070,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(9086,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(9144,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9166,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9200,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(9261,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9282,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9298,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9367,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9381,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9391,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9478,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9498,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(9515,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(10133,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10367,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10391,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10417,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10441,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10465,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10519,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10543,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10696,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10700,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10720,201): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(10722,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(10751,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10762,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10777,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10788,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10802,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10817,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10828,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(10907,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(11331,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(11466,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(11481,17): error TS2322: Type '(inputs: Record<string, string | number>) => number | null' is not assignable to type '(inputs: Record<string, string | number>) => string | number'.
+  Type 'number | null' is not assignable to type 'string | number'.
+    Type 'null' is not assignable to type 'string | number'.
+src/config/calculators.ts(11490,17): error TS2322: Type '(inputs: Record<string, string | number>) => number | null' is not assignable to type '(inputs: Record<string, string | number>) => string | number'.
+  Type 'number | null' is not assignable to type 'string | number'.
+    Type 'null' is not assignable to type 'string | number'.
+src/config/calculators.ts(11499,17): error TS2322: Type '(inputs: Record<string, string | number>) => number | null' is not assignable to type '(inputs: Record<string, string | number>) => string | number'.
+  Type 'number | null' is not assignable to type 'string | number'.
+    Type 'null' is not assignable to type 'string | number'.
+src/config/calculators.ts(11719,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(12003,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(12031,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12064,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12094,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12124,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12167,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12203,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12241,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12274,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12297,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(12358,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(12610,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12684,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(12865,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(13153,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(13301,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(13387,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(13934,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(13938,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(13954,9): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(14341,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(14892,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(14930,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(14976,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(15152,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(15576,9): error TS2322: Type '({ id: string; label: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "string"; placeholder: string; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+    Type '{ id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+      Types of property 'type' are incompatible.
+        Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(15644,9): error TS2322: Type '({ id: string; label: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "string"; placeholder: string; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+    Type '{ id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+      Types of property 'type' are incompatible.
+        Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(16144,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(16276,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16333,43): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16334,43): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16374,44): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16375,46): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16420,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16421,46): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16422,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16462,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16463,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16509,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16510,44): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16519,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16520,44): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16533,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(16537,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(16566,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16567,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16568,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16589,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(16619,43): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16620,43): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16621,43): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16661,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16662,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16674,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(16707,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16708,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16709,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16718,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16719,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16720,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16766,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16767,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(16768,42): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17069,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(17158,32): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(17166,32): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(17166,60): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/config/calculators.ts(17188,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(17189,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(17203,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(17204,50): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(17374,50): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17374,65): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17374,99): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17375,50): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17375,65): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17375,99): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17389,50): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17389,65): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17389,99): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17412,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17412,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17412,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17413,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17413,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17413,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17417,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17417,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17418,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17418,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17419,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17419,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17419,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(17420,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17420,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17421,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17421,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17446,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17446,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17446,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17447,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17447,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17447,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17450,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17450,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17451,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17451,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17452,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17452,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17452,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(17453,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17453,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17462,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17462,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17462,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17463,48): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17463,63): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17463,97): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17466,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17466,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17467,44): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17467,47): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17468,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17468,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17468,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/config/calculators.ts(17469,45): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17469,48): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17492,38): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17493,38): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17494,38): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(17540,54): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17540,69): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17540,103): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17544,47): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17544,50): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17545,51): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17545,54): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17553,54): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17553,69): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17553,103): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17556,47): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17556,50): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17557,51): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17557,54): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17578,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17578,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17578,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17580,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17580,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17583,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17583,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17590,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17590,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17590,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17592,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17592,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17594,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17594,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17601,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17601,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17601,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17603,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17603,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17605,48): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17605,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17626,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17626,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17626,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17628,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17628,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17631,36): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17643,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(17643,68): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17643,102): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17645,46): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(17645,49): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(17648,36): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(17739,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(17819,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(17867,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18141,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18248,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18330,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18368,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18382,58): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(18382,87): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/config/calculators.ts(18389,36): error TS7006: Parameter 'g' implicitly has an 'any' type.
+src/config/calculators.ts(18502,51): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18502,66): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(18502,100): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(18503,54): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18503,69): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(18503,103): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/config/calculators.ts(18526,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18539,54): error TS2339: Property 'trim' does not exist on type 'string | number'.
+  Property 'trim' does not exist on type 'number'.
+src/config/calculators.ts(18546,60): error TS2339: Property 'length' does not exist on type 'string | number'.
+  Property 'length' does not exist on type 'number'.
+src/config/calculators.ts(18550,60): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(18559,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18579,49): error TS2339: Property 'toUpperCase' does not exist on type 'string | number'.
+  Property 'toUpperCase' does not exist on type 'number'.
+src/config/calculators.ts(18580,49): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(18582,34): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(18582,53): error TS7006: Parameter 'txt' implicitly has an 'any' type.
+src/config/calculators.ts(18585,34): error TS2339: Property 'charAt' does not exist on type 'string | number'.
+  Property 'charAt' does not exist on type 'number'.
+src/config/calculators.ts(18585,62): error TS2339: Property 'slice' does not exist on type 'string | number'.
+  Property 'slice' does not exist on type 'number'.
+src/config/calculators.ts(18593,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18597,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18618,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18620,9): error TS2322: Type '{ id: string; label: string; type: "string"; placeholder: string; }[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+    Types of property 'type' are incompatible.
+      Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(18628,30): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(18638,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18646,60): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18652,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(18670,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18690,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18722,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18744,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18792,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18894,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18897,49): error TS2322: Type '"time"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(18898,45): error TS2322: Type '"time"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(18908,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18909,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18929,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18930,40): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(18944,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(18970,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19001,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19043,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19089,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19115,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19149,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19175,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19201,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19230,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19259,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19292,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19320,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(19324,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19353,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19602,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(19681,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(19710,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(19714,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19740,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(19740,34): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/config/calculators.ts(19740,37): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/config/calculators.ts(19752,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19776,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19786,31): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(19787,29): error TS2339: Property 'length' does not exist on type 'string | number'.
+  Property 'length' does not exist on type 'number'.
+src/config/calculators.ts(19787,53): error TS2339: Property 'split' does not exist on type 'string | number'.
+  Property 'split' does not exist on type 'number'.
+src/config/calculators.ts(19787,67): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/config/calculators.ts(19788,29): error TS2339: Property 'length' does not exist on type 'string | number'.
+  Property 'length' does not exist on type 'number'.
+src/config/calculators.ts(19789,44): error TS2339: Property 'substring' does not exist on type 'string | number'.
+  Property 'substring' does not exist on type 'number'.
+src/config/calculators.ts(19790,44): error TS2339: Property 'substring' does not exist on type 'string | number'.
+  Property 'substring' does not exist on type 'number'.
+src/config/calculators.ts(19791,44): error TS2339: Property 'substring' does not exist on type 'string | number'.
+  Property 'substring' does not exist on type 'number'.
+src/config/calculators.ts(19803,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(19829,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20023,35): error TS7006: Parameter 'Cp' implicitly has an 'any' type.
+src/config/calculators.ts(20023,39): error TS7006: Parameter 'Ih' implicitly has an 'any' type.
+src/config/calculators.ts(20023,43): error TS7006: Parameter 'Il' implicitly has an 'any' type.
+src/config/calculators.ts(20023,47): error TS7006: Parameter 'BPh' implicitly has an 'any' type.
+src/config/calculators.ts(20023,52): error TS7006: Parameter 'BPl' implicitly has an 'any' type.
+src/config/calculators.ts(20054,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20123,34): error TS7006: Parameter 'm' implicitly has an 'any' type.
+src/config/calculators.ts(20274,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20313,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20348,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20368,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20372,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20385,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(20385,34): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/config/calculators.ts(20385,37): error TS7006: Parameter 'y' implicitly has an 'any' type.
+src/config/calculators.ts(20395,27): error TS7023: 'gcd' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
+src/config/calculators.ts(20395,34): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/config/calculators.ts(20395,37): error TS7006: Parameter 'y' implicitly has an 'any' type.
+src/config/calculators.ts(20406,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20435,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20482,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20585,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20609,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20636,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20801,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20805,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20836,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(20840,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20911,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20945,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(20970,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21004,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21030,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21065,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21101,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21125,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21150,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21175,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21203,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21228,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21252,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21276,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21300,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21322,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(21326,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21352,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21382,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21412,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21438,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21448,52): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(21449,52): error TS2339: Property 'replace' does not exist on type 'string | number'.
+  Property 'replace' does not exist on type 'number'.
+src/config/calculators.ts(21490,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21501,60): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(21505,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+  Overload 2 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(21508,41): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+  Overload 2 of 2, '(data: string): string', gave the following error.
+    Argument of type 'string | number' is not assignable to parameter of type 'string'.
+      Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(21522,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21533,60): error TS2339: Property 'toLowerCase' does not exist on type 'string | number'.
+  Property 'toLowerCase' does not exist on type 'number'.
+src/config/calculators.ts(21536,55): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(21552,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21563,45): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(21565,48): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(21580,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21609,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(21613,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(21707,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(21791,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(21872,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(21910,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22010,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22088,9): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22104,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22239,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22293,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22299,9): error TS2322: Type '({ id: string; label: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "string"; placeholder: string; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+    Type '{ id: string; label: string; type: "string"; placeholder: string; }' is not assignable to type 'CalculatorInput'.
+      Types of property 'type' are incompatible.
+        Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(22317,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22428,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22483,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22535,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22578,17): error TS2353: Object literal may only specify known properties, and 'currency' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(22625,17): error TS2353: Object literal may only specify known properties, and 'currency' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(22693,17): error TS2353: Object literal may only specify known properties, and 'currency' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(22715,17): error TS2353: Object literal may only specify known properties, and 'currency' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(22729,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22733,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22754,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22758,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22794,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22839,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22873,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22917,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22921,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22961,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22965,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(22988,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(22992,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23030,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23034,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23056,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23060,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23110,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23199,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23256,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23260,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23280,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23284,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23303,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23307,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23332,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23353,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23384,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23409,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23432,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23464,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23493,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23792,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(23974,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(23994,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24014,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24034,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24057,9): error TS2322: Type '"geometry"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24123,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(24273,52): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(24331,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(24475,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(24479,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24482,53): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(24499,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24502,42): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(24515,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24518,42): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(24530,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24533,42): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(24545,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24548,57): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(24561,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24586,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24611,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24634,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24657,9): error TS2322: Type '"mathematics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24778,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24805,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24822,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24845,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(24870,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(25168,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(25183,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(25362,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25378,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25520,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25644,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25676,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25684,63): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(25691,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25705,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(25713,68): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(25804,9): error TS2322: Type '"calendar"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(25926,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(26058,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26172,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26186,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26198,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(26202,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26218,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26233,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26593,62): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(26637,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26653,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26669,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26685,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26700,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(26789,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(27029,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(27109,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27187,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27265,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27280,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27295,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27310,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27325,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27372,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(27392,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27407,9): error TS2322: Type '"marketing"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27424,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27427,48): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(27438,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27487,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27582,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27626,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(27835,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27850,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(27972,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(27987,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(28055,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28058,50): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(28069,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28084,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28099,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28113,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28128,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28131,59): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(28142,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28158,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28173,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28187,9): error TS2322: Type '"web"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28203,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28234,9): error TS2322: Type '"fitness"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28290,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(28588,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(28592,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28639,9): error TS2322: Type '"text"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(28914,47): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(28928,62): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(28942,43): error TS2322: Type '"string"' is not assignable to type '"number" | "date" | "text" | "select" | "checkbox"'.
+src/config/calculators.ts(29005,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29024,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29036,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29127,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29148,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29222,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29238,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29323,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29342,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29419,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29436,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29446,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29535,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29624,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29772,34): error TS2322: Type 'string | number' is not assignable to type 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/config/calculators.ts(29803,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(29838,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29860,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29879,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(29886,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(29891,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(29909,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29927,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(29934,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(29939,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(29957,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(29981,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(29986,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30030,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30052,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30059,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30064,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30082,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30098,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30112,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30119,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30124,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30142,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30159,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30166,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(30201,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30219,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30238,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30267,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30299,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30313,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30332,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30339,9): error TS2322: Type '"engineering"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(30372,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30390,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30397,9): error TS2322: Type '"engineering"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(30432,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30449,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30470,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30477,9): error TS2322: Type '"engineering"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(30500,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30516,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30531,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30538,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(30583,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30608,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30615,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(30638,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30651,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30666,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30710,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30734,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30737,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(30745,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30748,103): error TS2322: Type '({ id: string; label: string; type: "number"; placeholder: string; min: number; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; } | { id: string; label: string; type: "select"; options: { ...; }[]; defaultValue: string; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; type: "number"; placeholder: string; min: number; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; } | { id: string; label: string; type: "select"; options: { ...; }[]; defaultValue: string; }' is not assignable to type 'CalculatorInput'.
+    Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30748,103): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30749,103): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30750,103): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30766,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30778,31): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30778,49): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30779,44): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30787,17): error TS2322: Type '(inputs: any, outputs: any) => number' is not assignable to type '(inputs: Record<string, string | number>) => string | number'.
+  Target signature provides too few arguments. Expected 2 or more, but got 1.
+src/config/calculators.ts(30787,29): error TS7006: Parameter 'inputs' implicitly has an 'any' type.
+src/config/calculators.ts(30787,37): error TS7006: Parameter 'outputs' implicitly has an 'any' type.
+src/config/calculators.ts(30794,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30797,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(30801,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30806,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30810,107): error TS2322: Type '({ id: string; label: string; unit: string; type: "number"; placeholder: string; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; unit: string; type: "number"; placeholder: string; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; }' is not assignable to type 'CalculatorInput'.
+    Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30810,107): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30814,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30819,33): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30819,50): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30824,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30826,40): error TS2365: Operator '>' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(30826,84): error TS2365: Operator '<' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(30832,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30835,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(30839,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30844,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30847,113): error TS2322: Type '{ id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; }[]' is not assignable to type 'CalculatorInput[]'.
+  Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30847,113): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30848,114): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30852,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30856,32): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(30857,32): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(30864,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30866,41): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(30866,71): error TS2365: Operator '+' cannot be applied to types 'string | number' and 'number'.
+src/config/calculators.ts(30874,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(30878,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30883,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30886,98): error TS2322: Type '({ id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "select"; options: { ...; }[]; defaultValue: string; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; unit: string; type: "number"; placeholder: string; min: number; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; } | { id: string; label: string; type: "select"; options: { ...; }[]; defaultValue: string; }' is not assignable to type 'CalculatorInput'.
+    Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30886,98): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30887,110): error TS2353: Object literal may only specify known properties, and 'min' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30905,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30917,33): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30917,47): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30917,66): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30925,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30928,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(30932,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30937,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30941,111): error TS2322: Type '({ id: string; label: string; unit: string; type: "number"; placeholder: string; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; max: number; })[]' is not assignable to type 'CalculatorInput[]'.
+  Type '{ id: string; label: string; unit: string; type: "number"; placeholder: string; } | { id: string; label: string; unit: string; type: "number"; placeholder: string; max: number; }' is not assignable to type 'CalculatorInput'.
+    Object literal may only specify known properties, and 'max' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30941,111): error TS2353: Object literal may only specify known properties, and 'max' does not exist in type 'CalculatorInput'.
+src/config/calculators.ts(30945,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30952,34): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30954,42): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30959,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30963,47): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30971,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(30974,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(30978,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(30983,13): error TS2322: Type 'string' is not assignable to type 'string[]'.
+src/config/calculators.ts(30991,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(30996,33): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(30996,47): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(31004,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31007,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(31011,9): error TS2820: Type '"Physics"' is not assignable to type 'CalculatorCategory'. Did you mean '"physics"'?
+src/config/calculators.ts(31034,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31041,40): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(31044,35): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(31054,17): error TS2322: Type '(inputs: any, outputs: any) => number' is not assignable to type '(inputs: Record<string, string | number>) => string | number'.
+  Target signature provides too few arguments. Expected 2 or more, but got 1.
+src/config/calculators.ts(31054,29): error TS7006: Parameter 'inputs' implicitly has an 'any' type.
+src/config/calculators.ts(31054,37): error TS7006: Parameter 'outputs' implicitly has an 'any' type.
+src/config/calculators.ts(31058,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31063,25): error TS2322: Type 'string | number' is not assignable to type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/config/calculators.ts(31065,44): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/config/calculators.ts(31078,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31085,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31099,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31109,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31124,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31131,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31144,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31154,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31167,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31174,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31188,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31198,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31210,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31217,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31230,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31244,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31251,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31264,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31278,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31285,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31299,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31312,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31319,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31333,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31345,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31361,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31368,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31381,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31396,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31403,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31417,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31435,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31442,9): error TS2322: Type '"electronics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31455,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31466,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31479,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31482,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(31486,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31547,17): error TS2322: Type '{ id: string; label: string; calculate: (inputs: Record<string, string | number>) => string; }[]' is not assignable to type 'CalculatorOutput[]'.
+  Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31547,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31566,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31573,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31610,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31623,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31637,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31644,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31659,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31678,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31685,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31701,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31730,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31733,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(31737,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31760,17): error TS2322: Type '{ id: string; label: string; calculate: (inputs: Record<string, string | number>) => string; }[]' is not assignable to type 'CalculatorOutput[]'.
+  Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31760,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31780,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31783,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(31787,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31808,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31824,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31827,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(31831,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31845,17): error TS2322: Type '{ id: string; label: string; calculate: (inputs: Record<string, string | number>) => string; }[]' is not assignable to type 'CalculatorOutput[]'.
+  Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31845,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31855,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31867,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31874,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31891,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31909,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31932,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31939,9): error TS2322: Type '"fluid-mechanics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(31954,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31965,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(31978,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(31985,9): error TS2322: Type '"thermodynamics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32008,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32023,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32026,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(32030,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32059,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32082,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32089,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32110,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32127,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32134,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32161,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32178,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32181,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(32185,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32199,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32209,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32223,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32226,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(32230,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32251,17): error TS2322: Type '{ id: string; label: string; calculate: (inputs: Record<string, string | number>) => string; }[]' is not assignable to type 'CalculatorOutput[]'.
+  Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32251,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32268,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32275,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32288,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32302,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32305,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(32309,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32327,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32339,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32354,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32357,5): error TS1117: An object literal cannot have multiple properties with the same name.
+src/config/calculators.ts(32361,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32376,17): error TS2322: Type '{ id: string; label: string; calculate: (inputs: Record<string, string | number>) => string | 0; }[]' is not assignable to type 'CalculatorOutput[]'.
+  Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32376,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32392,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32399,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32417,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32434,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.
+src/config/calculators.ts(32441,9): error TS2322: Type '"optics"' is not assignable to type 'CalculatorCategory'.
+src/config/calculators.ts(32454,17): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'CalculatorOutput'.
+src/config/calculators.ts(32467,13): error TS2322: Type 'string' is not assignable to type '{ question: string; answer: string; }[]'.

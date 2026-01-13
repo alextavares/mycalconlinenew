@@ -8,69 +8,154 @@
    Creating an optimized production build ...
 Failed to compile.
 
-./src/config/calculators.ts
-Error: 
-  x Expected ',', got '}'
-      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:8949:1]
- 8949 |                     question: "Real-world applications?",
- 8950 |                     answer: "Radar speed guns, weather radar, medical ultrasound, astronomy (redshift), and even bat echolocation all use Doppler!"
- 8951 |                 }
- 8952 |     },
-      :     ^
- 8953 |         'snells-law': {
- 8954 |             id: 'snells-law',
- 8954 |             title: "Snell's Law Calculator",
-      `----
-
-Caused by:
-    Syntax Error
-
-Import trace for requested module:
-./src/config/calculators.ts
-./src/app/[locale]/page.tsx
-
-./src/config/calculators.ts
-Error: 
-  x Expected ',', got '}'
-      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:8949:1]
- 8949 |                     question: "Real-world applications?",
- 8950 |                     answer: "Radar speed guns, weather radar, medical ultrasound, astronomy (redshift), and even bat echolocation all use Doppler!"
- 8951 |                 }
- 8952 |     },
-      :     ^
- 8953 |         'snells-law': {
- 8954 |             id: 'snells-law',
- 8954 |             title: "Snell's Law Calculator",
-      `----
-
-Caused by:
-    Syntax Error
+./messages/en.json
+Module parse failed: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 481327 (line 4898 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+Error: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 481327 (line 4898 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+    at JsonParser.parse (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:1005313)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:405457
+    at processResult (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401241)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8727
+    at iterateNormalLoaders (C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5565)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5426
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401777
+    at eval (eval at create (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:13:28858), <anonymous>:14:1)
+    at C:\codigos\sitemycalc\node_modules\next\dist\build\webpack\plugins\profiling-plugin.js:179:29
 
 Import trace for requested module:
-./src/config/calculators.ts
+./messages/en.json
+./messages/ lazy ^\.\/.*\.json$ namespace object
+./src/i18n.ts
+./node_modules/next-intl/dist/esm/production/server/react-server/getConfig.js
+./node_modules/next-intl/dist/esm/production/navigation/react-server/getServerLocale.js
+./node_modules/next-intl/dist/esm/production/navigation/react-server/createNavigation.js
+./node_modules/next-intl/dist/esm/production/navigation.react-server.js
+./src/i18n/navigation.ts
 ./src/app/sitemap.ts
 ./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2Fsitemap.xml%2Froute&filePath=C%3A%5Ccodigos%5Csitemycalc%5Csrc%5Capp%5Csitemap.ts&isDynamic=1!?__next_metadata_route__
 
-./src/config/calculators.ts
-Error: 
-  x Expected ',', got '}'
-      ,-[C:\codigos\sitemycalc\src\config\calculators.ts:8949:1]
- 8949 |                     question: "Real-world applications?",
- 8950 |                     answer: "Radar speed guns, weather radar, medical ultrasound, astronomy (redshift), and even bat echolocation all use Doppler!"
- 8951 |                 }
- 8952 |     },
-      :     ^
- 8953 |         'snells-law': {
- 8954 |             id: 'snells-law',
- 8954 |             title: "Snell's Law Calculator",
-      `----
-
-Caused by:
-    Syntax Error
+./messages/en.json
+Module parse failed: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 481327 (line 4898 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+Error: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 481327 (line 4898 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+    at JsonParser.parse (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:1005313)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:405457
+    at processResult (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401241)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8727
+    at iterateNormalLoaders (C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5565)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5426
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401777
+    at eval (eval at create (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:13:28858), <anonymous>:14:1)
+    at C:\codigos\sitemycalc\node_modules\next\dist\build\webpack\plugins\profiling-plugin.js:179:29
 
 Import trace for requested module:
-./src/config/calculators.ts
+./messages/en.json
+./messages/ lazy ^\.\/.*\.json$ namespace object
+./src/i18n.ts
+./node_modules/next-intl/dist/esm/production/server/react-server/getConfig.js
+./node_modules/next-intl/dist/esm/production/server/react-server/getFormatter.js
+./node_modules/next-intl/dist/esm/production/server.react-server.js
 ./src/app/[locale]/layout.tsx
+
+./messages/es.json
+Module parse failed: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 403898 (line 4779 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+Error: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 403898 (line 4779 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+    at JsonParser.parse (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:1005313)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:405457
+    at processResult (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401241)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8727
+    at iterateNormalLoaders (C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5565)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5426
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401777
+    at eval (eval at create (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:13:28858), <anonymous>:14:1)
+    at C:\codigos\sitemycalc\node_modules\next\dist\build\webpack\plugins\profiling-plugin.js:179:29
+
+Import trace for requested module:
+./messages/es.json
+./messages/ lazy ^\.\/.*\.json$ namespace object
+./src/i18n.ts
+./node_modules/next-intl/dist/esm/production/server/react-server/getConfig.js
+./node_modules/next-intl/dist/esm/production/navigation/react-server/getServerLocale.js
+./node_modules/next-intl/dist/esm/production/navigation/react-server/createNavigation.js
+./node_modules/next-intl/dist/esm/production/navigation.react-server.js
+./src/i18n/navigation.ts
+./src/app/sitemap.ts
+./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2Fsitemap.xml%2Froute&filePath=C%3A%5Ccodigos%5Csitemycalc%5Csrc%5Capp%5Csitemap.ts&isDynamic=1!?__next_metadata_route__
+
+./messages/es.json
+Module parse failed: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 403898 (line 4779 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+Error: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 403898 (line 4779 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+    at JsonParser.parse (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:1005313)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:405457
+    at processResult (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401241)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8727
+    at iterateNormalLoaders (C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5565)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5426
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401777
+    at eval (eval at create (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:13:28858), <anonymous>:14:1)
+    at C:\codigos\sitemycalc\node_modules\next\dist\build\webpack\plugins\profiling-plugin.js:179:29
+
+Import trace for requested module:
+./messages/es.json
+./messages/ lazy ^\.\/.*\.json$ namespace object
+./src/i18n.ts
+./node_modules/next-intl/dist/esm/production/server/react-server/getConfig.js
+./node_modules/next-intl/dist/esm/production/server/react-server/getFormatter.js
+./node_modules/next-intl/dist/esm/production/server.react-server.js
+./src/app/[locale]/layout.tsx
+
+./messages/pt-BR.json
+Module parse failed: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 443524 (line 5149 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+Error: Cannot parse JSON: Expected ',' or '}' after property value in JSON at position 443524 (line 5149 column 4) while parsing '{
+  "Units": {
+    "metersPerSecond": '
+    at JsonParser.parse (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:1005313)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:405457
+    at processResult (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401241)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8727
+    at iterateNormalLoaders (C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5565)
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5426
+    at C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:28:401777
+    at eval (eval at create (C:\codigos\sitemycalc\node_modules\next\dist\compiled\webpack\bundle5.js:13:28858), <anonymous>:14:1)
+    at C:\codigos\sitemycalc\node_modules\next\dist\build\webpack\plugins\profiling-plugin.js:179:29
+
+Import trace for requested module:
+./messages/pt-BR.json
+./messages/ lazy ^\.\/.*\.json$ namespace object
+./src/i18n.ts
+./node_modules/next-intl/dist/esm/production/server/react-server/getConfig.js
+./node_modules/next-intl/dist/esm/production/navigation/react-server/getServerLocale.js
+./node_modules/next-intl/dist/esm/production/navigation/react-server/createNavigation.js
+./node_modules/next-intl/dist/esm/production/navigation.react-server.js
+./src/i18n/navigation.ts
+./src/app/sitemap.ts
+./node_modules/next/dist/build/webpack/loaders/next-metadata-route-loader.js?page=%2Fsitemap.xml%2Froute&filePath=C%3A%5Ccodigos%5Csitemycalc%5Csrc%5Capp%5Csitemap.ts&isDynamic=1!?__next_metadata_route__
 
 
 > Build failed because of webpack errors

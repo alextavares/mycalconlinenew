@@ -1,0 +1,481 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-13",
+    "totalCalculators": 728,
+    "lastAddedId": "trig-functions",
+    "lastAddedCategory": "math",
+    "omniProgress": {
+      "biology": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "chemistry": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "construction": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "conversion": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "ecology": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "everyday": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "finance": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "food": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "health": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "math": {
+        "status": "in_progress",
+        "completed": 57,
+        "total": 0
+      },
+      "physics": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "sports": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "statistics": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      },
+      "other": {
+        "status": "not_started",
+        "completed": 0,
+        "total": 0
+      }
+    }
+  },
+  "categoryMapping": {
+    "omniToLocal": {
+      "biology": "science",
+      "chemistry": "science",
+      "construction": "construction",
+      "conversion": "conversion",
+      "ecology": "ecology",
+      "everyday life": "everyday",
+      "finance": "finance",
+      "food": "food",
+      "health": "health",
+      "math": "math",
+      "physics": "physics",
+      "sports": "sports",
+      "statistics": "statistics",
+      "other": "other"
+    }
+  },
+  "sessions": [
+    {
+      "date": "2026-01-13T21:52:55.193Z",
+      "summary": "Added 10 percentage calculators from Math > Percentages subcategory (average-percentage, decimal-to-percent, fraction-to-percent, doubling-time, percentage-change, percentage-decrease, percentage-difference, percentage-increase, percent-error, percent-to-goal)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "percent-to-goal"
+    },
+    {
+      "date": "2026-01-13T22:13:25.247Z",
+      "summary": "Completed Math > Percentages subcategory. Added final 7 calculators: percentage-of-percentage, percentage-point, percent-time, relative-change, slope-percentage, basic-percentage, percentage-increase-classic. Total 17 percentage calculators added.",
+      "calculatorsAdded": 7,
+      "lastCalculatorId": "percentage-increase-classic"
+    },
+    {
+      "date": "2026-01-13T22:33:43.034Z",
+      "summary": "Added 10 algebra calculators: quadratic-formula, discriminant, completing-the-square, foil-method, systems-of-equations, binomial-coefficient, synthetic-division, polynomial-division, factoring-trinomials, cubic-equation",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "cubic-equation"
+    },
+    {
+      "date": "2026-01-13T22:42:00.420Z",
+      "summary": "Added 10 arithmetic calculators: gcf-calculator, prime-number-checker, remainder-calculator, rounding-calculator, cube-root, digital-root, sig-fig-calculator, geometric-mean, harmonic-mean, divisibility-test",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "divisibility-test"
+    },
+    {
+      "date": "2026-01-13T23:33:23.027Z",
+      "summary": "Added 10 fraction calculators: adding-fractions, dividing-fractions, multiplying-fractions, simplify-fractions, mixed-number-calculator, improper-to-mixed, equivalent-fractions, comparing-fractions, ratio-calculator, proportion-calculator",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "proportion-calculator"
+    },
+    {
+      "date": "2026-01-13T23:36:56.394Z",
+      "summary": "Added 10 trigonometry calculators: sin-calculator, cos-calculator, tan-calculator, arcsin-calculator, arccos-calculator, arctan-calculator, law-of-cosines, law-of-sines, unit-circle, trig-functions",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "trig-functions"
+    }
+  ],
+  "calculators": {
+    "average-percentage": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "decimal-to-percent": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "fraction-to-percent": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "doubling-time": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-change": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-decrease": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-difference": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-increase": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percent-error": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percent-to-goal": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-of-percentage": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-point": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percent-time": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "relative-change": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "slope-percentage": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "basic-percentage": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "percentage-increase-classic": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "quadratic-formula": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "discriminant": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "completing-the-square": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "foil-method": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "systems-of-equations": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "binomial-coefficient": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "synthetic-division": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "polynomial-division": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "factoring-trinomials": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "cubic-equation": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "gcf-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "prime-number-checker": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "remainder-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "rounding-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "cube-root": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "digital-root": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "sig-fig-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "geometric-mean": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "harmonic-mean": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "divisibility-test": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "adding-fractions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "dividing-fractions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "multiplying-fractions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "simplify-fractions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "mixed-number-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "improper-to-mixed": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "equivalent-fractions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "comparing-fractions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "ratio-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "proportion-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "sin-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "cos-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "tan-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "arcsin-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "arccos-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "arctan-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "law-of-cosines": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "law-of-sines": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "unit-circle": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "trig-functions": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    }
+  }
+}

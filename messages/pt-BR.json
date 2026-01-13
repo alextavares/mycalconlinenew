@@ -4575,6 +4575,760 @@
           "answer": "Não, têm massa de repouso zero. No entanto, têm momento e energia, por isso são afetados pela gravidade."
         }
       ]
+    },
+    "orbital-velocity": {
+      "metadataTitle": "Calculadora de Velocidade Orbital | Astronomia",
+      "metadataDescription": "Calcule a velocidade orbital necessária para um satélite orbitar um corpo massivo em um raio específico.",
+      "metadataKeywords": "velocidade orbital, velocidade satélite, astronomia, gravidade, mecânica orbital, calculadora física",
+      "title": "Calculadora de Velocidade Orbital",
+      "description": "Calcule a velocidade necessária para orbitar um corpo massivo.",
+      "mass": "Massa Central (M)",
+      "radius": "Raio da Órbita (r)",
+      "velocity": "Velocidade Orbital (v)",
+      "period": "Período Orbital (T)",
+      "whatIs": "<h3>O que é Velocidade Orbital?</h3><p><strong>Velocidade orbital</strong> é a velocidade que um objeto deve viajar para manter-se em órbita estável ao redor de um corpo maior, equilibrando a atração gravitacional com sua própria inércia.</p><p>Para uma órbita circular, essa velocidade depende apenas da massa do corpo central e da distância do centro.</p>",
+      "howTo": "<h3>Como Calcular Velocidade Orbital</h3><p>A fórmula para velocidade orbital circular (v) é:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">v = √(GM / r)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>v:</strong> Velocidade Orbital (m/s)</li><li><strong>G:</strong> Constante Gravitacional (≈ 6.674×10⁻¹¹ m³/kg·s²)</li><li><strong>M:</strong> Massa do corpo central (kg)</li><li><strong>r:</strong> Raio da órbita a partir do centro de massa (m)</li></ul>",
+      "faq": [
+        {
+          "question": "O que acontece se o satélite for mais rápido?",
+          "answer": "Se for mais rápido que a velocidade orbital circular, entrará em uma órbita elíptica ou, se rápido o suficiente (velocidade de escape), deixará a órbita inteiramente."
+        },
+        {
+          "question": "A massa do satélite importa?",
+          "answer": "Não. Na mecânica orbital simples, a massa do satélite se cancela. Uma pena e uma estação espacial orbitariam à mesma velocidade na mesma distância."
+        },
+        {
+          "question": "Como o período é calculado?",
+          "answer": "O período orbital T = 2πr / v. Representa o tempo que leva para completar uma revolução completa."
+        }
+      ]
+    },
+    "decibel": {
+      "metadataTitle": "Calculadora de Decibéis | Relação de Potência",
+      "metadataDescription": "Converta relações de potência e voltagem para decibéis (dB) e vice-versa. Ferramenta essencial para áudio e eletrônica.",
+      "metadataKeywords": "calculadora decibéis, dB, relação potência, ganho sinal, engenharia áudio",
+      "title": "Calculadora de Decibéis",
+      "description": "Calcule a Relação de Potência ou Amplitude em dB.",
+      "type": "Tipo de Cálculo",
+      "value1": "Valor (P ou V)",
+      "reference": "Referência (P₀ ou V₀)",
+      "resultDb": "Resultado (dB)",
+      "whatIs": "<h3>O que é um Decibel (dB)?</h3><p>O <strong>decibel (dB)</strong> é uma unidade logarítmica usada para expressar a razão entre dois valores de uma grandeza física, frequentemente potência ou intensidade.</p><p>Por ser logarítmica, um pequeno aumento em dB representa um grande aumento na potência ou magnitude real.</p>",
+      "howTo": "<h3>Fórmulas de Decibel</h3><p>A fórmula depende se você está medindo Potência ou Amplitude de Campo (Voltagem/Corrente):</p><ul class=\"list-disc pl-5 space-y-2 my-4\"><li><strong>Relação de Potência:</strong><br><code>dB = 10 × log₁₀(P / P₀)</code></li><li><strong>Relação de Amplitude/Voltagem:</strong><br><code>dB = 20 × log₁₀(V / V₀)</code></li></ul><p>Nota: A amplitude usa fator 20 porque a potência é proporcional ao quadrado da amplitude.</p>",
+      "faq": [
+        {
+          "question": "O que é 0 dB?",
+          "answer": "0 dB significa que o valor medido é igual ao valor de referência (razão = 1). Não significa 'zero som' ou 'zero potência'."
+        },
+        {
+          "question": "Quanto é +3 dB e +10 dB?",
+          "answer": "Para potência, +3 dB é aproximadamente o dobro da potência, e +10 dB é exatamente 10x a potência."
+        },
+        {
+          "question": "Por que usamos decibéis?",
+          "answer": "Decibéis nos permitem representar enormes faixas de valores (como intensidade sonora) em números gerenciáveis. Alinha-se bem com a percepção humana."
+        }
+      ]
+    },
+    "mach-number": {
+      "metadataTitle": "Calculadora de Número de Mach | Velocidade do Som",
+      "metadataDescription": "Calcule o número de Mach de um objeto com base em sua velocidade e na temperatura do ar circundante.",
+      "metadataKeywords": "número mach, velocidade do som, aerodinâmica, supersônico, subsônico, cálculo voo",
+      "title": "Calculadora de Número de Mach",
+      "description": "Calcule o Número de Mach a partir da velocidade e temperatura.",
+      "speed": "Velocidade do Objeto",
+      "unit": "Unidade de Velocidade",
+      "temp": "Temperatura do Ar",
+      "mach": "Número de Mach (M)",
+      "category": "Regime de Voo",
+      "whatIs": "<h3>O que é o Número de Mach?</h3><p><strong>Número de Mach (M)</strong> é uma quantidade adimensional que representa a razão entre a velocidade do fluxo e a velocidade local do som.</p><p>É crucial na aerodinâmica para determinar se o fluxo é subsônico, transônico, supersônico ou hipersônico.</p>",
+      "howTo": "<h3>Como Calcular o Número de Mach</h3><p>Primeiro, encontramos a velocidade do som (c) para o ar a uma dada temperatura T (em Celsius):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">c ≈ 331.3 + 0.606 × T</strong></div><p>Então, divida a velocidade do objeto (v) pela velocidade do som:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">M = v / c</strong></div>",
+      "faq": [
+        {
+          "question": "O que é Mach 1?",
+          "answer": "Mach 1 é a velocidade do som. Ao nível do mar e 20°C, é aproximadamente 343 m/s (1235 km/h)."
+        },
+        {
+          "question": "Quais são os regimes de voo?",
+          "answer": "Subsônico (M < 0.8), Transônico (0.8 < M < 1.2), Supersônico (1.2 < M < 5.0) e Hipersônico (M > 5.0)."
+        },
+        {
+          "question": "A altitude afeta o número de Mach?",
+          "answer": "Indiretamente. A altitude afeta a temperatura, e a temperatura afeta a velocidade do som. Um avião a 1000 km/h terá um Mach maior em alta altitude (onde é frio) do que ao nível do mar."
+        }
+      ]
+    },
+    "flow-rate": {
+      "metadataTitle": "Calculadora de Vazão | Q = Av",
+      "metadataDescription": "Calcule a vazão volumétrica com base no diâmetro do tubo e na velocidade do fluxo.",
+      "metadataKeywords": "vazão, fluxo volumétrico, dinâmica fluidos, diâmetro tubo, velocidade, hidráulica",
+      "title": "Calculadora de Vazão",
+      "description": "Calcule a Vazão Volumétrica dado Área e Velocidade.",
+      "diameter": "Diâmetro do Tubo (d)",
+      "velocity": "Velocidade do Fluxo (v)",
+      "flowRate": "Vazão (Q)",
+      "flowRateM3": "Vazão (m³/h)",
+      "whatIs": "<h3>O que é Vazão Volumétrica?</h3><p><strong>Vazão volumétrica</strong> (Q) é o volume de fluido que passa por unidade de tempo. É um conceito fundamental em dinâmica de fluidos.</p><p>Relaciona a área da seção transversal de um tubo com a velocidade média do fluido que flui através dele.</p>",
+      "howTo": "<h3>Como Calcular a Vazão</h3><p>A fórmula é simplesmente o produto da Área da seção transversal (A) e a Velocidade (v):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Q = A × v</strong></div><p>Para um tubo circular com diâmetro <em>d</em>, a Área é A = π(d/2)².</p>",
+      "faq": [
+        {
+          "question": "A pressão afeta a vazão?",
+          "answer": "A pressão impulsiona o fluxo, mas esta calculadora relaciona velocidade com taxa. Se você aumentar a pressão, a velocidade tipicamente aumenta, o que aumenta a vazão."
+        },
+        {
+          "question": "Por que o diâmetro é tão importante?",
+          "answer": "Como a Área implica o raio ao quadrado (r²), dobrar o diâmetro quadruplica a área, o que pode quadruplicar a vazão para a mesma velocidade."
+        }
+      ]
+    },
+    "lc-resonance": {
+      "metadataTitle": "Calculadora de Ressonância LC | f = 1/2π√LC",
+      "metadataDescription": "Calcule a frequência de ressonância de um circuito LC dados os valores de indutância e capacitância.",
+      "metadataKeywords": "ressonância lc, frequência ressonância, circuito sintonizado, indutância, capacitância, calculadora rf",
+      "title": "Calculadora de Ressonância LC",
+      "description": "Calcule a frequência de ressonância de um circuito LC.",
+      "inductance": "Indutância (L)",
+      "lUnit": "Unidade L",
+      "capacitance": "Capacitância (C)",
+      "cUnit": "Unidade C",
+      "frequency": "Frequência de Ressonância (f)",
+      "whatIs": "<h3>O que é Ressonância LC?</h3><p>Um <strong>circuito LC</strong> consiste em um indutor (L) e um capacitor (C). Em uma frequência específica, as reatâncias indutiva e capacitiva se cancelam.</p><p>Essa frequência é chamada de <strong>frequência de ressonância</strong>, onde o circuito oscila com impedância mínima (em série) ou máxima (em paralelo).</p>",
+      "howTo": "<h3>Fórmula da Frequência de Ressonância</h3><p>A fórmula de Thomson determina a frequência (f):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">f = 1 / (2π√LC)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Frequência (Hertz)</li><li><strong>L:</strong> Indutância (Henries)</li><li><strong>C:</strong> Capacitância (Farads)</li></ul>",
+      "faq": [
+        {
+          "question": "Onde circuitos LC são usados?",
+          "answer": "São fundamentais na tecnologia de radiofrequência (RF), usados em sintonizadores, filtros, misturadores de frequência e geradores de sinal."
+        },
+        {
+          "question": "O que acontece na ressonância?",
+          "answer": "A energia oscila para frente e para trás entre o campo magnético do indutor e o campo elétrico do capacitor com amplitude máxima."
+        }
+      ]
+    },
+    "magnification": {
+      "metadataTitle": "Calculadora de Ampliação | Óptica M = -di/do",
+      "metadataDescription": "Calcule a ampliação linear de um sistema de lente ou espelho dadas as distâncias do objeto e da imagem.",
+      "metadataKeywords": "ampliação, óptica, equação lente, espelho, tamanho imagem, calculadora física",
+      "title": "Calculadora de Ampliação",
+      "description": "Calcule a ampliação óptica e propriedades da imagem.",
+      "objectDist": "Distância do Objeto (do)",
+      "imageDist": "Distância da Imagem (di)",
+      "magnification": "Ampliação (m)",
+      "type": "Tipo de Imagem",
+      "whatIs": "<h3>O que é Ampliação Óptica?</h3><p><strong>Ampliação (m)</strong> é a razão entre a altura de uma imagem e a altura do objeto. Indica quanto a imagem é maior ou menor comparada ao objeto.</p><p>Também nos diz sobre a orientação da imagem (direita ou invertida).</p>",
+      "howTo": "<h3>Fórmula de Ampliação</h3><p>A ampliação é calculada usando a distância da imagem (di) e a distância do objeto (do):</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">m = - di / do</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>m:</strong> Ampliação (adimensional)</li><li><strong>di:</strong> Distância da lente/espelho à imagem</li><li><strong>do:</strong> Distância da lente/espelho ao objeto</li></ul>",
+      "faq": [
+        {
+          "question": "O que significa ampliação negativa?",
+          "answer": "Um 'm' negativo indica que a imagem é <strong>invertida</strong> (de cabeça para baixo) em relação ao objeto. Um 'm' positivo significa que a imagem é direita."
+        },
+        {
+          "question": "E se m for menor que 1?",
+          "answer": "Se o valor absoluto |m| < 1, a imagem é menor que o objeto (reduzida). Se |m| > 1, a imagem é maior."
+        }
+      ]
+    },
+    "rms-speed": {
+      "metadataTitle": "Calculadora de Velocidade RMS | Moléculas de Gás",
+      "metadataDescription": "Calcule a velocidade quadrática média (RMS) de moléculas de gás a uma dada temperatura.",
+      "metadataKeywords": "velocidade rms, velocidade quadrática média, teoria cinética gases, termodinâmica, calculadora física",
+      "title": "Calculadora de Velocidade RMS",
+      "description": "Calcule a velocidade média quadrática de moléculas de gás.",
+      "temperature": "Temperatura (T)",
+      "gas": "Tipo de Gás",
+      "molarMass": "Massa Molar (M)",
+      "vrms": "Velocidade RMS (v_rms)",
+      "whatIs": "<h3>O que é Velocidade RMS?</h3><p><strong>Velocidade Quadrática Média (RMS)</strong> é uma medida da velocidade média das partículas em um gás. Como as partículas se movem em direções aleatórias, a RMS fornece uma média estatística derivada de sua energia cinética.</p>",
+      "howTo": "<h3>Fórmula da Velocidade RMS</h3><p>Derivada da Teoria Cinética Molecular:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">vrms = √(3RT / M)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>vrms:</strong> Velocidade RMS (m/s)</li><li><strong>R:</strong> Constante dos Gases Ideais (8.314 J/mol·K)</li><li><strong>T:</strong> Temperatura (Kelvin)</li><li><strong>M:</strong> Massa Molar (kg/mol)</li></ul><p class=\"text-sm text-red-600 mt-2\">Nota: A massa molar deve ser convertida para kg/mol para esta fórmula!</p>",
+      "faq": [
+        {
+          "question": "Por que usar RMS em vez de velocidade média?",
+          "answer": "A velocidade média vetorial das partículas é zero (pois as direções se cancelam). A velocidade RMS dá uma medida útil da magnitude da velocidade relacionada à energia."
+        },
+        {
+          "question": "Como a massa afeta a velocidade?",
+          "answer": "Moléculas mais leves movem-se mais rápido que as pesadas na mesma temperatura. Por exemplo, átomos de Hélio movem-se muito mais rápido que moléculas de Oxigênio."
+        }
+      ]
+    },
+    "impedance": {
+      "metadataTitle": "Calculadora de Impedância | Circuitos CA Z",
+      "metadataDescription": "Calcule a impedância elétrica (Z), ângulo de fase e reatâncias individuais para circuitos RLC série.",
+      "metadataKeywords": "calculadora impedância, Z, circuito RLC, ângulo de fase, engenharia elétrica, circuitos CA",
+      "title": "Calculadora de Impedância",
+      "description": "Calcule a impedância (Z) em circuitos elétricos.",
+      "resistance": "Resistência (R)",
+      "inductance": "Reatância Indutiva (XL)",
+      "capacitance": "Reatância Capacitiva (XC)",
+      "impedance": "Impedância (Z)",
+      "phaseAngle": "Ângulo de Fase (φ)",
+      "whatIs": "<h3>O que é Impedância?</h3><p><strong>Impedância (Z)</strong> é a oposição total ao fluxo de corrente em um circuito CA. Combina resistência (R) e reatância (X) em um único valor medido em Ohms (Ω).</p><p>Diferente da resistência simples, a impedância varia com a frequência porque inclui efeitos de capacitores e indutores.</p>",
+      "howTo": "<h3>Fórmula de Impedância</h3><p>Para um circuito RLC Série:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Z = √(R² + (XL - XC)²)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>R:</strong> Resistência (Ω)</li><li><strong>XL:</strong> Reatância Indutiva (Ω)</li><li><strong>XC:</strong> Reatância Capacitiva (Ω)</li></ul>",
+      "faq": [
+        {
+          "question": "Qual a diferença entre Resistência e Impedância?",
+          "answer": "A resistência aplica-se tanto a DC quanto a CA e opõe-se à corrente dissipando calor. A impedância inclui resistência MAIS reatância (armazenamento de energia em campos) e aplica-se apenas a CA."
+        },
+        {
+          "question": "O que é ângulo de fase?",
+          "answer": "Representa o atraso temporal entre as ondas de tensão e corrente. Um ângulo positivo significa que a tensão adianta a corrente (indutivo)."
+        }
+      ]
+    },
+    "power-factor": {
+      "metadataTitle": "Calculadora de Fator de Potência | P vs S",
+      "metadataDescription": "Calcule Fator de Potência (FP), Potência Real (P), Potência Aparente (S) e Potência Reativa (Q).",
+      "metadataKeywords": "fator de potência, fp, potência real, potência aparente, potência reativa, eficiência elétrica",
+      "title": "Calculadora de Fator de Potência",
+      "description": "Calcule Fator de Potência, Potência Real e Aparente.",
+      "realPower": "Potência Real (P)",
+      "apparentPower": "Potência Aparente (S)",
+      "pf": "Fator de Potência (FP)",
+      "reactivePower": "Potência Reativa (Q)",
+      "whatIs": "<h3>O que é Fator de Potência?</h3><p><strong>Fator de Potência (FP)</strong> é uma medida de quão efetivamente a energia elétrica está sendo usada. É a razão entre Potência Real (útil) e Potência Aparente (total fornecida).</p><p>Um FP de 1.0 é ideal, significando que 100% da energia é útil.</p>",
+      "howTo": "<h3>Fórmula de Fator de Potência</h3><p>A fórmula é uma razão simples:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">FP = P / S = cos(φ)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>P:</strong> Potência Real (Watts)</li><li><strong>S:</strong> Potência Aparente (VA)</li><li><strong>φ:</strong> Ângulo de Fase</li></ul>",
+      "faq": [
+        {
+          "question": "Por que um fator de potência baixo é ruim?",
+          "answer": "Um FP baixo significa que você está consumindo mais corrente do que usando efetivamente. Isso desperdiça energia em linhas de distribuição e pode levar a multas."
+        },
+        {
+          "question": "Como corrigir o fator de potência?",
+          "answer": "Frequentemente são adicionados bancos de capacitores para neutralizar a reatância indutiva de motores, trazendo o FP para perto de 1.0."
+        }
+      ]
+    },
+    "transformer": {
+      "metadataTitle": "Calculadora de Transformador | Relação de Espiras",
+      "metadataDescription": "Calcule tensões, correntes e relação de espiras de transformadores passo a passo.",
+      "metadataKeywords": "calculadora transformador, relação espiras, tensão, eletrônica, bobina",
+      "title": "Calculadora de Transformador",
+      "description": "Calcule tensão, corrente e relação de espiras.",
+      "priVolts": "Tensão Primária (Vp)",
+      "priTurns": "Espiras Primárias (Np)",
+      "secTurns": "Espiras Secundárias (Ns)",
+      "secVolts": "Tensão Secundária (Vs)",
+      "ratio": "Relação de Espiras (N)",
+      "whatIs": "<h3>O que é um Transformador?</h3><p>Um <strong>transformador</strong> atua como uma engrenagem magnética usada para mudar níveis de tensão CA. Consiste em duas bobinas enroladas em torno de um núcleo magnético.</p>",
+      "howTo": "<h3>Fórmula do Transformador</h3><p>A razão de tensão é igual à razão de espiras:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Vp / Vs = Np / Ns</strong></div><p>A corrente é inversamente proporcional:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Ip / Is = Ns / Np</strong></div>",
+      "faq": [
+        {
+          "question": "Funcionam com Corrente Contínua (CC)?",
+          "answer": "Não. Transformadores dependem de um campo magnético <strong>variável</strong>. A CC cria um campo constante, então não há indução."
+        }
+      ]
+    },
+    "capacitive-reactance": {
+      "metadataTitle": "Calculadora Reatância Capacitiva | Fórmula Xc",
+      "metadataDescription": "Calcule a impedância de um capacitor em uma frequência CA específica.",
+      "metadataKeywords": "reatância capacitiva, xc, impedância capacitor, circuito ca, calculadora eletrônica",
+      "title": "Calculadora de Reatância Capacitiva",
+      "description": "Calcule a reatância de um capacitor em uma frequência.",
+      "frequency": "Frequência (f)",
+      "capacitance": "Capacitância (C)",
+      "reactance": "Reatância (Xc)",
+      "whatIs": "<h3>O que é Reatância Capacitiva?</h3><p><strong>Reatância Capacitiva (Xc)</strong> é a oposição que um capacitor oferece à corrente alternada. Diferente de um resistor, sua 'resistência' cai ao aumentar a frequência.</p>",
+      "howTo": "<h3>Fórmula de Cálculo</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Xc = 1 / (2πfC)</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Frequência (Hz)</li><li><strong>C:</strong> Capacitância (Farads)</li></ul>",
+      "faq": [
+        {
+          "question": "A reatância consome potência?",
+          "answer": "Idealmente, não. Armazena e libera energia em vez de dissipá-la como calor."
+        }
+      ]
+    },
+    "inductive-reactance": {
+      "metadataTitle": "Calculadora Reatância Indutiva | Fórmula XL",
+      "metadataDescription": "Calcule a impedância de um indutor (bobina) em uma frequência CA específica.",
+      "metadataKeywords": "reatância indutiva, xl, impedância indutor, bobina, circuito ca, calculadora eletrônica",
+      "title": "Calculadora de Reatância Indutiva",
+      "description": "Calcule a reatância de um indutor em uma frequência.",
+      "frequency": "Frequência (f)",
+      "inductance": "Indutância (L)",
+      "reactance": "Reatância (XL)",
+      "whatIs": "<h3>O que é Reatância Indutiva?</h3><p><strong>Reatância Indutiva (XL)</strong> é a oposição que um indutor oferece à corrente variável. Aumenta com a frequência.</p>",
+      "howTo": "<h3>Fórmula de Cálculo</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">XL = 2πfL</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Frequência (Hz)</li><li><strong>L:</strong> Indutância (Henries)</li></ul>",
+      "faq": [
+        {
+          "question": "Por que se opõe à mudança?",
+          "answer": "Segundo a Lei de Lenz, uma corrente variável induz um campo magnético que cria uma força contra-eletromotriz opondo-se à mudança."
+        }
+      ]
+    },
+    "voltage-divider": {
+      "metadataTitle": "Calculadora Divisor de Tensão | Circuito Resistivo",
+      "metadataDescription": "Calcule a tensão de saída (Vout) de um circuito divisor de dois resistores.",
+      "metadataKeywords": "divisor tensão, divisor resistivo, vout, calculadora eletrônica, lei ohm",
+      "title": "Calculadora de Divisor de Tensão",
+      "description": "Calcule a tensão de saída de um divisor resistivo.",
+      "vin": "Tensão de Entrada (Vin)",
+      "r1": "Resistor R1",
+      "r2": "Resistor R2",
+      "vout": "Tensão Saída (Vout)",
+      "whatIs": "<h3>O que é um Divisor de Tensão?</h3><p>Um <strong>divisor de tensão</strong> é um circuito simples que converte uma tensão grande em uma menor usando dois resistores em série.</p>",
+      "howTo": "<h3>Fórmula Divisor de Tensão</h3><p>A tensão de saída depende da razão dos resistores:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Vout = Vin × [R2 / (R1 + R2)]</strong></div><p>R1 conecta a Vin, e R2 conecta ao Terra. Vout é medido sobre R2.</p>",
+      "faq": [
+        {
+          "question": "Posso usar para alimentar um motor?",
+          "answer": "<strong>Não!</strong> Divisores são para sinais, não potência. Se conectar uma carga (como um motor), atua como terceiro resistor em paralelo, derrubando a tensão."
+        }
+      ]
+    },
+    "led-resistor": {
+      "metadataTitle": "Calculadora Resistor LED | Série",
+      "metadataDescription": "Calcule o valor correto do resistor série para proteger seu LED.",
+      "metadataKeywords": "resistor led, limitar corrente, circuito led, calculadora eletrônica, diodo",
+      "title": "Calculadora de Resistor LED",
+      "description": "Calcule resistor série necessário para um LED.",
+      "vs": "Tensão da Fonte (Vs)",
+      "vf": "Tensão Direta LED (Vf)",
+      "if": "Corrente LED (If)",
+      "resistor": "Valor Resistor (R)",
+      "power": "Potência Resistor",
+      "whatIs": "<h3>Por que LEDs precisam de resistores?</h3><p>LEDs são dispositivos controlados por corrente. Se conectados direto a uma tensão maior que sua tensão direta, consumirão corrente infinita e queimarão.</p>",
+      "howTo": "<h3>Lei de Ohm para LEDs</h3><p>Devemos dissipar a tensão excedente no resistor:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">R = (Vs - Vf) / If</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Vs:</strong> Tensão Fonte</li><li><strong>Vf:</strong> Tensão Direta LED (ex. 2V Vermelho, 3V Azul)</li><li><strong>If:</strong> Corrente Desejada (Amperes)</li></ul>",
+      "faq": [
+        {
+          "question": "O que é Tensão Direta (Vf)?",
+          "answer": "Depende da cor: Vermelho/Laranja/Amarelo geralmente ~2.0V, enquanto Verde/Azul/Branco ~3.0-3.3V."
+        }
+      ]
+    },
+    "battery-life": {
+      "metadataTitle": "Calculadora Vida Bateria | Estimador",
+      "metadataDescription": "Estime quanto durará uma bateria dada sua capacidade e consumo de carga.",
+      "metadataKeywords": "vida bateria, calculadora tempo, mah, capacidade, eletrônica, consumo energia",
+      "title": "Calculadora de Vida de Bateria",
+      "description": "Estime duração de bateria para uma carga dada.",
+      "capacity": "Capacidade Bateria (mAh)",
+      "load": "Corrente de Carga (mA)",
+      "hours": "Tempo Estimado",
+      "whatIs": "<h3>Estimativa de Duração de Bateria</h3><p>Esta calculadora estima quanto tempo funcionará um dispositivo com uma bateria, considerando a capacidade e a carga.</p>",
+      "howTo": "<h3>Fórmula de Estimativa</h3><p>Aplicamos um <strong>fator de degradação de 0.7</strong> (Regra geral) para eficiência e curvas de descarga:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Tempo = (Capacidade / Carga) × 0.7</strong></div>",
+      "faq": [
+        {
+          "question": "Por que o fator 0.7?",
+          "answer": "Baterias raramente entregam sua capacidade completa, especialmente a taxas de descarga altas ou temperaturas extremas."
+        }
+      ]
+    },
+    "parallel-resistors": {
+      "metadataTitle": "Calculadora Resistores Paralelo | Resistência Equivalente",
+      "metadataDescription": "Calcule a resistência equivalente total para resistores conectados em paralelo.",
+      "metadataKeywords": "resistores paralelo, resistência equivalente, calculadora circuito, lei ohm",
+      "title": "Calculadora Resistores em Paralelo",
+      "description": "Calcule resistência equivalente em paralelo.",
+      "r1": "Resistor 1",
+      "r2": "Resistor 2",
+      "r3": "Resistor 3 (Opcional)",
+      "req": "Resistência Equivalente (Req)",
+      "whatIs": "<h3>Resistores em Paralelo</h3><p>Quando resistores são conectados em paralelo, a resistência total diminui. A corrente total tem múltiplos caminhos, tornando mais 'fácil' a passagem de elétrons.</p>",
+      "howTo": "<h3>Fórmula de Cálculo</h3><p>O inverso da resistência total é a soma dos inversos:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">1/Req = 1/R1 + 1/R2 + 1/R3...</strong></div>",
+      "faq": [
+        {
+          "question": "Por que colocar resistores em paralelo?",
+          "answer": "Para obter um valor de resistência não padrão, ou para aumentar a capacidade de dissipação de potência (wattage)."
+        }
+      ]
+    },
+    "rc-time-constant": {
+      "metadataTitle": "Calculadora Constante de Tempo RC | Tau τ",
+      "metadataDescription": "Calcule a constante de tempo (tau) de um circuito resistor-capacitor. Determine tempos de carga.",
+      "metadataKeywords": "constante tempo rc, tau, carga capacitor, resposta transitoria, calculadora eletrônica",
+      "title": "Calculadora Constante de Tempo RC",
+      "description": "Calcule tempo de carga de capacitor (τ).",
+      "resistance": "Resistência (R)",
+      "capacitance": "Capacitância (C)",
+      "tau": "Constante de Tempo (τ)",
+      "fullCharge": "Tempo Carga Total (5τ)",
+      "whatIs": "<h3>O que é a Constante de Tempo RC?</h3><p>A <strong>Constante de Tempo (símbolo τ, Tau)</strong> representa o tempo necessário para carregar um capacitor, através de um resistor, a aproximadamente 63.2% da tensão da fonte.</p>",
+      "howTo": "<h3>Fórmula Tau</h3><p>A constante de tempo é o produto de R e C:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">τ = R × C</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>τ:</strong> Tempo em segundos</li><li><strong>R:</strong> Resistência em Ohms</li><li><strong>C:</strong> Capacitância em Farads</li></ul>",
+      "faq": [
+        {
+          "question": "Quando está totalmente carregado?",
+          "answer": "Teoricamente nunca, mas para propósitos práticos, considera-se carregado (99.3%) após <strong>5 constantes de tempo (5τ)</strong>."
+        }
+      ]
+    },
+    "specific-heat": {
+      "metadataTitle": "Calculadora de Calor Específico (Q=mcΔT)",
+      "metadataDescription": "Calcule a energia térmica necessária para mudar a temperatura. Predefinições de materiais incluídas.",
+      "metadataKeywords": "calor específico, capacidade térmica, calorimetria, termodinâmica, calculadora física",
+      "title": "Calculadora de Calor Específico",
+      "description": "Calcule Energia Térmica (Q) para mudar a temperatura.",
+      "heat": "Energia Térmica (Q)",
+      "mass": "Massa (m)",
+      "specificHeat": "Calor Específico (c)",
+      "tempChange": "Variação Temp (ΔT)",
+      "whatIs": "<h3>O que é Calor Específico?</h3><p><strong>Calor Específico (c)</strong> é a quantidade de energia necessária para elevar a temperatura de 1 kg de uma substância em 1°C.</p><p>A água tem um calor específico muito alto (4186 J/kg°C), por isso demora para ferver e é ótima para refrigeração.</p>",
+      "howTo": "<h3>Fórmula Calor Específico</h3><p>A equação fundamental da calorimetria:</p><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Q = mcΔT</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Q:</strong> Energia Térmica (Joules)</li><li><strong>m:</strong> Massa (kg)</li><li><strong>c:</strong> Calor Específico (J/kg°C)</li><li><strong>ΔT:</strong> Variação de Temperatura (°C)</li></ul>",
+      "faq": [
+        {
+          "question": "Q depende da temp inicial?",
+          "answer": "Não, apenas da <strong>variação</strong> de temperatura (ΔT). Porém, o calor específico (c) pode variar levemente com a temperatura, mas assumimos constante para problemas simples."
+        }
+      ]
+    },
+    "thermal-expansion": {
+      "metadataTitle": "Calculadora Expansão Térmica (ΔL)",
+      "metadataDescription": "Calcule a expansão linear de sólidos devido à variação de temperatura.",
+      "metadataKeywords": "expansão térmica, dilatação linear, coeficiente dilatação, termodinâmica",
+      "title": "Calculadora de Expansão Térmica",
+      "description": "Calcule Dilatação Térmica Linear de sólidos.",
+      "length": "Comprimento Inicial (L₀)",
+      "alpha": "Coeficiente (α)",
+      "tempChange": "Variação Temp (ΔT)",
+      "deltaL": "Variação Comprimento (ΔL)",
+      "finalL": "Comprimento Final (L)",
+      "whatIs": "<h3>O que é Expansão Térmica?</h3><p>A maioria dos materiais se expande ao aquecer. <strong>Expansão linear</strong> refere-se à mudança no comprimento de um sólido.</p><p>Engenheiros deixam folgas em pontes e trilhos para evitar deformações em dias quentes.</p>",
+      "howTo": "<h3>Fórmula de Dilatação</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">ΔL = αL₀ΔT</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>ΔL:</strong> Variação de Comprimento (m)</li><li><strong>α (Alpha):</strong> Coeficiente de Dilatação (1/°C)</li><li><strong>L₀:</strong> Comprimento Inicial (m)</li></ul>",
+      "faq": [
+        {
+          "question": "Qual dilata mais: Aço ou Alumínio?",
+          "answer": "O Alumínio (α ≈ 23×10⁻⁶) dilata quase o dobro do Aço (α ≈ 12×10⁻⁶) para a mesma variação de temperatura."
+        }
+      ]
+    },
+    "boyles-law": {
+      "metadataTitle": "Calculadora Lei de Boyle (P₁V₁ = P₂V₂)",
+      "metadataDescription": "Calcule alterações de Pressão ou Volume a Temperatura constante.",
+      "metadataKeywords": "lei boyle, leis gases, pressão volume, termodinâmica, gás ideal",
+      "title": "Calculadora Lei de Boyle",
+      "description": "Calcule Pressão/Volume a Temperatura constante.",
+      "p1": "Pressão Inicial (P₁)",
+      "v1": "Volume Inicial (V₁)",
+      "p2": "Pressão Final (P₂)",
+      "v2": "Volume Final (V₂)",
+      "whatIs": "<h3>O que é a Lei de Boyle?</h3><p>A <strong>Lei de Boyle</strong> afirma que para uma quantidade fixa de gás a temperatura constante, a pressão e o volume são inversamente proporcionais.</p>",
+      "howTo": "<h3>Fórmula Lei de Boyle</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">P₁V₁ = P₂V₂</strong></div><p>O produto da pressão e volume permanece constante se a temperatura não mudar.</p>",
+      "faq": [
+        {
+          "question": "Exemplo real?",
+          "answer": "Apertar um balão diminui seu volume, o que aumenta a pressão interna até estourar. Ou uma seringa: empurrar o êmbolo aumenta a pressão."
+        }
+      ]
+    },
+    "charles-law": {
+      "metadataTitle": "Calculadora Lei de Charles (V₁/T₁ = V₂/T₂)",
+      "metadataDescription": "Calcule alterações de Volume ou Temperatura a Pressão constante.",
+      "metadataKeywords": "lei charles, leis gases, volume temperatura, termodinâmica",
+      "title": "Calculadora Lei de Charles",
+      "description": "Calcule Volume/Temp a Pressão constante.",
+      "v1": "Volume Inicial (V₁)",
+      "t1": "Temp Inicial (T₁)",
+      "v2": "Volume Final (V₂)",
+      "t2": "Temp Final (T₂)",
+      "whatIs": "<h3>O que é a Lei de Charles?</h3><p>A <strong>Lei de Charles</strong> afirma que o volume é diretamente proporcional à temperatura (em Kelvin) a pressão constante.</p>",
+      "howTo": "<h3>Fórmula Lei de Charles</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">V₁ / T₁ = V₂ / T₂</strong></div><p><strong>Importante:</strong> Temperatura DEVE ser em Kelvin! (K = °C + 273.15)</p>",
+      "faq": [
+        {
+          "question": "Por que Kelvin?",
+          "answer": "As leis dos gases exigem uma escala absoluta. 0°C não é 'zero energia'. Kelvin começa no Zero Absoluto."
+        }
+      ]
+    },
+    "ideal-gas-law": {
+      "metadataTitle": "Calculadora Gás Ideal (PV=nRT)",
+      "metadataDescription": "Calcule Pressão, Volume, Temperatura ou Mols usando PV = nRT.",
+      "metadataKeywords": "lei gás ideal, pv=nrt, constante gás, termodinâmica, calculadora física",
+      "title": "Calculadora Lei dos Gases Ideais",
+      "description": "Calcule propriedades de um Gás Ideal.",
+      "pressure": "Pressão (P)",
+      "volume": "Volume (V)",
+      "moles": "Mols (n)",
+      "temp": "Temperatura (T)",
+      "whatIs": "<h3>O que é a Lei dos Gases Ideais?</h3><p>Combina as leis de Boyle, Charles e Avogadro em uma equação que descreve o estado de um gás ideal hipotético.</p>",
+      "howTo": "<h3>Fórmula Gás Ideal</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">PV = nRT</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>P:</strong> Pressão (Pa)</li><li><strong>V:</strong> Volume (m³)</li><li><strong>n:</strong> Mols da substância</li><li><strong>R:</strong> Constante dos Gases (8.314 J/mol·K)</li><li><strong>T:</strong> Temperatura (Kelvin)</li></ul>",
+      "faq": [
+        {
+          "question": "Quando um gás é 'Ideal'?",
+          "answer": "Em altas temperaturas e baixas pressões. Gases reais desviam desta lei em altas pressões ou baixas temperaturas (perto da liquefação)."
+        }
+      ]
+    },
+    "hydrostatic-pressure": {
+      "metadataTitle": "Calculadora Pressão Hidrostática (P=ρgh)",
+      "metadataDescription": "Calcule a pressão em profundidade num fluido.",
+      "metadataKeywords": "pressão hidrostática, mecânica fluidos, pressão profundidade, calculadora física",
+      "title": "Calculadora Pressão Hidrostática",
+      "description": "Calcule pressão em profundidade específica.",
+      "density": "Densidade (ρ)",
+      "gravity": "Gravidade (g)",
+      "height": "Profundidade (h)",
+      "pressure": "Pressão (P)",
+      "whatIs": "<h3>O que é Pressão Hidrostática?</h3><p>É a pressão exercida por um fluido em equilíbrio num ponto dado, devido à força da gravidade. Aumenta com a profundidade.</p>",
+      "howTo": "<h3>Fórmula Hidrostática</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">P = ρgh</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>ρ (rho):</strong> Densidade do Fluido (kg/m³)</li><li><strong>g:</strong> Gravidade (9.81 m/s²)</li><li><strong>h:</strong> Profundidade (m)</li></ul>",
+      "faq": [
+        {
+          "question": "A forma do recipiente importa?",
+          "answer": "Não! Apenas a profundidade importa. Paradoxo Hidrostático: Um tubo fino e uma piscina têm a mesma pressão na mesma profundidade."
+        }
+      ]
+    },
+    "buoyancy": {
+      "metadataTitle": "Calculadora Empuxo (Arquimedes)",
+      "metadataDescription": "Calcule a Força de Empuxo com base no volume de fluido deslocado.",
+      "metadataKeywords": "empuxo, princípio arquimedes, mecânica fluidos, flutuar, deslocamento",
+      "title": "Calculadora de Empuxo",
+      "description": "Calcule Força de Empuxo (Princípio Arquimedes).",
+      "density": "Densidade Fluido (ρ)",
+      "volume": "Volume Deslocado (V)",
+      "gravity": "Gravidade (g)",
+      "force": "Força Empuxo (E)",
+      "liftMass": "Massa Fluido Deslocado",
+      "whatIs": "<h3>O que é Empuxo?</h3><p><strong>Empuxo</strong> é a força ascendente exercida por um fluido que se opõe ao peso de um objeto imerso.</p><p><strong>Princípio de Arquimedes:</strong> A força de empuxo é igual ao peso do fluido deslocado pelo objeto.</p>",
+      "howTo": "<h3>Fórmula do Empuxo</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">E = ρVg</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>ρ:</strong> Densidade do Fluido (kg/m³)</li><li><strong>V:</strong> Volume Deslocado (m³)</li><li><strong>g:</strong> Gravidade</li></ul>",
+      "faq": [
+        {
+          "question": "Por que navios de aço flutuam?",
+          "answer": "Porque são moldados para deslocar um grande volume de água. O peso dessa água é maior que o peso do aço!"
+        }
+      ]
+    },
+    "reynolds-number": {
+      "metadataTitle": "Calculadora Número Reynolds (Re)",
+      "metadataDescription": "Calcule o Número de Reynolds para prever fluxo Laminar vs Turbulento.",
+      "metadataKeywords": "número reynolds, dinâmica fluidos, fluxo laminar, turbulento, tubulação",
+      "title": "Calculadora Número de Reynolds",
+      "description": "Preveja fluxo Laminar vs Turbulento.",
+      "velocity": "Velocidade Fluxo (v)",
+      "length": "Comprimento Carac. (D)",
+      "viscosityType": "Tipo Viscosidade",
+      "dynamicVisc": "Viscosidade Dinâmica (μ)",
+      "kinematicVisc": "Viscosidade Cinemática (ν)",
+      "re": "Número Reynolds (Re)",
+      "regime": "Regime de Fluxo",
+      "whatIs": "<h3>O que é o Número de Reynolds?</h3><p>O <strong>Número de Reynolds (Re)</strong> é uma grandeza adimensional usada para prever padrões de fluxo.</p><p>Baixo Re indica fluxo laminar (suave). Alto Re indica turbulento (caótico).</p>",
+      "howTo": "<h3>Fórmula Re</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Re = (ρvD) / μ = vD / ν</strong></div><p>A transição de Laminar para Turbulento ocorre tipicamente entre Re 2300 e 4000 em tubos.</p>",
+      "faq": [
+        {
+          "question": "Por que não tem unidades?",
+          "answer": "Porque as unidades se cancelam perfeitamente. Permite escalar experimentos (ex. testar modelos de aviões em túneis de vento)."
+        }
+      ]
+    },
+    "pascal-principle": {
+      "metadataTitle": "Calculadora Princípio Pascal (Hidráulica)",
+      "metadataDescription": "Calcule relações de Força e Área para sistemas hidráulicos.",
+      "metadataKeywords": "princípio pascal, hidráulica, elevador hidráulico, força pressão, mecânica fluidos",
+      "title": "Calculadora Princípio de Pascal",
+      "description": "Calcule forças em Elevador Hidráulico.",
+      "f1": "Força Entrada (F₁)",
+      "a1": "Área Entrada (A₁)",
+      "a2": "Área Saída (A₂)",
+      "f2": "Força Saída (F₂)",
+      "amplification": "Vantagem Mecânica",
+      "whatIs": "<h3>O que é o Princípio de Pascal?</h3><p>Afirma que uma mudança de pressão num fluido confinado incompressível é transmitida igualmente em todas as direções.</p><p>É a mágica dos elevadores hidráulicos: pouca força em área pequena cria grande força em área grande.</p>",
+      "howTo": "<h3>Fórmula Elevador Hidráulico</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">F₁ / A₁ = F₂ / A₂</strong></div><p>A pressão (P) é constante no sistema.</p>",
+      "faq": [
+        {
+          "question": "Cria-se energia?",
+          "answer": "Não! Você troca distância por força. O pistão pequeno deve mover-se muito para mover o grande um pouco. Trabalho Entra = Trabalho Sai."
+        }
+      ]
+    },
+    "heat-transfer-conduction": {
+      "metadataTitle": "Calculadora Condução Calor (Fourier)",
+      "metadataDescription": "Calcule Taxa de Transferência de Calor usando Lei de Fourier.",
+      "metadataKeywords": "transferência calor, condução, lei fourier, condutividade térmica, termodinâmica",
+      "title": "Calculadora Condução de Calor",
+      "description": "Calcule Taxa de Condução de Calor.",
+      "k": "Condutividade Térmica (k)",
+      "area": "Área (A)",
+      "thickness": "Espessura (d)",
+      "tempDiff": "Diferença Temp (ΔT)",
+      "rate": "Taxa Transferência Calor",
+      "whatIs": "<h3>O que é Condução?</h3><p><strong>Condução</strong> é a transferência de calor através de um material sem movimento do material como um todo. Ocorre por colisões atômicas.</p>",
+      "howTo": "<h3>Fórmula Lei de Fourier</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">Q/t = kAΔT / d</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>k:</strong> Condutividade Térmica (W/m·K)</li><li><strong>A:</strong> Área Superficial (m²)</li><li><strong>d:</strong> Espessura (m)</li><li><strong>ΔT:</strong> Diferença Temperatura (°C)</li></ul>",
+      "faq": [
+        {
+          "question": "Quais materiais são bons condutores?",
+          "answer": "Metais como Cobre e Alumínio têm alto 'k'. Isolantes como lã, espuma ou ar têm baixo 'k'."
+        }
+      ]
+    },
+    "snells-law": {
+      "metadataTitle": "Calculadora da Lei de Snell | Ângulo de Refração",
+      "metadataDescription": "Calcule o ângulo de refração ou o índice de refração usando a Lei de Snell.",
+      "metadataKeywords": "lei de snell, refração, óptica, índice de refração, física da luz",
+      "title": "Calculadora da Lei de Snell",
+      "description": "Calcule Ângulos de Refração.",
+      "n1": "Índice 1 (n₁)",
+      "theta1": "Ângulo de Incidência (θ₁)",
+      "n2": "Índice 2 (n₂)",
+      "theta2": "Ângulo de Refração (θ₂)",
+      "whatIs": "<h3>O que é a Lei de Snell?</h3><p>A <strong>Lei de Snell</strong> descreve a relação entre os ângulos de incidência e refração quando a luz passa pela fronteira entre dois meios diferentes, como o ar e a água.</p>",
+      "howTo": "<h3>Fórmula da Lei de Snell</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">n₁ sin(θ₁) = n₂ sin(θ₂)</strong></div><p>Onde n₁ e n₂ são os índices de refração dos meios, e θ₁ e θ₂ são os ângulos medidos em relação à normal (linha perpendicular) na fronteira.</p>",
+      "faq": [
+        {
+          "question": "Qual é o índice de refração da água?",
+          "answer": "O índice de refração da água pura é aproximadamente 1,33."
+        }
+      ]
+    },
+    "lens-equation": {
+      "metadataTitle": "Calculadora de Equação de Lentes | Fórmula de Lentes Delgadas",
+      "metadataDescription": "Calcule a distância focal, a distância do objeto ou a distância da imagem para lentes.",
+      "metadataKeywords": "equação de lentes, distância focal, distância de imagem, óptica, física",
+      "title": "Calculadora de Equação de Lentes",
+      "description": "Resolva a Fórmula de Lentes Delgadas.",
+      "f": "Distância Focal (f)",
+      "do": "Distância do Objeto (dₒ)",
+      "di": "Distância da Imagem (dᵢ)",
+      "whatIs": "<h3>O que é a Equação de Lentes?</h3><p>A <strong>Equação de Lentes Delgadas</strong> relaciona a distância focal de uma lente com as distâncias do objeto e da imagem resultante.</p>",
+      "howTo": "<h3>Fórmula de Lentes</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">1/f = 1/dₒ + 1/dᵢ</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>f:</strong> Distância focal</li><li><strong>dₒ:</strong> Distância do objeto à lente</li><li><strong>dᵢ:</strong> Distância da imagem à lente</li></ul>",
+      "faq": [
+        {
+          "question": "A distância focal é positiva ou negativa?",
+          "answer": "Para lentes convergentes (convexas), a distância focal é positiva. Para lentes divergentes (côncavas), é negativa."
+        }
+      ]
+    },
+    "mirror-equation": {
+      "metadataTitle": "Calculadora de Equação de Espelhos | Fórmula de Espelho Esférico",
+      "metadataDescription": "Calcule propriedades para espelhos côncavos e convexos.",
+      "metadataKeywords": "equação de espelhos, espelho côncavo, espelho convexo, óptica, física",
+      "title": "Calculadora de Equação de Espelhos",
+      "description": "Resolva a Fórmula de Espelho Esférico.",
+      "type": "Tipo de Espelho",
+      "f": "Distância Focal (f)",
+      "do": "Distância do Objeto (dₒ)",
+      "di": "Distância da Imagem (dᵢ)",
+      "whatIs": "<h3>O que é a Equação de Espelhos?</h3><p>Assim como nas lentes, a <strong>Equação de Espelhos</strong> relaciona a distância focal de um espelho esférico com as distâncias do objeto e da imagem.</p>",
+      "howTo": "<h3>Fórmula de Espelhos</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">1/f = 1/dₒ + 1/dᵢ</strong></div><p>Nota: Para espelhos côncavos, f é positiva. Para espelhos convexos, f é negativa.</p>",
+      "faq": [
+        {
+          "question": "O que é uma imagem virtual?",
+          "answer": "Uma imagem virtual ocorre quando dᵢ é negativo. Ela aparece 'atrás' do espelho e não pode ser projetada em uma tela."
+        }
+      ]
+    },
+    "magnification": {
+      "metadataTitle": "Calculadora de Aumento | Ampliação Linear",
+      "metadataDescription": "Calcule a altura da imagem ou o fator de aumento para sistemas ópticos.",
+      "metadataKeywords": "aumento, óptica, altura de imagem, ampliação de lente, física",
+      "title": "Calculadora de Aumento",
+      "description": "Calcule o Aumento Óptico.",
+      "di": "Distância da Imagem (dᵢ)",
+      "do": "Distância do Objeto (dₒ)",
+      "ho": "Altura do Objeto (hₒ)",
+      "m": "Aumento (M)",
+      "hi": "Altura da Imagem (hᵢ)",
+      "whatIs": "<h3>O que é Aumento?</h3><p>O <strong>Aumento</strong> é a razão entre a altura da imagem e a altura do objeto. Ele indica o quanto a imagem é maior ou menor em comparação com o objeto original.</p>",
+      "howTo": "<h3>Fórmula de Aumento</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">M = -dᵢ / dₒ = hᵢ / hₒ</strong></div><p>Um aumento negativo indica que a imagem está invertida.</p>",
+      "faq": [
+        {
+          "question": "O que significa M < 1?",
+          "answer": "Se o valor absoluto de M for menor que 1, a imagem é menor que o objeto (reduzida)."
+        }
+      ]
+    },
+    "wave-speed": {
+      "metadataTitle": "Calculadora de Velocidade de Onda | v = fλ",
+      "metadataDescription": "Calcule a velocidade, frequência ou comprimento de onda.",
+      "metadataKeywords": "velocidade de onda, frequência, comprimento de onda, equação de onda, física",
+      "title": "Calculadora de Velocidade de Onda",
+      "description": "Resolva a Equação de Onda.",
+      "v": "Velocidade (v)",
+      "f": "Frecuência (f)",
+      "l": "Comprimento de onda (λ)",
+      "whatIs": "<h3>O que é a Equação de Onda?</h3><p>A <strong>Equação de Onda</strong> relaciona a velocidade de uma onda com sua frequência e comprimento de onda. Aplica-se a todas as ondas, incluindo som, luz e água.</p>",
+      "howTo": "<h3>Fórmula de Velocidade de Onda</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">v = f × λ</strong></div><ul class=\"list-disc pl-5 space-y-2\"><li><strong>v:</strong> Velocidade (m/s)</li><li><strong>f:</strong> Frequência (Hz)</li><li><strong>λ:</strong> Comprimento de onda (m)</li></ul>",
+      "faq": [
+        {
+          "question": "Qual é a velocidade da luz?",
+          "answer": "No vácuo, a luz viaja a aproximadamente 299.792.458 m/s (geralmente arredondado para 3x10⁸ m/s)."
+        }
+      ]
+    },
+    "frequency-period": {
+      "metadataTitle": "Calculadora de Frequência e Período | f = 1/T",
+      "metadataDescription": "Ferramenta simples para converter entre frequência e período.",
+      "metadataKeywords": "frequência, período, oscilação, física, ondas",
+      "title": "Calculadora de Frequência e Período",
+      "description": "Converta Frequência e Período.",
+      "f": "Frequência (Hz)",
+      "t": "Período (s)",
+      "whatIs": "<h3>Frequência vs Período</h3><p>A <strong>Frequência (f)</strong> é o número de ciclos por segundo. O <strong>Período (T)</strong> é o tempo que leva um ciclo completo.</p>",
+      "howTo": "<h3>Fórmula de Relação</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">f = 1 / T</strong></div><p>Eles são inversamente proporcionais: conforme o período aumenta, a frequência diminui.</p>",
+      "faq": [
+        {
+          "question": "O que é 1 Hertz (Hz)?",
+          "answer": "1 Hz equivale a um ciclo por segundo."
+        }
+      ]
+    },
+    "photon-energy": {
+      "metadataTitle": "Calculadora de Energia de Fótons | Lei de Planck",
+      "metadataDescription": "Determine a energia dos fótons em Joules ou elétron-volts (eV).",
+      "metadataKeywords": "energia de fótons, lei de planck, óptica, física quântica, comprimento de onda",
+      "title": "Calculadora de Energia de Fótons",
+      "description": "Calcule a Energia de Partículas de Luz.",
+      "val": "Valor de Entrada",
+      "joules": "Energia (Joules)",
+      "ev": "Energia (eV)",
+      "whatIs": "<h3>O que é a Energia do Fóton?</h3><p>Fótons são partículas elementares de luz. Sua energia é diretamente proporcional à sua frequência eletromagnética e inversamente proporcional ao seu comprimento de onda.</p>",
+      "howTo": "<h3>Fórmula de Energia</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">E = hf = hc / λ</strong></div><p>Onde <strong>h</strong> é a constante de Planck (6,626 x 10⁻³⁴ J·s) e <strong>c</strong> é a velocidade da luz.</p>",
+      "faq": [
+        {
+          "question": "Qual luz tem mais energia: Vermelha ou Azul?",
+          "answer": "A luz azul tem um comprimento de onda mais curto e uma frequência mais alta, portanto, os fótons azuis têm mais energia que os vermelhos."
+        }
+      ]
+    },
+    "doppler-effect": {
+      "metadataTitle": "Calculadora de Efeito Doppler | Mudança de Frequência",
+      "metadataDescription": "Calcule mudanças de frequência para ondas de som ou luz.",
+      "metadataKeywords": "efeito doppler, mudança de frequência, ondas, física, acústica",
+      "title": "Calculadora de Efeito Doppler",
+      "description": "Calcule Mudanças de Frequência.",
+      "fs": "Frequência da Fonte",
+      "v": "Velocidade da Onda",
+      "vo": "Velocidade do Observador",
+      "vs": "Velocidade da Fonte",
+      "fo": "Frequência Observada",
+      "whatIs": "<h3>O que é o Efeito Doppler?</h3><p>O <strong>Efeito Doppler</strong> é a mudança na frequência de uma onda em relação a um observador que se move em relação à fonte da onda (ex: a mudança de tom de uma sirene passando).</p>",
+      "howTo": "<h3>Fórmula Doppler</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">fₒ = fₛ (v + vₒ) / (v - vₛ)</strong></div><p>Certifique-se de que as velocidades sejam positivas se estiverem se aproximando e negativas se estiverem se afastando.</p>",
+      "faq": [
+        {
+          "question": "Aplica-se à luz?",
+          "answer": "Sim. Isso causa o 'Redshift' (desvio para o vermelho) para estrelas que se afastam e 'Blueshift' para as que se aproximam."
+        }
+      ]
+    },
+    "sound-intensity": {
+      "metadataTitle": "Nível de Intensidade Sonora | Calculadora de dB",
+      "metadataDescription": "Converta entre intensidade sonora (W/m²) e decibéis (dB).",
+      "metadataKeywords": "intensidade sonora, decibéis, dB, acústica, física",
+      "title": "Calculadora de Intensidade Sonora",
+      "description": "Converta Intensidade e dB.",
+      "val": "Valor de Entrada",
+      "result": "Resultado",
+      "whatIs": "<h3>Nível de Intensidade Sonora</h3><p>O nível de intensidade sonora é uma medida logarítmica da intensidade de um som em relação a um valor de referência (o limiar da audição humana).</p>",
+      "howTo": "<h3>Fórmula de Nível de Intensidade</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">L = 10 log₁₀( I / I₀ )</strong></div><p>Onde I₀ é o limiar de audição (10⁻¹² W/m²).</p>",
+      "faq": [
+        {
+          "question": "Qual é o limiar da dor?",
+          "answer": "Normalmente em torno de 120 dB a 130 dB para o ouvido humano."
+        }
+      ]
+    },
+    "brewsters-angle": {
+      "metadataTitle": "Calculadora de Ângulo de Brewster | Polarização",
+      "metadataDescription": "Calcule o ângulo no qual a luz refletida é perfeitamente polarizada.",
+      "metadataKeywords": "ângulo de brewster, polarização, óptica, índice de refração, física",
+      "title": "Calculadora de Ângulo de Brewster",
+      "description": "Calcule o Ângulo de Polarização.",
+      "n1": "Índice 1 (n₁)",
+      "n2": "Índice 2 (n₂)",
+      "theta": "Ângulo de Brewster",
+      "whatIs": "<h3>O que é o Ângulo de Brewster?</h3><p>O <strong>Ângulo de Brewster</strong> é um ângulo de incidência no qual a luz com uma polarização específica é perfeitamente transmitida através de uma superfície transparente, sem reflexão.</p>",
+      "howTo": "<h3>Fórmula de Brewster</h3><div class=\"bg-blue-50 p-4 rounded-xl border border-blue-100 my-4 text-center\"><strong class=\"text-blue-900 block mb-2\">θ_B = arctan( n₂ / n₁ )</strong></div><p>A luz refletida neste ângulo é 100% polarizada linearmente.</p>",
+      "faq": [
+        {
+          "question": "Como funcionam os óculos de sol polarizados?",
+          "answer": "Eles bloqueiam o brilho refletido (que muitas vezes é polarizado horizontalmente) de superfícies como água ou estradas, melhorando a visibilidade."
+        }
+      ]
     }
   }
 }
