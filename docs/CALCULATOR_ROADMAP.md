@@ -9,9 +9,9 @@ Marque com `[x]` as subcategorias concluídas.
 
 | Categoria | Status | Progresso |
 |-----------|--------|-----------|
-| Math | 🟡 Em progresso | 57/~150 |
-| Finance | 🔴 Não iniciado | 0/~200 |
-| Health | 🔴 Não iniciado | 0/~150 |
+| Math | 🟡 Em progresso | 77/~150 |
+| Finance | 🟡 Em progresso | 10/~200 |
+| Health | 🟡 Em progresso | 10/~150 |
 | Physics | 🔴 Não iniciado | 0/~120 |
 | Statistics | 🔴 Não iniciado | 0/~60 |
 | Conversion | 🔴 Não iniciado | 0/~80 |

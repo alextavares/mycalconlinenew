@@ -27041,4 +27041,2167 @@ export const calculators: Record<string, CalculatorConfig> = {
             faq: []
         }
     },
+    // ========================================
+    // STATISTICS (Omni Calculator)
+    // Added: 2026-01-13
+    // ========================================
+    'percentile-calculator': {
+        id: 'percentile-calculator',
+        title: 'Percentile Calculator',
+        description: 'Calculate percentiles from a dataset.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Percentile Calculator | MyCalcOnline',
+            description: 'Find any percentile (25th, 50th, 75th, etc.) from a list of numbers.',
+            keywords: ['percentile calculator', 'percentile rank', 'statistics percentile']
+        },
+        inputs: [
+            { id: 'data', label: 'Data (comma-separated)', type: 'text', placeholder: '10,20,30,40,50' },
+            { id: 'percentile', label: 'Percentile (%)', type: 'number', placeholder: '75' }
+        ],
+        outputs: [
+            {
+                label: 'Percentile Value',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    const p = Number(inputs.percentile) / 100;
+                    if (values.length === 0 || isNaN(p)) return 'Invalid data';
+                    const index = p * (values.length - 1);
+                    const lower = Math.floor(index);
+                    const upper = Math.ceil(index);
+                    if (lower === upper) return values[lower];
+                    return (values[lower] * (upper - index) + values[upper] * (index - lower)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'percentile-calculator.whatIs',
+            howTo: 'percentile-calculator.howTo',
+            faq: []
+        }
+    },
+    'five-number-summary': {
+        id: 'five-number-summary',
+        title: '5 Number Summary Calculator',
+        description: 'Calculate min, Q1, median, Q3, and max of a dataset.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: '5 Number Summary Calculator | MyCalcOnline',
+            description: 'Find the five-number summary: minimum, Q1, median, Q3, maximum.',
+            keywords: ['5 number summary', 'five number summary', 'box plot']
+        },
+        inputs: [
+            { id: 'data', label: 'Data (comma-separated)', type: 'text', placeholder: '5,10,15,20,25,30,35' }
+        ],
+        outputs: [
+            {
+                label: 'Minimum',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    return values.length > 0 ? values[0] : 'N/A';
+                }
+            },
+            {
+                label: 'Q1 (25th percentile)',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    if (values.length === 0) return 'N/A';
+                    const idx = 0.25 * (values.length - 1);
+                    return (values[Math.floor(idx)] * (1 - idx % 1) + values[Math.ceil(idx)] * (idx % 1)).toFixed(2);
+                }
+            },
+            {
+                label: 'Median',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    if (values.length === 0) return 'N/A';
+                    const mid = Math.floor(values.length / 2);
+                    return values.length % 2 ? values[mid] : ((values[mid - 1] + values[mid]) / 2).toFixed(2);
+                }
+            },
+            {
+                label: 'Q3 (75th percentile)',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    if (values.length === 0) return 'N/A';
+                    const idx = 0.75 * (values.length - 1);
+                    return (values[Math.floor(idx)] * (1 - idx % 1) + values[Math.ceil(idx)] * (idx % 1)).toFixed(2);
+                }
+            },
+            {
+                label: 'Maximum',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    return values.length > 0 ? values[values.length - 1] : 'N/A';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'five-number-summary.whatIs',
+            howTo: 'five-number-summary.howTo',
+            faq: []
+        }
+    },
+    'covariance-calculator': {
+        id: 'covariance-calculator',
+        title: 'Covariance Calculator',
+        description: 'Calculate the covariance between two datasets.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Covariance Calculator | MyCalcOnline',
+            description: 'Find the sample and population covariance of two data sets.',
+            keywords: ['covariance', 'covariance calculator', 'statistics covariance']
+        },
+        inputs: [
+            { id: 'dataX', label: 'X values (comma-separated)', type: 'text', placeholder: '1,2,3,4,5' },
+            { id: 'dataY', label: 'Y values (comma-separated)', type: 'text', placeholder: '2,4,5,4,5' }
+        ],
+        outputs: [
+            {
+                label: 'Sample Covariance',
+                calculate: (inputs: Record<string, any>) => {
+                    const x = String(inputs.dataX).split(',').map((v: string) => Number(v.trim()));
+                    const y = String(inputs.dataY).split(',').map((v: string) => Number(v.trim()));
+                    if (x.length !== y.length || x.length < 2) return 'Invalid data';
+                    const n = x.length;
+                    const meanX = x.reduce((a: number, b: number) => a + b, 0) / n;
+                    const meanY = y.reduce((a: number, b: number) => a + b, 0) / n;
+                    const cov = x.reduce((sum: number, xi: number, i: number) => sum + (xi - meanX) * (y[i] - meanY), 0) / (n - 1);
+                    return cov.toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'covariance-calculator.whatIs',
+            howTo: 'covariance-calculator.howTo',
+            faq: []
+        }
+    },
+    'dispersion-calculator': {
+        id: 'dispersion-calculator',
+        title: 'Dispersion Calculator',
+        description: 'Calculate range, variance, and standard deviation.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Dispersion Calculator | MyCalcOnline',
+            description: 'Find measures of dispersion: range, IQR, variance, and standard deviation.',
+            keywords: ['dispersion', 'spread', 'variance calculator']
+        },
+        inputs: [
+            { id: 'data', label: 'Data (comma-separated)', type: 'text', placeholder: '10,20,30,40,50' }
+        ],
+        outputs: [
+            {
+                label: 'Range',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length === 0) return 'N/A';
+                    return Math.max(...values) - Math.min(...values);
+                }
+            },
+            {
+                label: 'Variance (Sample)',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length < 2) return 'N/A';
+                    const mean = values.reduce((a: number, b: number) => a + b, 0) / values.length;
+                    const variance = values.reduce((sum: number, v: number) => sum + Math.pow(v - mean, 2), 0) / (values.length - 1);
+                    return variance.toFixed(4);
+                }
+            },
+            {
+                label: 'Standard Deviation',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length < 2) return 'N/A';
+                    const mean = values.reduce((a: number, b: number) => a + b, 0) / values.length;
+                    const variance = values.reduce((sum: number, v: number) => sum + Math.pow(v - mean, 2), 0) / (values.length - 1);
+                    return Math.sqrt(variance).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'dispersion-calculator.whatIs',
+            howTo: 'dispersion-calculator.howTo',
+            faq: []
+        }
+    },
+    'mad-calculator': {
+        id: 'mad-calculator',
+        title: 'Mean Absolute Deviation Calculator',
+        description: 'Calculate the mean absolute deviation of a dataset.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'MAD Calculator | MyCalcOnline',
+            description: 'Find the mean absolute deviation (MAD) around the mean or median.',
+            keywords: ['mean absolute deviation', 'MAD', 'average deviation']
+        },
+        inputs: [
+            { id: 'data', label: 'Data (comma-separated)', type: 'text', placeholder: '10,15,20,25,30' }
+        ],
+        outputs: [
+            {
+                label: 'Mean',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length === 0) return 'N/A';
+                    return (values.reduce((a: number, b: number) => a + b, 0) / values.length).toFixed(2);
+                }
+            },
+            {
+                label: 'MAD (around mean)',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length === 0) return 'N/A';
+                    const mean = values.reduce((a: number, b: number) => a + b, 0) / values.length;
+                    const mad = values.reduce((sum: number, v: number) => sum + Math.abs(v - mean), 0) / values.length;
+                    return mad.toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'mad-calculator.whatIs',
+            howTo: 'mad-calculator.howTo',
+            faq: []
+        }
+    },
+    'cohens-d-calculator': {
+        id: 'cohens-d-calculator',
+        title: "Cohen's D Calculator",
+        description: 'Calculate the effect size between two groups.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: "Cohen's D Calculator | MyCalcOnline",
+            description: "Calculate Cohen's d effect size to measure the difference between two means.",
+            keywords: ['cohens d', 'effect size', 'statistical power']
+        },
+        inputs: [
+            { id: 'mean1', label: 'Mean Group 1', type: 'number', placeholder: '50' },
+            { id: 'mean2', label: 'Mean Group 2', type: 'number', placeholder: '55' },
+            { id: 'sd', label: 'Pooled Standard Deviation', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: "Cohen's d",
+                calculate: (inputs: Record<string, any>) => {
+                    const m1 = Number(inputs.mean1);
+                    const m2 = Number(inputs.mean2);
+                    const sd = Number(inputs.sd);
+                    if (sd === 0) return 'Invalid (SD cannot be 0)';
+                    return ((m1 - m2) / sd).toFixed(4);
+                }
+            },
+            {
+                label: 'Effect Size Interpretation',
+                calculate: (inputs: Record<string, any>) => {
+                    const m1 = Number(inputs.mean1);
+                    const m2 = Number(inputs.mean2);
+                    const sd = Number(inputs.sd);
+                    if (sd === 0) return 'N/A';
+                    const d = Math.abs((m1 - m2) / sd);
+                    if (d < 0.2) return 'Negligible';
+                    if (d < 0.5) return 'Small';
+                    if (d < 0.8) return 'Medium';
+                    return 'Large';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cohens-d-calculator.whatIs',
+            howTo: 'cohens-d-calculator.howTo',
+            faq: []
+        }
+    },
+    'decile-calculator': {
+        id: 'decile-calculator',
+        title: 'Decile Calculator',
+        description: 'Divide your data into 10 equal parts (deciles).',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Decile Calculator | MyCalcOnline',
+            description: 'Find all 9 decile values (D1-D9) that divide your data into 10 parts.',
+            keywords: ['decile', 'decile calculator', 'percentile groups']
+        },
+        inputs: [
+            { id: 'data', label: 'Data (comma-separated)', type: 'text', placeholder: '1,2,3,4,5,6,7,8,9,10' }
+        ],
+        outputs: [
+            {
+                label: 'D5 (Median)',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    if (values.length === 0) return 'N/A';
+                    const idx = 0.5 * (values.length - 1);
+                    return (values[Math.floor(idx)] * (1 - idx % 1) + values[Math.ceil(idx)] * (idx % 1)).toFixed(2);
+                }
+            },
+            {
+                label: 'All Deciles (D1-D9)',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    if (values.length === 0) return 'N/A';
+                    const deciles = [];
+                    for (let i = 1; i <= 9; i++) {
+                        const idx = (i / 10) * (values.length - 1);
+                        const val = values[Math.floor(idx)] * (1 - idx % 1) + values[Math.ceil(idx)] * (idx % 1);
+                        deciles.push(`D${i}=${val.toFixed(1)}`);
+                    }
+                    return deciles.join(', ');
+                }
+            }
+        ],
+        content: {
+            whatIs: 'decile-calculator.whatIs',
+            howTo: 'decile-calculator.howTo',
+            faq: []
+        }
+    },
+    'error-propagation': {
+        id: 'error-propagation',
+        title: 'Error Propagation Calculator',
+        description: 'Calculate how errors propagate through calculations.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Error Propagation Calculator | MyCalcOnline',
+            description: 'Find the combined uncertainty when adding, subtracting, multiplying, or dividing measurements.',
+            keywords: ['error propagation', 'uncertainty', 'error calculation']
+        },
+        inputs: [
+            { id: 'value1', label: 'Value 1', type: 'number', placeholder: '100' },
+            { id: 'error1', label: 'Error 1 (±)', type: 'number', placeholder: '2' },
+            { id: 'value2', label: 'Value 2', type: 'number', placeholder: '50' },
+            { id: 'error2', label: 'Error 2 (±)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Sum (A + B) ± Error',
+                calculate: (inputs: Record<string, any>) => {
+                    const v1 = Number(inputs.value1), e1 = Number(inputs.error1);
+                    const v2 = Number(inputs.value2), e2 = Number(inputs.error2);
+                    const sum = v1 + v2;
+                    const error = Math.sqrt(e1 * e1 + e2 * e2);
+                    return `${sum.toFixed(2)} ± ${error.toFixed(4)}`;
+                }
+            },
+            {
+                label: 'Product (A × B) ± Error',
+                calculate: (inputs: Record<string, any>) => {
+                    const v1 = Number(inputs.value1), e1 = Number(inputs.error1);
+                    const v2 = Number(inputs.value2), e2 = Number(inputs.error2);
+                    const product = v1 * v2;
+                    const relError = Math.sqrt(Math.pow(e1 / v1, 2) + Math.pow(e2 / v2, 2));
+                    return `${product.toFixed(2)} ± ${(product * relError).toFixed(4)}`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'error-propagation.whatIs',
+            howTo: 'error-propagation.howTo',
+            faq: []
+        }
+    },
+    'descriptive-stats': {
+        id: 'descriptive-stats',
+        title: 'Descriptive Statistics Calculator',
+        description: 'Get all key descriptive statistics for your data.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Descriptive Statistics Calculator | MyCalcOnline',
+            description: 'Calculate mean, median, mode, range, variance, and more from your data.',
+            keywords: ['descriptive statistics', 'statistics summary', 'data analysis']
+        },
+        inputs: [
+            { id: 'data', label: 'Data (comma-separated)', type: 'text', placeholder: '5,10,15,10,20,25,10' }
+        ],
+        outputs: [
+            {
+                label: 'Count',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    return values.length;
+                }
+            },
+            {
+                label: 'Sum',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    return values.reduce((a: number, b: number) => a + b, 0);
+                }
+            },
+            {
+                label: 'Mean',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length === 0) return 'N/A';
+                    return (values.reduce((a: number, b: number) => a + b, 0) / values.length).toFixed(4);
+                }
+            },
+            {
+                label: 'Median',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v)).sort((a: number, b: number) => a - b);
+                    if (values.length === 0) return 'N/A';
+                    const mid = Math.floor(values.length / 2);
+                    return values.length % 2 ? values[mid] : ((values[mid - 1] + values[mid]) / 2).toFixed(2);
+                }
+            },
+            {
+                label: 'Standard Deviation',
+                calculate: (inputs: Record<string, any>) => {
+                    const values = String(inputs.data).split(',').map((v: string) => Number(v.trim())).filter((v: number) => !isNaN(v));
+                    if (values.length < 2) return 'N/A';
+                    const mean = values.reduce((a: number, b: number) => a + b, 0) / values.length;
+                    const variance = values.reduce((sum: number, v: number) => sum + Math.pow(v - mean, 2), 0) / (values.length - 1);
+                    return Math.sqrt(variance).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'descriptive-stats.whatIs',
+            howTo: 'descriptive-stats.howTo',
+            faq: []
+        }
+    },
+    'coefficient-variation': {
+        id: 'coefficient-variation',
+        title: 'Coefficient of Variation Calculator',
+        description: 'Calculate CV as a percentage of the standard deviation to the mean.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Coefficient of Variation Calculator | MyCalcOnline',
+            description: 'Find the coefficient of variation (CV) to compare variability across different datasets.',
+            keywords: ['coefficient of variation', 'CV', 'relative standard deviation']
+        },
+        inputs: [
+            { id: 'mean', label: 'Mean', type: 'number', placeholder: '100' },
+            { id: 'stdDev', label: 'Standard Deviation', type: 'number', placeholder: '15' }
+        ],
+        outputs: [
+            {
+                label: 'Coefficient of Variation (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const mean = Number(inputs.mean);
+                    const sd = Number(inputs.stdDev);
+                    if (mean === 0) return 'Undefined (mean is 0)';
+                    return ((sd / mean) * 100).toFixed(2) + '%';
+                }
+            },
+            {
+                label: 'Interpretation',
+                calculate: (inputs: Record<string, any>) => {
+                    const mean = Number(inputs.mean);
+                    const sd = Number(inputs.stdDev);
+                    if (mean === 0) return 'N/A';
+                    const cv = (sd / Math.abs(mean)) * 100;
+                    if (cv < 15) return 'Low variability';
+                    if (cv < 30) return 'Moderate variability';
+                    return 'High variability';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'coefficient-variation.whatIs',
+            howTo: 'coefficient-variation.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // GEOMETRY (2D and 3D Shapes)
+    // Added: 2026-01-13
+    // ========================================
+    'circle-area': {
+        id: 'circle-area',
+        title: 'Circle Area Calculator',
+        description: 'Calculate the area of a circle given its radius or diameter.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Circle Area Calculator | MyCalcOnline',
+            description: 'Find the area of a circle using A = πr². Enter radius or diameter.',
+            keywords: ['circle area', 'area of circle', 'circle calculator']
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Area',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    if (r <= 0) return 'Invalid radius';
+                    return (Math.PI * r * r).toFixed(4);
+                }
+            },
+            {
+                label: 'Area (in terms of π)',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    if (r <= 0) return 'Invalid';
+                    return `${(r * r).toFixed(2)}π`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'circle-area.whatIs',
+            howTo: 'circle-area.howTo',
+            faq: []
+        }
+    },
+    'circle-circumference': {
+        id: 'circle-circumference',
+        title: 'Circle Circumference Calculator',
+        description: 'Calculate the circumference of a circle given its radius or diameter.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Circle Circumference Calculator | MyCalcOnline',
+            description: 'Find the circumference of a circle using C = 2πr.',
+            keywords: ['circumference', 'circle perimeter', 'circle circumference']
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Circumference',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    if (r <= 0) return 'Invalid radius';
+                    return (2 * Math.PI * r).toFixed(4);
+                }
+            },
+            {
+                label: 'Diameter',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    return (2 * r).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'circle-circumference.whatIs',
+            howTo: 'circle-circumference.howTo',
+            faq: []
+        }
+    },
+    'rectangle-area': {
+        id: 'rectangle-area',
+        title: 'Rectangle Area Calculator',
+        description: 'Calculate the area of a rectangle given length and width.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Rectangle Area Calculator | MyCalcOnline',
+            description: 'Find the area of a rectangle using A = length × width.',
+            keywords: ['rectangle area', 'area calculator', 'length times width']
+        },
+        inputs: [
+            { id: 'length', label: 'Length', type: 'number', placeholder: '10' },
+            { id: 'width', label: 'Width', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Area',
+                calculate: (inputs: Record<string, any>) => {
+                    const l = Number(inputs.length);
+                    const w = Number(inputs.width);
+                    if (l <= 0 || w <= 0) return 'Invalid dimensions';
+                    return (l * w).toFixed(4);
+                }
+            },
+            {
+                label: 'Diagonal',
+                calculate: (inputs: Record<string, any>) => {
+                    const l = Number(inputs.length);
+                    const w = Number(inputs.width);
+                    return Math.sqrt(l * l + w * w).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rectangle-area.whatIs',
+            howTo: 'rectangle-area.howTo',
+            faq: []
+        }
+    },
+    'rectangle-perimeter': {
+        id: 'rectangle-perimeter',
+        title: 'Rectangle Perimeter Calculator',
+        description: 'Calculate the perimeter of a rectangle.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Rectangle Perimeter Calculator | MyCalcOnline',
+            description: 'Find the perimeter of a rectangle using P = 2(length + width).',
+            keywords: ['rectangle perimeter', 'perimeter calculator', 'rectangle']
+        },
+        inputs: [
+            { id: 'length', label: 'Length', type: 'number', placeholder: '10' },
+            { id: 'width', label: 'Width', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Perimeter',
+                calculate: (inputs: Record<string, any>) => {
+                    const l = Number(inputs.length);
+                    const w = Number(inputs.width);
+                    return (2 * (l + w)).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rectangle-perimeter.whatIs',
+            howTo: 'rectangle-perimeter.howTo',
+            faq: []
+        }
+    },
+    'triangle-area-calculator': {
+        id: 'triangle-area-calculator',
+        title: 'Triangle Area Calculator',
+        description: 'Calculate the area of a triangle using base and height.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Triangle Area Calculator | MyCalcOnline',
+            description: 'Find the area of a triangle using A = ½ × base × height.',
+            keywords: ['triangle area', 'area of triangle', 'triangle calculator']
+        },
+        inputs: [
+            { id: 'base', label: 'Base', type: 'number', placeholder: '10' },
+            { id: 'height', label: 'Height', type: 'number', placeholder: '8' }
+        ],
+        outputs: [
+            {
+                label: 'Area',
+                calculate: (inputs: Record<string, any>) => {
+                    const b = Number(inputs.base);
+                    const h = Number(inputs.height);
+                    if (b <= 0 || h <= 0) return 'Invalid dimensions';
+                    return (0.5 * b * h).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'triangle-area-calculator.whatIs',
+            howTo: 'triangle-area-calculator.howTo',
+            faq: []
+        }
+    },
+    'sphere-volume': {
+        id: 'sphere-volume',
+        title: 'Sphere Volume Calculator',
+        description: 'Calculate the volume and surface area of a sphere.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sphere Volume Calculator | MyCalcOnline',
+            description: 'Find the volume of a sphere using V = (4/3)πr³.',
+            keywords: ['sphere volume', 'volume of sphere', 'sphere calculator']
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    if (r <= 0) return 'Invalid radius';
+                    return ((4 / 3) * Math.PI * Math.pow(r, 3)).toFixed(4);
+                }
+            },
+            {
+                label: 'Surface Area',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    return (4 * Math.PI * r * r).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sphere-volume.whatIs',
+            howTo: 'sphere-volume.howTo',
+            faq: []
+        }
+    },
+    'cylinder-volume': {
+        id: 'cylinder-volume',
+        title: 'Cylinder Volume Calculator',
+        description: 'Calculate the volume and surface area of a cylinder.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cylinder Volume Calculator | MyCalcOnline',
+            description: 'Find the volume of a cylinder using V = πr²h.',
+            keywords: ['cylinder volume', 'volume of cylinder', 'cylinder calculator']
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius', type: 'number', placeholder: '3' },
+            { id: 'height', label: 'Height', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const h = Number(inputs.height);
+                    if (r <= 0 || h <= 0) return 'Invalid dimensions';
+                    return (Math.PI * r * r * h).toFixed(4);
+                }
+            },
+            {
+                label: 'Surface Area',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const h = Number(inputs.height);
+                    return (2 * Math.PI * r * (r + h)).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cylinder-volume.whatIs',
+            howTo: 'cylinder-volume.howTo',
+            faq: []
+        }
+    },
+    'cone-volume': {
+        id: 'cone-volume',
+        title: 'Cone Volume Calculator',
+        description: 'Calculate the volume and surface area of a cone.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cone Volume Calculator | MyCalcOnline',
+            description: 'Find the volume of a cone using V = (1/3)πr²h.',
+            keywords: ['cone volume', 'volume of cone', 'cone calculator']
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius', type: 'number', placeholder: '4' },
+            { id: 'height', label: 'Height', type: 'number', placeholder: '9' }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const h = Number(inputs.height);
+                    if (r <= 0 || h <= 0) return 'Invalid dimensions';
+                    return ((1 / 3) * Math.PI * r * r * h).toFixed(4);
+                }
+            },
+            {
+                label: 'Slant Height',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const h = Number(inputs.height);
+                    return Math.sqrt(r * r + h * h).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cone-volume.whatIs',
+            howTo: 'cone-volume.howTo',
+            faq: []
+        }
+    },
+    'pyramid-volume': {
+        id: 'pyramid-volume',
+        title: 'Pyramid Volume Calculator',
+        description: 'Calculate the volume of a pyramid with any base shape.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pyramid Volume Calculator | MyCalcOnline',
+            description: 'Find the volume of a pyramid using V = (1/3) × base area × height.',
+            keywords: ['pyramid volume', 'volume of pyramid', 'pyramid calculator']
+        },
+        inputs: [
+            { id: 'baseArea', label: 'Base Area', type: 'number', placeholder: '25' },
+            { id: 'height', label: 'Height', type: 'number', placeholder: '12' }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                calculate: (inputs: Record<string, any>) => {
+                    const base = Number(inputs.baseArea);
+                    const h = Number(inputs.height);
+                    if (base <= 0 || h <= 0) return 'Invalid dimensions';
+                    return ((1 / 3) * base * h).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pyramid-volume.whatIs',
+            howTo: 'pyramid-volume.howTo',
+            faq: []
+        }
+    },
+    'cube-volume': {
+        id: 'cube-volume',
+        title: 'Cube Volume Calculator',
+        description: 'Calculate the volume and surface area of a cube.',
+        category: 'math',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cube Volume Calculator | MyCalcOnline',
+            description: 'Find the volume of a cube using V = s³.',
+            keywords: ['cube volume', 'volume of cube', 'cube calculator']
+        },
+        inputs: [
+            { id: 'side', label: 'Side Length', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Volume',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.side);
+                    if (s <= 0) return 'Invalid side length';
+                    return Math.pow(s, 3).toFixed(4);
+                }
+            },
+            {
+                label: 'Surface Area',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.side);
+                    return (6 * s * s).toFixed(4);
+                }
+            },
+            {
+                label: 'Diagonal',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.side);
+                    return (s * Math.sqrt(3)).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cube-volume.whatIs',
+            howTo: 'cube-volume.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // FINANCE - Personal Finance (Omni Calculator)
+    // Added: 2026-01-13
+    // ========================================
+    'budget-calculator': {
+        id: 'budget-calculator',
+        title: 'Budget Calculator',
+        description: 'Create a monthly budget based on your income and expenses.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Budget Calculator | MyCalcOnline',
+            description: 'Plan your monthly budget by tracking income versus expenses.',
+            keywords: ['budget calculator', 'monthly budget', 'personal budget']
+        },
+        inputs: [
+            { id: 'income', label: 'Monthly Income', type: 'number', placeholder: '5000' },
+            { id: 'housing', label: 'Housing (rent/mortgage)', type: 'number', placeholder: '1500' },
+            { id: 'utilities', label: 'Utilities', type: 'number', placeholder: '200' },
+            { id: 'food', label: 'Food & Groceries', type: 'number', placeholder: '400' },
+            { id: 'transport', label: 'Transportation', type: 'number', placeholder: '300' },
+            { id: 'other', label: 'Other Expenses', type: 'number', placeholder: '500' }
+        ],
+        outputs: [
+            {
+                label: 'Total Expenses',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.housing) || 0;
+                    const u = Number(inputs.utilities) || 0;
+                    const f = Number(inputs.food) || 0;
+                    const t = Number(inputs.transport) || 0;
+                    const o = Number(inputs.other) || 0;
+                    return (h + u + f + t + o).toFixed(2);
+                }
+            },
+            {
+                label: 'Remaining (Savings)',
+                calculate: (inputs: Record<string, any>) => {
+                    const income = Number(inputs.income) || 0;
+                    const h = Number(inputs.housing) || 0;
+                    const u = Number(inputs.utilities) || 0;
+                    const f = Number(inputs.food) || 0;
+                    const t = Number(inputs.transport) || 0;
+                    const o = Number(inputs.other) || 0;
+                    const expenses = h + u + f + t + o;
+                    return (income - expenses).toFixed(2);
+                }
+            },
+            {
+                label: 'Savings Rate',
+                calculate: (inputs: Record<string, any>) => {
+                    const income = Number(inputs.income) || 0;
+                    const h = Number(inputs.housing) || 0;
+                    const u = Number(inputs.utilities) || 0;
+                    const f = Number(inputs.food) || 0;
+                    const t = Number(inputs.transport) || 0;
+                    const o = Number(inputs.other) || 0;
+                    const expenses = h + u + f + t + o;
+                    if (income === 0) return 'N/A';
+                    return (((income - expenses) / income) * 100).toFixed(1) + '%';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'budget-calculator.whatIs',
+            howTo: 'budget-calculator.howTo',
+            faq: []
+        }
+    },
+    'emergency-fund-calculator': {
+        id: 'emergency-fund-calculator',
+        title: 'Emergency Fund Calculator',
+        description: 'Calculate how much you need to save for emergencies.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Emergency Fund Calculator | MyCalcOnline',
+            description: 'Determine the ideal size of your emergency fund based on monthly expenses.',
+            keywords: ['emergency fund', 'savings calculator', 'rainy day fund']
+        },
+        inputs: [
+            { id: 'monthlyExpenses', label: 'Monthly Expenses', type: 'number', placeholder: '3000' },
+            { id: 'months', label: 'Months of Coverage', type: 'number', placeholder: '6' },
+            { id: 'currentSavings', label: 'Current Savings', type: 'number', placeholder: '5000' }
+        ],
+        outputs: [
+            {
+                label: 'Target Emergency Fund',
+                calculate: (inputs: Record<string, any>) => {
+                    const expenses = Number(inputs.monthlyExpenses) || 0;
+                    const months = Number(inputs.months) || 6;
+                    return (expenses * months).toFixed(2);
+                }
+            },
+            {
+                label: 'Amount Still Needed',
+                calculate: (inputs: Record<string, any>) => {
+                    const expenses = Number(inputs.monthlyExpenses) || 0;
+                    const months = Number(inputs.months) || 6;
+                    const current = Number(inputs.currentSavings) || 0;
+                    const target = expenses * months;
+                    const needed = target - current;
+                    return needed > 0 ? needed.toFixed(2) : '0 (Goal reached!)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'emergency-fund-calculator.whatIs',
+            howTo: 'emergency-fund-calculator.howTo',
+            faq: []
+        }
+    },
+    'car-depreciation': {
+        id: 'car-depreciation',
+        title: 'Car Depreciation Calculator',
+        description: 'Calculate how much your car will be worth after several years.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Car Depreciation Calculator | MyCalcOnline',
+            description: 'Estimate the future value of your vehicle based on depreciation rate.',
+            keywords: ['car depreciation', 'vehicle value', 'car worth']
+        },
+        inputs: [
+            { id: 'originalPrice', label: 'Original Price', type: 'number', placeholder: '30000' },
+            { id: 'years', label: 'Years Owned', type: 'number', placeholder: '5' },
+            { id: 'depreciationRate', label: 'Annual Depreciation (%)', type: 'number', placeholder: '15' }
+        ],
+        outputs: [
+            {
+                label: 'Current Value',
+                calculate: (inputs: Record<string, any>) => {
+                    const price = Number(inputs.originalPrice) || 0;
+                    const years = Number(inputs.years) || 0;
+                    const rate = Number(inputs.depreciationRate) / 100 || 0.15;
+                    const value = price * Math.pow(1 - rate, years);
+                    return value.toFixed(2);
+                }
+            },
+            {
+                label: 'Total Depreciation',
+                calculate: (inputs: Record<string, any>) => {
+                    const price = Number(inputs.originalPrice) || 0;
+                    const years = Number(inputs.years) || 0;
+                    const rate = Number(inputs.depreciationRate) / 100 || 0.15;
+                    const currentValue = price * Math.pow(1 - rate, years);
+                    return (price - currentValue).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'car-depreciation.whatIs',
+            howTo: 'car-depreciation.howTo',
+            faq: []
+        }
+    },
+    'car-affordability': {
+        id: 'car-affordability',
+        title: 'Car Affordability Calculator',
+        description: 'Calculate how much car you can afford based on your income.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Car Affordability Calculator | MyCalcOnline',
+            description: 'Find out how much you can spend on a car based on your budget.',
+            keywords: ['car affordability', 'how much car can I afford', 'car budget']
+        },
+        inputs: [
+            { id: 'monthlyIncome', label: 'Monthly Income', type: 'number', placeholder: '5000' },
+            { id: 'percentForCar', label: 'Max % for Car Payment', type: 'number', placeholder: '15' },
+            { id: 'loanTerm', label: 'Loan Term (months)', type: 'number', placeholder: '60' },
+            { id: 'interestRate', label: 'Interest Rate (%)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Max Monthly Payment',
+                calculate: (inputs: Record<string, any>) => {
+                    const income = Number(inputs.monthlyIncome) || 0;
+                    const percent = Number(inputs.percentForCar) / 100 || 0.15;
+                    return (income * percent).toFixed(2);
+                }
+            },
+            {
+                label: 'Max Car Price',
+                calculate: (inputs: Record<string, any>) => {
+                    const income = Number(inputs.monthlyIncome) || 0;
+                    const percent = Number(inputs.percentForCar) / 100 || 0.15;
+                    const months = Number(inputs.loanTerm) || 60;
+                    const rate = Number(inputs.interestRate) / 100 / 12 || 0;
+                    const payment = income * percent;
+                    if (rate === 0) return (payment * months).toFixed(2);
+                    const principal = payment * (1 - Math.pow(1 + rate, -months)) / rate;
+                    return principal.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'car-affordability.whatIs',
+            howTo: 'car-affordability.howTo',
+            faq: []
+        }
+    },
+    'credit-card-payoff': {
+        id: 'credit-card-payoff',
+        title: 'Credit Card Payoff Calculator',
+        description: 'Calculate how long it will take to pay off your credit card.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Credit Card Payoff Calculator | MyCalcOnline',
+            description: 'Find how many months to pay off credit card debt with fixed payments.',
+            keywords: ['credit card payoff', 'debt payoff', 'pay off credit card']
+        },
+        inputs: [
+            { id: 'balance', label: 'Current Balance', type: 'number', placeholder: '5000' },
+            { id: 'apr', label: 'APR (%)', type: 'number', placeholder: '18' },
+            { id: 'monthlyPayment', label: 'Monthly Payment', type: 'number', placeholder: '200' }
+        ],
+        outputs: [
+            {
+                label: 'Months to Pay Off',
+                calculate: (inputs: Record<string, any>) => {
+                    const balance = Number(inputs.balance) || 0;
+                    const apr = Number(inputs.apr) / 100 || 0;
+                    const payment = Number(inputs.monthlyPayment) || 0;
+                    const monthlyRate = apr / 12;
+                    if (payment <= balance * monthlyRate) return 'Payment too low!';
+                    const months = Math.ceil(-Math.log(1 - (balance * monthlyRate / payment)) / Math.log(1 + monthlyRate));
+                    return months;
+                }
+            },
+            {
+                label: 'Total Interest Paid',
+                calculate: (inputs: Record<string, any>) => {
+                    const balance = Number(inputs.balance) || 0;
+                    const apr = Number(inputs.apr) / 100 || 0;
+                    const payment = Number(inputs.monthlyPayment) || 0;
+                    const monthlyRate = apr / 12;
+                    if (payment <= balance * monthlyRate) return 'N/A';
+                    const months = Math.ceil(-Math.log(1 - (balance * monthlyRate / payment)) / Math.log(1 + monthlyRate));
+                    const totalPaid = payment * months;
+                    return (totalPaid - balance).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'credit-card-payoff.whatIs',
+            howTo: 'credit-card-payoff.howTo',
+            faq: []
+        }
+    },
+    'debt-snowball': {
+        id: 'debt-snowball',
+        title: 'Debt Snowball Calculator',
+        description: 'Pay off debts from smallest to largest balance.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Debt Snowball Calculator | MyCalcOnline',
+            description: 'Use the snowball method to eliminate debts starting with the smallest.',
+            keywords: ['debt snowball', 'dave ramsey', 'debt payoff strategy']
+        },
+        inputs: [
+            { id: 'debt1', label: 'Smallest Debt Balance', type: 'number', placeholder: '500' },
+            { id: 'debt2', label: 'Medium Debt Balance', type: 'number', placeholder: '2000' },
+            { id: 'debt3', label: 'Largest Debt Balance', type: 'number', placeholder: '10000' },
+            { id: 'monthlyBudget', label: 'Monthly Debt Budget', type: 'number', placeholder: '500' }
+        ],
+        outputs: [
+            {
+                label: 'Total Debt',
+                calculate: (inputs: Record<string, any>) => {
+                    const d1 = Number(inputs.debt1) || 0;
+                    const d2 = Number(inputs.debt2) || 0;
+                    const d3 = Number(inputs.debt3) || 0;
+                    return (d1 + d2 + d3).toFixed(2);
+                }
+            },
+            {
+                label: 'Estimated Time to Debt-Free',
+                calculate: (inputs: Record<string, any>) => {
+                    const d1 = Number(inputs.debt1) || 0;
+                    const d2 = Number(inputs.debt2) || 0;
+                    const d3 = Number(inputs.debt3) || 0;
+                    const budget = Number(inputs.monthlyBudget) || 1;
+                    const total = d1 + d2 + d3;
+                    const months = Math.ceil(total / budget);
+                    return `${months} months`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'debt-snowball.whatIs',
+            howTo: 'debt-snowball.howTo',
+            faq: []
+        }
+    },
+    'debt-avalanche': {
+        id: 'debt-avalanche',
+        title: 'Debt Avalanche Calculator',
+        description: 'Pay off debts from highest to lowest interest rate.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Debt Avalanche Calculator | MyCalcOnline',
+            description: 'Minimize interest by paying off highest-rate debts first.',
+            keywords: ['debt avalanche', 'debt strategy', 'pay off debt fast']
+        },
+        inputs: [
+            { id: 'highRateDebt', label: 'High Rate Debt', type: 'number', placeholder: '3000' },
+            { id: 'highRate', label: 'Interest Rate (%)', type: 'number', placeholder: '22' },
+            { id: 'lowRateDebt', label: 'Low Rate Debt', type: 'number', placeholder: '10000' },
+            { id: 'lowRate', label: 'Interest Rate (%)', type: 'number', placeholder: '5' },
+            { id: 'monthlyBudget', label: 'Monthly Debt Budget', type: 'number', placeholder: '500' }
+        ],
+        outputs: [
+            {
+                label: 'Total Debt',
+                calculate: (inputs: Record<string, any>) => {
+                    const high = Number(inputs.highRateDebt) || 0;
+                    const low = Number(inputs.lowRateDebt) || 0;
+                    return (high + low).toFixed(2);
+                }
+            },
+            {
+                label: 'Interest Savings (vs. minimum)',
+                calculate: (inputs: Record<string, any>) => {
+                    const highDebt = Number(inputs.highRateDebt) || 0;
+                    const highRate = Number(inputs.highRate) / 100 || 0;
+                    const lowDebt = Number(inputs.lowRateDebt) || 0;
+                    const lowRate = Number(inputs.lowRate) / 100 || 0;
+                    const savings = (highDebt * highRate * 0.5) - (lowDebt * lowRate * 0.1);
+                    return savings > 0 ? savings.toFixed(2) : '0';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'debt-avalanche.whatIs',
+            howTo: 'debt-avalanche.howTo',
+            faq: []
+        }
+    },
+    'amortization-calc': {
+        id: 'amortization-calc',
+        title: 'Amortization Calculator',
+        description: 'Calculate loan amortization schedule and payments.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Amortization Calculator | MyCalcOnline',
+            description: 'Generate an amortization schedule for any loan.',
+            keywords: ['amortization', 'loan schedule', 'amortization calculator']
+        },
+        inputs: [
+            { id: 'principal', label: 'Loan Amount', type: 'number', placeholder: '200000' },
+            { id: 'rate', label: 'Annual Interest Rate (%)', type: 'number', placeholder: '6' },
+            { id: 'years', label: 'Loan Term (years)', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'Monthly Payment',
+                calculate: (inputs: Record<string, any>) => {
+                    const P = Number(inputs.principal) || 0;
+                    const r = Number(inputs.rate) / 100 / 12 || 0;
+                    const n = Number(inputs.years) * 12 || 1;
+                    if (r === 0) return (P / n).toFixed(2);
+                    const payment = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                    return payment.toFixed(2);
+                }
+            },
+            {
+                label: 'Total Interest',
+                calculate: (inputs: Record<string, any>) => {
+                    const P = Number(inputs.principal) || 0;
+                    const r = Number(inputs.rate) / 100 / 12 || 0;
+                    const n = Number(inputs.years) * 12 || 1;
+                    if (r === 0) return '0';
+                    const payment = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                    return (payment * n - P).toFixed(2);
+                }
+            },
+            {
+                label: 'Total Amount Paid',
+                calculate: (inputs: Record<string, any>) => {
+                    const P = Number(inputs.principal) || 0;
+                    const r = Number(inputs.rate) / 100 / 12 || 0;
+                    const n = Number(inputs.years) * 12 || 1;
+                    if (r === 0) return P.toFixed(2);
+                    const payment = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                    return (payment * n).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'amortization-calc.whatIs',
+            howTo: 'amortization-calc.howTo',
+            faq: []
+        }
+    },
+    'apr-calc': {
+        id: 'apr-calc',
+        title: 'APR Calculator',
+        description: 'Calculate the Annual Percentage Rate of a loan.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'APR Calculator | MyCalcOnline',
+            description: 'Find the true annual cost of borrowing including fees.',
+            keywords: ['apr calculator', 'annual percentage rate', 'loan apr']
+        },
+        inputs: [
+            { id: 'principal', label: 'Loan Amount', type: 'number', placeholder: '10000' },
+            { id: 'interestPaid', label: 'Total Interest Paid', type: 'number', placeholder: '1500' },
+            { id: 'fees', label: 'Fees & Charges', type: 'number', placeholder: '200' },
+            { id: 'years', label: 'Loan Term (years)', type: 'number', placeholder: '3' }
+        ],
+        outputs: [
+            {
+                label: 'APR',
+                calculate: (inputs: Record<string, any>) => {
+                    const principal = Number(inputs.principal) || 1;
+                    const interest = Number(inputs.interestPaid) || 0;
+                    const fees = Number(inputs.fees) || 0;
+                    const years = Number(inputs.years) || 1;
+                    const totalCost = interest + fees;
+                    const apr = (totalCost / principal / years) * 100;
+                    return apr.toFixed(2) + '%';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'apr-calc.whatIs',
+            howTo: 'apr-calc.howTo',
+            faq: []
+        }
+    },
+    'auto-loan-calc': {
+        id: 'auto-loan-calc',
+        title: 'Auto Loan Calculator',
+        description: 'Calculate monthly payments on a car loan.',
+        category: 'finance',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Auto Loan Calculator | MyCalcOnline',
+            description: 'Estimate your monthly car loan payments and total interest.',
+            keywords: ['auto loan', 'car loan calculator', 'vehicle financing']
+        },
+        inputs: [
+            { id: 'carPrice', label: 'Car Price', type: 'number', placeholder: '25000' },
+            { id: 'downPayment', label: 'Down Payment', type: 'number', placeholder: '5000' },
+            { id: 'rate', label: 'Annual Interest Rate (%)', type: 'number', placeholder: '5' },
+            { id: 'months', label: 'Loan Term (months)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Monthly Payment',
+                calculate: (inputs: Record<string, any>) => {
+                    const price = Number(inputs.carPrice) || 0;
+                    const down = Number(inputs.downPayment) || 0;
+                    const r = Number(inputs.rate) / 100 / 12 || 0;
+                    const n = Number(inputs.months) || 1;
+                    const principal = price - down;
+                    if (r === 0) return (principal / n).toFixed(2);
+                    const payment = principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                    return payment.toFixed(2);
+                }
+            },
+            {
+                label: 'Total Interest',
+                calculate: (inputs: Record<string, any>) => {
+                    const price = Number(inputs.carPrice) || 0;
+                    const down = Number(inputs.downPayment) || 0;
+                    const r = Number(inputs.rate) / 100 / 12 || 0;
+                    const n = Number(inputs.months) || 1;
+                    const principal = price - down;
+                    if (r === 0) return '0';
+                    const payment = principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                    return (payment * n - principal).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'auto-loan-calc.whatIs',
+            howTo: 'auto-loan-calc.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // CONVERSION - Unit Converters
+    // Added: 2026-01-13
+    // ========================================
+    'celsius-fahrenheit': {
+        id: 'celsius-fahrenheit',
+        title: 'Celsius to Fahrenheit Converter',
+        description: 'Convert temperature between Celsius and Fahrenheit.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Celsius to Fahrenheit Converter | MyCalcOnline',
+            description: 'Convert Celsius to Fahrenheit and vice versa instantly.',
+            keywords: ['celsius fahrenheit', 'temperature converter', 'c to f']
+        },
+        inputs: [
+            { id: 'celsius', label: 'Celsius (°C)', type: 'number', placeholder: '25' }
+        ],
+        outputs: [
+            {
+                label: 'Fahrenheit (°F)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.celsius);
+                    return ((c * 9 / 5) + 32).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'celsius-fahrenheit.whatIs',
+            howTo: 'celsius-fahrenheit.howTo',
+            faq: []
+        }
+    },
+    'celsius-to-kelvin': {
+        id: 'celsius-to-kelvin',
+        title: 'Celsius to Kelvin Converter',
+        description: 'Convert Celsius to Kelvin temperature scale.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Celsius to Kelvin Converter | MyCalcOnline',
+            description: 'Convert Celsius to Kelvin for scientific calculations.',
+            keywords: ['celsius kelvin', 'temperature converter', 'c to k']
+        },
+        inputs: [
+            { id: 'celsius', label: 'Celsius (°C)', type: 'number', placeholder: '25' }
+        ],
+        outputs: [
+            {
+                label: 'Kelvin (K)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.celsius);
+                    return (c + 273.15).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'celsius-to-kelvin.whatIs',
+            howTo: 'celsius-to-kelvin.howTo',
+            faq: []
+        }
+    },
+    'inches-to-cm': {
+        id: 'inches-to-cm',
+        title: 'Inches to Centimeters Converter',
+        description: 'Convert inches to centimeters and vice versa.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Inches to CM Converter | MyCalcOnline',
+            description: 'Convert inches to centimeters with high precision.',
+            keywords: ['inches to cm', 'inch converter', 'length conversion']
+        },
+        inputs: [
+            { id: 'inches', label: 'Inches', type: 'number', placeholder: '12' }
+        ],
+        outputs: [
+            {
+                label: 'Centimeters',
+                calculate: (inputs: Record<string, any>) => {
+                    const inches = Number(inputs.inches);
+                    return (inches * 2.54).toFixed(4);
+                }
+            },
+            {
+                label: 'Meters',
+                calculate: (inputs: Record<string, any>) => {
+                    const inches = Number(inputs.inches);
+                    return (inches * 0.0254).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'inches-to-cm.whatIs',
+            howTo: 'inches-to-cm.howTo',
+            faq: []
+        }
+    },
+    'oz-to-grams': {
+        id: 'oz-to-grams',
+        title: 'Ounces to Grams Converter',
+        description: 'Convert ounces to grams for cooking and weighing.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Ounces to Grams Converter | MyCalcOnline',
+            description: 'Convert oz to grams for recipes and weight conversions.',
+            keywords: ['ounces to grams', 'oz to g', 'weight converter']
+        },
+        inputs: [
+            { id: 'ounces', label: 'Ounces (oz)', type: 'number', placeholder: '8' }
+        ],
+        outputs: [
+            {
+                label: 'Grams',
+                calculate: (inputs: Record<string, any>) => {
+                    const oz = Number(inputs.ounces);
+                    return (oz * 28.3495).toFixed(2);
+                }
+            },
+            {
+                label: 'Kilograms',
+                calculate: (inputs: Record<string, any>) => {
+                    const oz = Number(inputs.ounces);
+                    return (oz * 0.0283495).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'oz-to-grams.whatIs',
+            howTo: 'oz-to-grams.howTo',
+            faq: []
+        }
+    },
+    'bytes-to-mb': {
+        id: 'bytes-to-mb',
+        title: 'Bytes to MB Converter',
+        description: 'Convert bytes to megabytes, gigabytes, and more.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Bytes to MB/GB Converter | MyCalcOnline',
+            description: 'Convert data storage units: bytes, KB, MB, GB, TB.',
+            keywords: ['bytes to mb', 'data converter', 'storage converter']
+        },
+        inputs: [
+            { id: 'bytes', label: 'Bytes', type: 'number', placeholder: '1073741824' }
+        ],
+        outputs: [
+            {
+                label: 'Kilobytes (KB)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.bytes) / 1024).toFixed(2);
+                }
+            },
+            {
+                label: 'Megabytes (MB)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.bytes) / (1024 * 1024)).toFixed(2);
+                }
+            },
+            {
+                label: 'Gigabytes (GB)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.bytes) / (1024 * 1024 * 1024)).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bytes-to-mb.whatIs',
+            howTo: 'bytes-to-mb.howTo',
+            faq: []
+        }
+    },
+    'mph-to-kmh': {
+        id: 'mph-to-kmh',
+        title: 'MPH to KM/H Converter',
+        description: 'Convert miles per hour to kilometers per hour.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'MPH to KM/H Converter | MyCalcOnline',
+            description: 'Convert speed between mph and km/h instantly.',
+            keywords: ['mph to kmh', 'speed converter', 'miles to kilometers']
+        },
+        inputs: [
+            { id: 'mph', label: 'Miles per Hour', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Kilometers per Hour',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.mph) * 1.60934).toFixed(2);
+                }
+            },
+            {
+                label: 'Meters per Second',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.mph) * 0.44704).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'mph-to-kmh.whatIs',
+            howTo: 'mph-to-kmh.howTo',
+            faq: []
+        }
+    },
+    'sqft-to-sqm': {
+        id: 'sqft-to-sqm',
+        title: 'Square Feet to Square Meters',
+        description: 'Convert square feet to square meters for area.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sq Ft to Sq M Converter | MyCalcOnline',
+            description: 'Convert area from square feet to square meters.',
+            keywords: ['sqft to sqm', 'area converter', 'square feet to meters']
+        },
+        inputs: [
+            { id: 'sqft', label: 'Square Feet', type: 'number', placeholder: '1000' }
+        ],
+        outputs: [
+            {
+                label: 'Square Meters',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.sqft) * 0.092903).toFixed(4);
+                }
+            },
+            {
+                label: 'Square Yards',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.sqft) / 9).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sqft-to-sqm.whatIs',
+            howTo: 'sqft-to-sqm.howTo',
+            faq: []
+        }
+    },
+    'cups-to-ml': {
+        id: 'cups-to-ml',
+        title: 'Cups to Milliliters Converter',
+        description: 'Convert cups to milliliters for cooking.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cups to ML Converter | MyCalcOnline',
+            description: 'Convert cups to milliliters for recipes.',
+            keywords: ['cups to ml', 'cooking converter', 'volume converter']
+        },
+        inputs: [
+            { id: 'cups', label: 'Cups', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Milliliters (US Cup)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.cups) * 236.588).toFixed(2);
+                }
+            },
+            {
+                label: 'Liters',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.cups) * 0.236588).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cups-to-ml.whatIs',
+            howTo: 'cups-to-ml.howTo',
+            faq: []
+        }
+    },
+    'yards-to-meters': {
+        id: 'yards-to-meters',
+        title: 'Yards to Meters Converter',
+        description: 'Convert yards to meters for length measurements.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Yards to Meters Converter | MyCalcOnline',
+            description: 'Convert yards to meters instantly.',
+            keywords: ['yards to meters', 'length converter', 'yd to m']
+        },
+        inputs: [
+            { id: 'yards', label: 'Yards', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Meters',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.yards) * 0.9144).toFixed(4);
+                }
+            },
+            {
+                label: 'Feet',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.yards) * 3).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'yards-to-meters.whatIs',
+            howTo: 'yards-to-meters.howTo',
+            faq: []
+        }
+    },
+    'acres-to-hectares': {
+        id: 'acres-to-hectares',
+        title: 'Acres to Hectares Converter',
+        description: 'Convert acres to hectares for land area.',
+        category: 'conversion',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Acres to Hectares Converter | MyCalcOnline',
+            description: 'Convert land area from acres to hectares.',
+            keywords: ['acres to hectares', 'land area', 'area converter']
+        },
+        inputs: [
+            { id: 'acres', label: 'Acres', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Hectares',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.acres) * 0.404686).toFixed(4);
+                }
+            },
+            {
+                label: 'Square Meters',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.acres) * 4046.86).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'acres-to-hectares.whatIs',
+            howTo: 'acres-to-hectares.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Fitness & Body Metrics
+    // Added: 2026-01-13
+    // ========================================
+    'lean-body-mass': {
+        id: 'lean-body-mass',
+        title: 'Lean Body Mass Calculator',
+        description: 'Calculate your lean body mass (LBM) based on body fat.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Lean Body Mass Calculator | MyCalcOnline',
+            description: 'Find your lean body mass by subtracting fat from total weight.',
+            keywords: ['lean body mass', 'LBM', 'muscle mass calculator']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'bodyFat', label: 'Body Fat (%)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Lean Body Mass (kg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const weight = Number(inputs.weight);
+                    const bf = Number(inputs.bodyFat) / 100;
+                    return (weight * (1 - bf)).toFixed(2);
+                }
+            },
+            {
+                label: 'Fat Mass (kg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const weight = Number(inputs.weight);
+                    const bf = Number(inputs.bodyFat) / 100;
+                    return (weight * bf).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'lean-body-mass.whatIs',
+            howTo: 'lean-body-mass.howTo',
+            faq: []
+        }
+    },
+    'waist-hip-ratio': {
+        id: 'waist-hip-ratio',
+        title: 'Waist-to-Hip Ratio Calculator',
+        description: 'Calculate your waist-to-hip ratio for health risk assessment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Waist-to-Hip Ratio Calculator | MyCalcOnline',
+            description: 'Assess cardiovascular risk with waist-to-hip ratio.',
+            keywords: ['waist hip ratio', 'WHR', 'body shape']
+        },
+        inputs: [
+            { id: 'waist', label: 'Waist Circumference (cm)', type: 'number', placeholder: '80' },
+            { id: 'hip', label: 'Hip Circumference (cm)', type: 'number', placeholder: '100' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Waist-to-Hip Ratio',
+                calculate: (inputs: Record<string, any>) => {
+                    const waist = Number(inputs.waist);
+                    const hip = Number(inputs.hip);
+                    if (hip === 0) return 'Invalid';
+                    return (waist / hip).toFixed(3);
+                }
+            },
+            {
+                label: 'Risk Assessment',
+                calculate: (inputs: Record<string, any>) => {
+                    const waist = Number(inputs.waist);
+                    const hip = Number(inputs.hip);
+                    const gender = Number(inputs.gender);
+                    if (hip === 0) return 'N/A';
+                    const ratio = waist / hip;
+                    if (gender === 1) {
+                        return ratio < 0.9 ? 'Low Risk' : ratio < 1.0 ? 'Moderate Risk' : 'High Risk';
+                    }
+                    return ratio < 0.8 ? 'Low Risk' : ratio < 0.85 ? 'Moderate Risk' : 'High Risk';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'waist-hip-ratio.whatIs',
+            howTo: 'waist-hip-ratio.howTo',
+            faq: []
+        }
+    },
+    'bmi-prime': {
+        id: 'bmi-prime',
+        title: 'BMI Prime Calculator',
+        description: 'Calculate your BMI Prime ratio relative to ideal BMI.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'BMI Prime Calculator | MyCalcOnline',
+            description: 'BMI Prime shows how far you are from optimal BMI of 25.',
+            keywords: ['BMI prime', 'body mass index', 'optimal weight']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '175' }
+        ],
+        outputs: [
+            {
+                label: 'BMI',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height) / 100;
+                    return (w / (h * h)).toFixed(2);
+                }
+            },
+            {
+                label: 'BMI Prime',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height) / 100;
+                    const bmi = w / (h * h);
+                    return (bmi / 25).toFixed(3);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height) / 100;
+                    const bmiPrime = (w / (h * h)) / 25;
+                    if (bmiPrime < 0.74) return 'Underweight (severe)';
+                    if (bmiPrime < 1.0) return 'Normal or below';
+                    if (bmiPrime < 1.2) return 'Overweight';
+                    return 'Obese';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bmi-prime.whatIs',
+            howTo: 'bmi-prime.howTo',
+            faq: []
+        }
+    },
+    'pregnancy-weight-gain': {
+        id: 'pregnancy-weight-gain',
+        title: 'Pregnancy Weight Gain Calculator',
+        description: 'Calculate recommended weight gain during pregnancy.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pregnancy Weight Gain Calculator | MyCalcOnline',
+            description: 'Find healthy weight gain recommendations for pregnancy.',
+            keywords: ['pregnancy weight', 'weight gain pregnancy', 'prenatal weight']
+        },
+        inputs: [
+            { id: 'preWeight', label: 'Pre-pregnancy Weight (kg)', type: 'number', placeholder: '60' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '165' },
+            { id: 'twins', label: 'Twins? (0=No, 1=Yes)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Pre-pregnancy BMI',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.preWeight);
+                    const h = Number(inputs.height) / 100;
+                    return (w / (h * h)).toFixed(1);
+                }
+            },
+            {
+                label: 'Recommended Gain (kg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.preWeight);
+                    const h = Number(inputs.height) / 100;
+                    const twins = Number(inputs.twins);
+                    const bmi = w / (h * h);
+                    let min: number, max: number;
+                    if (bmi < 18.5) { min = 12.5; max = 18; }
+                    else if (bmi < 25) { min = 11.5; max = 16; }
+                    else if (bmi < 30) { min = 7; max = 11.5; }
+                    else { min = 5; max = 9; }
+                    if (twins) { min += 4; max += 9; }
+                    return `${min} - ${max} kg`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pregnancy-weight-gain.whatIs',
+            howTo: 'pregnancy-weight-gain.howTo',
+            faq: []
+        }
+    },
+    'heart-rate-zones': {
+        id: 'heart-rate-zones',
+        title: 'Heart Rate Zones Calculator',
+        description: 'Calculate your heart rate training zones.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Heart Rate Zones Calculator | MyCalcOnline',
+            description: 'Find your fat burn, cardio, and peak heart rate zones.',
+            keywords: ['heart rate zones', 'training zones', 'cardio zones']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'restingHR', label: 'Resting Heart Rate (optional)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Max Heart Rate',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    return 220 - age;
+                }
+            },
+            {
+                label: 'Zone 1 (50-60%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const maxHR = 220 - Number(inputs.age);
+                    return `${Math.round(maxHR * 0.5)} - ${Math.round(maxHR * 0.6)} bpm`;
+                }
+            },
+            {
+                label: 'Zone 2 - Fat Burn (60-70%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const maxHR = 220 - Number(inputs.age);
+                    return `${Math.round(maxHR * 0.6)} - ${Math.round(maxHR * 0.7)} bpm`;
+                }
+            },
+            {
+                label: 'Zone 3 - Cardio (70-80%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const maxHR = 220 - Number(inputs.age);
+                    return `${Math.round(maxHR * 0.7)} - ${Math.round(maxHR * 0.8)} bpm`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'heart-rate-zones.whatIs',
+            howTo: 'heart-rate-zones.howTo',
+            faq: []
+        }
+    },
+    'blood-alcohol': {
+        id: 'blood-alcohol',
+        title: 'Blood Alcohol Calculator',
+        description: 'Estimate blood alcohol content (BAC) based on drinks consumed.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Blood Alcohol Calculator | MyCalcOnline',
+            description: 'Estimate your BAC based on weight, drinks, and time.',
+            keywords: ['blood alcohol', 'BAC calculator', 'alcohol content']
+        },
+        inputs: [
+            { id: 'weight', label: 'Body Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'drinks', label: 'Number of Standard Drinks', type: 'number', placeholder: '3' },
+            { id: 'hours', label: 'Hours Since First Drink', type: 'number', placeholder: '2' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Estimated BAC (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const weight = Number(inputs.weight) * 1000; // grams
+                    const drinks = Number(inputs.drinks);
+                    const hours = Number(inputs.hours);
+                    const gender = Number(inputs.gender);
+                    const r = gender === 1 ? 0.68 : 0.55;
+                    const alcoholGrams = drinks * 14; // standard drink = 14g
+                    let bac = (alcoholGrams / (weight * r)) * 100;
+                    bac -= hours * 0.015;
+                    return bac > 0 ? bac.toFixed(3) : '0.000';
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const weight = Number(inputs.weight) * 1000;
+                    const drinks = Number(inputs.drinks);
+                    const hours = Number(inputs.hours);
+                    const gender = Number(inputs.gender);
+                    const r = gender === 1 ? 0.68 : 0.55;
+                    let bac = ((drinks * 14) / (weight * r)) * 100 - hours * 0.015;
+                    if (bac < 0.02) return 'Sober';
+                    if (bac < 0.05) return 'Mild impairment';
+                    if (bac < 0.08) return 'Impaired - Do not drive';
+                    return 'Legally intoxicated';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'blood-alcohol.whatIs',
+            howTo: 'blood-alcohol.howTo',
+            faq: []
+        }
+    },
+    'sleep-calculator': {
+        id: 'sleep-calculator',
+        title: 'Sleep Calculator',
+        description: 'Calculate optimal bedtime or wake-up time based on sleep cycles.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sleep Calculator | MyCalcOnline',
+            description: 'Find the best time to wake up based on 90-minute sleep cycles.',
+            keywords: ['sleep calculator', 'sleep cycles', 'best time to wake up']
+        },
+        inputs: [
+            { id: 'wakeHour', label: 'Desired Wake Time (hour, 0-23)', type: 'number', placeholder: '7' },
+            { id: 'wakeMin', label: 'Wake Time (minutes)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Bedtime for 6 cycles (9h)',
+                calculate: (inputs: Record<string, any>) => {
+                    const wakeH = Number(inputs.wakeHour);
+                    const wakeM = Number(inputs.wakeMin) || 0;
+                    let bedH = wakeH - 9;
+                    if (bedH < 0) bedH += 24;
+                    return `${bedH.toString().padStart(2, '0')}:${wakeM.toString().padStart(2, '0')}`;
+                }
+            },
+            {
+                label: 'Bedtime for 5 cycles (7.5h)',
+                calculate: (inputs: Record<string, any>) => {
+                    const wakeH = Number(inputs.wakeHour);
+                    const wakeM = Number(inputs.wakeMin) || 0;
+                    let totalMin = wakeH * 60 + wakeM - 450;
+                    if (totalMin < 0) totalMin += 1440;
+                    return `${Math.floor(totalMin / 60).toString().padStart(2, '0')}:${(totalMin % 60).toString().padStart(2, '0')}`;
+                }
+            },
+            {
+                label: 'Bedtime for 4 cycles (6h)',
+                calculate: (inputs: Record<string, any>) => {
+                    const wakeH = Number(inputs.wakeHour);
+                    const wakeM = Number(inputs.wakeMin) || 0;
+                    let totalMin = wakeH * 60 + wakeM - 360;
+                    if (totalMin < 0) totalMin += 1440;
+                    return `${Math.floor(totalMin / 60).toString().padStart(2, '0')}:${(totalMin % 60).toString().padStart(2, '0')}`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sleep-calculator.whatIs',
+            howTo: 'sleep-calculator.howTo',
+            faq: []
+        }
+    },
+    'max-heart-rate': {
+        id: 'max-heart-rate',
+        title: 'Maximum Heart Rate Calculator',
+        description: 'Calculate your maximum heart rate based on age.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Max Heart Rate Calculator | MyCalcOnline',
+            description: 'Find your maximum heart rate using multiple formulas.',
+            keywords: ['max heart rate', 'MHR', 'heart rate age']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'Traditional (220 - age)',
+                calculate: (inputs: Record<string, any>) => {
+                    return 220 - Number(inputs.age);
+                }
+            },
+            {
+                label: 'Tanaka (208 - 0.7 × age)',
+                calculate: (inputs: Record<string, any>) => {
+                    return Math.round(208 - 0.7 * Number(inputs.age));
+                }
+            },
+            {
+                label: 'Gellish (207 - 0.7 × age)',
+                calculate: (inputs: Record<string, any>) => {
+                    return Math.round(207 - 0.7 * Number(inputs.age));
+                }
+            }
+        ],
+        content: {
+            whatIs: 'max-heart-rate.whatIs',
+            howTo: 'max-heart-rate.howTo',
+            faq: []
+        }
+    },
+    'metabolic-age': {
+        id: 'metabolic-age',
+        title: 'Metabolic Age Calculator',
+        description: 'Estimate your metabolic age based on BMR.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Metabolic Age Calculator | MyCalcOnline',
+            description: 'Compare your metabolism to average for your age.',
+            keywords: ['metabolic age', 'metabolism', 'biological age']
+        },
+        inputs: [
+            { id: 'age', label: 'Actual Age', type: 'number', placeholder: '30' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '175' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Your BMR (kcal/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height);
+                    const a = Number(inputs.age);
+                    const g = Number(inputs.gender);
+                    if (g === 1) return Math.round(10 * w + 6.25 * h - 5 * a + 5);
+                    return Math.round(10 * w + 6.25 * h - 5 * a - 161);
+                }
+            },
+            {
+                label: 'Metabolic Age Estimate',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height);
+                    const a = Number(inputs.age);
+                    const g = Number(inputs.gender);
+                    const bmr = g === 1 ? 10 * w + 6.25 * h - 5 * a + 5 : 10 * w + 6.25 * h - 5 * a - 161;
+                    const avgBMR = g === 1 ? 1800 : 1400;
+                    const metabolicAge = a - Math.round((bmr - avgBMR) / 20);
+                    return metabolicAge > 0 ? metabolicAge : a;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'metabolic-age.whatIs',
+            howTo: 'metabolic-age.howTo',
+            faq: []
+        }
+    },
+    'vo2max-calculator': {
+        id: 'vo2max-calculator',
+        title: 'VO2 Max Calculator',
+        description: 'Estimate your VO2 max from running performance.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'VO2 Max Calculator | MyCalcOnline',
+            description: 'Calculate your aerobic capacity using various methods.',
+            keywords: ['VO2 max', 'aerobic capacity', 'fitness level']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'restingHR', label: 'Resting Heart Rate', type: 'number', placeholder: '60' },
+            { id: 'maxHR', label: 'Max Heart Rate (or 220-age)', type: 'number', placeholder: '190' }
+        ],
+        outputs: [
+            {
+                label: 'VO2 Max (Uth Formula)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rhr = Number(inputs.restingHR);
+                    const mhr = Number(inputs.maxHR) || 220 - Number(inputs.age);
+                    const vo2 = 15.3 * (mhr / rhr);
+                    return vo2.toFixed(1) + ' mL/kg/min';
+                }
+            },
+            {
+                label: 'Fitness Rating',
+                calculate: (inputs: Record<string, any>) => {
+                    const rhr = Number(inputs.restingHR);
+                    const mhr = Number(inputs.maxHR) || 220 - Number(inputs.age);
+                    const vo2 = 15.3 * (mhr / rhr);
+                    if (vo2 < 30) return 'Poor';
+                    if (vo2 < 40) return 'Fair';
+                    if (vo2 < 50) return 'Good';
+                    if (vo2 < 60) return 'Excellent';
+                    return 'Superior';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vo2max-calculator.whatIs',
+            howTo: 'vo2max-calculator.howTo',
+            faq: []
+        }
+    },
 };

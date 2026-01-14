@@ -1,10 +1,10 @@
 {
   "metadata": {
     "version": "1.0.0",
-    "lastUpdated": "2026-01-13",
-    "totalCalculators": 728,
-    "lastAddedId": "trig-functions",
-    "lastAddedCategory": "math",
+    "lastUpdated": "2026-01-14",
+    "totalCalculators": 778,
+    "lastAddedId": "vo2max-calculator",
+    "lastAddedCategory": "health",
     "omniProgress": {
       "biology": {
         "status": "not_started",
@@ -22,8 +22,8 @@
         "total": 0
       },
       "conversion": {
-        "status": "not_started",
-        "completed": 0,
+        "status": "in_progress",
+        "completed": 10,
         "total": 0
       },
       "ecology": {
@@ -37,8 +37,8 @@
         "total": 0
       },
       "finance": {
-        "status": "not_started",
-        "completed": 0,
+        "status": "in_progress",
+        "completed": 10,
         "total": 0
       },
       "food": {
@@ -47,13 +47,13 @@
         "total": 0
       },
       "health": {
-        "status": "not_started",
-        "completed": 0,
+        "status": "in_progress",
+        "completed": 10,
         "total": 0
       },
       "math": {
         "status": "in_progress",
-        "completed": 57,
+        "completed": 77,
         "total": 0
       },
       "physics": {
@@ -132,6 +132,36 @@
       "summary": "Added 10 trigonometry calculators: sin-calculator, cos-calculator, tan-calculator, arcsin-calculator, arccos-calculator, arctan-calculator, law-of-cosines, law-of-sines, unit-circle, trig-functions",
       "calculatorsAdded": 10,
       "lastCalculatorId": "trig-functions"
+    },
+    {
+      "date": "2026-01-13T23:57:43.904Z",
+      "summary": "Added 10 statistics calculators: percentile-calculator, five-number-summary, covariance-calculator, dispersion-calculator, mad-calculator, cohens-d-calculator, decile-calculator, error-propagation, descriptive-stats, coefficient-variation",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "coefficient-variation"
+    },
+    {
+      "date": "2026-01-14T00:11:21.097Z",
+      "summary": "Added 10 geometry calculators: circle-area, circle-circumference, rectangle-area, rectangle-perimeter, triangle-area-calculator, sphere-volume, cylinder-volume, cone-volume, pyramid-volume, cube-volume",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "cube-volume"
+    },
+    {
+      "date": "2026-01-14T00:20:41.888Z",
+      "summary": "Added 10 finance calculators: budget-calculator, emergency-fund-calculator, car-depreciation, car-affordability, credit-card-payoff, debt-snowball, debt-avalanche, amortization-calc, apr-calc, auto-loan-calc",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "auto-loan-calc"
+    },
+    {
+      "date": "2026-01-14T00:39:33.168Z",
+      "summary": "Added 10 conversion calculators: celsius-fahrenheit, celsius-to-kelvin, inches-to-cm, oz-to-grams, bytes-to-mb, mph-to-kmh, sqft-to-sqm, cups-to-ml, yards-to-meters, acres-to-hectares",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "acres-to-hectares"
+    },
+    {
+      "date": "2026-01-14T00:43:03.592Z",
+      "summary": "Added 10 health calculators: lean-body-mass, waist-hip-ratio, bmi-prime, pregnancy-weight-gain, heart-rate-zones, blood-alcohol, sleep-calculator, max-heart-rate, metabolic-age, vo2max-calculator",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "vo2max-calculator"
     }
   ],
   "calculators": {
@@ -476,6 +506,306 @@
       "category": "math",
       "source": "omni",
       "addedOn": "2026-01-13"
+    },
+    "percentile-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "five-number-summary": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "covariance-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "dispersion-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "mad-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "cohens-d-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "decile-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "error-propagation": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "descriptive-stats": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "coefficient-variation": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-13"
+    },
+    "circle-area": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "circle-circumference": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "rectangle-area": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "rectangle-perimeter": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "triangle-area-calculator": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sphere-volume": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cylinder-volume": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cone-volume": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pyramid-volume": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cube-volume": {
+      "status": "done",
+      "category": "math",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "budget-calculator": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "emergency-fund-calculator": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "car-depreciation": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "car-affordability": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "credit-card-payoff": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "debt-snowball": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "debt-avalanche": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "amortization-calc": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "apr-calc": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "auto-loan-calc": {
+      "status": "done",
+      "category": "finance",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "celsius-fahrenheit": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "celsius-to-kelvin": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "inches-to-cm": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "oz-to-grams": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "bytes-to-mb": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "mph-to-kmh": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sqft-to-sqm": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cups-to-ml": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "yards-to-meters": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "acres-to-hectares": {
+      "status": "done",
+      "category": "conversion",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "lean-body-mass": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "waist-hip-ratio": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "bmi-prime": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pregnancy-weight-gain": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "heart-rate-zones": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "blood-alcohol": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sleep-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "max-heart-rate": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "metabolic-age": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vo2max-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
     }
   }
 }
