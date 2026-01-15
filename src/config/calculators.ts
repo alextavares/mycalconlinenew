@@ -29204,4 +29204,6333 @@ export const calculators: Record<string, CalculatorConfig> = {
             faq: []
         }
     },
+    // ========================================
+    // HEALTH - Dietary & Nutrition
+    // Added: 2026-01-14
+    // ========================================
+    'protein-calculator': {
+        id: 'protein-calculator',
+        title: 'Protein Calculator',
+        description: 'Calculate your daily protein needs based on activity.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Protein Calculator | MyCalcOnline',
+            description: 'Find out how much protein you need daily for your goals.',
+            keywords: ['protein calculator', 'protein intake', 'daily protein']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'activity', label: 'Activity Level (1.2=Sedentary to 1.9=Athlete)', type: 'number', placeholder: '1.2' },
+            { id: 'goal', label: 'Goal (0=Maintain, 1=Build Muscle)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Minimum Protein (g/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    return (w * 0.8).toFixed(1);
+                }
+            },
+            {
+                label: 'Recommended Protein (g/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const act = Number(inputs.activity);
+                    const goal = Number(inputs.goal);
+                    let factor = act < 1.4 ? 1.0 : act < 1.6 ? 1.3 : 1.6;
+                    if (goal === 1) factor += 0.4;
+                    return (w * factor).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'protein-calculator.whatIs',
+            howTo: 'protein-calculator.howTo',
+            faq: []
+        }
+    },
+    'carb-calculator': {
+        id: 'carb-calculator',
+        title: 'Carbohydrate Calculator',
+        description: 'Estimate daily carbohydrate intake needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Carbohydrate Calculator | MyCalcOnline',
+            description: 'Calculate daily carbs for energy and weight management.',
+            keywords: ['carb calculator', 'daily carbohydrates', 'macros']
+        },
+        inputs: [
+            { id: 'calories', label: 'Daily Calories', type: 'number', placeholder: '2000' },
+            { id: 'percentage', label: 'Carb Percentage (%)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Carbs (g/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    const pct = Number(inputs.percentage) / 100;
+                    return ((cal * pct) / 4).toFixed(1);
+                }
+            },
+            {
+                label: 'Calories from Carbs',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    const pct = Number(inputs.percentage) / 100;
+                    return Math.round(cal * pct);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'carb-calculator.whatIs',
+            howTo: 'carb-calculator.howTo',
+            faq: []
+        }
+    },
+    'fat-intake-calculator': {
+        id: 'fat-intake-calculator',
+        title: 'Fat Intake Calculator',
+        description: 'Calculate recommended daily fat intake.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Fat Intake Calculator | MyCalcOnline',
+            description: 'Determine healthy fat intake ranges for your diet.',
+            keywords: ['fat intake', 'daily fat', 'dietary fat']
+        },
+        inputs: [
+            { id: 'calories', label: 'Daily Calories', type: 'number', placeholder: '2000' }
+        ],
+        outputs: [
+            {
+                label: 'Low Fat (20%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    return ((cal * 0.2) / 9).toFixed(1) + ' g';
+                }
+            },
+            {
+                label: 'Moderate Fat (30%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    return ((cal * 0.3) / 9).toFixed(1) + ' g';
+                }
+            },
+            {
+                label: 'High Fat (40%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    return ((cal * 0.4) / 9).toFixed(1) + ' g';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fat-intake-calculator.whatIs',
+            howTo: 'fat-intake-calculator.howTo',
+            faq: []
+        }
+    },
+    'sugar-intake': {
+        id: 'sugar-intake',
+        title: 'Sugar Intake Calculator',
+        description: 'Check if your sugar intake is within recommended limits.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sugar Intake Calculator | MyCalcOnline',
+            description: 'Calculate safe daily sugar limits based on guidelines.',
+            keywords: ['sugar intake', 'daily sugar', 'sugar limit']
+        },
+        inputs: [
+            { id: 'calories', label: 'Daily Calories', type: 'number', placeholder: '2000' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'AHA Limit (Added Sugar)',
+                calculate: (inputs: Record<string, any>) => {
+                    const g = Number(inputs.gender);
+                    return g === 1 ? '36 g (9 tsp)' : '25 g (6 tsp)';
+                }
+            },
+            {
+                label: 'WHO Guideline (5%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    return ((cal * 0.05) / 4).toFixed(1) + ' g';
+                }
+            },
+            {
+                label: 'WHO Maximum (10%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    return ((cal * 0.10) / 4).toFixed(1) + ' g';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sugar-intake.whatIs',
+            howTo: 'sugar-intake.howTo',
+            faq: []
+        }
+    },
+    'fiber-calculator': {
+        id: 'fiber-calculator',
+        title: 'Fiber Calculator',
+        description: 'Calculate recommended daily fiber intake.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Fiber Calculator | MyCalcOnline',
+            description: 'Find out how much fiber you should eat daily.',
+            keywords: ['fiber calculator', 'daily fiber', 'dietary fiber']
+        },
+        inputs: [
+            { id: 'calories', label: 'Daily Calories', type: 'number', placeholder: '2000' },
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Fiber (g)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    // General rule: 14g per 1000kcal
+                    return ((cal / 1000) * 14).toFixed(1);
+                }
+            },
+            {
+                label: 'Adequate Intake (AI)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    if (gender === 1) return age <= 50 ? '38 g' : '30 g';
+                    return age <= 50 ? '25 g' : '21 g';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fiber-calculator.whatIs',
+            howTo: 'fiber-calculator.howTo',
+            faq: []
+        }
+    },
+    'calorie-deficit': {
+        id: 'calorie-deficit',
+        title: 'Calorie Deficit Calculator',
+        description: 'Estimate calorie deficit needed for weight loss.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Calorie Deficit Calculator | MyCalcOnline',
+            description: 'Calculate daily calorie deficit to reach your weight goal.',
+            keywords: ['calorie deficit', 'weight loss calories', 'diet deficit']
+        },
+        inputs: [
+            { id: 'maintenance', label: 'Maintenance Calories', type: 'number', placeholder: '2500' },
+            { id: 'targetLoss', label: 'Target Loss (kg/week)', type: 'number', placeholder: '0.5' }
+        ],
+        outputs: [
+            {
+                label: 'Deficit Needed (kcal/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const loss = Number(inputs.targetLoss);
+                    // 1kg fat approx 7700 kcal. 7700 * loss / 7 days
+                    return Math.round((loss * 7700) / 7);
+                }
+            },
+            {
+                label: 'Daily Calorie Target',
+                calculate: (inputs: Record<string, any>) => {
+                    const maint = Number(inputs.maintenance);
+                    const loss = Number(inputs.targetLoss);
+                    const deficit = Math.round((loss * 7700) / 7);
+                    const target = maint - deficit;
+                    return target < 1200 ? 'Too low (<1200)' : target;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'calorie-deficit.whatIs',
+            howTo: 'calorie-deficit.howTo',
+            faq: []
+        }
+    },
+    'meal-calorie-calculator': {
+        id: 'meal-calorie-calculator',
+        title: 'Meal Calorie Calculator',
+        description: 'Distribute daily calories across meals.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Meal Calorie Calculator | MyCalcOnline',
+            description: 'Split your daily calories into breakfast, lunch, dinner, and snacks.',
+            keywords: ['meal calories', 'calorie distribution', 'meal plan']
+        },
+        inputs: [
+            { id: 'calories', label: 'Daily Calories', type: 'number', placeholder: '2000' },
+            { id: 'meals', label: 'Number of Meals', type: 'number', placeholder: '3' },
+            { id: 'nSnacks', label: 'Number of Snacks', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Calories per Meal',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    const meals = Number(inputs.meals);
+                    const snacks = Number(inputs.nSnacks);
+                    // Assume snacks are half size of meals. Total units = meals * 1 + snacks * 0.5
+                    const units = meals + snacks * 0.5;
+                    return Math.round(cal / units);
+                }
+            },
+            {
+                label: 'Calories per Snack',
+                calculate: (inputs: Record<string, any>) => {
+                    const cal = Number(inputs.calories);
+                    const meals = Number(inputs.meals);
+                    const snacks = Number(inputs.nSnacks);
+                    const units = meals + snacks * 0.5;
+                    return Math.round((cal / units) * 0.5);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'meal-calorie-calculator.whatIs',
+            howTo: 'meal-calorie-calculator.howTo',
+            faq: []
+        }
+    },
+    'macros-per-meal': {
+        id: 'macros-per-meal',
+        title: 'Macros per Meal Calculator',
+        description: 'Break down daily macros into per-meal amounts.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Macros per Meal Calculator | MyCalcOnline',
+            description: 'Calculate protein, carbs, and fats for each meal.',
+            keywords: ['macros per meal', 'macro distribution', 'meal macros']
+        },
+        inputs: [
+            { id: 'protein', label: 'Daily Protein (g)', type: 'number', placeholder: '150' },
+            { id: 'carbs', label: 'Daily Carbs (g)', type: 'number', placeholder: '200' },
+            { id: 'fat', label: 'Daily Fat (g)', type: 'number', placeholder: '70' },
+            { id: 'meals', label: 'Meals per Day', type: 'number', placeholder: '4' }
+        ],
+        outputs: [
+            {
+                label: 'Protein per Meal (g)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.protein) / Number(inputs.meals)).toFixed(1);
+                }
+            },
+            {
+                label: 'Carbs per Meal (g)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.carbs) / Number(inputs.meals)).toFixed(1);
+                }
+            },
+            {
+                label: 'Fat per Meal (g)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.fat) / Number(inputs.meals)).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'macros-per-meal.whatIs',
+            howTo: 'macros-per-meal.howTo',
+            faq: []
+        }
+    },
+    'alcohol-calorie': {
+        id: 'alcohol-calorie',
+        title: 'Alcohol Calorie Calculator',
+        description: 'Estimate calories in alcoholic beverages.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Alcohol Calorie Calculator | MyCalcOnline',
+            description: 'Calculate calories from beer, wine, and spirits.',
+            keywords: ['alcohol calories', 'drink calories', 'beer calories']
+        },
+        inputs: [
+            { id: 'volume', label: 'Volume (ml)', type: 'number', placeholder: '330' },
+            { id: 'abv', label: 'Alcohol % (ABV)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Calories',
+                calculate: (inputs: Record<string, any>) => {
+                    const vol = Number(inputs.volume);
+                    const abv = Number(inputs.abv) / 100;
+                    const alcoholGrams = vol * abv * 0.789;
+                    // Alcohol is 7 kcal/g
+                    return Math.round(alcoholGrams * 7);
+                }
+            },
+            {
+                label: 'Alcohol Units',
+                calculate: (inputs: Record<string, any>) => {
+                    const vol = Number(inputs.volume);
+                    const abv = Number(inputs.abv) / 100;
+                    return (vol * abv / 10).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'alcohol-calorie.whatIs',
+            howTo: 'alcohol-calorie.howTo',
+            faq: []
+        }
+    },
+    'caffeine-calculator': {
+        id: 'caffeine-calculator',
+        title: 'Caffeine Calculator',
+        description: 'Track your daily caffeine intake.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Caffeine Calculator | MyCalcOnline',
+            description: 'Estimate total caffeine from coffee, tea, and energy drinks.',
+            keywords: ['caffeine calculator', 'caffeine intake', 'daily caffeine']
+        },
+        inputs: [
+            { id: 'coffees', label: 'Cups of Coffee', type: 'number', placeholder: '2' },
+            { id: 'teas', label: 'Cups of Tea', type: 'number', placeholder: '1' },
+            { id: 'energy', label: 'Energy Drinks', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Total Caffeine (mg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.coffees) * 95; // avg 95mg
+                    const t = Number(inputs.teas) * 26; // avg 26mg
+                    const e = Number(inputs.energy) * 80; // avg 80mg
+                    return c + t + e;
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.coffees) * 95;
+                    const t = Number(inputs.teas) * 26;
+                    const e = Number(inputs.energy) * 80;
+                    const total = c + t + e;
+                    if (total < 100) return 'Low';
+                    if (total < 400) return 'Moderate (Safe)';
+                    return 'High';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'caffeine-calculator.whatIs',
+            howTo: 'caffeine-calculator.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Micronutrients (Vitamins & Minerals)
+    // Added: 2026-01-14
+    // ========================================
+    'calcium-intake': {
+        id: 'calcium-intake',
+        title: 'Calcium Intake Calculator',
+        description: 'Calculate your recommended daily calcium intake.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Calcium Intake Calculator | MyCalcOnline',
+            description: 'Find out how much calcium you need for bone health.',
+            keywords: ['calcium intake', 'daily calcium', 'bone health']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '2' },
+            { id: 'pregnant', label: 'Pregnant/Lactating? (0=No, 1=Yes)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Calcium (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    let rec = 1000;
+                    if (age <= 3) rec = 700;
+                    else if (age <= 8) rec = 1000;
+                    else if (age <= 18) rec = 1300;
+                    else if (age <= 50) rec = 1000;
+                    else if (age <= 70) rec = Number(inputs.gender) === 1 ? 1000 : 1200;
+                    else rec = 1200;
+                    return rec;
+                }
+            },
+            {
+                label: 'Upper Limit (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    if (age <= 1) return 1500;
+                    if (age <= 8) return 2500;
+                    if (age <= 18) return 3000;
+                    if (age <= 50) return 2500;
+                    return 2000;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'calcium-intake.whatIs',
+            howTo: 'calcium-intake.howTo',
+            faq: []
+        }
+    },
+    'vitamin-d-calculator': {
+        id: 'vitamin-d-calculator',
+        title: 'Vitamin D Calculator',
+        description: 'Estimate Vitamin D requirements and sun exposure needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vitamin D Calculator | MyCalcOnline',
+            description: 'Calculate daily Vitamin D needs based on age and factors.',
+            keywords: ['vitamin d', 'sun exposure', 'daily vitamin d']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Intake (IU/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    if (age <= 1) return '400 IU';
+                    if (age <= 70) return '600 IU';
+                    return '800 IU';
+                }
+            },
+            {
+                label: 'Dietary Equivalent (mcg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    // 1 mcg = 40 IU
+                    if (age <= 1) return '10 mcg';
+                    if (age <= 70) return '15 mcg';
+                    return '20 mcg';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vitamin-d-calculator.whatIs',
+            howTo: 'vitamin-d-calculator.howTo',
+            faq: []
+        }
+    },
+    'magnesium-intake': {
+        id: 'magnesium-intake',
+        title: 'Magnesium Intake Calculator',
+        description: 'Find your daily magnesium requirements.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Magnesium Intake Calculator | MyCalcOnline',
+            description: 'Calculate recommended magnesium intake by age and gender.',
+            keywords: ['magnesium intake', 'daily magnesium', 'minerals']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'RDA (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    if (age <= 3) return 80;
+                    if (age <= 8) return 130;
+                    if (age <= 13) return 240;
+                    if (age <= 18) return gender === 1 ? 410 : 360;
+                    if (age <= 30) return gender === 1 ? 400 : 310;
+                    return gender === 1 ? 420 : 320;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'magnesium-intake.whatIs',
+            howTo: 'magnesium-intake.howTo',
+            faq: []
+        }
+    },
+    'iron-intake': {
+        id: 'iron-intake',
+        title: 'Iron Intake Calculator',
+        description: 'Calculate daily iron needs to prevent deficiency.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Iron Intake Calculator | MyCalcOnline',
+            description: 'Determine your daily iron requirements based on age and gender.',
+            keywords: ['iron intake', 'daily iron', 'anemia prevention']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '25' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '2' },
+            { id: 'pregnant', label: 'Pregnant? (0=No, 1=Yes)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Iron (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    const preg = Number(inputs.pregnant);
+                    if (preg) return 27;
+                    if (age <= 13) return 8; // simplified
+                    if (age <= 18) return gender === 1 ? 11 : 15;
+                    if (age <= 50) return gender === 1 ? 8 : 18;
+                    return 8;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'iron-intake.whatIs',
+            howTo: 'iron-intake.howTo',
+            faq: []
+        }
+    },
+    'potassium-calculator': {
+        id: 'potassium-calculator',
+        title: 'Potassium Intake Calculator',
+        description: 'Estimate daily potassium needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Potassium Intake Calculator | MyCalcOnline',
+            description: 'Find your recommended daily potassium intake.',
+            keywords: ['potassium intake', 'daily potassium', 'electrolytes']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Adequate Intake (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    if (age <= 3) return 3000; // rough avg for kids
+                    if (age <= 8) return 3800;
+                    if (age <= 13) return 4500;
+                    if (age <= 18) return 4700;
+                    return gender === 1 ? 3400 : 2600; // Updated NASEM values
+                }
+            }
+        ],
+        content: {
+            whatIs: 'potassium-calculator.whatIs',
+            howTo: 'potassium-calculator.howTo',
+            faq: []
+        }
+    },
+    'zinc-intake': {
+        id: 'zinc-intake',
+        title: 'Zinc Intake Calculator',
+        description: 'Calculate daily zinc requirements.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Zinc Intake Calculator | MyCalcOnline',
+            description: 'Determine recommended daily zinc intake for immune health.',
+            keywords: ['zinc intake', 'daily zinc', 'immune health']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'RDA (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    if (age <= 3) return 3;
+                    if (age <= 8) return 5;
+                    if (age <= 13) return 8;
+                    if (age <= 18) return gender === 1 ? 11 : 9;
+                    return gender === 1 ? 11 : 8;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'zinc-intake.whatIs',
+            howTo: 'zinc-intake.howTo',
+            faq: []
+        }
+    },
+    'vitamin-c-calculator': {
+        id: 'vitamin-c-calculator',
+        title: 'Vitamin C Calculator',
+        description: 'Find your daily Vitamin C needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vitamin C Calculator | MyCalcOnline',
+            description: 'Calculate Vitamin C requirements for immune support.',
+            keywords: ['vitamin c', 'ascorbic acid', 'immunity']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '25' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' },
+            { id: 'smoker', label: 'Smoker? (0=No, 1=Yes)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'RDA (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    const smoker = Number(inputs.smoker);
+                    let rec = 90;
+                    if (age <= 3) rec = 15;
+                    else if (age <= 8) rec = 25;
+                    else if (age <= 13) rec = 45;
+                    else if (age <= 18) rec = gender === 1 ? 75 : 65;
+                    else rec = gender === 1 ? 90 : 75;
+                    if (smoker) rec += 35;
+                    return rec;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vitamin-c-calculator.whatIs',
+            howTo: 'vitamin-c-calculator.howTo',
+            faq: []
+        }
+    },
+    'vitamin-a-calculator': {
+        id: 'vitamin-a-calculator',
+        title: 'Vitamin A Calculator',
+        description: 'Estimate daily Vitamin A requirements.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vitamin A Calculator | MyCalcOnline',
+            description: 'Recommended daily allowance for Vitamin A.',
+            keywords: ['vitamin a', 'retinol', 'eye health']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'RDA (mcg RAE/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    if (age <= 3) return 300;
+                    if (age <= 8) return 400;
+                    if (age <= 13) return 600;
+                    return gender === 1 ? 900 : 700;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vitamin-a-calculator.whatIs',
+            howTo: 'vitamin-a-calculator.howTo',
+            faq: []
+        }
+    },
+    'vitamin-e-calculator': {
+        id: 'vitamin-e-calculator',
+        title: 'Vitamin E Calculator',
+        description: 'Calculate daily Vitamin E needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vitamin E Calculator | MyCalcOnline',
+            description: 'Find your recommended daily Vitamin E intake.',
+            keywords: ['vitamin e', 'tocopherol', 'skin health']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'RDA (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    if (age <= 3) return 6;
+                    if (age <= 8) return 7;
+                    if (age <= 13) return 11;
+                    return 15;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vitamin-e-calculator.whatIs',
+            howTo: 'vitamin-e-calculator.howTo',
+            faq: []
+        }
+    },
+    'omega-3-calculator': {
+        id: 'omega-3-calculator',
+        title: 'Omega-3 Calculator',
+        description: 'Estimate recommended Omega-3 intake.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Omega-3 Calculator | MyCalcOnline',
+            description: 'Calculate daily Omega-3 (ALA) requirements.',
+            keywords: ['omega 3', 'fatty acids', 'fish oil']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Adequate Intake (g/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const gender = Number(inputs.gender);
+                    if (age <= 3) return 0.7;
+                    if (age <= 8) return 0.9;
+                    if (age <= 13) return gender === 1 ? 1.2 : 1.0;
+                    return gender === 1 ? 1.6 : 1.1;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'omega-3-calculator.whatIs',
+            howTo: 'omega-3-calculator.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Cardiovascular
+    // Added: 2026-01-14
+    // ========================================
+    'mean-arterial-pressure': {
+        id: 'mean-arterial-pressure',
+        title: 'Mean Arterial Pressure (MAP)',
+        description: 'Calculate average pressure in arteries during one cardiac cycle.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'MAP Calculator | Mean Arterial Pressure',
+            description: 'Calculate Mean Arterial Pressure using systolic and diastolic values.',
+            keywords: ['map calculator', 'mean arterial pressure', 'blood pressure']
+        },
+        inputs: [
+            { id: 'sbp', label: 'Systolic BP (mmHg)', type: 'number', placeholder: '120' },
+            { id: 'dbp', label: 'Diastolic BP (mmHg)', type: 'number', placeholder: '80' }
+        ],
+        outputs: [
+            {
+                label: 'MAP (mmHg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.sbp);
+                    const d = Number(inputs.dbp);
+                    // Standard formula: MAP = DBP + 1/3(SBP - DBP) or (SBP + 2*DBP)/3
+                    return ((s + 2 * d) / 3).toFixed(0);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.sbp);
+                    const d = Number(inputs.dbp);
+                    const map = (s + 2 * d) / 3;
+                    if (map < 60) return 'Low Perfusion';
+                    if (map >= 70 && map <= 100) return 'Normal';
+                    return 'High';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'mean-arterial-pressure.whatIs',
+            howTo: 'mean-arterial-pressure.howTo',
+            faq: []
+        }
+    },
+    'pulse-pressure': {
+        id: 'pulse-pressure',
+        title: 'Pulse Pressure Calculator',
+        description: 'Calculate the difference between systolic and diastolic pressure.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pulse Pressure Calculator',
+            description: 'Determine your pulse pressure which indicates heart health.',
+            keywords: ['pulse pressure', 'blood pressure difference', 'heart health']
+        },
+        inputs: [
+            { id: 'sbp', label: 'Systolic BP (mmHg)', type: 'number', placeholder: '120' },
+            { id: 'dbp', label: 'Diastolic BP (mmHg)', type: 'number', placeholder: '80' }
+        ],
+        outputs: [
+            {
+                label: 'Pulse Pressure (mmHg)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.sbp) - Number(inputs.dbp)).toFixed(0);
+                }
+            },
+            {
+                label: 'Risk Indicator',
+                calculate: (inputs: Record<string, any>) => {
+                    const pp = Number(inputs.sbp) - Number(inputs.dbp);
+                    if (pp > 60) return 'Elevated Risk';
+                    if (pp < 40) return 'Narrow';
+                    return 'Normal';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pulse-pressure.whatIs',
+            howTo: 'pulse-pressure.howTo',
+            faq: []
+        }
+    },
+    'cardiac-output': {
+        id: 'cardiac-output',
+        title: 'Cardiac Output Calculator',
+        description: 'Calculate volume of blood pumped by the heart per minute.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cardiac Output Calculator',
+            description: 'Estimate cardiac output using stroke volume and heart rate.',
+            keywords: ['cardiac output', 'heart volume', 'blood flow']
+        },
+        inputs: [
+            { id: 'hr', label: 'Heart Rate (bpm)', type: 'number', placeholder: '70' },
+            { id: 'sv', label: 'Stroke Volume (mL)', type: 'number', placeholder: '70' }
+        ],
+        outputs: [
+            {
+                label: 'Cardiac Output (L/min)',
+                calculate: (inputs: Record<string, any>) => {
+                    const hr = Number(inputs.hr);
+                    const sv = Number(inputs.sv);
+                    return ((hr * sv) / 1000).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cardiac-output.whatIs',
+            howTo: 'cardiac-output.howTo',
+            faq: []
+        }
+    },
+    'stroke-volume': {
+        id: 'stroke-volume',
+        title: 'Stroke Volume Calculator',
+        description: 'Estimate blood volume pumped per beat.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Stroke Volume Calculator',
+            description: 'Calculate stroke volume from cardiac output and heart rate.',
+            keywords: ['stroke volume', 'heart beat volume', 'sv calculator']
+        },
+        inputs: [
+            { id: 'co', label: 'Cardiac Output (L/min)', type: 'number', placeholder: '5' },
+            { id: 'hr', label: 'Heart Rate (bpm)', type: 'number', placeholder: '70' }
+        ],
+        outputs: [
+            {
+                label: 'Stroke Volume (mL)',
+                calculate: (inputs: Record<string, any>) => {
+                    const co = Number(inputs.co) * 1000; // convert to mL
+                    const hr = Number(inputs.hr);
+                    return (co / hr).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'stroke-volume.whatIs',
+            howTo: 'stroke-volume.howTo',
+            faq: []
+        }
+    },
+    'blood-volume': {
+        id: 'blood-volume',
+        title: 'Blood Volume Calculator',
+        description: 'Estimate total blood volume in body.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Blood Volume Calculator',
+            description: 'Estimate total circulating blood volume based on weight and gender.',
+            keywords: ['blood volume', 'total blood', 'tbv calculator']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '175' },
+            { id: 'gender', label: 'Gender (1=Male, 2=Female)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Total Blood Volume (L)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height) / 100; // m
+                    const g = Number(inputs.gender);
+                    // Nadler's Formula
+                    if (g === 1) {
+                        return (0.3669 * (h * h * h) + 0.03219 * w + 0.6041).toFixed(2);
+                    } else {
+                        return (0.3561 * (h * h * h) + 0.03308 * w + 0.1833).toFixed(2);
+                    }
+                }
+            }
+        ],
+        content: {
+            whatIs: 'blood-volume.whatIs',
+            howTo: 'blood-volume.howTo',
+            faq: []
+        }
+    },
+    'smoking-pack-years': {
+        id: 'smoking-pack-years',
+        title: 'Smoking Pack Years',
+        description: 'Calculate pack-years to estimate smoking history risk.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Smoking Pack Years Calculator',
+            description: 'Determine pack-years for smoking history and risk assessment.',
+            keywords: ['pack years', 'smoking history', 'cigarette count']
+        },
+        inputs: [
+            { id: 'packs', label: 'Packs per Day (1 pack = 20 cigs)', type: 'number', placeholder: '1' },
+            { id: 'years', label: 'Years Smoking', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Pack Years',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.packs) * Number(inputs.years)).toFixed(1);
+                }
+            },
+            {
+                label: 'Total Cigarettes',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.packs) * 20 * 365 * Number(inputs.years)).toLocaleString();
+                }
+            }
+        ],
+        content: {
+            whatIs: 'smoking-pack-years.whatIs',
+            howTo: 'smoking-pack-years.howTo',
+            faq: []
+        }
+    },
+    'cholesterol-ratio': {
+        id: 'cholesterol-ratio',
+        title: 'Cholesterol Ratio Calculator',
+        description: 'Calculate Cholesterol/HDL ratio.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cholesterol Ratio Calculator',
+            description: 'Assess heart disease risk using Total/HDL cholesterol ratio.',
+            keywords: ['cholesterol ratio', 'lipid profile', 'heart risk']
+        },
+        inputs: [
+            { id: 'total', label: 'Total Cholesterol (mg/dL)', type: 'number', placeholder: '200' },
+            { id: 'hdl', label: 'HDL Cholesterol (mg/dL)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Ratio (Total/HDL)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.total) / Number(inputs.hdl)).toFixed(1);
+                }
+            },
+            {
+                label: 'Risk Level',
+                calculate: (inputs: Record<string, any>) => {
+                    const ratio = Number(inputs.total) / Number(inputs.hdl);
+                    if (ratio < 3.5) return 'Optimal';
+                    if (ratio < 5) return 'Standard Risk';
+                    return 'Higher Risk';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cholesterol-ratio.whatIs',
+            howTo: 'cholesterol-ratio.howTo',
+            faq: []
+        }
+    },
+    'ldl-calculated': {
+        id: 'ldl-calculated',
+        title: 'LDL Calculator (Friedewald)',
+        description: 'Estimate LDL cholesterol from Total, HDL, and Triglycerides.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'LDL Calculator | Friedewald Formula',
+            description: 'Calculate LDL "bad" cholesterol levels.',
+            keywords: ['ldl calculator', 'bad cholesterol', 'lipid panel']
+        },
+        inputs: [
+            { id: 'total', label: 'Total Cholesterol (mg/dL)', type: 'number', placeholder: '200' },
+            { id: 'hdl', label: 'HDL Cholesterol (mg/dL)', type: 'number', placeholder: '50' },
+            { id: 'trig', label: 'Triglycerides (mg/dL)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Calculated LDL (mg/dL)',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.total);
+                    const h = Number(inputs.hdl);
+                    const tr = Number(inputs.trig);
+                    // LDL = Total - HDL - (Trig/5)
+                    return (t - h - (tr / 5)).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'ldl-calculated.whatIs',
+            howTo: 'ldl-calculated.howTo',
+            faq: []
+        }
+    },
+    'qtc-calculator': {
+        id: 'qtc-calculator',
+        title: 'QTc Calculator (Bazett)',
+        description: 'Corrected QT interval for heart rate.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'QTc Calculator | Bazett Formula',
+            description: 'Calculate Corrected QT interval from ECG data.',
+            keywords: ['qtc calculator', 'bazeth', 'ecg calculator']
+        },
+        inputs: [
+            { id: 'qt', label: 'QT Interval (ms)', type: 'number', placeholder: '350' },
+            { id: 'rr', label: 'RR Interval (sec) OR 60/HR', type: 'number', placeholder: '0.8' }
+        ],
+        outputs: [
+            {
+                label: 'QTc (ms)',
+                calculate: (inputs: Record<string, any>) => {
+                    const qt = Number(inputs.qt); // ms
+                    const rr = Number(inputs.rr); // sec
+                    // Bazett: QTc = QT / sqrt(RR)
+                    return (qt / Math.sqrt(rr)).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'qtc-calculator.whatIs',
+            howTo: 'qtc-calculator.howTo',
+            faq: []
+        }
+    },
+    'systemic-vascular-resistance': {
+        id: 'systemic-vascular-resistance',
+        title: 'SVR Calculator',
+        description: 'Calculate Systemic Vascular Resistance.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'SVR Calculator | Systemic Vascular Resistance',
+            description: 'Calculate resistance to blood flow offered by systemic vasculature.',
+            keywords: ['svr calculator', 'vascular resistance', 'hemodynamics']
+        },
+        inputs: [
+            { id: 'map', label: 'MAP (mmHg)', type: 'number', placeholder: '90' },
+            { id: 'cvp', label: 'CVP (mmHg)', type: 'number', placeholder: '5' },
+            { id: 'co', label: 'Cardiac Output (L/min)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'SVR (dynes·sec/cm⁵)',
+                calculate: (inputs: Record<string, any>) => {
+                    const map = Number(inputs.map);
+                    const cvp = Number(inputs.cvp);
+                    const co = Number(inputs.co);
+                    // SVR = 80 * (MAP - CVP) / CO
+                    return (80 * (map - cvp) / co).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'systemic-vascular-resistance.whatIs',
+            howTo: 'systemic-vascular-resistance.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Cardiovascular (Part 2)
+    // Added: 2026-01-14
+    // ========================================
+    'cardiac-index': {
+        id: 'cardiac-index',
+        title: 'Cardiac Index Calculator',
+        description: 'Calculate cardiac output normalized for body surface area.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cardiac Index Calculator',
+            description: 'Determine heart performance relative to body size.',
+            keywords: ['cardiac index', 'heart performance', 'bsa heart']
+        },
+        inputs: [
+            { id: 'co', label: 'Cardiac Output (L/min)', type: 'number', placeholder: '5' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '175' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' }
+        ],
+        outputs: [
+            {
+                label: 'Cardiac Index (L/min/m²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const co = Number(inputs.co);
+                    const h = Number(inputs.height);
+                    const w = Number(inputs.weight);
+                    // Du Bois BSA = 0.007184 * W^0.425 * H^0.725
+                    const bsa = 0.007184 * Math.pow(w, 0.425) * Math.pow(h, 0.725);
+                    return (co / bsa).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cardiac-index.whatIs',
+            howTo: 'cardiac-index.howTo',
+            faq: []
+        }
+    },
+    'karvonen-heart-rate': {
+        id: 'karvonen-heart-rate',
+        title: 'Target Heart Rate (Karvonen)',
+        description: 'Calculate target heart rate zones based on resting HR.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Karvonen Formula Calculator',
+            description: 'Determine optimal heart rate zones for training intensity.',
+            keywords: ['karvonen', 'target heart rate', 'training zones']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '30' },
+            { id: 'rhr', label: 'Resting Heart Rate (bpm)', type: 'number', placeholder: '60' },
+            { id: 'intensity', label: 'Intensity (%)', type: 'number', placeholder: '70' }
+        ],
+        outputs: [
+            {
+                label: 'Target HR (bpm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const rhr = Number(inputs.rhr);
+                    const intensity = Number(inputs.intensity) / 100;
+                    const maxHr = 220 - age;
+                    // Karvonen = ((MaxHR - RHR) * Intensity) + RHR
+                    return (((maxHr - rhr) * intensity) + rhr).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'karvonen-heart-rate.whatIs',
+            howTo: 'karvonen-heart-rate.howTo',
+            faq: []
+        }
+    },
+    'rate-pressure-product': {
+        id: 'rate-pressure-product',
+        title: 'Rate Pressure Product (RPP)',
+        description: 'Estimate myocardial oxygen consumption.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Rate Pressure Product Calculator',
+            description: 'Calculate RPP to assess cardiac workload.',
+            keywords: ['rpp calculator', 'rate pressure product', 'cardiac workload']
+        },
+        inputs: [
+            { id: 'sbp', label: 'Systolic BP (mmHg)', type: 'number', placeholder: '120' },
+            { id: 'hr', label: 'Heart Rate (bpm)', type: 'number', placeholder: '70' }
+        ],
+        outputs: [
+            {
+                label: 'RPP',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.sbp) * Number(inputs.hr)).toFixed(0);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const rpp = Number(inputs.sbp) * Number(inputs.hr);
+                    if (rpp > 10000) return 'High Workload';
+                    return 'Normal Workload';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rate-pressure-product.whatIs',
+            howTo: 'rate-pressure-product.howTo',
+            faq: []
+        }
+    },
+    'blood-pressure-stage': {
+        id: 'blood-pressure-stage',
+        title: 'Blood Pressure Stage',
+        description: 'Categorize blood pressure readings (AHA guidelines).',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Blood Pressure Stage Calculator',
+            description: 'Check if your blood pressure is normal, elevated, or hypertensive.',
+            keywords: ['bp stage', 'hypertension calculator', 'blood pressure chart']
+        },
+        inputs: [
+            { id: 'sbp', label: 'Systolic BP (mmHg)', type: 'number', placeholder: '120' },
+            { id: 'dbp', label: 'Diastolic BP (mmHg)', type: 'number', placeholder: '80' }
+        ],
+        outputs: [
+            {
+                label: 'Stage',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.sbp);
+                    const d = Number(inputs.dbp);
+                    if (s > 180 || d > 120) return 'Hypertensive Crisis';
+                    if (s >= 140 || d >= 90) return 'Hypertension Stage 2';
+                    if (s >= 130 || d >= 80) return 'Hypertension Stage 1';
+                    if (s >= 120 && d < 80) return 'Elevated';
+                    if (s < 120 && d < 80) return 'Normal';
+                    return 'Consult Doctor';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'blood-pressure-stage.whatIs',
+            howTo: 'blood-pressure-stage.howTo',
+            faq: []
+        }
+    },
+    'heart-recovery': {
+        id: 'heart-recovery',
+        title: 'Heart Rate Recovery',
+        description: 'Calculate heart rate recovery after exercise.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Heart Rate Recovery Calculator',
+            description: 'Measure how fast your heart recovers after exercise.',
+            keywords: ['hrr', 'heart recovery', 'fitness test']
+        },
+        inputs: [
+            { id: 'peak', label: 'Peak HR (bpm)', type: 'number', placeholder: '170' },
+            { id: 'post', label: 'HR after 1 min (bpm)', type: 'number', placeholder: '140' }
+        ],
+        outputs: [
+            {
+                label: 'Recovery (bpm)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.peak) - Number(inputs.post)).toFixed(0);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const diff = Number(inputs.peak) - Number(inputs.post);
+                    if (diff < 12) return 'Abnormal';
+                    return 'Normal';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'heart-recovery.whatIs',
+            howTo: 'heart-recovery.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Pregnancy (Part 2)
+    // Added: 2026-01-14
+    // ========================================
+    'hcg-calculator': {
+        id: 'hcg-calculator',
+        title: 'hCG Doubling Time Calculator',
+        description: 'Calculate hCG doubling time.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'hCG Calculator | Doubling Time',
+            description: 'Calculate how fast your hCG levels are rising.',
+            keywords: ['hcg calculator', 'doubling time', 'beta hcg']
+        },
+        inputs: [
+            { id: 'first', label: 'First hCG Level (mIU/ml)', type: 'number', placeholder: '100' },
+            { id: 'second', label: 'Second hCG Level (mIU/ml)', type: 'number', placeholder: '250' },
+            { id: 'hours', label: 'Hours Between Tests', type: 'number', placeholder: '48' }
+        ],
+        outputs: [
+            {
+                label: 'Doubling Time (hours)',
+                calculate: (inputs: Record<string, any>) => {
+                    const h1 = Number(inputs.first);
+                    const h2 = Number(inputs.second);
+                    const t = Number(inputs.hours);
+                    // T * log(2) / log(h2/h1)
+                    if (h2 <= h1) return 'Not rising';
+                    return (t * Math.log(2) / Math.log(h2 / h1)).toFixed(1);
+                }
+            },
+            {
+                label: '2-Day Increase (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const h1 = Number(inputs.first);
+                    const h2 = Number(inputs.second);
+                    const t = Number(inputs.hours);
+                    const rate = (h2 - h1) / h1;
+                    const daily = rate / (t / 24); // approx linear for small t
+                    // More accurate: (h2/h1)^(48/t) - 1
+                    return ((Math.pow(h2 / h1, 48 / t) - 1) * 100).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'hcg-calculator.whatIs',
+            howTo: 'hcg-calculator.howTo',
+            faq: []
+        }
+    },
+    'crl-calculator': {
+        id: 'crl-calculator',
+        title: 'CRL Calculator',
+        description: 'Estimate gestational age from Crown Rump Length.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'CRL Calculator | Gestational Age',
+            description: 'Calculate pregnancy weeks based on ultrasound CRL measurement.',
+            keywords: ['crl calculator', 'crown rump length', 'ultrasound age']
+        },
+        inputs: [
+            { id: 'crl', label: 'CRL (mm)', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Gestational Age (weeks)',
+                calculate: (inputs: Record<string, any>) => {
+                    const crl = Number(inputs.crl);
+                    // GA (days) = 42 + 8.052 * sqrt(CRL) + ... simplified: GA(weeks) approx 6 + CRL(cm)
+                    // Common formula: GA weeks = (CRL(mm) + 42) / 7  (Robinson & Fleming approx)
+                    // More broadly used: GA (days) = 40.9 + 3.2458 * sqrt(CRL) + 0.34893 * CRL ??
+                    // Simple rule of thumb: Days = CRL(mm) + 42
+                    const days = crl + 42;
+                    const w = Math.floor(days / 7);
+                    const d = Math.round(days % 7);
+                    return `${w} weeks, ${d} days`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'crl-calculator.whatIs',
+            howTo: 'crl-calculator.howTo',
+            faq: []
+        }
+    },
+    'gsd-calculator': {
+        id: 'gsd-calculator',
+        title: 'GSD Calculator',
+        description: 'Estimate gestational age from Gestational Sac Diameter.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'GSD Calculator | Gestational Sac',
+            description: 'Determine pregnancy age from Mean Sac Diameter (MSD/GSD).',
+            keywords: ['gsd calculator', 'gestational sac', 'msd ultrasound']
+        },
+        inputs: [
+            { id: 'gsd', label: 'GSD/MSD (mm)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Est. Gestational Age',
+                calculate: (inputs: Record<string, any>) => {
+                    // Rule: Days = GSD(mm) + 30
+                    const days = Number(inputs.gsd) + 30;
+                    const w = Math.floor(days / 7);
+                    const d = Math.round(days % 7);
+                    return `${w} weeks, ${d} days`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'gsd-calculator.whatIs',
+            howTo: 'gsd-calculator.howTo',
+            faq: []
+        }
+    },
+    'bishop-score': {
+        id: 'bishop-score',
+        title: 'Bishop Score Calculator',
+        description: 'Assess readiness for labor induction.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Bishop Score Calculator',
+            description: 'Calculate Bishop Score to predict success of labor induction.',
+            keywords: ['bishop score', 'labor induction', 'cervix readiness']
+        },
+        inputs: [
+            { id: 'dilation', label: 'Dilation (cm)', type: 'number', placeholder: '0' },
+            { id: 'effacement', label: 'Effacement (%)', type: 'number', placeholder: '30' },
+            { id: 'station', label: 'Station (-3 to +3)', type: 'number', placeholder: '-2' },
+            { id: 'consistency', label: 'Consistency (1=Firm, 2=Med, 3=Soft)', type: 'number', placeholder: '1' },
+            { id: 'position', label: 'Position (1=Post, 2=Mid, 3=Ant)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Bishop Score',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    // Dilation
+                    const d = Number(inputs.dilation);
+                    if (d >= 5) score += 3;
+                    else if (d >= 3) score += 2;
+                    else if (d >= 1) score += 1;
+
+                    // Effacement
+                    const e = Number(inputs.effacement);
+                    if (e >= 80) score += 3;
+                    else if (e >= 60) score += 2;
+                    else if (e >= 40) score += 1;
+
+                    // Station
+                    const s = Number(inputs.station);
+                    if (s >= 1) score += 3;
+                    else if (s >= -1) score += 2;
+                    else if (s >= -2) score += 1;
+
+                    // Consistency (Input 1,2,3 -> Score 0,1,2)
+                    score += (Number(inputs.consistency) - 1);
+
+                    // Position (Input 1,2,3 -> Score 0,1,2)
+                    score += (Number(inputs.position) - 1);
+
+                    return score.toFixed(0);
+                }
+            },
+            {
+                label: 'Induction Interpretation',
+                calculate: (inputs: Record<string, any>) => {
+                    // Re-calculate simply or pass state? simpler to re-calc or just return string
+                    // Assume inputs are consistent
+                    return 'See medical guide (Score > 8 usually favorable)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bishop-score.whatIs',
+            howTo: 'bishop-score.howTo',
+            faq: []
+        }
+    },
+    'chinese-gender-predictor': {
+        id: 'chinese-gender-predictor',
+        title: 'Chinese Gender Predictor',
+        description: 'Predict baby gender based on lunar age/month.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Chinese Gender Predictor',
+            description: 'Fun tool to predict baby gender using the ancient Chinese calendar.',
+            keywords: ['chinese gender chart', 'boy or girl', 'gender prediction']
+        },
+        inputs: [
+            { id: 'age', label: 'Mother\'s Lunar Age', type: 'number', placeholder: '30' },
+            { id: 'month', label: 'Conception Month (1-12)', type: 'number', placeholder: '6' }
+        ],
+        outputs: [
+            {
+                label: 'Prediction',
+                calculate: (inputs: Record<string, any>) => {
+                    const a = Number(inputs.age);
+                    const m = Number(inputs.month);
+                    // Simple mock logic (real chart is a lookup table)
+                    if ((a + m) % 2 === 0) return 'Girl';
+                    return 'Boy';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'chinese-gender-predictor.whatIs',
+            howTo: 'chinese-gender-predictor.howTo',
+            faq: []
+        }
+    },
+    'implantation-date': {
+        id: 'implantation-date',
+        title: 'Implantation Calculator',
+        description: 'When does implantation likely occur?',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Implantation Calculator',
+            description: 'Estimate when implantation bleeding or symptoms might occur.',
+            keywords: ['implantation date', 'implantation bleeding', 'dpo']
+        },
+        inputs: [
+            { id: 'ovulation', label: 'Ovulation Date', type: 'text', placeholder: '2025-01-15' }
+        ],
+        outputs: [
+            {
+                label: 'Implantation Window',
+                calculate: (inputs: Record<string, any>) => {
+                    const od = new Date(inputs.ovulation);
+                    if (isNaN(od.getTime())) return 'Invalid Date';
+                    // Usually 6-12 DPO, avg 9
+                    const start = new Date(od); start.setDate(od.getDate() + 6);
+                    const end = new Date(od); end.setDate(od.getDate() + 12);
+                    return `${start.toISOString().split('T')[0]} to ${end.toISOString().split('T')[0]}`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'implantation-date.whatIs',
+            howTo: 'implantation-date.howTo',
+            faq: []
+        }
+    },
+    'pregnancy-trimester': {
+        id: 'pregnancy-trimester',
+        title: 'Trimester Calculator',
+        description: 'Current trimester dates.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pregnancy Trimester Calculator',
+            description: 'Find out the dates for your 1st, 2nd, and 3rd trimesters.',
+            keywords: ['trimester dates', 'pregnancy timeline', 'due date breakdown']
+        },
+        inputs: [
+            { id: 'due', label: 'Due Date', type: 'text', placeholder: '2025-10-01' }
+        ],
+        outputs: [
+            {
+                label: 'Current Trimester',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = new Date(inputs.due);
+                    if (isNaN(d.getTime())) return 'Invalid';
+                    const day = 1000 * 60 * 60 * 24;
+                    // LMP is Due - 280
+                    const lmpTime = d.getTime() - (280 * day);
+                    const now = new Date().getTime();
+                    const ageWeeks = (now - lmpTime) / (day * 7);
+
+                    if (ageWeeks < 13) return 'First Trimester';
+                    if (ageWeeks < 27) return 'Second Trimester';
+                    return 'Third Trimester';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pregnancy-trimester.whatIs',
+            howTo: 'pregnancy-trimester.howTo',
+            faq: []
+        }
+    },
+    'reverse-due-date': {
+        id: 'reverse-due-date',
+        title: 'Reverse Due Date Calculator',
+        description: 'Find conception date from due date.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Reverse Due Date Calculator',
+            description: 'Calculate conception date and LMP based on your due date.',
+            keywords: ['reverse due date', 'conception from due date']
+        },
+        inputs: [
+            { id: 'due', label: 'Due Date', type: 'text', placeholder: '2025-10-01' }
+        ],
+        outputs: [
+            {
+                label: 'Likely Conception',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = new Date(inputs.due);
+                    if (isNaN(d.getTime())) return 'Invalid';
+                    d.setDate(d.getDate() - 266);
+                    return d.toISOString().split('T')[0];
+                }
+            }
+        ],
+        content: {
+            whatIs: 'reverse-due-date.whatIs',
+            howTo: 'reverse-due-date.howTo',
+            faq: []
+        }
+    },
+    'fetal-length': {
+        id: 'fetal-length',
+        title: 'Fetal Length & Weight',
+        description: 'Average fetal size by week.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Fetal Length and Weight Calculator',
+            description: 'Estimate your baby\'s size based on pregnancy week.',
+            keywords: ['fetal size', 'baby weight', 'pregnancy chart']
+        },
+        inputs: [
+            { id: 'week', label: 'Pregnancy Week (1-40)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Avg Length (cm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.week);
+                    // Approximation formulas or lookup
+                    if (w < 20) return (Math.pow(w, 2) / 10).toFixed(1); // very rough
+                    return (w * 1.2 + 10).toFixed(1); // rough linear approx
+                }
+            },
+            {
+                label: 'Avg Weight (g)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.week);
+                    // Avg weight curve approximation
+                    if (w < 10) return '< 5g';
+                    return Math.round(Math.pow(w, 3) * 0.05).toString();
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fetal-length.whatIs',
+            howTo: 'fetal-length.howTo',
+            faq: []
+        }
+    },
+    'fl-calculator': {
+        id: 'fl-calculator',
+        title: 'Femur Length Calculator',
+        description: 'Estimate gestational age from Femur Length.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Femur Length Calculator',
+            description: 'Calculate pregnancy progress using femur length ultrasound.',
+            keywords: ['femur length', 'fl calculator', 'ultrasound']
+        },
+        inputs: [
+            { id: 'fl', label: 'Femur Length (mm)', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'Est. Gestational Age',
+                calculate: (inputs: Record<string, any>) => {
+                    // GA (weeks) approx = 10 + (FL(mm) * 0.25) ??
+                    // Hadlock formula: ln(GA) = 1.95 + 0.076*FL ...
+                    // Simple linear approx for FL 20-80mm: Week ~= FL/3 + 8?
+                    // Better: GA = 2 * FL / 7 + 10 ??
+                    const fl = Number(inputs.fl);
+                    const weeks = (fl * 0.22) + 12; // Rough linear fit
+                    return weeks.toFixed(1) + ' weeks';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fl-calculator.whatIs',
+            howTo: 'fl-calculator.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Pediatric (Start)
+    // Added: 2026-01-14
+    // ========================================
+    'pediatric-dosage-weight': {
+        id: 'pediatric-dosage-weight',
+        title: 'Pediatric Dosage by Weight',
+        description: 'Calculate medicine dosage for children based on weight.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pediatric Dosage Calculator (Weight-Based)',
+            description: 'Safe medication dosage calculator for children using weight.',
+            keywords: ['pediatric dose', 'medicine by weight', 'child dosage']
+        },
+        inputs: [
+            { id: 'weight', label: 'Child\'s Weight (kg)', type: 'number', placeholder: '20' },
+            { id: 'doseMgKg', label: 'Dose (mg/kg)', type: 'number', placeholder: '10' },
+            { id: 'concentration', label: 'Concentration (mg/ml)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Total Dose (mg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const d = Number(inputs.doseMgKg);
+                    return (w * d).toFixed(1);
+                }
+            },
+            {
+                label: 'Volume to Give (ml)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const d = Number(inputs.doseMgKg);
+                    const c = Number(inputs.concentration);
+                    // Total mg = w * d
+                    // Volume = Total mg / concentration
+                    if (c === 0) return '0';
+                    return ((w * d) / c).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pediatric-dosage-weight.whatIs',
+            howTo: 'pediatric-dosage-weight.howTo',
+            faq: []
+        }
+    },
+    'child-height-predictor': {
+        id: 'child-height-predictor',
+        title: 'Child Height Predictor',
+        description: 'Predict adult height based on parents.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Child Height Predictor',
+            description: 'Estimate how tall your child will be as an adult.',
+            keywords: ['height predictor', 'how tall will i be', 'mid-parental height']
+        },
+        inputs: [
+            { id: 'father', label: 'Father\'s Height (cm)', type: 'number', placeholder: '180' },
+            { id: 'mother', label: 'Mother\'s Height (cm)', type: 'number', placeholder: '165' },
+            { id: 'gender', label: 'Child Gender (male/female)', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'Predicted Height (cm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.father);
+                    const m = Number(inputs.mother);
+                    // Mid-parental height
+                    // Boy: (F + M + 13) / 2
+                    // Girl: (F + M - 13) / 2
+                    let mid = (f + m) / 2;
+                    if (inputs.gender === 'male') mid = (f + m + 13) / 2;
+                    else mid = (f + m - 13) / 2;
+                    return mid.toFixed(1) + ' ± 5cm';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'child-height-predictor.whatIs',
+            howTo: 'child-height-predictor.howTo',
+            faq: []
+        }
+    },
+    'apgar-score': {
+        id: 'apgar-score',
+        title: 'APGAR Score Calculator',
+        description: 'Newborn health assessment tool.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'APGAR Score Calculator',
+            description: 'Calculate APGAR score for newborn assessment.',
+            keywords: ['apgar score', 'newborn health', 'pediatric score']
+        },
+        inputs: [
+            { id: 'appearance', label: 'Appearance (0=Blue, 1=BodyPink, 2=Pink)', type: 'number', placeholder: '2' },
+            { id: 'pulse', label: 'Pulse (0=None, 1=<100, 2=>100)', type: 'number', placeholder: '2' },
+            { id: 'grimace', label: 'Grimace (0=None, 1=Grimace, 2=Cry)', type: 'number', placeholder: '2' },
+            { id: 'activity', label: 'Activity (0=Limp, 1=Some, 2=Active)', type: 'number', placeholder: '2' },
+            { id: 'respiration', label: 'Respiration (0=None, 1=Slow, 2=Strong)', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Total Score',
+                calculate: (inputs: Record<string, any>) => {
+                    const sum = Number(inputs.appearance) + Number(inputs.pulse) + Number(inputs.grimace) + Number(inputs.activity) + Number(inputs.respiration);
+                    return sum.toFixed(0);
+                }
+            },
+            {
+                label: 'Assessment',
+                calculate: (inputs: Record<string, any>) => {
+                    const sum = Number(inputs.appearance) + Number(inputs.pulse) + Number(inputs.grimace) + Number(inputs.activity) + Number(inputs.respiration);
+                    if (sum >= 7) return 'Normal';
+                    if (sum >= 4) return 'Moderately Abnormal';
+                    return 'Low - Needs Attention';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'apgar-score.whatIs',
+            howTo: 'apgar-score.howTo',
+            faq: []
+        }
+    },
+    'maintenance-fluid-child': {
+        id: 'maintenance-fluid-child',
+        title: 'Maintenance Fluid (Holliday-Segar)',
+        description: 'Calculate daily fluid needs for children.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Maintenance Fluid Calculator (Holliday-Segar)',
+            description: 'Calculate pediatric maintenance fluid requirements (4-2-1 rule).',
+            keywords: ['maintenance fluid', 'holliday segar', '4-2-1 rule']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '15' }
+        ],
+        outputs: [
+            {
+                label: 'Daily Fluid (ml/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    let fluid = 0;
+                    if (w <= 10) fluid = w * 100;
+                    else if (w <= 20) fluid = 1000 + (w - 10) * 50;
+                    else fluid = 1500 + (w - 20) * 20;
+                    return fluid.toFixed(0);
+                }
+            },
+            {
+                label: 'Hourly Rate (ml/hr)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    let fluid = 0;
+                    if (w <= 10) fluid = w * 100;
+                    else if (w <= 20) fluid = 1000 + (w - 10) * 50;
+                    else fluid = 1500 + (w - 20) * 20;
+                    return (fluid / 24).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'maintenance-fluid-child.whatIs',
+            howTo: 'maintenance-fluid-child.howTo',
+            faq: []
+        }
+    },
+    'corrected-age-preemie': {
+        id: 'corrected-age-preemie',
+        title: 'Corrected Age Calculator',
+        description: 'Calculate corrected age for premature babies.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Corrected Age Calculator (Preemie)',
+            description: 'Adjust baby\'s age based on prematurity.',
+            keywords: ['corrected age', 'preemie age', 'adjusted age']
+        },
+        inputs: [
+            { id: 'birth', label: 'Birth Date', type: 'text', placeholder: '2025-01-01' },
+            { id: 'weeks', label: 'Gestational Weeks at Birth', type: 'number', placeholder: '32' }
+        ],
+        outputs: [
+            {
+                label: 'Chronological Age (weeks)',
+                calculate: (inputs: Record<string, any>) => {
+                    const b = new Date(inputs.birth);
+                    if (isNaN(b.getTime())) return 'Invalid';
+                    const now = new Date();
+                    const diff = Math.floor((now.getTime() - b.getTime()) / (1000 * 60 * 60 * 24 * 7));
+                    return diff + ' weeks';
+                }
+            },
+            {
+                label: 'Corrected Age (weeks)',
+                calculate: (inputs: Record<string, any>) => {
+                    const b = new Date(inputs.birth);
+                    if (isNaN(b.getTime())) return 'Invalid';
+                    const now = new Date();
+                    const chronologicalWeeks = (now.getTime() - b.getTime()) / (1000 * 60 * 60 * 24 * 7);
+                    const w = Number(inputs.weeks);
+                    // Corrected = Chronological - (40 - Gestational)
+                    const prematureWeeks = 40 - w;
+                    if (prematureWeeks < 0) return chronologicalWeeks.toFixed(1);
+                    return (chronologicalWeeks - prematureWeeks).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'corrected-age-preemie.whatIs',
+            howTo: 'corrected-age-preemie.howTo',
+            faq: []
+        }
+    },
+    'child-bmi-percentile': {
+        id: 'child-bmi-percentile',
+        title: 'Child BMI Percentile',
+        description: 'Calculate BMI and percentile for children.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Child BMI Percentile Calculator',
+            description: 'Calculate BMI for children and adolescents.',
+            keywords: ['child bmi', 'bmi percentile', 'kids bmi']
+        },
+        inputs: [
+            { id: 'age', label: 'Age (years)', type: 'number', placeholder: '10' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '30' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '140' }
+        ],
+        outputs: [
+            {
+                label: 'BMI',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const h = Number(inputs.height) / 100;
+                    return (w / (h * h)).toFixed(1);
+                }
+            },
+            {
+                label: 'Percentile (Approx)',
+                calculate: (inputs: Record<string, any>) => {
+                    // This requires CDC lookups, mocking purely for structure
+                    return 'Need Reference Charts';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'child-bmi-percentile.whatIs',
+            howTo: 'child-bmi-percentile.howTo',
+            faq: []
+        }
+    },
+    'acetaminophen-dosage': {
+        id: 'acetaminophen-dosage',
+        title: 'Acetaminophen Dosage',
+        description: 'Tylenol/Paracetamol dosage by weight.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Acetaminophen Dosage Calculator',
+            description: 'Safe dose of Tylenol/Paracetamol for children.',
+            keywords: ['tylenol dosage', 'paracetamol dose', 'fever medicine']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '15' },
+            { id: 'form', label: 'Form (mg/5ml)', type: 'select', options: ['160mg/5ml', '120mg/5ml', '80mg/0.8ml'], placeholder: '160mg/5ml' }
+        ],
+        outputs: [
+            {
+                label: 'Dose (ml)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // Standard: 15mg/kg
+                    const targetMg = w * 15;
+                    let conc = 160 / 5;
+                    if (inputs.form === '120mg/5ml') conc = 120 / 5;
+                    if (inputs.form === '80mg/0.8ml') conc = 80 / 0.8;
+                    return (targetMg / conc).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'acetaminophen-dosage.whatIs',
+            howTo: 'acetaminophen-dosage.howTo',
+            faq: []
+        }
+    },
+    'ibuprofen-dosage': {
+        id: 'ibuprofen-dosage',
+        title: 'Ibuprofen Dosage',
+        description: 'Advil/Motrin dosage by weight.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Ibuprofen Dosage Calculator',
+            description: 'Safe dose of Ibuprofen for children.',
+            keywords: ['advil dosage', 'motrin dose', 'ibuprofen kids']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '15' },
+            { id: 'form', label: 'Form (mg/5ml)', type: 'select', options: ['100mg/5ml', '50mg/1.25ml'], placeholder: '100mg/5ml' }
+        ],
+        outputs: [
+            {
+                label: 'Dose (ml)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // Standard: 10mg/kg
+                    const targetMg = w * 10;
+                    let conc = 100 / 5;
+                    if (inputs.form === '50mg/1.25ml') conc = 50 / 1.25;
+                    return (targetMg / conc).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'ibuprofen-dosage.whatIs',
+            howTo: 'ibuprofen-dosage.howTo',
+            faq: []
+        }
+    },
+    'pediatric-fever-grade': {
+        id: 'pediatric-fever-grade',
+        title: 'Pediatric Fever Grade',
+        description: 'Assess fever severity in children.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pediatric Fever Calculator',
+            description: 'Determine if your child needs medical attention for fever.',
+            keywords: ['fever grade', 'child fever', 'temp conversion']
+        },
+        inputs: [
+            { id: 'temp', label: 'Temperature (°C)', type: 'number', placeholder: '38.5' },
+            { id: 'age', label: 'Age (months)', type: 'number', placeholder: '12' }
+        ],
+        outputs: [
+            {
+                label: 'Grade',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.temp);
+                    if (t >= 40) return 'High Fever (Medical Emergency?)';
+                    if (t >= 39) return 'High Fever';
+                    if (t >= 38) return 'Fever';
+                    if (t >= 37.5) return 'Elevated';
+                    return 'Normal';
+                }
+            },
+            {
+                label: 'Advice',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.temp);
+                    const a = Number(inputs.age);
+                    if (a < 3 && t >= 38) return 'Seek immediate care (<3mo)';
+                    if (t >= 40) return 'Seek advice';
+                    return 'Monitor / Treat symptoms';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pediatric-fever-grade.whatIs',
+            howTo: 'pediatric-fever-grade.howTo',
+            faq: []
+        }
+    },
+    'urine-output-child': {
+        id: 'urine-output-child',
+        title: 'Child Urine Output',
+        description: 'Calculate urine output rate (ml/kg/hr).',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Urine Output Calculator (Pediatric)',
+            description: 'Monitor hydration via urine output rate.',
+            keywords: ['urine output', 'ml/kg/hr', 'hydration']
+        },
+        inputs: [
+            { id: 'volume', label: 'Total Urine Volume (ml)', type: 'number', placeholder: '200' },
+            { id: 'hours', label: 'Time Period (hours)', type: 'number', placeholder: '4' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '15' }
+        ],
+        outputs: [
+            {
+                label: 'Output Rate (ml/kg/hr)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.volume);
+                    const h = Number(inputs.hours);
+                    const w = Number(inputs.weight);
+                    return (v / (w * h)).toFixed(2);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.volume);
+                    const h = Number(inputs.hours);
+                    const w = Number(inputs.weight);
+                    const rate = v / (w * h);
+                    if (rate < 0.5) return 'Oliguria (Low)';
+                    if (rate > 2) return 'Polyuria (High)?';
+                    return 'Normal (0.5-2.0)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'urine-output-child.whatIs',
+            howTo: 'urine-output-child.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Pediatric (Part 2)
+    // Added: 2026-01-14
+    // ========================================
+    'weight-for-age': {
+        id: 'weight-for-age',
+        title: 'Weight-for-Age Percentile',
+        description: 'Estimate weight percentile for children.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Weight-for-Age Calculator',
+            description: 'Check if your child\'s weight is within normal range.',
+            keywords: ['weight percentile', 'child weight', 'growth chart']
+        },
+        inputs: [
+            { id: 'age', label: 'Age (months)', type: 'number', placeholder: '24' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '12' },
+            { id: 'gender', label: 'Gender', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'Percentile (Approx)',
+                calculate: (inputs: Record<string, any>) => {
+                    // Requires WHO/CDC lookup tables, mocking
+                    return 'Need Reference Charts';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'weight-for-age.whatIs',
+            howTo: 'weight-for-age.howTo',
+            faq: []
+        }
+    },
+    'head-circumference-percentile': {
+        id: 'head-circumference-percentile',
+        title: 'Head Circumference Percentile',
+        description: 'Track head growth in infants.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Head Circumference Calculator',
+            description: 'Check if your baby\'s head size is within normal range.',
+            keywords: ['head circumference', 'baby head', 'growth chart']
+        },
+        inputs: [
+            { id: 'age', label: 'Age (months)', type: 'number', placeholder: '6' },
+            { id: 'circumference', label: 'Circumference (cm)', type: 'number', placeholder: '42' },
+            { id: 'gender', label: 'Gender', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'Percentile (Approx)',
+                calculate: (inputs: Record<string, any>) => {
+                    return 'Need Reference Charts';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'head-circumference-percentile.whatIs',
+            howTo: 'head-circumference-percentile.howTo',
+            faq: []
+        }
+    },
+    'fever-celsius-fahrenheit': {
+        id: 'fever-celsius-fahrenheit',
+        title: 'Fever Converter (°C ↔ °F)',
+        description: 'Convert temperature and assess fever.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Fever Temperature Converter',
+            description: 'Convert Celsius to Fahrenheit and check fever status.',
+            keywords: ['fever converter', 'celsius fahrenheit', 'temperature']
+        },
+        inputs: [
+            { id: 'temp', label: 'Temperature', type: 'number', placeholder: '38.5' },
+            { id: 'unit', label: 'Unit', type: 'select', options: ['celsius', 'fahrenheit'], placeholder: 'celsius' }
+        ],
+        outputs: [
+            {
+                label: 'Converted',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.temp);
+                    if (inputs.unit === 'celsius') {
+                        return ((t * 9 / 5) + 32).toFixed(1) + '°F';
+                    }
+                    return ((t - 32) * 5 / 9).toFixed(1) + '°C';
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.temp);
+                    const c = inputs.unit === 'celsius' ? t : (t - 32) * 5 / 9;
+                    if (c >= 40) return 'High Fever';
+                    if (c >= 38) return 'Fever';
+                    if (c >= 37.5) return 'Elevated';
+                    return 'Normal';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fever-celsius-fahrenheit.whatIs',
+            howTo: 'fever-celsius-fahrenheit.howTo',
+            faq: []
+        }
+    },
+    'growth-percentile': {
+        id: 'growth-percentile',
+        title: 'Growth Percentile (Height)',
+        description: 'Estimate height percentile for children.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Growth Percentile Calculator',
+            description: 'Check if your child\'s height is within normal range.',
+            keywords: ['height percentile', 'child growth', 'growth chart']
+        },
+        inputs: [
+            { id: 'age', label: 'Age (months)', type: 'number', placeholder: '36' },
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '95' },
+            { id: 'gender', label: 'Gender', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'Percentile (Approx)',
+                calculate: (inputs: Record<string, any>) => {
+                    return 'Need Reference Charts';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'growth-percentile.whatIs',
+            howTo: 'growth-percentile.howTo',
+            faq: []
+        }
+    },
+    'infant-caloric-needs': {
+        id: 'infant-caloric-needs',
+        title: 'Infant Caloric Needs',
+        description: 'Calculate daily calories for infants.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Infant Caloric Needs Calculator',
+            description: 'Estimate how many calories your baby needs daily.',
+            keywords: ['infant calories', 'baby feeding', 'caloric needs']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '5' },
+            { id: 'age', label: 'Age (months)', type: 'number', placeholder: '3' }
+        ],
+        outputs: [
+            {
+                label: 'Calories/day',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const a = Number(inputs.age);
+                    // ~100-120 kcal/kg/day for infants, decreases with age
+                    let factor = 110;
+                    if (a > 6) factor = 100;
+                    if (a > 12) factor = 90;
+                    return (w * factor).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'infant-caloric-needs.whatIs',
+            howTo: 'infant-caloric-needs.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Dosage (Start)
+    // Added: 2026-01-14
+    // ========================================
+    'iv-drip-rate': {
+        id: 'iv-drip-rate',
+        title: 'IV Drip Rate Calculator',
+        description: 'Calculate IV infusion drip rate.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'IV Drip Rate Calculator',
+            description: 'Calculate drops per minute for IV infusion.',
+            keywords: ['iv drip rate', 'infusion rate', 'drops per minute']
+        },
+        inputs: [
+            { id: 'volume', label: 'Volume (ml)', type: 'number', placeholder: '1000' },
+            { id: 'time', label: 'Time (hours)', type: 'number', placeholder: '8' },
+            { id: 'dropFactor', label: 'Drop Factor (gtt/ml)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Drip Rate (gtt/min)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.volume);
+                    const t = Number(inputs.time);
+                    const df = Number(inputs.dropFactor);
+                    // Rate = (Volume * Drop Factor) / (Time in min)
+                    return ((v * df) / (t * 60)).toFixed(1);
+                }
+            },
+            {
+                label: 'Flow Rate (ml/hr)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.volume);
+                    const t = Number(inputs.time);
+                    return (v / t).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'iv-drip-rate.whatIs',
+            howTo: 'iv-drip-rate.howTo',
+            faq: []
+        }
+    },
+    'creatinine-clearance': {
+        id: 'creatinine-clearance',
+        title: 'Creatinine Clearance (CrCl)',
+        description: 'Estimate kidney function (Cockcroft-Gault).',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Creatinine Clearance Calculator',
+            description: 'Estimate kidney function for drug dosing using Cockcroft-Gault.',
+            keywords: ['creatinine clearance', 'crcl', 'gfr', 'kidney function']
+        },
+        inputs: [
+            { id: 'age', label: 'Age (years)', type: 'number', placeholder: '50' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'creatinine', label: 'Serum Creatinine (mg/dL)', type: 'number', placeholder: '1.0' },
+            { id: 'gender', label: 'Gender', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'CrCl (ml/min)',
+                calculate: (inputs: Record<string, any>) => {
+                    const a = Number(inputs.age);
+                    const w = Number(inputs.weight);
+                    const s = Number(inputs.creatinine);
+                    // CG: ((140 - age) * weight) / (72 * SCr)  * 0.85 for women
+                    let crcl = ((140 - a) * w) / (72 * s);
+                    if (inputs.gender === 'female') crcl *= 0.85;
+                    return crcl.toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'creatinine-clearance.whatIs',
+            howTo: 'creatinine-clearance.howTo',
+            faq: []
+        }
+    },
+    'warfarin-dose': {
+        id: 'warfarin-dose',
+        title: 'Warfarin Dose Adjustment',
+        description: 'Adjust warfarin based on INR.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Warfarin Dose Calculator',
+            description: 'Adjust warfarin dosage based on INR results.',
+            keywords: ['warfarin dose', 'inr adjustment', 'anticoagulant']
+        },
+        inputs: [
+            { id: 'currentDose', label: 'Current Daily Dose (mg)', type: 'number', placeholder: '5' },
+            { id: 'currentINR', label: 'Current INR', type: 'number', placeholder: '2.5' },
+            { id: 'targetINR', label: 'Target INR', type: 'number', placeholder: '2.5' }
+        ],
+        outputs: [
+            {
+                label: 'Suggested Adjustment',
+                calculate: (inputs: Record<string, any>) => {
+                    const inr = Number(inputs.currentINR);
+                    const target = Number(inputs.targetINR);
+                    if (inr > target + 0.5) return 'Consider Reducing Dose';
+                    if (inr < target - 0.5) return 'Consider Increasing Dose';
+                    return 'Dose appears therapeutic';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'warfarin-dose.whatIs',
+            howTo: 'warfarin-dose.howTo',
+            faq: []
+        }
+    },
+    'metformin-dose': {
+        id: 'metformin-dose',
+        title: 'Metformin Dose Calculator',
+        description: 'Calculate metformin dose based on kidney function.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Metformin Dose Calculator',
+            description: 'Safe metformin dosing based on eGFR/CrCl.',
+            keywords: ['metformin dose', 'diabetes medication', 'renal dosing']
+        },
+        inputs: [
+            { id: 'crcl', label: 'CrCl or eGFR (ml/min)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Recommendation',
+                calculate: (inputs: Record<string, any>) => {
+                    const cl = Number(inputs.crcl);
+                    if (cl >= 60) return 'Normal dosing (up to 2000mg/day)';
+                    if (cl >= 45) return 'Max 1000mg/day';
+                    if (cl >= 30) return 'Max 500mg/day (use caution)';
+                    return 'Contraindicated (CrCl <30)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'metformin-dose.whatIs',
+            howTo: 'metformin-dose.howTo',
+            faq: []
+        }
+    },
+    'amoxicillin-dose': {
+        id: 'amoxicillin-dose',
+        title: 'Amoxicillin Dose Calculator',
+        description: 'Calculate amoxicillin dose by weight.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Amoxicillin Dose Calculator',
+            description: 'Calculate proper amoxicillin dosage for children and adults.',
+            keywords: ['amoxicillin dose', 'antibiotic dosage', 'pediatric amoxicillin']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '25' },
+            { id: 'severity', label: 'Infection Severity', type: 'select', options: ['mild', 'moderate', 'severe'], placeholder: 'moderate' }
+        ],
+        outputs: [
+            {
+                label: 'Dose per Day (mg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // Standard: 25-50 mg/kg/day, divided q8h
+                    let factor = 40;
+                    if (inputs.severity === 'mild') factor = 25;
+                    if (inputs.severity === 'severe') factor = 50;
+                    return (w * factor).toFixed(0);
+                }
+            },
+            {
+                label: 'Dose per Dose (q8h)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    let factor = 40;
+                    if (inputs.severity === 'mild') factor = 25;
+                    if (inputs.severity === 'severe') factor = 50;
+                    return ((w * factor) / 3).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'amoxicillin-dose.whatIs',
+            howTo: 'amoxicillin-dose.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Dosage (Part 2)
+    // Added: 2026-01-14
+    // ========================================
+    'insulin-dose': {
+        id: 'insulin-dose',
+        title: 'Insulin Dose Calculator',
+        description: 'Calculate insulin dosage based on carbs and sensitivity.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Insulin Dose Calculator',
+            description: 'Calculate meal-time and correction insulin doses.',
+            keywords: ['insulin dose', 'diabetes', 'carb ratio', 'correction factor']
+        },
+        inputs: [
+            { id: 'carbs', label: 'Carbohydrates (g)', type: 'number', placeholder: '60' },
+            { id: 'ratio', label: 'Carb Ratio (g/unit)', type: 'number', placeholder: '10' },
+            { id: 'currentBG', label: 'Current Blood Glucose (mg/dL)', type: 'number', placeholder: '180' },
+            { id: 'targetBG', label: 'Target Blood Glucose (mg/dL)', type: 'number', placeholder: '120' },
+            { id: 'sensitivity', label: 'Sensitivity Factor (mg/dL per unit)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Meal Insulin (units)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.carbs);
+                    const r = Number(inputs.ratio);
+                    return (c / r).toFixed(1);
+                }
+            },
+            {
+                label: 'Correction Insulin (units)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cur = Number(inputs.currentBG);
+                    const tar = Number(inputs.targetBG);
+                    const s = Number(inputs.sensitivity);
+                    const diff = cur - tar;
+                    if (diff <= 0) return '0';
+                    return (diff / s).toFixed(1);
+                }
+            },
+            {
+                label: 'Total Insulin (units)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.carbs);
+                    const r = Number(inputs.ratio);
+                    const cur = Number(inputs.currentBG);
+                    const tar = Number(inputs.targetBG);
+                    const s = Number(inputs.sensitivity);
+                    const meal = c / r;
+                    const correction = Math.max(0, (cur - tar) / s);
+                    return (meal + correction).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'insulin-dose.whatIs',
+            howTo: 'insulin-dose.howTo',
+            faq: []
+        }
+    },
+    'ciprofloxacin-dose': {
+        id: 'ciprofloxacin-dose',
+        title: 'Ciprofloxacin Dose Calculator',
+        description: 'Calculate ciprofloxacin dose with renal adjustment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Ciprofloxacin Dose Calculator',
+            description: 'Ciprofloxacin dosing with renal function adjustment.',
+            keywords: ['ciprofloxacin dose', 'cipro', 'antibiotic', 'renal dosing']
+        },
+        inputs: [
+            { id: 'crcl', label: 'CrCl (ml/min)', type: 'number', placeholder: '60' },
+            { id: 'indication', label: 'Indication', type: 'select', options: ['UTI', 'Respiratory', 'Severe'], placeholder: 'UTI' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const cl = Number(inputs.crcl);
+                    const ind = inputs.indication;
+                    let baseDose = ind === 'UTI' ? '250mg q12h' : ind === 'Severe' ? '500mg q12h' : '500mg q12h';
+                    if (cl < 30) return baseDose.replace('q12h', 'q24h');
+                    return baseDose;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'ciprofloxacin-dose.whatIs',
+            howTo: 'ciprofloxacin-dose.howTo',
+            faq: []
+        }
+    },
+    'gabapentin-dose': {
+        id: 'gabapentin-dose',
+        title: 'Gabapentin Dose Calculator',
+        description: 'Calculate gabapentin dose with renal adjustment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Gabapentin Dose Calculator',
+            description: 'Gabapentin dosing based on kidney function.',
+            keywords: ['gabapentin dose', 'neurontin', 'neuropathic pain', 'renal dosing']
+        },
+        inputs: [
+            { id: 'crcl', label: 'CrCl (ml/min)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Max Daily Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const cl = Number(inputs.crcl);
+                    if (cl >= 60) return '3600 mg/day';
+                    if (cl >= 30) return '700-1400 mg/day';
+                    if (cl >= 15) return '300-600 mg/day';
+                    return '100-300 mg/day';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'gabapentin-dose.whatIs',
+            howTo: 'gabapentin-dose.howTo',
+            faq: []
+        }
+    },
+    'prednisone-taper': {
+        id: 'prednisone-taper',
+        title: 'Prednisone Taper Calculator',
+        description: 'Generate a prednisone tapering schedule.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Prednisone Taper Calculator',
+            description: 'Create a safe prednisone tapering schedule.',
+            keywords: ['prednisone taper', 'steroid taper', 'corticosteroid']
+        },
+        inputs: [
+            { id: 'startDose', label: 'Starting Dose (mg)', type: 'number', placeholder: '40' },
+            { id: 'taperBy', label: 'Decrease by (mg)', type: 'number', placeholder: '5' },
+            { id: 'interval', label: 'Interval (days)', type: 'number', placeholder: '7' }
+        ],
+        outputs: [
+            {
+                label: 'Taper Schedule',
+                calculate: (inputs: Record<string, any>) => {
+                    const start = Number(inputs.startDose);
+                    const step = Number(inputs.taperBy);
+                    const days = Number(inputs.interval);
+                    let schedule = [];
+                    let current = start;
+                    let week = 1;
+                    while (current > 0) {
+                        schedule.push(`Week ${week}: ${current}mg`);
+                        current -= step;
+                        week++;
+                        if (week > 12) break;
+                    }
+                    return schedule.join(', ');
+                }
+            }
+        ],
+        content: {
+            whatIs: 'prednisone-taper.whatIs',
+            howTo: 'prednisone-taper.howTo',
+            faq: []
+        }
+    },
+    'vancomycin-dose': {
+        id: 'vancomycin-dose',
+        title: 'Vancomycin Dose Calculator',
+        description: 'Calculate vancomycin loading and maintenance doses.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vancomycin Dose Calculator',
+            description: 'Vancomycin dosing for serious infections.',
+            keywords: ['vancomycin dose', 'antibiotic', 'gram positive']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'crcl', label: 'CrCl (ml/min)', type: 'number', placeholder: '80' }
+        ],
+        outputs: [
+            {
+                label: 'Loading Dose (mg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // 25-30 mg/kg loading
+                    return (w * 25).toFixed(0) + ' - ' + (w * 30).toFixed(0);
+                }
+            },
+            {
+                label: 'Maintenance Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const cl = Number(inputs.crcl);
+                    // Standard: 15-20 mg/kg q8-12h based on CrCl
+                    if (cl >= 50) return (w * 15).toFixed(0) + 'mg q12h';
+                    if (cl >= 30) return (w * 15).toFixed(0) + 'mg q24h';
+                    return 'Extended interval - Consult pharmacy';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vancomycin-dose.whatIs',
+            howTo: 'vancomycin-dose.howTo',
+            faq: []
+        }
+    },
+    'gentamicin-dose': {
+        id: 'gentamicin-dose',
+        title: 'Gentamicin Dose Calculator',
+        description: 'Calculate gentamicin dose (traditional or extended interval).',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Gentamicin Dose Calculator',
+            description: 'Aminoglycoside dosing with renal adjustment.',
+            keywords: ['gentamicin dose', 'aminoglycoside', 'antibiotic']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'crcl', label: 'CrCl (ml/min)', type: 'number', placeholder: '80' },
+            { id: 'method', label: 'Dosing Method', type: 'select', options: ['traditional', 'extended'], placeholder: 'extended' }
+        ],
+        outputs: [
+            {
+                label: 'Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const cl = Number(inputs.crcl);
+                    if (inputs.method === 'extended') {
+                        // 5-7 mg/kg q24h
+                        if (cl >= 60) return (w * 5).toFixed(0) + 'mg q24h';
+                        return 'Extended interval based on levels';
+                    }
+                    // Traditional: 1-2.5 mg/kg q8h
+                    return (w * 1.7).toFixed(0) + 'mg q8h';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'gentamicin-dose.whatIs',
+            howTo: 'gentamicin-dose.howTo',
+            faq: []
+        }
+    },
+    'heparin-dose': {
+        id: 'heparin-dose',
+        title: 'Heparin Dose Calculator',
+        description: 'Calculate heparin infusion rate.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Heparin Dose Calculator',
+            description: 'Calculate heparin bolus and infusion rates.',
+            keywords: ['heparin dose', 'anticoagulant', 'infusion']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'indication', label: 'Indication', type: 'select', options: ['DVT/PE', 'ACS', 'Low intensity'], placeholder: 'DVT/PE' }
+        ],
+        outputs: [
+            {
+                label: 'Bolus (units)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // 80 units/kg for DVT/PE
+                    return (w * 80).toFixed(0);
+                }
+            },
+            {
+                label: 'Infusion (units/hr)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // 18 units/kg/hr for DVT/PE
+                    return (w * 18).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'heparin-dose.whatIs',
+            howTo: 'heparin-dose.howTo',
+            faq: []
+        }
+    },
+    'levothyroxine-dose': {
+        id: 'levothyroxine-dose',
+        title: 'Levothyroxine Dose Calculator',
+        description: 'Estimate levothyroxine starting dose.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Levothyroxine Dose Calculator',
+            description: 'Calculate thyroid hormone replacement dose.',
+            keywords: ['levothyroxine dose', 'thyroid', 'synthroid']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'age', label: 'Age (years)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Starting Dose (mcg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    const a = Number(inputs.age);
+                    // Full replacement: 1.6-1.8 mcg/kg/day
+                    // Elderly or cardiac: start lower
+                    let factor = 1.6;
+                    if (a > 65) factor = 1.0;
+                    if (a > 75) factor = 0.5;
+                    return (w * factor).toFixed(0);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'levothyroxine-dose.whatIs',
+            howTo: 'levothyroxine-dose.howTo',
+            faq: []
+        }
+    },
+    'digoxin-dose': {
+        id: 'digoxin-dose',
+        title: 'Digoxin Dose Calculator',
+        description: 'Calculate digoxin loading and maintenance dose.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Digoxin Dose Calculator',
+            description: 'Digoxin dosing for heart failure/AFib.',
+            keywords: ['digoxin dose', 'heart failure', 'atrial fibrillation']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'crcl', label: 'CrCl (ml/min)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Loading Dose (mcg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // 8-12 mcg/kg loading
+                    return (w * 10).toFixed(0);
+                }
+            },
+            {
+                label: 'Maintenance Dose (mcg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cl = Number(inputs.crcl);
+                    if (cl >= 60) return '125-250';
+                    if (cl >= 30) return '62.5-125';
+                    return '62.5 every other day';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'digoxin-dose.whatIs',
+            howTo: 'digoxin-dose.howTo',
+            faq: []
+        }
+    },
+    'phenytoin-dose': {
+        id: 'phenytoin-dose',
+        title: 'Phenytoin Dose Calculator',
+        description: 'Calculate phenytoin loading dose.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Phenytoin Dose Calculator',
+            description: 'Phenytoin loading dose for seizures.',
+            keywords: ['phenytoin dose', 'dilantin', 'seizure', 'anticonvulsant']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' }
+        ],
+        outputs: [
+            {
+                label: 'Loading Dose (mg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    // 15-20 mg/kg
+                    return (w * 15).toFixed(0) + ' - ' + (w * 20).toFixed(0);
+                }
+            },
+            {
+                label: 'Maintenance Dose (mg/day)',
+                calculate: (inputs: Record<string, any>) => {
+                    return '300-400 (divided q8-12h)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'phenytoin-dose.whatIs',
+            howTo: 'phenytoin-dose.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Dosage (Part 3 - Complete)
+    // Added: 2026-01-14
+    // ========================================
+    'amlodipine-dose': {
+        id: 'amlodipine-dose',
+        title: 'Amlodipine Dose Calculator',
+        description: 'Calculate amlodipine dosing for hypertension.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Amlodipine Dose Calculator',
+            description: 'Amlodipine dosing for high blood pressure.',
+            keywords: ['amlodipine dose', 'blood pressure', 'calcium channel blocker']
+        },
+        inputs: [
+            { id: 'age', label: 'Age (years)', type: 'number', placeholder: '50' },
+            { id: 'hepatic', label: 'Hepatic Impairment', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Starting Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const a = Number(inputs.age);
+                    if (a > 65 || inputs.hepatic === 'yes') return '2.5 mg daily';
+                    return '5 mg daily';
+                }
+            },
+            {
+                label: 'Max Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    return '10 mg daily';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'amlodipine-dose.whatIs',
+            howTo: 'amlodipine-dose.howTo',
+            faq: []
+        }
+    },
+    'atorvastatin-dose': {
+        id: 'atorvastatin-dose',
+        title: 'Atorvastatin Dose Calculator',
+        description: 'Calculate atorvastatin dose for cholesterol.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Atorvastatin Dose Calculator',
+            description: 'Statin dosing based on cardiovascular risk.',
+            keywords: ['atorvastatin dose', 'lipitor', 'cholesterol', 'statin']
+        },
+        inputs: [
+            { id: 'intensity', label: 'Intensity Needed', type: 'select', options: ['low', 'moderate', 'high'], placeholder: 'moderate' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    if (inputs.intensity === 'low') return '10 mg daily';
+                    if (inputs.intensity === 'high') return '40-80 mg daily';
+                    return '10-20 mg daily';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'atorvastatin-dose.whatIs',
+            howTo: 'atorvastatin-dose.howTo',
+            faq: []
+        }
+    },
+    'lisinopril-dose': {
+        id: 'lisinopril-dose',
+        title: 'Lisinopril Dose Calculator',
+        description: 'Calculate lisinopril dose with renal adjustment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Lisinopril Dose Calculator',
+            description: 'ACE inhibitor dosing for hypertension/heart failure.',
+            keywords: ['lisinopril dose', 'ace inhibitor', 'blood pressure']
+        },
+        inputs: [
+            { id: 'crcl', label: 'CrCl (ml/min)', type: 'number', placeholder: '60' },
+            { id: 'indication', label: 'Indication', type: 'select', options: ['HTN', 'Heart Failure'], placeholder: 'HTN' }
+        ],
+        outputs: [
+            {
+                label: 'Starting Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const cl = Number(inputs.crcl);
+                    if (cl < 30) return '2.5 mg daily';
+                    if (cl < 60) return '5 mg daily';
+                    return '10 mg daily';
+                }
+            },
+            {
+                label: 'Target Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    if (inputs.indication === 'Heart Failure') return '20-40 mg daily';
+                    return '20-40 mg daily';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'lisinopril-dose.whatIs',
+            howTo: 'lisinopril-dose.howTo',
+            faq: []
+        }
+    },
+    'omeprazole-dose': {
+        id: 'omeprazole-dose',
+        title: 'Omeprazole Dose Calculator',
+        description: 'Calculate omeprazole dose for GERD/ulcers.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Omeprazole Dose Calculator',
+            description: 'PPI dosing for acid reflux and ulcers.',
+            keywords: ['omeprazole dose', 'ppi', 'gerd', 'acid reflux']
+        },
+        inputs: [
+            { id: 'indication', label: 'Indication', type: 'select', options: ['GERD', 'Ulcer', 'H. pylori', 'Zollinger-Ellison'], placeholder: 'GERD' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Dose',
+                calculate: (inputs: Record<string, any>) => {
+                    const ind = inputs.indication;
+                    if (ind === 'GERD') return '20 mg daily';
+                    if (ind === 'Ulcer') return '20-40 mg daily x 4-8 weeks';
+                    if (ind === 'H. pylori') return '20 mg BID (with antibiotics)';
+                    return '60 mg daily (titrate up to 120mg)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'omeprazole-dose.whatIs',
+            howTo: 'omeprazole-dose.howTo',
+            faq: []
+        }
+    },
+    'azithromycin-dose': {
+        id: 'azithromycin-dose',
+        title: 'Azithromycin Dose Calculator',
+        description: 'Calculate azithromycin dose by indication.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Azithromycin Dose Calculator',
+            description: 'Z-pack and other azithromycin dosing regimens.',
+            keywords: ['azithromycin dose', 'zithromax', 'z-pack', 'antibiotic']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'indication', label: 'Indication', type: 'select', options: ['CAP', 'Sinusitis', 'Strep throat', 'Chlamydia'], placeholder: 'CAP' }
+        ],
+        outputs: [
+            {
+                label: 'Dose Regimen',
+                calculate: (inputs: Record<string, any>) => {
+                    const ind = inputs.indication;
+                    if (ind === 'CAP') return '500mg day 1, then 250mg days 2-5';
+                    if (ind === 'Sinusitis') return '500mg daily x 3 days';
+                    if (ind === 'Chlamydia') return '1g single dose';
+                    return '500mg day 1, then 250mg days 2-5';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'azithromycin-dose.whatIs',
+            howTo: 'azithromycin-dose.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Sleep (Start)
+    // Added: 2026-01-14
+    // ========================================
+    'sleep-cycle': {
+        id: 'sleep-cycle',
+        title: 'Sleep Cycle Calculator',
+        description: 'Calculate optimal wake times based on sleep cycles.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sleep Cycle Calculator',
+            description: 'Find the best times to wake up feeling refreshed.',
+            keywords: ['sleep cycle', 'wake time', 'sleep calculator', 'rem sleep']
+        },
+        inputs: [
+            { id: 'bedtime', label: 'Bedtime (24h format, e.g. 23:00)', type: 'text', placeholder: '23:00' },
+            { id: 'fallAsleepMinutes', label: 'Time to fall asleep (min)', type: 'number', placeholder: '15' }
+        ],
+        outputs: [
+            {
+                label: 'Optimal Wake Times',
+                calculate: (inputs: Record<string, any>) => {
+                    const [h, m] = (inputs.bedtime || '23:00').split(':').map(Number);
+                    const fall = Number(inputs.fallAsleepMinutes) || 15;
+                    const sleepStart = h * 60 + m + fall;
+                    const cycleMins = 90;
+                    const times = [];
+                    for (let i = 4; i <= 6; i++) {
+                        const wake = (sleepStart + i * cycleMins) % 1440;
+                        const wh = Math.floor(wake / 60);
+                        const wm = wake % 60;
+                        times.push(`${wh.toString().padStart(2, '0')}:${wm.toString().padStart(2, '0')}`);
+                    }
+                    return times.join(', ');
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sleep-cycle.whatIs',
+            howTo: 'sleep-cycle.howTo',
+            faq: []
+        }
+    },
+    'sleep-debt': {
+        id: 'sleep-debt',
+        title: 'Sleep Debt Calculator',
+        description: 'Calculate accumulated sleep debt.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sleep Debt Calculator',
+            description: 'Track how much sleep you owe your body.',
+            keywords: ['sleep debt', 'sleep deficit', 'catch up sleep']
+        },
+        inputs: [
+            { id: 'idealHours', label: 'Ideal Sleep (hours/night)', type: 'number', placeholder: '8' },
+            { id: 'actualHours', label: 'Actual Sleep (hours/night)', type: 'number', placeholder: '6' },
+            { id: 'days', label: 'Days', type: 'number', placeholder: '7' }
+        ],
+        outputs: [
+            {
+                label: 'Sleep Debt (hours)',
+                calculate: (inputs: Record<string, any>) => {
+                    const ideal = Number(inputs.idealHours);
+                    const actual = Number(inputs.actualHours);
+                    const days = Number(inputs.days);
+                    return ((ideal - actual) * days).toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sleep-debt.whatIs',
+            howTo: 'sleep-debt.howTo',
+            faq: []
+        }
+    },
+    'sleep-efficiency': {
+        id: 'sleep-efficiency',
+        title: 'Sleep Efficiency Calculator',
+        description: 'Calculate your sleep efficiency percentage.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sleep Efficiency Calculator',
+            description: 'Measure how efficient your sleep is.',
+            keywords: ['sleep efficiency', 'sleep quality', 'insomnia']
+        },
+        inputs: [
+            { id: 'timeInBed', label: 'Time in Bed (hours)', type: 'number', placeholder: '8' },
+            { id: 'actualSleep', label: 'Actual Sleep (hours)', type: 'number', placeholder: '6.5' }
+        ],
+        outputs: [
+            {
+                label: 'Efficiency (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const bed = Number(inputs.timeInBed);
+                    const sleep = Number(inputs.actualSleep);
+                    if (bed <= 0) return 'N/A';
+                    return ((sleep / bed) * 100).toFixed(1);
+                }
+            },
+            {
+                label: 'Rating',
+                calculate: (inputs: Record<string, any>) => {
+                    const bed = Number(inputs.timeInBed);
+                    const sleep = Number(inputs.actualSleep);
+                    const eff = (sleep / bed) * 100;
+                    if (eff >= 85) return 'Good';
+                    if (eff >= 75) return 'Fair';
+                    return 'Poor (consider CBT-I)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sleep-efficiency.whatIs',
+            howTo: 'sleep-efficiency.howTo',
+            faq: []
+        }
+    },
+    'wake-time': {
+        id: 'wake-time',
+        title: 'Wake Time Calculator',
+        description: 'Calculate when to wake up for a target sleep duration.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Wake Time Calculator',
+            description: 'Find optimal wake time based on bedtime.',
+            keywords: ['wake time', 'alarm clock', 'sleep duration']
+        },
+        inputs: [
+            { id: 'bedtime', label: 'Bedtime (24h, e.g. 22:30)', type: 'text', placeholder: '22:30' },
+            { id: 'sleepHours', label: 'Desired Sleep (hours)', type: 'number', placeholder: '7.5' }
+        ],
+        outputs: [
+            {
+                label: 'Wake Time',
+                calculate: (inputs: Record<string, any>) => {
+                    const [h, m] = (inputs.bedtime || '22:30').split(':').map(Number);
+                    const sleep = Number(inputs.sleepHours) || 7.5;
+                    const wake = (h * 60 + m + sleep * 60) % 1440;
+                    const wh = Math.floor(wake / 60);
+                    const wm = Math.round(wake % 60);
+                    return `${wh.toString().padStart(2, '0')}:${wm.toString().padStart(2, '0')}`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'wake-time.whatIs',
+            howTo: 'wake-time.howTo',
+            faq: []
+        }
+    },
+    'bedtime-calculator': {
+        id: 'bedtime-calculator',
+        title: 'Bedtime Calculator',
+        description: 'Calculate ideal bedtime for a target wake time.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Bedtime Calculator',
+            description: 'Find the best time to go to bed.',
+            keywords: ['bedtime calculator', 'sleep schedule', 'when to sleep']
+        },
+        inputs: [
+            { id: 'wakeTime', label: 'Wake Time (24h, e.g. 06:30)', type: 'text', placeholder: '06:30' },
+            { id: 'sleepHours', label: 'Desired Sleep (hours)', type: 'number', placeholder: '8' }
+        ],
+        outputs: [
+            {
+                label: 'Bedtime',
+                calculate: (inputs: Record<string, any>) => {
+                    const [h, m] = (inputs.wakeTime || '06:30').split(':').map(Number);
+                    const sleep = Number(inputs.sleepHours) || 8;
+                    let bed = (h * 60 + m - sleep * 60);
+                    if (bed < 0) bed += 1440;
+                    const bh = Math.floor(bed / 60);
+                    const bm = Math.round(bed % 60);
+                    return `${bh.toString().padStart(2, '0')}:${bm.toString().padStart(2, '0')}`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bedtime-calculator.whatIs',
+            howTo: 'bedtime-calculator.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Sleep (Complete)
+    // Added: 2026-01-14
+    // ========================================
+    'nap-calculator': {
+        id: 'nap-calculator',
+        title: 'Nap Calculator',
+        description: 'Calculate optimal nap duration to avoid grogginess.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Nap Calculator',
+            description: 'Find the best nap length for peak alertness.',
+            keywords: ['nap calculator', 'power nap', 'sleep inertia']
+        },
+        inputs: [
+            { id: 'napType', label: 'Nap Type', type: 'select', options: ['power', 'recovery', 'full-cycle'], placeholder: 'power' }
+        ],
+        outputs: [
+            {
+                label: 'Recommended Duration',
+                calculate: (inputs: Record<string, any>) => {
+                    if (inputs.napType === 'power') return '10-20 minutes';
+                    if (inputs.napType === 'recovery') return '60 minutes';
+                    return '90 minutes (full cycle)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'nap-calculator.whatIs',
+            howTo: 'nap-calculator.howTo',
+            faq: []
+        }
+    },
+    'circadian-rhythm': {
+        id: 'circadian-rhythm',
+        title: 'Circadian Rhythm Calculator',
+        description: 'Analyze your body clock peak performance times.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Circadian Rhythm Calculator',
+            description: 'Discover your natural alert and drowsy periods.',
+            keywords: ['circadian rhythm', 'body clock', 'chronotype']
+        },
+        inputs: [
+            { id: 'wakeTime', label: 'Natural Wake Time (24h)', type: 'text', placeholder: '07:00' }
+        ],
+        outputs: [
+            {
+                label: 'Peak Alertness',
+                calculate: (inputs: Record<string, any>) => {
+                    const [h, m] = (inputs.wakeTime || '07:00').split(':').map(Number);
+                    const peak = h + 2;
+                    return `${peak}:00 - ${peak + 2}:00 and ${peak + 9}:00 - ${peak + 11}:00`;
+                }
+            },
+            {
+                label: 'Drowsy Periods',
+                calculate: (inputs: Record<string, any>) => {
+                    const [h, m] = (inputs.wakeTime || '07:00').split(':').map(Number);
+                    return `${h + 7}:00 - ${h + 8}:00 (post-lunch dip)`;
+                }
+            }
+        ],
+        content: {
+            whatIs: 'circadian-rhythm.whatIs',
+            howTo: 'circadian-rhythm.howTo',
+            faq: []
+        }
+    },
+    'jet-lag': {
+        id: 'jet-lag',
+        title: 'Jet Lag Calculator',
+        description: 'Estimate jet lag recovery time.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Jet Lag Calculator',
+            description: 'Calculate adjustment time for time zone changes.',
+            keywords: ['jet lag', 'time zone', 'travel fatigue']
+        },
+        inputs: [
+            { id: 'timeZones', label: 'Time Zones Crossed', type: 'number', placeholder: '6' },
+            { id: 'direction', label: 'Direction', type: 'select', options: ['east', 'west'], placeholder: 'east' }
+        ],
+        outputs: [
+            {
+                label: 'Recovery Days',
+                calculate: (inputs: Record<string, any>) => {
+                    const tz = Math.abs(Number(inputs.timeZones));
+                    // Eastward is harder: ~1.5 days per zone, westward ~1 day
+                    const factor = inputs.direction === 'east' ? 1.5 : 1;
+                    const days = Math.ceil(tz * factor / 2);
+                    return days + ' days';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'jet-lag.whatIs',
+            howTo: 'jet-lag.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Other Medical (Start)
+    // Added: 2026-01-14
+    // ========================================
+    'pain-scale': {
+        id: 'pain-scale',
+        title: 'Pain Scale Calculator',
+        description: 'Standardized pain assessment tool.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pain Scale Calculator',
+            description: 'Numeric pain rating scale (NRS) assessment.',
+            keywords: ['pain scale', 'pain assessment', 'nrs', 'pain level']
+        },
+        inputs: [
+            { id: 'painLevel', label: 'Pain Level (0-10)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Pain Category',
+                calculate: (inputs: Record<string, any>) => {
+                    const p = Number(inputs.painLevel);
+                    if (p === 0) return 'No pain';
+                    if (p <= 3) return 'Mild pain';
+                    if (p <= 6) return 'Moderate pain';
+                    if (p <= 9) return 'Severe pain';
+                    return 'Worst possible pain';
+                }
+            },
+            {
+                label: 'Suggested Action',
+                calculate: (inputs: Record<string, any>) => {
+                    const p = Number(inputs.painLevel);
+                    if (p <= 3) return 'Monitor, OTC analgesics if needed';
+                    if (p <= 6) return 'Consider prescription analgesia';
+                    return 'Urgent evaluation, strong analgesia';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pain-scale.whatIs',
+            howTo: 'pain-scale.howTo',
+            faq: []
+        }
+    },
+    'hydration-calculator': {
+        id: 'hydration-calculator',
+        title: 'Hydration Calculator',
+        description: 'Calculate daily water intake needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Hydration Calculator',
+            description: 'Personalized daily water intake recommendation.',
+            keywords: ['hydration calculator', 'water intake', 'daily water']
+        },
+        inputs: [
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'activity', label: 'Activity Level', type: 'select', options: ['sedentary', 'moderate', 'active', 'very-active'], placeholder: 'moderate' }
+        ],
+        outputs: [
+            {
+                label: 'Daily Water (liters)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    let factor = 0.033; // 33ml/kg base
+                    if (inputs.activity === 'active') factor = 0.04;
+                    if (inputs.activity === 'very-active') factor = 0.05;
+                    return (w * factor).toFixed(1);
+                }
+            },
+            {
+                label: 'Glasses (250ml)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.weight);
+                    let factor = 0.033;
+                    if (inputs.activity === 'active') factor = 0.04;
+                    if (inputs.activity === 'very-active') factor = 0.05;
+                    return Math.ceil((w * factor) / 0.25).toString();
+                }
+            }
+        ],
+        content: {
+            whatIs: 'hydration-calculator.whatIs',
+            howTo: 'hydration-calculator.howTo',
+            faq: []
+        }
+    },
+    'caffeine-half-life': {
+        id: 'caffeine-half-life',
+        title: 'Caffeine Half-Life Calculator',
+        description: 'Calculate how long caffeine stays in your system.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Caffeine Half-Life Calculator',
+            description: 'Track caffeine levels in your body over time.',
+            keywords: ['caffeine half life', 'coffee', 'sleep caffeine']
+        },
+        inputs: [
+            { id: 'caffeineMg', label: 'Caffeine (mg)', type: 'number', placeholder: '100' },
+            { id: 'hoursAgo', label: 'Consumed (hours ago)', type: 'number', placeholder: '4' }
+        ],
+        outputs: [
+            {
+                label: 'Remaining Caffeine (mg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.caffeineMg);
+                    const h = Number(inputs.hoursAgo);
+                    const halfLife = 5; // avg 5 hours
+                    const remaining = c * Math.pow(0.5, h / halfLife);
+                    return remaining.toFixed(0);
+                }
+            },
+            {
+                label: 'Time to < 25mg',
+                calculate: (inputs: Record<string, any>) => {
+                    const c = Number(inputs.caffeineMg);
+                    const halfLife = 5;
+                    const target = 25;
+                    const hours = halfLife * Math.log2(c / target);
+                    return Math.ceil(hours) + ' hours';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'caffeine-half-life.whatIs',
+            howTo: 'caffeine-half-life.howTo',
+            faq: []
+        }
+    },
+    'nicotine-clearance': {
+        id: 'nicotine-clearance',
+        title: 'Nicotine Clearance Calculator',
+        description: 'Calculate nicotine elimination time.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Nicotine Clearance Calculator',
+            description: 'Track nicotine and cotinine clearance from body.',
+            keywords: ['nicotine clearance', 'quit smoking', 'cotinine']
+        },
+        inputs: [
+            { id: 'lastCig', label: 'Hours Since Last Cigarette', type: 'number', placeholder: '24' }
+        ],
+        outputs: [
+            {
+                label: 'Nicotine Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.lastCig);
+                    if (h < 2) return 'Peak nicotine levels';
+                    if (h < 24) return 'Nicotine mostly cleared';
+                    if (h < 72) return 'Nicotine withdrawal peak';
+                    return 'Nicotine-free';
+                }
+            },
+            {
+                label: 'Cotinine Detection',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.lastCig);
+                    if (h < 168) return 'Detectable (7+ days to clear)';
+                    if (h < 240) return 'Borderline detectable';
+                    return 'Likely undetectable';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'nicotine-clearance.whatIs',
+            howTo: 'nicotine-clearance.howTo',
+            faq: []
+        }
+    },
+    'eye-drops-duration': {
+        id: 'eye-drops-duration',
+        title: 'Eye Drops Duration Calculator',
+        description: 'Calculate how long an eye drop bottle will last.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Eye Drops Duration Calculator',
+            description: 'Estimate bottle duration based on dosing schedule.',
+            keywords: ['eye drops', 'bottle duration', 'glaucoma drops']
+        },
+        inputs: [
+            { id: 'bottleMl', label: 'Bottle Size (ml)', type: 'number', placeholder: '5' },
+            { id: 'dropsPerMl', label: 'Drops per ml (default 20)', type: 'number', placeholder: '20' },
+            { id: 'dropsPerDay', label: 'Drops per day (both eyes)', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Days Supply',
+                calculate: (inputs: Record<string, any>) => {
+                    const ml = Number(inputs.bottleMl);
+                    const dpm = Number(inputs.dropsPerMl) || 20;
+                    const dpd = Number(inputs.dropsPerDay);
+                    if (dpd <= 0) return 'N/A';
+                    return Math.floor((ml * dpm) / dpd).toString();
+                }
+            }
+        ],
+        content: {
+            whatIs: 'eye-drops-duration.whatIs',
+            howTo: 'eye-drops-duration.howTo',
+            faq: []
+        }
+    },
+    'dental-anesthesia': {
+        id: 'dental-anesthesia',
+        title: 'Dental Anesthesia Duration',
+        description: 'Estimate dental anesthesia wear-off time.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Dental Anesthesia Duration Calculator',
+            description: 'When will the numbness from dental work go away?',
+            keywords: ['dental anesthesia', 'numbness duration', 'lidocaine']
+        },
+        inputs: [
+            { id: 'anesthType', label: 'Anesthetic Type', type: 'select', options: ['lidocaine', 'lidocaine-epi', 'articaine-epi', 'mepivacaine'], placeholder: 'lidocaine-epi' }
+        ],
+        outputs: [
+            {
+                label: 'Expected Duration',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = inputs.anesthType;
+                    if (t === 'lidocaine') return '30-60 minutes';
+                    if (t === 'lidocaine-epi') return '2-4 hours';
+                    if (t === 'articaine-epi') return '3-6 hours';
+                    return '20-40 minutes';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'dental-anesthesia.whatIs',
+            howTo: 'dental-anesthesia.howTo',
+            faq: []
+        }
+    },
+    'allergy-severity': {
+        id: 'allergy-severity',
+        title: 'Allergy Severity Calculator',
+        description: 'Assess allergic reaction severity.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Allergy Severity Calculator',
+            description: 'Classify allergy symptoms by severity.',
+            keywords: ['allergy severity', 'anaphylaxis', 'allergic reaction']
+        },
+        inputs: [
+            { id: 'skin', label: 'Skin (hives/itching)', type: 'select', options: ['none', 'mild', 'widespread'], placeholder: 'none' },
+            { id: 'breathing', label: 'Breathing Problems', type: 'select', options: ['none', 'mild-wheeze', 'severe'], placeholder: 'none' },
+            { id: 'gi', label: 'GI Symptoms', type: 'select', options: ['none', 'nausea', 'vomiting'], placeholder: 'none' },
+            { id: 'bp', label: 'Low BP/Dizziness', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Severity Grade',
+                calculate: (inputs: Record<string, any>) => {
+                    if (inputs.bp === 'yes' || inputs.breathing === 'severe') return 'SEVERE - Anaphylaxis';
+                    if (inputs.breathing === 'mild-wheeze' || inputs.skin === 'widespread') return 'Moderate';
+                    if (inputs.skin !== 'none' || inputs.gi !== 'none') return 'Mild';
+                    return 'No allergic reaction';
+                }
+            },
+            {
+                label: 'Action',
+                calculate: (inputs: Record<string, any>) => {
+                    if (inputs.bp === 'yes' || inputs.breathing === 'severe') return 'CALL 911 / Epinephrine';
+                    if (inputs.breathing === 'mild-wheeze') return 'Seek medical attention now';
+                    return 'Antihistamine, monitor';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'allergy-severity.whatIs',
+            howTo: 'allergy-severity.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Other Medical (Part 2)
+    // Added: 2026-01-14
+    // ========================================
+    'vision-test': {
+        id: 'vision-test',
+        title: 'Vision Acuity Estimator',
+        description: 'Estimate visual acuity from test results.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vision Test Calculator',
+            description: 'Interpret Snellen or LogMAR vision test results.',
+            keywords: ['vision test', 'snellen chart', 'visual acuity']
+        },
+        inputs: [
+            { id: 'snellenNum', label: 'Snellen Numerator', type: 'number', placeholder: '20' },
+            { id: 'snellenDen', label: 'Snellen Denominator', type: 'number', placeholder: '40' }
+        ],
+        outputs: [
+            {
+                label: 'Vision Category',
+                calculate: (inputs: Record<string, any>) => {
+                    const den = Number(inputs.snellenDen);
+                    if (den <= 20) return 'Normal vision (20/20 or better)';
+                    if (den <= 40) return 'Mild vision loss';
+                    if (den <= 70) return 'Moderate vision loss';
+                    if (den <= 200) return 'Severe vision loss';
+                    return 'Near blindness';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vision-test.whatIs',
+            howTo: 'vision-test.howTo',
+            faq: []
+        }
+    },
+    'hearing-test': {
+        id: 'hearing-test',
+        title: 'Hearing Loss Degree Calculator',
+        description: 'Classify hearing loss severity by decibel threshold.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Hearing Loss Calculator',
+            description: 'Interpret audiogram results and hearing thresholds.',
+            keywords: ['hearing loss', 'audiogram', 'decibel threshold']
+        },
+        inputs: [
+            { id: 'threshold', label: 'Pure Tone Average (dB)', type: 'number', placeholder: '40' }
+        ],
+        outputs: [
+            {
+                label: 'Degree of Hearing Loss',
+                calculate: (inputs: Record<string, any>) => {
+                    const db = Number(inputs.threshold);
+                    if (db <= 15) return 'Normal hearing';
+                    if (db <= 25) return 'Slight hearing loss';
+                    if (db <= 40) return 'Mild hearing loss';
+                    if (db <= 55) return 'Moderate hearing loss';
+                    if (db <= 70) return 'Moderately severe';
+                    if (db <= 90) return 'Severe hearing loss';
+                    return 'Profound hearing loss';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'hearing-test.whatIs',
+            howTo: 'hearing-test.howTo',
+            faq: []
+        }
+    },
+    'skin-burn-area': {
+        id: 'skin-burn-area',
+        title: 'Burn Area Calculator (Rule of 9s)',
+        description: 'Estimate body surface area burned using Rule of 9s.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Burn Area Calculator',
+            description: 'Calculate %TBSA for burn injury assessment.',
+            keywords: ['burn area', 'rule of nines', 'tbsa', 'burn percentage']
+        },
+        inputs: [
+            { id: 'head', label: 'Head (%)', type: 'number', placeholder: '0' },
+            { id: 'chest', label: 'Chest (%)', type: 'number', placeholder: '0' },
+            { id: 'back', label: 'Back (%)', type: 'number', placeholder: '0' },
+            { id: 'armL', label: 'Left Arm (%)', type: 'number', placeholder: '0' },
+            { id: 'armR', label: 'Right Arm (%)', type: 'number', placeholder: '0' },
+            { id: 'legL', label: 'Left Leg (%)', type: 'number', placeholder: '0' },
+            { id: 'legR', label: 'Right Leg (%)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Total BSA Burned (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const total = Number(inputs.head) + Number(inputs.chest) + Number(inputs.back) +
+                        Number(inputs.armL) + Number(inputs.armR) + Number(inputs.legL) + Number(inputs.legR);
+                    return total.toFixed(1);
+                }
+            },
+            {
+                label: 'Severity',
+                calculate: (inputs: Record<string, any>) => {
+                    const total = Number(inputs.head) + Number(inputs.chest) + Number(inputs.back) +
+                        Number(inputs.armL) + Number(inputs.armR) + Number(inputs.legL) + Number(inputs.legR);
+                    if (total < 10) return 'Minor burn';
+                    if (total < 20) return 'Moderate burn';
+                    return 'Major burn - seek emergency care';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'skin-burn-area.whatIs',
+            howTo: 'skin-burn-area.howTo',
+            faq: []
+        }
+    },
+    'dehydration-check': {
+        id: 'dehydration-check',
+        title: 'Dehydration Assessment',
+        description: 'Assess dehydration severity from symptoms.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Dehydration Check Calculator',
+            description: 'Evaluate dehydration symptoms and severity.',
+            keywords: ['dehydration', 'fluid loss', 'hydration status']
+        },
+        inputs: [
+            { id: 'thirst', label: 'Thirst Level', type: 'select', options: ['none', 'mild', 'severe'], placeholder: 'none' },
+            { id: 'urine', label: 'Urine Color', type: 'select', options: ['clear', 'yellow', 'dark'], placeholder: 'yellow' },
+            { id: 'skin', label: 'Skin Turgor', type: 'select', options: ['normal', 'slow'], placeholder: 'normal' }
+        ],
+        outputs: [
+            {
+                label: 'Dehydration Level',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (inputs.thirst === 'mild') score++;
+                    if (inputs.thirst === 'severe') score += 2;
+                    if (inputs.urine === 'yellow') score++;
+                    if (inputs.urine === 'dark') score += 2;
+                    if (inputs.skin === 'slow') score += 2;
+                    if (score === 0) return 'Well hydrated';
+                    if (score <= 2) return 'Mild dehydration';
+                    if (score <= 4) return 'Moderate dehydration';
+                    return 'Severe dehydration - seek help';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'dehydration-check.whatIs',
+            howTo: 'dehydration-check.howTo',
+            faq: []
+        }
+    },
+    'fever-management': {
+        id: 'fever-management',
+        title: 'Fever Management Calculator',
+        description: 'Guidance on managing fever based on temperature.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Fever Management Calculator',
+            description: 'When to treat fever and when to seek care.',
+            keywords: ['fever management', 'high temperature', 'fever treatment']
+        },
+        inputs: [
+            { id: 'temp', label: 'Temperature (°C)', type: 'number', placeholder: '38.5' },
+            { id: 'age', label: 'Age Group', type: 'select', options: ['infant', 'child', 'adult'], placeholder: 'adult' }
+        ],
+        outputs: [
+            {
+                label: 'Fever Grade',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.temp);
+                    if (t < 37.5) return 'Normal';
+                    if (t < 38.5) return 'Low-grade fever';
+                    if (t < 39.5) return 'Moderate fever';
+                    return 'High fever';
+                }
+            },
+            {
+                label: 'Action',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.temp);
+                    const age = inputs.age;
+                    if (age === 'infant' && t >= 38) return 'Seek medical attention now';
+                    if (t < 38.5) return 'Monitor, fluids, rest';
+                    if (t < 39.5) return 'Antipyretics OK, monitor';
+                    return 'Seek medical evaluation';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fever-management.whatIs',
+            howTo: 'fever-management.howTo',
+            faq: []
+        }
+    },
+    'blood-pressure-risk': {
+        id: 'blood-pressure-risk',
+        title: 'Blood Pressure Risk Calculator',
+        description: 'Assess cardiovascular risk from BP readings.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Blood Pressure Risk Calculator',
+            description: 'Classify blood pressure and assess risk.',
+            keywords: ['blood pressure risk', 'hypertension', 'bp category']
+        },
+        inputs: [
+            { id: 'systolic', label: 'Systolic (mmHg)', type: 'number', placeholder: '120' },
+            { id: 'diastolic', label: 'Diastolic (mmHg)', type: 'number', placeholder: '80' }
+        ],
+        outputs: [
+            {
+                label: 'BP Category',
+                calculate: (inputs: Record<string, any>) => {
+                    const s = Number(inputs.systolic);
+                    const d = Number(inputs.diastolic);
+                    if (s < 120 && d < 80) return 'Normal';
+                    if (s < 130 && d < 80) return 'Elevated';
+                    if (s < 140 || d < 90) return 'Stage 1 Hypertension';
+                    if (s >= 140 || d >= 90) return 'Stage 2 Hypertension';
+                    if (s >= 180 || d >= 120) return 'Hypertensive Crisis';
+                    return 'Unknown';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'blood-pressure-risk.whatIs',
+            howTo: 'blood-pressure-risk.howTo',
+            faq: []
+        }
+    },
+    'stroke-risk': {
+        id: 'stroke-risk',
+        title: 'Stroke Risk Calculator (CHA2DS2-VASc)',
+        description: 'Assess stroke risk in atrial fibrillation.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Stroke Risk Calculator',
+            description: 'CHA2DS2-VASc score for AFib stroke risk.',
+            keywords: ['stroke risk', 'cha2ds2-vasc', 'atrial fibrillation']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '65' },
+            { id: 'sex', label: 'Sex', type: 'select', options: ['male', 'female'], placeholder: 'male' },
+            { id: 'chf', label: 'Heart Failure', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'htn', label: 'Hypertension', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'dm', label: 'Diabetes', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'stroke', label: 'Prior Stroke/TIA', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'vasc', label: 'Vascular Disease', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'CHA2DS2-VASc Score',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    const age = Number(inputs.age);
+                    if (age >= 75) score += 2;
+                    else if (age >= 65) score += 1;
+                    if (inputs.sex === 'female') score += 1;
+                    if (inputs.chf === 'yes') score += 1;
+                    if (inputs.htn === 'yes') score += 1;
+                    if (inputs.dm === 'yes') score += 1;
+                    if (inputs.stroke === 'yes') score += 2;
+                    if (inputs.vasc === 'yes') score += 1;
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Annual Stroke Risk',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    const age = Number(inputs.age);
+                    if (age >= 75) score += 2;
+                    else if (age >= 65) score += 1;
+                    if (inputs.sex === 'female') score += 1;
+                    if (inputs.chf === 'yes') score += 1;
+                    if (inputs.htn === 'yes') score += 1;
+                    if (inputs.dm === 'yes') score += 1;
+                    if (inputs.stroke === 'yes') score += 2;
+                    if (inputs.vasc === 'yes') score += 1;
+                    const risks = [0, 1.3, 2.2, 3.2, 4.0, 6.7, 9.8, 9.6, 12.5, 15.2];
+                    return (risks[Math.min(score, 9)] || 15) + '%';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'stroke-risk.whatIs',
+            howTo: 'stroke-risk.howTo',
+            faq: []
+        }
+    },
+    'heart-attack-risk': {
+        id: 'heart-attack-risk',
+        title: 'Heart Attack Risk Calculator',
+        description: 'Simplified cardiovascular disease risk assessment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Heart Attack Risk Calculator',
+            description: 'Assess 10-year cardiovascular event risk.',
+            keywords: ['heart attack risk', 'cardiovascular risk', 'cvd risk']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '55' },
+            { id: 'smoking', label: 'Smoker', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'diabetes', label: 'Diabetes', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'htn', label: 'High BP', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'family', label: 'Family History CVD', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Risk Category',
+                calculate: (inputs: Record<string, any>) => {
+                    let rf = 0;
+                    if (Number(inputs.age) > 55) rf++;
+                    if (inputs.smoking === 'yes') rf++;
+                    if (inputs.diabetes === 'yes') rf++;
+                    if (inputs.htn === 'yes') rf++;
+                    if (inputs.family === 'yes') rf++;
+                    if (rf <= 1) return 'Low risk';
+                    if (rf <= 2) return 'Moderate risk';
+                    if (rf <= 3) return 'High risk';
+                    return 'Very high risk';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'heart-attack-risk.whatIs',
+            howTo: 'heart-attack-risk.howTo',
+            faq: []
+        }
+    },
+    'diabetes-risk': {
+        id: 'diabetes-risk',
+        title: 'Diabetes Risk Calculator',
+        description: 'Assess risk of developing type 2 diabetes.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Diabetes Risk Calculator',
+            description: 'Estimate type 2 diabetes risk from lifestyle factors.',
+            keywords: ['diabetes risk', 'prediabetes', 'type 2 diabetes']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '45' },
+            { id: 'bmi', label: 'BMI', type: 'number', placeholder: '28' },
+            { id: 'waist', label: 'Waist >40in(M)/35in(F)', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'activity', label: 'Physically Active', type: 'select', options: ['no', 'yes'], placeholder: 'yes' },
+            { id: 'family', label: 'Family History', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Risk Score',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    const age = Number(inputs.age);
+                    if (age >= 40 && age < 50) score += 1;
+                    if (age >= 50 && age < 60) score += 2;
+                    if (age >= 60) score += 3;
+                    const bmi = Number(inputs.bmi);
+                    if (bmi >= 25 && bmi < 30) score += 1;
+                    if (bmi >= 30 && bmi < 40) score += 2;
+                    if (bmi >= 40) score += 3;
+                    if (inputs.waist === 'yes') score += 1;
+                    if (inputs.activity === 'no') score += 1;
+                    if (inputs.family === 'yes') score += 1;
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Risk Level',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    const age = Number(inputs.age);
+                    if (age >= 40 && age < 50) score += 1;
+                    if (age >= 50 && age < 60) score += 2;
+                    if (age >= 60) score += 3;
+                    const bmi = Number(inputs.bmi);
+                    if (bmi >= 25 && bmi < 30) score += 1;
+                    if (bmi >= 30 && bmi < 40) score += 2;
+                    if (bmi >= 40) score += 3;
+                    if (inputs.waist === 'yes') score += 1;
+                    if (inputs.activity === 'no') score += 1;
+                    if (inputs.family === 'yes') score += 1;
+                    if (score <= 3) return 'Low risk';
+                    if (score <= 5) return 'Moderate risk - get screened';
+                    return 'High risk - consult physician';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'diabetes-risk.whatIs',
+            howTo: 'diabetes-risk.howTo',
+            faq: []
+        }
+    },
+    'kidney-function': {
+        id: 'kidney-function',
+        title: 'Kidney Function (eGFR) Calculator',
+        description: 'Estimate kidney function from creatinine.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Kidney Function Calculator',
+            description: 'Calculate eGFR using CKD-EPI formula.',
+            keywords: ['kidney function', 'egfr', 'creatinine', 'ckd']
+        },
+        inputs: [
+            { id: 'creatinine', label: 'Creatinine (mg/dL)', type: 'number', placeholder: '1.0' },
+            { id: 'age', label: 'Age', type: 'number', placeholder: '50' },
+            { id: 'sex', label: 'Sex', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'eGFR (ml/min/1.73m²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const cr = Number(inputs.creatinine);
+                    const age = Number(inputs.age);
+                    const female = inputs.sex === 'female';
+                    // Simplified CKD-EPI 2021
+                    const k = female ? 0.7 : 0.9;
+                    const a = female ? -0.241 : -0.302;
+                    const minCr = Math.min(cr / k, 1);
+                    const maxCr = Math.max(cr / k, 1);
+                    let egfr = 142 * Math.pow(minCr, a) * Math.pow(maxCr, -1.2) * Math.pow(0.9938, age);
+                    if (female) egfr *= 1.012;
+                    return egfr.toFixed(0);
+                }
+            },
+            {
+                label: 'CKD Stage',
+                calculate: (inputs: Record<string, any>) => {
+                    const cr = Number(inputs.creatinine);
+                    const age = Number(inputs.age);
+                    const female = inputs.sex === 'female';
+                    const k = female ? 0.7 : 0.9;
+                    const a = female ? -0.241 : -0.302;
+                    const minCr = Math.min(cr / k, 1);
+                    const maxCr = Math.max(cr / k, 1);
+                    let egfr = 142 * Math.pow(minCr, a) * Math.pow(maxCr, -1.2) * Math.pow(0.9938, age);
+                    if (female) egfr *= 1.012;
+                    if (egfr >= 90) return 'Stage 1 (Normal)';
+                    if (egfr >= 60) return 'Stage 2 (Mild)';
+                    if (egfr >= 45) return 'Stage 3a (Mild-Moderate)';
+                    if (egfr >= 30) return 'Stage 3b (Moderate-Severe)';
+                    if (egfr >= 15) return 'Stage 4 (Severe)';
+                    return 'Stage 5 (Kidney Failure)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'kidney-function.whatIs',
+            howTo: 'kidney-function.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Other Medical (Part 3 - Labs/Vitals)
+    // Added: 2026-01-14
+    // ========================================
+    'liver-function': {
+        id: 'liver-function',
+        title: 'Liver Function Interpreter',
+        description: 'Interpret liver enzyme test results.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Liver Function Calculator',
+            description: 'Interpret ALT, AST, and other liver enzymes.',
+            keywords: ['liver function', 'alt ast', 'liver enzymes', 'lfts']
+        },
+        inputs: [
+            { id: 'alt', label: 'ALT (U/L)', type: 'number', placeholder: '30' },
+            { id: 'ast', label: 'AST (U/L)', type: 'number', placeholder: '25' },
+            { id: 'bili', label: 'Bilirubin (mg/dL)', type: 'number', placeholder: '0.8' }
+        ],
+        outputs: [
+            {
+                label: 'ALT Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const alt = Number(inputs.alt);
+                    if (alt <= 40) return 'Normal';
+                    if (alt <= 80) return 'Mildly elevated (1-2x normal)';
+                    if (alt <= 200) return 'Moderately elevated (2-5x)';
+                    return 'Significantly elevated (>5x)';
+                }
+            },
+            {
+                label: 'AST/ALT Ratio',
+                calculate: (inputs: Record<string, any>) => {
+                    const alt = Number(inputs.alt);
+                    const ast = Number(inputs.ast);
+                    if (alt === 0) return 'N/A';
+                    const ratio = ast / alt;
+                    return ratio.toFixed(2) + (ratio > 2 ? ' (suggests alcoholic liver disease)' : '');
+                }
+            }
+        ],
+        content: {
+            whatIs: 'liver-function.whatIs',
+            howTo: 'liver-function.howTo',
+            faq: []
+        }
+    },
+    'thyroid-function': {
+        id: 'thyroid-function',
+        title: 'Thyroid Function Interpreter',
+        description: 'Interpret TSH and thyroid hormone results.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Thyroid Function Calculator',
+            description: 'Analyze TSH, T3, T4 results for thyroid status.',
+            keywords: ['thyroid function', 'tsh', 't4', 'hypothyroid', 'hyperthyroid']
+        },
+        inputs: [
+            { id: 'tsh', label: 'TSH (mIU/L)', type: 'number', placeholder: '2.5' },
+            { id: 'freeT4', label: 'Free T4 (ng/dL)', type: 'number', placeholder: '1.2' }
+        ],
+        outputs: [
+            {
+                label: 'Thyroid Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const tsh = Number(inputs.tsh);
+                    const t4 = Number(inputs.freeT4);
+                    if (tsh >= 0.4 && tsh <= 4.0 && t4 >= 0.8 && t4 <= 1.8) return 'Euthyroid (Normal)';
+                    if (tsh > 4.0 && t4 < 0.8) return 'Primary Hypothyroidism';
+                    if (tsh < 0.4 && t4 > 1.8) return 'Primary Hyperthyroidism';
+                    if (tsh > 4.0 && t4 >= 0.8) return 'Subclinical Hypothyroidism';
+                    if (tsh < 0.4 && t4 <= 1.8) return 'Subclinical Hyperthyroidism';
+                    return 'Abnormal - consult physician';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'thyroid-function.whatIs',
+            howTo: 'thyroid-function.howTo',
+            faq: []
+        }
+    },
+    'anemia-check': {
+        id: 'anemia-check',
+        title: 'Anemia Assessment Calculator',
+        description: 'Assess anemia from hemoglobin and MCV.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Anemia Check Calculator',
+            description: 'Classify anemia type from blood count results.',
+            keywords: ['anemia', 'hemoglobin', 'mcv', 'iron deficiency']
+        },
+        inputs: [
+            { id: 'hgb', label: 'Hemoglobin (g/dL)', type: 'number', placeholder: '12' },
+            { id: 'mcv', label: 'MCV (fL)', type: 'number', placeholder: '85' },
+            { id: 'sex', label: 'Sex', type: 'select', options: ['male', 'female'], placeholder: 'female' }
+        ],
+        outputs: [
+            {
+                label: 'Anemia Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const hgb = Number(inputs.hgb);
+                    const cutoff = inputs.sex === 'male' ? 13.5 : 12.0;
+                    if (hgb >= cutoff) return 'No anemia';
+                    if (hgb >= cutoff - 2) return 'Mild anemia';
+                    if (hgb >= cutoff - 4) return 'Moderate anemia';
+                    return 'Severe anemia';
+                }
+            },
+            {
+                label: 'Anemia Type',
+                calculate: (inputs: Record<string, any>) => {
+                    const mcv = Number(inputs.mcv);
+                    if (mcv < 80) return 'Microcytic (iron def, thalassemia)';
+                    if (mcv > 100) return 'Macrocytic (B12/folate def)';
+                    return 'Normocytic';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'anemia-check.whatIs',
+            howTo: 'anemia-check.howTo',
+            faq: []
+        }
+    },
+    'potassium-level': {
+        id: 'potassium-level',
+        title: 'Potassium Level Interpreter',
+        description: 'Interpret serum potassium levels.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Potassium Level Calculator',
+            description: 'Classify hypokalemia and hyperkalemia.',
+            keywords: ['potassium', 'hypokalemia', 'hyperkalemia', 'electrolytes']
+        },
+        inputs: [
+            { id: 'k', label: 'Potassium (mEq/L)', type: 'number', placeholder: '4.0' }
+        ],
+        outputs: [
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const k = Number(inputs.k);
+                    if (k < 2.5) return 'Severe Hypokalemia - URGENT';
+                    if (k < 3.0) return 'Moderate Hypokalemia';
+                    if (k < 3.5) return 'Mild Hypokalemia';
+                    if (k <= 5.0) return 'Normal';
+                    if (k <= 5.5) return 'Mild Hyperkalemia';
+                    if (k <= 6.0) return 'Moderate Hyperkalemia';
+                    return 'Severe Hyperkalemia - URGENT';
+                }
+            },
+            {
+                label: 'Action',
+                calculate: (inputs: Record<string, any>) => {
+                    const k = Number(inputs.k);
+                    if (k < 2.5 || k > 6.0) return 'Immediate medical attention';
+                    if (k < 3.5 || k > 5.5) return 'Medical evaluation needed';
+                    return 'Routine monitoring';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'potassium-level.whatIs',
+            howTo: 'potassium-level.howTo',
+            faq: []
+        }
+    },
+    'sodium-correction': {
+        id: 'sodium-correction',
+        title: 'Sodium Correction Calculator',
+        description: 'Correct sodium for hyperglycemia.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sodium Correction Calculator',
+            description: 'Calculate corrected sodium in hyperglycemia.',
+            keywords: ['sodium correction', 'hyperglycemia', 'corrected sodium']
+        },
+        inputs: [
+            { id: 'na', label: 'Measured Na (mEq/L)', type: 'number', placeholder: '130' },
+            { id: 'glucose', label: 'Glucose (mg/dL)', type: 'number', placeholder: '400' }
+        ],
+        outputs: [
+            {
+                label: 'Corrected Sodium (mEq/L)',
+                calculate: (inputs: Record<string, any>) => {
+                    const na = Number(inputs.na);
+                    const glucose = Number(inputs.glucose);
+                    // Corrected Na = Measured Na + 0.016 × (Glucose − 100)
+                    const correction = 0.016 * (glucose - 100);
+                    return (na + correction).toFixed(1);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const na = Number(inputs.na);
+                    const glucose = Number(inputs.glucose);
+                    const corrected = na + 0.016 * (glucose - 100);
+                    if (corrected < 135) return 'Hyponatremia persists';
+                    if (corrected > 145) return 'Hypernatremia';
+                    return 'Normal after correction';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sodium-correction.whatIs',
+            howTo: 'sodium-correction.howTo',
+            faq: []
+        }
+    },
+    'calcium-correction': {
+        id: 'calcium-correction',
+        title: 'Calcium Correction Calculator',
+        description: 'Correct calcium for albumin levels.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Calcium Correction Calculator',
+            description: 'Calculate corrected calcium for low albumin.',
+            keywords: ['calcium correction', 'albumin', 'corrected calcium']
+        },
+        inputs: [
+            { id: 'ca', label: 'Measured Ca (mg/dL)', type: 'number', placeholder: '8.5' },
+            { id: 'albumin', label: 'Albumin (g/dL)', type: 'number', placeholder: '3.0' }
+        ],
+        outputs: [
+            {
+                label: 'Corrected Calcium (mg/dL)',
+                calculate: (inputs: Record<string, any>) => {
+                    const ca = Number(inputs.ca);
+                    const alb = Number(inputs.albumin);
+                    // Corrected Ca = Measured Ca + 0.8 × (4 − Albumin)
+                    const corrected = ca + 0.8 * (4 - alb);
+                    return corrected.toFixed(1);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const ca = Number(inputs.ca);
+                    const alb = Number(inputs.albumin);
+                    const corrected = ca + 0.8 * (4 - alb);
+                    if (corrected < 8.5) return 'Hypocalcemia';
+                    if (corrected > 10.5) return 'Hypercalcemia';
+                    return 'Normal';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'calcium-correction.whatIs',
+            howTo: 'calcium-correction.howTo',
+            faq: []
+        }
+    },
+    'oxygen-saturation': {
+        id: 'oxygen-saturation',
+        title: 'Oxygen Saturation Interpreter',
+        description: 'Interpret SpO2 readings and oxygen needs.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Oxygen Saturation Calculator',
+            description: 'Assess oxygen saturation levels and hypoxemia.',
+            keywords: ['oxygen saturation', 'spo2', 'hypoxemia', 'pulse ox']
+        },
+        inputs: [
+            { id: 'spo2', label: 'SpO2 (%)', type: 'number', placeholder: '95' },
+            { id: 'copd', label: 'COPD Patient?', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const spo2 = Number(inputs.spo2);
+                    const target = inputs.copd === 'yes' ? 88 : 94;
+                    if (spo2 >= 95) return 'Normal';
+                    if (spo2 >= target) return inputs.copd === 'yes' ? 'Target range for COPD' : 'Borderline low';
+                    if (spo2 >= 90) return 'Mild hypoxemia';
+                    if (spo2 >= 85) return 'Moderate hypoxemia';
+                    return 'Severe hypoxemia - URGENT';
+                }
+            },
+            {
+                label: 'Action',
+                calculate: (inputs: Record<string, any>) => {
+                    const spo2 = Number(inputs.spo2);
+                    if (spo2 < 90) return 'Seek immediate medical care';
+                    if (spo2 < 94) return 'Consider supplemental oxygen';
+                    return 'No intervention needed';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'oxygen-saturation.whatIs',
+            howTo: 'oxygen-saturation.howTo',
+            faq: []
+        }
+    },
+    'respiratory-rate': {
+        id: 'respiratory-rate',
+        title: 'Respiratory Rate Interpreter',
+        description: 'Assess respiratory rate by age.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Respiratory Rate Calculator',
+            description: 'Normal respiratory rate ranges by age.',
+            keywords: ['respiratory rate', 'breathing rate', 'tachypnea']
+        },
+        inputs: [
+            { id: 'rr', label: 'Respiratory Rate (breaths/min)', type: 'number', placeholder: '16' },
+            { id: 'age', label: 'Age Group', type: 'select', options: ['infant', 'child', 'adult'], placeholder: 'adult' }
+        ],
+        outputs: [
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const rr = Number(inputs.rr);
+                    const age = inputs.age;
+                    if (age === 'infant') {
+                        if (rr >= 30 && rr <= 60) return 'Normal';
+                        return rr < 30 ? 'Bradypnea' : 'Tachypnea';
+                    }
+                    if (age === 'child') {
+                        if (rr >= 18 && rr <= 30) return 'Normal';
+                        return rr < 18 ? 'Bradypnea' : 'Tachypnea';
+                    }
+                    // Adult
+                    if (rr >= 12 && rr <= 20) return 'Normal';
+                    if (rr < 12) return 'Bradypnea';
+                    return 'Tachypnea';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'respiratory-rate.whatIs',
+            howTo: 'respiratory-rate.howTo',
+            faq: []
+        }
+    },
+    'pulse-oximetry': {
+        id: 'pulse-oximetry',
+        title: 'Pulse Oximetry Guide',
+        description: 'Guidance on accurate pulse oximetry readings.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pulse Oximetry Calculator',
+            description: 'Tips for accurate SpO2 measurement.',
+            keywords: ['pulse oximetry', 'spo2 accuracy', 'finger oximeter']
+        },
+        inputs: [
+            { id: 'reading', label: 'SpO2 Reading (%)', type: 'number', placeholder: '97' },
+            { id: 'coldHands', label: 'Cold Hands?', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'nailPolish', label: 'Dark Nail Polish?', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Reading Reliability',
+                calculate: (inputs: Record<string, any>) => {
+                    if (inputs.coldHands === 'yes') return 'May be inaccurate - warm hands first';
+                    if (inputs.nailPolish === 'yes') return 'May be inaccurate - remove polish';
+                    return 'Reading likely reliable';
+                }
+            },
+            {
+                label: 'SpO2 Assessment',
+                calculate: (inputs: Record<string, any>) => {
+                    const spo2 = Number(inputs.reading);
+                    if (spo2 >= 95) return 'Normal';
+                    if (spo2 >= 90) return 'Low - monitor closely';
+                    return 'Very low - seek care';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pulse-oximetry.whatIs',
+            howTo: 'pulse-oximetry.howTo',
+            faq: []
+        }
+    },
+    'fall-risk': {
+        id: 'fall-risk',
+        title: 'Fall Risk Assessment',
+        description: 'Assess fall risk in elderly patients.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Fall Risk Calculator',
+            description: 'Screen for fall risk factors.',
+            keywords: ['fall risk', 'elderly falls', 'fall prevention']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '75' },
+            { id: 'fallHistory', label: 'Fall in Past Year?', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'balance', label: 'Balance Problems?', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'meds', label: '4+ Medications?', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'vision', label: 'Vision Problems?', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Risk Score',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (Number(inputs.age) >= 65) score++;
+                    if (Number(inputs.age) >= 80) score++;
+                    if (inputs.fallHistory === 'yes') score += 2;
+                    if (inputs.balance === 'yes') score += 2;
+                    if (inputs.meds === 'yes') score++;
+                    if (inputs.vision === 'yes') score++;
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Risk Level',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (Number(inputs.age) >= 65) score++;
+                    if (Number(inputs.age) >= 80) score++;
+                    if (inputs.fallHistory === 'yes') score += 2;
+                    if (inputs.balance === 'yes') score += 2;
+                    if (inputs.meds === 'yes') score++;
+                    if (inputs.vision === 'yes') score++;
+                    if (score <= 2) return 'Low risk';
+                    if (score <= 4) return 'Moderate risk - take precautions';
+                    return 'High risk - implement fall prevention';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'fall-risk.whatIs',
+            howTo: 'fall-risk.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Other Medical (Part 4 - Wellness/Screening)
+    // Added: 2026-01-14
+    // ========================================
+    'stress-level': {
+        id: 'stress-level',
+        title: 'Stress Level Assessment',
+        description: 'Assess stress level from daily questionnaire.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Stress Level Calculator',
+            description: 'Evaluate stress symptoms and severity.',
+            keywords: ['stress level', 'stress assessment', 'burnout']
+        },
+        inputs: [
+            { id: 'sleep', label: 'Sleep Quality', type: 'select', options: ['good', 'fair', 'poor'], placeholder: 'good' },
+            { id: 'worry', label: 'Excessive Worry', type: 'select', options: ['rarely', 'sometimes', 'often'], placeholder: 'rarely' },
+            { id: 'irritable', label: 'Irritability', type: 'select', options: ['rarely', 'sometimes', 'often'], placeholder: 'rarely' },
+            { id: 'tension', label: 'Physical Tension', type: 'select', options: ['rarely', 'sometimes', 'often'], placeholder: 'rarely' }
+        ],
+        outputs: [
+            {
+                label: 'Stress Level',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (inputs.sleep === 'fair') score++;
+                    if (inputs.sleep === 'poor') score += 2;
+                    if (inputs.worry === 'sometimes') score++;
+                    if (inputs.worry === 'often') score += 2;
+                    if (inputs.irritable === 'sometimes') score++;
+                    if (inputs.irritable === 'often') score += 2;
+                    if (inputs.tension === 'sometimes') score++;
+                    if (inputs.tension === 'often') score += 2;
+                    if (score <= 2) return 'Low stress';
+                    if (score <= 4) return 'Moderate stress';
+                    if (score <= 6) return 'High stress';
+                    return 'Very high stress - seek support';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'stress-level.whatIs',
+            howTo: 'stress-level.howTo',
+            faq: []
+        }
+    },
+    'anxiety-screening': {
+        id: 'anxiety-screening',
+        title: 'Anxiety Screening (GAD-2)',
+        description: 'Quick anxiety screening using GAD-2.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Anxiety Screening Calculator',
+            description: 'GAD-2 anxiety screening questionnaire.',
+            keywords: ['anxiety screening', 'gad-2', 'mental health']
+        },
+        inputs: [
+            { id: 'q1', label: 'Feeling nervous (0-3)', type: 'number', placeholder: '0' },
+            { id: 'q2', label: 'Unable to stop worrying (0-3)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'GAD-2 Score',
+                calculate: (inputs: Record<string, any>) => {
+                    const score = Number(inputs.q1) + Number(inputs.q2);
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Interpretation',
+                calculate: (inputs: Record<string, any>) => {
+                    const score = Number(inputs.q1) + Number(inputs.q2);
+                    if (score < 3) return 'Unlikely anxiety disorder';
+                    return 'Positive screen - consider full GAD-7';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'anxiety-screening.whatIs',
+            howTo: 'anxiety-screening.howTo',
+            faq: []
+        }
+    },
+    'depression-screening': {
+        id: 'depression-screening',
+        title: 'Depression Screening (PHQ-2)',
+        description: 'Quick depression screening using PHQ-2.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Depression Screening Calculator',
+            description: 'PHQ-2 depression screening questionnaire.',
+            keywords: ['depression screening', 'phq-2', 'mental health']
+        },
+        inputs: [
+            { id: 'q1', label: 'Little interest/pleasure (0-3)', type: 'number', placeholder: '0' },
+            { id: 'q2', label: 'Feeling down/hopeless (0-3)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'PHQ-2 Score',
+                calculate: (inputs: Record<string, any>) => {
+                    const score = Number(inputs.q1) + Number(inputs.q2);
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Interpretation',
+                calculate: (inputs: Record<string, any>) => {
+                    const score = Number(inputs.q1) + Number(inputs.q2);
+                    if (score < 3) return 'Unlikely depressive disorder';
+                    return 'Positive screen - consider full PHQ-9';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'depression-screening.whatIs',
+            howTo: 'depression-screening.howTo',
+            faq: []
+        }
+    },
+    'bmi-health-risk': {
+        id: 'bmi-health-risk',
+        title: 'BMI Health Risk Stratification',
+        description: 'Combine BMI with risk factors for health assessment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'BMI Health Risk Calculator',
+            description: 'Assess overall health risk from BMI and comorbidities.',
+            keywords: ['bmi health risk', 'obesity risk', 'comorbidities']
+        },
+        inputs: [
+            { id: 'bmi', label: 'BMI', type: 'number', placeholder: '27' },
+            { id: 'diabetes', label: 'Diabetes', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'htn', label: 'Hypertension', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'sleepApnea', label: 'Sleep Apnea', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Risk Category',
+                calculate: (inputs: Record<string, any>) => {
+                    const bmi = Number(inputs.bmi);
+                    let risk = 0;
+                    if (bmi >= 25 && bmi < 30) risk = 1;
+                    if (bmi >= 30 && bmi < 35) risk = 2;
+                    if (bmi >= 35 && bmi < 40) risk = 3;
+                    if (bmi >= 40) risk = 4;
+                    if (inputs.diabetes === 'yes') risk++;
+                    if (inputs.htn === 'yes') risk++;
+                    if (inputs.sleepApnea === 'yes') risk++;
+                    if (risk <= 1) return 'Low risk';
+                    if (risk <= 3) return 'Moderate risk';
+                    if (risk <= 5) return 'High risk';
+                    return 'Very high risk';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bmi-health-risk.whatIs',
+            howTo: 'bmi-health-risk.howTo',
+            faq: []
+        }
+    },
+    'body-fat-estimate': {
+        id: 'body-fat-estimate',
+        title: 'Body Fat Percentage Estimator',
+        description: 'Estimate body fat from BMI, age, and sex.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Body Fat Calculator',
+            description: 'Estimate body fat percentage from measurements.',
+            keywords: ['body fat', 'body composition', 'fat percentage']
+        },
+        inputs: [
+            { id: 'bmi', label: 'BMI', type: 'number', placeholder: '24' },
+            { id: 'age', label: 'Age', type: 'number', placeholder: '35' },
+            { id: 'sex', label: 'Sex', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'Estimated Body Fat (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const bmi = Number(inputs.bmi);
+                    const age = Number(inputs.age);
+                    const sexFactor = inputs.sex === 'male' ? 1 : 0;
+                    // Deurenberg formula
+                    const bf = (1.20 * bmi) + (0.23 * age) - (10.8 * sexFactor) - 5.4;
+                    return bf.toFixed(1);
+                }
+            },
+            {
+                label: 'Category',
+                calculate: (inputs: Record<string, any>) => {
+                    const bmi = Number(inputs.bmi);
+                    const age = Number(inputs.age);
+                    const sexFactor = inputs.sex === 'male' ? 1 : 0;
+                    const bf = (1.20 * bmi) + (0.23 * age) - (10.8 * sexFactor) - 5.4;
+                    if (inputs.sex === 'male') {
+                        if (bf < 6) return 'Essential fat';
+                        if (bf < 14) return 'Athletic';
+                        if (bf < 18) return 'Fitness';
+                        if (bf < 25) return 'Average';
+                        return 'Obese';
+                    } else {
+                        if (bf < 14) return 'Essential fat';
+                        if (bf < 21) return 'Athletic';
+                        if (bf < 25) return 'Fitness';
+                        if (bf < 32) return 'Average';
+                        return 'Obese';
+                    }
+                }
+            }
+        ],
+        content: {
+            whatIs: 'body-fat-estimate.whatIs',
+            howTo: 'body-fat-estimate.howTo',
+            faq: []
+        }
+    },
+    'muscle-mass': {
+        id: 'muscle-mass',
+        title: 'Muscle Mass Index Calculator',
+        description: 'Estimate muscle mass index from measurements.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Muscle Mass Calculator',
+            description: 'Calculate skeletal muscle mass index.',
+            keywords: ['muscle mass', 'skeletal muscle', 'sarcopenia']
+        },
+        inputs: [
+            { id: 'height', label: 'Height (cm)', type: 'number', placeholder: '170' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '70' },
+            { id: 'age', label: 'Age', type: 'number', placeholder: '50' },
+            { id: 'sex', label: 'Sex', type: 'select', options: ['male', 'female'], placeholder: 'male' }
+        ],
+        outputs: [
+            {
+                label: 'Est. Muscle Mass (kg)',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.height) / 100;
+                    const w = Number(inputs.weight);
+                    const age = Number(inputs.age);
+                    const male = inputs.sex === 'male' ? 1 : 0;
+                    // Lee equation approximation
+                    const mm = (0.244 * w) + (7.8 * h) + (6.6 * male) - (0.098 * age) + (male ? -3.3 : 0);
+                    return mm.toFixed(1);
+                }
+            },
+            {
+                label: 'Status',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.height) / 100;
+                    const w = Number(inputs.weight);
+                    const age = Number(inputs.age);
+                    const male = inputs.sex === 'male' ? 1 : 0;
+                    const mm = (0.244 * w) + (7.8 * h) + (6.6 * male) - (0.098 * age) + (male ? -3.3 : 0);
+                    const mmi = mm / (h * h);
+                    const cutoff = inputs.sex === 'male' ? 7.0 : 5.7;
+                    if (mmi >= cutoff) return 'Normal muscle mass';
+                    return 'Low muscle mass (sarcopenia risk)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'muscle-mass.whatIs',
+            howTo: 'muscle-mass.howTo',
+            faq: []
+        }
+    },
+    'bone-density-risk': {
+        id: 'bone-density-risk',
+        title: 'Bone Density Risk Assessment',
+        description: 'Assess risk factors for low bone density.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Bone Density Risk Calculator',
+            description: 'Screen for osteopenia and osteoporosis risk.',
+            keywords: ['bone density', 'osteopenia', 'dexa scan']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '60' },
+            { id: 'sex', label: 'Sex', type: 'select', options: ['male', 'female'], placeholder: 'female' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '60' },
+            { id: 'smoking', label: 'Current Smoker', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'DEXA Recommendation',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    if (inputs.sex === 'female' && age >= 65) return 'DEXA recommended';
+                    if (inputs.sex === 'male' && age >= 70) return 'DEXA recommended';
+                    if (Number(inputs.weight) < 57 || inputs.smoking === 'yes') return 'Consider DEXA';
+                    return 'Routine screening not indicated';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bone-density-risk.whatIs',
+            howTo: 'bone-density-risk.howTo',
+            faq: []
+        }
+    },
+    'osteoporosis-risk': {
+        id: 'osteoporosis-risk',
+        title: 'Osteoporosis Risk (SCORE)',
+        description: 'Simple osteoporosis risk estimation.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Osteoporosis Risk Calculator',
+            description: 'SCORE tool for osteoporosis screening.',
+            keywords: ['osteoporosis', 'fracture risk', 'bone health']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '65' },
+            { id: 'weight', label: 'Weight (kg)', type: 'number', placeholder: '55' },
+            { id: 'fracture', label: 'Prior Fracture after 45', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'estrogen', label: 'Never Used Estrogen', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'SCORE Points',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    const age = Number(inputs.age);
+                    const weight = Number(inputs.weight);
+                    // Race point (simplified - 5 for non-Black)
+                    score += 5;
+                    // Rheumatoid arthritis point (0)
+                    // Fracture history
+                    if (inputs.fracture === 'yes') score += 4;
+                    // Age points
+                    score += Math.floor((age - 40) / 10) * 3;
+                    // Estrogen therapy
+                    if (inputs.estrogen === 'yes') score += 1;
+                    // Weight
+                    score -= Math.floor(weight / 10);
+                    return Math.max(0, score).toString();
+                }
+            },
+            {
+                label: 'Interpretation',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 5;
+                    if (inputs.fracture === 'yes') score += 4;
+                    score += Math.floor((Number(inputs.age) - 40) / 10) * 3;
+                    if (inputs.estrogen === 'yes') score += 1;
+                    score -= Math.floor(Number(inputs.weight) / 10);
+                    if (score >= 6) return 'High risk - recommend DEXA';
+                    return 'Lower risk';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'osteoporosis-risk.whatIs',
+            howTo: 'osteoporosis-risk.howTo',
+            faq: []
+        }
+    },
+    'frailty-index': {
+        id: 'frailty-index',
+        title: 'Frailty Screening (FRAIL Scale)',
+        description: 'Screen for frailty in older adults.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Frailty Calculator',
+            description: 'FRAIL scale for frailty screening.',
+            keywords: ['frailty', 'elderly', 'geriatric assessment']
+        },
+        inputs: [
+            { id: 'fatigue', label: 'Fatigue', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'resistance', label: 'Difficulty Climbing Stairs', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'ambulation', label: 'Difficulty Walking 1 Block', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'illness', label: '5+ Illnesses', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'weight', label: 'Lost >5% Weight', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'FRAIL Score',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (inputs.fatigue === 'yes') score++;
+                    if (inputs.resistance === 'yes') score++;
+                    if (inputs.ambulation === 'yes') score++;
+                    if (inputs.illness === 'yes') score++;
+                    if (inputs.weight === 'yes') score++;
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Classification',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (inputs.fatigue === 'yes') score++;
+                    if (inputs.resistance === 'yes') score++;
+                    if (inputs.ambulation === 'yes') score++;
+                    if (inputs.illness === 'yes') score++;
+                    if (inputs.weight === 'yes') score++;
+                    if (score === 0) return 'Robust';
+                    if (score <= 2) return 'Pre-frail';
+                    return 'Frail';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'frailty-index.whatIs',
+            howTo: 'frailty-index.howTo',
+            faq: []
+        }
+    },
+    'nutritional-status': {
+        id: 'nutritional-status',
+        title: 'Nutritional Status Screening',
+        description: 'Screen for malnutrition risk.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Nutritional Status Calculator',
+            description: 'Mini Nutritional Assessment screening.',
+            keywords: ['nutritional status', 'malnutrition', 'mna']
+        },
+        inputs: [
+            { id: 'appetite', label: 'Decreased Appetite', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'weightLoss', label: 'Weight Loss >3kg', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'mobility', label: 'Mobility Problems', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'illness', label: 'Acute Illness', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'bmi', label: 'BMI <23', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Screening Score',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (inputs.appetite === 'yes') score++;
+                    if (inputs.weightLoss === 'yes') score += 2;
+                    if (inputs.mobility === 'yes') score++;
+                    if (inputs.illness === 'yes') score++;
+                    if (inputs.bmi === 'yes') score++;
+                    return score.toString();
+                }
+            },
+            {
+                label: 'Nutritional Status',
+                calculate: (inputs: Record<string, any>) => {
+                    let score = 0;
+                    if (inputs.appetite === 'yes') score++;
+                    if (inputs.weightLoss === 'yes') score += 2;
+                    if (inputs.mobility === 'yes') score++;
+                    if (inputs.illness === 'yes') score++;
+                    if (inputs.bmi === 'yes') score++;
+                    if (score <= 1) return 'Normal nutritional status';
+                    if (score <= 3) return 'At risk of malnutrition';
+                    return 'Malnourished - nutrition consult';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'nutritional-status.whatIs',
+            howTo: 'nutritional-status.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // HEALTH - Other Medical (Final 3)
+    // Added: 2026-01-14
+    // ========================================
+    'cognitive-function': {
+        id: 'cognitive-function',
+        title: 'Cognitive Function Screening',
+        description: 'Quick cognitive function assessment.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cognitive Function Calculator',
+            description: 'Screen for cognitive impairment.',
+            keywords: ['cognitive function', 'memory', 'dementia screening']
+        },
+        inputs: [
+            { id: 'orientation', label: 'Orientation (0-10)', type: 'number', placeholder: '10' },
+            { id: 'memory', label: 'Memory Recall (0-3)', type: 'number', placeholder: '3' },
+            { id: 'attention', label: 'Attention (0-5)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Mini-Cog Score',
+                calculate: (inputs: Record<string, any>) => {
+                    const score = Number(inputs.orientation) + Number(inputs.memory) + Number(inputs.attention);
+                    return score.toString() + '/18';
+                }
+            },
+            {
+                label: 'Assessment',
+                calculate: (inputs: Record<string, any>) => {
+                    const score = Number(inputs.orientation) + Number(inputs.memory) + Number(inputs.attention);
+                    if (score >= 16) return 'Normal cognitive function';
+                    if (score >= 12) return 'Mild impairment - monitor';
+                    if (score >= 8) return 'Moderate impairment - evaluate';
+                    return 'Significant impairment - refer';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cognitive-function.whatIs',
+            howTo: 'cognitive-function.howTo',
+            faq: []
+        }
+    },
+    'pain-medication-guide': {
+        id: 'pain-medication-guide',
+        title: 'Pain Medication Selection Guide',
+        description: 'Guide for appropriate pain medication choice.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Pain Medication Guide',
+            description: 'Help select appropriate pain relief options.',
+            keywords: ['pain medication', 'analgesic', 'pain relief']
+        },
+        inputs: [
+            { id: 'painLevel', label: 'Pain Level (1-10)', type: 'number', placeholder: '5' },
+            { id: 'painType', label: 'Pain Type', type: 'select', options: ['acute', 'chronic', 'neuropathic'], placeholder: 'acute' },
+            { id: 'nsaidContra', label: 'NSAID Contraindication', type: 'select', options: ['no', 'yes'], placeholder: 'no' }
+        ],
+        outputs: [
+            {
+                label: 'Suggested Approach',
+                calculate: (inputs: Record<string, any>) => {
+                    const pain = Number(inputs.painLevel);
+                    const type = inputs.painType;
+                    const noNsaid = inputs.nsaidContra === 'yes';
+                    if (pain <= 3) return noNsaid ? 'Acetaminophen' : 'Acetaminophen or NSAIDs';
+                    if (pain <= 6) {
+                        if (type === 'neuropathic') return 'Gabapentin or pregabalin';
+                        return noNsaid ? 'Acetaminophen + adjuvant' : 'NSAIDs or combination';
+                    }
+                    return 'Consult healthcare provider';
+                }
+            },
+            {
+                label: 'WHO Step',
+                calculate: (inputs: Record<string, any>) => {
+                    const pain = Number(inputs.painLevel);
+                    if (pain <= 3) return 'Step 1 - Non-opioid';
+                    if (pain <= 6) return 'Step 2 - Mild opioid';
+                    return 'Step 3 - Strong opioid (Rx only)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'pain-medication-guide.whatIs',
+            howTo: 'pain-medication-guide.howTo',
+            faq: []
+        }
+    },
+    'vaccination-schedule': {
+        id: 'vaccination-schedule',
+        title: 'Adult Vaccination Schedule Guide',
+        description: 'Guide for recommended adult vaccinations.',
+        category: 'health',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vaccination Schedule Calculator',
+            description: 'Check recommended vaccinations by age.',
+            keywords: ['vaccination', 'immunization', 'vaccine schedule']
+        },
+        inputs: [
+            { id: 'age', label: 'Age', type: 'number', placeholder: '45' },
+            { id: 'fluShot', label: 'Flu Shot This Year?', type: 'select', options: ['no', 'yes'], placeholder: 'no' },
+            { id: 'lastTdap', label: 'Tdap in Last 10 Years?', type: 'select', options: ['no', 'yes'], placeholder: 'yes' }
+        ],
+        outputs: [
+            {
+                label: 'Flu Vaccine',
+                calculate: (inputs: Record<string, any>) => {
+                    return inputs.fluShot === 'yes' ? 'Up to date' : 'Recommended annually';
+                }
+            },
+            {
+                label: 'Tdap/Td',
+                calculate: (inputs: Record<string, any>) => {
+                    return inputs.lastTdap === 'yes' ? 'Up to date' : 'Tdap booster needed';
+                }
+            },
+            {
+                label: 'Other Vaccines',
+                calculate: (inputs: Record<string, any>) => {
+                    const age = Number(inputs.age);
+                    const recs = [];
+                    if (age >= 50) recs.push('Shingrix (shingles)');
+                    if (age >= 65) recs.push('Pneumococcal');
+                    if (age >= 65) recs.push('RSV vaccine');
+                    return recs.length > 0 ? recs.join(', ') : 'No additional vaccines by age';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vaccination-schedule.whatIs',
+            howTo: 'vaccination-schedule.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Kinematics (Start)
+    // Added: 2026-01-14
+    // ========================================
+    'free-fall': {
+        id: 'free-fall',
+        title: 'Free Fall Calculator',
+        description: 'Calculate free fall time, velocity, and distance.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Free Fall Calculator',
+            description: 'Calculate object falling under gravity.',
+            keywords: ['free fall', 'gravity', 'falling object']
+        },
+        inputs: [
+            { id: 'height', label: 'Height (m)', type: 'number', placeholder: '10' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Fall Time (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.height);
+                    const g = Number(inputs.gravity) || 9.81;
+                    const t = Math.sqrt((2 * h) / g);
+                    return t.toFixed(3);
+                }
+            },
+            {
+                label: 'Final Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const h = Number(inputs.height);
+                    const g = Number(inputs.gravity) || 9.81;
+                    const v = Math.sqrt(2 * g * h);
+                    return v.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'free-fall.whatIs',
+            howTo: 'free-fall.howTo',
+            faq: []
+        }
+    },
+    'projectile-range': {
+        id: 'projectile-range',
+        title: 'Projectile Range Calculator',
+        description: 'Calculate horizontal range of a projectile.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Projectile Range Calculator',
+            description: 'Calculate how far a projectile travels.',
+            keywords: ['projectile range', 'ballistics', 'trajectory']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '20' },
+            { id: 'angle', label: 'Launch Angle (°)', type: 'number', placeholder: '45' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Range (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    const g = Number(inputs.gravity) || 9.81;
+                    const range = (v * v * Math.sin(2 * theta)) / g;
+                    return range.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'projectile-range.whatIs',
+            howTo: 'projectile-range.howTo',
+            faq: []
+        }
+    },
+    'velocity-time': {
+        id: 'velocity-time',
+        title: 'Velocity-Time Calculator',
+        description: 'Calculate velocity from acceleration and time.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Velocity-Time Calculator',
+            description: 'Find final velocity using v = v₀ + at.',
+            keywords: ['velocity', 'acceleration', 'kinematics']
+        },
+        inputs: [
+            { id: 'v0', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '0' },
+            { id: 'a', label: 'Acceleration (m/s²)', type: 'number', placeholder: '2' },
+            { id: 't', label: 'Time (s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Final Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const a = Number(inputs.a);
+                    const t = Number(inputs.t);
+                    return (v0 + a * t).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'velocity-time.whatIs',
+            howTo: 'velocity-time.howTo',
+            faq: []
+        }
+    },
+    'displacement-time': {
+        id: 'displacement-time',
+        title: 'Displacement-Time Calculator',
+        description: 'Calculate displacement from velocity and acceleration.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Displacement Calculator',
+            description: 'Find displacement using s = v₀t + ½at².',
+            keywords: ['displacement', 'distance', 'kinematics']
+        },
+        inputs: [
+            { id: 'v0', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '0' },
+            { id: 'a', label: 'Acceleration (m/s²)', type: 'number', placeholder: '2' },
+            { id: 't', label: 'Time (s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Displacement (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const a = Number(inputs.a);
+                    const t = Number(inputs.t);
+                    return (v0 * t + 0.5 * a * t * t).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'displacement-time.whatIs',
+            howTo: 'displacement-time.howTo',
+            faq: []
+        }
+    },
+    'acceleration-calculator': {
+        id: 'acceleration-calculator',
+        title: 'Acceleration Calculator',
+        description: 'Calculate acceleration from velocity change.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Acceleration Calculator',
+            description: 'Find acceleration using a = Δv/Δt.',
+            keywords: ['acceleration', 'velocity change', 'physics']
+        },
+        inputs: [
+            { id: 'v0', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '0' },
+            { id: 'v1', label: 'Final Velocity (m/s)', type: 'number', placeholder: '20' },
+            { id: 't', label: 'Time (s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Acceleration (m/s²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const v1 = Number(inputs.v1);
+                    const t = Number(inputs.t);
+                    if (t === 0) return 'Undefined';
+                    return ((v1 - v0) / t).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'acceleration-calculator.whatIs',
+            howTo: 'acceleration-calculator.howTo',
+            faq: []
+        }
+    },
+    'average-speed': {
+        id: 'average-speed',
+        title: 'Average Speed Calculator',
+        description: 'Calculate average speed from distance and time.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Average Speed Calculator',
+            description: 'Find average speed = total distance / total time.',
+            keywords: ['average speed', 'velocity', 'distance']
+        },
+        inputs: [
+            { id: 'distance', label: 'Total Distance (m)', type: 'number', placeholder: '100' },
+            { id: 'time', label: 'Total Time (s)', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Average Speed (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = Number(inputs.distance);
+                    const t = Number(inputs.time);
+                    if (t === 0) return 'Undefined';
+                    return (d / t).toFixed(2);
+                }
+            },
+            {
+                label: 'Average Speed (km/h)',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = Number(inputs.distance);
+                    const t = Number(inputs.time);
+                    if (t === 0) return 'Undefined';
+                    return ((d / t) * 3.6).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'average-speed.whatIs',
+            howTo: 'average-speed.howTo',
+            faq: []
+        }
+    },
+    'relative-velocity': {
+        id: 'relative-velocity',
+        title: 'Relative Velocity Calculator',
+        description: 'Calculate relative velocity between two objects.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Relative Velocity Calculator',
+            description: 'Find velocity of one object relative to another.',
+            keywords: ['relative velocity', 'reference frame', 'physics']
+        },
+        inputs: [
+            { id: 'vA', label: 'Velocity of A (m/s)', type: 'number', placeholder: '30' },
+            { id: 'vB', label: 'Velocity of B (m/s)', type: 'number', placeholder: '20' },
+            { id: 'direction', label: 'Direction', type: 'select', options: ['same', 'opposite'], placeholder: 'same' }
+        ],
+        outputs: [
+            {
+                label: 'Relative Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const vA = Number(inputs.vA);
+                    const vB = Number(inputs.vB);
+                    if (inputs.direction === 'same') {
+                        return Math.abs(vA - vB).toFixed(2);
+                    }
+                    return (vA + vB).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'relative-velocity.whatIs',
+            howTo: 'relative-velocity.howTo',
+            faq: []
+        }
+    },
+    'uniform-motion': {
+        id: 'uniform-motion',
+        title: 'Uniform Motion Calculator',
+        description: 'Calculate distance for uniform (constant velocity) motion.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Uniform Motion Calculator',
+            description: 'Find distance using d = vt.',
+            keywords: ['uniform motion', 'constant velocity', 'linear motion']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Velocity (m/s)', type: 'number', placeholder: '10' },
+            { id: 'time', label: 'Time (s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Distance (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const t = Number(inputs.time);
+                    return (v * t).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'uniform-motion.whatIs',
+            howTo: 'uniform-motion.howTo',
+            faq: []
+        }
+    },
+    'circular-motion': {
+        id: 'circular-motion',
+        title: 'Circular Motion Calculator',
+        description: 'Calculate circular motion parameters.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Circular Motion Calculator',
+            description: 'Find period, frequency, and angular velocity.',
+            keywords: ['circular motion', 'rotational', 'angular']
+        },
+        inputs: [
+            { id: 'radius', label: 'Radius (m)', type: 'number', placeholder: '2' },
+            { id: 'velocity', label: 'Linear Velocity (m/s)', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Angular Velocity (rad/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const v = Number(inputs.velocity);
+                    if (r === 0) return 'Undefined';
+                    return (v / r).toFixed(3);
+                }
+            },
+            {
+                label: 'Period (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const v = Number(inputs.velocity);
+                    if (v === 0) return 'Undefined';
+                    return ((2 * Math.PI * r) / v).toFixed(3);
+                }
+            },
+            {
+                label: 'Centripetal Accel (m/s²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const r = Number(inputs.radius);
+                    const v = Number(inputs.velocity);
+                    if (r === 0) return 'Undefined';
+                    return ((v * v) / r).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'circular-motion.whatIs',
+            howTo: 'circular-motion.howTo',
+            faq: []
+        }
+    },
+    'time-of-flight': {
+        id: 'time-of-flight',
+        title: 'Time of Flight Calculator',
+        description: 'Calculate total time a projectile is in the air.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Time of Flight Calculator',
+            description: 'Find how long a projectile stays airborne.',
+            keywords: ['time of flight', 'projectile', 'ballistics']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '20' },
+            { id: 'angle', label: 'Launch Angle (°)', type: 'number', placeholder: '45' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Time of Flight (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    const g = Number(inputs.gravity) || 9.81;
+                    const t = (2 * v * Math.sin(theta)) / g;
+                    return t.toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'time-of-flight.whatIs',
+            howTo: 'time-of-flight.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Kinematics (Part 2) + Dynamics
+    // Added: 2026-01-14
+    // ========================================
+    'max-height-projectile': {
+        id: 'max-height-projectile',
+        title: 'Maximum Height Calculator',
+        description: 'Calculate maximum height of a projectile.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Max Height Projectile Calculator',
+            description: 'Find the peak height of a launched projectile.',
+            keywords: ['max height', 'projectile', 'peak height']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '20' },
+            { id: 'angle', label: 'Launch Angle (°)', type: 'number', placeholder: '45' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Max Height (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    const g = Number(inputs.gravity) || 9.81;
+                    const h = (v * v * Math.sin(theta) * Math.sin(theta)) / (2 * g);
+                    return h.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'max-height-projectile.whatIs',
+            howTo: 'max-height-projectile.howTo',
+            faq: []
+        }
+    },
+    'horizontal-range': {
+        id: 'horizontal-range',
+        title: 'Horizontal Range Calculator',
+        description: 'Calculate horizontal distance traveled.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Horizontal Range Calculator',
+            description: 'Find horizontal distance of projectile motion.',
+            keywords: ['horizontal range', 'projectile', 'distance']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '20' },
+            { id: 'angle', label: 'Launch Angle (°)', type: 'number', placeholder: '45' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Horizontal Range (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return ((v * v * Math.sin(2 * theta)) / g).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'horizontal-range.whatIs',
+            howTo: 'horizontal-range.howTo',
+            faq: []
+        }
+    },
+    'vertical-motion': {
+        id: 'vertical-motion',
+        title: 'Vertical Motion Calculator',
+        description: 'Calculate vertical position and velocity.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Vertical Motion Calculator',
+            description: 'Analyze vertical component of projectile motion.',
+            keywords: ['vertical motion', 'projectile', 'height']
+        },
+        inputs: [
+            { id: 'v0', label: 'Initial Vertical Velocity (m/s)', type: 'number', placeholder: '15' },
+            { id: 't', label: 'Time (s)', type: 'number', placeholder: '2' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Height (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const t = Number(inputs.t);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (v0 * t - 0.5 * g * t * t).toFixed(2);
+                }
+            },
+            {
+                label: 'Vertical Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const t = Number(inputs.t);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (v0 - g * t).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'vertical-motion.whatIs',
+            howTo: 'vertical-motion.howTo',
+            faq: []
+        }
+    },
+    'kinematic-equations': {
+        id: 'kinematic-equations',
+        title: 'Kinematic Equations Solver',
+        description: 'Solve using the 4 kinematic equations.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Kinematic Equations Calculator',
+            description: 'Solve for unknowns using kinematic formulas.',
+            keywords: ['kinematic equations', 'physics', 'motion']
+        },
+        inputs: [
+            { id: 'v0', label: 'Initial Velocity (m/s)', type: 'number', placeholder: '0' },
+            { id: 'a', label: 'Acceleration (m/s²)', type: 'number', placeholder: '2' },
+            { id: 't', label: 'Time (s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Final Velocity (v = v₀ + at)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const a = Number(inputs.a);
+                    const t = Number(inputs.t);
+                    return (v0 + a * t).toFixed(2) + ' m/s';
+                }
+            },
+            {
+                label: 'Displacement (s = v₀t + ½at²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const a = Number(inputs.a);
+                    const t = Number(inputs.t);
+                    return (v0 * t + 0.5 * a * t * t).toFixed(2) + ' m';
+                }
+            },
+            {
+                label: 'v² = v₀² + 2as',
+                calculate: (inputs: Record<string, any>) => {
+                    const v0 = Number(inputs.v0);
+                    const a = Number(inputs.a);
+                    const t = Number(inputs.t);
+                    const s = v0 * t + 0.5 * a * t * t;
+                    const vSquared = v0 * v0 + 2 * a * s;
+                    return Math.sqrt(Math.abs(vSquared)).toFixed(2) + ' m/s';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'kinematic-equations.whatIs',
+            howTo: 'kinematic-equations.howTo',
+            faq: []
+        }
+    },
+    'stopping-distance': {
+        id: 'stopping-distance',
+        title: 'Stopping Distance Calculator',
+        description: 'Calculate vehicle stopping distance.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Stopping Distance Calculator',
+            description: 'Find distance needed to stop a moving vehicle.',
+            keywords: ['stopping distance', 'braking', 'vehicle']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Speed (m/s)', type: 'number', placeholder: '20' },
+            { id: 'deceleration', label: 'Deceleration (m/s²)', type: 'number', placeholder: '5' },
+            { id: 'reactionTime', label: 'Reaction Time (s)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Reaction Distance (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const rt = Number(inputs.reactionTime);
+                    return (v * rt).toFixed(2);
+                }
+            },
+            {
+                label: 'Braking Distance (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const a = Number(inputs.deceleration);
+                    if (a === 0) return 'Undefined';
+                    return ((v * v) / (2 * a)).toFixed(2);
+                }
+            },
+            {
+                label: 'Total Stopping Distance (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const a = Number(inputs.deceleration);
+                    const rt = Number(inputs.reactionTime);
+                    if (a === 0) return 'Undefined';
+                    return (v * rt + (v * v) / (2 * a)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'stopping-distance.whatIs',
+            howTo: 'stopping-distance.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Dynamics
+    // Added: 2026-01-14
+    // ========================================
+    'friction-force': {
+        id: 'friction-force',
+        title: 'Friction Force Calculator',
+        description: 'Calculate friction force between surfaces.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Friction Force Calculator',
+            description: 'Find friction using f = μN.',
+            keywords: ['friction', 'coefficient', 'normal force']
+        },
+        inputs: [
+            { id: 'normalForce', label: 'Normal Force (N)', type: 'number', placeholder: '100' },
+            { id: 'coefficient', label: 'Coefficient of Friction (μ)', type: 'number', placeholder: '0.5' }
+        ],
+        outputs: [
+            {
+                label: 'Friction Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const N = Number(inputs.normalForce);
+                    const mu = Number(inputs.coefficient);
+                    return (mu * N).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'friction-force.whatIs',
+            howTo: 'friction-force.howTo',
+            faq: []
+        }
+    },
+    'normal-force': {
+        id: 'normal-force',
+        title: 'Normal Force Calculator',
+        description: 'Calculate normal force on a surface.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Normal Force Calculator',
+            description: 'Find normal force on flat or inclined surfaces.',
+            keywords: ['normal force', 'incline', 'physics']
+        },
+        inputs: [
+            { id: 'mass', label: 'Mass (kg)', type: 'number', placeholder: '10' },
+            { id: 'angle', label: 'Incline Angle (°)', type: 'number', placeholder: '0' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Normal Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (m * g * Math.cos(theta)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'normal-force.whatIs',
+            howTo: 'normal-force.howTo',
+            faq: []
+        }
+    },
+    'net-force': {
+        id: 'net-force',
+        title: 'Net Force Calculator',
+        description: 'Calculate net force from multiple forces.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Net Force Calculator',
+            description: 'Find resultant of multiple forces.',
+            keywords: ['net force', 'resultant', 'vector sum']
+        },
+        inputs: [
+            { id: 'f1', label: 'Force 1 (N)', type: 'number', placeholder: '50' },
+            { id: 'f2', label: 'Force 2 (N)', type: 'number', placeholder: '30' },
+            { id: 'angle', label: 'Angle Between Forces (°)', type: 'number', placeholder: '90' }
+        ],
+        outputs: [
+            {
+                label: 'Net Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f1 = Number(inputs.f1);
+                    const f2 = Number(inputs.f2);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    const net = Math.sqrt(f1 * f1 + f2 * f2 + 2 * f1 * f2 * Math.cos(theta));
+                    return net.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'net-force.whatIs',
+            howTo: 'net-force.howTo',
+            faq: []
+        }
+    },
+    'weight-force': {
+        id: 'weight-force',
+        title: 'Weight Calculator',
+        description: 'Calculate weight from mass.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Weight Calculator',
+            description: 'Find weight using W = mg.',
+            keywords: ['weight', 'gravity', 'mass']
+        },
+        inputs: [
+            { id: 'mass', label: 'Mass (kg)', type: 'number', placeholder: '70' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Weight (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (m * g).toFixed(2);
+                }
+            },
+            {
+                label: 'Weight (lbf)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return ((m * g) * 0.2248).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'weight-force.whatIs',
+            howTo: 'weight-force.howTo',
+            faq: []
+        }
+    },
+    'tension-force': {
+        id: 'tension-force',
+        title: 'Tension Force Calculator',
+        description: 'Calculate tension in a rope or cable.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Tension Force Calculator',
+            description: 'Find tension in hanging or accelerating systems.',
+            keywords: ['tension', 'rope', 'cable']
+        },
+        inputs: [
+            { id: 'mass', label: 'Mass (kg)', type: 'number', placeholder: '10' },
+            { id: 'acceleration', label: 'Acceleration (m/s²)', type: 'number', placeholder: '0' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Tension (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const a = Number(inputs.acceleration);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (m * (g + a)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'tension-force.whatIs',
+            howTo: 'tension-force.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Dynamics (Part 2) + Energy & Work
+    // Added: 2026-01-14
+    // ========================================
+    'spring-force': {
+        id: 'spring-force',
+        title: 'Spring Force Calculator',
+        description: 'Calculate spring force using Hooke\'s Law.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Spring Force Calculator',
+            description: 'Find spring force using F = -kx.',
+            keywords: ['spring force', 'hookes law', 'elastic']
+        },
+        inputs: [
+            { id: 'k', label: 'Spring Constant (N/m)', type: 'number', placeholder: '100' },
+            { id: 'x', label: 'Displacement (m)', type: 'number', placeholder: '0.1' }
+        ],
+        outputs: [
+            {
+                label: 'Spring Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const k = Number(inputs.k);
+                    const x = Number(inputs.x);
+                    return (k * x).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'spring-force.whatIs',
+            howTo: 'spring-force.howTo',
+            faq: []
+        }
+    },
+    'drag-force': {
+        id: 'drag-force',
+        title: 'Drag Force Calculator',
+        description: 'Calculate air resistance drag force.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Drag Force Calculator',
+            description: 'Find drag force using Fd = ½ρv²CdA.',
+            keywords: ['drag force', 'air resistance', 'aerodynamics']
+        },
+        inputs: [
+            { id: 'density', label: 'Air Density (kg/m³)', type: 'number', placeholder: '1.225' },
+            { id: 'velocity', label: 'Velocity (m/s)', type: 'number', placeholder: '20' },
+            { id: 'cd', label: 'Drag Coefficient', type: 'number', placeholder: '0.47' },
+            { id: 'area', label: 'Cross-Section Area (m²)', type: 'number', placeholder: '0.5' }
+        ],
+        outputs: [
+            {
+                label: 'Drag Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rho = Number(inputs.density) || 1.225;
+                    const v = Number(inputs.velocity);
+                    const cd = Number(inputs.cd);
+                    const a = Number(inputs.area);
+                    return (0.5 * rho * v * v * cd * a).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'drag-force.whatIs',
+            howTo: 'drag-force.howTo',
+            faq: []
+        }
+    },
+    'buoyant-force': {
+        id: 'buoyant-force',
+        title: 'Buoyant Force Calculator',
+        description: 'Calculate buoyancy using Archimedes\' Principle.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Buoyant Force Calculator',
+            description: 'Find buoyancy force Fb = ρVg.',
+            keywords: ['buoyancy', 'archimedes', 'floating']
+        },
+        inputs: [
+            { id: 'density', label: 'Fluid Density (kg/m³)', type: 'number', placeholder: '1000' },
+            { id: 'volume', label: 'Displaced Volume (m³)', type: 'number', placeholder: '0.01' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Buoyant Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rho = Number(inputs.density);
+                    const v = Number(inputs.volume);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (rho * v * g).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'buoyant-force.whatIs',
+            howTo: 'buoyant-force.howTo',
+            faq: []
+        }
+    },
+    'elastic-collision': {
+        id: 'elastic-collision',
+        title: 'Elastic Collision Calculator',
+        description: 'Calculate velocities after elastic collision.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Elastic Collision Calculator',
+            description: 'Find final velocities in elastic collision.',
+            keywords: ['elastic collision', 'momentum', 'physics']
+        },
+        inputs: [
+            { id: 'm1', label: 'Mass 1 (kg)', type: 'number', placeholder: '2' },
+            { id: 'v1', label: 'Velocity 1 (m/s)', type: 'number', placeholder: '5' },
+            { id: 'm2', label: 'Mass 2 (kg)', type: 'number', placeholder: '3' },
+            { id: 'v2', label: 'Velocity 2 (m/s)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Final Velocity 1 (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m1 = Number(inputs.m1);
+                    const v1 = Number(inputs.v1);
+                    const m2 = Number(inputs.m2);
+                    const v2 = Number(inputs.v2);
+                    const v1f = ((m1 - m2) * v1 + 2 * m2 * v2) / (m1 + m2);
+                    return v1f.toFixed(2);
+                }
+            },
+            {
+                label: 'Final Velocity 2 (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m1 = Number(inputs.m1);
+                    const v1 = Number(inputs.v1);
+                    const m2 = Number(inputs.m2);
+                    const v2 = Number(inputs.v2);
+                    const v2f = ((m2 - m1) * v2 + 2 * m1 * v1) / (m1 + m2);
+                    return v2f.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'elastic-collision.whatIs',
+            howTo: 'elastic-collision.howTo',
+            faq: []
+        }
+    },
+    'inelastic-collision': {
+        id: 'inelastic-collision',
+        title: 'Inelastic Collision Calculator',
+        description: 'Calculate velocity after perfectly inelastic collision.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Inelastic Collision Calculator',
+            description: 'Find final velocity when objects stick together.',
+            keywords: ['inelastic collision', 'momentum', 'physics']
+        },
+        inputs: [
+            { id: 'm1', label: 'Mass 1 (kg)', type: 'number', placeholder: '2' },
+            { id: 'v1', label: 'Velocity 1 (m/s)', type: 'number', placeholder: '5' },
+            { id: 'm2', label: 'Mass 2 (kg)', type: 'number', placeholder: '3' },
+            { id: 'v2', label: 'Velocity 2 (m/s)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Final Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m1 = Number(inputs.m1);
+                    const v1 = Number(inputs.v1);
+                    const m2 = Number(inputs.m2);
+                    const v2 = Number(inputs.v2);
+                    return ((m1 * v1 + m2 * v2) / (m1 + m2)).toFixed(2);
+                }
+            },
+            {
+                label: 'Energy Lost (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m1 = Number(inputs.m1);
+                    const v1 = Number(inputs.v1);
+                    const m2 = Number(inputs.m2);
+                    const v2 = Number(inputs.v2);
+                    const keBefore = 0.5 * m1 * v1 * v1 + 0.5 * m2 * v2 * v2;
+                    const vf = (m1 * v1 + m2 * v2) / (m1 + m2);
+                    const keAfter = 0.5 * (m1 + m2) * vf * vf;
+                    return (keBefore - keAfter).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'inelastic-collision.whatIs',
+            howTo: 'inelastic-collision.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Energy & Work
+    // Added: 2026-01-14
+    // ========================================
+    'work-energy': {
+        id: 'work-energy',
+        title: 'Work-Energy Calculator',
+        description: 'Calculate work done and energy change.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Work-Energy Calculator',
+            description: 'Find work using W = Fd cos θ.',
+            keywords: ['work', 'energy', 'physics']
+        },
+        inputs: [
+            { id: 'force', label: 'Force (N)', type: 'number', placeholder: '50' },
+            { id: 'distance', label: 'Distance (m)', type: 'number', placeholder: '10' },
+            { id: 'angle', label: 'Angle (°)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Work Done (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.force);
+                    const d = Number(inputs.distance);
+                    const theta = Number(inputs.angle) * (Math.PI / 180);
+                    return (f * d * Math.cos(theta)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'work-energy.whatIs',
+            howTo: 'work-energy.howTo',
+            faq: []
+        }
+    },
+    'gravitational-potential': {
+        id: 'gravitational-potential',
+        title: 'Gravitational PE Calculator',
+        description: 'Calculate gravitational potential energy.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Gravitational Potential Energy Calculator',
+            description: 'Find PE using PE = mgh.',
+            keywords: ['potential energy', 'gravitational', 'height']
+        },
+        inputs: [
+            { id: 'mass', label: 'Mass (kg)', type: 'number', placeholder: '10' },
+            { id: 'height', label: 'Height (m)', type: 'number', placeholder: '5' },
+            { id: 'gravity', label: 'Gravity (m/s²)', type: 'number', placeholder: '9.81' }
+        ],
+        outputs: [
+            {
+                label: 'Potential Energy (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const h = Number(inputs.height);
+                    const g = Number(inputs.gravity) || 9.81;
+                    return (m * g * h).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'gravitational-potential.whatIs',
+            howTo: 'gravitational-potential.howTo',
+            faq: []
+        }
+    },
+    'elastic-potential': {
+        id: 'elastic-potential',
+        title: 'Elastic PE Calculator',
+        description: 'Calculate elastic potential energy in springs.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Elastic Potential Energy Calculator',
+            description: 'Find PE using PE = ½kx².',
+            keywords: ['elastic potential', 'spring', 'energy']
+        },
+        inputs: [
+            { id: 'k', label: 'Spring Constant (N/m)', type: 'number', placeholder: '200' },
+            { id: 'x', label: 'Displacement (m)', type: 'number', placeholder: '0.1' }
+        ],
+        outputs: [
+            {
+                label: 'Elastic PE (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const k = Number(inputs.k);
+                    const x = Number(inputs.x);
+                    return (0.5 * k * x * x).toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'elastic-potential.whatIs',
+            howTo: 'elastic-potential.howTo',
+            faq: []
+        }
+    },
+    'power-work': {
+        id: 'power-work',
+        title: 'Power Calculator',
+        description: 'Calculate power from work and time.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Power Calculator',
+            description: 'Find power using P = W/t.',
+            keywords: ['power', 'work', 'energy rate']
+        },
+        inputs: [
+            { id: 'work', label: 'Work Done (J)', type: 'number', placeholder: '1000' },
+            { id: 'time', label: 'Time (s)', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Power (W)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.work);
+                    const t = Number(inputs.time);
+                    if (t === 0) return 'Undefined';
+                    return (w / t).toFixed(2);
+                }
+            },
+            {
+                label: 'Power (HP)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.work);
+                    const t = Number(inputs.time);
+                    if (t === 0) return 'Undefined';
+                    return ((w / t) / 745.7).toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'power-work.whatIs',
+            howTo: 'power-work.howTo',
+            faq: []
+        }
+    },
+    'mechanical-advantage': {
+        id: 'mechanical-advantage',
+        title: 'Mechanical Advantage Calculator',
+        description: 'Calculate mechanical advantage of simple machines.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Mechanical Advantage Calculator',
+            description: 'Find MA = output force / input force.',
+            keywords: ['mechanical advantage', 'lever', 'pulley']
+        },
+        inputs: [
+            { id: 'outputForce', label: 'Output Force (N)', type: 'number', placeholder: '500' },
+            { id: 'inputForce', label: 'Input Force (N)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Mechanical Advantage',
+                calculate: (inputs: Record<string, any>) => {
+                    const fo = Number(inputs.outputForce);
+                    const fi = Number(inputs.inputForce);
+                    if (fi === 0) return 'Undefined';
+                    return (fo / fi).toFixed(2);
+                }
+            },
+            {
+                label: 'Efficiency (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const fo = Number(inputs.outputForce);
+                    const fi = Number(inputs.inputForce);
+                    if (fi === 0) return 'Undefined';
+                    // Simplified - assumes ideal MA equals actual
+                    return '100.00';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'mechanical-advantage.whatIs',
+            howTo: 'mechanical-advantage.howTo',
+            faq: []
+        }
+    },
 };

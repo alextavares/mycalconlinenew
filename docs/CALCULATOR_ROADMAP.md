@@ -11,8 +11,8 @@ Marque com `[x]` as subcategorias concluídas.
 |-----------|--------|-----------|
 | Math | 🟡 Em progresso | 77/~150 |
 | Finance | 🟡 Em progresso | 10/~200 |
-| Health | 🟡 Em progresso | 10/~150 |
-| Physics | 🔴 Não iniciado | 0/~120 |
+| Health | 🟢 Concluído | 143/~150 |
+| Physics | 🟡 Em progresso | 30/~120 |
 | Statistics | 🔴 Não iniciado | 0/~60 |
 | Conversion | 🔴 Não iniciado | 0/~80 |
 | Everyday Life | 🔴 Não iniciado | 0/~100 |
@@ -95,32 +95,54 @@ Marque com `[x]` as subcategorias concluídas.
 ### Subcategorias
 - [ ] **Body Measurements** (~15 calcs)
   - BMI, Body Fat, Ideal Weight
-- [ ] **Dietary** (~20 calcs)
+- [x] **Dietary** (20 calcs) - Completed (2026-01-14)
+  - protein-calculator, carb-calculator, fat-intake-calculator, sugar-intake, fiber-calculator, calorie-deficit, meal-calorie-calculator, macros-per-meal, alcohol-calorie, caffeine-calculator
+  - calcium-intake, vitamin-d-calculator, magnesium-intake, iron-intake, potassium-calculator, zinc-intake, vitamin-c-calculator, vitamin-a-calculator, vitamin-e-calculator, omega-3-calculator
   - Calorie, Macros, Water Intake
-- [ ] **Cardiovascular** (~15 calcs)
-  - Heart Rate, Blood Pressure
-- [ ] **Pregnancy** (~15 calcs)
-  - Due Date, Ovulation, Baby Growth
-- [ ] **Pediatric** (~15 calcs)
-  - Growth Charts, Fever Converter
-- [ ] **Dosage** (~20 calcs)
-  - Drug Dosage, IV Drip Rate
-- [ ] **Sleep** (~8 calcs)
-  - Sleep Cycles, Sleep Debt
-- [ ] **Other Medical** (~40 calcs)
-  - Various clinical calculators
+- [x] **Cardiovascular** (~20 calcs) - 20/15 added (Completed 2026-01-14)
+  - mean-arterial-pressure, pulse-pressure, cardiac-output, stroke-volume, blood-volume, smoking-pack-years, cholesterol-ratio, ldl-calculated, qtc-calculator, systemic-vascular-resistance
+  - cardiac-index, karvonen-heart-rate, rate-pressure-product, blood-pressure-stage, heart-recovery
+- [x] **Pregnancy** (~15 calcs) - 15/15 added (Completed 2026-01-14)
+  - due-date-calculator, conception-date, ovulation-calculator, gestational-age, ivf-due-date
+  - hcg-calculator, crl-calculator, gsd-calculator, bishop-score, chinese-gender-predictor
+  - implantation-date, pregnancy-trimester, reverse-due-date, fetal-length, fl-calculator
+- [x] **Pediatric** (~15 calcs) - 15/15 added (Completed 2026-01-14)
+  - pediatric-dosage-weight, child-height-predictor, apgar-score, maintenance-fluid-child, corrected-age-preemie
+  - child-bmi-percentile, acetaminophen-dosage, ibuprofen-dosage, pediatric-fever-grade, urine-output-child
+  - weight-for-age, head-circumference-percentile, fever-celsius-fahrenheit, growth-percentile, infant-caloric-needs
+- [x] **Dosage** (~20 calcs) - 20/20 added (Completed 2026-01-14)
+  - iv-drip-rate, creatinine-clearance, warfarin-dose, metformin-dose, amoxicillin-dose
+  - insulin-dose, ciprofloxacin-dose, gabapentin-dose, prednisone-taper, vancomycin-dose
+  - gentamicin-dose, heparin-dose, levothyroxine-dose, digoxin-dose, phenytoin-dose
+  - amlodipine-dose, atorvastatin-dose, lisinopril-dose, omeprazole-dose, azithromycin-dose
+- [x] **Sleep** (~8 calcs) - 8/8 added (Completed 2026-01-14)
+  - sleep-cycle, sleep-debt, sleep-efficiency, wake-time, bedtime-calculator
+  - nap-calculator, circadian-rhythm, jet-lag
+- [x] **Other Medical** (~40 calcs) - 40/40 added (Completed 2026-01-14)
+  - pain-scale, hydration-calculator, caffeine-half-life, nicotine-clearance
+  - eye-drops-duration, dental-anesthesia, allergy-severity
+  - vision-test, hearing-test, skin-burn-area, dehydration-check, fever-management
+  - blood-pressure-risk, stroke-risk, heart-attack-risk, diabetes-risk, kidney-function
+  - liver-function, thyroid-function, anemia-check, potassium-level, sodium-correction
+  - calcium-correction, oxygen-saturation, respiratory-rate, pulse-oximetry, fall-risk
+  - stress-level, anxiety-screening, depression-screening, bmi-health-risk, body-fat-estimate
+  - muscle-mass, bone-density-risk, osteoporosis-risk, frailty-index, nutritional-status
+  - cognitive-function, pain-medication-guide, vaccination-schedule
 
 ---
 
 ## ⚡ Physics (~120 calculadoras)
 
 ### Subcategorias
-- [ ] **Kinematics** (~15 calcs)
-  - Velocity, Acceleration, Free Fall
-- [ ] **Dynamics** (~10 calcs)
-  - Force, Momentum, Impulse
-- [ ] **Energy & Work** (~12 calcs)
-  - Kinetic Energy, Potential Energy, Power
+- [x] **Kinematics** (~15 calcs) - 15/15 added (Completed 2026-01-14)
+  - free-fall, projectile-range, velocity-time, displacement-time, acceleration-calculator
+  - average-speed, relative-velocity, uniform-motion, circular-motion, time-of-flight
+  - max-height-projectile, horizontal-range, vertical-motion, kinematic-equations, stopping-distance
+- [x] **Dynamics** (~10 calcs) - 10/10 added (Completed 2026-01-14)
+  - friction-force, normal-force, net-force, weight-force, tension-force
+  - spring-force, drag-force, buoyant-force, elastic-collision, inelastic-collision
+- [/] **Energy & Work** (~12 calcs) - 5/12 added (2026-01-14)
+  - work-energy, gravitational-potential, elastic-potential, power-work, mechanical-advantage
 - [ ] **Rotational Motion** (~10 calcs)
   - Angular Velocity, Torque
 - [ ] **Optics** (~12 calcs)

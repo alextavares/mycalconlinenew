@@ -1,10 +1,10 @@
 {
   "metadata": {
     "version": "1.0.0",
-    "lastUpdated": "2026-01-14",
-    "totalCalculators": 778,
-    "lastAddedId": "vo2max-calculator",
-    "lastAddedCategory": "health",
+    "lastUpdated": "2026-01-15",
+    "totalCalculators": 941,
+    "lastAddedId": "mechanical-advantage",
+    "lastAddedCategory": "physics",
     "omniProgress": {
       "biology": {
         "status": "not_started",
@@ -48,7 +48,7 @@
       },
       "health": {
         "status": "in_progress",
-        "completed": 10,
+        "completed": 143,
         "total": 0
       },
       "math": {
@@ -57,8 +57,8 @@
         "total": 0
       },
       "physics": {
-        "status": "not_started",
-        "completed": 0,
+        "status": "in_progress",
+        "completed": 30,
         "total": 0
       },
       "sports": {
@@ -162,6 +162,108 @@
       "summary": "Added 10 health calculators: lean-body-mass, waist-hip-ratio, bmi-prime, pregnancy-weight-gain, heart-rate-zones, blood-alcohol, sleep-calculator, max-heart-rate, metabolic-age, vo2max-calculator",
       "calculatorsAdded": 10,
       "lastCalculatorId": "vo2max-calculator"
+    },
+    {
+      "date": "2026-01-14T14:23:35.078Z",
+      "summary": "Added 10 health/dietary calculators: protein-calculator, carb-calculator, fat-intake-calculator, sugar-intake, fiber-calculator, calorie-deficit, meal-calorie-calculator, macros-per-meal, alcohol-calorie, caffeine-calculator",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "caffeine-calculator"
+    },
+    {
+      "date": "2026-01-14T14:32:10.715Z",
+      "summary": "Added 10 health/dietary (micronutrient) calculators: calcium-intake, vitamin-d-calculator, magnesium-intake, iron-intake, potassium-calculator, zinc-intake, vitamin-c-calculator, vitamin-a-calculator, vitamin-e-calculator, omega-3-calculator",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "omega-3-calculator"
+    },
+    {
+      "date": "2026-01-14T14:39:58.768Z",
+      "summary": "Added 10 health/cardiovascular calculators: mean-arterial-pressure, pulse-pressure, cardiac-output, stroke-volume, blood-volume, smoking-pack-years, cholesterol-ratio, ldl-calculated, qtc-calculator, systemic-vascular-resistance",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "systemic-vascular-resistance"
+    },
+    {
+      "date": "2026-01-14T15:02:46.332Z",
+      "summary": "Added 5 Cardiovascular (cardiac-index, karvonen-heart-rate, rpp, bp-stage, heart-recovery) and Registered 5 Pregnancy (due-date, conception, ovulation, gestational-age, ivf-due-date) calculators",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "ivf-due-date"
+    },
+    {
+      "date": "2026-01-14T15:34:51.318Z",
+      "summary": "Added 10 Pregnancy calculators (hcg, crl, gsd, bishop, chinese-gender, implantation, trimester, reverse-due, fetal-length, fl)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "fl-calculator"
+    },
+    {
+      "date": "2026-01-14T15:56:19.830Z",
+      "summary": "Added 10 Pediatric calculators (dosage, height, apgar, fluids, corrected-age, bmi, tylenol, advil, fever, urine)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "urine-output-child"
+    },
+    {
+      "date": "2026-01-14T16:12:03.567Z",
+      "summary": "Added 5 Pediatric + 5 Dosage calculators (weight-for-age, head-circ, fever-conv, growth, caloric + iv-drip, crcl, warfarin, metformin, amoxicillin)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "amoxicillin-dose"
+    },
+    {
+      "date": "2026-01-14T17:37:30.735Z",
+      "summary": "Added 10 Dosage calculators (insulin, cipro, gabapentin, prednisone, vancomycin, gentamicin, heparin, levothyroxine, digoxin, phenytoin)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "phenytoin-dose"
+    },
+    {
+      "date": "2026-01-14T20:19:54.508Z",
+      "summary": "Finished Dosage (5: amlodipine, atorvastatin, lisinopril, omeprazole, azithromycin) + Started Sleep (5: sleep-cycle, sleep-debt, sleep-efficiency, wake-time, bedtime)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "bedtime-calculator"
+    },
+    {
+      "date": "2026-01-14T20:30:58.256Z",
+      "summary": "Completed Sleep (3: nap, circadian, jet-lag) + Started Other Medical (7: pain-scale, hydration, caffeine, nicotine, eye-drops, dental, allergy)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "allergy-severity"
+    },
+    {
+      "date": "2026-01-14T20:57:28.260Z",
+      "summary": "Other Medical batch 2 (10: vision, hearing, burns, dehydration, fever, BP-risk, stroke, heart-attack, diabetes, kidney)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "kidney-function"
+    },
+    {
+      "date": "2026-01-14T21:26:44.860Z",
+      "summary": "Other Medical batch 3 (10: liver, thyroid, anemia, potassium, sodium-correction, calcium-correction, oxygen-saturation, respiratory-rate, pulse-oximetry, fall-risk)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "fall-risk"
+    },
+    {
+      "date": "2026-01-14T21:51:16.302Z",
+      "summary": "Other Medical batch 4 (10: stress, anxiety, depression, bmi-risk, body-fat, muscle, bone-density, osteoporosis, frailty, nutritional)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "nutritional-status"
+    },
+    {
+      "date": "2026-01-14T22:05:30.490Z",
+      "summary": "Other Medical final 3 (cognitive-function, pain-medication-guide, vaccination-schedule) - Health COMPLETE",
+      "calculatorsAdded": 3,
+      "lastCalculatorId": "vaccination-schedule"
+    },
+    {
+      "date": "2026-01-15T00:47:30.697Z",
+      "summary": "Physics Kinematics batch 1 (10: free-fall, projectile-range, velocity-time, displacement-time, acceleration-calculator, average-speed, relative-velocity, uniform-motion, circular-motion, time-of-flight)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "time-of-flight"
+    },
+    {
+      "date": "2026-01-15T00:50:35.830Z",
+      "summary": "Physics batch 2: Kinematics (5) + Dynamics (5)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "tension-force"
+    },
+    {
+      "date": "2026-01-15T00:57:15.080Z",
+      "summary": "Physics batch 3: Dynamics 5 (spring, drag, buoyant, collisions) + Energy 5 (work, PE, power, MA)",
+      "calculatorsAdded": 10,
+      "lastCalculatorId": "mechanical-advantage"
     }
   ],
   "calculators": {
@@ -806,6 +908,984 @@
       "category": "health",
       "source": "omni",
       "addedOn": "2026-01-14"
+    },
+    "protein-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "carb-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fat-intake-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sugar-intake": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fiber-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "calorie-deficit": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "meal-calorie-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "macros-per-meal": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "alcohol-calorie": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "caffeine-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "calcium-intake": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vitamin-d-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "magnesium-intake": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "iron-intake": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "potassium-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "zinc-intake": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vitamin-c-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vitamin-a-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vitamin-e-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "omega-3-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "mean-arterial-pressure": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pulse-pressure": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cardiac-output": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "stroke-volume": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "blood-volume": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "smoking-pack-years": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cholesterol-ratio": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "ldl-calculated": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "qtc-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "systemic-vascular-resistance": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cardiac-index": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "karvonen-heart-rate": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "rate-pressure-product": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "blood-pressure-stage": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "heart-recovery": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "due-date-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "conception-date": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "ovulation-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "gestational-age": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "ivf-due-date": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "hcg-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "crl-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "gsd-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "bishop-score": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "chinese-gender-predictor": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "implantation-date": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pregnancy-trimester": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "reverse-due-date": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fetal-length": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fl-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pediatric-dosage-weight": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "child-height-predictor": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "apgar-score": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "maintenance-fluid-child": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "corrected-age-preemie": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "child-bmi-percentile": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "acetaminophen-dosage": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "ibuprofen-dosage": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pediatric-fever-grade": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "urine-output-child": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "weight-for-age": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "head-circumference-percentile": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fever-celsius-fahrenheit": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "growth-percentile": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "infant-caloric-needs": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "iv-drip-rate": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "creatinine-clearance": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "warfarin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "metformin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "amoxicillin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "insulin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "ciprofloxacin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "gabapentin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "prednisone-taper": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vancomycin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "gentamicin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "heparin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "levothyroxine-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "digoxin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "phenytoin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "amlodipine-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "atorvastatin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "lisinopril-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "omeprazole-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "azithromycin-dose": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sleep-cycle": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sleep-debt": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sleep-efficiency": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "wake-time": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "bedtime-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "nap-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "circadian-rhythm": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "jet-lag": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pain-scale": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "hydration-calculator": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "caffeine-half-life": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "nicotine-clearance": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "eye-drops-duration": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "dental-anesthesia": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "allergy-severity": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vision-test": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "hearing-test": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "skin-burn-area": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "dehydration-check": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fever-management": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "blood-pressure-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "stroke-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "heart-attack-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "diabetes-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "kidney-function": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "liver-function": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "thyroid-function": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "anemia-check": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "potassium-level": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "sodium-correction": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "calcium-correction": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "oxygen-saturation": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "respiratory-rate": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pulse-oximetry": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "fall-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "stress-level": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "anxiety-screening": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "depression-screening": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "bmi-health-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "body-fat-estimate": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "muscle-mass": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "bone-density-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "osteoporosis-risk": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "frailty-index": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "nutritional-status": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "cognitive-function": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "pain-medication-guide": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "vaccination-schedule": {
+      "status": "done",
+      "category": "health",
+      "source": "omni",
+      "addedOn": "2026-01-14"
+    },
+    "free-fall": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "projectile-range": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "velocity-time": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "displacement-time": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "acceleration-calculator": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "average-speed": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "relative-velocity": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "uniform-motion": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "circular-motion": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "time-of-flight": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "max-height-projectile": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "horizontal-range": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "vertical-motion": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "kinematic-equations": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "stopping-distance": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "friction-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "normal-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "net-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "weight-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "tension-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "spring-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "drag-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "buoyant-force": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "elastic-collision": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "inelastic-collision": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "work-energy": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "gravitational-potential": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "elastic-potential": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "power-work": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
+    },
+    "mechanical-advantage": {
+      "status": "done",
+      "category": "physics",
+      "source": "omni",
+      "addedOn": "2026-01-15"
     }
   }
 }
