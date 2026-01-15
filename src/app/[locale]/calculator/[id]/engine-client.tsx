@@ -50,7 +50,7 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
         );
     }
 
-    // Resolve localized content (Fallback to config if translation missing)
+    // Resolve localized content (Fallback to generated content if translation missing)
     // Note: t.has() checks if key exists. t.raw() returns the value (string or object/array)
     // We assume 'whatIs' and 'howTo' are HTML strings in JSON if present.
     // We assume 'faq' is Array<{question, answer}> in JSON if present.
@@ -59,12 +59,47 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
         const hasHowTo = t.has(`${calculatorId}.howTo`);
         const hasFaq = t.has(`${calculatorId}.faq`);
 
-        return {
-            whatIs: hasWhatIs ? t.raw(`${calculatorId}.whatIs`) : calculator.content?.whatIs,
-            howTo: hasHowTo ? t.raw(`${calculatorId}.howTo`) : calculator.content?.howTo,
-            faq: hasFaq ? t.raw(`${calculatorId}.faq`) : calculator.content?.faq
+        // Generate fallback content from calculator config when translations are missing
+        const generateFallbackWhatIs = () => {
+            const title = calculator.title || calculatorId;
+            const desc = calculator.description || '';
+            return `<p>The <strong>${title}</strong> is a free online tool that helps you ${desc.toLowerCase().replace(/\.$/, '')}.</p>
+                    <p>Simply enter the required values in the fields above, and the calculator will automatically compute the result for you.</p>
+                    <p>This calculator is part of our collection of ${calculator.category || 'utility'} calculators, designed to make complex calculations simple and accessible.</p>`;
         };
-    }, [calculatorId, t, calculator.content]);
+
+        const generateFallbackHowTo = () => {
+            const inputs = calculator.inputs || [];
+            const inputNames = inputs.map(i => i.label).join(', ');
+            return `<ol>
+                        <li><strong>Enter the values:</strong> Fill in the required fields${inputNames ? ` (${inputNames})` : ''}.</li>
+                        <li><strong>View the result:</strong> The calculation is performed automatically as you type.</li>
+                        <li><strong>Copy or share:</strong> Use the buttons to copy the result or share this calculator.</li>
+                    </ol>`;
+        };
+
+        // Check if content exists and is not just a translation key placeholder
+        const isValidContent = (content: any) => {
+            if (!content) return false;
+            if (typeof content !== 'string') return false;
+            // Check if it looks like a placeholder key (e.g., "calculator-id.whatIs")
+            if (content.includes('.whatIs') || content.includes('.howTo')) return false;
+            return content.length > 10;
+        };
+
+        const configWhatIs = calculator.content?.whatIs;
+        const configHowTo = calculator.content?.howTo;
+
+        return {
+            whatIs: hasWhatIs ? t.raw(`${calculatorId}.whatIs`)
+                : isValidContent(configWhatIs) ? configWhatIs
+                    : generateFallbackWhatIs(),
+            howTo: hasHowTo ? t.raw(`${calculatorId}.howTo`)
+                : isValidContent(configHowTo) ? configHowTo
+                    : generateFallbackHowTo(),
+            faq: hasFaq ? t.raw(`${calculatorId}.faq`) : calculator.content?.faq || []
+        };
+    }, [calculatorId, t, calculator]);
 
     // Format localized FAQ if needed (ensure it matches expected shape)
     // If JSON returns generic object, standard casting might be needed, but .raw() usually suffices for simple arrays.
