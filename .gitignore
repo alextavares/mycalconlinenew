@@ -1,5 +1,16 @@
+# Dependencies
+node_modules
+
+# Next.js build output
+.next
+out
+
+# Secrets
 token.json
 client_secret.json
-node_modules
-node_modules
+
+# Vercel
 .vercel
+
+# Environment
+.env*.local

@@ -1,5 +1,7 @@
 # 🗺️ Roadmap de Calculadoras - Omni Calculator
 
+## 🎉🎉🎉 MARCO HISTÓRICO: 1000 CALCULADORAS! (2026-01-15) 🎉🎉🎉
+
 Este arquivo rastreia o progresso de adição de calculadoras por categoria.
 Marque com `[x]` as subcategorias concluídas.
 
@@ -12,7 +14,7 @@ Marque com `[x]` as subcategorias concluídas.
 | Math | 🟡 Em progresso | 77/~150 |
 | Finance | 🟡 Em progresso | 10/~200 |
 | Health | 🟢 Concluído | 143/~150 |
-| Physics | 🟡 Em progresso | 30/~120 |
+| Physics | 🟡 Em progresso | 69/~120 |
 | Statistics | 🔴 Não iniciado | 0/~60 |
 | Conversion | 🔴 Não iniciado | 0/~80 |
 | Everyday Life | 🔴 Não iniciado | 0/~100 |
@@ -141,16 +143,24 @@ Marque com `[x]` as subcategorias concluídas.
 - [x] **Dynamics** (~10 calcs) - 10/10 added (Completed 2026-01-14)
   - friction-force, normal-force, net-force, weight-force, tension-force
   - spring-force, drag-force, buoyant-force, elastic-collision, inelastic-collision
-- [/] **Energy & Work** (~12 calcs) - 5/12 added (2026-01-14)
+- [x] **Energy & Work** (~12 calcs) - 10/10 added (Completed 2026-01-14)
   - work-energy, gravitational-potential, elastic-potential, power-work, mechanical-advantage
-- [ ] **Rotational Motion** (~10 calcs)
-  - Angular Velocity, Torque
-- [ ] **Optics** (~12 calcs)
-  - Lens, Mirror, Refraction
-- [ ] **Acoustics** (~8 calcs)
-  - Sound, Frequency, Decibels
-- [ ] **Electromagnetism** (~15 calcs)
-  - Electric Field, Magnetic Field
+  - energy-conservation, efficiency-calculator, watt-calculator, joule-calculator, horsepower-calculator
+- [x] **Rotational Motion** (~10 calcs) - 5/10 added (2026-01-14)
+  - angular-acceleration, rotational-kinetic, angular-momentum, centripetal-acceleration, rpm-calculator
+- [x] **Optics** (~12 calcs) - 10/12 added (Completed 2026-01-15)
+  - snell-law-calculator, lens-equation, mirror-equation, magnification-calculator, critical-angle
+  - brewster-angle, optical-power, focal-length, lens-maker, numerical-aperture
+- [x] **Acoustics** (~8 calcs) - 10/8 added (Completed 2026-01-15)
+  - sound-wavelength, doppler-effect, sound-intensity, decibel-calculator, resonance-frequency
+  - beat-frequency, speed-of-sound, acoustic-impedance, reverberation-time, sound-pressure-level
+- [x] **Electromagnetism** (~15 calcs) - 29/15 added (Completed 2026-01-15) 🎉 MILESTONE 1000!
+  - coulomb-law, electric-field, electric-potential, capacitance-calculator, parallel-plate-capacitor
+  - magnetic-field-wire, solenoid-field, lorentz-force, electromagnetic-induction, faraday-law
+  - inductance-calculator, rl-time-constant, rc-time-constant, lc-resonance, quality-factor
+  - bandwidth-filter, cutoff-frequency, skin-depth, dielectric-constant, permittivity-calculator
+  - permeability-calculator, electromagnetic-wave, poynting-vector, voltage-divider-ac, current-divider-ac
+  - thevenin-equivalent, norton-equivalent, maximum-power-transfer
 - [ ] **Electronics & Circuits** (~20 calcs)
   - Ohm's Law, Resistor, Capacitor
 - [ ] **Fluid Mechanics** (~10 calcs)

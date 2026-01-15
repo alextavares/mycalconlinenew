@@ -35533,4 +35533,2410 @@ export const calculators: Record<string, CalculatorConfig> = {
             faq: []
         }
     },
+    // ========================================
+    // PHYSICS - Energy & Work (Part 2) + Rotational Motion
+    // Added: 2026-01-14
+    // ========================================
+    'energy-conservation': {
+        id: 'energy-conservation',
+        title: 'Energy Conservation Calculator',
+        description: 'Calculate energy before and after transformation.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Conservation of Energy Calculator',
+            description: 'Apply conservation of mechanical energy.',
+            keywords: ['energy conservation', 'mechanical energy', 'physics']
+        },
+        inputs: [
+            { id: 'ke1', label: 'Initial Kinetic Energy (J)', type: 'number', placeholder: '100' },
+            { id: 'pe1', label: 'Initial Potential Energy (J)', type: 'number', placeholder: '50' },
+            { id: 'workDone', label: 'Work Done by Non-Conservative Forces (J)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Total Mechanical Energy (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const ke = Number(inputs.ke1);
+                    const pe = Number(inputs.pe1);
+                    return (ke + pe).toFixed(2);
+                }
+            },
+            {
+                label: 'Final Total Energy (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const ke = Number(inputs.ke1);
+                    const pe = Number(inputs.pe1);
+                    const w = Number(inputs.workDone);
+                    return (ke + pe + w).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'energy-conservation.whatIs',
+            howTo: 'energy-conservation.howTo',
+            faq: []
+        }
+    },
+    'efficiency-calculator': {
+        id: 'efficiency-calculator',
+        title: 'Efficiency Calculator',
+        description: 'Calculate efficiency of energy conversion.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Efficiency Calculator',
+            description: 'Find efficiency = output/input × 100%.',
+            keywords: ['efficiency', 'energy', 'output input']
+        },
+        inputs: [
+            { id: 'output', label: 'Useful Output Energy (J)', type: 'number', placeholder: '80' },
+            { id: 'input', label: 'Total Input Energy (J)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Efficiency (%)',
+                calculate: (inputs: Record<string, any>) => {
+                    const out = Number(inputs.output);
+                    const inp = Number(inputs.input);
+                    if (inp === 0) return 'Undefined';
+                    return ((out / inp) * 100).toFixed(2);
+                }
+            },
+            {
+                label: 'Energy Lost (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const out = Number(inputs.output);
+                    const inp = Number(inputs.input);
+                    return (inp - out).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'efficiency-calculator.whatIs',
+            howTo: 'efficiency-calculator.howTo',
+            faq: []
+        }
+    },
+    'watt-calculator': {
+        id: 'watt-calculator',
+        title: 'Watt Converter',
+        description: 'Convert between power units.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Watt Calculator',
+            description: 'Convert watts to other power units.',
+            keywords: ['watt', 'power', 'conversion']
+        },
+        inputs: [
+            { id: 'watts', label: 'Power (Watts)', type: 'number', placeholder: '1000' }
+        ],
+        outputs: [
+            {
+                label: 'Kilowatts (kW)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.watts) / 1000).toFixed(4);
+                }
+            },
+            {
+                label: 'Horsepower (HP)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.watts) / 745.7).toFixed(4);
+                }
+            },
+            {
+                label: 'BTU/hour',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.watts) * 3.412).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'watt-calculator.whatIs',
+            howTo: 'watt-calculator.howTo',
+            faq: []
+        }
+    },
+    'joule-calculator': {
+        id: 'joule-calculator',
+        title: 'Joule Converter',
+        description: 'Convert between energy units.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Joule Calculator',
+            description: 'Convert joules to other energy units.',
+            keywords: ['joule', 'energy', 'conversion']
+        },
+        inputs: [
+            { id: 'joules', label: 'Energy (Joules)', type: 'number', placeholder: '1000' }
+        ],
+        outputs: [
+            {
+                label: 'Kilojoules (kJ)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.joules) / 1000).toFixed(4);
+                }
+            },
+            {
+                label: 'Calories (cal)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.joules) / 4.184).toFixed(2);
+                }
+            },
+            {
+                label: 'Kilocalories (kcal)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.joules) / 4184).toFixed(4);
+                }
+            },
+            {
+                label: 'Watt-hours (Wh)',
+                calculate: (inputs: Record<string, any>) => {
+                    return (Number(inputs.joules) / 3600).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'joule-calculator.whatIs',
+            howTo: 'joule-calculator.howTo',
+            faq: []
+        }
+    },
+    'horsepower-calculator': {
+        id: 'horsepower-calculator',
+        title: 'Horsepower Calculator',
+        description: 'Calculate horsepower from torque and RPM.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Horsepower Calculator',
+            description: 'Find HP from torque and RPM.',
+            keywords: ['horsepower', 'torque', 'rpm']
+        },
+        inputs: [
+            { id: 'torque', label: 'Torque (lb-ft)', type: 'number', placeholder: '300' },
+            { id: 'rpm', label: 'RPM', type: 'number', placeholder: '5000' }
+        ],
+        outputs: [
+            {
+                label: 'Horsepower (HP)',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.torque);
+                    const rpm = Number(inputs.rpm);
+                    return ((t * rpm) / 5252).toFixed(2);
+                }
+            },
+            {
+                label: 'Kilowatts (kW)',
+                calculate: (inputs: Record<string, any>) => {
+                    const t = Number(inputs.torque);
+                    const rpm = Number(inputs.rpm);
+                    const hp = (t * rpm) / 5252;
+                    return (hp * 0.7457).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'horsepower-calculator.whatIs',
+            howTo: 'horsepower-calculator.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Rotational Motion
+    // Added: 2026-01-14
+    // ========================================
+    'angular-acceleration': {
+        id: 'angular-acceleration',
+        title: 'Angular Acceleration Calculator',
+        description: 'Calculate angular acceleration.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Angular Acceleration Calculator',
+            description: 'Find α = Δω/Δt.',
+            keywords: ['angular acceleration', 'rotation', 'physics']
+        },
+        inputs: [
+            { id: 'omega1', label: 'Initial Angular Velocity (rad/s)', type: 'number', placeholder: '10' },
+            { id: 'omega2', label: 'Final Angular Velocity (rad/s)', type: 'number', placeholder: '30' },
+            { id: 'time', label: 'Time (s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Angular Acceleration (rad/s²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w1 = Number(inputs.omega1);
+                    const w2 = Number(inputs.omega2);
+                    const t = Number(inputs.time);
+                    if (t === 0) return 'Undefined';
+                    return ((w2 - w1) / t).toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'angular-acceleration.whatIs',
+            howTo: 'angular-acceleration.howTo',
+            faq: []
+        }
+    },
+    'rotational-kinetic': {
+        id: 'rotational-kinetic',
+        title: 'Rotational Kinetic Energy Calculator',
+        description: 'Calculate rotational kinetic energy.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Rotational Kinetic Energy Calculator',
+            description: 'Find KE = ½Iω².',
+            keywords: ['rotational kinetic', 'moment of inertia', 'angular']
+        },
+        inputs: [
+            { id: 'I', label: 'Moment of Inertia (kg·m²)', type: 'number', placeholder: '0.5' },
+            { id: 'omega', label: 'Angular Velocity (rad/s)', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Rotational KE (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const I = Number(inputs.I);
+                    const w = Number(inputs.omega);
+                    return (0.5 * I * w * w).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rotational-kinetic.whatIs',
+            howTo: 'rotational-kinetic.howTo',
+            faq: []
+        }
+    },
+    'angular-momentum': {
+        id: 'angular-momentum',
+        title: 'Angular Momentum Calculator',
+        description: 'Calculate angular momentum L = Iω.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Angular Momentum Calculator',
+            description: 'Find L = Iω.',
+            keywords: ['angular momentum', 'rotation', 'physics']
+        },
+        inputs: [
+            { id: 'I', label: 'Moment of Inertia (kg·m²)', type: 'number', placeholder: '2' },
+            { id: 'omega', label: 'Angular Velocity (rad/s)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Angular Momentum (kg·m²/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const I = Number(inputs.I);
+                    const w = Number(inputs.omega);
+                    return (I * w).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'angular-momentum.whatIs',
+            howTo: 'angular-momentum.howTo',
+            faq: []
+        }
+    },
+    'centripetal-acceleration': {
+        id: 'centripetal-acceleration',
+        title: 'Centripetal Acceleration Calculator',
+        description: 'Calculate centripetal acceleration.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Centripetal Acceleration Calculator',
+            description: 'Find ac = v²/r.',
+            keywords: ['centripetal acceleration', 'circular motion', 'physics']
+        },
+        inputs: [
+            { id: 'velocity', label: 'Velocity (m/s)', type: 'number', placeholder: '10' },
+            { id: 'radius', label: 'Radius (m)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Centripetal Acceleration (m/s²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const v = Number(inputs.velocity);
+                    const r = Number(inputs.radius);
+                    if (r === 0) return 'Undefined';
+                    return ((v * v) / r).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'centripetal-acceleration.whatIs',
+            howTo: 'centripetal-acceleration.howTo',
+            faq: []
+        }
+    },
+    'rpm-calculator': {
+        id: 'rpm-calculator',
+        title: 'RPM Calculator',
+        description: 'Convert between RPM and angular velocity.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'RPM Calculator',
+            description: 'Convert RPM to rad/s and vice versa.',
+            keywords: ['rpm', 'angular velocity', 'rotation']
+        },
+        inputs: [
+            { id: 'rpm', label: 'Revolutions Per Minute (RPM)', type: 'number', placeholder: '1000' }
+        ],
+        outputs: [
+            {
+                label: 'Angular Velocity (rad/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rpm = Number(inputs.rpm);
+                    return ((rpm * 2 * Math.PI) / 60).toFixed(4);
+                }
+            },
+            {
+                label: 'Frequency (Hz)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rpm = Number(inputs.rpm);
+                    return (rpm / 60).toFixed(4);
+                }
+            },
+            {
+                label: 'Period (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rpm = Number(inputs.rpm);
+                    if (rpm === 0) return 'Undefined';
+                    return (60 / rpm).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rpm-calculator.whatIs',
+            howTo: 'rpm-calculator.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Rotational Motion (Part 2) + Optics
+    // Added: 2026-01-15
+    // ========================================
+    'period-frequency': {
+        id: 'period-frequency',
+        title: 'Period & Frequency Calculator',
+        description: 'Convert between period and frequency.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Period Frequency Calculator',
+            description: 'Find T = 1/f and f = 1/T.',
+            keywords: ['period', 'frequency', 'oscillation']
+        },
+        inputs: [
+            { id: 'frequency', label: 'Frequency (Hz)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Period (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.frequency);
+                    if (f === 0) return 'Undefined';
+                    return (1 / f).toFixed(6);
+                }
+            },
+            {
+                label: 'Angular Frequency (rad/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.frequency);
+                    return (2 * Math.PI * f).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'period-frequency.whatIs',
+            howTo: 'period-frequency.howTo',
+            faq: []
+        }
+    },
+    'tangential-velocity': {
+        id: 'tangential-velocity',
+        title: 'Tangential Velocity Calculator',
+        description: 'Calculate tangential velocity from angular velocity.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Tangential Velocity Calculator',
+            description: 'Find v = ωr.',
+            keywords: ['tangential velocity', 'angular', 'circular']
+        },
+        inputs: [
+            { id: 'omega', label: 'Angular Velocity (rad/s)', type: 'number', placeholder: '10' },
+            { id: 'radius', label: 'Radius (m)', type: 'number', placeholder: '0.5' }
+        ],
+        outputs: [
+            {
+                label: 'Tangential Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.omega);
+                    const r = Number(inputs.radius);
+                    return (w * r).toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'tangential-velocity.whatIs',
+            howTo: 'tangential-velocity.howTo',
+            faq: []
+        }
+    },
+    'rolling-motion': {
+        id: 'rolling-motion',
+        title: 'Rolling Motion Calculator',
+        description: 'Calculate rolling velocity and energy.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Rolling Motion Calculator',
+            description: 'Find velocity for rolling without slipping.',
+            keywords: ['rolling motion', 'rotation', 'physics']
+        },
+        inputs: [
+            { id: 'omega', label: 'Angular Velocity (rad/s)', type: 'number', placeholder: '20' },
+            { id: 'radius', label: 'Radius (m)', type: 'number', placeholder: '0.3' },
+            { id: 'mass', label: 'Mass (kg)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Linear Velocity (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.omega);
+                    const r = Number(inputs.radius);
+                    return (w * r).toFixed(3);
+                }
+            },
+            {
+                label: 'Total KE (J) - Solid Sphere',
+                calculate: (inputs: Record<string, any>) => {
+                    const w = Number(inputs.omega);
+                    const r = Number(inputs.radius);
+                    const m = Number(inputs.mass);
+                    const v = w * r;
+                    // KE = 0.5mv² + 0.5Iω² where I = 2/5 mr² for solid sphere
+                    const ke = 0.5 * m * v * v + 0.5 * (2 / 5 * m * r * r) * w * w;
+                    return ke.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rolling-motion.whatIs',
+            howTo: 'rolling-motion.howTo',
+            faq: []
+        }
+    },
+    'flywheel-energy': {
+        id: 'flywheel-energy',
+        title: 'Flywheel Energy Calculator',
+        description: 'Calculate energy stored in a flywheel.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Flywheel Energy Calculator',
+            description: 'Find energy stored in rotating flywheel.',
+            keywords: ['flywheel', 'energy storage', 'rotation']
+        },
+        inputs: [
+            { id: 'mass', label: 'Mass (kg)', type: 'number', placeholder: '50' },
+            { id: 'radius', label: 'Radius (m)', type: 'number', placeholder: '0.5' },
+            { id: 'rpm', label: 'RPM', type: 'number', placeholder: '3000' }
+        ],
+        outputs: [
+            {
+                label: 'Moment of Inertia (kg·m²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const r = Number(inputs.radius);
+                    return (0.5 * m * r * r).toFixed(4);
+                }
+            },
+            {
+                label: 'Stored Energy (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const r = Number(inputs.radius);
+                    const rpm = Number(inputs.rpm);
+                    const I = 0.5 * m * r * r;
+                    const omega = (rpm * 2 * Math.PI) / 60;
+                    return (0.5 * I * omega * omega).toFixed(2);
+                }
+            },
+            {
+                label: 'Stored Energy (Wh)',
+                calculate: (inputs: Record<string, any>) => {
+                    const m = Number(inputs.mass);
+                    const r = Number(inputs.radius);
+                    const rpm = Number(inputs.rpm);
+                    const I = 0.5 * m * r * r;
+                    const omega = (rpm * 2 * Math.PI) / 60;
+                    const joules = 0.5 * I * omega * omega;
+                    return (joules / 3600).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'flywheel-energy.whatIs',
+            howTo: 'flywheel-energy.howTo',
+            faq: []
+        }
+    },
+    'gyroscopic-effect': {
+        id: 'gyroscopic-effect',
+        title: 'Gyroscopic Effect Calculator',
+        description: 'Calculate gyroscopic precession.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Gyroscopic Effect Calculator',
+            description: 'Find precession rate of a gyroscope.',
+            keywords: ['gyroscope', 'precession', 'rotation']
+        },
+        inputs: [
+            { id: 'torque', label: 'Applied Torque (N·m)', type: 'number', placeholder: '0.1' },
+            { id: 'I', label: 'Moment of Inertia (kg·m²)', type: 'number', placeholder: '0.01' },
+            { id: 'omega', label: 'Spin Rate (rad/s)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Precession Rate (rad/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const tau = Number(inputs.torque);
+                    const I = Number(inputs.I);
+                    const omega = Number(inputs.omega);
+                    const L = I * omega;
+                    if (L === 0) return 'Undefined';
+                    return (tau / L).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'gyroscopic-effect.whatIs',
+            howTo: 'gyroscopic-effect.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Optics
+    // Added: 2026-01-15
+    // ========================================
+    'lens-equation': {
+        id: 'lens-equation',
+        title: 'Lens Equation Calculator',
+        description: 'Calculate image distance using thin lens equation.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Lens Equation Calculator',
+            description: 'Apply 1/f = 1/do + 1/di.',
+            keywords: ['lens equation', 'optics', 'focal length']
+        },
+        inputs: [
+            { id: 'f', label: 'Focal Length (cm)', type: 'number', placeholder: '10' },
+            { id: 'do', label: 'Object Distance (cm)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Image Distance (cm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.f);
+                    const doVal = Number(inputs.do);
+                    if (f === 0 || doVal === f) return 'Undefined';
+                    const di = (f * doVal) / (doVal - f);
+                    return di.toFixed(2);
+                }
+            },
+            {
+                label: 'Image Type',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.f);
+                    const doVal = Number(inputs.do);
+                    if (f === 0 || doVal === f) return 'Undefined';
+                    const di = (f * doVal) / (doVal - f);
+                    return di > 0 ? 'Real (inverted)' : 'Virtual (upright)';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'lens-equation.whatIs',
+            howTo: 'lens-equation.howTo',
+            faq: []
+        }
+    },
+    'mirror-equation': {
+        id: 'mirror-equation',
+        title: 'Mirror Equation Calculator',
+        description: 'Calculate image distance using mirror equation.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Mirror Equation Calculator',
+            description: 'Apply 1/f = 1/do + 1/di for mirrors.',
+            keywords: ['mirror equation', 'optics', 'reflection']
+        },
+        inputs: [
+            { id: 'f', label: 'Focal Length (cm)', type: 'number', placeholder: '15' },
+            { id: 'do', label: 'Object Distance (cm)', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'Image Distance (cm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.f);
+                    const doVal = Number(inputs.do);
+                    if (f === 0 || doVal === f) return 'Undefined';
+                    const di = (f * doVal) / (doVal - f);
+                    return di.toFixed(2);
+                }
+            },
+            {
+                label: 'Radius of Curvature (cm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.f);
+                    return (2 * f).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'mirror-equation.whatIs',
+            howTo: 'mirror-equation.howTo',
+            faq: []
+        }
+    },
+    'magnification-calculator': {
+        id: 'magnification-calculator',
+        title: 'Magnification Calculator',
+        description: 'Calculate optical magnification.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Magnification Calculator',
+            description: 'Find M = -di/do = hi/ho.',
+            keywords: ['magnification', 'optics', 'lens']
+        },
+        inputs: [
+            { id: 'do', label: 'Object Distance (cm)', type: 'number', placeholder: '20' },
+            { id: 'di', label: 'Image Distance (cm)', type: 'number', placeholder: '40' }
+        ],
+        outputs: [
+            {
+                label: 'Magnification',
+                calculate: (inputs: Record<string, any>) => {
+                    const doVal = Number(inputs.do);
+                    const di = Number(inputs.di);
+                    if (doVal === 0) return 'Undefined';
+                    return (-(di / doVal)).toFixed(2);
+                }
+            },
+            {
+                label: 'Image Orientation',
+                calculate: (inputs: Record<string, any>) => {
+                    const doVal = Number(inputs.do);
+                    const di = Number(inputs.di);
+                    if (doVal === 0) return 'Undefined';
+                    const m = -(di / doVal);
+                    return m > 0 ? 'Upright' : 'Inverted';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'magnification-calculator.whatIs',
+            howTo: 'magnification-calculator.howTo',
+            faq: []
+        }
+    },
+    'focal-length': {
+        id: 'focal-length',
+        title: 'Focal Length Calculator',
+        description: 'Calculate focal length from object/image distances.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Focal Length Calculator',
+            description: 'Find f from do and di.',
+            keywords: ['focal length', 'lens', 'optics']
+        },
+        inputs: [
+            { id: 'do', label: 'Object Distance (cm)', type: 'number', placeholder: '30' },
+            { id: 'di', label: 'Image Distance (cm)', type: 'number', placeholder: '15' }
+        ],
+        outputs: [
+            {
+                label: 'Focal Length (cm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const doVal = Number(inputs.do);
+                    const di = Number(inputs.di);
+                    if (doVal + di === 0) return 'Undefined';
+                    return ((doVal * di) / (doVal + di)).toFixed(2);
+                }
+            },
+            {
+                label: 'Lens Power (Diopters)',
+                calculate: (inputs: Record<string, any>) => {
+                    const doVal = Number(inputs.do);
+                    const di = Number(inputs.di);
+                    if (doVal + di === 0) return 'Undefined';
+                    const f = (doVal * di) / (doVal + di);
+                    // Convert cm to m for diopters
+                    return (100 / f).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'focal-length.whatIs',
+            howTo: 'focal-length.howTo',
+            faq: []
+        }
+    },
+    'critical-angle': {
+        id: 'critical-angle',
+        title: 'Critical Angle Calculator',
+        description: 'Calculate critical angle for total internal reflection.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Critical Angle Calculator',
+            description: 'Find critical angle using sin θc = n2/n1.',
+            keywords: ['critical angle', 'total internal reflection', 'optics']
+        },
+        inputs: [
+            { id: 'n1', label: 'Refractive Index (n₁ - denser medium)', type: 'number', placeholder: '1.5' },
+            { id: 'n2', label: 'Refractive Index (n₂ - less dense)', type: 'number', placeholder: '1.0' }
+        ],
+        outputs: [
+            {
+                label: 'Critical Angle (°)',
+                calculate: (inputs: Record<string, any>) => {
+                    const n1 = Number(inputs.n1);
+                    const n2 = Number(inputs.n2);
+                    if (n1 === 0 || n2 > n1) return 'No TIR possible';
+                    const sinTheta = n2 / n1;
+                    const theta = Math.asin(sinTheta) * (180 / Math.PI);
+                    return theta.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'critical-angle.whatIs',
+            howTo: 'critical-angle.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Optics (Part 2) + Acoustics
+    // Added: 2026-01-15
+    // ========================================
+    'light-intensity': {
+        id: 'light-intensity',
+        title: 'Light Intensity Calculator',
+        description: 'Calculate light intensity from power and area.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Light Intensity Calculator',
+            description: 'Find I = P/A.',
+            keywords: ['light intensity', 'luminous', 'physics']
+        },
+        inputs: [
+            { id: 'power', label: 'Power (Watts)', type: 'number', placeholder: '100' },
+            { id: 'area', label: 'Area (m²)', type: 'number', placeholder: '4' }
+        ],
+        outputs: [
+            {
+                label: 'Intensity (W/m²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const P = Number(inputs.power);
+                    const A = Number(inputs.area);
+                    if (A === 0) return 'Undefined';
+                    return (P / A).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'light-intensity.whatIs',
+            howTo: 'light-intensity.howTo',
+            faq: []
+        }
+    },
+    'prism-dispersion': {
+        id: 'prism-dispersion',
+        title: 'Prism Dispersion Calculator',
+        description: 'Calculate angular dispersion through a prism.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Prism Dispersion Calculator',
+            description: 'Find dispersion angle in a prism.',
+            keywords: ['prism', 'dispersion', 'optics']
+        },
+        inputs: [
+            { id: 'nBlue', label: 'Refractive Index (Blue)', type: 'number', placeholder: '1.528' },
+            { id: 'nRed', label: 'Refractive Index (Red)', type: 'number', placeholder: '1.514' },
+            { id: 'angle', label: 'Prism Angle (°)', type: 'number', placeholder: '60' }
+        ],
+        outputs: [
+            {
+                label: 'Angular Dispersion (°)',
+                calculate: (inputs: Record<string, any>) => {
+                    const nB = Number(inputs.nBlue);
+                    const nR = Number(inputs.nRed);
+                    const A = Number(inputs.angle);
+                    // Approximate dispersion
+                    const dispersion = (nB - nR) * A;
+                    return dispersion.toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'prism-dispersion.whatIs',
+            howTo: 'prism-dispersion.howTo',
+            faq: []
+        }
+    },
+    'diffraction-grating': {
+        id: 'diffraction-grating',
+        title: 'Diffraction Grating Calculator',
+        description: 'Calculate diffraction angles from grating.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Diffraction Grating Calculator',
+            description: 'Apply d·sin(θ) = m·λ.',
+            keywords: ['diffraction', 'grating', 'optics']
+        },
+        inputs: [
+            { id: 'd', label: 'Slit Spacing (µm)', type: 'number', placeholder: '2' },
+            { id: 'wavelength', label: 'Wavelength (nm)', type: 'number', placeholder: '550' },
+            { id: 'm', label: 'Order (m)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Diffraction Angle (°)',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = Number(inputs.d) * 1e-6; // µm to m
+                    const lambda = Number(inputs.wavelength) * 1e-9; // nm to m
+                    const m = Number(inputs.m);
+                    const sinTheta = (m * lambda) / d;
+                    if (Math.abs(sinTheta) > 1) return 'No diffraction';
+                    const theta = Math.asin(sinTheta) * (180 / Math.PI);
+                    return theta.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'diffraction-grating.whatIs',
+            howTo: 'diffraction-grating.howTo',
+            faq: []
+        }
+    },
+    'interference-pattern': {
+        id: 'interference-pattern',
+        title: 'Interference Pattern Calculator',
+        description: 'Calculate double-slit interference pattern.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Double-Slit Interference Calculator',
+            description: 'Find fringe spacing in double-slit experiment.',
+            keywords: ['interference', 'double slit', 'optics']
+        },
+        inputs: [
+            { id: 'wavelength', label: 'Wavelength (nm)', type: 'number', placeholder: '550' },
+            { id: 'd', label: 'Slit Separation (mm)', type: 'number', placeholder: '0.25' },
+            { id: 'L', label: 'Screen Distance (m)', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Fringe Spacing (mm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const lambda = Number(inputs.wavelength) * 1e-9; // nm to m
+                    const d = Number(inputs.d) * 1e-3; // mm to m
+                    const L = Number(inputs.L);
+                    if (d === 0) return 'Undefined';
+                    const spacing = (lambda * L) / d;
+                    return (spacing * 1000).toFixed(3); // m to mm
+                }
+            }
+        ],
+        content: {
+            whatIs: 'interference-pattern.whatIs',
+            howTo: 'interference-pattern.howTo',
+            faq: []
+        }
+    },
+    'brewster-angle': {
+        id: 'brewster-angle',
+        title: 'Brewster Angle Calculator',
+        description: 'Calculate Brewster angle for polarization.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Brewster Angle Calculator',
+            description: 'Find θB = arctan(n2/n1).',
+            keywords: ['brewster angle', 'polarization', 'optics']
+        },
+        inputs: [
+            { id: 'n1', label: 'Refractive Index n₁', type: 'number', placeholder: '1.0' },
+            { id: 'n2', label: 'Refractive Index n₂', type: 'number', placeholder: '1.5' }
+        ],
+        outputs: [
+            {
+                label: 'Brewster Angle (°)',
+                calculate: (inputs: Record<string, any>) => {
+                    const n1 = Number(inputs.n1);
+                    const n2 = Number(inputs.n2);
+                    if (n1 === 0) return 'Undefined';
+                    const thetaB = Math.atan(n2 / n1) * (180 / Math.PI);
+                    return thetaB.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'brewster-angle.whatIs',
+            howTo: 'brewster-angle.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Acoustics
+    // Added: 2026-01-15
+    // ========================================
+    'sound-intensity': {
+        id: 'sound-intensity',
+        title: 'Sound Intensity Calculator',
+        description: 'Calculate sound intensity level.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Sound Intensity Calculator',
+            description: 'Find sound intensity in W/m².',
+            keywords: ['sound intensity', 'acoustics', 'physics']
+        },
+        inputs: [
+            { id: 'power', label: 'Sound Power (W)', type: 'number', placeholder: '0.1' },
+            { id: 'distance', label: 'Distance (m)', type: 'number', placeholder: '5' }
+        ],
+        outputs: [
+            {
+                label: 'Sound Intensity (W/m²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const P = Number(inputs.power);
+                    const r = Number(inputs.distance);
+                    if (r === 0) return 'Undefined';
+                    const I = P / (4 * Math.PI * r * r);
+                    return I.toExponential(4);
+                }
+            },
+            {
+                label: 'Sound Level (dB)',
+                calculate: (inputs: Record<string, any>) => {
+                    const P = Number(inputs.power);
+                    const r = Number(inputs.distance);
+                    if (r === 0) return 'Undefined';
+                    const I = P / (4 * Math.PI * r * r);
+                    const I0 = 1e-12; // Reference intensity
+                    const dB = 10 * Math.log10(I / I0);
+                    return dB.toFixed(1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sound-intensity.whatIs',
+            howTo: 'sound-intensity.howTo',
+            faq: []
+        }
+    },
+    'sound-speed': {
+        id: 'sound-speed',
+        title: 'Speed of Sound Calculator',
+        description: 'Calculate speed of sound in different media.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Speed of Sound Calculator',
+            description: 'Find speed of sound based on temperature.',
+            keywords: ['speed of sound', 'acoustics', 'temperature']
+        },
+        inputs: [
+            { id: 'temp', label: 'Temperature (°C)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Speed in Air (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const T = Number(inputs.temp);
+                    const v = 331.4 + 0.6 * T;
+                    return v.toFixed(2);
+                }
+            },
+            {
+                label: 'Speed in Water (m/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    // Approximate: varies with temperature
+                    return '1480';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'sound-speed.whatIs',
+            howTo: 'sound-speed.howTo',
+            faq: []
+        }
+    },
+    'resonance-frequency': {
+        id: 'resonance-frequency',
+        title: 'Resonance Frequency Calculator',
+        description: 'Calculate resonance frequency of a tube or string.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Resonance Frequency Calculator',
+            description: 'Find fundamental frequency.',
+            keywords: ['resonance', 'frequency', 'acoustics']
+        },
+        inputs: [
+            { id: 'length', label: 'Length (m)', type: 'number', placeholder: '1' },
+            { id: 'velocity', label: 'Wave Velocity (m/s)', type: 'number', placeholder: '343' },
+            { id: 'type', label: 'Type (1=open, 2=closed)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Fundamental Frequency (Hz)',
+                calculate: (inputs: Record<string, any>) => {
+                    const L = Number(inputs.length);
+                    const v = Number(inputs.velocity);
+                    const type = Number(inputs.type);
+                    if (L === 0) return 'Undefined';
+                    if (type === 1) {
+                        // Open tube: f = v / 2L
+                        return (v / (2 * L)).toFixed(2);
+                    } else {
+                        // Closed tube: f = v / 4L
+                        return (v / (4 * L)).toFixed(2);
+                    }
+                }
+            }
+        ],
+        content: {
+            whatIs: 'resonance-frequency.whatIs',
+            howTo: 'resonance-frequency.howTo',
+            faq: []
+        }
+    },
+    'standing-wave': {
+        id: 'standing-wave',
+        title: 'Standing Wave Calculator',
+        description: 'Calculate standing wave properties.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Standing Wave Calculator',
+            description: 'Find wavelength and nodes.',
+            keywords: ['standing wave', 'nodes', 'acoustics']
+        },
+        inputs: [
+            { id: 'length', label: 'String/Tube Length (m)', type: 'number', placeholder: '1' },
+            { id: 'harmonic', label: 'Harmonic Number', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Wavelength (m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const L = Number(inputs.length);
+                    const n = Number(inputs.harmonic);
+                    if (n === 0) return 'Undefined';
+                    return ((2 * L) / n).toFixed(4);
+                }
+            },
+            {
+                label: 'Number of Nodes',
+                calculate: (inputs: Record<string, any>) => {
+                    const n = Number(inputs.harmonic);
+                    return String(n + 1);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'standing-wave.whatIs',
+            howTo: 'standing-wave.howTo',
+            faq: []
+        }
+    },
+    'beat-frequency': {
+        id: 'beat-frequency',
+        title: 'Beat Frequency Calculator',
+        description: 'Calculate beat frequency from two sources.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Beat Frequency Calculator',
+            description: 'Find fbeat = |f1 - f2|.',
+            keywords: ['beat frequency', 'interference', 'acoustics']
+        },
+        inputs: [
+            { id: 'f1', label: 'Frequency 1 (Hz)', type: 'number', placeholder: '440' },
+            { id: 'f2', label: 'Frequency 2 (Hz)', type: 'number', placeholder: '445' }
+        ],
+        outputs: [
+            {
+                label: 'Beat Frequency (Hz)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f1 = Number(inputs.f1);
+                    const f2 = Number(inputs.f2);
+                    return Math.abs(f1 - f2).toFixed(2);
+                }
+            },
+            {
+                label: 'Beat Period (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f1 = Number(inputs.f1);
+                    const f2 = Number(inputs.f2);
+                    const fBeat = Math.abs(f1 - f2);
+                    if (fBeat === 0) return 'Infinite';
+                    return (1 / fBeat).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'beat-frequency.whatIs',
+            howTo: 'beat-frequency.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Acoustics (Part 2) + Electricity & Magnetism
+    // Added: 2026-01-15
+    // ========================================
+    'acoustic-impedance': {
+        id: 'acoustic-impedance',
+        title: 'Acoustic Impedance Calculator',
+        description: 'Calculate acoustic impedance of a medium.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Acoustic Impedance Calculator',
+            description: 'Find Z = ρ × c.',
+            keywords: ['acoustic impedance', 'sound', 'physics']
+        },
+        inputs: [
+            { id: 'density', label: 'Density (kg/m³)', type: 'number', placeholder: '1.2' },
+            { id: 'speed', label: 'Speed of Sound (m/s)', type: 'number', placeholder: '343' }
+        ],
+        outputs: [
+            {
+                label: 'Acoustic Impedance (Pa·s/m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rho = Number(inputs.density);
+                    const c = Number(inputs.speed);
+                    return (rho * c).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'acoustic-impedance.whatIs',
+            howTo: 'acoustic-impedance.howTo',
+            faq: []
+        }
+    },
+    'reverberation-time': {
+        id: 'reverberation-time',
+        title: 'Reverberation Time Calculator',
+        description: 'Calculate RT60 reverberation time.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Reverberation Time Calculator',
+            description: 'Find RT60 using Sabine equation.',
+            keywords: ['reverberation', 'acoustics', 'room']
+        },
+        inputs: [
+            { id: 'volume', label: 'Room Volume (m³)', type: 'number', placeholder: '200' },
+            { id: 'absorption', label: 'Total Absorption (m²)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'RT60 (seconds)',
+                calculate: (inputs: Record<string, any>) => {
+                    const V = Number(inputs.volume);
+                    const A = Number(inputs.absorption);
+                    if (A === 0) return 'Undefined';
+                    // Sabine formula: RT60 = 0.161 × V / A
+                    return (0.161 * V / A).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'reverberation-time.whatIs',
+            howTo: 'reverberation-time.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Electricity & Magnetism
+    // Added: 2026-01-15
+    // ========================================
+    'capacitance-parallel': {
+        id: 'capacitance-parallel',
+        title: 'Parallel Capacitors Calculator',
+        description: 'Calculate total capacitance in parallel.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Parallel Capacitors Calculator',
+            description: 'Find Ctotal = C1 + C2 + C3.',
+            keywords: ['capacitor', 'parallel', 'electricity']
+        },
+        inputs: [
+            { id: 'c1', label: 'C1 (µF)', type: 'number', placeholder: '10' },
+            { id: 'c2', label: 'C2 (µF)', type: 'number', placeholder: '20' },
+            { id: 'c3', label: 'C3 (µF, optional)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Total Capacitance (µF)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c1 = Number(inputs.c1) || 0;
+                    const c2 = Number(inputs.c2) || 0;
+                    const c3 = Number(inputs.c3) || 0;
+                    return (c1 + c2 + c3).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'capacitance-parallel.whatIs',
+            howTo: 'capacitance-parallel.howTo',
+            faq: []
+        }
+    },
+    'capacitance-series': {
+        id: 'capacitance-series',
+        title: 'Series Capacitors Calculator',
+        description: 'Calculate total capacitance in series.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Series Capacitors Calculator',
+            description: 'Find 1/Ctotal = 1/C1 + 1/C2.',
+            keywords: ['capacitor', 'series', 'electricity']
+        },
+        inputs: [
+            { id: 'c1', label: 'C1 (µF)', type: 'number', placeholder: '10' },
+            { id: 'c2', label: 'C2 (µF)', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Total Capacitance (µF)',
+                calculate: (inputs: Record<string, any>) => {
+                    const c1 = Number(inputs.c1);
+                    const c2 = Number(inputs.c2);
+                    if (c1 === 0 || c2 === 0) return 'Undefined';
+                    const cTotal = 1 / (1 / c1 + 1 / c2);
+                    return cTotal.toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'capacitance-series.whatIs',
+            howTo: 'capacitance-series.howTo',
+            faq: []
+        }
+    },
+    'capacitor-charge': {
+        id: 'capacitor-charge',
+        title: 'Capacitor Charge Calculator',
+        description: 'Calculate charge stored in a capacitor.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Capacitor Charge Calculator',
+            description: 'Find Q = C × V.',
+            keywords: ['capacitor', 'charge', 'electricity']
+        },
+        inputs: [
+            { id: 'capacitance', label: 'Capacitance (µF)', type: 'number', placeholder: '100' },
+            { id: 'voltage', label: 'Voltage (V)', type: 'number', placeholder: '12' }
+        ],
+        outputs: [
+            {
+                label: 'Charge (µC)',
+                calculate: (inputs: Record<string, any>) => {
+                    const C = Number(inputs.capacitance);
+                    const V = Number(inputs.voltage);
+                    return (C * V).toFixed(2);
+                }
+            },
+            {
+                label: 'Charge (C)',
+                calculate: (inputs: Record<string, any>) => {
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    const V = Number(inputs.voltage);
+                    return (C * V).toExponential(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'capacitor-charge.whatIs',
+            howTo: 'capacitor-charge.howTo',
+            faq: []
+        }
+    },
+    'capacitor-energy': {
+        id: 'capacitor-energy',
+        title: 'Capacitor Energy Calculator',
+        description: 'Calculate energy stored in a capacitor.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Capacitor Energy Calculator',
+            description: 'Find E = 0.5 × C × V².',
+            keywords: ['capacitor', 'energy', 'electricity']
+        },
+        inputs: [
+            { id: 'capacitance', label: 'Capacitance (µF)', type: 'number', placeholder: '1000' },
+            { id: 'voltage', label: 'Voltage (V)', type: 'number', placeholder: '12' }
+        ],
+        outputs: [
+            {
+                label: 'Energy (J)',
+                calculate: (inputs: Record<string, any>) => {
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    const V = Number(inputs.voltage);
+                    return (0.5 * C * V * V).toFixed(4);
+                }
+            },
+            {
+                label: 'Energy (mJ)',
+                calculate: (inputs: Record<string, any>) => {
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    const V = Number(inputs.voltage);
+                    return (0.5 * C * V * V * 1000).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'capacitor-energy.whatIs',
+            howTo: 'capacitor-energy.howTo',
+            faq: []
+        }
+    },
+    'rc-time-constant': {
+        id: 'rc-time-constant',
+        title: 'RC Time Constant Calculator',
+        description: 'Calculate RC circuit time constant.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'RC Time Constant Calculator',
+            description: 'Find τ = R × C.',
+            keywords: ['RC circuit', 'time constant', 'electricity']
+        },
+        inputs: [
+            { id: 'resistance', label: 'Resistance (Ω)', type: 'number', placeholder: '1000' },
+            { id: 'capacitance', label: 'Capacitance (µF)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Time Constant τ (ms)',
+                calculate: (inputs: Record<string, any>) => {
+                    const R = Number(inputs.resistance);
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    return (R * C * 1000).toFixed(2);
+                }
+            },
+            {
+                label: '5τ (99% charge) (ms)',
+                calculate: (inputs: Record<string, any>) => {
+                    const R = Number(inputs.resistance);
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    return (5 * R * C * 1000).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rc-time-constant.whatIs',
+            howTo: 'rc-time-constant.howTo',
+            faq: []
+        }
+    },
+    'rl-time-constant': {
+        id: 'rl-time-constant',
+        title: 'RL Time Constant Calculator',
+        description: 'Calculate RL circuit time constant.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'RL Time Constant Calculator',
+            description: 'Find τ = L / R.',
+            keywords: ['RL circuit', 'time constant', 'electricity']
+        },
+        inputs: [
+            { id: 'inductance', label: 'Inductance (mH)', type: 'number', placeholder: '100' },
+            { id: 'resistance', label: 'Resistance (Ω)', type: 'number', placeholder: '10' }
+        ],
+        outputs: [
+            {
+                label: 'Time Constant τ (ms)',
+                calculate: (inputs: Record<string, any>) => {
+                    const L = Number(inputs.inductance) * 1e-3;
+                    const R = Number(inputs.resistance);
+                    if (R === 0) return 'Undefined';
+                    return ((L / R) * 1000).toFixed(3);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'rl-time-constant.whatIs',
+            howTo: 'rl-time-constant.howTo',
+            faq: []
+        }
+    },
+    'magnetic-flux': {
+        id: 'magnetic-flux',
+        title: 'Magnetic Flux Calculator',
+        description: 'Calculate magnetic flux through a surface.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Magnetic Flux Calculator',
+            description: 'Find Φ = B × A × cos(θ).',
+            keywords: ['magnetic flux', 'magnetism', 'physics']
+        },
+        inputs: [
+            { id: 'B', label: 'Magnetic Field B (T)', type: 'number', placeholder: '0.5' },
+            { id: 'A', label: 'Area (m²)', type: 'number', placeholder: '0.1' },
+            { id: 'theta', label: 'Angle θ (°)', type: 'number', placeholder: '0' }
+        ],
+        outputs: [
+            {
+                label: 'Magnetic Flux (Wb)',
+                calculate: (inputs: Record<string, any>) => {
+                    const B = Number(inputs.B);
+                    const A = Number(inputs.A);
+                    const theta = Number(inputs.theta) * (Math.PI / 180);
+                    return (B * A * Math.cos(theta)).toFixed(6);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'magnetic-flux.whatIs',
+            howTo: 'magnetic-flux.howTo',
+            faq: []
+        }
+    },
+    'faraday-law': {
+        id: 'faraday-law',
+        title: 'Faraday\'s Law Calculator',
+        description: 'Calculate induced EMF from changing flux.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Faraday\'s Law Calculator',
+            description: 'Find ε = -N × dΦ/dt.',
+            keywords: ['faraday law', 'induction', 'EMF']
+        },
+        inputs: [
+            { id: 'N', label: 'Number of Turns', type: 'number', placeholder: '100' },
+            { id: 'dPhi', label: 'Change in Flux (Wb)', type: 'number', placeholder: '0.01' },
+            { id: 'dt', label: 'Time Interval (s)', type: 'number', placeholder: '0.1' }
+        ],
+        outputs: [
+            {
+                label: 'Induced EMF (V)',
+                calculate: (inputs: Record<string, any>) => {
+                    const N = Number(inputs.N);
+                    const dPhi = Number(inputs.dPhi);
+                    const dt = Number(inputs.dt);
+                    if (dt === 0) return 'Undefined';
+                    return Math.abs(N * dPhi / dt).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'faraday-law.whatIs',
+            howTo: 'faraday-law.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Electricity & Magnetism (Part 2)
+    // Added: 2026-01-15
+    // ========================================
+    'lenz-law': {
+        id: 'lenz-law',
+        title: 'Lenz\'s Law Calculator',
+        description: 'Determine induced current direction.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Lenz\'s Law Calculator',
+            description: 'Understand induced current direction.',
+            keywords: ['lenz law', 'induction', 'current']
+        },
+        inputs: [
+            { id: 'fluxChange', label: 'Flux Change Direction (1=increasing, -1=decreasing)', type: 'number', placeholder: '1' }
+        ],
+        outputs: [
+            {
+                label: 'Induced Current Direction',
+                calculate: (inputs: Record<string, any>) => {
+                    const change = Number(inputs.fluxChange);
+                    if (change > 0) return 'Opposes increase (counterclockwise)';
+                    if (change < 0) return 'Opposes decrease (clockwise)';
+                    return 'No induced current';
+                }
+            }
+        ],
+        content: {
+            whatIs: 'lenz-law.whatIs',
+            howTo: 'lenz-law.howTo',
+            faq: []
+        }
+    },
+    'solenoid-field': {
+        id: 'solenoid-field',
+        title: 'Solenoid Magnetic Field Calculator',
+        description: 'Calculate magnetic field inside solenoid.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Solenoid Magnetic Field Calculator',
+            description: 'Find B = μ₀ × n × I.',
+            keywords: ['solenoid', 'magnetic field', 'physics']
+        },
+        inputs: [
+            { id: 'turns', label: 'Number of Turns', type: 'number', placeholder: '100' },
+            { id: 'length', label: 'Solenoid Length (m)', type: 'number', placeholder: '0.1' },
+            { id: 'current', label: 'Current (A)', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Magnetic Field B (T)',
+                calculate: (inputs: Record<string, any>) => {
+                    const N = Number(inputs.turns);
+                    const L = Number(inputs.length);
+                    const I = Number(inputs.current);
+                    if (L === 0) return 'Undefined';
+                    const mu0 = 4 * Math.PI * 1e-7;
+                    const n = N / L;
+                    return (mu0 * n * I).toFixed(6);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'solenoid-field.whatIs',
+            howTo: 'solenoid-field.howTo',
+            faq: []
+        }
+    },
+    'wire-magnetic-field': {
+        id: 'wire-magnetic-field',
+        title: 'Wire Magnetic Field Calculator',
+        description: 'Calculate magnetic field around a wire.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Wire Magnetic Field Calculator',
+            description: 'Find B = μ₀ × I / (2πr).',
+            keywords: ['wire', 'magnetic field', 'ampere']
+        },
+        inputs: [
+            { id: 'current', label: 'Current (A)', type: 'number', placeholder: '10' },
+            { id: 'distance', label: 'Distance from Wire (m)', type: 'number', placeholder: '0.05' }
+        ],
+        outputs: [
+            {
+                label: 'Magnetic Field B (T)',
+                calculate: (inputs: Record<string, any>) => {
+                    const I = Number(inputs.current);
+                    const r = Number(inputs.distance);
+                    if (r === 0) return 'Undefined';
+                    const mu0 = 4 * Math.PI * 1e-7;
+                    return (mu0 * I / (2 * Math.PI * r)).toFixed(6);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'wire-magnetic-field.whatIs',
+            howTo: 'wire-magnetic-field.howTo',
+            faq: []
+        }
+    },
+    'lorentz-force': {
+        id: 'lorentz-force',
+        title: 'Lorentz Force Calculator',
+        description: 'Calculate force on moving charge in field.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Lorentz Force Calculator',
+            description: 'Find F = qvB sin(θ).',
+            keywords: ['lorentz force', 'charge', 'magnetic']
+        },
+        inputs: [
+            { id: 'charge', label: 'Charge (C)', type: 'number', placeholder: '1.6e-19' },
+            { id: 'velocity', label: 'Velocity (m/s)', type: 'number', placeholder: '1e6' },
+            { id: 'B', label: 'Magnetic Field B (T)', type: 'number', placeholder: '0.5' },
+            { id: 'theta', label: 'Angle θ (°)', type: 'number', placeholder: '90' }
+        ],
+        outputs: [
+            {
+                label: 'Lorentz Force (N)',
+                calculate: (inputs: Record<string, any>) => {
+                    const q = Number(inputs.charge);
+                    const v = Number(inputs.velocity);
+                    const B = Number(inputs.B);
+                    const theta = Number(inputs.theta) * (Math.PI / 180);
+                    return (Math.abs(q) * v * B * Math.sin(theta)).toExponential(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'lorentz-force.whatIs',
+            howTo: 'lorentz-force.howTo',
+            faq: []
+        }
+    },
+    'transformer-ratio': {
+        id: 'transformer-ratio',
+        title: 'Transformer Ratio Calculator',
+        description: 'Calculate transformer voltage/current ratios.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Transformer Ratio Calculator',
+            description: 'Find Vs/Vp = Ns/Np.',
+            keywords: ['transformer', 'voltage', 'ratio']
+        },
+        inputs: [
+            { id: 'Np', label: 'Primary Turns', type: 'number', placeholder: '100' },
+            { id: 'Ns', label: 'Secondary Turns', type: 'number', placeholder: '500' },
+            { id: 'Vp', label: 'Primary Voltage (V)', type: 'number', placeholder: '120' }
+        ],
+        outputs: [
+            {
+                label: 'Secondary Voltage (V)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Np = Number(inputs.Np);
+                    const Ns = Number(inputs.Ns);
+                    const Vp = Number(inputs.Vp);
+                    if (Np === 0) return 'Undefined';
+                    return ((Ns / Np) * Vp).toFixed(2);
+                }
+            },
+            {
+                label: 'Turns Ratio',
+                calculate: (inputs: Record<string, any>) => {
+                    const Np = Number(inputs.Np);
+                    const Ns = Number(inputs.Ns);
+                    if (Np === 0) return 'Undefined';
+                    return (Ns / Np).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'transformer-ratio.whatIs',
+            howTo: 'transformer-ratio.howTo',
+            faq: []
+        }
+    },
+    'ac-power': {
+        id: 'ac-power',
+        title: 'AC Power Calculator',
+        description: 'Calculate AC power (real, reactive, apparent).',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'AC Power Calculator',
+            description: 'Find P, Q, S for AC circuits.',
+            keywords: ['AC power', 'real power', 'reactive']
+        },
+        inputs: [
+            { id: 'voltage', label: 'Voltage (V)', type: 'number', placeholder: '120' },
+            { id: 'current', label: 'Current (A)', type: 'number', placeholder: '5' },
+            { id: 'pf', label: 'Power Factor', type: 'number', placeholder: '0.85' }
+        ],
+        outputs: [
+            {
+                label: 'Apparent Power S (VA)',
+                calculate: (inputs: Record<string, any>) => {
+                    const V = Number(inputs.voltage);
+                    const I = Number(inputs.current);
+                    return (V * I).toFixed(2);
+                }
+            },
+            {
+                label: 'Real Power P (W)',
+                calculate: (inputs: Record<string, any>) => {
+                    const V = Number(inputs.voltage);
+                    const I = Number(inputs.current);
+                    const pf = Number(inputs.pf);
+                    return (V * I * pf).toFixed(2);
+                }
+            },
+            {
+                label: 'Reactive Power Q (VAR)',
+                calculate: (inputs: Record<string, any>) => {
+                    const V = Number(inputs.voltage);
+                    const I = Number(inputs.current);
+                    const pf = Number(inputs.pf);
+                    const sinPhi = Math.sqrt(1 - pf * pf);
+                    return (V * I * sinPhi).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'ac-power.whatIs',
+            howTo: 'ac-power.howTo',
+            faq: []
+        }
+    },
+    'reactance-capacitive': {
+        id: 'reactance-capacitive',
+        title: 'Capacitive Reactance Calculator',
+        description: 'Calculate capacitive reactance Xc.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Capacitive Reactance Calculator',
+            description: 'Find Xc = 1/(2πfC).',
+            keywords: ['reactance', 'capacitor', 'AC']
+        },
+        inputs: [
+            { id: 'frequency', label: 'Frequency (Hz)', type: 'number', placeholder: '60' },
+            { id: 'capacitance', label: 'Capacitance (µF)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Capacitive Reactance Xc (Ω)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.frequency);
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    if (f === 0 || C === 0) return 'Undefined';
+                    return (1 / (2 * Math.PI * f * C)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'reactance-capacitive.whatIs',
+            howTo: 'reactance-capacitive.howTo',
+            faq: []
+        }
+    },
+    'reactance-inductive': {
+        id: 'reactance-inductive',
+        title: 'Inductive Reactance Calculator',
+        description: 'Calculate inductive reactance XL.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Inductive Reactance Calculator',
+            description: 'Find XL = 2πfL.',
+            keywords: ['reactance', 'inductor', 'AC']
+        },
+        inputs: [
+            { id: 'frequency', label: 'Frequency (Hz)', type: 'number', placeholder: '60' },
+            { id: 'inductance', label: 'Inductance (mH)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Inductive Reactance XL (Ω)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.frequency);
+                    const L = Number(inputs.inductance) * 1e-3;
+                    return (2 * Math.PI * f * L).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'reactance-inductive.whatIs',
+            howTo: 'reactance-inductive.howTo',
+            faq: []
+        }
+    },
+    'impedance-rlc': {
+        id: 'impedance-rlc',
+        title: 'RLC Impedance Calculator',
+        description: 'Calculate total impedance of RLC circuit.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'RLC Impedance Calculator',
+            description: 'Find Z = √(R² + (XL-Xc)²).',
+            keywords: ['impedance', 'RLC', 'AC circuit']
+        },
+        inputs: [
+            { id: 'R', label: 'Resistance R (Ω)', type: 'number', placeholder: '100' },
+            { id: 'XL', label: 'Inductive Reactance XL (Ω)', type: 'number', placeholder: '50' },
+            { id: 'Xc', label: 'Capacitive Reactance Xc (Ω)', type: 'number', placeholder: '30' }
+        ],
+        outputs: [
+            {
+                label: 'Total Impedance Z (Ω)',
+                calculate: (inputs: Record<string, any>) => {
+                    const R = Number(inputs.R);
+                    const XL = Number(inputs.XL);
+                    const Xc = Number(inputs.Xc);
+                    return Math.sqrt(R * R + Math.pow(XL - Xc, 2)).toFixed(2);
+                }
+            },
+            {
+                label: 'Phase Angle (°)',
+                calculate: (inputs: Record<string, any>) => {
+                    const R = Number(inputs.R);
+                    const XL = Number(inputs.XL);
+                    const Xc = Number(inputs.Xc);
+                    if (R === 0) return 'Undefined';
+                    return (Math.atan((XL - Xc) / R) * 180 / Math.PI).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'impedance-rlc.whatIs',
+            howTo: 'impedance-rlc.howTo',
+            faq: []
+        }
+    },
+    'lc-resonance': {
+        id: 'lc-resonance',
+        title: 'LC Resonance Calculator',
+        description: 'Calculate resonant frequency of LC circuit.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'LC Resonance Calculator',
+            description: 'Find f = 1/(2π√LC).',
+            keywords: ['LC circuit', 'resonance', 'frequency']
+        },
+        inputs: [
+            { id: 'inductance', label: 'Inductance (mH)', type: 'number', placeholder: '10' },
+            { id: 'capacitance', label: 'Capacitance (µF)', type: 'number', placeholder: '100' }
+        ],
+        outputs: [
+            {
+                label: 'Resonant Frequency (Hz)',
+                calculate: (inputs: Record<string, any>) => {
+                    const L = Number(inputs.inductance) * 1e-3;
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    if (L === 0 || C === 0) return 'Undefined';
+                    return (1 / (2 * Math.PI * Math.sqrt(L * C))).toFixed(2);
+                }
+            },
+            {
+                label: 'Angular Frequency ω (rad/s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const L = Number(inputs.inductance) * 1e-3;
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    if (L === 0 || C === 0) return 'Undefined';
+                    return (1 / Math.sqrt(L * C)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'lc-resonance.whatIs',
+            howTo: 'lc-resonance.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - E&M (Part 3) - MILESTONE 1000!
+    // Added: 2026-01-15
+    // ========================================
+    'quality-factor': {
+        id: 'quality-factor',
+        title: 'Quality Factor (Q) Calculator',
+        description: 'Calculate Q factor of resonant circuit.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Quality Factor Calculator',
+            description: 'Find Q = f₀/Δf or Q = XL/R.',
+            keywords: ['Q factor', 'resonance', 'bandwidth']
+        },
+        inputs: [
+            { id: 'resonantFreq', label: 'Resonant Frequency (Hz)', type: 'number', placeholder: '1000' },
+            { id: 'bandwidth', label: 'Bandwidth (Hz)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Quality Factor Q',
+                calculate: (inputs: Record<string, any>) => {
+                    const f0 = Number(inputs.resonantFreq);
+                    const bw = Number(inputs.bandwidth);
+                    if (bw === 0) return 'Undefined';
+                    return (f0 / bw).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'quality-factor.whatIs',
+            howTo: 'quality-factor.howTo',
+            faq: []
+        }
+    },
+    'bandwidth-filter': {
+        id: 'bandwidth-filter',
+        title: 'Filter Bandwidth Calculator',
+        description: 'Calculate bandwidth from Q and frequency.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Filter Bandwidth Calculator',
+            description: 'Find BW = f₀/Q.',
+            keywords: ['bandwidth', 'filter', 'frequency']
+        },
+        inputs: [
+            { id: 'resonantFreq', label: 'Resonant Frequency (Hz)', type: 'number', placeholder: '1000' },
+            { id: 'Q', label: 'Quality Factor Q', type: 'number', placeholder: '20' }
+        ],
+        outputs: [
+            {
+                label: 'Bandwidth (Hz)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f0 = Number(inputs.resonantFreq);
+                    const Q = Number(inputs.Q);
+                    if (Q === 0) return 'Undefined';
+                    return (f0 / Q).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'bandwidth-filter.whatIs',
+            howTo: 'bandwidth-filter.howTo',
+            faq: []
+        }
+    },
+    'cutoff-frequency': {
+        id: 'cutoff-frequency',
+        title: 'Cutoff Frequency Calculator',
+        description: 'Calculate RC filter cutoff frequency.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Cutoff Frequency Calculator',
+            description: 'Find fc = 1/(2πRC).',
+            keywords: ['cutoff', 'filter', 'RC circuit']
+        },
+        inputs: [
+            { id: 'resistance', label: 'Resistance (Ω)', type: 'number', placeholder: '1000' },
+            { id: 'capacitance', label: 'Capacitance (µF)', type: 'number', placeholder: '0.1' }
+        ],
+        outputs: [
+            {
+                label: 'Cutoff Frequency (Hz)',
+                calculate: (inputs: Record<string, any>) => {
+                    const R = Number(inputs.resistance);
+                    const C = Number(inputs.capacitance) * 1e-6;
+                    if (R === 0 || C === 0) return 'Undefined';
+                    return (1 / (2 * Math.PI * R * C)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'cutoff-frequency.whatIs',
+            howTo: 'cutoff-frequency.howTo',
+            faq: []
+        }
+    },
+    'skin-depth': {
+        id: 'skin-depth',
+        title: 'Skin Depth Calculator',
+        description: 'Calculate electromagnetic skin depth.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Skin Depth Calculator',
+            description: 'Find δ = √(2ρ/(ωμ)).',
+            keywords: ['skin depth', 'electromagnetic', 'conductor']
+        },
+        inputs: [
+            { id: 'resistivity', label: 'Resistivity (Ω·m)', type: 'number', placeholder: '1.68e-8' },
+            { id: 'frequency', label: 'Frequency (Hz)', type: 'number', placeholder: '1e6' }
+        ],
+        outputs: [
+            {
+                label: 'Skin Depth (mm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const rho = Number(inputs.resistivity);
+                    const f = Number(inputs.frequency);
+                    if (f === 0) return 'Undefined';
+                    const mu = 4 * Math.PI * 1e-7;
+                    const omega = 2 * Math.PI * f;
+                    const delta = Math.sqrt(2 * rho / (omega * mu));
+                    return (delta * 1000).toFixed(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'skin-depth.whatIs',
+            howTo: 'skin-depth.howTo',
+            faq: []
+        }
+    },
+    'dielectric-constant': {
+        id: 'dielectric-constant',
+        title: 'Dielectric Constant Calculator',
+        description: 'Calculate relative permittivity effects.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Dielectric Constant Calculator',
+            description: 'Find capacitance increase with dielectric.',
+            keywords: ['dielectric', 'permittivity', 'capacitor']
+        },
+        inputs: [
+            { id: 'C0', label: 'Capacitance without dielectric (pF)', type: 'number', placeholder: '10' },
+            { id: 'k', label: 'Dielectric Constant (κ)', type: 'number', placeholder: '4' }
+        ],
+        outputs: [
+            {
+                label: 'Capacitance with Dielectric (pF)',
+                calculate: (inputs: Record<string, any>) => {
+                    const C0 = Number(inputs.C0);
+                    const k = Number(inputs.k);
+                    return (C0 * k).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'dielectric-constant.whatIs',
+            howTo: 'dielectric-constant.howTo',
+            faq: []
+        }
+    },
+    'permittivity-calculator': {
+        id: 'permittivity-calculator',
+        title: 'Permittivity Calculator',
+        description: 'Calculate absolute permittivity.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Permittivity Calculator',
+            description: 'Find ε = ε₀ × εr.',
+            keywords: ['permittivity', 'dielectric', 'physics']
+        },
+        inputs: [
+            { id: 'relativePermittivity', label: 'Relative Permittivity (εr)', type: 'number', placeholder: '4' }
+        ],
+        outputs: [
+            {
+                label: 'Absolute Permittivity (F/m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const er = Number(inputs.relativePermittivity);
+                    const e0 = 8.854e-12;
+                    return (e0 * er).toExponential(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'permittivity-calculator.whatIs',
+            howTo: 'permittivity-calculator.howTo',
+            faq: []
+        }
+    },
+    'permeability-calculator': {
+        id: 'permeability-calculator',
+        title: 'Permeability Calculator',
+        description: 'Calculate absolute magnetic permeability.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Permeability Calculator',
+            description: 'Find μ = μ₀ × μr.',
+            keywords: ['permeability', 'magnetic', 'physics']
+        },
+        inputs: [
+            { id: 'relativePermeability', label: 'Relative Permeability (μr)', type: 'number', placeholder: '1000' }
+        ],
+        outputs: [
+            {
+                label: 'Absolute Permeability (H/m)',
+                calculate: (inputs: Record<string, any>) => {
+                    const mr = Number(inputs.relativePermeability);
+                    const m0 = 4 * Math.PI * 1e-7;
+                    return (m0 * mr).toExponential(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'permeability-calculator.whatIs',
+            howTo: 'permeability-calculator.howTo',
+            faq: []
+        }
+    },
+    'electromagnetic-wave': {
+        id: 'electromagnetic-wave',
+        title: 'EM Wave Properties Calculator',
+        description: 'Calculate electromagnetic wave properties.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'EM Wave Calculator',
+            description: 'Find c = f × λ.',
+            keywords: ['electromagnetic', 'wave', 'light']
+        },
+        inputs: [
+            { id: 'frequency', label: 'Frequency (Hz)', type: 'number', placeholder: '5e14' }
+        ],
+        outputs: [
+            {
+                label: 'Wavelength (nm)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.frequency);
+                    if (f === 0) return 'Undefined';
+                    const c = 3e8;
+                    return ((c / f) * 1e9).toFixed(2);
+                }
+            },
+            {
+                label: 'Period (s)',
+                calculate: (inputs: Record<string, any>) => {
+                    const f = Number(inputs.frequency);
+                    if (f === 0) return 'Undefined';
+                    return (1 / f).toExponential(4);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'electromagnetic-wave.whatIs',
+            howTo: 'electromagnetic-wave.howTo',
+            faq: []
+        }
+    },
+    'poynting-vector': {
+        id: 'poynting-vector',
+        title: 'Poynting Vector Calculator',
+        description: 'Calculate EM wave energy flux.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Poynting Vector Calculator',
+            description: 'Find S = E × H.',
+            keywords: ['poynting', 'energy flux', 'electromagnetic']
+        },
+        inputs: [
+            { id: 'E', label: 'Electric Field E (V/m)', type: 'number', placeholder: '100' },
+            { id: 'H', label: 'Magnetic Field H (A/m)', type: 'number', placeholder: '0.265' }
+        ],
+        outputs: [
+            {
+                label: 'Poynting Vector S (W/m²)',
+                calculate: (inputs: Record<string, any>) => {
+                    const E = Number(inputs.E);
+                    const H = Number(inputs.H);
+                    return (E * H).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'poynting-vector.whatIs',
+            howTo: 'poynting-vector.howTo',
+            faq: []
+        }
+    },
+    // ========================================
+    // PHYSICS - Circuit Analysis (FINAL MILESTONE!)
+    // Added: 2026-01-15 - CALCULATOR #996-1000!
+    // ========================================
+    'voltage-divider-ac': {
+        id: 'voltage-divider-ac',
+        title: 'AC Voltage Divider Calculator',
+        description: 'Calculate AC voltage division with impedance.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'AC Voltage Divider Calculator',
+            description: 'Find Vout for AC circuits.',
+            keywords: ['voltage divider', 'AC', 'impedance']
+        },
+        inputs: [
+            { id: 'Vin', label: 'Input Voltage (V)', type: 'number', placeholder: '120' },
+            { id: 'Z1', label: 'Impedance Z1 (Ω)', type: 'number', placeholder: '100' },
+            { id: 'Z2', label: 'Impedance Z2 (Ω)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Output Voltage Vout (V)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Vin = Number(inputs.Vin);
+                    const Z1 = Number(inputs.Z1);
+                    const Z2 = Number(inputs.Z2);
+                    if (Z1 + Z2 === 0) return 'Undefined';
+                    return (Vin * Z2 / (Z1 + Z2)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'voltage-divider-ac.whatIs',
+            howTo: 'voltage-divider-ac.howTo',
+            faq: []
+        }
+    },
+    'current-divider-ac': {
+        id: 'current-divider-ac',
+        title: 'AC Current Divider Calculator',
+        description: 'Calculate AC current division with impedance.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'AC Current Divider Calculator',
+            description: 'Find current through parallel impedances.',
+            keywords: ['current divider', 'AC', 'impedance']
+        },
+        inputs: [
+            { id: 'Itotal', label: 'Total Current (A)', type: 'number', placeholder: '10' },
+            { id: 'Z1', label: 'Impedance Z1 (Ω)', type: 'number', placeholder: '100' },
+            { id: 'Z2', label: 'Impedance Z2 (Ω)', type: 'number', placeholder: '50' }
+        ],
+        outputs: [
+            {
+                label: 'Current through Z1 (A)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Itotal = Number(inputs.Itotal);
+                    const Z1 = Number(inputs.Z1);
+                    const Z2 = Number(inputs.Z2);
+                    if (Z1 === 0) return 'Undefined';
+                    return (Itotal * Z2 / (Z1 + Z2)).toFixed(2);
+                }
+            },
+            {
+                label: 'Current through Z2 (A)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Itotal = Number(inputs.Itotal);
+                    const Z1 = Number(inputs.Z1);
+                    const Z2 = Number(inputs.Z2);
+                    if (Z2 === 0) return 'Undefined';
+                    return (Itotal * Z1 / (Z1 + Z2)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'current-divider-ac.whatIs',
+            howTo: 'current-divider-ac.howTo',
+            faq: []
+        }
+    },
+    'thevenin-equivalent': {
+        id: 'thevenin-equivalent',
+        title: 'Thevenin Equivalent Calculator',
+        description: 'Calculate Thevenin equivalent circuit.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Thevenin Equivalent Calculator',
+            description: 'Find Vth and Rth for circuits.',
+            keywords: ['thevenin', 'equivalent', 'circuit']
+        },
+        inputs: [
+            { id: 'Voc', label: 'Open Circuit Voltage (V)', type: 'number', placeholder: '12' },
+            { id: 'Isc', label: 'Short Circuit Current (A)', type: 'number', placeholder: '2' }
+        ],
+        outputs: [
+            {
+                label: 'Thevenin Voltage Vth (V)',
+                calculate: (inputs: Record<string, any>) => {
+                    return Number(inputs.Voc).toFixed(2);
+                }
+            },
+            {
+                label: 'Thevenin Resistance Rth (Ω)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Voc = Number(inputs.Voc);
+                    const Isc = Number(inputs.Isc);
+                    if (Isc === 0) return 'Undefined';
+                    return (Voc / Isc).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'thevenin-equivalent.whatIs',
+            howTo: 'thevenin-equivalent.howTo',
+            faq: []
+        }
+    },
+    'norton-equivalent': {
+        id: 'norton-equivalent',
+        title: 'Norton Equivalent Calculator',
+        description: 'Calculate Norton equivalent circuit.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Norton Equivalent Calculator',
+            description: 'Find In and Rn for circuits.',
+            keywords: ['norton', 'equivalent', 'circuit']
+        },
+        inputs: [
+            { id: 'Voc', label: 'Open Circuit Voltage (V)', type: 'number', placeholder: '12' },
+            { id: 'Rth', label: 'Thevenin Resistance (Ω)', type: 'number', placeholder: '6' }
+        ],
+        outputs: [
+            {
+                label: 'Norton Current In (A)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Voc = Number(inputs.Voc);
+                    const Rth = Number(inputs.Rth);
+                    if (Rth === 0) return 'Undefined';
+                    return (Voc / Rth).toFixed(2);
+                }
+            },
+            {
+                label: 'Norton Resistance Rn (Ω)',
+                calculate: (inputs: Record<string, any>) => {
+                    return Number(inputs.Rth).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'norton-equivalent.whatIs',
+            howTo: 'norton-equivalent.howTo',
+            faq: []
+        }
+    },
+    'maximum-power-transfer': {
+        id: 'maximum-power-transfer',
+        title: 'Maximum Power Transfer Calculator',
+        description: 'Calculate max power transfer to load.',
+        category: 'physics',
+        icon: 'calculator-icon',
+        meta: {
+            title: 'Maximum Power Transfer Calculator',
+            description: 'Find P = V²/(4R) for matched load.',
+            keywords: ['maximum power', 'transfer', 'load']
+        },
+        inputs: [
+            { id: 'Vth', label: 'Thevenin Voltage (V)', type: 'number', placeholder: '12' },
+            { id: 'Rth', label: 'Thevenin Resistance (Ω)', type: 'number', placeholder: '6' }
+        ],
+        outputs: [
+            {
+                label: 'Optimal Load Resistance (Ω)',
+                calculate: (inputs: Record<string, any>) => {
+                    return Number(inputs.Rth).toFixed(2);
+                }
+            },
+            {
+                label: 'Maximum Power (W)',
+                calculate: (inputs: Record<string, any>) => {
+                    const Vth = Number(inputs.Vth);
+                    const Rth = Number(inputs.Rth);
+                    if (Rth === 0) return 'Undefined';
+                    return (Vth * Vth / (4 * Rth)).toFixed(2);
+                }
+            }
+        ],
+        content: {
+            whatIs: 'maximum-power-transfer.whatIs',
+            howTo: 'maximum-power-transfer.howTo',
+            faq: []
+        }
+    },
 };
