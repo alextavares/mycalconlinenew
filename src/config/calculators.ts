@@ -8491,6 +8491,50 @@ export const calculators: Record<string, CalculatorConfig> = {
         ],
         content: { whatIs: '<h3>Fuel Cost</h3><p>Calculate how much money you will spend on fuel for a given distance.</p>', faq: [] }
     },
+    'gasto-gasolina': {
+        id: 'gasto-gasolina',
+        title: 'Calculadora de Gasto de Gasolina',
+        description: 'Calcule o custo exato da sua viagem de carro.',
+        category: 'finance',
+        icon: 'Fuel',
+        meta: {
+            title: 'Calculadora de Gasto de Gasolina (Preço da Viagem)',
+            description: 'Descubra quanto você vai gastar de gasolina na viagem. Informe distância, consumo e preço do combustível. Simples e rápido.',
+            keywords: ['gasto gasolina', 'calcular gasolina', 'custo viagem', 'combustivel', 'alcool ou gasolina']
+        },
+        inputs: [
+            { id: 'dist', label: 'Distância (km)', type: 'number', placeholder: 'Ex: 100' },
+            { id: 'eff', label: 'Consumo (km/l)', type: 'number', placeholder: 'Ex: 12' },
+            { id: 'price', label: 'Preço do Combustível (R$)', type: 'number', placeholder: 'Ex: 5.50' }
+        ],
+        outputs: [
+            {
+                label: 'Custo Total (R$)',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = Number(inputs['dist']);
+                    const e = Number(inputs['eff']);
+                    const p = Number(inputs['price']);
+                    if (!d || !e || !p) return 0;
+                    return parseFloat(((d / e) * p).toFixed(2));
+                }
+            },
+            {
+                label: 'Litros Necessários',
+                calculate: (inputs: Record<string, any>) => {
+                    const d = Number(inputs['dist']);
+                    const e = Number(inputs['eff']);
+                    if (!d || !e) return 0;
+                    return parseFloat((d / e).toFixed(2));
+                }
+            }
+        ],
+        content: {
+            whatIs: '<h3>Como calcular o gasto de gasolina?</h3><p>Para saber quanto você vai gastar, basta dividir a distância total pelo consumo do seu carro (km/l) e multiplicar pelo preço do combustível.</p>',
+            faq: [
+                { question: 'Como saber o consumo do meu carro?', answer: 'Verifique no manual do proprietário ou faça a média dividindo os km rodados pelos litros abastecidos.' }
+            ]
+        }
+    },
     'tip-calculator': {
         id: 'tip-calculator',
         title: 'Tip Calculator',
