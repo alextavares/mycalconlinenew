@@ -287,6 +287,7 @@ export function CalculatorEngineClient({ calculatorId }: Props) {
                                             <div className="relative">
                                                 <input
                                                     type={input.type}
+                                                    inputMode={input.type === 'number' ? 'decimal' : undefined}
                                                     id={input.id}
                                                     value={inputs[input.id] || ''}
                                                     onChange={(e) => handleInputChange(input.id, e.target.value)}
