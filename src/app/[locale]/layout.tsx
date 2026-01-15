@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import Script from 'next/script';
 import { getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
-import Head from 'next/head';
 import Link from 'next/link';
 import { locales, defaultLocale } from '@/config/i18n.config';
 import LanguageSwitcher from '@/components/language-switcher';
@@ -97,18 +97,20 @@ export default async function LocaleLayout({
       now={new Date()}
       timeZone="UTC"
     >
-      <Head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EY57J6B0Z3"></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-EY57J6B0Z3');
-            `
-        }} />
-      </Head>
+      {/* Google tag (gtag.js) - Optimized Loading */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-EY57J6B0Z3"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EY57J6B0Z3');
+        `}
+      </Script>
+
       <SidebarProvider>
         <div className={`flex min-h-screen w-full overflow-x-hidden ${inter.className}`}>
           {/* Mobile sidebar - hidden on md screens and above */}
